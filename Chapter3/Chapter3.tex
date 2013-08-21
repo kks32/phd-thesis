@@ -1,64 +1,64 @@
-\documentclass[oneside,11pt]{book}
-\usepackage{amsmath}
-\usepackage{amsfonts}
-\usepackage{graphicx}
-\usepackage{a4wide}
-\usepackage[pdftex, plainpages=false, pdfpagelabels, pdfpagelayout=useoutlines, bookmarks, bookmarksopen=true, bookmarksnumbered=true, breaklinks=true, linktocpage, pagebackref=false, colorlinks=true, linkcolor=blue, urlcolor=blue, citecolor=blue, anchorcolor=green, hyperindex=false, hyperfigures]{hyperref}
-\usepackage{color}
-\usepackage{textcomp}
-\usepackage{amssymb}%
-\usepackage{setspace}
-\usepackage{tabularx}
-\usepackage{etex}
-\usepackage{multicol}
-\usepackage{multirow}
-\usepackage{lscape}
-\usepackage{rotating}
-\usepackage{wrapfig}
-\usepackage{float}
-\usepackage{longtable}
-\usepackage{subfigure}
-\usepackage[figurename=Fig.,labelsep=space,tableposition=top]{caption}
-\usepackage[round,colon,authoryear]{natbib}
-\usepackage{appendix}
-\usepackage{caption}
-%*********************************** To copy ligatures ********************************************************************************************* %
-%\usepackage[ansinew]{inputenc}
-\usepackage[T1]{fontenc}
-\usepackage{libertine}
-\input{glyphtounicode}
-\pdfglyphtounicode{f_f}{FB00}
-\pdfglyphtounicode{f_f_i}{FB03}
-\pdfglyphtounicode{f_f_l}{FB04}
-\pdfglyphtounicode{f_i}{FB01}
-\pdfgentounicode=1
-%**************************************************************************************************************************************************** %
-%\textwidth=445pt \hoffset=-30pt
-\usepackage{fancyhdr}   % Use fancy headers package to produce headers
-\pagestyle{fancyplain}
-\addtolength{\headwidth}{\marginparsep}
-%remember chapter and section titles
-\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
-\renewcommand{\sectionmark}[1]{\markright{\thesection\ #1}}
-\lhead[\fancyplain{}{\bfseries\thepage}]{\fancyplain{}{\bfseries\rightmark}}
-\rhead[\fancyplain{}{\bfseries\leftmark}]{\fancyplain{}{\bfseries\thepage}}
-\cfoot[]{}
-\rfoot[]{}
-% Clear Header 
-% Clear Header Style on the Last Empty Odd pages
-\makeatletter
-\def\cleardoublepage{\clearpage\if@twoside \ifodd\c@page\else%
-	\hbox{}%
-	\thispagestyle{empty}%              % Empty header styles
-	\newpage%
-	\if@twocolumn\hbox{}\newpage\fi\fi\fi}
-\makeatother
-% **************************************************************************************************************************************************** %
-
-\begin{document}
+%\documentclass[oneside,11pt]{book}
+%\usepackage{amsmath}
+%\usepackage{amsfonts}
+%\usepackage{graphicx}
+%\usepackage{a4wide}
+%\usepackage[pdftex, plainpages=false, pdfpagelabels, pdfpagelayout=useoutlines, bookmarks, bookmarksopen=true, bookmarksnumbered=true, breaklinks=true, linktocpage, pagebackref=false, colorlinks=true, linkcolor=blue, urlcolor=blue, citecolor=blue, anchorcolor=green, hyperindex=false, hyperfigures]{hyperref}
+%\usepackage{color}
+%\usepackage{textcomp}
+%\usepackage{amssymb}%
+%\usepackage{setspace}
+%\usepackage{tabularx}
+%\usepackage{etex}
+%\usepackage{multicol}
+%\usepackage{multirow}
+%\usepackage{lscape}
+%\usepackage{rotating}
+%\usepackage{wrapfig}
+%\usepackage{float}
+%\usepackage{longtable}
+%\usepackage{subfigure}
+%\usepackage[figurename=Fig.,labelsep=space,tableposition=top]{caption}
+%\usepackage[round,colon,authoryear]{natbib}
+%\usepackage{appendix}
+%\usepackage{caption}
+%%*********************************** To copy ligatures ********************************************************************************************* %
+%%\usepackage[ansinew]{inputenc}
+%\usepackage[T1]{fontenc}
+%\usepackage{libertine}
+%\input{glyphtounicode}
+%\pdfglyphtounicode{f_f}{FB00}
+%\pdfglyphtounicode{f_f_i}{FB03}
+%\pdfglyphtounicode{f_f_l}{FB04}
+%\pdfglyphtounicode{f_i}{FB01}
+%\pdfgentounicode=1
+%%**************************************************************************************************************************************************** %
+%%\textwidth=445pt \hoffset=-30pt
+%\usepackage{fancyhdr}   % Use fancy headers package to produce headers
+%\pagestyle{fancyplain}
+%\addtolength{\headwidth}{\marginparsep}
+%%remember chapter and section titles
+%\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+%\renewcommand{\sectionmark}[1]{\markright{\thesection\ #1}}
+%\lhead[\fancyplain{}{\bfseries\thepage}]{\fancyplain{}{\bfseries\rightmark}}
+%\rhead[\fancyplain{}{\bfseries\leftmark}]{\fancyplain{}{\bfseries\thepage}}
+%\cfoot[]{}
+%\rfoot[]{}
+%% Clear Header 
+%% Clear Header Style on the Last Empty Odd pages
+%\makeatletter
+%\def\cleardoublepage{\clearpage\if@twoside \ifodd\c@page\else%
+%	\hbox{}%
+%	\thispagestyle{empty}%              % Empty header styles
+%	\newpage%
+%	\if@twocolumn\hbox{}\newpage\fi\fi\fi}
+%\makeatother
+%% **************************************************************************************************************************************************** %
+%
+%\begin{document}
 
 %************************************************************************************************************************************************************************************************ %
-\chapter{Fluid flow modelling}
+\chapter{Numerical Modelling of Granular Flows}
 \section{Fluid simulation using Lattice Boltzmann Method (LBM)}
 The Navier-Stokes equation describes the motion of a non-turbulent Newtonian fluid. The equation is obtained by applying Newton's second law to the fluid motion, together with an assumption that the fluid stress is the sum of the viscous term, proportional to the gradient of velocity, and the pressure term. The Lattice Boltzmann equation (LBM) Method~\citep{chen1998} is an alternative approach to the classical Navier-Stokes solvers for fluid flow and works on an equidistant grid of cells, called lattice cells, which interact only with their direct neighbours. The Lattice Boltzmann Method evolved out of the Lattice-Gas Cellular Automata (LGCA), a statistical model based on the kinetic theory of gases, which simulates gas as particles at discrete points in space (e.g., Cartesian or hexagonal mesh) represented by Boolean variables, which means that the mass of a particle is fixed to 1. The LGCA and the LBM are categories of \textit{Cellular Automata}, which is characterized by: (a) lattice, (b) a definition of state variable at every point in the lattice, and (c) an update rule based on local and neighbouring information. The important aspect, however is the \textit{discretization of the velocity}, which means that the particle velocities are restricted to a predefined set of orientations. The LB method has evolved as a comprehensive fluid solver and its theoretical aspects link well with the conventional central finite difference scheme~\citep{cook2004}. The systems simulated using cellular automata approaches exhibit fluid-like behaviour. The process of averaging the density and the momentum over some regions of the space, i.e. coarse graining, produces some useful fluid simulation. The LBM replaces the boolean variables of the LGCA~\citep{wolf2000} with discretized probability distribution functions, $\textit{f}_{\textit{i}}(\overrightarrow{x})$, thereby eliminating the need for ensemble averaging. A simplified collision operator described in~\citet{Bhat1954} is implemented in the LBM approach.  
 
@@ -66,7 +66,7 @@ The Navier-Stokes equation describes the motion of a non-turbulent Newtonian flu
 The Lattice Boltzmann Method is a `micro-particle' based numerical time-stepping procedure for the solution of incompressible fluid flows. Consider a 2D incompressible fluid flow with density $\rho$ and kinematic viscosity \textit{v}, in a rectangular domain \textit{\textbf{D}}. The fluid domain is divided into a rectangular grid or lattice, with the same spacing \textit{h} in both the \textit{x-} and the \textit{y-}directions, as shown in Figure~\ref{fig:D2Q9}. These lattices are usually classified in the literature using the $\textit{D}\alpha\textit{Q}\beta$-notation, where $\alpha$ is an integer number denoting the space dimensionality and $\beta$ is the number of discrete velocities (but inlcuding the possibility of having particle at rest) within the momentum discretization. The most common lattices are the $\textit{D2Q9}$ and the $\textit{D3Q19}$-models, see ~\citet{he1997}. The present study focuses on two-dimensional problems, hence the $\textit{D2Q9}$ momentum discretization is adopted, where the fluid particles at each node are allowed to move to their eight intermediate neighbours with eight different velocities $\textit{e}_{\textit{i}} (\textit{i}=1,\dots,8)$. A particle can remain at the node, which is equivalent to moving with zero velocity $\textit{e}_{\textit{o}}$
 \begin{figure}[htbp]
 \centering
-\includegraphics{figures/lbm/D2Q9.png}
+\includegraphics[scale=0.5]{Chapter3/figures/lbm/D2Q9.png}
 \caption[The Lattice Boltzmann discretisation and D2Q9 scheme]{The Lattice Boltzmann discretisation and D2Q9 scheme: (a) a standard LB lattice; (b) D2Q9 model~\citep{han2007}}
 \label{fig:D2Q9}
 \end{figure}
@@ -111,14 +111,14 @@ In addition, the right-hand side of Eq.~\ref{eq:stream} is often denoted by $\te
 \clearpage
 \begin{figure}[htbp]
 \centering
-\includegraphics{figures/lbm/stream.pdf}
+\includegraphics{Chapter3/figures/lbm/stream.pdf}
 \caption[Illustration of the streaming process on a \textit{D2Q9} lattice]{Illustration of the streaming process on a \textit{D2Q9} lattice. The magnitude of the distribution functions remains unchanged, but they move to a neighbouring node according to their direction.}
 \label{fig:stream}
 \end{figure}
 The collision step, (illustrated in Figure~\ref{fig:collision}) consists of re-distribution of the distribution functions to the local discretized Maxwellian equilibrium distribution functions, but in such a way that local mass and momentum are invariants. In incompressible flows, the energy conservation is equivalent to momentum conservation~\citep{he1997}.
 \begin{figure}[htbp]
 \centering
-\includegraphics{figures/lbm/collision.pdf}
+\includegraphics{Chapter3/figures/lbm/collision.pdf}
 \caption[Illustration of the collision process on a \textit{D2Q9} lattice]{Illustration of the collision process on a \textit{D2Q9} lattice. The local density $\rho$ and velocity $\textit{\textbf{v}}$ are conserved, but the distribution functions change according to the relaxation to local Maxwellian rule}
 \label{fig:collision}
 \end{figure} 
@@ -161,7 +161,7 @@ The most commonly adopted BC in the Lattice Boltzmann approach is the no-slip BC
 where $-\textit{i}$ denotes the opposite direction of \textit{i}. The bounce back rule is illustrated in Figure~\ref{fig:bounce}. This simple rule ensures that no tangential velocity exists along the fluid-wall interface, thereby a non-slip condition is imposed, and can be extended to any shapes or objects in a fluid flow. The slip boundary conditions have similar treatment to the non-slip condition, except that the distribution functions are reflected in the boundary instead of bounce-back~\citep{succi2001}.
 \begin{figure}[htbp]
 \centering
-\includegraphics[scale=0.6]{figures/lbm/bounce.pdf}
+\includegraphics[scale=0.6]{Chapter3/figures/lbm/bounce.pdf}
 \caption[Half-way bounce back algorithm for the \textit{D2Q9} model ]{Half-way bounce back algorithm for the \textit{D2Q9} model adopted after \citet{sukop2006}}
 \label{fig:bounce}
 \end{figure}
@@ -169,29 +169,7 @@ where $-\textit{i}$ denotes the opposite direction of \textit{i}. The bounce bac
 \subsubsection*{Pressure and velocity boundary condition}
 The pressure boundary condition can be imposed in Lattice Boltzmann by specifying a fluid density at the pressure boundary. The velocity boundary condition can be specified in a similar way~\citep{zou1997}. The pressure and velocity boundary conditions contribute additional equation(s) to determine the unknown distribution functions. In the velocity boundary, the equation is sufficient to determine the unknown distribution functions in \textit{D2Q9} model, however the pressure boundary conditions require additional constitutive laws to determine the unknown distribution functions. 
 %************************************************************************************************************************************************************************************************ %
-\subsection{Turbulence in Lattice Boltzmann Method}
-The above formulation of Lattice Boltzmann problem has been successfully applied to many fluid flow problems, however it is restricted to flows with low Reynold's number. Modelling fluids with low viscosity like water and air remains a challenge, necessitating very small values of \textit{h} and/or $\tau$ very close to 0.5~\citep{he1997}. The standard Lattice Boltzmann can deal with laminar flows, while practical problems with small kinematic viscosity are often associated with flows having large Reynold numbers, i.e. flows which are turbulent in nature. The turbulent flows are characterized by the occurrence of eddies with multiple scales in space, time and energy.
 
-The Large eddy simulation (LES) is the most widely adopted approach to solve turbulent flow problems. It directly solves the large scale eddies, which carry the predominant portion of the energy, and the smaller eddies are modelled using a sub-grid approach. The separation of scales is achieved by filtering of the Navier-Stokes equations, from which the resolved scales are directly obtained and unresolved scales are modelled by a one-parameter Smagorinski sub-grid methodology, which assumes that the Reynold's stress tensor is dependent only on the local strain rate~\citep{smagorinsky1963}. It involves parametrizing the turbulent energy dissipation in the flows, where the larger eddies extract energy from the mean flow and ultimately transfer some of it to the smaller eddies which, in turn, pass the energy to even smaller eddies, and so on up to the smallest scales. At the smallest scale, the eddies convert the kinetic energy into the internal energy of the fluid. At this scale, the viscous friction dominates the flow~\citep{frisch1995}. Incorporating the LES approach in Lattice Boltzmann technique, the governing equation of the density distribution function in Eq.~\eqref{eq:stream} is modified as:
-\begin{align}
-\textit{f}_{\textit{i}}(\textbf{x}+\textbf{e}_{\textit{i}} \Delta t, t + \Delta t) = \textit{f}_{\textit{i}}(\textbf{x},t) - \frac{1}{\tau_{*}} [\textit{f}_{\textit{i}}(\textbf{x},t) -\textit{f}_{\textit{i}}^{\textit{eq}}(\textbf{x},t)] \quad (\textit{i}=0,\dots,8)
-\end{align}
-The effect of the unresolved scale motion is taken into account by introducing an effective collision relaxation time scale $\tau_{t}$, so that the total relaxation time $\tau_{*}$ is written as:
-\begin{align}
-\tau_{*}=\tau + \tau_{t}
-\end{align} 
-where $\tau$ and $\tau_{t}$ are respectively the standard relaxation times corresponding to the true fluid viscosity \textit{v} and the turbulence viscosity $\textit{v}_{\textit{t}}$, defined by a sub-grid turbulence model. The new viscosity $\textit{v}_{*}$ corresponding to $\tau_{*}$ is defined as:
-\begin{align}
-& \textit{v}_{*}=\textit{v}+\textit{v}_{\textit{t}}=\frac{1}{3}(\tau_{*}-\frac{1}{2})\textit{C}^{2} \Delta \textit{t} =\frac{1}{3}(\tau+\tau_{t}-\frac{1}{2})\textit{C}^{2} \Delta \textit{t}  \\
-& \textit{v}_{\textit{t}}=\frac{1}{3}\tau_{\textit{t}}\textit{C}^{2} \Delta \textit{t}
-\end{align}
-In Smagorinski model adopted in the present study, the turbulent viscosity $\textit{v}_{t}$ is calculated from the filtered strain rate tensor as:
-\begin{align}
-\textit{v}_{\textit{t}}=(\textit{S}_{c}\textit{h})^{2}\overline{S}; \qquad \overline{S}=\sqrt{\sum\limits_{\textit{i,j}}{\tilde{S}_{\textit{i,j}}\tilde{S}_{\textit{i,j}}}}
-\end{align}
-where $\textit{S}_{c}$ is the Smagorinski constant found to be close to 0.03~\citep{yu2005}. The Smagorinski model is easy to implement and the Lattice Boltzmann formulation remains unchanged, except for the use of a new turbulence-related viscosity $\tau_{*}$.
-
-%************************************************************************************************************************************************************************************************ %
 \section{Validation of Lattice Boltzmann Method}
 The Lattice Boltzmann method implemented in the present study is validated by comparing the LBM simulation of laminar flow of water through a circular pipe with the closed form solution for laminar flow in a pipe. In the present study, water ($\rho=1000 kg/m^{3}$) is simulated to flow through a circular pipe of diameter `D' = 0.04 m and length, i.e. perimeter, `L' = 0.1 m. Periodic boundary conditions are applied at either end of the pipe, which simulates the condition of a continuous flow of fluid in a closed circular pipe. The parameters adopted in the LBM simulation is summarized in Table~\ref{t:lbm}. Sufficient time is allowed for the flow to travel beyond the required development length so as to develop in to a fully laminar flow~\citet{durst2005}. The development length required for a flow to be fully laminar is:
 \begin{align}
@@ -234,14 +212,14 @@ where \textit{Q} is the vector of conserved variables, \textit{F} is the vector 
 The efficiency of Lattice Boltzmann method to include solid walls/particles is evaluated by placing a solid wall of Length `D/2' at length `L/4' in the pipe. The velocity profile obtained after 50,000 iterations is presented in Figure~\ref{fig:Obstacle}. The formation of eddies at the corners of the wall along the flow direction is captured by the LB method. The horizontal velocity profile obtained at `L/4' is presented in Figure~\ref{fig:LBM}. The occurrence of vortex effect in the flow around the edges of the obstacle can be visualized in Figure~\ref{fig:Obstacle}. The velocity profile obtained from the LBM simulation of the fluid flow around a rectangular body compares qualitatively with the FE analysis performed by~\citet{zhong1991}. The CFD analysis of the same problem was performed using ANSYS FLUENT. The control volume is discretized into 10,000 cells and a constant velocity is applied in the inlet. The velocity contour and vector profile obtained from the CFD analysis are presented in figures~\ref{fig:obsvc} and~\ref{fig:obsvv}. Similar maximum horizontal velocities are observed in both the LBM and the CFD analyses. The velocity vectors obtained from the CFD analysis (see Figure~\ref{fig:obsvv}) proves the occurrence of eddies in the LBM analysis of flow around an obstacle. The CFD analysis is found to over predict slightly the maximum horizontal velocity in comparison with the LBM simulation. The discrepancy in the horizontal velocity profile (Figure~\ref{fig:LBM}) can be attributed to the relaxation parameter used in the LBM, which is obtained by trial and error procedure. Thus, it can be concluded that the Lattice Boltzmann method is a suitable form of numerical representation of Navier-Stokes equation to model fluid flows. 
 \begin{figure}[htbp]
 \centering
-\includegraphics[scale=0.3]{figures/lbm/Velocity.png}
+\includegraphics[scale=0.15]{Chapter3/figures/lbm/Velocity.png}
 \caption{Velocity profile for a laminar flow through a pipe}
 \label{fig:vel}
 \end{figure}
 
 \begin{figure}[htbp]
 \centering
-\includegraphics[scale=0.4]{figures/lbm/Mesh.png}
+\includegraphics[scale=0.4]{Chapter3/figures/lbm/Mesh.png}
 \caption{Finite Volume Mesh used in the CFD analysis of laminar flow through a pipe}
 \label{fig:mesh}
 \end{figure}
@@ -249,7 +227,7 @@ The efficiency of Lattice Boltzmann method to include solid walls/particles is e
 
 \begin{figure}[htbp]
 \centering
-\includegraphics[scale=0.4]{figures/lbm/LaminarFlow.png}
+\includegraphics[scale=0.4]{Chapter3/figures/lbm/LaminarFlow.png}
 \caption{Velocity contour obtained from the CFD analysis of laminar flow through a pipe}
 \label{fig:cont}
 \end{figure}
@@ -257,28 +235,28 @@ The efficiency of Lattice Boltzmann method to include solid walls/particles is e
 
 \begin{figure}[htbp]
 \centering
-\includegraphics[scale=0.4]{figures/lbm/LBMCFD.pdf}
+\includegraphics[scale=0.4]{Chapter3/figures/lbm/LBMCFD.pdf}
 \caption{LBM and CFD simulation of laminar flow through a circular pipe with and without an obstacle}
 \label{fig:LBM}
 \end{figure}
 
 \begin{figure}[htbp]
 \centering
-\includegraphics[scale=0.32]{figures/lbm/ObstacleLBM.png}
+\includegraphics[scale=0.32]{Chapter3/figures/lbm/ObstacleLBM.png}
 \caption{LBM simulation of velocity profile for a laminar flow through a pipe with obstacle in the middle}
 \label{fig:Obstacle}
 \end{figure}
 
 \begin{figure}[htbp]
 \centering
-\includegraphics[scale=0.35]{figures/lbm/ObstacleCFD.png}
+\includegraphics[scale=0.35]{Chapter3/figures/lbm/ObstacleCFD.png}
 \caption{CFD simulation of velocity contour for a laminar flow through a pipe with obstacle in the middle}
 \label{fig:obsvc}
 \end{figure}
 
 \begin{figure}[htbp]
 \centering
-\includegraphics[scale=0.35]{figures/lbm/OVV.png}
+\includegraphics[scale=0.35]{Chapter3/figures/lbm/OVV.png}
 \caption{CFD simulation of velocity vector profile for a laminar flow through a pipe with obstacle in the middle}
 \label{fig:obsvv}
 \end{figure}
@@ -286,6 +264,32 @@ The efficiency of Lattice Boltzmann method to include solid walls/particles is e
 %************************************************************************************************************************************************************************************************ %
 \section{Coupled Lattice Boltzmann - Molecular Dynamics for fluid-particle interactions}
 In principle, the conventional Finite Element and Finite Volume based approaches for the solving the Navier-Stokes equations with moving boundaries and/or structural interaction~\citep{bathe2004} can be applied to particle fluid interaction problems. The common feature of these approaches is to model the interaction between the fluid and the particles to a high degree of accuracy, but the main computational challenge is the need to continuously generate new geometrically adapted meshes to circumvent severe mesh distortion, which is computationally very intensive~\citep{han2007}. The Lattice Boltzmann approach has the advantage of accommodating large particle sizes and the interaction between the fluid and the moving particles can be modelled through relatively simple fluid - particle interface treatments. Further, employing the Discrete Element Method (DE) to account for the particle/particle interaction naturally leads to a combined LB - DEM solution procedure. The Eulerian nature of the Lattice Boltzmann formulation, together with the common explicit time step scheme of both the Lattice Boltzmann and the Molecular Dynamics makes this coupling strategy an efficient numerical procedure for the simulation of particle-fluid systems. LBM-MD technique is a powerful predictive tool for gaining insights into many the fundamental physical phenomena in the fluid-solid interaction domains. Such a coupled methodology was first proposed by~\citep{cook2004} for simulating particle-fluid systems dominated by particle-fluid and particle-particle interactions. To capture the actual physical behaviour of the fluid-particle system, it is essential to model the boundary condition between the fluid and the particle as a non-slip boundary condition, i.e. the fluid near the particle should have similar velocity as the particle boundary. The solid particles inside the fluid are represented by lattice nodes. The discrete nature of lattice will result in stepwise representation of the surfaces, which are circular, this is neither accurate nor smooth, unless sufficiently small lattice spacing is adopted. 
+
+
+\subsection{Turbulence in Lattice Boltzmann Method}
+The above formulation of Lattice Boltzmann problem has been successfully applied to many fluid flow problems, however it is restricted to flows with low Reynold's number. Modelling fluids with low viscosity like water and air remains a challenge, necessitating very small values of \textit{h} and/or $\tau$ very close to 0.5~\citep{he1997}. The standard Lattice Boltzmann can deal with laminar flows, while practical problems with small kinematic viscosity are often associated with flows having large Reynold numbers, i.e. flows which are turbulent in nature. The turbulent flows are characterized by the occurrence of eddies with multiple scales in space, time and energy.
+
+The Large eddy simulation (LES) is the most widely adopted approach to solve turbulent flow problems. It directly solves the large scale eddies, which carry the predominant portion of the energy, and the smaller eddies are modelled using a sub-grid approach. The separation of scales is achieved by filtering of the Navier-Stokes equations, from which the resolved scales are directly obtained and unresolved scales are modelled by a one-parameter Smagorinski sub-grid methodology, which assumes that the Reynold's stress tensor is dependent only on the local strain rate~\citep{smagorinsky1963}. It involves parametrizing the turbulent energy dissipation in the flows, where the larger eddies extract energy from the mean flow and ultimately transfer some of it to the smaller eddies which, in turn, pass the energy to even smaller eddies, and so on up to the smallest scales. At the smallest scale, the eddies convert the kinetic energy into the internal energy of the fluid. At this scale, the viscous friction dominates the flow~\citep{frisch1995}. Incorporating the LES approach in Lattice Boltzmann technique, the governing equation of the density distribution function in Eq.~\eqref{eq:stream} is modified as:
+\begin{align}
+\textit{f}_{\textit{i}}(\textbf{x}+\textbf{e}_{\textit{i}} \Delta t, t + \Delta t) = \textit{f}_{\textit{i}}(\textbf{x},t) - \frac{1}{\tau_{*}} [\textit{f}_{\textit{i}}(\textbf{x},t) -\textit{f}_{\textit{i}}^{\textit{eq}}(\textbf{x},t)] \quad (\textit{i}=0,\dots,8)
+\end{align}
+The effect of the unresolved scale motion is taken into account by introducing an effective collision relaxation time scale $\tau_{t}$, so that the total relaxation time $\tau_{*}$ is written as:
+\begin{align}
+\tau_{*}=\tau + \tau_{t}
+\end{align} 
+where $\tau$ and $\tau_{t}$ are respectively the standard relaxation times corresponding to the true fluid viscosity \textit{v} and the turbulence viscosity $\textit{v}_{\textit{t}}$, defined by a sub-grid turbulence model. The new viscosity $\textit{v}_{*}$ corresponding to $\tau_{*}$ is defined as:
+\begin{align}
+& \textit{v}_{*}=\textit{v}+\textit{v}_{\textit{t}}=\frac{1}{3}(\tau_{*}-\frac{1}{2})\textit{C}^{2} \Delta \textit{t} =\frac{1}{3}(\tau+\tau_{t}-\frac{1}{2})\textit{C}^{2} \Delta \textit{t}  \\
+& \textit{v}_{\textit{t}}=\frac{1}{3}\tau_{\textit{t}}\textit{C}^{2} \Delta \textit{t}
+\end{align}
+In Smagorinski model adopted in the present study, the turbulent viscosity $\textit{v}_{t}$ is calculated from the filtered strain rate tensor as:
+\begin{align}
+\textit{v}_{\textit{t}}=(\textit{S}_{c}\textit{h})^{2}\overline{S}; \qquad \overline{S}=\sqrt{\sum\limits_{\textit{i,j}}{\tilde{S}_{\textit{i,j}}\tilde{S}_{\textit{i,j}}}}
+\end{align}
+where $\textit{S}_{c}$ is the Smagorinski constant found to be close to 0.03~\citep{yu2005}. The Smagorinski model is easy to implement and the Lattice Boltzmann formulation remains unchanged, except for the use of a new turbulence-related viscosity $\tau_{*}$.
+
+%************************************************************************************************************************************************************************************************ %
+
 \subsubsection*{Modified bounce back rule}
 To accommodate the movement of solid particles in the commonly adopted bounce-back rule (see section~\ref{bounce}).~\citet{Ladd1994} modified the `no-slip' rule for a given boundary link \textit{i} to be:
 \begin{align}
@@ -329,7 +333,7 @@ After the force calculations, the coupled rigid body physics can be simulated in
 The summation is over all lattice nodes covered by the particle and $\textbf{x}_{\textit{n}}$ represents the coordinate of the lattice node \textit{n}.
 \begin{figure}[htbp]
 \centering
-\includegraphics[scale=1]{figures/lbm/bouncemod.pdf}
+\includegraphics[scale=1]{Chapter3/figures/lbm/bouncemod.pdf}
 \caption{Bounce back boundaries for different values of $\delta$}
 \label{fig:bouncemod}
 \end{figure}
@@ -382,7 +386,7 @@ Size reduction to consider fluid flow & 0.2R \\ \hline
 
 \begin{figure}[htbp]
 \centering
-\includegraphics[scale=0.22]{figures/lbm/MDLBMini.pdf}
+\includegraphics[scale=0.22]{Chapter3/figures/lbm/MDLBMini.pdf}
 \caption{Initial sample of granular column in fluid, showing the variation in the grain size}
 \label{fig:LBMMDini}
 \end{figure}
@@ -390,16 +394,16 @@ Size reduction to consider fluid flow & 0.2R \\ \hline
 
 \begin{figure}[htbp]
 \centering
-\includegraphics[scale=0.22]{figures/lbm/MDLBM.png}
+\includegraphics[scale=0.22]{Chapter3/figures/lbm/MDLBM.png}
 \caption{Collapse of a granular column in fluid in progress, showing the variation in the magnitude of horizontal velocity}
 \label{fig:MDLBM}
 \end{figure}
-%************************************************************************************************************************************************************************************************ %
-% *** Bibliography *** %
-\bibliographystyle{apalike} % bibliography style
-\renewcommand{\bibname}{References} % changes default name Bibliography to References
-\cleardoublepage
-\addcontentsline{toc}{chapter}{References} %adds References to contents page
-\bibliography{Reference}
-%************************************************************************************************************************************************************************************************* %
-\end{document}
+%%************************************************************************************************************************************************************************************************ %
+%% *** Bibliography *** %
+%\bibliographystyle{apalike} % bibliography style
+%\renewcommand{\bibname}{References} % changes default name Bibliography to References
+%\cleardoublepage
+%\addcontentsline{toc}{chapter}{References} %adds References to contents page
+%\bibliography{Reference}
+%%************************************************************************************************************************************************************************************************* %
+%\end{document}

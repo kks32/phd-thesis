@@ -1,0 +1,197 @@
+\documentclass[a4paper,twoside,11pt,fleqn,openright]{book}
+\setcounter{tocdepth}{4}
+\def\pdfshellescape{1}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{graphicx}
+\usepackage{a4wide}
+% For Print version
+%\usepackage[pdftex, plainpages=false, pdfpagelabels, pdfpagelayout=useoutlines, bookmarks, bookmarksopen=true, bookmarksnumbered=true, breaklinks=true, linktocpage, pagebackref=false, colorlinks=true, linkcolor=black, urlcolor=black, citecolor=black, anchorcolor=black, hyperindex=false, hyperfigures]{hyperref}
+% For PDF Online version
+\usepackage[pdftex, plainpages=false, pdfpagelabels, pdfpagelayout=useoutlines, bookmarks, bookmarksopen=true, bookmarksnumbered=true, breaklinks=true, linktocpage, pagebackref=false, colorlinks=true, linkcolor=blue, urlcolor=blue, citecolor=blue, anchorcolor=green, hyperindex=false, hyperfigures]{hyperref}
+\usepackage{color}
+\usepackage{textcomp}
+\usepackage{amssymb}%
+\usepackage{setspace}
+\usepackage{tabularx}
+\usepackage{etex}
+\usepackage{fancyhdr}   % Use fancy headers package to produce headers
+\usepackage{multicol}
+\usepackage{multirow}
+\usepackage{lscape}
+\usepackage{rotating}
+\usepackage{wrapfig}
+\usepackage{float}
+\usepackage{longtable}
+\usepackage{subfigure}
+\usepackage[figurename=Fig.,labelsep=space,tableposition=top]{caption}
+\usepackage[round,colon,authoryear]{natbib}
+\usepackage{appendix}
+\usepackage{caption}
+\usepackage{epstopdf}
+\usepackage{url}
+%% Define a new 'leo' style for the package that will use a smaller font.
+\makeatletter
+\def\url@leostyle{%
+  \@ifundefined{selectfont}{\def\UrlFont{\sf}}{\def\UrlFont{\small\ttfamily}}}
+\makeatother
+%% Now actually use the newly defined style.
+\urlstyle{leo}
+%*********************************** To copy ligatures ********************************************************************************************* %
+\usepackage[ansinew]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{libertine}
+\input{glyphtounicode}
+
+\pdfglyphtounicode{f_f}{FB00}
+\pdfglyphtounicode{f_f_i}{FB03}
+\pdfglyphtounicode{f_f_l}{FB04}
+\pdfglyphtounicode{f_i}{FB01}
+
+\pdfgentounicode=1
+
+%**************************************************************************************************************************************************** %
+%\textwidth=445pt \hoffset=-30pt
+\onehalfspace
+\pagestyle{fancyplain}
+\addtolength{\headwidth}{\marginparsep}
+%remember chapter and section titles
+\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+\renewcommand{\sectionmark}[1]{\markright{\thesection\ #1}}
+\lhead[\fancyplain{}{\bfseries\leftmark}]{\fancyplain{}{\bfseries\thepage}}
+\rhead[\fancyplain{}{\bfseries\thepage}]{\fancyplain{}{\bfseries\rightmark}}
+\cfoot[]{}
+\rfoot[]{}
+% Clear Header 
+% Clear Header Style on the Last Empty Odd pages
+\makeatletter
+\def\cleardoublepage{\clearpage\if@twoside \ifodd\c@page\else%
+	\hbox{}%
+	\thispagestyle{empty}%              % Empty header styles
+	\newpage%
+	\if@twocolumn\hbox{}\newpage\fi\fi\fi}
+\makeatother
+% *****************************************To hide sections from appearing in TOC******************************************************************** %
+\newcommand{\nocontentsline}[3]{}
+\newcommand{\tochide}[2]{\bgroup\let\addcontentsline=\nocontentsline#1{#2}\egroup}
+% Then add \tochide\section{Section name} to hide the section name from appearing in TOC
+%**************************************************************************************************************************************************** %
+\thispagestyle{empty}
+
+%Title/Author/Date
+\title{Multi-scale Multiphase Modelling of Granular Flows}
+\author{Krishna Kumar Soundararajan}
+
+\begin{document}
+
+
+%*********************************************Front Matter********************************************************************************************* %
+
+\begin{singlespace}
+
+\frontmatter
+
+\begin{titlepage}
+
+\begin{center}
+
+\Huge
+
+
+\textbf{Multi-scale Multiphase Modelling of Granular Flows}
+
+\vspace{1in}
+
+\begin{figure}[ht]
+	\centering
+		\includegraphics[width=0.25\textwidth]{Cambridge.pdf}
+\end{figure}
+\vspace{1.2in}
+\normalsize
+
+\Large
+Krishna Kumar Soundararajan\\
+
+\vspace{0.1in}
+\large
+Department of Engineering\\
+University of Cambridge\\
+\vspace{1in}
+\large
+PhD Thesis\\
+\vspace{0.7in}
+\begin{minipage}{0.4\textwidth}
+\begin{flushleft} \large
+\emph{Supervisor:} Prof. Kenichi Soga\\
+\end{flushleft}
+\end{minipage}
+\begin{minipage}{0.4\textwidth}
+\begin{flushright} \large
+\emph{Advisor:} Prof. Malcolm Bolton\\
+\end{flushright}
+\end{minipage}
+
+\vspace{0.7in}
+\large
+\begin{minipage}{0.4\textwidth}
+\begin{flushleft} \large
+\emph{King's College}\\
+\end{flushleft}
+\end{minipage}
+\begin{minipage}{0.4\textwidth}
+\begin{flushright} \large
+\emph{2013} \\
+
+\end{flushright}
+\end{minipage}
+%\vspace{0.1in} \emph{August, 2011}
+
+\end{center}
+\end{titlepage}
+
+%\maketitle
+
+
+
+%***************** Adding TOC and List of Figures *********************************************************************************** %
+\tableofcontents
+
+
+\listoffigures % To restrict the length of the figure caption in List of figures use \caption[Caption that you want to appear in TOC]{Actual caption of the figure}
+\addcontentsline{toc}{section}{{}List of Figures}
+
+\listoftables \addcontentsline{toc}{section}{{}List of Tables}
+%\chapter*{}
+
+\end{singlespace}
+
+%\include{declaration}
+
+%***************************************Main Matter****************************************************************************** %
+\mainmatter
+
+%\include{Chapter1/Chapter1}
+%\include{Chapter2/Chapter2}
+\include{Chapter3/Chapter3}
+%\include{Chapter4/Chapter4}
+%\include{Chapter6/Chapter6}
+%\include{Chapter7/Chapter7}
+
+%****************************************Back Matter****************************************************************************** %
+
+
+%********************************************Bibliography**********************************************************************%
+
+\begin{spacing}{0.9}
+\bibliographystyle{apalike} % bibliography style
+\renewcommand{\bibname}{References} % changes default name Bibliography to References
+\cleardoublepage
+\addcontentsline{toc}{chapter}{References} %adds References to contents page
+\bibliography{Reference}
+\end{spacing}
+%************************************************************************************************************************************** %
+
+
+
+\end{document}
+
