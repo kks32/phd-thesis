@@ -60,16 +60,25 @@
 %************************************************************************************************************************************************************************************************ %
 \chapter{Numerical Modelling of Granular Flows}
 \section{Fluid simulation using Lattice Boltzmann Method (LBM)}
-The Navier-Stokes equation describes the motion of a non-turbulent Newtonian fluid. The equation is obtained by applying Newton's second law to the fluid motion, together with an assumption that the fluid stress is the sum of the viscous term, proportional to the gradient of velocity, and the pressure term. The Lattice Boltzmann equation (LBM) Method~\citep{chen1998} is an alternative approach to the classical Navier-Stokes solvers for fluid flow and works on an equidistant grid of cells, called lattice cells, which interact only with their direct neighbours. The Lattice Boltzmann Method evolved out of the Lattice-Gas Cellular Automata (LGCA), a statistical model based on the kinetic theory of gases, which simulates gas as particles at discrete points in space (e.g., Cartesian or hexagonal mesh) represented by Boolean variables, which means that the mass of a particle is fixed to 1. The LGCA and the LBM are categories of \textit{Cellular Automata}, which is characterized by: (a) lattice, (b) a definition of state variable at every point in the lattice, and (c) an update rule based on local and neighbouring information. The important aspect, however is the \textit{discretization of the velocity}, which means that the particle velocities are restricted to a predefined set of orientations. The LB method has evolved as a comprehensive fluid solver and its theoretical aspects link well with the conventional central finite difference scheme~\citep{cook2004}. The systems simulated using cellular automata approaches exhibit fluid-like behaviour. The process of averaging the density and the momentum over some regions of the space, i.e. coarse graining, produces some useful fluid simulation. The LBM replaces the boolean variables of the LGCA~\citep{wolf2000} with discretized probability distribution functions, $\textit{f}_{\textit{i}}(\overrightarrow{x})$, thereby eliminating the need for ensemble averaging. A simplified collision operator described in~\citet{Bhat1954} is implemented in the LBM approach.  
+The Navier-Stokes equation describes the motion of a non-turbulent Newtonian fluid. The equation is obtained by applying Newton's second law to the fluid motion, together with an assumption that the fluid stress is the sum of the viscous term, proportional to the gradient of velocity, and the pressure term. Conventional methods of Computational Fluid Dynamics (CFD) compute pertinent flow fields, such as velocity \textit{u} and pressure \textit{p}, by numerically solving Navier-Stokes equation in space \textit{x} and time \textit{t}. Alternatively, the transport equation or the Boltzmann equation, which deals with the single particle distribution function $f(x, \xi,t)$ in phase space $(x, \xi)$ and time \textit{t}, can be used to solve various problems in fluid dynamics. 
+
+The Lattice Boltzmann Method (LBM)~\citep{Chen1998} is an alternative approach to the classical Navier-Stokes solvers for fluid flow and works on an equidistant grid of cells, called lattice cells, which interact only with their direct neighbours. In the Lattice Boltzmann Method, the discretisation of continuum equations is based on microscopic models and mesoscopic continuum theories~\citep{Chen1998}. The Lattice Boltzmann Method is a special discretising scheme of the Boltzmann equation where the particle distribution functions (mass fractions) collide and propagate on a regular grid~\citep{Zhou2012}. The important aspect, however is the \textit{discretization of the velocity}, which means that the particle velocities are restricted to a predefined set of orientations.
+
+The theoretical premises of the LBE method are that (1) hydrodynamics is insensitive to the details of microscopic physics, and (2) hydrodynamics can be preserved so long as the conservation laws and associated symmetries are respected in the microscopic and mesoscopic level. Therefore, the computational advantages of the LBE method are achieved by drastically reducing the particle velocity space $\xi$ to only a very few discrete points without seriously degrading hydrodynamics~\citep{Mei2000}. This is possible because the LBM rigorously preserves the hydrodynamic moments of the distribution function, such as mass density and momentum fluxes, and the necessary symmetries~\citep{He1997a,He1997b}. The process of averaging the density and the momentum over some regions of the space, i.e. coarse graining, produces some useful fluid simulation. The LB method has evolved as a comprehensive fluid solver and its theoretical aspects link well with the conventional central finite difference scheme~\citep{cook2004}.
+
 
 \subsection{Formulation}
-The Lattice Boltzmann Method is a `micro-particle' based numerical time-stepping procedure for the solution of incompressible fluid flows. Consider a 2D incompressible fluid flow with density $\rho$ and kinematic viscosity \textit{v}, in a rectangular domain \textit{\textbf{D}}. The fluid domain is divided into a rectangular grid or lattice, with the same spacing \textit{h} in both the \textit{x-} and the \textit{y-}directions, as shown in Figure~\ref{fig:D2Q9}. These lattices are usually classified in the literature using the $\textit{D}\alpha\textit{Q}\beta$-notation, where $\alpha$ is an integer number denoting the space dimensionality and $\beta$ is the number of discrete velocities (but inlcuding the possibility of having particle at rest) within the momentum discretization. The most common lattices are the $\textit{D2Q9}$ and the $\textit{D3Q19}$-models, see ~\citet{he1997}. The present study focuses on two-dimensional problems, hence the $\textit{D2Q9}$ momentum discretization is adopted, where the fluid particles at each node are allowed to move to their eight intermediate neighbours with eight different velocities $\textit{e}_{\textit{i}} (\textit{i}=1,\dots,8)$. A particle can remain at the node, which is equivalent to moving with zero velocity $\textit{e}_{\textit{o}}$
-\begin{figure}[h]
+The Lattice Boltzmann Method is a `micro-particle' based numerical time-stepping procedure for the solution of incompressible fluid flows. Consider a 2D incompressible fluid flow with density $\rho$ and kinematic viscosity \textit{v}, in a rectangular domain \textit{\textbf{D}}. The fluid domain is divided into a rectangular grid or lattice, with the same spacing \textit{`h'} in both the \textit{x-} and the \textit{y-}directions, as shown in Figure~\ref{fig:D2Q9}. These lattices are usually classified in the literature using the $\textit{D}\alpha\textit{Q}\beta$-notation, where $\alpha$ is an integer number denoting the space dimensionality and $\beta$ is the number of discrete velocities (but including the possibility of having particle at rest) within the momentum discretisation. The most common lattices are the $\textit{D2Q9}$ and the $\textit{D3Q19}$-models, see ~\citet{he1997}. The present study focuses on two-dimensional problems, hence the $\textit{D2Q9}$ momentum discretisation is adopted.
+
+The Lattice Boltzmann Method discretises the Boltzmann equation in space, to a finite number of possible particle spatial positions and microscopic momenta, and time. Particle positions are confined to the nodes of the lattice. The fluid particles at each node are allowed to move to their eight intermediate neighbours with eight different velocities $\textit{e}_{\textit{i}} (\textit{i}=1,\dots,8)$. A particle can remain at the node, which is equivalent to moving with zero velocity $\textit{e}_{\textit{o}}$. The particle mass is uniform, hence these microscopic velocities and momentum are always effectively equivalent~\citep{han2007}.
+
+\begin{figure}[htpb]
 \centering
-\includegraphics[width=0.8\textwidth]{Chapter3/figures/lbm/D2Q9.png}
-\caption[The Lattice Boltzmann discretisation and D2Q9 scheme]{The Lattice Boltzmann discretisation and D2Q9 scheme: (a) a standard LB lattice; (b) D2Q9 model~\citep{han2007}}
+\includegraphics[width=0.8\textwidth]{Chapter3/figures/lbm/D2Q9.pdf}
+\caption[The Lattice Boltzmann discretisation and D2Q9 scheme]{The Lattice Boltzmann discretisation and D2Q9 scheme: (a) a standard LB lattice and histogram views of the discrete single particle distribution function/direction-specific densities $f_i$; (b) D2Q9 model}
 \label{fig:D2Q9}
 \end{figure}
+
 Referring to the numbering system shown in Figure~\ref{fig:D2Q9}, these nine discrete velocity vectors are defined as:
 \begin{align} 
 \begin{cases}
@@ -82,13 +91,14 @@ in which \textit{C} is the lattice speed, which is defined as:
 \begin{align}
 \textit{C}=\textit{h}/\Delta t
 \end{align}
-where $\Delta \textit{t}$ is the discrete time step. The primary variables in the Lattice Boltzmann formulation are called the \textit{fluid density distribution functions}, $\textit{f}_{\textit{i}}$, each relating the portable amount of fluid particles moving with the velocity $\textit{e}_{\textit{i}}$ along the $\textit{i}^{\textit{th}}$ direction at each node. The macroscopic variables are defined as functions of the particle distribution functions, according to:
+where $\Delta \textit{t}$ is the discrete time step. The primary variables in the Lattice Boltzmann formulation are called the \textit{fluid density distribution functions}, $\textit{f}_{\textit{i}}$, each relating the portable amount of fluid particles moving with the velocity $\textit{e}_{\textit{i}}$ along the $\textit{i}^{\textit{th}}$ direction at each node. The macroscopic variables are defined as functions of the particle distribution functions (see figure~\ref{fig:D2Q9}), according to:
 \begin{align} 
  \nonumber
 & \rho=\sum\limits_{\textit{i}=0}^{\beta - 1}{\textit{f}_{\textit{i}}} \qquad \mbox{(macroscopic fluid density)} \\ 
  \nonumber
 & \qquad \mbox{and} \\ 
 & \overrightarrow{\textit{u}}=\frac{1}{\rho} \sum\limits_{\textit{i}=0}^{\beta -1}{\textit{f}_{\textit{i}}\overrightarrow{\textit{e}_{\textit{i}}}} \quad \mbox{(macroscopic velocity)}
+\label{eq:lbm_macroscopic}
 \end{align} 
 where $\textit{i} \in [0, \beta -1]$ is an index spanning the discretized momentum space. There are nine fluid density distribution functions, $\textit{f}_{\textit{i}}(\textit{i}=0,\dots,8)$, associated with each node in the \textit{D2Q9} model. The evolution of the density distribution function at each time step for every lattice point is governed by:
 \begin{align} 
@@ -152,7 +162,7 @@ It can be observed that $\tau$ has to be $\tau > 1/2$ \citep{he1997}. Since ther
 \subsection{Boundary conditions}
 Boundary conditions (BC) form an important part of any numerical solutions. In many cases, the boundary conditions can strongly influence the accuracy of the algorithm. The velocity and pressure are not primary variables in the Lattice Boltzmann method, hence the standard pressure, velocity, and mixed boundary conditions cannot be imposed directly. Hence, alternative conditions in terms of the distribution functions are adopted to describe the boundary conditions. Various boundary conditions used in the present study are discussed below.
 \subsubsection*{Periodic boundary condition}
-The simplest type of boundary condition is the periodic boundary. In this case, the domain is folded along the direction of the periodic boundary pair. From the perspective of submarine landslide modelling, the periodic boundary conditions are useful for preliminary analysis, as they imply higher degree of symmetry of the fluid domain. Further information on the periodic boundary condition can be found in~\citet{aidun1998}.
+The simplest type of boundary condition is the periodic boundary. In this case, the domain is folded along the direction of the periodic boundary pair. For boundary nodes, the neighbouring nodes are on the opposite boundary, using the normal referencing of neighbours (see Figure~\ref{fig:D2Q9}a). From the perspective of submarine landslide modelling, the periodic boundary conditions are useful for preliminary analysis, as they imply higher degree of symmetry of the fluid domain. Further information on the periodic boundary condition can be found in~\citet{aidun1998}.
 \subsubsection*{No-slip boundary condition} \label{bounce}
 The most commonly adopted BC in the Lattice Boltzmann approach is the no-slip BC, especially the simple bounce-back rule, which is quite elegant and surprisingly accurate. The basic idea is that the incoming distribution functions at a wall node are reflected back to the original fluid nodes, but with the direction rotated by $\pi$ radians. The bounce-back boundary condition is one of benefits of the Lattice Boltzmann method, as it is trivial to implement and it allows one to effortlessly introduce obstacles into the fluid domain. However, the boundary conditions have been proven to be only first-order accurate in time and space~\citep{pan2006}. A straightforward improvement is to consider the wall-fluid interface to be situated halfway between the wall and fluid lattice nodes~\citep{ziegler1993}. It involves, defining the \textit{solid} nodes as those lying within the stationary wall regions, and the\textit{fluid} nodes otherwise. Then if \textit{i} is the direction between a fluid node $\textit{n}_{1}$ and $\textit{n}_{2}$ to be reflected back along the direction they came from, i.e.
 \begin{align}
@@ -167,11 +177,35 @@ where $-\textit{i}$ denotes the opposite direction of \textit{i}. The bounce bac
 \end{figure}
 
 \subsubsection*{Pressure and velocity boundary condition}
-The pressure boundary condition can be imposed in Lattice Boltzmann by specifying a fluid density at the pressure boundary. The velocity boundary condition can be specified in a similar way~\citep{zou1997}. The pressure and velocity boundary conditions contribute additional equation(s) to determine the unknown distribution functions. In the velocity boundary, the equation is sufficient to determine the unknown distribution functions in \textit{D2Q9} model, however the pressure boundary conditions require additional constitutive laws to determine the unknown distribution functions. 
+The pressure (Drichlet)boundary condition can be imposed in Lattice Boltzmann by specifying a fluid density at the pressure boundary~\citep{Zou1997}. To impose a pressure boundary along the y-direction (inlet, left side boundary in Figure~\ref{fig:LBM_Poiseuille}), a density $\rho = \rho_{in}$ is specified from which velocity is computed. Assuming the vertical component of the velocity on the boundary is zero, $u_y=0$. After streaming, $f_2, f_3, f_4, f_6, f_7$ are known, $u_x$ and $f_1, f_5, f_8$ are to be determined from Eq.~\ref{eq:lbm_macroscopic} as following:
+\begin{align}
+f_1+f5+f_8 & =  \rho_{in} - (f_0+f_2+f_3+f_4+f_6+f_7) \label{eq:pressure1}\\
+f_1+f5+f_8 & =  \rho_{in}u_x + (f_3+f_6+f_7) \label{eq:pressure2} \\
+f_5 - f_8  & =  f_2 - f_4 +f_6 -f_7
+\end{align}
+\flushleft Consistency of Eqs.(~\ref{eq:pressure1},~\ref{eq:pressure2}) gives
+\begin{align}
+u_x = 1 - \frac{[f_0+f_2+f_4+2*(f_3+f_6+f_7)]}{\rho_{in}}
+\end{align}
+Using bounce-back rule for the non-equilibrium part of the particle distribution normal to the inlet to find $f_1 -f_1^(eq) = f_3 -f_3^(eq)$. With $f_1$ known, $f_5,f_8$ are obtained as:
+\begin{align}
+f_1 & = f_3 + \frac{2}{3} \rho_{in}u_x, \nonumber \\ 
+f_5 & = f_7 - \frac{1}{2}(f_2 - f_4) + \frac{1}{6}\rho_{in}u_x,\nonumber \\ 
+f_8 & = f_6 + \frac{1}{2}(f_2 - f_4) + \frac{1}{6}\rho_{in}u_x
+\end{align}
+The corner node at inlet needs some special treatment. Considering the bottom node at inlet as example, after streaming, $f_3, f_4, f_7$ are known; $\rho$ is define, and $u_x = u_y = 0$. The particle distribution functions $f_1, f_2, f_5, f_6, f_8$ are to be determined. The bounce-back rule for the non-equilibrium part of the particle distribution normal to the inlet and the boundary is used to find:
+\begin{align}
+f_1 = f_3 + (f_1^{eq}-f_3^{eq}) = f_3;\mbox{ }f_2= f_4 + (f_1^{eq}-f_3^{eq}) = f_4; 
+\end{align}
+\flushleft Using these we find: 
+\begin{align}
+f_5 = f_7; \mbox{  }f6 = f_8 = \frac{1}{2}[\rho_{in} - (f_1 + f_2 + f_3 + f_4 + f_5 + f_6 + f_7 + f_8)]
+\end{align}
+Similar procedure can be applied to top inlet node and outlet nodes. Von Neumann boundary conditions constrain the flux at the boundaries. A velocity vector $u=\left[ u_0\mbox{ }v_0 \right]^T$ is specified from which density/pressure is computed based on the domain. The velocity boundary condition can be specified in a similar way~\citep{Zou1997}. The pressure and velocity boundary conditions contribute additional equation(s) to determine the unknown distribution functions. In the velocity boundary, the equation is sufficient to determine the unknown distribution functions in \textit{D2Q9} model, however the pressure boundary conditions require additional constitutive laws to determine the unknown distribution functions. 
 %************************************************************************************************************************************************************************************************ %
 
 \section{Validation of Lattice Boltzmann Method}
-The Lattice Boltzmann method implemented in the present study is validated by comparing the LBM simulation of laminar flow of water through a circular pipe with the closed form solution for laminar flow in a pipe. In the present study, water ($\rho=1000 kg/m^{3}$) is simulated to flow through a circular pipe of diameter `D' = 0.04 m and length, i.e. perimeter, `L' = 0.1 m. Periodic boundary conditions are applied at either end of the pipe, which simulates the condition of a continuous flow of fluid in a closed circular pipe. The parameters adopted in the LBM simulation is summarized in Table~\ref{t:lbm}. Sufficient time is allowed for the flow to travel beyond the required development length so as to develop in to a fully laminar flow~\citet{durst2005}. The development length required for a flow to be fully laminar is:
+The Lattice Boltzmann method implemented in the present study is validated by comparing the LBM simulation of laminar flow  through a circular pipe with the closed form solution. In the present study, water ($\rho=1000 kg/m^{3}$) is simulated to flow through a circular pipe of diameter `D' = 0.04 m and simulation length, `L' = 0.1 m. Periodic boundary conditions are applied at either end of the pipe, which simulates the condition of a continuous flow of fluid in a closed circular pipe. The parameters adopted in the LBM simulation is summarized in Table~\ref{t:lbm}. Sufficient time is allowed for the flow to travel beyond the required development length so as to develop in to a fully laminar flow~\citet{durst2005}. The development length required for a flow to be fully laminar is:
 \begin{align}
 X_{D}/D=[(0.619)^{1.6}+(0.0567 R_{e})^{1.6}]^{1/1.6}
 \end{align}
@@ -214,7 +248,7 @@ The efficiency of Lattice Boltzmann method to include solid walls/particles is e
 \centering
 \includegraphics[width=\textwidth]{Chapter3/figures/lbm/LBM_Poiseuille.png}
 \caption{Velocity profile: LBM Simulation of a laminar flow through a pipe}
-\label{fig:vel}
+\label{fig:LBM_Poiseuille}
 \end{figure}
 
 \begin{figure}[h]
@@ -359,39 +393,6 @@ The time step factor $\lambda$ is chosen to be around 0.1 to ensure both stabili
 \end{align} 
 This basically results in a sub-cycling time integration for the Molecular Dynamics part. At every step of the fluid computation, $\textit{n}_{s}$ sub-steps of integration are performed for the Molecular Dynamics Eq.~\ref{eq:mde} using the time step $\Delta t_{s}$. The hydrodynamic force $\textbf{F}_{f}$ is unchanged during the sub-cycling. 
 
-A granular column collapse problem in fluid is simulated using the developed LBM-MD approach. The parameters used for simulating the fluid is the same as shown in Table.~\ref{t:lbm}. 180 soil grains of density $ \rho = 2600 \mbox{ }kg/m^{3} $, are packed into a rectangular column and are allowed to collapse under gravity. The micromechanical parameters used for simulating the solid grains are presented in Table.~\ref{t:MD}. The initial packing of disks in the rectangular column is presented in Figure~\ref{fig:LBMMDini}. For every single step of LBM simulation 100 sub-steps of Molecular Dynamics is solved. Figure~\ref{fig:MDLBM} shows the collapse of granular column in fluid in progress. The formation of vortex behind the grains is captured efficiently by the coupled MD-LBM technique, indicating that the approach is capable of successfully modelling the fluid-particle coupled systems. 
-\begin{table}
-\caption{Micromechanical parameter used to simulate soil grains}
-\label{t:MD}
-\centering
-\begin{tabular}{|l|c|}
-\hline
-\textbf{Parameter} & \textbf{Value} \\ \hline \hline
-Normal and shear stiffness of disks in column & $4 \times 10^{6} \mbox{ } N/m$ \\ \hline
-Normal and shear stiffness of walls  & $4 \times 10^{8} \mbox{ } N/m$ \\ \hline
-Number of disks & 184 \\ \hline
-Radius of disks, R &  0.8 to 1.19 mm \\ \hline
-Particle friction coefficient, $\mu$ & 0.577 \\ \hline
-Coefficient of restitution, $\Gamma$ & 0.2 \\ \hline
-Density of spheres, $\rho$ & 2650 $kg/m^{3}$ \\ \hline
-Size reduction to consider fluid flow & 0.2R \\ \hline
-\end{tabular}
-\end{table}
-
-\begin{figure}[htbp]
-\centering
-\includegraphics[scale=0.22]{Chapter3/figures/lbm/MDLBMini.pdf}
-\caption{Initial sample of granular column in fluid, showing the variation in the grain size}
-\label{fig:LBMMDini}
-\end{figure}
-
-
-\begin{figure}[htbp]
-\centering
-\includegraphics[scale=0.22]{Chapter3/figures/lbm/MDLBM.png}
-\caption{Collapse of a granular column in fluid in progress, showing the variation in the magnitude of horizontal velocity}
-\label{fig:MDLBM}
-\end{figure}
 %%************************************************************************************************************************************************************************************************ %
 %% *** Bibliography *** %
 %\bibliographystyle{apalike} % bibliography style
