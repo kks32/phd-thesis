@@ -103,21 +103,21 @@ where $\Delta \textit{t}$ is the discrete time step. The primary variables in th
 where $\textit{i} \in [0, \beta -1]$ is an index spanning the discretized momentum space. There are nine fluid density distribution functions, $\textit{f}_{\textit{i}}(\textit{i}=0,\dots,8)$, associated with each node in the \textit{D2Q9} model. The evolution of the density distribution function at each time step for every lattice point is governed by:
 \begin{align} 
 \label{eq:stream}
-\textit{f}_{\textit{i}}(\textbf{x}+\textbf{e}_{\textit{i}} \Delta t, t + \Delta t) = \textit{f}_{\textit{i}}(\textbf{x},t) - \frac{1}{\tau} [\textit{f}_{\textit{i}}(\textbf{x},t) -\textit{f}_{\textit{i}}^{\textit{eq}}(\textbf{x},t)] \quad (\textit{i}=0,\dots,8)
+\textit{f}_{\textit{i}}(\mathbf{x}+\mathbf{e}_{\textit{i}} \Delta t, t + \Delta t) = \textit{f}_{\textit{i}}(\mathbf{x},t) - \frac{1}{\tau} [\textit{f}_{\textit{i}}(\mathbf{x},t) -\textit{f}_{\textit{i}}^{\textit{eq}}(\mathbf{x},t)] \quad (\textit{i}=0,\dots,8)
 \end{align}
-where for any grid node $\textbf{x},\textbf{x}+\textbf{e}_{\textit{i}} \Delta t$ is its nearest node along the direction $\textit{i}$. $\tau$ is a non-dimensional relaxation time parameter, which is related to the fluid viscosity; and $\textit{f}_{\textit{i}}^{\textit{eq}}$ is termed as the equilibrium distribution function, and is defined as:
+where for any grid node $\mathbf{x},\mathbf{x}+\mathbf{e}_{\textit{i}} \Delta t$ is its nearest node along the direction $\textit{i}$. $\tau$ is a non-dimensional relaxation time parameter, which is related to the fluid viscosity; and $\textit{f}_{\textit{i}}^{\textit{eq}}$ is termed as the equilibrium distribution function, and is defined as:
 \begin{align}
 \begin{cases}
-\textit{f}_{\textit{0}}^{\textit{eq}}=\textit{w}_{\textit{0}} \rho (1 - \frac{3}{2\textit{C}^{\textit{2}}}\textbf{v}.\textbf{v}) \\ 
+\textit{f}_{\textit{0}}^{\textit{eq}}=\textit{w}_{\textit{0}} \rho (1 - \frac{3}{2\textit{C}^{\textit{2}}}\mathbf{v}.\mathbf{v}) \\ 
 \vspace*{2mm}
-\textit{f}_{\textit{i}}^{\textit{eq}}=\textit{w}_{\textit{i}} \rho (1 + \frac{3}{\textit{C}^{\textit{2}}}\textbf{e}_{\textit{i}}.\textbf{v} \frac{9}{2\textit{C}^{\textit{2}}} (\textbf{e}_{\textit{i}}.\textbf{v})^{\textit{2}}-\frac{3}{2 \textit{C}^{\textit{2}}}\textbf{v}.\textbf{v}) \quad (\textit{i}=0,\dots,8)
+\textit{f}_{\textit{i}}^{\textit{eq}}=\textit{w}_{\textit{i}} \rho (1 + \frac{3}{\textit{C}^{\textit{2}}}\mathbf{e}_{\textit{i}}.\mathbf{v} \frac{9}{2\textit{C}^{\textit{2}}} (\mathbf{e}_{\textit{i}}.\mathbf{v})^{\textit{2}}-\frac{3}{2 \textit{C}^{\textit{2}}}\mathbf{v}.\mathbf{v}) \quad (\textit{i}=0,\dots,8)
 \end{cases}
 \end{align}
 in which, $\textit{w}_{\textit{i}}$ represents the fixed weighting values:
 \begin{align}
 \textit{w}_{\textit{0}} = \frac{4}{9}; \quad \textit{w}_{\textit{1,2,3,4}}= \frac{1}{9}; \quad \textit{w}_{\textit{5,6,7,8}}= \frac{1}{36}
 \end{align}
-In addition, the right-hand side of Eq.~\ref{eq:stream} is often denoted by $\textit{f}_{\textit{i}}(\textbf{x}, \textit{t}_{+})$ and termed the post collision distribution. The LB equation \ref{eq:stream} ensures conservation of total mass and total momentum of the fluid particles at each lattice node. It essentially consists of two phases: \textit{collision} and \textit{streaming}. The collision phase computed in the right-hand side of Eq.~\ref{eq:stream}, involves only those variables which are associated with each node \textbf{x}, and therefore is a local operation. The streaming phase then explicitly propagate the updated distribution functions at each node to its neighbours $\textbf{x}+\textbf{\textit{e}}_{\textit{i}} \Delta t$, where no computations are required and only data exchange between neighbouring nodes are necessary. These features, together with the explicit time-stepping nature and the use of a regular grid, make LB computationally efficient, simple to implement and natural to parallelism~\citep{han2007}. The streaming step involves the translation of the distribution functions to their neighbouring sites according to the respective discrete velocity directions, as illustrated in Figure~\ref{fig:stream} in the \textit{D2Q9} model. 
+In addition, the right-hand side of Eq.~\ref{eq:stream} is often denoted by $\textit{f}_{\textit{i}}(\mathbf{x}, \textit{t}_{+})$ and termed the post collision distribution. The LB equation \ref{eq:stream} ensures conservation of total mass and total momentum of the fluid particles at each lattice node. It essentially consists of two phases: \textit{collision} and \textit{streaming}. The collision phase computed in the right-hand side of Eq.~\ref{eq:stream}, involves only those variables which are associated with each node \textbf{x}, and therefore is a local operation. The streaming phase then explicitly propagate the updated distribution functions at each node to its neighbours $\mathbf{x}+\mathbf{\textit{e}}_{\textit{i}} \Delta t$, where no computations are required and only data exchange between neighbouring nodes are necessary. These features, together with the explicit time-stepping nature and the use of a regular grid, make LB computationally efficient, simple to implement and natural to parallelism~\citep{han2007}. The streaming step involves the translation of the distribution functions to their neighbouring sites according to the respective discrete velocity directions, as illustrated in Figure~\ref{fig:stream} in the \textit{D2Q9} model. 
 \clearpage
 \begin{figure}[h]
 \centering
@@ -129,13 +129,13 @@ The collision step, (illustrated in Figure~\ref{fig:collision}) consists of re-d
 \begin{figure}[htbp]
 \centering
 \includegraphics{Chapter3/figures/lbm/collision.pdf}
-\caption[Illustration of the collision process on a \textit{D2Q9} lattice]{Illustration of the collision process on a \textit{D2Q9} lattice. The local density $\rho$ and velocity $\textit{\textbf{v}}$ are conserved, but the distribution functions change according to the relaxation to local Maxwellian rule}
+\caption[Illustration of the collision process on a \textit{D2Q9} lattice]{Illustration of the collision process on a \textit{D2Q9} lattice. The local density $\rho$ and velocity $\mathbf{v}$ are conserved, but the distribution functions change according to the relaxation to local Maxwellian rule}
 \label{fig:collision}
 \end{figure} 
 
-The standard macroscopic fluid variables, density $\rho$ and velocity $\textbf{\textit{ v}}$, can be recovered from the distribution functions as:
+The standard macroscopic fluid variables, density $\rho$ and velocity $\mathbf{\textit{ v}}$, can be recovered from the distribution functions as:
 \begin{align}
-\rho = \sum\limits_{\textit{i}=0}^{8}{\textit{f}_{\textit{i}}}\mbox{ }; \qquad \rho \textbf{v} = \sum\limits_{\textit{i}=0}^{8}{\textit{f}_{\textit{i}}\textbf{\textit{e}}_{\textit{i}}}
+\rho = \sum\limits_{\textit{i}=0}^{8}{\textit{f}_{\textit{i}}}\mbox{ }; \qquad \rho \mathbf{v} = \sum\limits_{\textit{i}=0}^{8}{\textit{f}_{\textit{i}}\mathbf{\textit{e}}_{\textit{i}}}
 \end{align}
 The fluid pressure field \textit{p} is determined by the following equation of state:
 \begin{align}
@@ -166,7 +166,7 @@ The simplest type of boundary condition is the periodic boundary. In this case, 
 \subsubsection*{No-slip boundary condition} \label{bounce}
 The most commonly adopted BC in the Lattice Boltzmann approach is the no-slip BC, especially the simple bounce-back rule, which is quite elegant and surprisingly accurate. The basic idea is that the incoming distribution functions at a wall node are reflected back to the original fluid nodes, but with the direction rotated by $\pi$ radians. The bounce-back boundary condition is one of benefits of the Lattice Boltzmann method, as it is trivial to implement and it allows one to effortlessly introduce obstacles into the fluid domain. However, the boundary conditions have been proven to be only first-order accurate in time and space~\citep{pan2006}. A straightforward improvement is to consider the wall-fluid interface to be situated halfway between the wall and fluid lattice nodes~\citep{ziegler1993}. It involves, defining the \textit{solid} nodes as those lying within the stationary wall regions, and the\textit{fluid} nodes otherwise. Then if \textit{i} is the direction between a fluid node $\textit{n}_{1}$ and $\textit{n}_{2}$ to be reflected back along the direction they came from, i.e.
 \begin{align}
-\textit{f}_{-\textit{i}}(\textbf{x}, \textit{t}+\Delta \textit{t}) = \textit{f}_{\textit{i}}(\textbf{x}, \textit{t}_{+})
+\textit{f}_{-\textit{i}}(\mathbf{x}, \textit{t}+\Delta \textit{t}) = \textit{f}_{\textit{i}}(\mathbf{x}, \textit{t}_{+})
 \end{align}
 where $-\textit{i}$ denotes the opposite direction of \textit{i}. The bounce back rule is illustrated in Figure~\ref{fig:bounce}. This simple rule ensures that no tangential velocity exists along the fluid-wall interface, thereby a non-slip condition is imposed, and can be extended to any shapes or objects in a fluid flow. The slip boundary conditions have similar treatment to the non-slip condition, except that the distribution functions are reflected in the boundary instead of bounce-back~\citep{succi2001}.
 \begin{figure}[htbp]
@@ -239,7 +239,7 @@ Error in predicting horizontal velocity & 0.009 \% \\ \hline
 \end{table}
 The horizontal velocity profile estimated at `L/2' based on the closed form solution is also plotted in Figure~\ref{fig:vel}. It can be observed from the figure that the Lattice Boltzmann method predicts the laminar flow behaviour, however the maximum horizontal velocity is underestimated by 0.009 \% in comparison to the closed form solution. To validate the Lattice Boltzmann code developed in the present study, the results of the laminar flow through a pipe is compared with those obtained from the Computational Fluid Dynamics (CFD) simulations performed using \textit{ANSYS FLUENT}. The CFD analysis involves solving problems associated with fluid flows using numerical approximations to solve Navier-Stokes equations, which defines any single-phase flow. The Finite Volume Method (FVM) is a common approach used in the CFD codes, like FLUENT. It involves solving the governing equation over the discretized control volume. This guarantees the conservation of fluxes over a particular control volume. The finite volume equations yield governing equations of the form:
 \begin{align}
-\frac{\partial}{\partial t} \int\int\int  Q \textit{d\textbf{V}} + \int\int \textit{F} \textit{d\textbf{A}} = 0
+\frac{\partial}{\partial t} \int\int\int  Q d\mathbf{V} + \int\int \textit{F} d\mathbf{A} = 0
 \end{align}
 where \textit{Q} is the vector of conserved variables, \textit{F} is the vector of fluxes in the Navier-Stokes equation, \textit{V} is the volume of control volume element, and \textit{A} is the surface area of the control volume element. A 2D rectangular plane of length 1m and height 0.04m is discretized into 400 cells of size $1 \time 10^{-2} $ m (see Figure~\ref{fig:mesh}). A constant velocity is applied at the inlet. Water ($\rho = 998.2\mbox{ }kg/m^{3},\mbox{ } viscosity`\eta'=1 \times 10^{-3}\mbox{ } Ns/m^{2} $) is allowed to flow through the pipe and it develops into a fully laminar flow. The Least-Squares cell based approach was adopted to solve the gradient, and 100 iteration steps were carried out until the solution converges. The velocity contour profile obtained from the CFD analysis is presented in Figure~\ref{fig:cont}. The velocity profile at the cross-section `L/4' is plotted in Figure~\ref{fig:LBM}. The velocity profile matches the analytical Poiseuille's solution and the LBM simulation of laminar flow. Having validated the CFD analysis against Poiseuille's equation, the CFD analysis can now be used to validate the LBM simulation of fluid flow around a rectangular obstacle, to study the capability of the LBM technique to simulate vortex effects in fluid flows around obstacles.
 
@@ -288,7 +288,56 @@ The efficiency of Lattice Boltzmann method to include solid walls/particles is e
 \label{fig:obsvc}
 \end{figure}
 
+\subsection{Lattice Boltzmann - Multi-Relaxation Time (LBM-MRT)}
+The lattice Boltzmann Bhatnagar-Gross-Krook (LGBK) method is capable of simulating various hydrodynamics~\citep{Succi1989, Succi2001}] and offers intrinsic parallelism. Although LBM is successful in modelling complex fluid systems, such as multiphase flows and suspensions in fluid, the LBM may lead to numerical instability when the dimensionless relaxation time $\tau$ is close to 0.5. The Multi-Relaxation Time Lattice Boltzmann Method (LBM-MRT) overcomes the deficiencies of linearlised single relaxation LBM-BGK, such as fixed Prandtl number (Pr=$\nu/\kappa$), where the thermal conductivity `$\kappa$' is unity~\citep{Liu2003a}. The LB-MRT model offers better numerical stability and has more degrees of freedom. The advection is mapped onto the momentum space by a linear transformation and the flux is still finished in the velocity space~\citep{Du2006}.
 
+In the formulation of the linear Boltzmann equation with multiple relaxation time approximation, the lattice Boltzmann equation is written as:
+\begin{align}
+f_{\alpha}(\mathbf{x}+\mathbf{e}_i\Delta_t, t+ \Delta_t)-f_{\alpha}(\mathbf{x},t)=-\mathbf{S}_{\alpha i}(f_i(\mathbf{x},t)-f_i^{eq}(\mathbf{x},t)
+\end{align}
+\flushleft where \textbf{S} is collision matrix. The nine eigen values of \textbf{S} are all between 0 and 2 so as to maintain linear stability and the separation of scales, which means that the relaxation times of non-conserved quantities are much faster than the hydrodynamic time scales. The LGBK model is the special case in which the nine relaxation times are all equal and the collision matrix $\mathbf{S}=\frac{1}{\tau}\mathbf{I}$, where \textbf{I} is the identity matrix. The evolutionary progress involves two steps, advection and flux:
+\begin{align}
+f_{\alpha}^+(\mathbf{x},t)-f_{\alpha}(\mathbf{x},t) = - \mathbf{S}_{\alpha i}(f_i(\mathbf{x},t)-f_i^{eq}(\mathbf{x},t) \label{eq:advection}\\
+f_{\alpha}(\mathbf{x}+e_{\alpha}\Delta_t, t+\Delta_t)=f_{\alpha}^+(\mathbf{x},t)
+\end{align}
+\flushleft The advection Eq.~\ref{eq:advection} can be mapped to the momentum space by multiplying through by a transformation matrix \textbf{M} and the flux is still finished in the velocity space. The evolutionary equation of the multi-relaxation time lattice Boltzmann equation is written as:
+\begin{align}
+\mathbf{f}(\mathbf{x}+\mathbf{e}_i\Delta_t, t+ \Delta_t)-\mathbf{f}(\mathbf{x},t)=-M^{-1}\hat{\mathbf{S}}(\hat{\mathbf{f}}(\mathbf{x},t)-\hat{\mathbf{f}}^{eq}(\mathbf{x},t))
+\end{align}
+\flushleft where \textbf{M} is the tranformation matrix mapping a vector \textbf{f} in the discrete velocity space $\mathds{V}=\mathds{R}^b$ to a vector $\hat{\mathbf{f}}$ in the moment space $\mathds{V}=\mathds{R}^b$. 
+$\hat{\mathbf{f}}= \mathbf{M}\mathbf{f}$ and 
+$\mathbf{f}(\mathbf{x},t) =\left[f_0(\mathbf{x},t),f_1(\mathbf{x},t),\dots f_8(\mathbf{x},t)\right]^T$. 
+
+The collision matrix $\hat{\mathbf{S}} = MSM^{-1}$ in moment space is a diagonal matrix: $\hat{\mathbf{S}} =\mbox{diag} \left[ s_1, s_2, s_3,\dots s_9  \right]$. The transformation matrix \textbf{M} can be constructed via Gram-Schmidt orthgonalization procedure. The general form of the transformation matrix \textbf{M} can be written as:
+
+\begin{align}
+ & \mathbf{M}=\left[|p\rangle,|e\rangle,|e^2\rangle,|u_x\rangle,|q_x\rangle,|u_y\rangle,|q_y\rangle,|p_{xx}\rangle,|p_{xy}\rangle,\right]^T \\
+ & |p\rangle = |\textit{e}_{\alpha}|^0;\\
+ & |e\rangle_{\alpha}=\textit{Q}e_{\alpha}^2-b_2;\\
+ & |e^2\rangle_{\alpha}=a_1(\textit{Q}e_{\alpha}^4-b_6)+a_2(\textit{Q}e_{\alpha}^4-b_6);\\
+ & |u_x\rangle_{\alpha}=e_{\alpha,x}; \\
+ & |q_x\rangle_{\alpha}=(\textit{b}_1e_{\alpha}^2-b_3)e_{\alpha,x}\\
+ & |u_y\rangle_{\alpha}=e_{\alpha,y}; \\
+ & |q_y\rangle_{\alpha}=(\textit{b}_1e_{\alpha}^2-b_3)e_{\alpha,y}\\
+ & |p_{xx}\rangle_{\alpha}=\textit{d}e_{\alpha,x}^2-e_{\alpha}^2; \\
+ & |p_{xx}\rangle_{\alpha}=e_{\alpha,x}e_{\alpha,y}
+\end{align}
+\flushleft where d=2 and Q=9, $b_1=\sum_{\alpha=1}^{Q}e_{\alpha,x}^2$, $b_2=\sum_{\alpha=1}^{Q}e_{\alpha}^2$, 
+$b_3=\sum_{\alpha=1}^{Q}e_{\alpha}^2e_{\alpha,x}^4$, $a_1=||e^2||^2,$ and $a_2=\sum_{\alpha=0}^{Q-1}(Qc_{\alpha}^2-b_2)\times(Qc_{\alpha}^4-b_6)$. Explicitly, the transformation matrix can be written as:
+\begin{align}
+\mathbf{M}= \begin{bmatrix}
+ 1 &  1 &  1 &  1 &  1 &  1 &  1 &  1 &  1 \\
+-4 & -1 & -1 & -1 & -1 &  2 &  2 &  2 &  2 \\ 
+ 4 & -2 & -2 & -2 & -2 &  1 &  1 &  1 &  1 \\
+ 0 &  1 &  0 & -1 &  0 &  1 & -1 & -1 &  1 \\
+ 0 & -2 &  0 &  2 &  0 &  1 & -1 & -1 &  1 \\
+ 0 &  0 &  1 &  0 & -1 &  1 &  1 & -1 & -1 \\
+ 0 &  0 & -2 &  0 &  2 &  1 &  1 & -1 & -1 \\
+ 0 &  1 & -1 &  1 & -1 &  0 &  0 &  0 &  0 \\
+ 0 &  0 &  0 &  0 &  0 &  1 &  1 &  1 &  1 \\
+\end{bmatrix}
+\end{align}
+ 
 %************************************************************************************************************************************************************************************************ %
 \section{Coupled Lattice Boltzmann - Molecular Dynamics for fluid-particle interactions}
 In principle, the conventional Finite Element and Finite Volume based approaches for the solving the Navier-Stokes equations with moving boundaries and/or structural interaction~\citep{bathe2004} can be applied to particle fluid interaction problems. The common feature of these approaches is to model the interaction between the fluid and the particles to a high degree of accuracy, but the main computational challenge is the need to continuously generate new geometrically adapted meshes to circumvent severe mesh distortion, which is computationally very intensive~\citep{han2007}. The Lattice Boltzmann approach has the advantage of accommodating large particle sizes and the interaction between the fluid and the moving particles can be modelled through relatively simple fluid - particle interface treatments. Further, employing the Discrete Element Method (DE) to account for the particle/particle interaction naturally leads to a combined LB - DEM solution procedure. The Eulerian nature of the Lattice Boltzmann formulation, together with the common explicit time step scheme of both the Lattice Boltzmann and the Molecular Dynamics makes this coupling strategy an efficient numerical procedure for the simulation of particle-fluid systems. LBM-MD technique is a powerful predictive tool for gaining insights into many the fundamental physical phenomena in the fluid-solid interaction domains. Such a coupled methodology was first proposed by~\citep{cook2004} for simulating particle-fluid systems dominated by particle-fluid and particle-particle interactions. To capture the actual physical behaviour of the fluid-particle system, it is essential to model the boundary condition between the fluid and the particle as a non-slip boundary condition, i.e. the fluid near the particle should have similar velocity as the particle boundary. The solid particles inside the fluid are represented by lattice nodes. The discrete nature of lattice will result in stepwise representation of the surfaces, which are circular, this is neither accurate nor smooth, unless sufficiently small lattice spacing is adopted. 
@@ -299,7 +348,7 @@ The above formulation of Lattice Boltzmann problem has been successfully applied
 
 The Large eddy simulation (LES) is the most widely adopted approach to solve turbulent flow problems. It directly solves the large scale eddies, which carry the predominant portion of the energy, and the smaller eddies are modelled using a sub-grid approach. The separation of scales is achieved by filtering of the Navier-Stokes equations, from which the resolved scales are directly obtained and unresolved scales are modelled by a one-parameter Smagorinski sub-grid methodology, which assumes that the Reynold's stress tensor is dependent only on the local strain rate~\citep{smagorinsky1963}. It involves parametrizing the turbulent energy dissipation in the flows, where the larger eddies extract energy from the mean flow and ultimately transfer some of it to the smaller eddies which, in turn, pass the energy to even smaller eddies, and so on up to the smallest scales. At the smallest scale, the eddies convert the kinetic energy into the internal energy of the fluid. At this scale, the viscous friction dominates the flow~\citep{frisch1995}. Incorporating the LES approach in Lattice Boltzmann technique, the governing equation of the density distribution function in Eq.~\eqref{eq:stream} is modified as:
 \begin{align}
-\textit{f}_{\textit{i}}(\textbf{x}+\textbf{e}_{\textit{i}} \Delta t, t + \Delta t) = \textit{f}_{\textit{i}}(\textbf{x},t) - \frac{1}{\tau_{*}} [\textit{f}_{\textit{i}}(\textbf{x},t) -\textit{f}_{\textit{i}}^{\textit{eq}}(\textbf{x},t)] \quad (\textit{i}=0,\dots,8)
+\textit{f}_{\textit{i}}(\mathbf{x}+\mathbf{e}_{\textit{i}} \Delta t, t + \Delta t) = \textit{f}_{\textit{i}}(\mathbf{x},t) - \frac{1}{\tau_{*}} [\textit{f}_{\textit{i}}(\mathbf{x},t) -\textit{f}_{\textit{i}}^{\textit{eq}}(\mathbf{x},t)] \quad (\textit{i}=0,\dots,8)
 \end{align}
 The effect of the unresolved scale motion is taken into account by introducing an effective collision relaxation time scale $\tau_{t}$, so that the total relaxation time $\tau_{*}$ is written as:
 \begin{align}
@@ -321,44 +370,44 @@ where $\textit{S}_{c}$ is the Smagorinski constant found to be close to 0.03~\ci
 \subsubsection*{Modified bounce back rule}
 To accommodate the movement of solid particles in the commonly adopted bounce-back rule (see section~\ref{bounce}).~\citet{Ladd1994} modified the `no-slip' rule for a given boundary link \textit{i} to be:
 \begin{align}
-\textit{f}_{\textit{i}}(\textbf{x}, t + \Delta t)=\textit{f}_{\textit{i}}(\textbf{x}, t_{+}) - \alpha_{\textit{i}}\textbf{\textit{e}}_{\textit{i}}.\textbf{\textit{v}}_{b} \qquad (\alpha_{i}=6\textit{w}_{\textit{i}}\rho/\textit{C}_{\textit{s}}^{2})
+\textit{f}_{\textit{i}}(\mathbf{x}, t + \Delta t)=\textit{f}_{\textit{i}}(\mathbf{x}, t_{+}) - \alpha_{\textit{i}}\mathbf{\textit{e}}_{\textit{i}}.\mathbf{\textit{v}}_{b} \qquad (\alpha_{i}=6\textit{w}_{\textit{i}}\rho/\textit{C}_{\textit{s}}^{2})
 \end{align}
-where $\textit{f}_{\textit{i}}(\textbf{x}, t_{+})$ is th post collision distribution at the fluid or solid boundary node \textbf{x} and $\textit{v}_{b}$ is the velocity at the nominal boundary point at the middle of the boundary link \textit{i}:
+where $\textit{f}_{\textit{i}}(\mathbf{x}, t_{+})$ is th post collision distribution at the fluid or solid boundary node \textbf{x} and $\textit{v}_{b}$ is the velocity at the nominal boundary point at the middle of the boundary link \textit{i}:
 \begin{align}
-\textbf{v}_{b}=\textbf{v}_{c}+\omega \times (\textbf{x}+\textbf{\textit{e}}_{\textit{i}}\Delta t /2 - \textbf{x}_{c})
+\mathbf{v}_{b}=\mathbf{v}_{c}+\omega \times (\mathbf{x}+\mathbf{\textit{e}}_{\textit{i}}\Delta t /2 - \mathbf{x}_{c})
 \end{align}
-in which $\textbf{\textit{v}}_{c}$ and $\omega$ are the translational and angular velocities at the mass centre of the solid particle, respectively. $\textbf{x}_{c}$ and $\textbf{x}+\textbf{\textit{e}}_{\textit{i}}\Delta t /2$ are the coordinates of centre and the nominal boundary point,  respectively. The impact force on the solid particle from the link is defined as:
+in which $\mathbf{\textit{v}}_{c}$ and $\omega$ are the translational and angular velocities at the mass centre of the solid particle, respectively. $\mathbf{x}_{c}$ and $\mathbf{x}+\mathbf{\textit{e}}_{\textit{i}}\Delta t /2$ are the coordinates of centre and the nominal boundary point,  respectively. The impact force on the solid particle from the link is defined as:
 \begin{align}
-\textbf{F}_{\textit{i}}=2[\textit{f}_{\textit{i}} (\textbf{x}, t_{+}) -\alpha_{\textit{i}}\textbf{\textit{e}}_{\textit{i}}.\textbf{v}_{b}]/ \Delta t
+\mathbf{F}_{\textit{i}}=2[\textit{f}_{\textit{i}} (\mathbf{x}, t_{+}) -\alpha_{\textit{i}}\mathbf{\textit{e}}_{\textit{i}}.\mathbf{v}_{b}]/ \Delta t
 \end{align} 
-The corresponding torque $\textbf{T}_{\textit{i}}$, produced by the force with respect to the centre of the particle is computed as:
+The corresponding torque $\mathbf{T}_{\textit{i}}$, produced by the force with respect to the centre of the particle is computed as:
 \begin{align}
-\textbf{T}_{\textit{i}}=\textbf{r}_{c} \times \textit{F}_{\textit{i}} (\textbf{r}_{c}=\textbf{x}+\textbf{e}_{\textit{i}} \Delta t /2 - \textbf{x}_{c})
+\mathbf{T}_{\textit{i}}=\mathbf{r}_{c} \times \textit{F}_{\textit{i}} (\mathbf{r}_{c}=\mathbf{x}+\mathbf{e}_{\textit{i}} \Delta t /2 - \mathbf{x}_{c})
 \end{align}
 Then the total hydrodynamic force and torque exerted on the particle can be calculated by summing up the forces and torques from all the related boundary links:
 \begin{align}
-\textbf{F} = \sum\limits_{\textit{i}}{\textbf{F}_{\textit{i}}} \mbox{ }; \qquad \textbf{T} = \sum\limits_{\textit{i}}{\textbf{T}_{\textit{i}}}
+\mathbf{F} = \sum\limits_{\textit{i}}{\mathbf{F}_{\textit{i}}} \mbox{ }; \qquad \mathbf{T} = \sum\limits_{\textit{i}}{\mathbf{T}_{\textit{i}}}
 \end{align}
 \citet{Ladd2001} described a methodology that minimises the oscillations resulting from particles crossing lattice at very large speed. The fluid/particle force interaction method with momentum exchange method is coupled with the treatment of moving curved boundaries scheme~\citep{yu2002unified,yu2003viscous}. The simulation of the moving curved particle surfaces results in the intersection of links between two nodes at arbitrary distances~\citep{iglberger2008}. These distance values are called as delta values:
 \begin{align}
 \delta = \frac{\mbox{Distance between fluid nod and particle surface}}{\mbox{Distance between fluid node and particle node}} \in [0,1]
 \end{align} 
-For each pair of neighbouring fluid and particle nodes, a delta value has to be calculated. Delta values of zero are not possible as nodes on the surface are considered as the particle node. The algorithm for computation of the $\delta$ value is presented in ~\citet{iglberger2008}. Figure~\ref{fig:bouncemod} shows the three possible situations for delta values in the interval of [0,1]. Since the fluid particles in the LBM are always considered to move at the rate of a lattice per time step $(\delta \textbf{x}/ \delta \textbf{t})$, for delta values smaller than 0.5. For $\delta$ values larger than 0.5, the fluid particles would come to rest at an intermediate node $\textbf{x}_{\textit{i}}$. In order to calculate the reflected distribution function in node $\textbf{x}_{\textit{f}}$, an interpolation scheme has to be applied. The linear interpolation scheme of~\citet{yu2002unified, yu2003viscous} is used in the present study, which uses a single equation, irrespective of the value of $\delta$ being less or larger than 0.5, to the reflected distribution function, which is computed as:
+For each pair of neighbouring fluid and particle nodes, a delta value has to be calculated. Delta values of zero are not possible as nodes on the surface are considered as the particle node. The algorithm for computation of the $\delta$ value is presented in ~\citet{iglberger2008}. Figure~\ref{fig:bouncemod} shows the three possible situations for delta values in the interval of [0,1]. Since the fluid particles in the LBM are always considered to move at the rate of a lattice per time step $(\delta \mathbf{x}/ \delta \mathbf{t})$, for delta values smaller than 0.5. For $\delta$ values larger than 0.5, the fluid particles would come to rest at an intermediate node $\mathbf{x}_{\textit{i}}$. In order to calculate the reflected distribution function in node $\mathbf{x}_{\textit{f}}$, an interpolation scheme has to be applied. The linear interpolation scheme of~\citet{yu2002unified, yu2003viscous} is used in the present study, which uses a single equation, irrespective of the value of $\delta$ being less or larger than 0.5, to the reflected distribution function, which is computed as:
 \begin{align}
  \nonumber
-\textit{\textit{f}}_{\overline{\alpha}}(\textbf{x}_{\textit{f}},t + \delta t) = \frac{1}{1 + \delta} \cdot [(1-\delta)\cdot \textit{\textit{f}}_{\alpha}(\textbf{x}_{\textit{f}},t + \delta t) + \delta \cdot \textit{\textit{f}}_{\alpha}(\textbf{x}_{\textit{b}},t + \delta t)  \\
-+ \delta \cdot \textit{\textit{f}}_{\overline{\alpha}}(\textbf{x}_{\textit{f2}},t + \delta t) -2\textit{w}_{\textit{a}}\rho_{\textit{w}}\frac{3}{\textit{c}^{2}}\textbf{\textit{e}}_{\textit{a}}\cdot \textbf{u}_{\textit{w}}]
+\textit{\textit{f}}_{\overline{\alpha}}(\mathbf{x}_{\textit{f}},t + \delta t) = \frac{1}{1 + \delta} \cdot [(1-\delta)\cdot \textit{\textit{f}}_{\alpha}(\mathbf{x}_{\textit{f}},t + \delta t) + \delta \cdot \textit{\textit{f}}_{\alpha}(\mathbf{x}_{\textit{b}},t + \delta t)  \\
++ \delta \cdot \textit{\textit{f}}_{\overline{\alpha}}(\mathbf{x}_{\textit{f2}},t + \delta t) -2\textit{w}_{\textit{a}}\rho_{\textit{w}}\frac{3}{\textit{c}^{2}}\mathbf{\textit{e}}_{\textit{a}}\cdot \mathbf{u}_{\textit{w}}]
 \end{align}
-where $\textit{w}_{\alpha}$ is the weighting factor, $\rho_{\textit{w}}$ is the fluid density in node $\textbf{x}_{\textit{f}}$, and $ \textbf{u}_{\textit{w}}  $ is the velocity at the bounce-back wall. In order to couple the fluid-particle interaction, the LBM approach is extended by adopting a force integration scheme to calculate the fluid force acting on the particle surface, and the momentum exchanged method described earlier. The physical force acting on particle agglomerate is calculated as the sum over all fluid/particle node pairs, resulting in: 
+where $\textit{w}_{\alpha}$ is the weighting factor, $\rho_{\textit{w}}$ is the fluid density in node $\mathbf{x}_{\textit{f}}$, and $ \mathbf{u}_{\textit{w}}  $ is the velocity at the bounce-back wall. In order to couple the fluid-particle interaction, the LBM approach is extended by adopting a force integration scheme to calculate the fluid force acting on the particle surface, and the momentum exchanged method described earlier. The physical force acting on particle agglomerate is calculated as the sum over all fluid/particle node pairs, resulting in: 
 \begin{align}
-\textit{F} = \sum\limits_{\textbf{x}_{b}}\sum\limits_{\alpha=1}^{19}{\textbf{e}_{\alpha}[\textit{f}_{\alpha}(\textbf{x}_{b},t)+\textit{f}_{\overline{\alpha}}(\textbf{x}_{f},t)] \delta \textbf{x} / \delta t}
+\textit{F} = \sum\limits_{\mathbf{x}_{b}}\sum\limits_{\alpha=1}^{19}{\mathbf{e}_{\alpha}[\textit{f}_{\alpha}(\mathbf{x}_{b},t)+\textit{f}_{\overline{\alpha}}(\mathbf{x}_{f},t)] \delta \mathbf{x} / \delta t}
 \end{align}
 After the force calculations, the coupled rigid body physics can be simulated in order to move the particle agglomerates according to the applied forces. The total hydrodynamic forces and torque exerted on a particle can be computed as ~\citep{cook2004, noble1998}:
 \begin{align}
-& \textbf{F}_{f} = \textit{Ch}[\sum\limits_{\textit{n}}{(\beta_{\textit{n}} \sum\limits_{\textit{i}}{\textit{f}_{\textit{i}}^{\textit{ m}}\textbf{\textit{e}}_{\textit{i}}}})] \\ 
-& \textbf{T}_{f} = \textit{Ch}[\sum\limits_{\textit{n}}{(\textbf{x}_{\textit{n}}-\textbf{x}_{\textit{c}}) \times (\beta_{\textit{n}} \sum\limits_{\textit{i}}{\textit{f}_{\textit{i}}^{\textit{ m}}\textbf{\textit{e}}_{\textit{i}}})}]
+& \mathbf{F}_{f} = \textit{Ch}[\sum\limits_{\textit{n}}{(\beta_{\textit{n}} \sum\limits_{\textit{i}}{\textit{f}_{\textit{i}}^{\textit{ m}}\mathbf{\textit{e}}_{\textit{i}}}})] \\ 
+& \mathbf{T}_{f} = \textit{Ch}[\sum\limits_{\textit{n}}{(\mathbf{x}_{\textit{n}}-\mathbf{x}_{\textit{c}}) \times (\beta_{\textit{n}} \sum\limits_{\textit{i}}{\textit{f}_{\textit{i}}^{\textit{ m}}\mathbf{\textit{e}}_{\textit{i}}})}]
 \end{align}
-The summation is over all lattice nodes covered by the particle and $\textbf{x}_{\textit{n}}$ represents the coordinate of the lattice node \textit{n}.
+The summation is over all lattice nodes covered by the particle and $\mathbf{x}_{\textit{n}}$ represents the coordinate of the lattice node \textit{n}.
 \begin{figure}[htbp]
 \centering
 \includegraphics[scale=1]{Chapter3/figures/lbm/bouncemod.pdf}
@@ -367,17 +416,17 @@ The summation is over all lattice nodes covered by the particle and $\textbf{x}_
 \end{figure}
 When particles are not in direct contact among themselves, but are driven by the fluid flow and body force, i.e. gravity, their motion can be determined by Newton's equation of motion:
 \begin{align}
-& \textit{m}\textbf{ a}=\textbf{F}_{f} + \textit{m }\textbf{g} \\
-& \textit{J } \ddot{\theta} =  \textbf{T}_{f}
+& \textit{m}\mathbf{ a}=\mathbf{F}_{f} + \textit{m }\mathbf{g} \\
+& \textit{J } \ddot{\theta} =  \mathbf{T}_{f}
 \end{align}
-where \textit{m} and \textit{J} are respectively the mass and the moment of inertia of a particle; and $\ddots{\theta}$ is the angular acceleration; \textbf{g} is the gravitational acceleration; $\textbf{F}_{f}$ and $\textbf{T}_{f}$ are respectively the hydrodynamic forces and torque. The equation can be solved numerically by an explicit numerical integration, such as central difference scheme. The interaction between solid particles and the solid particles with the walls are dealt with Molecular Dynamics technique. To solve the coupled MD-LBM, the hydrodynamic force exerted and the static buoyancy force are considered by reducing the gravitational acceleration to $(1- \rho/rho_{s})\textbf{g}$, where $\rho_{s}$ is the density of the particles. When taking into account all forces acting on an element, the dynamic equations of Molecular Dynamics can be expressed as:
+where \textit{m} and \textit{J} are respectively the mass and the moment of inertia of a particle; and $\ddots{\theta}$ is the angular acceleration; \textbf{g} is the gravitational acceleration; $\mathbf{F}_{f}$ and $\mathbf{T}_{f}$ are respectively the hydrodynamic forces and torque. The equation can be solved numerically by an explicit numerical integration, such as central difference scheme. The interaction between solid particles and the solid particles with the walls are dealt with Molecular Dynamics technique. To solve the coupled MD-LBM, the hydrodynamic force exerted and the static buoyancy force are considered by reducing the gravitational acceleration to $(1- \rho/rho_{s})\mathbf{g}$, where $\rho_{s}$ is the density of the particles. When taking into account all forces acting on an element, the dynamic equations of Molecular Dynamics can be expressed as:
 \begin{align}
-\textit{m}\textbf{ a} + \textit{c }\textbf{v} = \textbf{F}_{c} + \textbf{F}_{f} +\textit{m }\textbf{g}
+\textit{m}\mathbf{ a} + \textit{c }\mathbf{v} = \mathbf{F}_{c} + \mathbf{F}_{f} +\textit{m }\mathbf{g}
 \label{eq:mde}
 \end{align} 
-where $\textbf{F}_{c}$ denotes the total contact forces from other elements and/or the walls; \textit{c} is a damping coefficient; and the term \textit{c\textbf{v}} represents a viscous force that accounts for the effect of all possible dissipation forces in the system including energy lost during the collision between particles. Considering a linear contact model:
+where $\mathbf{F}_{c}$ denotes the total contact forces from other elements and/or the walls; \textit{c} is a damping coefficient; and the term \textit{c\textbf{v}} represents a viscous force that accounts for the effect of all possible dissipation forces in the system including energy lost during the collision between particles. Considering a linear contact model:
 \begin{align}
-\textbf{F}_{c}=\textit{k}_{\textit{n}} \delta
+\mathbf{F}_{c}=\textit{k}_{\textit{n}} \delta
 \end{align}
 where $\textit{k}_{\textit{n}}$ is the normal stiffness and $\delta$ is the overlap, the critical time step associated with the explicit integration is determined as~\citep{he1997}:
 \begin{align}
@@ -391,8 +440,7 @@ The time step factor $\lambda$ is chosen to be around 0.1 to ensure both stabili
 \begin{align}
 \Delta t_{s}=\frac{\Delta t}{\textit{n}_{s}} \qquad(\textit{n}_{s}=[\Delta t/ \Delta t_{D}]+1)
 \end{align} 
-This basically results in a sub-cycling time integration for the Molecular Dynamics part. At every step of the fluid computation, $\textit{n}_{s}$ sub-steps of integration are performed for the Molecular Dynamics Eq.~\ref{eq:mde} using the time step $\Delta t_{s}$. The hydrodynamic force $\textbf{F}_{f}$ is unchanged during the sub-cycling. 
-
+This basically results in a sub-cycling time integration for the Molecular Dynamics part. At every step of the fluid computation, $\textit{n}_{s}$ sub-steps of integration are performed for the Molecular Dynamics Eq.~\ref{eq:mde} using the time step $\Delta t_{s}$. The hydrodynamic force $\mathbf{F}_{f}$ is unchanged during the sub-cycling. 
 %%************************************************************************************************************************************************************************************************ %
 %% *** Bibliography *** %
 %\bibliographystyle{apalike} % bibliography style
