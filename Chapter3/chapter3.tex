@@ -1,4 +1,12 @@
 \chapter{Numerical Modelling of Granular Flows}
+
+\ifpdf
+    \graphicspath{{Chapter3/figs/raster/}{Chapter3/figs/pdf/}{Chapter3/figs/}}
+\else
+    \graphicspath{{Chapter3/figs/vector/}{Chapter3/figs/}}
+\fi
+
+
 \section{Fluid simulation using Lattice Boltzmann Method (LBM)}
 The Navier-Stokes equation describes the motion of a non-turbulent Newtonian fluid. The equation is obtained by applying Newton's second law to the fluid motion, together with an assumption that the fluid stress is the sum of the viscous term, proportional to the gradient of velocity, and the pressure term. Conventional methods of Computational Fluid Dynamics (CFD) compute pertinent flow fields, such as velocity \textit{u} and pressure \textit{p}, by numerically solving Navier-Stokes equation in space \textit{x} and time \textit{t}. Alternatively, the transport equation or the Boltzmann equation, which deals with the single particle distribution function $f(x,\xi,t)$ in phase space $(x,\xi)$ and time \textit{t}, can be used to solve various problems in fluid dynamics. 
 
@@ -11,7 +19,7 @@ The Lattice Boltzmann Method is a `micro-particle' based numerical time-stepping
 
 \begin{figure}[htpb]
 \centering
-\includegraphics[width=0.8\textwidth]{Chapter3/figures/lbm/D2Q9.pdf}
+\includegraphics[width=0.8\textwidth]{D2Q9}
 \caption[The Lattice Boltzmann discretisation and D2Q9 scheme]{The Lattice Boltzmann discretisation and D2Q9 scheme: (a) a standard LB lattice and histogram views of the discrete single particle distribution function/direction-specific densities $f_i$; (b) D2Q9 model}
 \label{fig:D2Q9}
 \end{figure}
@@ -64,13 +72,13 @@ The streaming step involves the translation of the distribution functions to the
 The collision step, (illustrated in ~\cref{fig:collision}) consists of re-distribution of the distribution functions to the local discretised Maxwellian equilibrium distribution functions, but in such a way that local mass and momentum are invariants. In incompressible flows, the energy conservation is equivalent to momentum conservation~\citep{He1997}.
 \begin{figure}[htpb]
 \centering
-\includegraphics{Chapter3/figures/lbm/stream.pdf}
+\includegraphics{stream}
 \caption[Illustration of the streaming process on a \textit{D2Q9} lattice]{Illustration of the streaming process on a \textit{D2Q9} lattice. The magnitude of the distribution functions remains unchanged, but they move to a neighbouring node according to their direction.}
 \label{fig:stream}
 \end{figure}
 \begin{figure}[htbp]
 \centering
-\includegraphics{Chapter3/figures/lbm/collision.pdf}
+\includegraphics{collision}
 \caption[Illustration of the collision process on a \textit{D2Q9} lattice]{Illustration of the collision process on a \textit{D2Q9} lattice. The local density $\rho$ and velocity $\mathbf{v}$ are conserved, but the distribution functions change according to the relaxation to local Maxwellian rule}
 \label{fig:collision}
 \end{figure} 
@@ -113,7 +121,7 @@ The most commonly adopted BC in the Lattice Boltzmann approach is the no-slip BC
 where $-\mathit{i}$ denotes the opposite direction of \textit{i}. The bounce back rule is illustrated in ~\cref{fig:bounce}. This simple rule ensures that no tangential velocity exists along the fluid-wall interface, thereby a non-slip condition is imposed, and can be extended to any shapes or objects in a fluid flow. The slip boundary conditions have similar treatment to the non-slip condition, except that the distribution functions are reflected in the boundary instead of bounce-back~\citep{Succi2001}.
 \begin{figure}[htbp]
 \centering
-\includegraphics[scale=0.5]{Chapter3/figures/lbm/bounce.pdf}
+\includegraphics[scale=0.5]{bounce}
 \caption[Half-way bounce back algorithm for the \textit{D2Q9} model ]{Half-way bounce back algorithm for the \textit{D2Q9} model adopted after \citet{Sukop2006}}
 \label{fig:bounce}
 \end{figure}
@@ -188,14 +196,14 @@ where \textit{Q} is the vector of conserved variables, \textit{F} is the vector 
 The efficiency of Lattice Boltzmann method to include solid walls/particles is evaluated by placing a solid wall of Length `D/2' at length `L/4' in the pipe. The velocity profile obtained after 50,000 iterations is presented in ~\cref{fig:Obstacle}. The formation of eddies at the corners of the wall along the flow direction is captured by the LB method. The horizontal velocity profile obtained at `L/4' is presented in ~\cref{fig:LBM}. The occurrence of vortex effect in the flow around the edges of the obstacle can be visualised in ~\cref{fig:Obstacle}. The velocity profile obtained from the LBM simulation of the fluid flow around a rectangular body compares qualitatively with the FE analysis performed by~\citet{Zhong1991}. The CFD analysis of the same problem was performed using ANSYS FLUENT. The control volume is discretised into 10,000 cells and a constant velocity is applied in the inlet. The velocity profile obtained from the CFD analysis is presented in ~\cref{fig:obsvc}. Similar maximum horizontal velocities are observed in both the LBM and the CFD analyses. The velocity profile obtained from the CFD analysis (see ~\cref{fig:obsvc}) proves the occurrence of eddies in the LBM analysis of flow around an obstacle. The CFD analysis is found to over predict slightly the maximum horizontal velocity in comparison with the LBM simulation. The discrepancy in the horizontal velocity profile (~\cref{fig:LBM}) can be attributed to the relaxation parameter used in the LBM, which is obtained by trial and error procedure. Thus, it can be concluded that the Lattice Boltzmann method is a suitable form of numerical representation of Navier-Stokes equation to model fluid flows. 
 \begin{figure}[h]
 \centering
-\includegraphics[width=\textwidth]{Chapter3/figures/lbm/LBM_Poiseuille.png}
+\includegraphics[width=\textwidth]{LBM_Poiseuille}
 \caption{Velocity profile: LBM Simulation of a laminar flow through a pipe}
 \label{fig:LBM_Poiseuille}
 \end{figure}
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=\textwidth]{Chapter3/figures/lbm/CFD_Mesh.png}
+\includegraphics[width=\textwidth]{CFD_Mesh}
 \caption{Finite Volume Mesh used in the CFD analysis of laminar flow through a pipe}
 \label{fig:mesh}
 \end{figure}
@@ -203,7 +211,7 @@ The efficiency of Lattice Boltzmann method to include solid walls/particles is e
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=0.9\textwidth]{Chapter3/figures/lbm/CFD_Poiseuille.png}
+\includegraphics[width=0.9\textwidth]{CFD_Poiseuille}
 \caption{Velocity contour obtained from the CFD analysis of laminar flow through a pipe}
 \label{fig:cont}
 \end{figure}
@@ -211,21 +219,21 @@ The efficiency of Lattice Boltzmann method to include solid walls/particles is e
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=\textwidth]{Chapter3/figures/lbm/LBMCFD.pdf}
+\includegraphics[width=\textwidth]{LBMCFD}
 \caption{LBM and CFD simulation of laminar flow through a circular pipe with and without an obstacle}
 \label{fig:LBM}
 \end{figure}
 
 \begin{figure}[htbp]
 \centering
-\hspace{-13mm}\includegraphics[width=0.95\textwidth]{Chapter3/figures/lbm/LBM_Obstacle.png}
+\hspace{-13mm}\includegraphics[width=0.95\textwidth]{LBM_Obstacle}
 \caption{LBM simulation of velocity profile for a laminar flow through a pipe with obstacle in the middle}
 \label{fig:Obstacle}
 \end{figure}
 
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=0.7\textwidth]{Chapter3/figures/lbm/CFD_Obstacle.png}
+\includegraphics[width=0.7\textwidth]{CFD_Obstacle}
 \caption{CFD simulation of velocity contour for a laminar flow through a pipe with obstacle in the middle}
 \label{fig:obsvc}
 \end{figure}
@@ -370,7 +378,7 @@ After the force calculations, the coupled rigid body physics can be simulated in
 The summation is over all lattice nodes covered by the particle and $\mathbf{x}_{\mathit{n}}$ represents the coordinate of the lattice node \textit{n}.
 \begin{figure}[htbp]
 \centering
-\includegraphics[scale=1]{Chapter3/figures/lbm/bouncemod.pdf}
+\includegraphics[scale=1]{bouncemod}
 \caption{Bounce back boundaries for different values of $\delta$}
 \label{fig:bouncemod}
 \end{figure}
