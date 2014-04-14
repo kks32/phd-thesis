@@ -25,32 +25,38 @@
 \newif\if@print\@printfalse
 \DeclareOption{print}{\@printtrue}
 
+\newif\ifPHD@draft\PHD@draftfalse
+
 % ****************************** Define index **********************************
 \newif\ifPHD@index\PHD@indexfalse
 \DeclareOption{index}{\PHD@indextrue}
 
 % ******************************* Font Option **********************************
-\newif\ifsetFont\setFontfalse % Font is not set 
+\newif\ifsetFont\setFontfalse                 % Font is not set 
 
-\newif\ifPHD@times\PHD@timesfalse % Times with Math Support
+\newif\ifPHD@times\PHD@timesfalse             % Times with Math Support
 \DeclareOption{times}{\PHD@timestrue}
 
-\newif\ifPHD@fourier\PHD@fourierfalse % Fourier with Math Support
+\newif\ifPHD@fourier\PHD@fourierfalse         % Fourier with Math Support
 \DeclareOption{fourier}{\PHD@fouriertrue}
 
-\newif\ifPHD@customfont\PHD@customfontfalse % Custom Font with Math Support
+\newif\ifPHD@customfont\PHD@customfontfalse   % Custom Font with Math Support
 \DeclareOption{customfont}{\PHD@customfonttrue}
 
 % ******************************* Bibliography *********************************
-\newif\ifsetBib\setBibfalse % Using Custom Bibliography
+\newif\ifsetBib\setBibfalse                   % Custom Bibliography = true/false
+\newif\ifsetBiBLaTeX\setBiBLaTeXfalse         % BiBLaTeX = True / False
 
-\newif\ifPHD@authoryear\PHD@authoryearfalse % Author-Year citation
+\newif\ifPHD@biblatex\PHD@biblatexfalse       % BiBLaTeX
+\DeclareOption{biblatex}{\PHD@biblatextrue}
+
+\newif\ifPHD@authoryear\PHD@authoryearfalse   % Author-Year citation
 \DeclareOption{authoryear}{\PHD@authoryeartrue}
 
-\newif\ifPHD@numbered\PHD@numberedfalse % Numbered citiation
+\newif\ifPHD@numbered\PHD@numberedfalse       % Numbered citiation
 \DeclareOption{numbered}{\PHD@numberedtrue}
 
-\newif\ifPHD@custombib\PHD@custombibfalse % Custom Bibliography
+\newif\ifPHD@custombib\PHD@custombibfalse     % Custom Bibliography
 \DeclareOption{custombib}{\PHD@custombibtrue}
 
 % ************************* Header / Footer Styling ****************************
@@ -77,6 +83,16 @@ the Title page and an abstract with PhD title and author name, if this was
 intentional, ignore this warning. Congratulations on submitting your thesis!!
 If not, please remove the option `abstract' from the document class and
 recompile. Good luck with your writing!}
+  \PassOptionsToClass{oneside}{book}
+}
+
+% ****************** Chapter Mode - To print only selected chapters ************
+\newif \ifdefineChapter\defineChapterfalse %To enable Separate abstract
+
+\newif\ifPHD@chapter\PHD@chapterfalse % Enable Separate Abstract
+\DeclareOption{chapter}{
+  \PHD@chaptertrue     
+  \ClassWarning{PhDThesisPSnPDF}{You have chosen an option that generates only selected chapters with references, if this was intentional, ignore this warning. If not, please remove the option `chapter' from the document class and recompile. Good luck with your writing!}
 }
 
 \ProcessOptions\relax%
@@ -114,7 +130,7 @@ PhD thesis guidelines recommend using A4 or A5paper}
 \DeclareOption{twoside}{\PassOptionsToClass{\CurrentOption}{book}}%
 
 % Draft Mode
-\DeclareOption{draft}{\PassOptionsToClass{\CurrentOption}{book}}%
+\DeclareOption{draft}{\PassOptionsToClass{\CurrentOption}{book}\PHD@drafttrue}%
 
 % Generates Warning for unknown options
 \DeclareOption*{
@@ -148,9 +164,9 @@ supported!}
 % Defines a print / online version to define page-layout and hyperrefering 
 \ifsetDVI
 \special{papersize=\the\paperwidth,\the\paperheight}
-\RequirePackage[dvips]{hyperref}
+\RequirePackage[dvips,unicode=true]{hyperref}
 \else
-\RequirePackage[unicode]{hyperref}
+\RequirePackage[unicode=true]{hyperref}
 \pdfpagewidth=\the\paperwidth
 \pdfpageheight=\the\paperheight
 \fi
@@ -158,6 +174,7 @@ supported!}
 \if@print
     % For Print version
     \hypersetup{
+      final=true,
       plainpages=false, 
       pdfstartview=FitV,
       pdftoolbar=true, 
@@ -193,6 +210,7 @@ supported!}
 \else
     % For PDF Online version
     \hypersetup{
+      final=true
       plainpages=false,
       pdfstartview=FitV, 
       pdftoolbar=true, 
@@ -224,6 +242,13 @@ supported!}
 \fi
 
 
+\ifPHD@draft
+\usepackage[switch,pagewise,mathlines]{lineno}
+\renewcommand{\frontmatter}{\nolinenumbers}
+\renewcommand{\mainmatter}{\linenumbers}
+\renewcommand{\backmatter}{\linenumbers}
+
+\fi
 
 % ******************************************************************************
 % ******************************** Packages ************************************
@@ -231,7 +256,7 @@ supported!}
 
 
 % ************************** Layout and Formatting *****************************
-\def\pdfshellescape{1}
+\renewcommand\pdfshellescape{1}
 \RequirePackage{lscape}   % Supports Landscape Layout
 \RequirePackage{setspace} % Define line spacing in paragraph
 \RequirePackage{calc}     % To calculate vertical spacing
@@ -263,42 +288,49 @@ supported!}
 \fi
 
 
-% ************************ URL Package and Definition **************************
-\RequirePackage{url}
-% Redefining urlstyle to use smaller fontsize in References with URLs
-\newcommand{\url@leostyle}{%
- \@ifundefined{selectfont}{\renewcommand{\UrlFont}{\sf}}
- {\renewcommand{\UrlFont}{\small\ttfamily}}}
-\urlstyle{leo}
-
 % ******************************* Bibliography *********************************
 \ifPHD@authoryear
+\ifPHD@biblatex
+\RequirePackage[backend=biber, style=authoryear, citestyle=alphabetic, sorting=nty, natbib=true]{biblatex}
+\setBiBLaTeXtrue
+\else
 \RequirePackage[round, sort, numbers, authoryear]{natbib} %author year
+\fi
 \setBibtrue
 \else
      \ifPHD@numbered
+     \ifPHD@biblatex
+     \RequirePackage[backend=biber, style=numeric-comp, citestyle=numeric, sorting=none, natbib=true]{biblatex}
+     \setBiBLaTeXtrue
+     \else
      \RequirePackage[numbers,sort&compress]{natbib} % numbered citation
+     \fi
      \setBibtrue
      \else
          \ifPHD@custombib
          \setBibfalse
+         \ifPHD@biblatex
+             \setBiBLaTeXtrue
+         \fi
          \else
-         \RequirePackage[numbers,sort&compress]{natbib} % Default - numbered
+             \ifPHD@biblatex
+                 \RequirePackage[backend=biber, style=numeric-comp, citestyle=numeric, sorting=none, natbib=true]{biblatex}
+                 \setBiBLaTeXtrue
+             \else
+                 \RequirePackage[numbers,sort&compress]{natbib} % Default - numbered
+             \fi
          \setBibtrue
 	 \ClassWarning{PhDThesisPSnPDF}{No bibliography style was specified.
 Default numbered style is used. If you would like to use a different style, use
 `authoryear' or `numbered' in the options in documentclass or use `custombib`
-and define the natbibpackage with required style in the Preamble.tex file}
+and define the natbib package or biblatex package with required style in the Preamble.tex file}
          \fi
      \fi
 \fi
 
 
-
 % *********************** To copy ligatures and Fonts **************************
 \RequirePackage{textcomp}
-\RequirePackage[utf8]{inputenc}
-\RequirePackage[T1]{fontenc}
 
 % Font Selection
 \ifPHD@times
@@ -322,6 +354,9 @@ font in the preamble.tex file by specifying `customfont' in the class options}
     \fi
 \fi
 
+\RequirePackage[utf8]{inputenc}
+\RequirePackage[T1]{fontenc}
+
 \input{glyphtounicode}
 \pdfglyphtounicode{f_f}{FB00}
 \pdfglyphtounicode{f_i}{FB01}
@@ -329,6 +364,22 @@ font in the preamble.tex file by specifying `customfont' in the class options}
 \pdfglyphtounicode{f_f_i}{FB03}
 \pdfglyphtounicode{f_f_l}{FB04}
 \pdfgentounicode=1
+
+
+% ************************ URL Package and Definition **************************
+\RequirePackage{url}
+% Redefining urlstyle to use smaller fontsize in References with URLs
+\newcommand{\url@leostyle}{%
+ \@ifundefined{selectfont}{\renewcommand{\UrlFont}{\sffamily}}
+ {\renewcommand{\UrlFont}{\normalsize}}}
+\urlstyle{leo}
+
+% option to split urls over multiple lines for latex >> DVIPS >> PDF option
+% PDFLaTeX does it automatically.
+
+\ifsetDVI
+\RequirePackage{breakurl} % to split the url over multiple lines
+\fi
 
 % ******************************************************************************
 % **************************** Pre-defined Settings ****************************
@@ -432,6 +483,16 @@ font in the preamble.tex file by specifying `customfont' in the class options}
   \renewcommand{\thepage}{\roman{page}}}
 {\newpage\renewcommand{\thepage}{\arabic{page}}}
 
+% ******************************* Appendices **********************************
+% Appending the appendix name to the letter in TOC
+% Especially when backmatter is enabled
+
+%\renewcommand\backmatter{
+%    \def\chaptermark##1{\markboth{%
+%        \ifnum  \c@secnumdepth > \m@ne  \@chapapp\ \thechapter:  \fi  ##1}{%
+%        \ifnum  \c@secnumdepth > \m@ne  \@chapapp\ \thechapter:  \fi  ##1}}%
+%    \def\sectionmark##1{\relax}}
+
 
 % ******************************************************************************
 % **************************** Macro Definitions *******************************
@@ -527,7 +588,7 @@ font in the preamble.tex file by specifying `customfont' in the class options}
 % Submission Text
 {\large \submissiontext \par}
 \vspace*{1ex}
-{\large \it {\@degree} \par} 
+{\large \textit {\@degree} \par} 
 
 
 \end{center}
@@ -576,21 +637,21 @@ font in the preamble.tex file by specifying `customfont' in the class options}
 
 
 
-% ****************************** Acknowlegments ********************************
+% ****************************** Acknowledgements ********************************
 % The acknowledgements environment puts a large, bold, centered 
 % "Acknowledgements" label at the top of the page.
 
 \newenvironment{acknowledgements}{
 \cleardoublepage
 \setsinglecolumn
-\chapter*{\centering \Large Acknowlegements}
+\chapter*{\centering \Large Acknowledgements}
 \thispagestyle{empty}
 }
 
 
 
 % ******************************* Nomenclature *********************************
-\usepackage{nomencl}
+\RequirePackage{nomencl}
 \makenomenclature
 \renewcommand{\nomgroup}[1]{%
 \ifthenelse{\equal{#1}{A}}{\item[\textbf{Roman Symbols}]}{%
@@ -631,6 +692,24 @@ font in the preamble.tex file by specifying `customfont' in the class options}
     \newcommand{\printthesisindex}{}
 \fi
 
+% ***************************** Chapter Mode ***********************************
+% The chapter mode allows user to only print particular chapters with references
+% All other options are disabled by default
+% To include only specific chapters without TOC, LOF, Title and Front Matter
+% To send it to supervisior for changes
+
+\ifPHD@chapter
+    \defineChaptertrue
+    % Disable the table of contents, figures, tables, index and nomenclature
+    \renewcommand{\maketitle}{}
+    \renewcommand{\tableofcontents}{}
+    \renewcommand{\listoffigures}{}
+    \renewcommand{\listoftables}{}
+    \renewcommand{\printnomencl}{}
+    \renewcommand{\printthesisindex}{}
+\else
+    \defineChapterfalse
+\fi
 
 % ******************************** Abstract ************************************
 % The abstract environment puts a large, bold, centered "Abstract" label at
@@ -721,7 +800,7 @@ font in the preamble.tex file by specifying `customfont' in the class options}
 \begin{center}
 \large \submissiontext \par
 \vspace*{1ex}
-\large \it {\@degree} \par
+\large \textit {\@degree} \par
 \end{center}
 \end{minipage}
 \end{lrbox}
