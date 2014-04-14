@@ -43,8 +43,8 @@ in which \textit{C} is the lattice speed, which is defined as:
 where $\Delta \mathit{t}$ is the discrete time step. The primary variables in the Lattice Boltzmann formulation are called the \textit{fluid density distribution functions}, $\mathit{f_i}$, each relating the probable amount of fluid particles moving with the velocity $\mathit{e_i}$ along the $\mathit{i^{th}}$ direction at each node. The macroscopic variables are defined as functions of the particle distribution functions (see \cref{fig:D2Q9}), according to:
 \begin{align} 
  \nonumber
-\rho & = & \sum\limits_{\mathit{i}=0}^{\beta - 1}{\mathit{f_i}} \qquad \mbox{(macroscopic fluid density)} \\
-\overrightarrow{\mathit{u}} & = & \frac{1}{\rho} \sum\limits_{\mathit{i}=0}^{\beta -1}{\mathit{f_i}\overrightarrow{\mathit{e_i}}} \quad \mbox{(macroscopic velocity)}
+\rho = \sum\limits_{\mathit{i}=0}^{\beta - 1}{\mathit{f_i}} \qquad \mbox{(macroscopic fluid density)} \\
+\overrightarrow{\mathit{u}} = \frac{1}{\rho} \sum\limits_{\mathit{i}=0}^{\beta -1}{\mathit{f_i}\overrightarrow{\mathit{e_i}}} \quad \mbox{(macroscopic velocity)}
 \label{eq:lbm_macroscopic}
 \end{align} 
 where $\mathit{i} \in [0, \beta -1]$ is an index spanning the discretised momentum space. There are nine fluid density distribution functions, $\mathit{f_i}(\mathit{i}=0,\dots,8)$, associated with each node in the \textit{D2Q9} model. The evolution of the density distribution function at each time step for every lattice point is governed by:
@@ -128,31 +128,31 @@ where $-\mathit{i}$ denotes the opposite direction of \textit{i}. The bounce bac
 
 \subsubsection*{Pressure and velocity boundary condition}
 The pressure (Drichlet) boundary condition can be imposed in Lattice Boltzmann by specifying a fluid density at the pressure boundary~\citep{Zou1997}. To impose a pressure boundary along the y-direction (inlet, left side boundary in ~\cref{fig:LBM_Poiseuille}), a density $\rho = \rho_{in}$ is specified from which velocity is computed. Assuming the vertical component of the velocity on the boundary is zero, $u_y=0$. After streaming, $f_2, f_3, f_4, f_6, f_7$ are known, $u_x$ and $f_1, f_5, f_8$ are to be determined from ~\cref{eq:lbm_macroscopic} as following:
-\begin{align}
-f_1+f5+f_8 & = & \rho_{in} - (f_0+f_2+f_3+f_4+f_6+f_7) \label{eq:pressure1}\\
-f_1+f5+f_8 & = & \rho_{in}u_x + (f_3+f_6+f_7) \label{eq:pressure2} \\
-f_5 - f_8  & = & f_2 - f_4 +f_6 -f_7
-\end{align}
+\begin{gather}
+f_1+f5+f_8 = \rho_{in} - (f_0+f_2+f_3+f_4+f_6+f_7) \label{eq:pressure1}\\
+f_1+f5+f_8 = \rho_{in}u_x + (f_3+f_6+f_7) \label{eq:pressure2} \\
+f_5 - f_8  = f_2 - f_4 +f_6 -f_7
+\end{gather}
 \noindent Consistency of \cref{eq:pressure1,eq:pressure2} gives
 \begin{align}
 u_x = 1 - \frac{[f_0+f_2+f_4+2*(f_3+f_6+f_7)]}{\rho_{in}}
 \end{align}
 Using bounce-back rule for the non-equilibrium part of the particle distribution normal to the inlet to find $f_1 -f_1^{eq} = f_3 -f_3^{eq}$. With $f_1$ known, $f_5,f_8$ are obtained as:
-\begin{align}
-f_1 & = & f_3 + \frac{2}{3} \rho_{in}u_x, \nonumber \\ 
-f_5 & = & f_7 - \frac{1}{2}(f_2 - f_4) + \frac{1}{6}\rho_{in}u_x,\nonumber \\ 
-f_8 & = & f_6 + \frac{1}{2}(f_2 - f_4) + \frac{1}{6}\rho_{in}u_x
-\end{align}
+\begin{gather}
+f_1 = f_3 + \frac{2}{3} \rho_{in}u_x, \nonumber \\ 
+f_5 = f_7 - \frac{1}{2}(f_2 - f_4) + \frac{1}{6}\rho_{in}u_x,\nonumber \\ 
+f_8 = f_6 + \frac{1}{2}(f_2 - f_4) + \frac{1}{6}\rho_{in}u_x
+\end{gather}
 The corner node at inlet needs some special treatment. Considering the bottom node at inlet as example, after streaming, $f_3, f_4, f_7$ are known; $\rho$ is define, and $u_x = u_y = 0$. The particle distribution functions $f_1, f_2, f_5, f_6, f_8$ are to be determined. The bounce-back rule for the non-equilibrium part of the particle distribution normal to the inlet and the boundary is used to find:
-\begin{align}
-f_1 & = & f_3 + (f_1^{eq}-f_3^{eq}) = f_3 \\
-f_2 & = & f_4 + (f_1^{eq}-f_3^{eq}) = f_4
-\end{align}
+\begin{gather}
+f_1 = f_3 + (f_1^{eq}-f_3^{eq}) = f_3 \\
+f_2 = f_4 + (f_1^{eq}-f_3^{eq}) = f_4
+\end{gather}
 \noindent Using these we find: 
-\begin{align}
-f_5 & = & f_7 \\
-f_6 & = & f_8 = \frac{1}{2}[\rho_{in} - (f_1 + f_2 + f_3 + f_4 + f_5 + f_6 + f_7 + f_8)]
-\end{align}
+\begin{gather}
+f_5 = f_7 \\
+f_6 = f_8 = \frac{1}{2}[\rho_{in} - (f_1 + f_2 + f_3 + f_4 + f_5 + f_6 + f_7 + f_8)]
+\end{gather}
 
 Similar procedure can be applied to top inlet node and outlet nodes. Von Neumann boundary conditions constrain the flux at the boundaries. A velocity vector $u=\left[ u_0\mbox{ }v_0 \right]^T$ is specified from which density/pressure is computed based on the domain. The velocity boundary condition can be specified in a similar way~\citep{Zou1997}. The pressure and velocity boundary conditions contribute additional equation(s) to determine the unknown distribution functions. In the velocity boundary, the equation is sufficient to determine the unknown distribution functions in \textit{D2Q9} model, however the pressure boundary conditions require additional constitutive laws to determine the unknown distribution functions. 
 %************************************************************************************************************************************************************************************************ %
@@ -255,22 +255,22 @@ f_{\alpha}(\mathbf{x}+\mathbf{e}_i\Delta_t, t+ \Delta_t)-f_{\alpha}(\mathbf{x},t
 \end{align}
 
 \noindent where \textbf{S} is collision matrix. The nine eigen values of \textbf{S} are all between 0 and 2 so as to maintain linear stability and the separation of scales, which means that the relaxation times of non-conserved quantities are much faster than the hydrodynamic time scales. The LGBK model is the special case in which the nine relaxation times are all equal and the collision matrix $\mathbf{S}=\frac{1}{\tau}\mathbf{I}$, where \textbf{I} is the identity matrix. The evolutionary progress involves two steps, advection and flux:
-\begin{align}
-f_{\alpha}^+(\mathbf{x},t)-f_{\alpha}(\mathbf{x},t) & = & -\mathbf{S}_{\alpha i}(f_i(\mathbf{x},t)-f_i^{eq}(\mathbf{x},t) \label{eq:advection}\\
-f_{\alpha}(\mathbf{x}+e_{\alpha}\Delta_t, t+\Delta_t) & = & f_{\alpha}^+(\mathbf{x},t)
-\end{align}
+\begin{gather}
+f_{\alpha}^+(\mathbf{x},t)-f_{\alpha}(\mathbf{x},t) = -\mathbf{S}_{\alpha i}(f_i(\mathbf{x},t)-f_i^{eq}(\mathbf{x},t) \label{eq:advection}\\
+f_{\alpha}(\mathbf{x}+e_{\alpha}\Delta_t, t+\Delta_t) = f_{\alpha}^+(\mathbf{x},t)
+\end{gather}
 \noindent The advection ~\cref{eq:advection} can be mapped to the momentum space by multiplying through by a transformation matrix \textbf{M} and the flux is still finished in the velocity space. The evolutionary equation of the multi-relaxation time lattice Boltzmann equation is written as:
-\begin{align}
+\begin{gather}
 \mathbf{f}(\mathbf{x}+\mathbf{e}_i\Delta_t, t+ \Delta_t)-\mathbf{f}(\mathbf{x},t)=-M^{-1}\hat{\mathbf{S}}(\hat{\mathbf{f}}(\mathbf{x},t)-\hat{\mathbf{f}}^{eq}(\mathbf{x},t))
-\end{align}
+\end{gather}
 \noindent where \textbf{M} is the tranformation matrix mapping a vector \textbf{f} in the discrete velocity space $\mathds{V}=\mathds{R}^b$ to a vector $\hat{\mathbf{f}}$ in the moment space $\mathds{V}=\mathds{R}^b$. 
 
-\begin{align}
+\begin{gather}
 \nonumber
 \hat{\mathbf{f}}= \mathbf{M}\mathbf{f} \\ 
 \nonumber
 \mathbf{f}(\mathbf{x},t) =\left[f_0(\mathbf{x},t),f_1(\mathbf{x},t),\dots f_8(\mathbf{x},t)\right]^T
-\end{align}
+\end{gather}
 
 The collision matrix $\hat{\mathbf{S}} = MSM^{-1}$ in moment space is a diagonal matrix: $\hat{\mathbf{S}} =\mbox{diag} \left[ s_1, s_2, s_3,\dots s_9  \right]$. The transformation matrix \textbf{M} can be constructed via Gram-Schmidt orthgonalisation procedure. The general form of the transformation matrix \textbf{M} can be written as:
 
