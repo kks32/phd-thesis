@@ -8,7 +8,12 @@
 
 
 \section{Fluid simulation using Lattice Boltzmann Method}
-The Navier-Stokes equation describes the motion of a non-turbulent Newtonian fluid. The equation is obtained by applying Newton's second law to the fluid motion, together with an assumption that the fluid stress is the sum of the viscous term, proportional to the gradient of velocity, and the pressure term. Conventional methods of Computational Fluid Dynamics (CFD) compute pertinent flow fields, such as velocity \textit{u} and pressure \textit{p}, by numerically solving Navier-Stokes equation in space \textit{x} and time \textit{t}. Alternatively, the transport equation or the Boltzmann equation, which deals with the single particle distribution function $f(x,\xi,t)$ in phase space $(x,\xi)$ and time \textit{t}, can be used to solve various problems in fluid dynamics. 
+
+The Euler-Lagrange Discrete Particle technique is used to model particle -- fluid flows. The
+development of an effective numerical modelling framework for this type of problem is, however,
+very challenging due to the inherent complexity in the problem. Development of a numerical framework depends crucially on the size of the soil grains in relation to the domain/mesh size~\citep{Feng2007}. Traditionally, the Navier-Stokes equation, which describes the fluid-volume fraction, is solved by grid-based Computational Fluid Dynamics (CFD) methods, such as finite volume method~\citep{Capecelatro2013} or mesh-free techniques such as Smooth Particle Hydrodynamics~\citep{Sun2013}. The grid size in FVM or the smooth length in SPH for discretization of the fluid Navier–Stokes equation is at least an order of magnitude larger than the particle diameter. In this situation, computational effort is mostly devoted to particle dynamics and emprical-based fluid -- particle forces are applied using the domain-averaged concentration of the solid phase, which in turn determines the local porosity of the cell to be used in the fluid-phase computation. As a result, developing a fast fluid hydrodynamics solver is of little importance when the mean particle loading is not low.  However, for problems in which particle sizes are large and extend over more than one grid / element size -- given the need for a minimum grid / element size to resolve the fluid problem—alternative solution strategies must be adopted.   
+ 
+The Navier-Stokes equation describes the motion of a non-turbulent Newtonian fluid. The equation is obtained by applying Newton's second law to the fluid motion, together with an assumption that the fluid stress is the sum of the viscous term, proportional to the gradient of the velocity, and the pressure term. Conventional methods of Computational Fluid Dynamics (CFD) compute pertinent flow fields, such as velocity \textit{u} and pressure \textit{p}, by numerically solving Navier-Stokes equation in space \textit{x} and time \textit{t}. Alternatively, the transport equation or the Boltzmann equation, which deals with the single particle distribution function $f(x,\xi,t)$ in phase space $(x,\xi)$ and time \textit{t}, can be used to solve various problems in fluid dynamics. 
 
 The Lattice Boltzmann Method (LBM)~\citep{He1997a,He1997b,Chen1998,Mei2000,Han2007,Zhou2012} is an alternative approach to the classical Navier-Stokes solvers for fluid flow and works on an equidistant grid of cells, called lattice cells, which interact only with their direct neighbours. In the Lattice Boltzmann Method, the discretisation of continuum equations is based on microscopic models and mesoscopic continuum theories. The Lattice Boltzmann Method is a special discretising scheme of the Boltzmann equation where the particle distribution functions (mass fractions) collide and propagate on a regular grid. The important aspect, however is the \textit{discretisation of the velocity}, which means that the particle velocities are restricted to a predefined set of orientations.
 
@@ -29,17 +34,19 @@ These lattices are usually classified in the literature using the $\mathit{D}\al
 The Lattice Boltzmann Method discretises the Boltzmann equation in space, to a finite number of possible particle spatial positions and microscopic momenta, and time. Particle positions are confined to the nodes of the lattice. The fluid particles at each node are allowed to move to their eight intermediate neighbours with eight different velocities $\mathit{e_i} (\mathit{i}=1,\dots,8)$. A particle can remain at the node, which is equivalent to moving with zero velocity $\mathit{e_o}$. The particle mass is uniform, hence these microscopic velocities and momentum are always effectively equivalent~\citep{Han2007}.
 
 Referring to the numbering system shown in ~\cref{fig:D2Q9}, these nine discrete velocity vectors are defined as:
+
 \begin{align} 
-\begin{cases}
-\mathit{e_o}=(0,0)\\
-\mathit{e_1}=\mathit{C}(1,0); \mathit{e_2}=\mathit{C}(0,1); \mathit{e_3}=\mathit{C}(-1,0); \mathit{e_4}=\mathit{C}(0,-1); \\
-\mathit{e_5}=\mathit{C}(1,1); \mathit{e_6}=\mathit{C}(-1,1); \mathit{e_7}=\mathit{C}(-1,-1); \mathit{e_8}=\mathit{C}(1,-1); \\ 
-\end{cases}
+	\begin{cases}
+	\mathit{e_o}=(0,0)\\
+	\mathit{e_1}=\mathit{C}(1,0); \mathit{e_2}=\mathit{C}(0,1); \mathit{e_3}=\mathit{C}(-1,0); \mathit{e_4}=\mathit{C}(0,-1); \\
+	\mathit{e_5}=\mathit{C}(1,1); \mathit{e_6}=\mathit{C}(-1,1); \mathit{e_7}=\mathit{C}(-1,-1); \mathit{e_8}=\mathit{C}(1,-1); \\ 
+	\end{cases}
 \end{align}
+
 in which \textit{C} is the lattice speed, which is defined as:
-\begin{align}
-\mathit{C}=\mathit{h}/\Delta t
-\end{align}
+\begin{equation}
+	\mathit{C}=\mathit{h}/\Delta t
+\end{equation}
 where $\Delta \mathit{t}$ is the discrete time step. The primary variables in the Lattice Boltzmann formulation are called the \textit{fluid density distribution functions}, $\mathit{f_i}$, each relating the probable amount of fluid particles moving with the velocity $\mathit{e_i}$ along the $\mathit{i^{th}}$ direction at each node. The macroscopic variables are defined as functions of the particle distribution functions (see \cref{fig:D2Q9}), according to:
 \begin{align} 
  \nonumber
