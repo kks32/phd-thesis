@@ -72,6 +72,7 @@ fluid solver and its theoretical aspects link well with the conventional
 central finite difference scheme~\citep{Cook2004}.
 
 \subsection{Formulation}
+
 The Lattice Boltzmann Method is a `micro-particle' based numerical 
 time-stepping procedure for the solution of incompressible fluid flows. 
 Consider a 2D incompressible fluid flow with density $\rho$ and kinematic 
@@ -81,13 +82,13 @@ domain is divided into a rectangular grid or lattice, with the same spacing
 in~\cref{fig:D2Q9}. 
 
 \begin{figure}[htpb]
-\centering
-\includegraphics[width=0.8\textwidth]{D2Q9}
-\caption[The Lattice Boltzmann discretisation and D2Q9 scheme]{The Lattice 
-Boltzmann discretisation and D2Q9 scheme: (a) a standard LB lattice and 
-histogram views of the discrete single particle distribution 
-function/direction-specific densities $f_i$; (b) D2Q9 model}
-\label{fig:D2Q9}
+	\centering
+	\includegraphics[width=0.8\textwidth]{D2Q9}
+	\caption[The Lattice Boltzmann discretisation and D2Q9 scheme]{The Lattice 
+	Boltzmann discretisation and D2Q9 scheme: (a) a standard LB lattice and 
+	histogram views of the discrete single particle distribution 
+	function/direction-specific densities $f_i$; (b) D2Q9 model}
+	\label{fig:D2Q9}
 \end{figure}
 
 These lattices are usually classified in the literature using the $\mathit{D}\alpha\mathit{Q}\beta$-notation, where $\alpha$ denotes the space dimensionality and $\beta$ is the number of discrete velocities, but also including the possibility of having particle at rest) within the momentum discretisation. The most common lattices are the $\mathit{D2Q9}$ and the $\mathit{D3Q19}$-models, see ~\citet{He1997}. The present study focuses on two-dimensional problems, hence the $\mathit{D2Q9}$ momentum discretisation is adopted.
@@ -143,10 +144,10 @@ functions, $\mathit{f_i}(\mathit{i}=0,\dots,8)$, associated with each node in
 the \textit{D2Q9} model. The evolution of the density distribution function at 
 each time step for every lattice point is governed by:
 
-\begin{align} 
+\begin{equation} 
 \label{eq:stream}
 \mathit{f_i}(\mathbf{x}+\mathbf{e}_{\mathit{i}} \Delta t, t + \Delta t) = \mathit{f_i}(\mathbf{x},t) - \frac{1}{\tau} [\mathit{f_i}(\mathbf{x},t) -\mathit{f_i}^{\mathit{eq}}(\mathbf{x},t)] \quad (\mathit{i}=0,\dots,8)
-\end{align}
+\end{equation}
 
 \noindent where for any grid node $\mathbf{x},\mathbf{x}+\mathbf{e_i} \Delta t$ 
 is its nearest node along the direction $\mathit{i}$. $\tau$ is a 
@@ -155,24 +156,24 @@ viscosity; and $\mathit{f_i}^{\mathit{eq}}$ is termed as the equilibrium
 distribution function, and is defined as:
 
 \begin{align}
-\begin{cases}
-\mathit{f}_{\mathit{0}}^{\mathit{eq}}=\mathit{w}_{\mathit{0}} \rho (1 - 
-\frac{3}{2\mathit{C}^{\mathit{2}}}\mathbf{v}.\mathbf{v}) \\ 
-\vspace*{2mm}
-\mathit{f_i}^{\mathit{eq}}=\mathit{w_i} \rho (1 + 
-\frac{3}{\mathit{C}^{\mathit{2}}}\mathbf{e}_{\mathit{i}}.\mathbf{v} 
-\frac{9}{2\mathit{C}^{\mathit{2}}} 
-(\mathbf{e}_{\mathit{i}}.\mathbf{v})^{\mathit{2}}-\frac{3}{2 
-\mathit{C}^{\mathit{2}}}\mathbf{v}.\mathbf{v}) \quad (\mathit{i}=0,\dots,8)
-\end{cases}
+	\begin{cases}
+	\mathit{f}_{\mathit{0}}^{\mathit{eq}}=\mathit{w}_{\mathit{0}} \rho (1 - 
+	\frac{3}{2\mathit{C}^{\mathit{2}}}\mathbf{v}.\mathbf{v}) \\ 
+	\vspace*{2mm}
+	\mathit{f_i}^{\mathit{eq}}=\mathit{w_i} \rho (1 + 
+	\frac{3}{\mathit{C}^{\mathit{2}}}\mathbf{e}_{\mathit{i}}.\mathbf{v} 
+	\frac{9}{2\mathit{C}^{\mathit{2}}} 
+	(\mathbf{e}_{\mathit{i}}.\mathbf{v})^{\mathit{2}}-\frac{3}{2 
+	\mathit{C}^{\mathit{2}}}\mathbf{v}.\mathbf{v}) \quad (\mathit{i}=0,\dots,8)
+	\end{cases}
 \end{align}
 
 \noindent in which, $\mathit{w_i}$ represents the fixed weighting values:
 
-\begin{align}
-\mathit{w}_{\mathit{0}} = \frac{4}{9}; \quad \mathit{w}_{\mathit{1,2,3,4}}= 
-\frac{1}{9}; \quad \mathit{w}_{\mathit{5,6,7,8}}= \frac{1}{36}
-\end{align}
+\begin{equation}
+	\mathit{w}_{\mathit{0}} = \frac{4}{9}; \quad \mathit{w}_{\mathit{1,2,3,4}}= 
+	\frac{1}{9}; \quad \mathit{w}_{\mathit{5,6,7,8}}= \frac{1}{36}
+\end{equation}
 
 The right-hand side of ~\cref{eq:stream} is often denoted by 
 $\mathit{f_i}(\mathbf{x}, \mathit{t}_{+})$ and termed the post collision 
@@ -199,65 +200,67 @@ mass and momentum are invariants. In incompressible flows, the energy
 conservation is equivalent to momentum conservation~\citep{He1997}.
 
 \begin{figure}[htpb]
-\centering
-\includegraphics[width=0.95\textwidth]{stream}
-\caption[Illustration of the streaming process on a \textit{D2Q9} 
-lattice]{Illustration of the streaming process on a \textit{D2Q9} lattice. The 
-magnitude of the distribution functions remains unchanged, but they move to a 
-neighbouring node according to their direction.}
-\label{fig:stream}
+	\centering
+	\includegraphics[width=0.95\textwidth]{stream}
+	\caption[Illustration of the streaming process on a \textit{D2Q9} 
+	lattice]{Illustration of the streaming process on a \textit{D2Q9} lattice. 
+	The magnitude of the distribution functions remains unchanged, but they 
+	move to a neighbouring node according to their direction.}
+	\label{fig:stream}
 \end{figure}
 
 \begin{figure}[htbp]
-\centering
-\includegraphics[width=0.95\textwidth]{collision}
-\caption[Illustration of the collision process on a \textit{D2Q9} 
-lattice]{Illustration of the collision process on a \textit{D2Q9} lattice. The 
-local density $\rho$ and velocity $\mathbf{v}$ are conserved, but the 
-distribution functions change according to the relaxation to local Maxwellian 
-rule}
-\label{fig:collision}
+	\centering
+	\includegraphics[width=0.95\textwidth]{collision}
+	\caption[Illustration of the collision process on a \textit{D2Q9} 
+	lattice]{Illustration of the collision process on a \textit{D2Q9} lattice. 
+	The local density $\rho$ and velocity $\mathbf{v}$ are conserved, but the 
+	distribution functions change according to the relaxation to local 
+	Maxwellian rule}
+	\label{fig:collision}
 \end{figure} 
 
 The standard macroscopic fluid variables, density $\rho$ and velocity 
 $\mathbf{\mathit{ v}}$, can be recovered from the distribution functions as:
 
-\begin{align}
-\rho = \sum\limits_{\mathit{i}=0}^{8}{\mathit{f_i}} \qquad \rho \mathbf{v} = \sum\limits_{\mathit{i}=0}^{8}{\mathit{f_i}}\mathbf{\mathit{e_i}}
-\end{align}
+\begin{equation}
+	\rho = \sum\limits_{\mathit{i}=0}^{8}{\mathit{f_i}} \qquad \rho \mathbf{v} 
+	= \sum\limits_{\mathit{i}=0}^{8}{\mathit{f_i}}\mathbf{\mathit{e_i}}
+\end{equation}
 
 The fluid pressure field \textit{p} is determined by the following equation of 
 state:
 
-\begin{align}
-\mathit{p}=\mathit{C_s}^{2} \rho
-\end{align}
+\begin{equation}
+	\mathit{p}=\mathit{C_s}^{2} \rho
+\end{equation}
 
-where $\mathit{C_s}$ is termed the fluid speed of sound and is related to the 
-lattice speed \textit{C} by
+\noindent where $\mathit{C_s}$ is termed the fluid speed of sound and is 
+related to the lattice speed \textit{C} by
 
-\begin{align}
-\mathit{C_s}=\mathit{C}/\sqrt{3}
-\end{align}
+\begin{equation}
+	\mathit{C_s}=\mathit{C}/\sqrt{3}
+\end{equation}
 
 The kinematic viscosity of the fluid \textbf{\textit{v}} is implicitly 
 determined by the model parameters \textit{h}, $\Delta \mathit{t}$ and $\tau$ 
 as:
 
-\begin{align}
-\mathit{v}=\frac{1}{3}(\tau - \frac{1}{2})\frac{\mathit{h}^{2}}{\Delta \mathit{t}} = \frac{1}{3}(\tau - \frac{1}{2})\mathit{Ch}
-\end{align}
+\begin{equation}
+	\mathit{v}=\frac{1}{3}(\tau - \frac{1}{2})\frac{\mathit{h}^{2}}{\Delta 
+	\mathit{t}} = \frac{1}{3}(\tau - \frac{1}{2})\mathit{Ch}
+\end{equation}
 
-which indicates that these three parameters are related to each other and have 
-to be appropriately selected to represent the correct fluid viscosity. An 
-additional constraint to the parameter selection is the lattice speed 
+\noindent which indicates that these three parameters are related to each other 
+and have to be appropriately selected to represent the correct fluid viscosity. 
+An additional constraint to the parameter selection is the lattice speed 
 \textit{C}, which must be sufficiently large in comparison with the maximum 
 fluid velocity $\mathit{v}_{\mathit{max}}$ in the simulation, to ensure 
 accuracy of the solution. This is measured by the `computational' Mach number, 
 $\mathit{M}_{\mathit{a}}$, defined by
 
 \begin{align}
-\mathit{M}_{\mathit{a}}=\frac{\mathit{v}_{\mathit{max}}}{\mathit{C}}
+	\mathit{M}_{\mathit{a}}=\frac{\mathit{v}_{\mathit{max}}}{\mathit{C}}
 \end{align}
 
 Theoretically, the Mach number is required to be $\mathit{M}_{\mathit{a}}<< 1$. 
@@ -267,8 +270,9 @@ to choose \textit{h} and $\tau$ as two independent parameters and $\Delta
 \mathit{t}$ as the derived parameter, using the following equation.
 
 \begin{align}
-\Delta \mathit{t} = (\tau - \frac{1}{2}) \frac{h^{2}}{3\mathit{v}}
+	\Delta \mathit{t} = (\tau - \frac{1}{2}) \frac{h^{2}}{3\mathit{v}}
 \end{align}
+
 It can be observed that $\tau$ has to be $\tau > 1/2$ \citep{He1997}. Since 
 there is no a priori estimation available to determine appropriate values of 
 \textit{h} and $\tau$ for a fluid flow problem with given fluid viscosity 
