@@ -1,4 +1,4 @@
-\chapter{Numerical Modelling of Granular Flows}
+\chapter{Numerical modelling of granular flows}
 
 \ifpdf
     \graphicspath{{Chapter3/figs/raster/}{Chapter3/figs/pdf/}{Chapter3/figs/}}
@@ -7,13 +7,41 @@
 \fi
 
 
-\section{Fluid simulation using Lattice Boltzmann Method}
+\section{Fluid simulation using Lattice Boltzmann method}
 
-The Euler-Lagrange Discrete Particle technique is used to model particle -- fluid flows. The
-development of an effective numerical modelling framework for this type of problem is, however,
-very challenging due to the inherent complexity in the problem. Development of a numerical framework depends crucially on the size of the soil grains in relation to the domain/mesh size~\citep{Feng2007}. Traditionally, the Navier-Stokes equation, which describes the fluid-volume fraction, is solved by grid-based Computational Fluid Dynamics (CFD) methods, such as finite volume method~\citep{Capecelatro2013} or mesh-free techniques such as Smooth Particle Hydrodynamics~\citep{Sun2013}. The grid size in FVM or the smooth length in SPH for discretization of the fluid Navier–Stokes equation is at least an order of magnitude larger than the particle diameter. In this situation, computational effort is mostly devoted to particle dynamics and emprical-based fluid -- particle forces are applied using the domain-averaged concentration of the solid phase, which in turn determines the local porosity of the cell to be used in the fluid-phase computation. As a result, developing a fast fluid hydrodynamics solver is of little importance when the mean particle loading is not low.  However, for problems in which particle sizes are large and extend over more than one grid / element size -- given the need for a minimum grid / element size to resolve the fluid problem—alternative solution strategies must be adopted.   
+The Euler-Lagrange Discrete Particle technique is used to model particle -- 
+fluid flows. The development of an effective numerical modelling framework for 
+this type of problem is, however, very challenging due to the inherent 
+complexity in the problem. Development of a numerical framework depends 
+crucially on the size of the soil grains in relation to the domain/mesh 
+size~\citep{Feng2007}. Traditionally, the Navier-Stokes equation, which 
+describes the fluid-volume fraction, is solved by grid-based Computational 
+Fluid Dynamics (CFD) methods, such as finite volume 
+method~\citep{Capecelatro2013} or mesh-free techniques such as Smooth Particle 
+Hydrodynamics~\citep{Sun2013}. The grid size in FVM or the smooth length in SPH 
+for discretisation of the fluid Navier–Stokes equation is at least an order of 
+magnitude larger than the particle diameter. In this situation, computational 
+effort is mostly devoted to particle dynamics and empirical-based fluid -- 
+particle forces are applied using the domain-averaged concentration of the 
+solid phase, which in turn determines the local porosity of the cell to be used 
+in the fluid-phase computation. As a result, developing a fast fluid 
+hydrodynamics solver is of little importance when the mean particle loading is 
+not low.  However, for problems in which particle sizes are large and extend 
+over more than one grid / element size -- given the need for a minimum grid / 
+element size to resolve the fluid problem — alternative solution strategies 
+must be adopted.  
  
-The Navier-Stokes equation describes the motion of a non-turbulent Newtonian fluid. The equation is obtained by applying Newton's second law to the fluid motion, together with an assumption that the fluid stress is the sum of the viscous term, proportional to the gradient of the velocity, and the pressure term. Conventional methods of Computational Fluid Dynamics (CFD) compute pertinent flow fields, such as velocity \textit{u} and pressure \textit{p}, by numerically solving Navier-Stokes equation in space \textit{x} and time \textit{t}. Alternatively, the transport equation or the Boltzmann equation, which deals with the single particle distribution function $f(x,\xi,t)$ in phase space $(x,\xi)$ and time \textit{t}, can be used to solve various problems in fluid dynamics. 
+The Navier-Stokes equation describes the motion of a non-turbulent Newtonian 
+fluid. The equation is obtained by applying Newton's second law to the fluid
+motion, together with an assumption that the fluid stress is the sum of the 
+viscous term, proportional to the gradient of the velocity, and the pressure 
+term. Conventional methods of Computational Fluid Dynamics (CFD) compute 
+pertinent flow fields, such as velocity \textit{u} and pressure \textit{p}, by 
+numerically solving Navier-Stokes equation in space \textit{x} and time 
+\textit{t}. Alternatively, the transport equation or the Boltzmann equation, 
+which deals with the single particle distribution function $f(x,\xi,t)$ in 
+phase space $(x,\xi)$ and time \textit{t}, can be used to solve various 
+problems in fluid dynamics. 
 
 The Lattice Boltzmann Method (LBM)~\citep{He1997a,He1997b,Chen1998,Mei2000,Han2007,Zhou2012} is an alternative approach to the classical Navier-Stokes solvers for fluid flow and works on an equidistant grid of cells, called lattice cells, which interact only with their direct neighbours. In the Lattice Boltzmann Method, the discretisation of continuum equations is based on microscopic models and mesoscopic continuum theories. The Lattice Boltzmann Method is a special discretising scheme of the Boltzmann equation where the particle distribution functions (mass fractions) collide and propagate on a regular grid. The important aspect, however is the \textit{discretisation of the velocity}, which means that the particle velocities are restricted to a predefined set of orientations.
 
@@ -261,7 +289,14 @@ In the formulation of the linear Boltzmann equation with multiple relaxation tim
 f_{\alpha}(\mathbf{x}+\mathbf{e}_i\Delta_t, t+ \Delta_t)-f_{\alpha}(\mathbf{x},t)=-\mathbf{S}_{\alpha i}(f_i(\mathbf{x},t)-f_i^{eq}(\mathbf{x},t)
 \end{align}
 
-\noindent where \textbf{S} is collision matrix. The nine eigen values of \textbf{S} are all between 0 and 2 so as to maintain linear stability and the separation of scales, which means that the relaxation times of non-conserved quantities are much faster than the hydrodynamic time scales. The LGBK model is the special case in which the nine relaxation times are all equal and the collision matrix $\mathbf{S}=\frac{1}{\tau}\mathbf{I}$, where \textbf{I} is the identity matrix. The evolutionary progress involves two steps, advection and flux:
+\noindent where \textbf{S} is collision matrix. The nine eigen values of 
+\textbf{S} are all between 0 and 2 so as to maintain linear stability and the 
+separation of scales, which means that the relaxation times of non-conserved 
+quantities are much faster than the hydrodynamic time scales. The LGBK model is 
+the special case in which the nine relaxation times are all equal and the 
+collision matrix $\mathbf{S}=\frac{1}{\tau}\mathbf{I}$, where \textbf{I} is the 
+identity matrix. The evolutionary progress involves two steps, advection and 
+flux:
 \begin{gather}
 f_{\alpha}^+(\mathbf{x},t)-f_{\alpha}(\mathbf{x},t) = -\mathbf{S}_{\alpha i}(f_i(\mathbf{x},t)-f_i^{eq}(\mathbf{x},t) \label{eq:advection}\\
 f_{\alpha}(\mathbf{x}+e_{\alpha}\Delta_t, t+\Delta_t) = f_{\alpha}^+(\mathbf{x},t)
@@ -378,11 +413,32 @@ Then the total hydrodynamic force and torque exerted on the particle can be calc
 \begin{align}
 \mathbf{F} = \sum\limits_{\mathit{i}}{\mathbf{F}_{\mathit{i}}} \mbox{ }; \qquad \mathbf{T} = \sum\limits_{\mathit{i}}{\mathbf{T}_{\mathit{i}}}
 \end{align}
-\citet{Ladd2001} described a methodology that minimises the oscillations resulting from particles crossing lattice at very large speed. The fluid/particle force interaction method with momentum exchange method is coupled with the treatment of moving curved boundaries scheme~\citep{Yu2003a,Yu2003}. The simulation of the moving curved particle surfaces results in the intersection of links between two nodes at arbitrary distances~\citep{Iglberger2008}. These distance values are called as delta values:
-\begin{align}
+\citet{Ladd2001} described a methodology that minimises the oscillations 
+resulting from particles crossing lattice at very large speed. The 
+fluid/particle force interaction method with momentum exchange method is 
+coupled with the treatment of moving curved boundaries scheme~\citep{Yu2003}. 
+The simulation of the moving curved particle surfaces results in the 
+intersection of links between two nodes at arbitrary 
+distances~\citep{Iglberger2008}. These distance values are called as delta 
+values:
+\begin{equation}
 \delta = \frac{\mbox{Distance between fluid nod and particle surface}}{\mbox{Distance between fluid node and particle node}} \in [0,1]
-\end{align} 
-For each pair of neighbouring fluid and particle nodes, a delta value has to be calculated. Delta values of zero are not possible as nodes on the surface are considered as the particle node. The algorithm for computation of the $\delta$ value is presented in ~\citet{Iglberger2008}. ~\cref{fig:bouncemod} shows the three possible situations for delta values in the interval of [0,1]. Since the fluid particles in the LBM are always considered to move at the rate of a lattice per time step $(\delta \mathbf{x}/ \delta \mathbf{t})$, for delta values smaller than 0.5. For $\delta$ values larger than 0.5, the fluid particles would come to rest at an intermediate node $\mathbf{x}_{\mathit{i}}$. In order to calculate the reflected distribution function in node $\mathbf{x}_{\mathit{f}}$, an interpolation scheme has to be applied. The linear interpolation scheme of~\citet{Yu2003a, Yu2003} is used in the present study, which uses a single equation, irrespective of the value of $\delta$ being less or larger than 0.5, to the reflected distribution function, which is computed as:
+\end{equation} 
+For each pair of neighbouring fluid and particle nodes, a delta value has to be 
+calculated. Delta values of zero are not possible as nodes on the surface are 
+considered as the particle node. The algorithm for computation of the $\delta$ 
+value is presented in ~\citet{Iglberger2008}. ~\cref{fig:bouncemod} shows the 
+three possible situations for delta values in the interval of [0,1]. Since the 
+fluid particles in the LBM are always considered to move at the rate of a 
+lattice per time step $(\delta \mathbf{x}/ \delta \mathbf{t})$, for delta 
+values smaller than 0.5. For $\delta$ values larger than 0.5, the fluid 
+particles would come to rest at an intermediate node $\mathbf{x}_{\mathit{i}}$. 
+In order to calculate the reflected distribution function in node 
+$\mathbf{x}_{\mathit{f}}$, an interpolation scheme has to be applied. The 
+linear interpolation scheme of~\citet{Yu2003} is used in the present study, 
+which uses a single equation, irrespective of the value of $\delta$ being less 
+or larger than 0.5, to the reflected distribution function, which is computed 
+as:
 \begin{align}
  \nonumber
 \mathit{\mathit{f}}_{\overline{\alpha}}(\mathbf{x}_{\mathit{f}},t + \delta t) = & \frac{1}{1 + \delta} \cdot [(1-\delta)\cdot \mathit{\mathit{f}}_{\alpha}(\mathbf{x}_{\mathit{f}},t + \delta t) + \delta \cdot \mathit{\mathit{f}}_{\alpha}(\mathbf{x}_{\mathit{b}},t + \delta t)  \\
