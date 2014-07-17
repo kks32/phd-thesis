@@ -36,8 +36,9 @@
 % Captions: This makes captions of figures use a boldfaced small font.
 %\RequirePackage[small,bf]{caption}
 
-\RequirePackage[labelsep=space,tableposition=top]{caption}
-\renewcommand{\figurename}{Fig.} %to support older versions of captions.sty
+\RequirePackage[labelsep=space,tableposition=top,font=small,
+justification=justified]{caption}
+%\renewcommand{\figurename}{Fig.} %to support older versions of captions.sty
 
 
 % *************************** Graphics and figures *****************************
@@ -91,7 +92,8 @@
 % *****************************************************************************
 % *************************** Bibliography  and References ********************
 
-\usepackage{cleveref} %Referencing without need to explicitly state fig /table
+\usepackage[noabbrev]{cleveref} %Referencing without need to explicitly state 
+%fig /table
 
 % Add `custombib' in the document class option to use this section
 \ifuseCustomBib

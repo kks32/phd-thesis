@@ -92,7 +92,7 @@ function/direction-specific densities $f_i$; (b) D2Q9 model}
 
 These lattices are usually classified in the literature using the $\mathit{D}\alpha\mathit{Q}\beta$-notation, where $\alpha$ denotes the space dimensionality and $\beta$ is the number of discrete velocities, but also including the possibility of having particle at rest) within the momentum discretisation. The most common lattices are the $\mathit{D2Q9}$ and the $\mathit{D3Q19}$-models, see ~\citet{He1997}. The present study focuses on two-dimensional problems, hence the $\mathit{D2Q9}$ momentum discretisation is adopted.
 
-The Lattice Boltzmann Method discretises the Boltzmann equation in space, to a 
+The Lattice Boltzmann Method discretize the Boltzmann equation in space, to a 
 finite number of possible particle spatial positions and microscopic momenta, 
 and time. Particle positions are confined to the nodes of the lattice. The 
 fluid particles at each node are allowed to move to their eight intermediate 
@@ -118,37 +118,41 @@ in which \textit{C} is the lattice speed, which is defined as:
 	\mathit{C}=\mathit{h}/\Delta t
 \end{equation}
 
-where $\Delta \mathit{t}$ is the discrete time step. The primary variables in 
-the Lattice Boltzmann formulation are called the \textit{fluid density 
-distribution functions}, $\mathit{f_i}$, each relating the probable amount of 
-fluid particles moving with the velocity $\mathit{e_i}$ along the 
+\noindent where $\Delta \mathit{t}$ is the discrete time step. The primary 
+variables in the Lattice Boltzmann formulation are called the \textit{fluid 
+density distribution functions}, $\mathit{f_i}$, each relating the probable 
+amount of fluid particles moving with the velocity $\mathit{e_i}$ along the 
 $\mathit{i^{th}}$ direction at each node. The macroscopic variables are defined 
 as functions of the particle distribution functions (see \cref{fig:D2Q9}), 
 according to:
 
 \begin{align} 
- \nonumber
-\rho = \sum\limits_{\mathit{i}=0}^{\beta - 1}{\mathit{f_i}} \qquad \mbox{(macroscopic fluid density)} \\
-\overrightarrow{\mathit{u}} = \frac{1}{\rho} \sum\limits_{\mathit{i}=0}^{\beta -1}{\mathit{f_i}\overrightarrow{\mathit{e_i}}} \quad \mbox{(macroscopic velocity)}
-\label{eq:lbm_macroscopic}
+	\nonumber
+	&\rho = \sum\limits_{\mathit{i}=0}^{\beta - 1}{\mathit{f_i}} \qquad 
+	\mbox{(macroscopic fluid density)} \\
+	&\overrightarrow{\mathit{u}} = \frac{1}{\rho} 
+	\sum\limits_{\mathit{i}=0}^{\beta 
+	-1}{\mathit{f_i}\overrightarrow{\mathit{e_i}}} \quad \mbox{(macroscopic 
+	velocity)}
+	\label{eq:lbm_macroscopic}
 \end{align} 
 
-where $\mathit{i} \in [0, \beta -1]$ is an index spanning the discretised 
-momentum space. There are nine fluid density distribution functions, 
-$\mathit{f_i}(\mathit{i}=0,\dots,8)$, associated with each node in the 
-\textit{D2Q9} model. The evolution of the density distribution function at each 
-time step for every lattice point is governed by:
+\noindent where $\mathit{i} \in [0, \beta -1]$ is an index spanning the 
+discretised momentum space. There are nine fluid density distribution 
+functions, $\mathit{f_i}(\mathit{i}=0,\dots,8)$, associated with each node in 
+the \textit{D2Q9} model. The evolution of the density distribution function at 
+each time step for every lattice point is governed by:
 
 \begin{align} 
 \label{eq:stream}
 \mathit{f_i}(\mathbf{x}+\mathbf{e}_{\mathit{i}} \Delta t, t + \Delta t) = \mathit{f_i}(\mathbf{x},t) - \frac{1}{\tau} [\mathit{f_i}(\mathbf{x},t) -\mathit{f_i}^{\mathit{eq}}(\mathbf{x},t)] \quad (\mathit{i}=0,\dots,8)
 \end{align}
 
-where for any grid node $\mathbf{x},\mathbf{x}+\mathbf{e_i} \Delta t$ is its 
-nearest node along the direction $\mathit{i}$. $\tau$ is a non-dimensional 
-relaxation time parameter, which is related to the fluid viscosity; and 
-$\mathit{f_i}^{\mathit{eq}}$ is termed as the equilibrium distribution 
-function, and is defined as:
+\noindent where for any grid node $\mathbf{x},\mathbf{x}+\mathbf{e_i} \Delta t$ 
+is its nearest node along the direction $\mathit{i}$. $\tau$ is a 
+non-dimensional relaxation time parameter, which is related to the fluid 
+viscosity; and $\mathit{f_i}^{\mathit{eq}}$ is termed as the equilibrium 
+distribution function, and is defined as:
 
 \begin{align}
 \begin{cases}
@@ -162,11 +166,14 @@ function, and is defined as:
 \mathit{C}^{\mathit{2}}}\mathbf{v}.\mathbf{v}) \quad (\mathit{i}=0,\dots,8)
 \end{cases}
 \end{align}
-in which, $\mathit{w_i}$ represents the fixed weighting values:
+
+\noindent in which, $\mathit{w_i}$ represents the fixed weighting values:
+
 \begin{align}
 \mathit{w}_{\mathit{0}} = \frac{4}{9}; \quad \mathit{w}_{\mathit{1,2,3,4}}= 
 \frac{1}{9}; \quad \mathit{w}_{\mathit{5,6,7,8}}= \frac{1}{36}
 \end{align}
+
 The right-hand side of ~\cref{eq:stream} is often denoted by 
 $\mathit{f_i}(\mathbf{x}, \mathit{t}_{+})$ and termed the post collision 
 distribution. The LB ensures conservation of total mass and total momentum of 
@@ -435,9 +442,9 @@ gradient, $\mu$ dynamic viscosity of the fluid,
 \caption{LBM parameters used in simulating laminar flow through a circular pipe}
 \label{table:lbm}
 \centering
-\begin{tabular}{lc}
-\hline
-\textbf{Parameter} & \textbf{Value} \\ \hline
+\begin{tabular}{ll}
+\toprule
+\textbf{Parameter} & \textbf{Value} \\ \midrule
 Fluid & Water \\ 
 Density $\rho$ & 1000 \si{\kilogram\per\metre\cubed}\\ 
 Relaxation parameter $\tau$ & 0.51 \\ 
@@ -449,12 +456,12 @@ Maximum number of iterations & 50,000 \\
 Type of flow & laminar \\ 
 Diameter of pipe `D' & 0.04 \si{\metre}\\ 
 Length of the pipe `L' & 0.1 \si{\metre} \\ 
-Boundary condition & Periodic boundary \\ \hline
+Boundary condition & Periodic boundary \\ \midrule
 Maximum horizontal velocity at L/2 (LBM Simulation)& 0.03786 
 \si{\metre\per\second}\\ 
 Theoretical maximum horizontal velocity (Poiseuille's flow) & 0.03790 
 \si{\metre\per\second}\\ 
-Error in predicting horizontal velocity & 0.009 \% \\ \hline
+Error in predicting horizontal velocity & 0.009 \% \\ \bottomrule
 \end{tabular}
 \end{table}
 
