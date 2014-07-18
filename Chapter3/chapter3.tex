@@ -1,3 +1,4 @@
+
 \chapter{Numerical modelling of granular flows}
 
 \ifpdf
@@ -344,21 +345,22 @@ reflected back along the direction they came from, i.e.
 	\mathit{f_i}(\mathbf{x}, \mathit{t}_{+})\,,
 \end{equation}
 
-where $-\mathit{i}$ denotes the opposite direction of \textit{i}. The bounce 
-back rule is illustrated in~\cref{fig:bounce}. This simple rule ensures that 
-no tangential velocity exists along the fluid-wall interface, thereby a 
+\noindent where $-\mathit{i}$ denotes the opposite direction of \textit{i}. The 
+bounce back rule is illustrated in~\cref{fig:bounce}. This simple rule ensures 
+that no tangential velocity exists along the fluid-wall interface, thereby a 
 non-slip condition is imposed, and can be extended to any shapes or objects in 
 a fluid flow. The slip boundary conditions have similar treatment to the 
 non-slip condition, except that the distribution functions are reflected in the 
 boundary instead of bounce-back~\citep{Succi2001}.
 
 \begin{figure}[htbp]
-\centering
-\includegraphics[width=0.9\textwidth]{bounce}
-\caption[Half-way bounce back algorithm for the \textit{D2Q9} model ]{Half-way 
-bounce back algorithm for the \textit{D2Q9} model adopted after 
-\citet{Sukop2006}}
-\label{fig:bounce}
+	\centering
+	\includegraphics[width=0.9\textwidth]{bounce}
+	\caption[Half-way bounce back algorithm for the \textit{D2Q9} model 
+	]{Half-way 
+	bounce back algorithm for the \textit{D2Q9} model adopted after 
+	\citet{Sukop2006}}
+	\label{fig:bounce}
 \end{figure}
 
 \subsubsection*{Pressure and velocity boundary condition}
@@ -370,28 +372,28 @@ impose a pressure boundary along the y-direction (inlet, left side boundary in
 which velocity is computed. Assuming the vertical component of the velocity on 
 the boundary is zero, $u_y=0$. After streaming, $f_2, f_3, f_4, f_6, f_7$ are 
 known, $u_x$ and $f_1, f_5, f_8$ are to be determined from 
-~\cref{eq:lbm_macroscopic} as following:
+~\cref{eq:lbm_macroscopic} as following
 
 \begin{flalign}
  f_1+f5+f_8 & =  \rho_{in} - (f_0+f_2+f_3+f_4+f_6+f_7) \label{eq:pressure1}\\
  f_1+f5+f_8 & =  \rho_{in}u_x + (f_3+f_6+f_7) \label{eq:pressure2} \\
- f_5 - f_8  & =  f_2 - f_4 +f_6 -f_7
+ f_5 - f_8  & =  f_2 - f_4 +f_6 -f_7\,,
 \end{flalign}
 
 \noindent Consistency of \cref{eq:pressure1,eq:pressure2} gives
 
 \begin{flalign}
-u_x  = & 1 - \frac{[f_0+f_2+f_4+2*(f_3+f_6+f_7)]}{\rho_{in}}
+u_x  = & 1 - \frac{[f_0+f_2+f_4+2*(f_3+f_6+f_7)]}{\rho_{in}}\,.
 \end{flalign}
 
 Using bounce-back rule for the non-equilibrium part of the particle 
-distribution normal to the inlet to find $f_1 -f_1^{eq} = f_3 -f_3^{eq}$. With 
-$f_1$ known, $f_5,f_8$ are obtained as:
+distribution normal to the inlet to find $f_1 -f_1^{eq} = f_3 -f_3^{eq}$. The 
+values of $f_5$ and $f_8$ can be obtained from $f_1$:
 
 \begin{align}
-f_1 & = f_3 + \frac{2}{3} \rho_{in}u_x, \nonumber \\ 
-f_5 & = f_7 - \frac{1}{2}(f_2 - f_4) + \frac{1}{6}\rho_{in}u_x,\nonumber \\ 
-f_8 & = f_6 + \frac{1}{2}(f_2 - f_4) + \frac{1}{6}\rho_{in}u_x
+f_1 & = f_3 + \frac{2}{3} \rho_{in}u_x \nonumber \\ 
+f_5 & = f_7 - \frac{1}{2}(f_2 - f_4) + \frac{1}{6}\rho_{in}u_x\nonumber \\ 
+f_8 & = f_6 + \frac{1}{2}(f_2 - f_4) + \frac{1}{6}\rho_{in}u_x\,.
 \end{align}
 
 The corner node at inlet needs some special treatment. Considering the bottom 
@@ -399,18 +401,19 @@ node at inlet as example, after streaming, $f_3, f_4, f_7$ are known; $\rho$ is
 define, and $u_x = u_y = 0$. The particle distribution functions $f_1, f_2, 
 f_5, f_6, f_8$ are to be determined. The bounce-back rule for the 
 non-equilibrium part of the particle distribution normal to the inlet and the 
-boundary is used to find:
+boundary is used to find
 
-\begin{gather}
-f_1 = f_3 + (f_1^{eq}-f_3^{eq}) = f_3 \\
-f_2 = f_4 + (f_1^{eq}-f_3^{eq}) = f_4
-\end{gather}
+\begin{align}
+f_1 & = f_3 + (f_1^{eq}-f_3^{eq}) = f_3 \\
+f_2 & = f_4 + (f_1^{eq}-f_3^{eq}) = f_4 \,.
+\end{align}
 
-\noindent Using these we find: 
+\noindent Using these we can compute
 
 \begin{gather}
 f_5 = f_7 \\
-f_6 = f_8 = \frac{1}{2}[\rho_{in} - (f_1 + f_2 + f_3 + f_4 + f_5 + f_6 + f_7 + f_8)]
+f_6 = f_8 = \frac{1}{2}[\rho_{in} - (f_1 + f_2 + f_3 + f_4 + f_5 + f_6 + f_7 + 
+f_8)]\,.
 \end{gather}
 
 Similar procedure can be applied to top inlet node and outlet nodes. Von 
@@ -426,30 +429,30 @@ laws to determine the unknown distribution functions.
 
 %*******************************************************************************
 
-\section{Validation of Lattice Boltzmann Method}
+\section{Validation of Lattice Boltzmann method}
 
 The Lattice Boltzmann method implemented in the present study is validated by 
-comparing the LBM simulation of laminar flow  through a circular pipe with the 
-closed form solution. In the present study, water ($\rho=1000 kg/m^{3}$) is 
-simulated to flow through a circular pipe of diameter `D' = 0.04 m and 
+comparing the LBM simulation of a laminar flow through a circular pipe to 
+the closed form solution. In the present study, water ($\rho=1000 kg/m^{3}$) is 
+simulated to flow through a pipe of width `D' = 0.04 m and 
 simulation length, `L' = 0.1 m. Periodic boundary conditions are applied at 
 either end of the pipe, which simulates the condition of a continuous flow of 
 fluid in a closed circular pipe. The parameters adopted in the LBM simulation 
-is summarised in \cref{table:lbm}. Sufficient time is allowed for the flow to 
-travel beyond the required development length so as to develop in to a fully 
-laminar flow~\citet{Durst2005}. The development length required for a flow to 
-be fully laminar is:
+are summarised in~\cref{table:lbm}. Sufficient time is allowed for the flow to 
+travel beyond the required development length so that the flow is 
+laminar~\citet{Durst2005}. The development length required for a flow to 
+be fully laminar is
 
-\begin{align}
-X_{D}/D=[(0.619)^{1.6}+(0.0567 R_{e})^{1.6}]^{1/1.6}
-\end{align}
+\begin{equation}
+X_{D}/D=[(0.619)^{1.6}+(0.0567 R_{e})^{1.6}]^{1/1.6} \,,
+\end{equation}
 
-where $X_{D}$ is the development length and $R_{e}$ is the Reynold's number. 
-The velocity profile of water in the simulated segment at the end of the 
-simulation is presented in~\cref{fig:LBM_Poiseuille}.~\cref{fig:LBM} shows 
+\noindent where $X_{D}$ is the development length and $R_{e}$ is the Reynold's 
+number. The velocity profile of water in the simulated segment at the end of 
+the simulation is presented in~\cref{fig:LBM_Poiseuille}.~\cref{fig:LBM} shows 
 the horizontal velocity profile obtained at L/2 after 50,000 time steps. The 
 maximum horizontal velocity of 0.037863 m/s is observed in the middle of the 
-pipe. The velocity profile obtained (~\cref{fig:LBM_Poiseuille}), is compared 
+pipe. The velocity profile obtained (\cref{fig:LBM_Poiseuille}), is compared 
 with the closed-form based on the Haygen-Poiseuille's flow equation for no-slip 
 boundary condition~\citep{Willis2008}:
 
@@ -543,7 +546,7 @@ analyses. The velocity profile obtained from the CFD analysis (see
 ~\cref{fig:obsvc}) proves the occurrence of eddies in the LBM analysis of flow 
 around an obstacle. The CFD analysis is found to over predict slightly the 
 maximum horizontal velocity in comparison with the LBM simulation. The 
-discrepancy in the horizontal velocity profile (~\cref{fig:LBM}) can be 
+discrepancy in the horizontal velocity profile (\cref{fig:LBM}) can be 
 attributed to the relaxation parameter used in the LBM, which is obtained by 
 trial and error procedure. Thus, it can be concluded that the Lattice Boltzmann 
 method is a suitable form of numerical representation of Navier-Stokes equation 
@@ -708,12 +711,12 @@ $\widehat{\mathbf{f}^{eq}}$ is given as:
 \noindent where
 
 \begin{align}
-e^{eq} & = &\frac{1}{4}\alpha_2p+\frac{1}{6}\gamma_2(u_x^2+y_y^2)\\
-e^{2eq} & = & \frac{1}{4}\alpha_3p+\frac{1}{6}\gamma_4(u_x^2+y_y^2)\\
-q_x^{eq} & = & \frac{1}{2}c_1u_x;\\
-q_y^{eq} & = & \frac{1}{2}c_2u_y \\
-p_{xx}^{eq} & = & \frac{3}{2}\gamma_1(u_x^2 - u_y^2);\\
-p_{xy}^{eq} & = & \frac{3}{2}\gamma_3(u_xu_y);
+e^{eq} & = \frac{1}{4}\alpha_2p+\frac{1}{6}\gamma_2(u_x^2+y_y^2)\\
+e^{2eq} & = \frac{1}{4}\alpha_3p+\frac{1}{6}\gamma_4(u_x^2+y_y^2)\\
+q_x^{eq} & = \frac{1}{2}c_1u_x;\\
+q_y^{eq} & = \frac{1}{2}c_2u_y \\
+p_{xx}^{eq} & = \frac{3}{2}\gamma_1(u_x^2 - u_y^2);\\
+p_{xy}^{eq} & = \frac{3}{2}\gamma_3(u_xu_y);
 \end{align}
 
 To get the correct hydrodynamic equations, the values of the co-efficients are 
@@ -730,7 +733,7 @@ given as:
 
 %**************************************************************************
 
-\subsection{Turbulence in Lattice Boltzmann Method}
+\subsection{Turbulence in Lattice Boltzmann method}
 
 The above formulation of Lattice Boltzmann problem has been successfully 
 applied to many fluid flow problems, however it is restricted to flows with low 
@@ -799,7 +802,7 @@ viscosity $\tau_{*}$. The component $s_1$ of the collision matrix becomes $s_1
 
 %************************************************************************* %
 
-\section{Coupled Lattice Boltzmann - Molecular Dynamics for fluid-particle 
+\section{Coupled Lattice Boltzmann - Discrete Element Method for fluid-particle
 interactions}
 
 In principle, the conventional Finite Element and Finite Volume based 
