@@ -92,7 +92,11 @@ justification=justified]{caption}
 % *****************************************************************************
 % *************************** Bibliography  and References ********************
 
-\usepackage[noabbrev]{cleveref} %Referencing without need to explicitly state 
+\usepackage[noabbrev,capitalise]{cleveref} %Referencing without need to 
+\Crefname{pluralequation}{Equations}{Equations}
+\Crefformat{equation}{#2Equation~#1#3}
+
+%explicitly state 
 %fig /table
 
 % Add `custombib' in the document class option to use this section

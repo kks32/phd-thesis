@@ -91,32 +91,42 @@ in~\cref{fig:D2Q9}.
 	\label{fig:D2Q9}
 \end{figure}
 
-These lattices are usually classified in the literature using the $\mathit{D}\alpha\mathit{Q}\beta$-notation, where $\alpha$ denotes the space dimensionality and $\beta$ is the number of discrete velocities, but also including the possibility of having particle at rest) within the momentum discretisation. The most common lattices are the $\mathit{D2Q9}$ and the $\mathit{D3Q19}$-models, see ~\citet{He1997}. The present study focuses on two-dimensional problems, hence the $\mathit{D2Q9}$ momentum discretisation is adopted.
+These lattices are usually classified in the literature using the 
+$\mathit{D}\alpha\mathit{Q}\beta$-notation, where $\alpha$ denotes the space 
+dimensionality and $\beta$ is the number of discrete velocities, but also 
+including the possibility of having particle at rest) within the momentum 
+discretisation. The most common lattices are the $\mathit{D2Q9}$ and the 
+$\mathit{D3Q19}$-models, see~\citet{He1997}. The present study focuses on 
+two-dimensional problems, hence the $\mathit{D2Q9}$ momentum discretisation is 
+adopted.
 
 The Lattice Boltzmann Method discretize the Boltzmann equation in space, to a 
 finite number of possible particle spatial positions and microscopic momenta, 
 and time. Particle positions are confined to the nodes of the lattice. The 
 fluid particles at each node are allowed to move to their eight intermediate 
 neighbours with eight different velocities $\mathit{e_i} 
-(\mathit{i}=1,\dots,8)$. A particle can remain at the node, which is equivalent 
-to moving with zero velocity $\mathit{e_o}$. The particle mass is uniform, 
-hence these microscopic velocities and momentum are always effectively 
+(\mathit{i}=1\,,\dots\,,8)$. A particle can remain at the node, which is 
+equivalent to moving with zero velocity $\mathit{e_o}$. The particle mass is 
+uniform, hence these microscopic velocities and momentum are always effectively 
 equivalent~\citep{Han2007}.
 
-Referring to the numbering system shown in ~\cref{fig:D2Q9}, these nine discrete velocity vectors are defined as:
+Referring to the numbering system shown in~\cref{fig:D2Q9}, these nine 
+discrete velocity vectors are defined as
 
 \begin{align} 
 	\begin{cases}
-	\mathit{e_o}=(0,0)\\
-	\mathit{e_1}=\mathit{C}(1,0); \mathit{e_2}=\mathit{C}(0,1); \mathit{e_3}=\mathit{C}(-1,0); \mathit{e_4}=\mathit{C}(0,-1); \\
-	\mathit{e_5}=\mathit{C}(1,1); \mathit{e_6}=\mathit{C}(-1,1); \mathit{e_7}=\mathit{C}(-1,-1); \mathit{e_8}=\mathit{C}(1,-1); \\ 
+	\mathit{e_0}=(0,0)\\
+	\mathit{e_1}=\mathit{C}(1,0); \mathit{e_2}=\mathit{C}(0,1); 
+	\mathit{e_3}=\mathit{C}(-1,0); \mathit{e_4}=\mathit{C}(0,-1); \\
+	\mathit{e_5}=\mathit{C}(1,1); \mathit{e_6}=\mathit{C}(-1,1);  
+	\mathit{e_7}=\mathit{C}(-1,-1); \mathit{e_8}=\mathit{C}(1,-1)\,, \\ 
 	\end{cases}
 \end{align}
 
-in which \textit{C} is the lattice speed, which is defined as:
+\noindent where \textit{C} is the lattice speed that is defined as
 
 \begin{equation}
-	\mathit{C}=\mathit{h}/\Delta t
+	\mathit{C}=\mathit{h}/\Delta t \,,
 \end{equation}
 
 \noindent where $\Delta \mathit{t}$ is the discrete time step. The primary 
@@ -124,29 +134,32 @@ variables in the Lattice Boltzmann formulation are called the \textit{fluid
 density distribution functions}, $\mathit{f_i}$, each relating the probable 
 amount of fluid particles moving with the velocity $\mathit{e_i}$ along the 
 $\mathit{i^{th}}$ direction at each node. The macroscopic variables are defined 
-as functions of the particle distribution functions (see \cref{fig:D2Q9}), 
-according to:
+as functions of the particle distribution function (see \cref{fig:D2Q9}):
 
 \begin{align} 
-	\nonumber
-	&\rho = \sum\limits_{\mathit{i}=0}^{\beta - 1}{\mathit{f_i}} \qquad 
-	\mbox{(macroscopic fluid density)} \\
-	&\overrightarrow{\mathit{u}} = \frac{1}{\rho} 
+	\label{eq:lbm_macroscopic}	
+	\begin{cases}
+	\rho = \sum\limits_{\mathit{i}=0}^{\beta - 1}{\mathit{f_i}} \qquad 
+	\mbox{(macroscopic fluid density)} \\ 
+	\mbox{and}\\
+	\overrightarrow{\mathit{u}} = \frac{1}{\rho} 
 	\sum\limits_{\mathit{i}=0}^{\beta 
 	-1}{\mathit{f_i}\overrightarrow{\mathit{e_i}}} \quad \mbox{(macroscopic 
-	velocity)}
-	\label{eq:lbm_macroscopic}
+	velocity)}\,,
+	\end{cases}	
 \end{align} 
 
 \noindent where $\mathit{i} \in [0, \beta -1]$ is an index spanning the 
 discretised momentum space. There are nine fluid density distribution 
 functions, $\mathit{f_i}(\mathit{i}=0,\dots,8)$, associated with each node in 
 the \textit{D2Q9} model. The evolution of the density distribution function at 
-each time step for every lattice point is governed by:
+each time step for every lattice point is governed by
 
 \begin{equation} 
-\label{eq:stream}
-\mathit{f_i}(\mathbf{x}+\mathbf{e}_{\mathit{i}} \Delta t, t + \Delta t) = \mathit{f_i}(\mathbf{x},t) - \frac{1}{\tau} [\mathit{f_i}(\mathbf{x},t) -\mathit{f_i}^{\mathit{eq}}(\mathbf{x},t)] \quad (\mathit{i}=0,\dots,8)
+	\label{eq:stream}
+	\mathit{f_i}(\mathbf{x}+\mathbf{e}_{\mathit{i}} \Delta t, t + \Delta t) = 
+	\mathit{f_i}(\mathbf{x},t) - \frac{1}{\tau} [\mathit{f_i}(\mathbf{x},t) 
+	-\mathit{f_i}^{\mathit{eq}}(\mathbf{x},t)] \quad (\mathit{i}=0,\dots,8) \,,
 \end{equation}
 
 \noindent where for any grid node $\mathbf{x},\mathbf{x}+\mathbf{e_i} \Delta t$ 
@@ -157,30 +170,33 @@ distribution function, and is defined as:
 
 \begin{align}
 	\begin{cases}
-	\mathit{f}_{\mathit{0}}^{\mathit{eq}}=\mathit{w}_{\mathit{0}} \rho (1 - 
+	\mathit{f}_{\mathit{0}}^{\mathit{eq}} = \mathit{w}_{\mathit{0}} \rho (1 - 
 	\frac{3}{2\mathit{C}^{\mathit{2}}}\mathbf{v}.\mathbf{v}) \\ 
-	\vspace*{2mm}
-	\mathit{f_i}^{\mathit{eq}}=\mathit{w_i} \rho (1 + 
+	\mbox{and}\\
+	\mathit{f_i}^{\mathit{eq}} = \mathit{w_i} \rho (1 + 
 	\frac{3}{\mathit{C}^{\mathit{2}}}\mathbf{e}_{\mathit{i}}.\mathbf{v} 
 	\frac{9}{2\mathit{C}^{\mathit{2}}} 
 	(\mathbf{e}_{\mathit{i}}.\mathbf{v})^{\mathit{2}}-\frac{3}{2 
-	\mathit{C}^{\mathit{2}}}\mathbf{v}.\mathbf{v}) \quad (\mathit{i}=0,\dots,8)
+	\mathit{C}^{\mathit{2}}}\mathbf{v}.\mathbf{v}) \quad 
+	(\mathit{i}=0,\dots,8)\,,
 	\end{cases}
 \end{align}
 
-\noindent in which, $\mathit{w_i}$ represents the fixed weighting values:
+\noindent in which, $\mathit{w_i}$ represents the fixed weighting values
 
 \begin{equation}
-	\mathit{w}_{\mathit{0}} = \frac{4}{9}; \quad \mathit{w}_{\mathit{1,2,3,4}}= 
-	\frac{1}{9}; \quad \mathit{w}_{\mathit{5,6,7,8}}= \frac{1}{36}
+	\mathit{w}_{\mathit{0}} = \frac{4}{9}\,, \quad 
+	\mathit{w}_{\mathit{1,2,3,4}}= 
+	\frac{1}{9}\,, \quad \mbox{and} \quad \mathit{w}_{\mathit{5,6,7,8}}= 
+	\frac{1}{36}\,.
 \end{equation}
 
-The right-hand side of ~\cref{eq:stream} is often denoted by 
+The right-hand side of~\cref{eq:stream} is often denoted by 
 $\mathit{f_i}(\mathbf{x}, \mathit{t}_{+})$ and termed the post collision 
 distribution. The LB ensures conservation of total mass and total momentum of 
-the fluid particles at each lattice node(\cref{eq:stream}). It essentially 
+the fluid particles at each lattice node (\cref{eq:stream}). It essentially 
 consists of two phases: \textit{collision} and \textit{streaming}. The 
-collision phase computed in the right-hand side of ~\cref{eq:stream}, involves 
+collision phase computed in the right-hand side of~\cref{eq:stream}, involves 
 only those variables which are associated with each node \textbf{x}, and 
 therefore is a local operation. The streaming phase then explicitly propagate 
 the updated distribution functions at each node to its neighbours 
@@ -192,8 +208,8 @@ natural to parallelism~\citep{Han2007}.
 
 The streaming step involves the translation of the distribution functions to 
 their neighbouring sites according to the respective discrete velocity 
-directions, as illustrated in ~\cref{fig:stream} in the \textit{D2Q9} model. 
-The collision step, (illustrated in ~\cref{fig:collision}) consists of 
+directions, as illustrated in~\cref{fig:stream} in the \textit{D2Q9} model. 
+The collision step, (illustrated in~\cref{fig:collision}) consists of 
 re-distribution of the distribution functions to the local discretised 
 Maxwellian equilibrium distribution functions, but in such a way that local 
 mass and momentum are invariants. In incompressible flows, the energy 
@@ -221,34 +237,35 @@ conservation is equivalent to momentum conservation~\citep{He1997}.
 \end{figure} 
 
 The standard macroscopic fluid variables, density $\rho$ and velocity 
-$\mathbf{\mathit{ v}}$, can be recovered from the distribution functions as:
+$\mathbf{\mathit{ v}}$, can be recovered from the distribution functions as
 
 \begin{equation}
-	\rho = \sum\limits_{\mathit{i}=0}^{8}{\mathit{f_i}} \qquad \rho \mathbf{v} 
-	= \sum\limits_{\mathit{i}=0}^{8}{\mathit{f_i}}\mathbf{\mathit{e_i}}
+	\rho = \sum\limits_{\mathit{i}=0}^{8}{\mathit{f_i}}\,, \quad \mbox{and} 
+	\quad \rho \mathbf{v} 
+	= \sum\limits_{\mathit{i}=0}^{8}{\mathit{f_i}}\mathbf{\mathit{e_i}}\,.
 \end{equation}
 
-The fluid pressure field \textit{p} is determined by the following equation of 
+The fluid pressure field `\textit{p}' is determined by the equation of 
 state:
 
 \begin{equation}
-	\mathit{p}=\mathit{C_s}^{2} \rho
+	\mathit{p}=\mathit{C_s}^{2} \rho,
 \end{equation}
 
 \noindent where $\mathit{C_s}$ is termed the fluid speed of sound and is 
 related to the lattice speed \textit{C} by
 
 \begin{equation}
-	\mathit{C_s}=\mathit{C}/\sqrt{3}
+	\mathit{C_s}=\mathit{C}/\sqrt{3}\,.
 \end{equation}
 
 The kinematic viscosity of the fluid \textbf{\textit{v}} is implicitly 
 determined by the model parameters \textit{h}, $\Delta \mathit{t}$ and $\tau$ 
-as:
+as
 
 \begin{equation}
 	\mathit{v}=\frac{1}{3}(\tau - \frac{1}{2})\frac{\mathit{h}^{2}}{\Delta 
-	\mathit{t}} = \frac{1}{3}(\tau - \frac{1}{2})\mathit{Ch}
+	\mathit{t}} = \frac{1}{3}(\tau - \frac{1}{2})\mathit{Ch},
 \end{equation}
 
 \noindent which indicates that these three parameters are related to each other 
@@ -260,17 +277,17 @@ accuracy of the solution. This is measured by the `computational' Mach number,
 $\mathit{M}_{\mathit{a}}$, defined by
 
 \begin{align}
-	\mathit{M}_{\mathit{a}}=\frac{\mathit{v}_{\mathit{max}}}{\mathit{C}}
+	\mathit{M}_{\mathit{a}}=\frac{\mathit{v}_{\mathit{max}}}{\mathit{C}}\,.
 \end{align}
 
 Theoretically, the Mach number is required to be $\mathit{M}_{\mathit{a}}<< 1$. 
 In practice, $\mathit{M}_{\mathit{a}}$ should be, at least smaller than 
 0.1~\citep{He1997}. From a computational point of view, it is more convenient 
 to choose \textit{h} and $\tau$ as two independent parameters and $\Delta 
-\mathit{t}$ as the derived parameter, using the following equation.
+\mathit{t}$ as the derived parameter:
 
 \begin{align}
-	\Delta \mathit{t} = (\tau - \frac{1}{2}) \frac{h^{2}}{3\mathit{v}}
+	\Delta \mathit{t} = (\tau - \frac{1}{2}) \frac{h^{2}}{3\mathit{v}}\,.
 \end{align}
 
 It can be observed that $\tau$ has to be $\tau > 1/2$ \citep{He1997}. Since 
@@ -298,7 +315,7 @@ Various boundary conditions used in the present study are discussed below.
 The simplest type of boundary condition is the periodic boundary. In this case, 
 the domain is folded along the direction of the periodic boundary pair. For 
 boundary nodes, the neighbouring nodes are on the opposite boundary, using the 
-normal referencing of neighbours (see ~\cref{fig:D2Q9}a). From the perspective 
+normal referencing of neighbours (see~\cref{fig:D2Q9}a). From the perspective 
 of submarine landslide modelling, the periodic boundary conditions are useful 
 for preliminary analysis, as they imply higher degree of symmetry of the fluid 
 domain. Further information on the periodic boundary condition can be found 
@@ -322,13 +339,13 @@ regions, and the\textit{fluid} nodes otherwise. Then if \textit{i} is the
 direction between a fluid node $\mathit{n}_{1}$ and $\mathit{n_2}$ to be 
 reflected back along the direction they came from, i.e.
 
-\begin{align}
-\mathit{f}_{-\mathit{i}}(\mathbf{x}, \mathit{t}+\Delta \mathit{t}) = 
-\mathit{f_i}(\mathbf{x}, \mathit{t}_{+})
-\end{align}
+\begin{equation}
+	\mathit{f}_{-\mathit{i}}(\mathbf{x}, \mathit{t}+\Delta \mathit{t}) = 
+	\mathit{f_i}(\mathbf{x}, \mathit{t}_{+})\,,
+\end{equation}
 
 where $-\mathit{i}$ denotes the opposite direction of \textit{i}. The bounce 
-back rule is illustrated in ~\cref{fig:bounce}. This simple rule ensures that 
+back rule is illustrated in~\cref{fig:bounce}. This simple rule ensures that 
 no tangential velocity exists along the fluid-wall interface, thereby a 
 non-slip condition is imposed, and can be extended to any shapes or objects in 
 a fluid flow. The slip boundary conditions have similar treatment to the 
@@ -345,6 +362,7 @@ bounce back algorithm for the \textit{D2Q9} model adopted after
 \end{figure}
 
 \subsubsection*{Pressure and velocity boundary condition}
+
 The pressure (Drichlet) boundary condition can be imposed in Lattice Boltzmann 
 by specifying a fluid density at the pressure boundary~\citep{Zou1997}. To 
 impose a pressure boundary along the y-direction (inlet, left side boundary in 
@@ -354,27 +372,27 @@ the boundary is zero, $u_y=0$. After streaming, $f_2, f_3, f_4, f_6, f_7$ are
 known, $u_x$ and $f_1, f_5, f_8$ are to be determined from 
 ~\cref{eq:lbm_macroscopic} as following:
 
-\begin{gather}
-f_1+f5+f_8 = \rho_{in} - (f_0+f_2+f_3+f_4+f_6+f_7) \label{eq:pressure1}\\
-f_1+f5+f_8 = \rho_{in}u_x + (f_3+f_6+f_7) \label{eq:pressure2} \\
-f_5 - f_8  = f_2 - f_4 +f_6 -f_7
-\end{gather}
+\begin{flalign}
+ f_1+f5+f_8 & =  \rho_{in} - (f_0+f_2+f_3+f_4+f_6+f_7) \label{eq:pressure1}\\
+ f_1+f5+f_8 & =  \rho_{in}u_x + (f_3+f_6+f_7) \label{eq:pressure2} \\
+ f_5 - f_8  & =  f_2 - f_4 +f_6 -f_7
+\end{flalign}
 
 \noindent Consistency of \cref{eq:pressure1,eq:pressure2} gives
 
-\begin{align}
-u_x = 1 - \frac{[f_0+f_2+f_4+2*(f_3+f_6+f_7)]}{\rho_{in}}
-\end{align}
+\begin{flalign}
+u_x  = & 1 - \frac{[f_0+f_2+f_4+2*(f_3+f_6+f_7)]}{\rho_{in}}
+\end{flalign}
 
 Using bounce-back rule for the non-equilibrium part of the particle 
 distribution normal to the inlet to find $f_1 -f_1^{eq} = f_3 -f_3^{eq}$. With 
 $f_1$ known, $f_5,f_8$ are obtained as:
 
-\begin{gather}
-f_1 = f_3 + \frac{2}{3} \rho_{in}u_x, \nonumber \\ 
-f_5 = f_7 - \frac{1}{2}(f_2 - f_4) + \frac{1}{6}\rho_{in}u_x,\nonumber \\ 
-f_8 = f_6 + \frac{1}{2}(f_2 - f_4) + \frac{1}{6}\rho_{in}u_x
-\end{gather}
+\begin{align}
+f_1 & = f_3 + \frac{2}{3} \rho_{in}u_x, \nonumber \\ 
+f_5 & = f_7 - \frac{1}{2}(f_2 - f_4) + \frac{1}{6}\rho_{in}u_x,\nonumber \\ 
+f_8 & = f_6 + \frac{1}{2}(f_2 - f_4) + \frac{1}{6}\rho_{in}u_x
+\end{align}
 
 The corner node at inlet needs some special treatment. Considering the bottom 
 node at inlet as example, after streaming, $f_3, f_4, f_7$ are known; $\rho$ is 
@@ -428,7 +446,7 @@ X_{D}/D=[(0.619)^{1.6}+(0.0567 R_{e})^{1.6}]^{1/1.6}
 
 where $X_{D}$ is the development length and $R_{e}$ is the Reynold's number. 
 The velocity profile of water in the simulated segment at the end of the 
-simulation is presented in ~\cref{fig:LBM_Poiseuille}. ~\cref{fig:LBM} shows 
+simulation is presented in~\cref{fig:LBM_Poiseuille}.~\cref{fig:LBM} shows 
 the horizontal velocity profile obtained at L/2 after 50,000 time steps. The 
 maximum horizontal velocity of 0.037863 m/s is observed in the middle of the 
 pipe. The velocity profile obtained (~\cref{fig:LBM_Poiseuille}), is compared 
@@ -470,7 +488,7 @@ Error in predicting horizontal velocity & 0.009 \% \\ \bottomrule
 \end{table}
 
 The horizontal velocity profile estimated at `L/2' based on the closed form 
-solution is also plotted in ~\cref{fig:LBM_Poiseuille}. It can be observed from 
+solution is also plotted in~\cref{fig:LBM_Poiseuille}. It can be observed from 
 the figure that the Lattice Boltzmann method predicts the laminar flow 
 behaviour, however the maximum horizontal velocity is underestimated by 0.009 
 \% in comparison to the closed form solution. To validate the Lattice Boltzmann 
@@ -493,14 +511,14 @@ where \textit{Q} is the vector of conserved variables, \textit{F} is the vector
 of fluxes in the Navier-Stokes equation, \textit{V} is the volume of control 
 volume element, and \textit{A} is the surface area of the control volume 
 element. A 2D rectangular plane of length 1m and height 0.04m is discretised 
-into 400 cells of size $1 \time 10^{-2} $ m (see ~\cref{fig:mesh}). A constant 
+into 400 cells of size $1 \time 10^{-2} $ m (see~\cref{fig:mesh}). A constant 
 velocity is applied at the inlet. Water ($\rho = 998.2\mbox{ }kg/m^{3},\mbox{ } 
 viscosity`\eta'=1 \times 10^{-3}\mbox{ } Ns/m^{2} $) is allowed to flow through 
 the pipe and it develops into a fully laminar flow. The Least-Squares cell 
 based approach was adopted to solve the gradient, and 100 iteration steps were 
 carried out until the solution converges. The velocity contour profile obtained 
-from the CFD analysis is presented in ~\cref{fig:cont}. The velocity profile at 
-the cross-section `L/4' is plotted in ~\cref{fig:LBM}. The velocity profile 
+from the CFD analysis is presented in~\cref{fig:cont}. The velocity profile at 
+the cross-section `L/4' is plotted in~\cref{fig:LBM}. The velocity profile 
 matches the analytical Poiseuille's solution and the LBM simulation of laminar 
 flow. Having validated the CFD analysis against Poiseuille's equation, the CFD 
 analysis can now be used to validate the LBM simulation of fluid flow around a 
@@ -512,14 +530,14 @@ evaluated by placing a solid wall of Length `D/2' at length `L/4' in the pipe.
 The velocity profile obtained after 50,000 iterations is presented in 
 ~\cref{fig:Obstacle}. The formation of eddies at the corners of the wall along 
 the flow direction is captured by the LB method. The horizontal velocity 
-profile obtained at `L/4' is presented in ~\cref{fig:LBM}. The occurrence of 
+profile obtained at `L/4' is presented in~\cref{fig:LBM}. The occurrence of 
 vortex effect in the flow around the edges of the obstacle can be visualised in 
 ~\cref{fig:Obstacle}. The velocity profile obtained from the LBM simulation of 
 the fluid flow around a rectangular body compares qualitatively with the FE 
 analysis performed by~\citet{Zhong1991}. The CFD analysis of the same problem 
 was performed using ANSYS FLUENT. The control volume is discretised into 10,000 
 cells and a constant velocity is applied in the inlet. The velocity profile 
-obtained from the CFD analysis is presented in ~\cref{fig:obsvc}. Similar 
+obtained from the CFD analysis is presented in~\cref{fig:obsvc}. Similar 
 maximum horizontal velocities are observed in both the LBM and the CFD 
 analyses. The velocity profile obtained from the CFD analysis (see 
 ~\cref{fig:obsvc}) proves the occurrence of eddies in the LBM analysis of flow 
@@ -618,7 +636,7 @@ f_{\alpha}^+(\mathbf{x},t)-f_{\alpha}(\mathbf{x},t) = -\mathbf{S}_{\alpha i}(f_i
 f_{\alpha}(\mathbf{x}+e_{\alpha}\Delta_t, t+\Delta_t) = f_{\alpha}^+(\mathbf{x},t)
 \end{gather}
 
-\noindent The advection ~\cref{eq:advection} can be mapped to the momentum 
+\noindent The advection~\cref{eq:advection} can be mapped to the momentum 
 space by multiplying through by a transformation matrix \textbf{M} and the flux 
 is still finished in the velocity space. The evolutionary equation of the 
 multi-relaxation time lattice Boltzmann equation is written as:
@@ -646,19 +664,19 @@ Gram-Schmidt orthgonalisation procedure. The general form of the transformation
 matrix \textbf{M} can be written as:
 
 \begin{align}
-\mathbf{M} & = & 
+\mathbf{M} & =  
 \left[|p\rangle,|e\rangle,|e^2\rangle,|u_x\rangle,|q_x\rangle,|u_y\rangle,
 			|q_y\rangle,|p_{xx}\rangle,|p_{xy}\rangle\right]^T \\
-|p\rangle & = & |\mathit{e}_{\alpha}|^0;\\
-|e\rangle_{\alpha} & = & \mathit{Q}e_{\alpha}^2-b_2;\\
-|e^2\rangle_{\alpha} & = & 	
+|p\rangle & =  |\mathit{e}_{\alpha}|^0;\\
+|e\rangle_{\alpha} & = \mathit{Q}e_{\alpha}^2-b_2;\\
+|e^2\rangle_{\alpha} & =  	
 		a_1(\mathit{Q}e_{\alpha}^4-b_6)+a_2(\mathit{Q}e_{\alpha}^4-b_6);\\
-|u_x\rangle_{\alpha} & = & e_{\alpha,x}; \\
-|q_x\rangle_{\alpha} & = & (\mathit{b}_1e_{\alpha}^2-b_3)e_{\alpha,x}\\
-|u_y\rangle_{\alpha} & = & e_{\alpha,y}; \\
-|q_y\rangle_{\alpha} & = & (\mathit{b}_1e_{\alpha}^2-b_3)e_{\alpha,y}\\
-|p_{xx}\rangle_{\alpha} & = & \mathit{d}e_{\alpha,x}^2-e_{\alpha}^2; \\
-|p_{xx}\rangle_{\alpha}  & = & e_{\alpha,x}e_{\alpha,y}
+|u_x\rangle_{\alpha} & = e_{\alpha,x}; \\
+|q_x\rangle_{\alpha} & = (\mathit{b}_1e_{\alpha}^2-b_3)e_{\alpha,x}\\
+|u_y\rangle_{\alpha} & = e_{\alpha,y}; \\
+|q_y\rangle_{\alpha} & = (\mathit{b}_1e_{\alpha}^2-b_3)e_{\alpha,y}\\
+|p_{xx}\rangle_{\alpha} & = \mathit{d}e_{\alpha,x}^2-e_{\alpha}^2; \\
+|p_{xx}\rangle_{\alpha}  & = e_{\alpha,x}e_{\alpha,y}
 \end{align}
 
 \noindent where d=2 and Q=9, $b_1=\sum_{\alpha=1}^{Q}e_{\alpha,x}^2$, 
@@ -882,7 +900,7 @@ surface}}{\mbox{Distance between fluid node and particle node}} \in [0,1]
 For each pair of neighbouring fluid and particle nodes, a delta value has to be 
 calculated. Delta values of zero are not possible as nodes on the surface are 
 considered as the particle node. The algorithm for computation of the $\delta$ 
-value is presented in ~\citet{Iglberger2008}. ~\cref{fig:bouncemod} shows the 
+value is presented in~\citet{Iglberger2008}.~\cref{fig:bouncemod} shows the 
 three possible situations for delta values in the interval of [0,1]. Since the 
 fluid particles in the LBM are always considered to move at the rate of a 
 lattice per time step $(\delta \mathbf{x}/ \delta \mathbf{t})$, for delta 
