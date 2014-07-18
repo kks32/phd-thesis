@@ -10,27 +10,42 @@
 
 \section{Fluid simulation using Lattice Boltzmann method}
 
-The Euler-Lagrange Discrete Particle technique is used to model particle -- 
-fluid flows. The development of an effective numerical modelling framework for 
-this type of problem is, however, very challenging due to the inherent 
-complexity in the problem. Development of a numerical framework depends 
-crucially on the size of the soil grains in relation to the domain/mesh 
-size~\citep{Feng2007}. Traditionally, the Navier-Stokes equation, which 
-describes the fluid-volume fraction, is solved by grid-based Computational 
-Fluid Dynamics (CFD) methods, such as finite volume 
-method~\citep{Capecelatro2013} or mesh-free techniques such as Smooth Particle 
-Hydrodynamics~\citep{Sun2013}. The grid size in FVM or the smooth length in SPH 
-for discretisation of the fluid Navier–Stokes equation is at least an order of 
-magnitude larger than the particle diameter. In this situation, computational 
-effort is mostly devoted to particle dynamics and empirical-based fluid -- 
-particle forces are applied using the domain-averaged concentration of the 
-solid phase, which in turn determines the local porosity of the cell to be used 
-in the fluid-phase computation. As a result, developing a fast fluid 
-hydrodynamics solver is of little importance when the mean particle loading is 
-not low.  However, for problems in which particle sizes are large and extend 
-over more than one grid / element size -- given the need for a minimum grid / 
-element size to resolve the fluid problem — alternative solution strategies 
-must be adopted.  
+Grain -- fluid systems can be found in many scientific and engineering 
+applications, such as suspensions, fluidised beds, sediment transport, and 
+geo-mechanical problems. In general, the fundamental physical phenomenon in 
+these systems are not well understood mainly due to the intricate complexity of 
+fluid-grain interactions and the lack of powerful analysis 
+tools~\citep{Han2007b}. The motion of soil grains is mainly driven by 
+gravity and the hydrodynamic force exerted by the fluid, besides the 
+interaction among soil grains. The fluid flow pattern 
+can be significantly affected by the presence of soil grains, and this often 
+results in a turbulent flow. Hence, the development of an effective numerical 
+framework for modelling the fluid -- grain interaction is very challenging.
+
+Development of a numerical framework depends crucially on the size of the soil 
+grains relative to the domain/mesh size~\citep{Feng2007}. Traditionally, the 
+Navier-Stokes equation is solved by a grid-based Computational Fluid Dynamics 
+(CFD) method, such as the Finite Volume Method~\citep{Capecelatro2013} or a 
+mesh-free technique such as the Smooth Particle Hydrodynamics~\citep{Sun2013}. 
+The grid size in FVM or the smooth length in SPH for discretisation of the 
+Navier-Stokes equation is at least an order of magnitude larger than the grain 
+diameter~\citep{Xiong2014}. 
+
+In situations where the average domain concentration phase is far from dilute, 
+the computational effort is mostly devoted to the grain dynamics. The 
+hydrodynamic force on the soil grains are applied based on an empirical 
+relation using the domain-averaged local porosity of soil grains in the grid. 
+As a result, developing a fast fluid hydrodynamics solver is unimportant for 
+dense flows. However, most geo-mechanics problems involve complex interactions 
+between the solid and the fluid phase. This requires accurate modelling of the 
+fluid flow pattern. Additionally, geophysical problems, such as submarine 
+landslides and debris flow have a relatively large simulation domain, which 
+requires parallel computation. Traditional grid-based CFD methods will face 
+great challenges for good performance when many processors are used. Although 
+mesh-free approaches are free from the problem of parallel scalability, its 
+modelling accuracy and speed are relatively low when compared to grid-based CFD 
+methods. Therefore, an accurate, fast and a highly scalable scheme is required 
+to model fluid - grain systems in geo-mechanics. 
  
 The Navier-Stokes equation describes the motion of a non-turbulent Newtonian 
 fluid. The equation is obtained by applying Newton's second law to the fluid
@@ -45,7 +60,7 @@ phase space $(x,\xi)$ and time \textit{t}, can be used to solve various
 problems in fluid dynamics. 
 
 The Lattice Boltzmann Method
-(LBM)~\citep{He1997a,He1997b,Chen1998,Mei2000,Han2007,Zhou2012} is an
+(LBM)~\citep{He1997a,He1997b,Chen1998a,Mei2000,Han2007a,Zhou2012} is an
 alternative approach to the classical Navier-Stokes solvers for fluid flow and 
 works on an equidistant grid of cells, called lattice cells, which interact 
 only with their direct neighbours. In the Lattice Boltzmann Method, the 
@@ -101,7 +116,7 @@ $\mathit{D3Q19}$-models, see~\citet{He1997}. The present study focuses on
 two-dimensional problems, hence the $\mathit{D2Q9}$ momentum discretisation is 
 adopted.
 
-The Lattice Boltzmann Method discretize the Boltzmann equation in space, to a 
+The Lattice Boltzmann Method discretise the Boltzmann equation in space, to a 
 finite number of possible particle spatial positions and microscopic momenta, 
 and time. Particle positions are confined to the nodes of the lattice. The 
 fluid particles at each node are allowed to move to their eight intermediate 
@@ -109,7 +124,7 @@ neighbours with eight different velocities $\mathit{e_i}
 (\mathit{i}=1\,,\dots\,,8)$. A particle can remain at the node, which is 
 equivalent to moving with zero velocity $\mathit{e_o}$. The particle mass is 
 uniform, hence these microscopic velocities and momentum are always effectively 
-equivalent~\citep{Han2007}.
+equivalent~\citep{Han2007a}.
 
 Referring to the numbering system shown in~\cref{fig:D2Q9}, these nine 
 discrete velocity vectors are defined as
