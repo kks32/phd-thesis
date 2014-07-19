@@ -1,4 +1,3 @@
-
 \chapter{Numerical modelling of granular flows}
 
 \ifpdf
@@ -728,22 +727,22 @@ $\widehat{\mathbf{f}^{eq}}$ is given as:
 \begin{align}
 e^{eq} & = \frac{1}{4}\alpha_2p+\frac{1}{6}\gamma_2(u_x^2+y_y^2)\\
 e^{2eq} & = \frac{1}{4}\alpha_3p+\frac{1}{6}\gamma_4(u_x^2+y_y^2)\\
-q_x^{eq} & = \frac{1}{2}c_1u_x;\\
+q_x^{eq} & = \frac{1}{2}c_1u_x\\
 q_y^{eq} & = \frac{1}{2}c_2u_y \\
-p_{xx}^{eq} & = \frac{3}{2}\gamma_1(u_x^2 - u_y^2);\\
-p_{xy}^{eq} & = \frac{3}{2}\gamma_3(u_xu_y);
+p_{xx}^{eq} & = \frac{3}{2}\gamma_1(u_x^2 - u_y^2)\\
+p_{xy}^{eq} & = \frac{3}{2}\gamma_3(u_xu_y) \,.
 \end{align}
 
 To get the correct hydrodynamic equations, the values of the co-efficients are 
-chosen as $\alpha_2=24$,  $\alpha_3=-36$, $c_1=c_2=?2$, 
-$\gamma_1=\gamma_3=2/3$, $\gamma_2=18$ and $\gamma_4=?18$. $s_8 = s_9 = \tau$ 
+chosen as $\alpha_2=24$,  $\alpha_3=-36$, $c_1=c_2=-2$, 
+$\gamma_1=\gamma_3=2/3$, $\gamma_2=18$ and $\gamma_4=-18$. $s_8 = s_9 = \tau$ 
 and $s_1=s_4=s_6=1.0$ and the others vary between 1.0 and 2.0 for linear 
 stability. Through the Chapman-Enskog expansion~\citep{Du2006}, the 
 incompressible Navier-Stokes equation can be recovered and the viscosity is 
-given as:
+given as
 
 \begin{align}
-\nu=c_s^2\Delta t(\tau-0.5)
+\nu=c_s^2\Delta t(\tau-0.5)\,.
 \end{align}
 
 %**************************************************************************
@@ -817,7 +816,8 @@ viscosity $\tau_{*}$. The component $s_1$ of the collision matrix becomes $s_1
 
 %************************************************************************* %
 
-\section{Coupled Lattice Boltzmann - Discrete Element Method for fluid-particle
+\section[Coupled LB-DEM for fluid--grain interactions]{Coupled Lattice 
+Boltzmann - Discrete Element Method for fluid-grain
 interactions}
 
 In principle, the conventional Finite Element and Finite Volume based 
@@ -964,9 +964,9 @@ total hydrodynamic forces and torque exerted on a particle can be computed as
 ~\citep{Cook2004, Noble1998}:
 
 \begin{align}
-\mathbf{F}_{f} & = & \mathit{Ch}[\sum\limits_{\mathit{n}}{(\beta_{\mathit{n}} 
+\mathbf{F}_{f} & = \mathit{Ch}[\sum\limits_{\mathit{n}}{(\beta_{\mathit{n}} 
 \sum\limits_{\mathit{i}}{\mathit{f_i}^{\mathit{ m}}\mathbf{\mathit{e}_i}}})] \\ 
-\mathbf{T}_{f} & = & 
+\mathbf{T}_{f} & = 
 \mathit{Ch}[\sum\limits_{\mathit{n}}{(\mathbf{x}_{\mathit{n}}-\mathbf{x}_{\mathit{c}})
  \times (\beta_{\mathit{n}} \sum\limits_{\mathit{i}}{\mathit{f_i}^{\mathit{ 
 m}}\mathbf{\mathit{e}_i}})}]
@@ -988,8 +988,8 @@ the fluid flow and body force, i.e. gravity, their motion can be determined by
 Newton's equation of motion:
 
 \begin{align}
-\mathit{m}\mathbf{ a} & = & \mathbf{F}_{f} + \mathit{m }\mathbf{g} \\
-\mathit{J } \ddot{\theta} & = &  \mathbf{T}_{f}
+\mathit{m}\mathbf{ a} & = \mathbf{F}_{f} + \mathit{m }\mathbf{g} \\
+\mathit{J } \ddot{\theta} & = \mathbf{T}_{f}
 \end{align}
 
 where \textit{m} and \textit{J} are respectively the mass and the moment of 
