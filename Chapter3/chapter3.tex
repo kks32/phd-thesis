@@ -678,27 +678,29 @@ The collision matrix $\hat{\mathbf{S}} = MSM^{-1}$ in moment space is a
 diagonal matrix: $\hat{\mathbf{S}} =\mbox{diag} \left[ s_1, s_2, s_3,\dots s_9  
 \right]$. The transformation matrix \textbf{M} can be constructed via 
 Gram-Schmidt orthgonalisation procedure. The general form of the transformation 
-matrix \textbf{M} can be written as:
+matrix \textbf{M} can be written as
 
 \begin{align}
 \mathbf{M} & =  
 \left[|p\rangle,|e\rangle,|e^2\rangle,|u_x\rangle,|q_x\rangle,|u_y\rangle,
 			|q_y\rangle,|p_{xx}\rangle,|p_{xy}\rangle\right]^T \\
-|p\rangle & =  |\mathit{e}_{\alpha}|^0;\\
-|e\rangle_{\alpha} & = \mathit{Q}e_{\alpha}^2-b_2;\\
+|p\rangle & =  |\mathit{e}_{\alpha}|^0\\
+|e\rangle_{\alpha} & = \mathit{Q}e_{\alpha}^2-b_2\\
 |e^2\rangle_{\alpha} & =  	
-		a_1(\mathit{Q}e_{\alpha}^4-b_6)+a_2(\mathit{Q}e_{\alpha}^4-b_6);\\
-|u_x\rangle_{\alpha} & = e_{\alpha,x}; \\
+		a_1(\mathit{Q}e_{\alpha}^4-b_6)+a_2(\mathit{Q}e_{\alpha}^4-b_6)\\
+|u_x\rangle_{\alpha} & = e_{\alpha,x} \\
 |q_x\rangle_{\alpha} & = (\mathit{b}_1e_{\alpha}^2-b_3)e_{\alpha,x}\\
-|u_y\rangle_{\alpha} & = e_{\alpha,y}; \\
+|u_y\rangle_{\alpha} & = e_{\alpha,y}\\
 |q_y\rangle_{\alpha} & = (\mathit{b}_1e_{\alpha}^2-b_3)e_{\alpha,y}\\
-|p_{xx}\rangle_{\alpha} & = \mathit{d}e_{\alpha,x}^2-e_{\alpha}^2; \\
-|p_{xx}\rangle_{\alpha}  & = e_{\alpha,x}e_{\alpha,y}
+|p_{xx}\rangle_{\alpha} & = \mathit{d}e_{\alpha,x}^2-e_{\alpha}^2\\
+|p_{xx}\rangle_{\alpha}  & = e_{\alpha,x}e_{\alpha,y} \,,
 \end{align}
 
-\noindent where d=2 and Q=9, $b_1=\sum_{\alpha=1}^{Q}e_{\alpha,x}^2$, 
+\noindent where $d = 2$ and $Q = 9$, $b_1=\sum_{\alpha=1}^{Q}e_{\alpha,x}^2$, 
 $b_2=\sum_{\alpha=1}^{Q}e_{\alpha}^2$, 
-$b_3=\sum_{\alpha=1}^{Q}e_{\alpha}^2e_{\alpha,x}^4$, $a_1=||e^2||^2,$ and $a_2=\sum_{\alpha=0}^{Q-1}(Qc_{\alpha}^2-b_2)\times(Qc_{\alpha}^4-b_6)$. Explicitly, the transformation matrix can be written as:
+$b_3=\sum_{\alpha=1}^{Q}e_{\alpha}^2e_{\alpha,x}^4$, $a_1=||e^2||^2,$ and 
+$a_2=\sum_{\alpha=0}^{Q-1}(Qc_{\alpha}^2-b_2)\times(Qc_{\alpha}^4-b_6)$. 
+Explicitly, the transformation matrix can be written as
 
 \begin{align}
 \mathbf{M}= \begin{bmatrix}
@@ -711,15 +713,15 @@ $b_3=\sum_{\alpha=1}^{Q}e_{\alpha}^2e_{\alpha,x}^4$, $a_1=||e^2||^2,$ and $a_2=\
  0 &  0 & -2 &  0 &  2 &  1 &  1 & -1 & -1 \\
  0 &  1 & -1 &  1 & -1 &  0 &  0 &  0 &  0 \\
  0 &  0 &  0 &  0 &  0 &  1 &  1 &  1 &  1 \\
-\end{bmatrix}
+\end{bmatrix}\,.
 \end{align}
 
 The corresponding equilibrium distribution functions in moment space 
-
 $\widehat{\mathbf{f}^{eq}}$ is given as:
 
 \begin{align}
-\widehat{\mathbf{f}^{eq}}=\left[\rho_0,e^{eq},e^{2eq},u_x,q_x^{eq},q_y^{eq},p_{xx}^{eq},p_{xy}^{eq}\right]^T
+\widehat{\mathbf{f}^{eq}}=\left[\rho_0,e^{eq}, 
+e^{2eq},u_x,q_x^{eq},q_y^{eq},p_{xx}^{eq},p_{xy}^{eq}\right]^T\,,
 \end{align}
 
 \noindent where
@@ -775,38 +777,40 @@ kinetic energy into the internal energy of the fluid. At this scale, the
 viscous friction dominates the flow~\citep{Frisch1995}.
 
 In Smargonisky model, the turbulent viscosity $\nu$ is related to the strain 
-rate $S_{ij}$ and a filtered length scale `h' as follows:
+rate $S_{ij}$ and a filtered length scale `h' as follows
 
 \begin{align}
-S_{ij} & = &\frac{1}{2}(\partial_i u_j + \partial_j u_i); \\
-\mathit{v}_{\mathit{t}} & = & (\mathit{S}_{c}\mathit{h})^{2}\overline{S}; \\
-\overline{S} & = & 
-\sqrt{\sum\limits_{\mathit{i,j}}{\tilde{S}_{\mathit{i,j}}\tilde{S}_{\mathit{i,j}}}}
+S_{ij} & = \frac{1}{2}(\partial_i u_j + \partial_j u_i) \\
+\mathit{v}_{\mathit{t}} & = (\mathit{S}_{c}\mathit{h})^{2}\overline{S} \\
+\overline{S} & =  
+\sqrt{\sum\limits_{\mathit{i,j}}{\tilde{S}_{\mathit{i,j}}\tilde{S}_{\mathit{i,j}}}}\,,
 \end{align}
 
-where $\mathit{S}_{c}$ is the Smagorinski constant found to be close to 
-0.03~\citep{yu2005}. 
+\noindent where $\mathit{S}_{c}$ is the Smagorinski constant found to be close 
+to 0.03~\citep{yu2005}. 
 
 The effect of the unresolved scale motion is taken into account by introducing 
 an effective collision relaxation time scale $\tau_{t}$, so that the total 
-relaxation time $\tau_{*}$ is written as:
+relaxation time $\tau_{*}$ is written as
 
 \begin{align}
-\tau_{*}=\tau + \tau_{t}
+\tau_{*}=\tau + \tau_{t}\,,
 \end{align} 
 
-where $\tau$ and $\tau_{t}$ are respectively the standard relaxation times 
+\noindent where $\tau$ and $\tau_{t}$ are respectively the standard relaxation 
+times 
 corresponding to the true fluid viscosity \textit{v} and the turbulence 
 viscosity $\mathit{v}_{\mathit{t}}$, defined by a sub-grid turbulence model. 
 The new viscosity $\mathit{v}_{*}$ corresponding to $\tau_{*}$ is defined as:
 
 \begin{align}
-& 
-\mathit{v}_{*}=\mathit{v}+\mathit{v}_{\mathit{t}}=\frac{1}{3}(\tau_{*}-\frac{1}{2})
+\mathit{v}_{*} & 
+=\mathit{v}+\mathit{v}_{\mathit{t}} \nonumber \\
+	& =\frac{1}{3}(\tau_{*}-\frac{1}{2})
 \mathit{C}^{2} \Delta \mathit{t} 
 =\frac{1}{3}(\tau+\tau_{t}-\frac{1}{2})\mathit{C}^{2} \Delta \mathit{t}  \\
-& \mathit{v}_{\mathit{t}}=\frac{1}{3}\tau_{\mathit{t}}\mathit{C}^{2} \Delta 
-\textit{t}
+\mathit{v}_{\mathit{t}} & =\frac{1}{3}\tau_{\mathit{t}}\mathit{C}^{2} \Delta 
+\textit{t} \,.
 \end{align} 
 
 The Smagorinski model is easy to implement and the Lattice Boltzmann 
@@ -821,20 +825,20 @@ Boltzmann - Discrete Element Method for fluid-grain
 interactions}
 
 In principle, the conventional Finite Element and Finite Volume based 
-approaches forsolving the Navier-Stokes equations with moving boundaries and/or 
-structural interaction~\citep{Bathe2004} can be applied to particle fluid 
-interaction problems. The common feature of these approaches is to model the 
-interaction between the fluid and the particles to a high degree of accuracy, 
-but the main computational challenge is the need to continuously generate new 
-geometrically adapted meshes to circumvent severe mesh distortion, which is 
-computationally very intensive~\citep{Han2007}. The Lattice Boltzmann approach 
-has the advantage of accommodating large particle sizes and the interaction 
-between the fluid and the moving particles can be modelled through relatively 
-simple fluid - particle interface treatments. Further, employing the Discrete 
-Element Method (DE) to account for the particle/particle interaction naturally 
-leads to a combined LB - DEM solution procedure. The Eulerian nature of the 
-Lattice Boltzmann formulation, together with the common explicit time step 
-scheme of both the Lattice Boltzmann and the Molecular Dynamics makes this 
+approaches for solving the Navier-Stokes equations with moving boundaries 
+and/or structural interaction~\citep{Bathe2004} can be applied to particle 
+fluid interaction problems. The common feature of these approaches is to model 
+the interaction between the fluid and the particles to a high degree of 
+accuracy, but the main computational challenge is the need to continuously 
+generate new geometrically adapted meshes to circumvent severe mesh distortion, 
+which is computationally very intensive~\citep{Han2007a}. The Lattice Boltzmann 
+approach has the advantage of accommodating large particle sizes and the 
+interaction between the fluid and the moving particles can be modelled through 
+relatively simple fluid - particle interface treatments. Further, employing the 
+Discrete Element Method (DE) to account for the particle/particle interaction 
+naturally leads to a combined LB - DEM solution procedure. The Eulerian nature 
+of the Lattice Boltzmann formulation, together with the common explicit time 
+step scheme of both the Lattice Boltzmann and the Molecular Dynamics makes this 
 coupling strategy an efficient numerical procedure for the simulation of 
 particle-fluid systems. LBM-MD technique is a powerful predictive tool for 
 gaining insights into many the fundamental physical phenomena in the 
