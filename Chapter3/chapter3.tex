@@ -531,7 +531,7 @@ rectangular obstacle, to study the capability of the LBM technique to simulate
 vortex effects in fluid flows around obstacles.
 
 The efficiency of Lattice Boltzmann method to include solid walls/particles is 
-evaluated by placing a solid wall of Length `D/2' at length `L/4' in the pipe. 
+evaluated by placing a solid wall of Length `H/2' at length `L/4' in the pipe. 
 The velocity profile obtained after 50,000 iterations is presented in 
 ~\cref{fig:Obstacle}. The formation of eddies at the corners of the wall along 
 the flow direction is captured by the LB method. The horizontal velocity 
@@ -544,9 +544,9 @@ was performed using ANSYS FLUENT. The control volume is discretised into 10,000
 cells and a constant velocity is applied in the inlet. The velocity profile 
 obtained from the CFD analysis is presented in~\cref{fig:obsvc}. Similar 
 maximum horizontal velocities are observed in both the LBM and the CFD 
-analyses. The velocity profile obtained from the CFD analysis (see 
-~\cref{fig:obsvc}) proves the occurrence of eddies in the LBM analysis of flow 
-around an obstacle. The CFD analysis is found to over predict slightly the 
+analyses. The velocity profile obtained from the CFD analysis 
+(see~\cref{fig:obsvc}) proves the occurrence of eddies in the LBM analysis of 
+flow around an obstacle. The CFD analysis is found to over predict slightly the 
 maximum horizontal velocity in comparison with the LBM simulation. The 
 discrepancy in the horizontal velocity profile (\cref{fig:LBM}) can be 
 attributed to the relaxation parameter used in the LBM, which is obtained by 
@@ -581,9 +581,8 @@ through a pipe}
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=0.95\textwidth]{LBMCFD}
-\caption{LBM and CFD simulation of laminar flow through a circular pipe with 
-and without an obstacle}
+\includegraphics[width=0.95\textwidth]{Poiseuille}
+\caption{LBM and CFD simulation of laminar flow through a circular pipe}
 \label{fig:LBM}
 \end{figure}
 
@@ -603,6 +602,13 @@ with obstacle in the middle}
 \label{fig:obsvc}
 \end{figure}
 
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.95\textwidth]{Obstacle}
+\caption{LBM and CFD simulation of a flow around an obstacle}
+\label{fig:LBM}
+\end{figure}
+
 \subsection{Lattice Boltzmann - Multi-Relaxation Time (LBM-MRT)}
 
 The lattice Boltzmann Bhatnagar-Gross-Krook (LGBK) method is capable of 
@@ -619,12 +625,12 @@ a linear transformation and the flux is still finished in the velocity
 space~\citep{Du2006}.
 
 In the formulation of the linear Boltzmann equation with multiple relaxation 
-time approximation, the lattice Boltzmann equation is written as:
+time approximation, the lattice Boltzmann equation is written as
 
 \begin{align}
 f_{\alpha}(\mathbf{x}+\mathbf{e}_i\Delta_t, t+ 
 \Delta_t)-f_{\alpha}(\mathbf{x},t)=-\mathbf{S}_{\alpha 
-i}(f_i(\mathbf{x},t)-f_i^{eq}(\mathbf{x},t)
+i}(f_i(\mathbf{x},t)-f_i^{eq}(\mathbf{x},t)\,,
 \end{align}
 
 \noindent where \textbf{S} is collision matrix. The nine eigen values of 
@@ -638,19 +644,21 @@ flux:
 
 \begin{gather}
 f_{\alpha}^+(\mathbf{x},t)-f_{\alpha}(\mathbf{x},t) = -\mathbf{S}_{\alpha i}(f_i(\mathbf{x},t)-f_i^{eq}(\mathbf{x},t) \label{eq:advection}\\
-f_{\alpha}(\mathbf{x}+e_{\alpha}\Delta_t, t+\Delta_t) = f_{\alpha}^+(\mathbf{x},t)
+f_{\alpha}(\mathbf{x}+e_{\alpha}\Delta_t, t+\Delta_t) = 
+f_{\alpha}^+(\mathbf{x},t)\,.
 \end{gather}
 
 \noindent The advection~\cref{eq:advection} can be mapped to the momentum 
 space by multiplying through by a transformation matrix \textbf{M} and the flux 
 is still finished in the velocity space. The evolutionary equation of the 
-multi-relaxation time lattice Boltzmann equation is written as:
+multi-relaxation time lattice Boltzmann equation is written as
 
 \begin{gather}
 \mathbf{f}(\mathbf{x}+\mathbf{e}_i\Delta_t, t+ 
 \Delta_t)-\mathbf{f}(\mathbf{x},t)=-M^{-1}\hat{\mathbf{S}}(\hat{\mathbf{f}}
-(\mathbf{x},t)-\hat{\mathbf{f}}^{eq}(\mathbf{x},t))
+(\mathbf{x},t)-\hat{\mathbf{f}}^{eq}(\mathbf{x},t))\,,
 \end{gather}
+
 \noindent where \textbf{M} is the tranformation matrix mapping a vector 
 \textbf{f} in the discrete velocity space $\mathds{V}=\mathds{R}^b$ to a vector 
 $\hat{\mathbf{f}}$ in the moment space $\mathds{V}=\mathds{R}^b$. 
@@ -826,7 +834,8 @@ relatively simple fluid - particle interface treatments. Further, employing the
 Discrete Element Method (DE) to account for the particle/particle interaction 
 naturally leads to a combined LB - DEM solution procedure. The Eulerian nature 
 of the Lattice Boltzmann formulation, together with the common explicit time 
-step scheme of both the Lattice Boltzmann and the Molecular Dynamics makes this 
+step scheme of both the Lattice Boltzmann and the Discrete Element Method makes 
+this 
 coupling strategy an efficient numerical procedure for the simulation of 
 particle-fluid systems. LBM-MD technique is a powerful predictive tool for 
 gaining insights into many the fundamental physical phenomena in the 
@@ -990,12 +999,13 @@ inertia of a particle; and $\ddots{\theta}$ is the angular acceleration;
 $\mathbf{T}_{f}$ are respectively the hydrodynamic forces and torque. The 
 equation can be solved numerically by an explicit numerical integration, such 
 as central difference scheme. The interaction between solid particles and the 
-solid particles with the walls are dealt with Molecular Dynamics technique. To 
+solid particles with the walls are dealt with Discrete Element Method 
+technique. To 
 solve the coupled MD-LBM, the hydrodynamic force exerted and the static 
 buoyancy force are considered by reducing the gravitational acceleration to 
 $(1- \rho/rho_{s})\mathbf{g}$, where $\rho_{s}$ is the density of the 
 particles. When taking into account all forces acting on an element, the 
-dynamic equations of Molecular Dynamics can be expressed as:
+dynamic equations of Discrete Element Method can be expressed as:
 
 \begin{align}
 \label{eq:mde}
@@ -1031,7 +1041,8 @@ Dynamics equations is:
 \end{align}
 
 The time step factor $\lambda$ is chosen to be around 0.1 to ensure both 
-stability and accuracy~\citep{He1997}. When combining the Molecular Dynamics 
+stability and accuracy~\citep{He1997}. When combining the Discrete Element 
+Method 
 modelling of the particle interaction with the LB formulation, a minor issue 
 arises. There are now two time steps: $\Delta t$ for the fluid flow and $\Delta 
 t_{D}$ for the particles. Since $\Delta t_{D}$ is normally smaller than $\Delta 
