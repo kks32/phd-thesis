@@ -230,7 +230,7 @@ Maxwellian equilibrium distribution functions, but in such a way that local
 mass and momentum are invariants. In incompressible flows, the energy 
 conservation is equivalent to momentum conservation~\citep{He1997}.
 
-\begin{figure}[htpb]
+\begin{figure}[htbp]
 	\centering
 	\includegraphics[width=0.95\textwidth]{stream}
 	\caption[Illustration of the streaming process on a \textit{D2Q9} 
@@ -554,14 +554,14 @@ trial and error procedure. Thus, it can be concluded that the Lattice Boltzmann
 method is a suitable form of numerical representation of Navier-Stokes equation 
 to model fluid flows. 
 
-\begin{figure}[htpb]
+\begin{figure}[htbp]
 \centering
 \includegraphics[width=0.95\textwidth]{LBM_Poiseuille}
 \caption{Velocity profile: LBM Simulation of a laminar flow through a pipe}
 \label{fig:LBM_Poiseuille}
 \end{figure}
 
-\begin{figure}[htpb]
+\begin{figure}[htbp]
 \centering
 \includegraphics[width=0.95\textwidth]{CFD_Mesh}
 \caption{Finite Volume Mesh used in the CFD analysis of laminar flow through a 
@@ -570,7 +570,7 @@ pipe}
 \end{figure}
 
 
-\begin{figure}[htpb]
+\begin{figure}[htbp]
 \centering
 \includegraphics[width=0.9\textwidth]{CFD_Poiseuille}
 \caption{Velocity contour obtained from the CFD analysis of laminar flow 
@@ -579,7 +579,7 @@ through a pipe}
 \end{figure}
 
 
-\begin{figure}[htpb]
+\begin{figure}[htbp]
 \centering
 \includegraphics[width=0.95\textwidth]{Poiseuille}
 \caption{LBM and CFD simulation of laminar flow through a circular pipe}
@@ -602,7 +602,7 @@ with obstacle in the middle}
 \label{fig:obsvc}
 \end{figure}
 
-\begin{figure}[htpb]
+\begin{figure}[htbp]
 \centering
 \includegraphics[width=0.95\textwidth]{Obstacle}
 \caption{LBM and CFD simulation of a flow around an obstacle}
@@ -815,6 +815,13 @@ formulation remains unchanged, except for the use of a new turbulence-related
 viscosity $\tau_{*}$. The component $s_1$ of the collision matrix becomes $s_1 
 = \frac{1}{\tau+\tau_t}$.
 
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.95\textwidth]{karman}
+\caption{K\'{a}rm\'{a}n vortex street}
+\label{fig:karman}
+\end{figure}
+
 %************************************************************************* %
 
 \section[Coupled LBM -- DEM for fluid--grain interactions]{Coupled Lattice 
@@ -980,7 +987,7 @@ $\mathbf{x}_{\mathit{n}}$ represents the coordinate of the lattice node
 %
 \begin{figure}[htbp]
 \centering
-\includegraphics[scale=1]{bouncemod}
+\includegraphics[height=0.9\textheight]{bouncemod}
 \caption{Bounce back boundaries for different values of $\delta$}
 \label{fig:bouncemod}
 \end{figure}
@@ -1059,3 +1066,10 @@ Element part. At every step of the fluid computation, $\mathit{n}_{s}$
 sub-steps of integration are performed for the Discrete Element 
 Method~\eqref{eq:mde} using the time step $\Delta t_{s}$. The hydrodynamic 
 force $\mathbf{F}_{f}$ is unchanged during the sub-cycling. 
+%
+\begin{figure}[htbp]
+\centering
+\includegraphics[height=0.9\textheight]{kissing}
+\caption{Particle kissing and tumble}
+\label{fig:kissing}
+\end{figure}
