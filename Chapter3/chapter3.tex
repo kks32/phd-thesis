@@ -529,7 +529,8 @@ where $v_{x}$ is the horizontal velocity (m/s); $\Delta P$ is the pressure
 gradient, $\mu$ dynamic viscosity of the fluid, 
 
 \begin{table}
-\caption{LBM parameters used in simulating laminar flow through a circular pipe}
+\caption{LBM parameters used in simulating laminar flow through 
+a circular pipe}
 \label{table:lbm}
 \centering
 \begin{tabular}{ll}
@@ -543,32 +544,38 @@ Error in predicting horizontal velocity & 0.009 \% \\ \bottomrule
 \end{tabular}
 \end{table}
 
-The horizontal velocity profile estimated at `L/2' based on the closed form 
-solution is also plotted in~\cref{fig:LBM_Poiseuille}. It can be observed from 
-the figure that the Lattice Boltzmann method predicts the laminar flow 
-behaviour, however the maximum horizontal velocity is underestimated by 0.009 
-\% in comparison to the closed form solution. To validate the Lattice Boltzmann 
-code developed in the present study, the results of the laminar flow through a 
-pipe is compared with those obtained from the Computational Fluid Dynamics 
-(CFD) simulations performed using \textit{ANSYS FLUENT}. The CFD analysis 
-involves solving problems associated with fluid flows using numerical 
-approximations to solve Navier-Stokes equations, which defines any single-phase 
-flow. The Finite Volume Method (FVM) is a common approach used in the CFD 
-codes, like FLUENT. It involves solving the governing equation over the 
-discretised control volume. This guarantees the conservation of fluxes over a 
-particular control volume. The finite volume equations yield governing 
-equations of the form:
+The horizontal velocity profile estimated at `L/2' based on the 
+closed form solution is also plotted 
+in~\cref{fig:LBM_Poiseuille}. It can be observed from 
+the figure that the Lattice Boltzmann method predicts the 
+laminar flow behaviour, however the maximum horizontal velocity 
+is underestimated by 0.009 \% in comparison to the closed form 
+solution. To validate the Lattice Boltzmann code developed in 
+the present study, the results of the laminar flow through a 
+pipe is compared with those obtained from CFD simulations 
+performed using \textit{ANSYS Fluent}. CFD analysis 
+involves solving problems associated with fluid flows using 
+numerical approximations to solve Navier-Stokes equations, 
+which defines any single-phase flow. FVM is a common approach 
+used in CFD codes, like Fluent. It involves solving the 
+governing equation over the discretised control volume. This 
+guarantees the conservation of fluxes over a particular control 
+volume. The finite volume equations yield governing equations 
+of the form
 %
 \begin{align}
-\frac{\partial}{\partial t} \int\int\int  Q d\mathbf{V} + \int\int \mathit{F} d\mathbf{A} = 0
+\frac{\partial}{\partial t} \int\int\int  Q d\mathbf{V} + 
+\int\int \mathit{F} d\mathbf{A} = 0\,,
 \end{align}
 %
-where \textit{Q} is the vector of conserved variables, \textit{F} is the vector 
-of fluxes in the Navier-Stokes equation, \textit{V} is the volume of control 
-volume element, and \textit{A} is the surface area of the control volume 
-element. A 2D rectangular plane of length 1m and height 0.04m is discretised 
-into 400 cells of size $1 \time 10^{-2} $ m (see~\cref{fig:mesh}). A constant 
-velocity is applied at the inlet. Water ($\rho = 998.2\mbox{ }kg/m^{3},\mbox{ } 
+where \textit{Q} is the vector of conserved variables, 
+\textit{F} is the vector of fluxes in the Navier-Stokes 
+equation, \textit{V} is the volume of control volume element, 
+and \textit{A} is the surface area of the control volume 
+element. A 2D rectangular plane of length 1m and height 0.04m 
+is discretised into 400 cells of size $1 \time 10^{-2} $ m 
+(see~\cref{fig:mesh}). A constant velocity is applied at the 
+inlet. Water ($\rho = 998.2\mbox{ }kg/m^{3},\mbox{ } 
 viscosity`\eta'=1 \times 10^{-3}\mbox{ } Ns/m^{2} $) is allowed to flow through 
 the pipe and it develops into a fully laminar flow. The Least-Squares cell 
 based approach was adopted to solve the gradient, and 100 iteration steps were 
