@@ -82,7 +82,7 @@
       options in case you have defined two bibliography styles.}
   \else
     \PHD@biblatextrue
-    \setBibtrue
+%%    \setBibtrue
   \fi
 }
 
