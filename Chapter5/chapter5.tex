@@ -117,7 +117,7 @@ spacing \textit{`h'} in both the \textit{x-} and the
 	\caption[The Lattice Boltzmann discretisation and D2Q9 scheme]{The Lattice 
 	Boltzmann discretisation and D2Q9 scheme: (a) a standard LB lattice and 
 	histogram views of the discrete single particle distribution 
-	function/direction-specific densities $f_i$; (b) D2Q9 model}
+	function/direction-specific densities $f_i$; (b) D2Q9 model.}
 	\label{fig:D2Q9}
 \end{figure}
 
@@ -270,7 +270,7 @@ conservation~\citep{He1997}.
 	lattice]{Illustration of the collision process on a \textit{D2Q9} lattice. 
 	The local density $\rho$ and velocity $\mathbf{v}$ are conserved, but the 
 	distribution functions change according to the relaxation to local 
-	Maxwellian rule}
+	Maxwellian rule.}
 	\label{fig:collision}
 \end{figure} 
 
@@ -467,7 +467,7 @@ find
 %
 \begin{align}
 f_1 & = f_3 + (f_1^{eq}-f_3^{eq}) = f_3 \\
-f_2 & = f_4 + (f_1^{eq}-f_3^{eq}) = f_4 \,,
+f_2 & = f_4 + (f_1^{eq}-f_3^{eq}) = f_4 \,.
 \end{align}
 %
 \noindent Using these we can compute
@@ -494,21 +494,171 @@ functions.
 
 %*******************************************************************************
 
+\subsection{Lattice Boltzmann - Multi-Relaxation Time (LBM-MRT)}
+
+The Lattice Boltzmann Bhatnagar-Gross-Krook (LGBK) method is capable of 
+simulating various hydrodynamics, such as multiphase flows and 
+suspensions in fluid~\citep{Succi1989,Succi2001}. LBM also offers intrinsic 
+parallelism. However, LBM suffers from numerical instability when the 
+dimensionless relaxation time $\tau$ is close to 0.5. The Multi-Relaxation Time 
+-- Lattice Boltzmann Method (LBM-MRT) overcomes the deficiencies of linearlised 
+single relaxation LBM-BGK, such as fixed Prandtl number (Pr=$\nu/\kappa$), 
+where the thermal conductivity `$\kappa$' is unity~\citep{Liu2003a}. 
+LB-MRT model offers better numerical stability and has more degrees of freedom. 
+In LB-MRT model the advection is mapped onto the momentum space by a linear 
+transformation and the flux is still finished in the velocity 
+space~\citep{Du2006}.
+
+The Lattice Boltzmann equation with multiple relaxation time approximation is 
+written as
+%
+\begin{equation}
+f_{\alpha}(\mathbf{x}+\mathbf{e}_i\Delta_t, t+ 
+\Delta_t)-f_{\alpha}(\mathbf{x},t)=-\mathbf{S}_{\alpha 
+	i}(f_i(\mathbf{x},t)-f_i^{eq}(\mathbf{x},t)\,,
+\end{equation}
+%
+\noindent where \textbf{S} is collision matrix. The nine eigen values of 
+\textbf{S} are all between 0 and 2 so as to maintain linear stability and the 
+separation of scales. This ensures that the relaxation times of non-conserved 
+quantities are much faster than the hydrodynamic time scales. The LGBK model is 
+a special case in which the nine relaxation times are all equal and the 
+collision matrix $\mathbf{S}=\frac{1}{\tau}\mathbf{I}$, where \textbf{I} is the 
+identity matrix. The evolutionary progress involves two steps, advection and 
+flux
+%
+\begin{align}
+f_{\alpha}^+(\mathbf{x},t)-f_{\alpha}(\mathbf{x},t) & = -\mathbf{S}_{\alpha 
+i}(f_i(\mathbf{x},t)-f_i^{eq}(\mathbf{x},t) \label{eq:advection}\\
+f_{\alpha}(\mathbf{x}+e_{\alpha}\Delta_t, t+\Delta_t) & = 
+f_{\alpha}^+(\mathbf{x},t)\,.
+\end{align}
+
+The advection (Equation~\ref{eq:advection}) can be mapped to the 
+momentum space by multiplying with a transformation matrix \textbf{M}. The 
+evolutionary equation of the multi-relaxation time Lattice Boltzmann equation 
+is written as
+%
+\begin{equation}
+\mathbf{f}(\mathbf{x}+\mathbf{e}_i\Delta_t, t+ 
+\Delta_t)-\mathbf{f}(\mathbf{x},t)=-M^{-1}\hat{\mathbf{S}}(\hat{\mathbf{f}}
+(\mathbf{x},t)-\hat{\mathbf{f}}^{eq}(\mathbf{x},t))\,,
+\end{equation}
+%
+\noindent where \textbf{M} is the tranformation matrix mapping a vector 
+\textbf{f} in the discrete velocity space $\mathds{V}=\mathds{R}^b$ to a vector 
+$\hat{\mathbf{f}}$ in the moment space $\mathds{V}=\mathds{R}^b$. 
+%
+\begin{gather}
+\hat{\mathbf{f}}= \mathbf{M}\mathbf{f}\,, \\ 
+\mathbf{f}(\mathbf{x},t) =\left[f_0(\mathbf{x},t),f_1(\mathbf{x},t),\dots 
+f_8(\mathbf{x},t)\right]^T\,.
+\end{gather}
+%
+The collision matrix $\hat{\mathbf{S}} = MSM^{-1}$ in moment space is 
+a diagonal matrix
+\begin{equation*}
+\hat{\mathbf{S}} =\mbox{diag} \left[ s_1, s_2, s_3, \dots s_9  \right]\,.
+\end{equation*} 
+%
+The transformation matrix \textbf{M} can be constructed via Gram-Schmidt 
+orthgonalisation procedure. The general form of the transformation matrix 
+\textbf{M} can be written as
+%
+\begin{equation}
+\mathbf{M} =  
+\left[|p\rangle,|e\rangle,|e^2\rangle,|u_x\rangle,|q_x\rangle,|u_y\rangle,
+|q_y\rangle,|p_{xx}\rangle,|p_{xy}\rangle\right]^T \,, \\
+\end{equation}
+% 
+\noindent whose elements are, 
+%
+\begin{subequations}
+\begin{align}
+|p\rangle & =  |\mathit{e}_{\alpha}|^0\\
+|e\rangle_{\alpha} & = \mathit{Q}e_{\alpha}^2-b_2\\
+|e^2\rangle_{\alpha} & =  	
+a_1(\mathit{Q}e_{\alpha}^4-b_6)+a_2(\mathit{Q}e_{\alpha}^4-b_6)\\
+|u_x\rangle_{\alpha} & = e_{\alpha,x} \\
+|q_x\rangle_{\alpha} & = (\mathit{b}_1e_{\alpha}^2-b_3)e_{\alpha,x}\\
+|u_y\rangle_{\alpha} & = e_{\alpha,y}\\
+|q_y\rangle_{\alpha} & = (\mathit{b}_1e_{\alpha}^2-b_3)e_{\alpha,y}\\
+|p_{xx}\rangle_{\alpha} & = \mathit{d}e_{\alpha,x}^2-e_{\alpha}^2\\
+|p_{xx}\rangle_{\alpha}  & = e_{\alpha,x}e_{\alpha,y} \,,
+\end{align}
+\end{subequations}
+
+\noindent where $d = 2$ and $Q = 9$, $b_1=\sum_{\alpha=1}^{Q}e_{\alpha,x}^2$, 
+$b_2=\sum_{\alpha=1}^{Q}e_{\alpha}^2$, 
+$b_3=\sum_{\alpha=1}^{Q}e_{\alpha}^2e_{\alpha,x}^4$, $a_1=||e^2||^2,$ and 
+$a_2=\sum_{\alpha=0}^{Q-1}(Qc_{\alpha}^2-b_2)\times(Qc_{\alpha}^4-b_6)$. 
+
+Explicitly, the transformation matrix can be written as
+%
+\begin{align}
+\mathbf{M}= \begin{bmatrix}
+1 &  1 &  1 &  1 &  1 &  1 &  1 &  1 &  1 \\
+-4 & -1 & -1 & -1 & -1 &  2 &  2 &  2 &  2 \\ 
+4 & -2 & -2 & -2 & -2 &  1 &  1 &  1 &  1 \\
+0 &  1 &  0 & -1 &  0 &  1 & -1 & -1 &  1 \\
+0 & -2 &  0 &  2 &  0 &  1 & -1 & -1 &  1 \\
+0 &  0 &  1 &  0 & -1 &  1 &  1 & -1 & -1 \\
+0 &  0 & -2 &  0 &  2 &  1 &  1 & -1 & -1 \\
+0 &  1 & -1 &  1 & -1 &  0 &  0 &  0 &  0 \\
+0 &  0 &  0 &  0 &  0 &  1 &  1 &  1 &  1 \\
+\end{bmatrix}\,.
+\end{align}
+%
+The corresponding equilibrium distribution functions in moment space 
+$\widehat{\mathbf{f}^{eq}}$ is given as
+%
+\begin{align}
+\widehat{\mathbf{f}^{eq}}=\left[\rho_0,e^{eq}, 
+e^{2eq},u_x,q_x^{eq},q_y^{eq},p_{xx}^{eq},p_{xy}^{eq}\right]^T\,,
+\end{align}
+%
+\noindent where
+%
+\begin{subequations}
+\begin{align}
+e^{eq} & = \frac{1}{4}\alpha_2p+\frac{1}{6}\gamma_2(u_x^2+y_y^2)\\
+e^{2eq} & = \frac{1}{4}\alpha_3p+\frac{1}{6}\gamma_4(u_x^2+y_y^2)\\
+q_x^{eq} & = \frac{1}{2}c_1u_x\\
+q_y^{eq} & = \frac{1}{2}c_2u_y \\
+p_{xx}^{eq} & = \frac{3}{2}\gamma_1(u_x^2 - u_y^2)\\
+p_{xy}^{eq} & = \frac{3}{2}\gamma_3(u_xu_y) \,.
+\end{align}
+\end{subequations}
+%
+To get the correct hydrodynamic equation, the values of the co-efficients are 
+chosen as $\alpha_2=24$,  $\alpha_3=-36$, $c_1=c_2=-2$, 
+$\gamma_1=\gamma_3=2/3$, $\gamma_2=18$ and $\gamma_4=-18$. $s_8 = s_9 = \tau$ 
+and $s_1=s_4=s_6=1.0$ and the others vary between 1.0 and 2.0 for linear 
+stability. Through the Chapman-Enskog expansion~\citep{Du2006}, the 
+incompressible Navier-Stokes equation can be recovered and the viscosity is 
+given as
+%
+\begin{align}
+\nu=c_s^2\Delta t(\tau-0.5)\,.
+\end{align}
+
+%*******************************************************************************
+
 \section{Validation of Lattice Boltzmann method}
 
 To verify the incompressible LBM flow model implemented in the above section, 
 numerical simulation of the steady state Poiseuille flow was conducted. The 
 transient development of Poseuille's flow in a straight channel is computed. 
 Water ($\rho=1000 kg/m^{3}$) is simulated to flow through a channel of width 
-`H' (= 0.04 \si{\meter}) and simulation length, `L' (2.5H). Periodic 
+`H' (= 0.4 \si{\meter}) and simulation length, `L' (2.5H). Periodic 
 boundary conditions are applied at either end of the pipe and the pressure 
 gradient is set to zero, which simulates the condition of a continuous flow of 
-fluid in a closed circular pipe. The length has no effect on the simulation as 
-no streamwise variation is detected in the solution. The parameters adopted in 
-LBM simulation are summarised in~\cref{table:lbm}. Sufficient time is allowed 
-for the flow to travel beyond the required development length so that the flow 
-is laminar~\citet{Durst2005}. The development length required for a flow to 
-be fully laminar is
+fluid in a closed circular pipe. The length `L' has no effect on the simulation 
+as no streamwise variation is detected in the solution. The parameters adopted 
+in LBM simulation are summarised in~\cref{table:lbm}. Sufficient time is 
+allowed for the flow to travel beyond the required development length so that 
+the flow is laminar~\citet{Durst2005}. The development length required for a 
+flow to be fully laminar is
 %
 \begin{equation}
 X_{D}/H=[(0.619)^{1.6}+(0.0567 R_{e})^{1.6}]^{1/1.6} \,,
@@ -517,16 +667,18 @@ X_{D}/H=[(0.619)^{1.6}+(0.0567 R_{e})^{1.6}]^{1/1.6} \,,
 \noindent where $\mathrm{X}_{\mathrm{D}}$ is the development length and $R_{e}$ 
 is the Reynold's number. The velocity profile at the end of the simulation is 
 presented in~\cref{fig:LBM_Poiseuille}. A maximum horizontal velocity of 
-0.037863~\si{\meter\per\second} is observed. The maximum horizontal velocity is 
-compared with the closed-form based on the Haygen-Poiseuille's flow equation 
-for no-slip boundary condition~\citep{Willis2008}
+0.037863~\si{\meter\per\second} is observed along the center-line of the 
+channel. The maximum horizontal velocity is compared with the closed-form based 
+on the Haygen-Poiseuille's flow equation for no-slip boundary 
+condition~\citep{Willis2008}
 %
 \begin{equation}
-	\mathit{v}_{\mathit{x}}=\frac{\Delta P}{2 \mu L} [\frac{D^{2}}{4}-y^{2}]\,,
+	\mathit{U}_{\mathit{x}}=\frac{\Delta P}{2 \mu L} [\frac{H^{2}}{4}-y^{2}]\,,
 \end{equation}
 %
 \noindent where $v_{x}$ is the horizontal velocity (m/s); $\Delta P$ is the 
-pressure gradient, $\mu$ dynamic viscosity of the fluid.
+pressure gradient, $\mu$ dynamic viscosity of the fluid. LBM predicts the 
+maximum horizontal velocity within an error of 0.009~\%.
 
 \begin{table}[tb]
 \caption{LBM parameters used in simulating laminar flow through 
@@ -546,13 +698,15 @@ Error in predicting horizontal velocity & 0.009 \% \\ \bottomrule
 \end{tabular}
 \end{table}
 
-The horizontal velocity profile estimated at `L/2' based on the 
-closed form solution is also plotted 
-in~\cref{fig:LBM_Poiseuille}. It can be observed from 
-the figure that the Lattice Boltzmann method predicts the 
-laminar flow behaviour, however the maximum horizontal velocity 
-is underestimated by 0.009 \% in comparison to the closed form 
-solution. To validate the Lattice Boltzmann code developed in 
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=0.95\textwidth]{LBM_Poiseuille}
+	\caption{Velocity profile: LBM Simulation of a laminar flow through a 
+	channel.}
+	\label{fig:LBM_Poiseuille}
+\end{figure}
+
+To validate the Lattice Boltzmann code developed in 
 the present study, the results of the laminar flow through a 
 pipe is compared with those obtained from CFD simulations 
 performed using ANSYS Fluent. CFD analysis 
@@ -592,8 +746,9 @@ vortex effects in fluid flows around obstacles.
 
 The efficiency of Lattice Boltzmann method to include solid walls/particles is 
 evaluated by placing a solid wall of Length `H/2' at length `L/4' in the pipe. 
-The velocity profile obtained after 50,000 iterations is presented in 
-~\cref{fig:Obstacle}. The formation of eddies at the corners of the wall along 
+The velocity profile obtained after 50,000 iterations is presented 
+in~\cref{fig:Obstacle}. The formation of eddies at the corners of the wall 
+along 
 the flow direction is captured by the LB method. The horizontal velocity 
 profile obtained at `L/4' is presented in~\cref{fig:LBM}. The occurrence of 
 vortex effect in the flow around the edges of the obstacle can be visualised in 
@@ -614,18 +769,12 @@ trial and error procedure. Thus, it can be concluded that the Lattice Boltzmann
 method is a suitable form of numerical representation of Navier-Stokes equation 
 to model fluid flows. 
 
-\begin{figure}[htbp]
-\centering
-\includegraphics[width=0.95\textwidth]{LBM_Poiseuille}
-\caption{Velocity profile: LBM Simulation of a laminar flow through a pipe}
-\label{fig:LBM_Poiseuille}
-\end{figure}
 
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=0.95\textwidth]{CFD_Mesh}
-\caption{Finite Volume Mesh used in the CFD analysis of laminar flow through a 
-pipe}
+\caption{Finite Volume mesh used in the CFD analysis of laminar flow through a 
+channel.}
 \label{fig:mesh}
 \end{figure}
 
@@ -634,7 +783,7 @@ pipe}
 \centering
 \includegraphics[width=0.9\textwidth]{CFD_Poiseuille}
 \caption{Velocity contour obtained from the CFD analysis of laminar flow 
-through a pipe}
+through a channel.}
 \label{fig:cont}
 \end{figure}
 
@@ -642,7 +791,9 @@ through a pipe}
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=0.95\textwidth]{Poiseuille}
-\caption{LBM and CFD simulation of laminar flow through a circular pipe}
+\caption{Development of the Poiseuille velocity profile in time: comparison 
+between LBM simulation, CFD simulation and the analytical solution. Time is 
+made dimensionless by $H/U_0$.}
 \label{fig:LBM}
 \end{figure}
 
@@ -650,7 +801,7 @@ through a pipe}
 \centering
 \hspace{-13mm}\includegraphics[width=0.95\textwidth]{LBM_Obstacle}
 \caption{LBM simulation of velocity profile for a laminar flow through a pipe 
-with obstacle in the middle}
+with an obstacle at L/4.}
 \label{fig:Obstacle}
 \end{figure}
 
@@ -658,151 +809,17 @@ with obstacle in the middle}
 \centering
 \includegraphics[width=0.7\textwidth]{CFD_Obstacle}
 \caption{CFD simulation of velocity contour for a laminar flow through a pipe 
-with obstacle in the middle}
+with an obstacle at L/4.}
 \label{fig:obsvc}
 \end{figure}
 
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=0.95\textwidth]{Obstacle}
-\caption{LBM and CFD simulation of a flow around an obstacle}
+\caption{LBM and CFD simulation of a flow around an obstacle.}
 \label{fig:LBMObstacle}
 \end{figure}
 
-\subsection{Lattice Boltzmann - Multi-Relaxation Time (LBM-MRT)}
-
-The lattice Boltzmann Bhatnagar-Gross-Krook (LGBK) method is capable of 
-simulating various hydrodynamics~\citep{Succi1989, Succi2001} and offers 
-intrinsic parallelism. Although LBM is successful in modelling complex fluid 
-systems, such as multiphase flows and suspensions in fluid, the LBM may lead to 
-numerical instability when the dimensionless relaxation time $\tau$ is close to 
-0.5. The Multi-Relaxation Time Lattice Boltzmann Method (LBM-MRT) overcomes the 
-deficiencies of linearlised single relaxation LBM-BGK, such as fixed Prandtl 
-number (Pr=$\nu/\kappa$), where the thermal conductivity `$\kappa$' is 
-unity~\citep{Liu2003a}. The LB-MRT model offers better numerical stability and 
-has more degrees of freedom. The advection is mapped onto the momentum space by 
-a linear transformation and the flux is still finished in the velocity 
-space~\citep{Du2006}.
-
-In the formulation of the linear Boltzmann equation with multiple relaxation 
-time approximation, the lattice Boltzmann equation is written as
-%
-\begin{align}
-f_{\alpha}(\mathbf{x}+\mathbf{e}_i\Delta_t, t+ 
-\Delta_t)-f_{\alpha}(\mathbf{x},t)=-\mathbf{S}_{\alpha 
-i}(f_i(\mathbf{x},t)-f_i^{eq}(\mathbf{x},t)\,,
-\end{align}
-%
-\noindent where \textbf{S} is collision matrix. The nine eigen values of 
-\textbf{S} are all between 0 and 2 so as to maintain linear stability and the 
-separation of scales, which means that the relaxation times of non-conserved 
-quantities are much faster than the hydrodynamic time scales. The LGBK model is 
-the special case in which the nine relaxation times are all equal and the 
-collision matrix $\mathbf{S}=\frac{1}{\tau}\mathbf{I}$, where \textbf{I} is the 
-identity matrix. The evolutionary progress involves two steps, advection and 
-flux:
-%
-\begin{gather}
-f_{\alpha}^+(\mathbf{x},t)-f_{\alpha}(\mathbf{x},t) = -\mathbf{S}_{\alpha i}(f_i(\mathbf{x},t)-f_i^{eq}(\mathbf{x},t) \label{eq:advection}\\
-f_{\alpha}(\mathbf{x}+e_{\alpha}\Delta_t, t+\Delta_t) = 
-f_{\alpha}^+(\mathbf{x},t)\,.
-\end{gather}
-%
-\noindent The advection~\cref{eq:advection} can be mapped to the momentum 
-space by multiplying through by a transformation matrix \textbf{M} and the flux 
-is still finished in the velocity space. The evolutionary equation of the 
-multi-relaxation time lattice Boltzmann equation is written as
-%
-\begin{gather}
-\mathbf{f}(\mathbf{x}+\mathbf{e}_i\Delta_t, t+ 
-\Delta_t)-\mathbf{f}(\mathbf{x},t)=-M^{-1}\hat{\mathbf{S}}(\hat{\mathbf{f}}
-(\mathbf{x},t)-\hat{\mathbf{f}}^{eq}(\mathbf{x},t))\,,
-\end{gather}
-%
-\noindent where \textbf{M} is the tranformation matrix mapping a vector 
-\textbf{f} in the discrete velocity space $\mathds{V}=\mathds{R}^b$ to a vector 
-$\hat{\mathbf{f}}$ in the moment space $\mathds{V}=\mathds{R}^b$. 
-%
-\begin{gather}
-\nonumber
-\hat{\mathbf{f}}= \mathbf{M}\mathbf{f} \\ 
-\nonumber
-\mathbf{f}(\mathbf{x},t) =\left[f_0(\mathbf{x},t),f_1(\mathbf{x},t),\dots f_8(\mathbf{x},t)\right]^T
-\end{gather}
-%
-The collision matrix $\hat{\mathbf{S}} = MSM^{-1}$ in moment space is a 
-diagonal matrix: $\hat{\mathbf{S}} =\mbox{diag} \left[ s_1, s_2, 
-s_3,\linebreak[0] \dots s_9  \right]$. The transformation matrix \textbf{M} can 
-be constructed via Gram-Schmidt orthgonalisation procedure. The general form of 
-the transformation matrix \textbf{M} can be written as
-%
-\begin{align}
-\mathbf{M} & =  
-\left[|p\rangle,|e\rangle,|e^2\rangle,|u_x\rangle,|q_x\rangle,|u_y\rangle,
-			|q_y\rangle,|p_{xx}\rangle,|p_{xy}\rangle\right]^T \\
-|p\rangle & =  |\mathit{e}_{\alpha}|^0\\
-|e\rangle_{\alpha} & = \mathit{Q}e_{\alpha}^2-b_2\\
-|e^2\rangle_{\alpha} & =  	
-		a_1(\mathit{Q}e_{\alpha}^4-b_6)+a_2(\mathit{Q}e_{\alpha}^4-b_6)\\
-|u_x\rangle_{\alpha} & = e_{\alpha,x} \\
-|q_x\rangle_{\alpha} & = (\mathit{b}_1e_{\alpha}^2-b_3)e_{\alpha,x}\\
-|u_y\rangle_{\alpha} & = e_{\alpha,y}\\
-|q_y\rangle_{\alpha} & = (\mathit{b}_1e_{\alpha}^2-b_3)e_{\alpha,y}\\
-|p_{xx}\rangle_{\alpha} & = \mathit{d}e_{\alpha,x}^2-e_{\alpha}^2\\
-|p_{xx}\rangle_{\alpha}  & = e_{\alpha,x}e_{\alpha,y} \,,
-\end{align}
-%
-\noindent where $d = 2$ and $Q = 9$, $b_1=\sum_{\alpha=1}^{Q}e_{\alpha,x}^2$, 
-$b_2=\sum_{\alpha=1}^{Q}e_{\alpha}^2$, 
-$b_3=\sum_{\alpha=1}^{Q}e_{\alpha}^2e_{\alpha,x}^4$, $a_1=||e^2||^2,$ and 
-$a_2=\sum_{\alpha=0}^{Q-1}(Qc_{\alpha}^2-b_2)\times(Qc_{\alpha}^4-b_6)$. 
-%
-Explicitly, the transformation matrix can be written as
-%
-\begin{align}
-\mathbf{M}= \begin{bmatrix}
- 1 &  1 &  1 &  1 &  1 &  1 &  1 &  1 &  1 \\
--4 & -1 & -1 & -1 & -1 &  2 &  2 &  2 &  2 \\ 
- 4 & -2 & -2 & -2 & -2 &  1 &  1 &  1 &  1 \\
- 0 &  1 &  0 & -1 &  0 &  1 & -1 & -1 &  1 \\
- 0 & -2 &  0 &  2 &  0 &  1 & -1 & -1 &  1 \\
- 0 &  0 &  1 &  0 & -1 &  1 &  1 & -1 & -1 \\
- 0 &  0 & -2 &  0 &  2 &  1 &  1 & -1 & -1 \\
- 0 &  1 & -1 &  1 & -1 &  0 &  0 &  0 &  0 \\
- 0 &  0 &  0 &  0 &  0 &  1 &  1 &  1 &  1 \\
-\end{bmatrix}\,.
-\end{align}
-%
-The corresponding equilibrium distribution functions in moment space 
-$\widehat{\mathbf{f}^{eq}}$ is given as:
-%
-\begin{align}
-\widehat{\mathbf{f}^{eq}}=\left[\rho_0,e^{eq}, 
-e^{2eq},u_x,q_x^{eq},q_y^{eq},p_{xx}^{eq},p_{xy}^{eq}\right]^T\,,
-\end{align}
-%
-\noindent where
-%
-\begin{align}
-e^{eq} & = \frac{1}{4}\alpha_2p+\frac{1}{6}\gamma_2(u_x^2+y_y^2)\\
-e^{2eq} & = \frac{1}{4}\alpha_3p+\frac{1}{6}\gamma_4(u_x^2+y_y^2)\\
-q_x^{eq} & = \frac{1}{2}c_1u_x\\
-q_y^{eq} & = \frac{1}{2}c_2u_y \\
-p_{xx}^{eq} & = \frac{3}{2}\gamma_1(u_x^2 - u_y^2)\\
-p_{xy}^{eq} & = \frac{3}{2}\gamma_3(u_xu_y) \,.
-\end{align}
-%
-To get the correct hydrodynamic equations, the values of the co-efficients are 
-chosen as $\alpha_2=24$,  $\alpha_3=-36$, $c_1=c_2=-2$, 
-$\gamma_1=\gamma_3=2/3$, $\gamma_2=18$ and $\gamma_4=-18$. $s_8 = s_9 = \tau$ 
-and $s_1=s_4=s_6=1.0$ and the others vary between 1.0 and 2.0 for linear 
-stability. Through the Chapman-Enskog expansion~\citep{Du2006}, the 
-incompressible Navier-Stokes equation can be recovered and the viscosity is 
-given as
-%
-\begin{align}
-\nu=c_s^2\Delta t(\tau-0.5)\,.
-\end{align}
 
 %**************************************************************************
 
