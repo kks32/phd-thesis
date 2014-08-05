@@ -646,19 +646,19 @@ given as
 
 \section{Validation of Lattice Boltzmann method}
 
-To verify the incompressible LBM flow model implemented in the above section, 
-numerical simulation of the steady state Poiseuille flow was conducted. The 
-transient development of Poseuille's flow in a straight channel is computed. 
-Water ($\rho=1000 kg/m^{3}$) is simulated to flow through a channel of width 
-`H' (= 0.4 \si{\meter}) and simulation length, `L' (2.5H). Periodic 
-boundary conditions are applied at either end of the pipe and the pressure 
-gradient is set to zero, which simulates the condition of a continuous flow of 
-fluid in a closed circular pipe. The length `L' has no effect on the simulation 
-as no streamwise variation is detected in the solution. The parameters adopted 
-in LBM simulation are summarised in~\cref{table:lbm}. Sufficient time is 
-allowed for the flow to travel beyond the required development length so that 
-the flow is laminar~\citet{Durst2005}. The development length required for a 
-flow to be fully laminar is
+To verify the incompressible LBM model implemented in the above section, 
+numerical simulation of the transient development of the steady state 
+Poiseuille flow in a straight channel is performed. At $t=0$, the LBM water 
+particles ($\rho=1000 kg/m^{3}$) are simulated to flow through a channel of 
+width `H' (= 0.4 \si{\meter}) and simulation length, `L' (2.5H) under constant 
+body force. Periodic boundary conditions are applied at either end of the pipe 
+and the pressure gradient is set to zero, which simulates the condition of a 
+continuous flow of fluid in a closed circular pipe. The length `L' has no 
+effect on the simulation as no streamwise variation is detected in the 
+solution. The parameters adopted in LBM simulation are presented 
+in~\cref{table:lbm}. Sufficient time is allowed for the flow to travel beyond 
+the required development length so that the flow is laminar~\citep{Durst2005}. 
+The development length required for a flow to be fully laminar is
 %
 \begin{equation}
 X_{D}/H=[(0.619)^{1.6}+(0.0567 R_{e})^{1.6}]^{1/1.6} \,,
@@ -666,7 +666,7 @@ X_{D}/H=[(0.619)^{1.6}+(0.0567 R_{e})^{1.6}]^{1/1.6} \,,
 %
 \noindent where $\mathrm{X}_{\mathrm{D}}$ is the development length and $R_{e}$ 
 is the Reynold's number. The velocity profile at the end of the simulation is 
-presented in~\cref{fig:LBM_Poiseuille}. A maximum horizontal velocity of 
+presented in~\cref{fig:LBMcontour}. A maximum horizontal velocity of 
 0.037863~\si{\meter\per\second} is observed along the center-line of the 
 channel. The maximum horizontal velocity is compared with the closed-form based 
 on the Haygen-Poiseuille's flow equation for no-slip boundary 
@@ -698,26 +698,13 @@ Error in predicting horizontal velocity & 0.009 \% \\ \bottomrule
 \end{tabular}
 \end{table}
 
-\begin{figure}[htbp]
-	\centering
-	\includegraphics[width=0.95\textwidth]{LBM_Poiseuille}
-	\caption{Velocity profile: LBM Simulation of a laminar flow through a 
-	channel.}
-	\label{fig:LBM_Poiseuille}
-\end{figure}
-
-To validate the Lattice Boltzmann code developed in 
-the present study, the results of the laminar flow through a 
-pipe is compared with those obtained from CFD simulations 
-performed using ANSYS Fluent. CFD analysis 
-involves solving problems associated with fluid flows using 
-numerical approximations to solve Navier-Stokes equations, 
-which defines any single-phase flow. FVM is a common approach 
-used in CFD codes, like Fluent. It involves solving the 
-governing equation over the discretised control volume. This 
-guarantees the conservation of fluxes over a particular control 
-volume. The finite volume equations yield governing equations 
-of the form
+In order to further validate the accuracy of the Lattice Boltzmann code, the 
+transient development of the Poiseuille's flow is compared with CFD simulation 
+performed using ANSYS Fluent. Finite Volume Method is a common CFD technique, 
+which involves solving the governing partial differential equation 
+(Navier-Stokes) over the discretised control volume. This guarantees 
+the conservation of fluxes over a particular control volume. The finite volume 
+equations yield governing equations of the form
 %
 \begin{align}
 \frac{\partial}{\partial t} \int\int\int  Q d\mathbf{V} + 
@@ -728,96 +715,103 @@ where \textit{Q} is the vector of conserved variables,
 \textit{F} is the vector of fluxes in the Navier-Stokes 
 equation, \textit{V} is the volume of control volume element, 
 and \textit{A} is the surface area of the control volume 
-element. A 2D rectangular plane of length 1m and height 0.04m 
-is discretised into 400 cells of size $1 \time 10^{-2} $ m 
-(see~\cref{fig:mesh}). A constant velocity is applied at the 
+element.
+
+A 2D rectangular plane of length 1~\si{\meter} and height 0.04~\si{\meter} 
+is discretised into 400 cells of size $1 \time 10^{-2} $~\si{\meter} 
+(see~\cref{fig:CFDmesh}). A constant velocity is applied at the 
 inlet. Water ($\rho = 998.2\mbox{ }kg/m^{3},\mbox{ } 
 viscosity`\eta'=1 \times 10^{-3}\mbox{ } Ns/m^{2} $) is allowed to flow through 
-the pipe and it develops into a fully laminar flow. The Least-Squares cell 
-based approach was adopted to solve the gradient, and 100 iteration steps were 
-carried out until the solution converges. The velocity contour profile obtained 
-from the CFD analysis is presented in~\cref{fig:cont}. The velocity profile at 
-the cross-section `L/4' is plotted in~\cref{fig:LBM}. The velocity profile 
-matches the analytical Poiseuille's solution and the LBM simulation of laminar 
-flow. Having validated the CFD analysis against Poiseuille's equation, the CFD 
-analysis can now be used to validate the LBM simulation of fluid flow around a 
-rectangular obstacle, to study the capability of the LBM technique to simulate 
-vortex effects in fluid flows around obstacles.
-
-The efficiency of Lattice Boltzmann method to include solid walls/particles is 
-evaluated by placing a solid wall of Length `H/2' at length `L/4' in the pipe. 
-The velocity profile obtained after 50,000 iterations is presented 
-in~\cref{fig:Obstacle}. The formation of eddies at the corners of the wall 
-along 
-the flow direction is captured by the LB method. The horizontal velocity 
-profile obtained at `L/4' is presented in~\cref{fig:LBM}. The occurrence of 
-vortex effect in the flow around the edges of the obstacle can be visualised in 
-~\cref{fig:Obstacle}. The velocity profile obtained from the LBM simulation of 
-the fluid flow around a rectangular body compares qualitatively with the FE 
-analysis performed by~\citet{Zhong1991}. The CFD analysis of the same problem 
-was performed using ANSYS FLUENT. The control volume is discretised into 10,000 
-cells and a constant velocity is applied in the inlet. The velocity profile 
-obtained from the CFD analysis is presented in~\cref{fig:obsvc}. Similar 
-maximum horizontal velocities are observed in both the LBM and the CFD 
-analyses. The velocity profile obtained from the CFD analysis 
-(see~\cref{fig:obsvc}) proves the occurrence of eddies in the LBM analysis of 
-flow around an obstacle. The CFD analysis is found to over predict slightly the 
-maximum horizontal velocity in comparison with the LBM simulation. The 
-discrepancy in the horizontal velocity profile (\cref{fig:LBM}) can be 
-attributed to the relaxation parameter used in the LBM, which is obtained by 
-trial and error procedure. Thus, it can be concluded that the Lattice Boltzmann 
-method is a suitable form of numerical representation of Navier-Stokes equation 
-to model fluid flows. 
-
+the channel and it develops into a fully laminar flow. The Least-Squares 
+approach was adopted to solve the gradient, and a maximum of 100 
+iteration steps were carried out until the solution converged. 
 
 \begin{figure}[htbp]
-\centering
-\includegraphics[width=0.95\textwidth]{CFD_Mesh}
-\caption{Finite Volume mesh used in the CFD analysis of laminar flow through a 
-channel.}
-\label{fig:mesh}
+	\centering
+	\includegraphics[width=0.85\textwidth]{LBM_Poiseuille}
+	\caption{Velocity profile: LBM Simulation of a laminar flow through a 
+		channel.}
+	\label{fig:LBMcontour}
+\end{figure}
+%
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=0.85\textwidth]{CFD_Mesh}
+	\caption{Finite Volume mesh used in the CFD analysis of laminar flow 
+	through a 
+		channel.}
+	\label{fig:CFDmesh}
+\end{figure}
+%
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=0.85\textwidth]{CFD_Poiseuille}
+	\caption{Velocity profile: CFD analysis of laminar flow through a channel.}
+	\label{fig:CFDcontour}
 \end{figure}
 
+The velocity profile obtained from the CFD simulation at cross-section `L/4' is 
+shown in~\cref{fig:CFDcontour}.~\Cref{fig:Pois} compares the development of 
+computed velocity profiles at four times with the analytical solution. At 
+normalised time $t = 1$, the flow approaches the steady state. It can be 
+observed that LBM has excellent agreement with CFD and the analytical solution 
+at various stages of flow evolution.
 
-\begin{figure}[htbp]
-\centering
-\includegraphics[width=0.9\textwidth]{CFD_Poiseuille}
-\caption{Velocity contour obtained from the CFD analysis of laminar flow 
-through a channel.}
-\label{fig:cont}
+\begin{figure}[tbhp]
+	\centering
+	\includegraphics[width=0.95\textwidth]{Poiseuille}
+	\caption{Development of the Poiseuille velocity profile in time: comparison 
+		between LBM simulation, CFD simulation and the analytical solution. 
+		Time is 
+		made dimensionless by $H/U_0$.}
+	\label{fig:Pois}
 \end{figure}
 
+In order to study the capability of LB technique to simulate fluid--solid 
+interaction, LB simulation of fluid flow around a rectangular obstacle is 
+compared with the CFD technique. A solid wall of height `H/2' is placed at 
+length `L/4' in the channel. Bounce-back algorithm is employed to model the 
+fluid-wall interaction in LBM. In the CFD model, the control volume is 
+discretised into 10,000 cells. A constant velocity is applied in the inlet and 
+the horizontal velocity profile is recorded. Both, CFD and LBM simulations were 
+performed to study the influence of a solid wall on the fluid flow behaviour.
 
-\begin{figure}[htbp]
-\centering
-\includegraphics[width=0.95\textwidth]{Poiseuille}
-\caption{Development of the Poiseuille velocity profile in time: comparison 
-between LBM simulation, CFD simulation and the analytical solution. Time is 
-made dimensionless by $H/U_0$.}
-\label{fig:LBM}
-\end{figure}
+The horizontal velocity profile obtained after 50,000 LBM iterations is 
+presented in~\cref{fig:LBMobstacle}. LBM is able to capture the velocity 
+shedding around the edges of the wall. The velocity profile obtained from the 
+CFD analysis is presented in~\cref{fig:CFDobstacle}.The horizontal velocity 
+profile at `L/4' at $t=1$ is shown in~\cref{fig:Obstacle}. Similar 
+maximum horizontal velocities are observed in both LBM and CFD 
+analyses. The maximum horizontal velocity from the CFD analysis is slightly 
+higher in comparison with the LBM simulation. The discrepancy in the horizontal 
+velocity profile (\cref{fig:Obstacle}) can be attributed to the relaxation 
+parameter used in the LBM, which is obtained by a trial and error procedure. 
+The velocity profile obtained from the LBM simulation compares qualitatively 
+with the FE analysis performed by~\citet{Zhong1991}. Thus, it can be concluded 
+that the Lattice Boltzmann method is a suitable form of numerical 
+representation of Navier-Stokes equation to model fluid flows. 
 
-\begin{figure}[htbp]
+\begin{figure}[!t]
 \centering
 \hspace{-13mm}\includegraphics[width=0.95\textwidth]{LBM_Obstacle}
 \caption{LBM simulation of velocity profile for a laminar flow through a pipe 
 with an obstacle at L/4.}
-\label{fig:Obstacle}
+\label{fig:LBMobstacle}
 \end{figure}
 
-\begin{figure}[htbp]
+\begin{figure}[!h]
 \centering
 \includegraphics[width=0.7\textwidth]{CFD_Obstacle}
 \caption{CFD simulation of velocity contour for a laminar flow through a pipe 
 with an obstacle at L/4.}
-\label{fig:obsvc}
+\label{fig:CFDobstacle}
 \end{figure}
 
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=0.95\textwidth]{Obstacle}
 \caption{LBM and CFD simulation of a flow around an obstacle.}
-\label{fig:LBMObstacle}
+\label{fig:Obstacle}
 \end{figure}
 
 
