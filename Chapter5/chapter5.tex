@@ -7,9 +7,9 @@
 \fi
 
 
-\section{Fluid simulation using Lattice Boltzmann Method}
+\section{Fluid simulation using Lattice Boltzmann method}
 
-Grain -- fluid systems can be found in many scientific and 
+Grain--fluid systems can be found in many scientific and 
 engineering applications, such as suspensions, fluidised beds, 
 sediment transport, and geo-mechanical problems. In general, 
 the fundamental physical phenomenon in these systems are not 
@@ -496,39 +496,39 @@ functions.
 
 \section{Validation of Lattice Boltzmann method}
 
-The Lattice Boltzmann method implemented in the present study is validated by 
-comparing the LBM simulation of a laminar flow through a circular pipe to 
-the closed form solution. In the present study, water ($\rho=1000 kg/m^{3}$) is 
-simulated to flow through a pipe of width `D' = 0.04 m and 
-simulation length, `L' = 0.1 m. Periodic boundary conditions are applied at 
-either end of the pipe, which simulates the condition of a continuous flow of 
-fluid in a closed circular pipe. The parameters adopted in the LBM simulation 
-are summarised in~\cref{table:lbm}. Sufficient time is allowed for the flow to 
-travel beyond the required development length so that the flow is 
-laminar~\citet{Durst2005}. The development length required for a flow to 
+To verify the incompressible LBM flow model implemented in the above section, 
+numerical simulation of the steady state Poiseuille flow was conducted. The 
+transient development of Poseuille's flow in a straight channel is computed. 
+Water ($\rho=1000 kg/m^{3}$) is simulated to flow through a channel of width 
+`H' (= 0.04 \si{\meter}) and simulation length, `L' (2.5H). Periodic 
+boundary conditions are applied at either end of the pipe and the pressure 
+gradient is set to zero, which simulates the condition of a continuous flow of 
+fluid in a closed circular pipe. The length has no effect on the simulation as 
+no streamwise variation is detected in the solution. The parameters adopted in 
+LBM simulation are summarised in~\cref{table:lbm}. Sufficient time is allowed 
+for the flow to travel beyond the required development length so that the flow 
+is laminar~\citet{Durst2005}. The development length required for a flow to 
 be fully laminar is
 %
 \begin{equation}
-X_{D}/D=[(0.619)^{1.6}+(0.0567 R_{e})^{1.6}]^{1/1.6} \,,
+X_{D}/H=[(0.619)^{1.6}+(0.0567 R_{e})^{1.6}]^{1/1.6} \,,
 \end{equation}
 %
-\noindent where $X_{D}$ is the development length and $R_{e}$ is the Reynold's 
-number. The velocity profile of water in the simulated segment at the end of 
-the simulation is presented in~\cref{fig:LBM_Poiseuille}.~\cref{fig:LBM} shows 
-the horizontal velocity profile obtained at L/2 after 50,000 time steps. The 
-maximum horizontal velocity of 0.037863 m/s is observed in the middle of the 
-pipe. The velocity profile obtained (\cref{fig:LBM_Poiseuille}), is compared 
-with the closed-form based on the Haygen-Poiseuille's flow equation for no-slip 
-boundary condition~\citep{Willis2008}
+\noindent where $\mathrm{X}_{\mathrm{D}}$ is the development length and $R_{e}$ 
+is the Reynold's number. The velocity profile at the end of the simulation is 
+presented in~\cref{fig:LBM_Poiseuille}. A maximum horizontal velocity of 
+0.037863~\si{\meter\per\second} is observed. The maximum horizontal velocity is 
+compared with the closed-form based on the Haygen-Poiseuille's flow equation 
+for no-slip boundary condition~\citep{Willis2008}
 %
-\begin{align}
-\mathit{v}_{\mathit{x}}=\frac{\Delta P}{2 \mu L} [\frac{D^{2}}{4}-y^{2}]
-\end{align}
+\begin{equation}
+	\mathit{v}_{\mathit{x}}=\frac{\Delta P}{2 \mu L} [\frac{D^{2}}{4}-y^{2}]\,,
+\end{equation}
 %
-where $v_{x}$ is the horizontal velocity (m/s); $\Delta P$ is the pressure 
-gradient, $\mu$ dynamic viscosity of the fluid, 
+\noindent where $v_{x}$ is the horizontal velocity (m/s); $\Delta P$ is the 
+pressure gradient, $\mu$ dynamic viscosity of the fluid.
 
-\begin{table}
+\begin{table}[tb]
 \caption{LBM parameters used in simulating laminar flow through 
 a circular pipe}
 \label{table:lbm}
@@ -536,9 +536,11 @@ a circular pipe}
 \begin{tabular}{ll}
 \toprule
 \textbf{Parameter} & \textbf{Value} \\ \midrule
-Density $\rho$ & 1000 \si{\kilogram\per\metre\cubed}\\ 
-Relaxation parameter $\tau$ & 0.51 \\ 
-Kinematic viscosity  & $1 \times 10^{-6}$ \si{\metre\squared\per\second} \\ 
+Density $\rho$ & 1000~\si{\kilogram\per\metre\cubed}\\ 
+Relaxation parameter $\tau$ & 0.51\\ 
+Kinematic viscosity  & $1 \times 10^{-6}$~\si{\metre\squared\per\second} \\
+Grid resolution `h' & $1 \time 10^{-2} $~\si{\meter} \\
+Number of steps & 50,000 \\
 \midrule
 Error in predicting horizontal velocity & 0.009 \% \\ \bottomrule
 \end{tabular}
@@ -553,7 +555,7 @@ is underestimated by 0.009 \% in comparison to the closed form
 solution. To validate the Lattice Boltzmann code developed in 
 the present study, the results of the laminar flow through a 
 pipe is compared with those obtained from CFD simulations 
-performed using \textit{ANSYS Fluent}. CFD analysis 
+performed using ANSYS Fluent. CFD analysis 
 involves solving problems associated with fluid flows using 
 numerical approximations to solve Navier-Stokes equations, 
 which defines any single-phase flow. FVM is a common approach 
