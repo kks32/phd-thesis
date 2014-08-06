@@ -59,7 +59,7 @@ justification=justified]{caption}
 
 % ********************************** Tables ************************************
 \usepackage{booktabs} % For professional looking tables
-\usepackage{multirow}
+%\usepackage{multirow}
 
 %\usepackage{multicol}
 %\usepackage{longtable}
@@ -186,3 +186,22 @@ justification=justified]{caption}
 % Draft Text grayscale value (should be between 0-black and 1-white)
 % Default value is 0.75
 %\SetDraftGrayScale{0.8}
+
+% *********************Fix display lineno issue in mathmode*********************
+\newcommand*\patchAmsMathEnvironmentForLineno[1]{%
+  \expandafter\let\csname old#1\expandafter\endcsname\csname #1\endcsname
+  \expandafter\let\csname oldend#1\expandafter\endcsname\csname end#1\endcsname
+  \renewenvironment{#1}%
+     {\linenomath\csname old#1\endcsname}%
+     {\csname oldend#1\endcsname\endlinenomath}}% 
+\newcommand*\patchBothAmsMathEnvironmentsForLineno[1]{%
+  \patchAmsMathEnvironmentForLineno{#1}%
+  \patchAmsMathEnvironmentForLineno{#1*}}%
+\AtBeginDocument{%
+\patchBothAmsMathEnvironmentsForLineno{equation}%
+\patchBothAmsMathEnvironmentsForLineno{align}%
+\patchBothAmsMathEnvironmentsForLineno{flalign}%
+\patchBothAmsMathEnvironmentsForLineno{alignat}%
+\patchBothAmsMathEnvironmentsForLineno{gather}%
+\patchBothAmsMathEnvironmentsForLineno{multline}%
+}
