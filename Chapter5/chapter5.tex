@@ -697,9 +697,11 @@ Error in predicting horizontal velocity & 0.009 \% \\ \bottomrule
 \end{table}
 
 In order to further validate the accuracy of the Lattice Boltzmann code, the 
-transient development of the Poiseuille's flow is compared with CFD simulation 
-performed using ANSYS Fluent. Finite Volume Method is a common CFD technique, 
-which involves solving the governing partial differential equation 
+transient development of the Poiseuille's flow is compared with the CFD 
+simulation performed using ANSYS Fluent. Finite Volume Method is a 
+common CFD 
+technique, which involves solving the governing partial differential 
+equation 
 (Navier-Stokes) over the discretised control volume. This guarantees 
 the conservation of fluxes over a particular control volume. The finite volume 
 equations yield governing equations of the form
@@ -827,7 +829,8 @@ viscosity are often associated with flows having large Reynold numbers, i.e.
 flows which are turbulent in nature. The turbulent flows are characterised by 
 the occurrence of eddies with multiple scales in space, time and energy.
 
-The Large eddy simulation (LES) is the most widely adopted approach to solve 
+The large eddy simulation (LES) is the most widely adopted approach to 
+solve 
 turbulent flow problems. It directly solves the large scale eddies, which carry 
 the predominant portion of the energy, and the smaller eddies are modelled 
 using a sub-grid approach. The separation of scales is achieved by filtering of 
@@ -865,17 +868,17 @@ relaxation time $\tau_{*}$ is written as
 %
 \noindent where $\tau$ and $\tau_{t}$ are respectively the standard relaxation 
 times 
-corresponding to the true fluid viscosity \textit{v} and the turbulence 
-viscosity $\mathit{v}_{\mathit{t}}$, defined by a sub-grid turbulence model. 
-The new viscosity $\mathit{v}_{*}$ corresponding to $\tau_{*}$ is defined as:
+corresponding to the true fluid viscosity $\nu$ and the turbulence 
+viscosity $\nu_{\mathit{t}}$, defined by a sub-grid turbulence model. 
+The new viscosity $\nu_{*}$ corresponding to $\tau_{*}$ is defined as:
 %
 \begin{align}
-\mathit{v}_{*} & 
-=\mathit{v}+\mathit{v}_{\mathit{t}} \nonumber \\
+\nu_{*} & 
+=\nu+\nu_{\mathit{t}} \nonumber \\
 	& =\frac{1}{3}(\tau_{*}-\frac{1}{2})
 \mathit{C}^{2} \Delta \mathit{t} 
 =\frac{1}{3}(\tau+\tau_{t}-\frac{1}{2})\mathit{C}^{2} \Delta \mathit{t}  \\
-\mathit{v}_{\mathit{t}} & =\frac{1}{3}\tau_{\mathit{t}}\mathit{C}^{2} \Delta 
+\nu_{\mathit{t}} & =\frac{1}{3}\tau_{\mathit{t}}\mathit{C}^{2} \Delta 
 \textit{t} \,.
 \end{align} 
 %
@@ -884,13 +887,35 @@ formulation remains unchanged, except for the use of a new turbulence-related
 viscosity $\tau_{*}$. The component $s_1$ of the collision matrix becomes $s_1 
 = \frac{1}{\tau+\tau_t}$.
 
-\begin{figure}[htbp]
-\centering
-\includegraphics[width=0.95\textwidth]{karman}
-\caption{K\'{a}rm\'{a}n vortex street}
-\label{fig:karman}
-\end{figure}
+In fluid dynamics, a k\'{a}rm\'{a}n vortex street is a repeating pattern of 
+vortices caused by unsteady separation of fluid flow around circular obstacles. 
+A vortex street will only form typically above a limiting value of Reynolds 
+number of 90. The Reynolds number is based on the cylinder diameter `D' and the 
+mean flow velocity $U$ of the parabolic inflow profile
+%
+\begin{equation}
+\label{eq:reynolds}
+Re=\frac{UD}{\nu}\,.
+\end{equation}
 
+LBM particles are simulated to flow through a 2D rectangular channel of `L/H' 
+of 2.5. A cylinder of diameter `d' $=0.27H$ is placed at H/2. The pressure 
+gradient at the inlet and the outlet is varied to create flows with different 
+mean velocities. Numerical simulations of the vortex shedding behind a circular 
+obstacle is carried out at three different Reynolds number 55, 75, and 112, 
+each characterising a different flow regime. Fully developed fluid flow around 
+a circular obstacle for three different Reynolds numbers is shown 
+in~\cref{fig:karman}. The von K\'{a}rm\'{a}n vortex street can be observed at 
+Reynolds number of 112, which shows the ability of the LBM turbulence model in 
+capturing the instabilities in fluid flow.
+%
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=0.95\textwidth]{karman}
+	\caption{K\'{a}rm\'{a}n vortex street}
+	\label{fig:karman}
+\end{figure}
+%TODO: Re-112.5 => 0.1412
 %************************************************************************* %
 
 \section[Coupled LBM -- DEM for fluid--grain interactions]{Coupled Lattice 
@@ -1144,3 +1169,6 @@ force $\mathbf{F}_{f}$ is unchanged during the sub-cycling.
 \caption{Particle kissing and tumble}
 \label{fig:kissing}
 \end{figure}
+
+%TODO: GPU 7.2 Million Nodes + 2500 particles - 5.s (132x), CPU - 12 cores 
+%(150s)4.4x, CPU - 4 threads  Single thread -  660s (1x) and 
