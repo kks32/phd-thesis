@@ -915,6 +915,15 @@ capturing the instabilities in fluid flow.
 	\caption{K\'{a}rm\'{a}n vortex street}
 	\label{fig:karman}
 \end{figure}
+
+One important quantity taken into account in the present analysis is the Strouhal number
+St a dimensionless number describing oscillating flow dynamics, computed from the cylinder 
+diameter D, the measured frequency of the vortex shedding f and the maximum velocity $U_{max}$ at 
+the inflow plane
+%
+\begin{equation}
+St=\frac{fD}{U_{max}}\,.
+\end{equation}
 %TODO: Re-112.5 => 0.1412
 %************************************************************************* %
 
@@ -1170,5 +1179,5 @@ force $\mathbf{F}_{f}$ is unchanged during the sub-cycling.
 \label{fig:kissing}
 \end{figure}
 
-%TODO: GPU 1.5 Million Nodes + 2500 particles - 3s (220x), CPU - 12 cores 
+%TODO: GPU 7.5 Million Nodes + 2500 particles - 20s (220x), CPU - 12 cores 
 %(150s)4.5x, CPU - 4 threads  Single thread -  660s (1x) and 
