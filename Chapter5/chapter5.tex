@@ -924,8 +924,11 @@ $U_{max}$ at the inflow plane.
 \begin{equation}
 St=\frac{fD}{U_{max}}\,.
 \end{equation}
-The characteristic frequency f was determined by a spectral analysis (Fast 
-Fourier Transform - FFT) of time series of the pressure. 
+The characteristic frequency $f$ was determined by a spectral analysis (Fast 
+Fourier Transform - FFT) of time series of the fluid pressure. 
+\Cref{table:strouhal} shows that the Strouhal number computed from LBM has a 
+very good agreement with the FVM results obtained by~\citep{Breuer2000}. This 
+shows the ability of LBM in capturing unsteady oscillating flow dynamics.
 
 
 \begin{table}[tbhp]
@@ -1078,7 +1081,8 @@ as:
 \cdot \mathit{\mathit{f}}_{\alpha}(\mathbf{x}_{\mathit{b}},t + \delta t)  \\
 & + \delta \cdot 
 \mathit{\mathit{f}}_{\overline{\alpha}}(\mathbf{x}_{\mathit{f2}},t + \delta t) 
--2\mathit{w}_{\mathit{a}}\rho_{\mathit{w}}\frac{3}{\mathit{c}^{2}}\mathbf{\mathit{e}}_{\mathit{a}}\cdot
+-2\mathit{w}_{\mathit{a}}\rho_{\mathit{w}}\frac{3}{\mathit{c}^{2}}
+	\mathbf{\mathit{e}}_{\mathit{a}}\cdot
  \mathbf{u}_{\mathit{w}}]
 \end{align}
 %
@@ -1093,8 +1097,10 @@ pairs, resulting in:
 %
 \begin{equation}
 \mathit{F} = 
-\sum\limits_{\mathbf{x}_{b}}\sum\limits_{\alpha=1}^{19}{\mathbf{e}_{\alpha}[\mathit{f}_{\alpha}(\mathbf{x}_{b},t)+\mathit{f}_{\overline{\alpha}}(\mathbf{x}_{f},t)]
- \delta \mathbf{x} / \delta t}
+\sum\limits_{\mathbf{x}_{b}}\sum\limits_{\alpha=1}^{19}{\mathbf{e}_{\alpha}
+	[\mathit{f}_{\alpha}(\mathbf{x}_{b},t)
+		+\mathit{f}_{\overline{\alpha}}(\mathbf{x}_{f},t)]
+ 				\delta \mathbf{x} / \delta t}
 \end{equation}
 %
 After the force calculations, the coupled rigid body physics can be simulated 
@@ -1197,12 +1203,49 @@ sub-steps of integration are performed for the Discrete Element
 Method~\eqref{eq:mde} using the time step $\Delta t_{s}$. The hydrodynamic 
 force $\mathbf{F}_{f}$ is unchanged during the sub-cycling. 
 %
-\begin{figure}[htbp]
+\begin{figure}[tbhp]
 \centering
 \includegraphics[height=0.9\textheight]{kissing}
 \caption{Particle kissing and tumble}
 \label{fig:kissing}
 \end{figure}
 
-%TODO: GPU 7.5 Million Nodes + 2500 particles - 20s (0x), CPU - 12 cores 
-%(150s)16x, CPU - 4 threads 660s(3.8x)  Single thread -  2520s (1x) and 
+
+\section{GPU Implementation}
+
+\begin{figure}[tbhp]
+	\centering
+	\includegraphics[width=0.95\textwidth]{GPU_Concept}
+	\caption{GPU Concept}
+	\label{fig:GPUConcept}
+\end{figure}
+
+\begin{table}[tbhp]
+	\caption{GPU vs CPU parallelisation}
+	\label{table:GPU}
+	\centering
+	\begin{tabular}{l l l}
+		\toprule
+		Execution & Computational Time (s) &  Speedup \\
+		\midrule
+		CPU 1 OpenMP thread		& 2016	 & -- \\
+		CPU 2 OpenMP threads	& 1035	 & 1.5 x \\
+		CPU 4 OpenMP threads	& 660 	 & 3.0 x \\
+		CPU 12 OpenMP threads	& 150	 & 13.5 x\\
+		GPU OpenACC				& 16	 & 126.0 x \\
+		\bottomrule
+		\multicolumn{3}{l}{\footnotesize{\textsuperscript{*}~CPU OpenMP threads 
+		- 6 core Intel Xeon $\mathrm{@}$ 3.3GHz}} \\
+		\multicolumn{3}{l}{\footnotesize{\textsuperscript{\dag}~GPU threads - 
+		GeForce GTX 580 - 512 CUDA cores}}
+	\end{tabular}
+\end{table}
+
+
+
+\begin{figure}[tbhp]
+	\centering
+	\includegraphics[width=0.95\textwidth]{GPU_Speedup}
+	\caption{GPU Speedup}
+	\label{fig:GPUSpeed}
+\end{figure}
