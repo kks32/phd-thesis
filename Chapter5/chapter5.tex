@@ -925,27 +925,30 @@ $U_{max}$ at the inflow plane.
 St=\frac{fD}{U_{max}}\,.
 \end{equation}
 The characteristic frequency f was determined by a spectral analysis (Fast 
-Fourier Transform - FFT) of time series of drag force. 
+Fourier Transform - FFT) of time series of the pressure. 
 
-%\begin{minipage}{\textwidth}
+
 \begin{table}[tbhp]
-	\caption{Computed Strouhal number for fluid flows with different Reynolds number}
+	\caption{Computed Strouhal number for fluid flows with different Reynolds 
+	number}
 	\label{table:strouhal}
 	\centering
-	\begin{tabular}{l l l}
+
+	\begin{tabular}{l c c}
 		\toprule
 		Reynolds number & \multicolumn{2}{c}{Strouhal number} \\
 		\cmidrule{2-3}
-		& LBM & FVM \tablefootnote{FVM results are obtained from~\citet{Breuer2000}}\\
+		& LBM & FVM \\
 		\midrule
 		55		& 0.117	 &	0.117 \\
 		75		& 0.128	 &	0.129 \\
-		112.5	& 0.141  &	0.141 \\
+		112		& 0.141  &	0.141 \\
 		\bottomrule
+		\multicolumn{3}{l}{\footnotesize{\textsuperscript{*}~FVM results are 
+		from~\citet{Breuer2000}}}
 	\end{tabular}
 \end{table}
 
-%\end{minipage}
 
 
 %************************************************************************* %
