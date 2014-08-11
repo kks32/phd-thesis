@@ -1243,12 +1243,16 @@ vertical velocity than particle 2, overtakes particle 2.
 \end{figure}
 
 
-\section{GPU Implementation}
+\section{GPGPU Implementation}
 
-Graphics Processing Unit(GPU) is a massively multi-threaded architecture that is
-widely used for graphical and now non-graphical computations.The main advantage of GPUs 
-is their ability to perform significantly more floating point operations (FLOPs) per 
-unit time than a CPU. Many-core processors are promising platforms for regular parallel 
+Graphics Processing Unit (GPU) is a massively multi-threaded architecture that is
+widely used for graphical and now non-graphical computations. Today's GPUs are general 
+purpose processors with support for accessible programming interface. The main advantage 
+of GPUs is their ability to perform significantly more floating point operations (FLOPs) 
+per unit time than a CPU. General Purpose computations on GPUs (GPGPUs) often achieve 
+speedups of orders of magnitude in comparison with optimised CPU implementations. 
+
+Many-core processors are promising platforms for regular parallel 
 algorithms such as the Lattice Boltzmann Method (LBM). Since the global memory for 
 graphic devices shows high latency and LBM is data intensive, the
 memory access pattern is an important issue for achieving good performances. Whenever
@@ -1257,10 +1261,11 @@ propagation phase in LBM can lead to frequent misaligned memory accesses. In the
 study, the LBM implementation follows carefully chosen data transfer schemes in global 
 memory.
 
+
 \begin{figure}[tbhp]
 	\centering
 	\includegraphics[width=0.95\textwidth]{GPU_Concept}
-	\caption{GPU Concept}
+	\caption{LBM-DEM implementation on GPU}
 	\label{fig:GPUConcept}
 \end{figure}
 
