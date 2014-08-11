@@ -1275,6 +1275,10 @@ parallel regions in the code and the tuning works on exposing parallelism.
 OpenACC targets a host-directed execution model where the sequential code runs 
 on a conventional processor and computationally intensive parallel pieces of 
 code (kernels) run on an accelerator such as a GPU (see~\cref{fig:GPUConcept}). 
+OpenACC API version 2.0 is used in the present study and has two compute 
+constructs, the kernels construct and the parallel construct. LBM -- DEM 
+implementation predominantly uses the OpenACC gang and vector parallelism.
+ 
 
 \begin{figure}[tbhp]
 	\centering
