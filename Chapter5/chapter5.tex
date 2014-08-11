@@ -1225,15 +1225,16 @@ experimentally that in the sedimentation of two particles in a Newtonian fluid
 inside a vertical channel, the two particles would undergo the drafting,kissing 
 and tumbling (DKT) phenomenon.
 
-The draft, kiss and tumbling effect may be observed when two particles fall under the 
-action of gravity in a viscous Newtonian fluid. It consists of the three following steps 
-named \emph{draft}, \emph{kiss} and \emph{tumbling}. The \emph{draft}: particle 1 is 
-first placed within the hydrodynamic drag above particle 2. As the hydrodynamic drag of 
-particle 2 is a depression zone, particle 1 is attracted inside. The \emph{kiss}: 
-particle 1 increases its vertical velocity until it touches particle 2. The horizontal 
-velocity of particle 2 increases and its vertical velocity decreases below that of 
-particle 1. \emph{Tumbling}: particle 1 having the same horizontal velocity and higher 
-vertical velocity than particle 2, overtakes particle 2.
+The draft, kiss and tumbling effect may be observed when two particles fall 
+under the action of gravity in a viscous Newtonian fluid. It consists of the 
+three following steps named \emph{draft}, \emph{kiss} and \emph{tumbling}. The 
+\emph{draft}: grain 1 is first placed within the hydrodynamic drag above 
+grain 2. As the hydrodynamic drag of particle 2 is a depression zone, 
+grain 1 is attracted inside. The \emph{kiss}: particle 1 increases its 
+vertical velocity until it touches grain 2. The horizontal velocity of 
+grain 2 increases and its vertical velocity decreases below that of 
+grain 1. \emph{Tumbling}: grain 1 having the same horizontal velocity and 
+higher vertical velocity than grain 2, overtakes grain 2.
 %
 \begin{figure}[tbhp]
 \centering
@@ -1243,29 +1244,42 @@ vertical velocity than particle 2, overtakes particle 2.
 \end{figure}
 
 
-\section{GPGPU Implementation}
+\section{GP-GPU Implementation}
 
-Graphics Processing Unit (GPU) is a massively multi-threaded architecture that is
-widely used for graphical and now non-graphical computations. Today's GPUs are general 
-purpose processors with support for accessible programming interface. The main advantage 
-of GPUs is their ability to perform significantly more floating point operations (FLOPs) 
-per unit time than a CPU. General Purpose computations on GPUs (GPGPUs) often achieve 
-speedups of orders of magnitude in comparison with optimised CPU implementations. 
+Graphics Processing Unit (GPU) is a massively multi-threaded architecture that 
+is widely used for graphical and now non-graphical computations. Today's GPUs 
+are general purpose processors with support for accessible programming 
+interface. The main advantage of GPUs is their ability to perform significantly 
+more floating point operations (FLOPs) per unit time than a CPU. General 
+Purpose computations on GPUs (GPGPUs) often achieve speedups of orders of 
+magnitude in comparison with optimised CPU implementations. 
+
+A GPU consists of several \emph{Streaming Multiprocessors} (SMs).  
 
 Many-core processors are promising platforms for regular parallel 
-algorithms such as the Lattice Boltzmann Method (LBM). Since the global memory for 
-graphic devices shows high latency and LBM is data intensive, the
-memory access pattern is an important issue for achieving good performances. Whenever
-possible, global memory loads and stores should be coalescent and aligned, but the
-propagation phase in LBM can lead to frequent misaligned memory accesses. In the present 
-study, the LBM implementation follows carefully chosen data transfer schemes in global 
-memory.
+algorithms such as the Lattice Boltzmann Method (LBM). Since the global memory 
+for graphic devices shows high latency and LBM is data intensive, the
+memory access pattern is an important issue for achieving good performances. 
+Whenever possible, global memory loads and stores should be coalescent and 
+aligned, but the propagation phase in LBM can lead to frequent misaligned 
+memory accesses. The data transfer between the host and the device is very 
+expensive. In the present study, the LBM implementation follows carefully 
+chosen data transfer schemes in global memory.
 
+In the present study Nvidia GE Force GTX 580 GPU with 512 cuda cores is used.
+
+OpenACC (Open Accelerators) is an open GPU directives programming standard for 
+parallel computing on heterogeneous CPU/GPU systems. Unlike conventional GPU 
+programming languages, such as CUDA, OpenACC uses directives to specify 
+parallel regions in the code and the tuning works on exposing parallelism. 
+OpenACC targets a host-directed execution model where the sequential code runs 
+on a conventional processor and computationally intensive parallel pieces of 
+code (kernels) run on an accelerator such as a GPU (see~\cref{fig:GPUConcept}). 
 
 \begin{figure}[tbhp]
 	\centering
 	\includegraphics[width=0.95\textwidth]{GPU_Concept}
-	\caption{LBM-DEM implementation on GPU}
+	\caption{Hybrid CPU/GPU systems}
 	\label{fig:GPUConcept}
 \end{figure}
 
