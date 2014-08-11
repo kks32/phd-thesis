@@ -819,14 +819,15 @@ with an obstacle at L/4.}
 
 \section{Turbulence in Lattice Boltzmann method}
 
-The above formulation of Lattice Boltzmann problem has been successfully 
+The above formulation of Lattice Boltzmann has been successfully 
 applied to many fluid flow problems, however it is restricted to flows with low 
 Reynold's number. Modelling fluids with low viscosity like water and air 
-remains a challenge, necessitating very small values of \textit{h} and/or 
+remains a challenge, necessitating very small values of \textit{h}, and/or 
 $\tau$ very close to 0.5~\citep{He1997}. The standard Lattice Boltzmann can 
 deal with laminar flows, while practical problems with small kinematic 
 viscosity are often associated with flows having large Reynold numbers, i.e. 
-flows which are turbulent in nature. The turbulent flows are characterised by 
+flows which are unsteady or turbulent in nature. The turbulent flows are 
+characterised by 
 the occurrence of eddies with multiple scales in space, time and energy.
 
 The large eddy simulation (LES) is the most widely adopted approach to 
@@ -834,10 +835,10 @@ solve turbulent flow problems. It directly solves the large scale eddies, which
 carry the predominant portion of the energy, and the smaller eddies are 
 modelled using a sub-grid approach. The separation of scales is achieved by 
 filtering of the Navier-Stokes equations, from which the resolved scales are 
-directly obtained and unresolved scales are modelled by a one-parameter 
+directly obtained. The unresolved scales are modelled by a one-parameter 
 Smagorinski sub-grid methodology, which assumes that the Reynold's stress 
 tensor is dependent only on the local strain rate~\citep{Smagorinsky1963}. It 
-involves parametrizing the turbulent energy dissipation in the flows, where the 
+involves parametrising the turbulent energy dissipation in the flows, where the 
 larger eddies extract energy from the mean flow and ultimately transfer some of 
 it to the smaller eddies which, in turn, pass the energy to even smaller 
 eddies, and so on up to the smallest scales. At the smallest scale, the eddies 
@@ -880,33 +881,35 @@ The new viscosity $\nu_{*}$ corresponding to $\tau_{*}$ is defined as:
 \nu_{\mathit{t}} & =\frac{1}{3}\tau_{\mathit{t}}\mathit{C}^{2} \Delta 
 \textit{t} \,.
 \end{align} 
-%
+
 The Smagorinski model is easy to implement and the Lattice Boltzmann 
 formulation remains unchanged, except for the use of a new turbulence-related 
 viscosity $\tau_{*}$. The component $s_1$ of the collision matrix becomes $s_1 
 = \frac{1}{\tau+\tau_t}$.
 
-In fluid dynamics, a k\'{a}rm\'{a}n vortex street is a repeating pattern of 
-vortices caused by unsteady separation of fluid flow around circular obstacles. 
-A vortex street will only form typically above a limiting value of Reynolds 
-number of 90. The Reynolds number is based on the cylinder diameter `D' and the 
-mean flow velocity $U$ of the parabolic inflow profile
+The effectiveness of LBM-LES model in simulating unsteady flows is verified by 
+modelling the K\'{a}rm\'{a}n vortex street. In fluid dynamics, a k\'{a}rm\'{a}n 
+vortex street is a repeating pattern of vortices caused by unsteady separation 
+of fluid flow around circular obstacles. A vortex street will only form 
+typically above a limiting value of Reynolds number of 90. The Reynolds number 
+is computed based on the cylinder diameter `D' and the mean flow velocity $U$ 
+of the parabolic inflow profile
 %
 \begin{equation}
 \label{eq:reynolds}
 Re=\frac{UD}{\nu}\,.
 \end{equation}
 
-LBM particles are simulated to flow through a 2D rectangular channel of `L/H' 
-of 2.5. A cylinder of diameter `d' $=0.27H$ is placed at H/2. The pressure 
-gradient at the inlet and the outlet is varied to create flows with different 
-mean velocities. Numerical simulations of the vortex shedding behind a circular 
-obstacle is carried out at three different Reynolds number 55, 75, and 112, 
-each characterising a different flow regime. Fully developed fluid flow around 
-a circular obstacle for three different Reynolds numbers is shown 
-in~\cref{fig:karman}. The von K\'{a}rm\'{a}n vortex street can be observed at 
-Reynolds number of 112, which shows the ability of the LBM turbulence model in 
-capturing the instabilities in fluid flow.
+LBM particles are simulated to flow through a 2D rectangular channel with an 
+aspect ratio `L/H' of 2.5. A cylinder of diameter `d' $=0.27H$ is placed at 
+H/2. The pressure gradient at the inlet and the outlet is varied to create 
+flows with different mean velocities. Numerical simulations of vortex 
+shedding behind a circular obstacle is carried out for three different fluid 
+flow regimes (Reynolds number of 55, 75, and 112). The fully developed fluid 
+flows for different Reynolds numbers are shown in~\cref{fig:karman}. The von 
+K\'{a}rm\'{a}n vortex street can only be observed at high a Reynolds number of 
+112 (Re > 90), which shows the ability of the LBM turbulence model in capturing 
+instabilities in fluid flow.
 %
 \begin{figure}[htbp]
 	\centering
@@ -917,18 +920,20 @@ capturing the instabilities in fluid flow.
 
 One important quantity taken into account in the present analysis is the 
 Strouhal number St, a dimensionless number describing oscillating unsteady 
-fluid flow dynamics. Strouhal number is computed from the cylinder diameter D, 
-the measured frequency of the vortex shedding f and the maximum velocity 
-$U_{max}$ at the inflow plane.
+flow dynamics. Strouhal number is computed from the cylinder diameter D, 
+the measured frequency of the vortex shedding f, and the maximum velocity 
+$U_{max}$ at the inflow plane
 %
 \begin{equation}
 St=\frac{fD}{U_{max}}\,.
 \end{equation}
-The characteristic frequency $f$ was determined by a spectral analysis (Fast 
-Fourier Transform - FFT) of time series of the fluid pressure. 
-\Cref{table:strouhal} shows that the Strouhal number computed from LBM has a 
-very good agreement with the FVM results obtained by~\citep{Breuer2000}. This 
-shows the ability of LBM in capturing unsteady oscillating flow dynamics.
+
+\noindent The characteristic frequency $f$ is determined by a spectral 
+analysis (Fast Fourier Transform - FFT) of time series of the fluid pressure. 
+\Cref{table:strouhal} shows that the Strouhal numbers computed from LBM 
+simulations have a very good agreement with the FVM results obtained 
+by~\citet{Breuer2000}. This shows the ability of LBM-LES in 
+capturing unsteady flow dynamics.
 
 
 \begin{table}[tbhp]
@@ -958,42 +963,45 @@ shows the ability of LBM in capturing unsteady oscillating flow dynamics.
 \section[Coupled LBM -- DEM for fluid--grain interactions]{Coupled Lattice 
 Boltzmann and DEM for fluid-grain interactions}
 
-In principle, the conventional Finite Element and Finite Volume based 
+Modelling fluid--grain interactions in submarine landslides requires the 
+ability to simulate the dynamic fluid -- solid boundary interactions. In 
+principle, the conventional FE and FVM based 
 approaches for solving the Navier-Stokes equations with moving boundaries 
 and/or structural interaction~\citep{Bathe2004} can be applied to particle 
 fluid interaction problems. The common feature of these approaches is to model 
-the interaction between the fluid and the particles to a high degree of 
-accuracy, but the main computational challenge is the need to continuously 
+the interaction between the fluid and the solid to a high degree of 
+accuracy. However, the main computational challenge is the need to continuously 
 generate new geometrically adapted meshes to circumvent severe mesh distortion, 
-which is computationally very intensive~\citep{Han2007a}. The Lattice Boltzmann 
-approach has the advantage of accommodating large particle sizes and the 
-interaction between the fluid and the moving particles can be modelled through 
-relatively simple fluid - particle interface treatments. Further, employing the 
-Discrete Element Method (DE) to account for the particle/particle interaction 
-naturally leads to a combined LB - DEM solution procedure. The Eulerian nature 
+which is computationally very intensive~\citep{Han2007a}. 
+
+The Lattice Boltzmann approach has the advantage of accommodating large 
+particle sizes and the interaction between the fluid and the moving particles 
+can be modelled through relatively simple fluid - grain interface treatments. 
+Further, employing DEM to account for the grain/grain interaction naturally 
+leads to a combined LB -- DEM solution procedure. The Eulerian nature 
 of the Lattice Boltzmann formulation, together with the common explicit time 
-step scheme of both the Lattice Boltzmann and the Discrete Element Method makes 
-this 
-coupling strategy an efficient numerical procedure for the simulation of 
-particle-fluid systems. LBM - DEM technique is a powerful predictive tool for 
-gaining insights into many the fundamental physical phenomena in the 
-fluid-solid interaction domains. Such a coupled methodology was first proposed 
-by~\citep{Cook2004} for simulating particle-fluid systems dominated by 
-particle-fluid and particle-particle interactions. To capture the actual 
-physical behaviour of the fluid-particle system, it is essential to model the 
-boundary condition between the fluid and the particle as a non-slip boundary 
-condition, i.e. the fluid near the particle should have similar velocity as the 
-particle boundary. The solid particles inside the fluid are represented by 
-lattice nodes. The discrete nature of lattice will result in stepwise 
-representation of the surfaces, which are circular, this is neither accurate 
-nor smooth, unless sufficiently small lattice spacing is adopted. 
+step scheme of both LBM and DEM makes this coupling strategy an efficient 
+numerical procedure for the simulation of fluid -- grain systems. 
+
+LBM -- DEM technique is a powerful predictive tool for gaining insights into 
+many the fundamental physical phenomena in the fluid-solid interaction domains. 
+Such a coupled methodology was first proposed by~\citep{Cook2004} for 
+simulating fluid-grain systems dominated by fluid-grain and grain-grain 
+interactions. To capture the actual physical behaviour of the fluid-grain 
+system, it is essential to model the boundary condition between the fluid and 
+the grain as a non-slip boundary condition, i.e. the fluid near the grain 
+should have similar velocity as the grain boundary. The soil grains in 
+the fluid domain are represented by lattice nodes. The discrete nature of 
+lattice will result in stepwise representation of the surfaces, which are 
+otherwise circular, this is  neither accurate nor smooth, unless sufficiently 
+small lattice spacing is adopted. 
 
 %*******************************************************************************%
 
 \subsubsection*{Modified bounce back rule}
 
 To accommodate the movement of solid particles in the commonly adopted 
-bounce-back rule (see \cref{bounce}).~\citet{Ladd1994} modified the `no-slip' 
+bounce-back rule (see \cref{bounce}),~\citet{Ladd1994} modified the `no-slip' 
 rule for a given boundary link \textit{i} to be
 %
 \begin{equation}
@@ -1002,8 +1010,8 @@ rule for a given boundary link \textit{i} to be
 (\alpha_{i}=6\mathit{w_i}\rho/\mathit{C}_{\mathit{s}}^{2})\,,
 \end{equation}
 %
-\noindent where $\mathit{f_i}(\mathbf{x}, t_{+})$ is th post collision 
-distribution at the fluid or solid boundary node \textbf{x} and 
+\noindent where $\mathit{f_i}(\mathbf{x}, t_{+})$ is the post collision 
+distribution at the fluid or solid boundary node \textbf{x}, and 
 $\mathit{v}_{b}$ is the velocity at the nominal boundary point at the middle of 
 the boundary link \textit{i}
 %
@@ -1015,8 +1023,8 @@ the boundary link \textit{i}
 \noindent in which $\mathbf{\mathit{v}}_{c}$ and $\omega$ are the translational 
 and angular velocities at the mass centre of the solid particle, respectively. 
 $\mathbf{x}_{c}$ and $\mathbf{x}+\mathbf{\mathit{e}_i}\Delta t /2$ are the 
-coordinates of centre and the nominal boundary point,  respectively. The impact 
-force on the solid particle from the link is defined as
+coordinates of the centre and the nominal boundary point,  respectively. The 
+impact force on the soil grain from the link is defined as
 %
 \begin{equation}
 \mathbf{F_i}=2[\mathit{f_i} (\mathbf{x}, t_{+}) 
@@ -1039,39 +1047,39 @@ links
 \begin{equation}
 \begin{aligned}
 \mathbf{F} &= \sum\limits_{\mathit{i}}{\mathbf{F}_{\mathit{i}}} \\
-\mathbf{T} &= \sum\limits_{\mathit{i}}{\mathbf{T}_{\mathit{i}}}
+\mathbf{T} &= \sum\limits_{\mathit{i}}{\mathbf{T}_{\mathit{i}}} \,.
 \end{aligned}
 \end{equation}
-%
+
 \citet{Ladd2001} described a methodology that minimises the oscillations 
-resulting from particles crossing lattice at very large speed. The 
-fluid/particle force interaction method with momentum exchange method is 
+resulting from soil grains crossing lattice at a very high speed. The 
+fluid/grain force interaction method with momentum exchange method is 
 coupled with the treatment of moving curved boundaries scheme~\citep{Yu2003}. 
-The simulation of the moving curved particle surfaces results in the 
+The simulation of the moving curved grain surfaces results in the 
 intersection of links between two nodes at arbitrary 
 distances~\citep{Iglberger2008}. These distance values are called as delta 
-values:
+values
 %
 \begin{equation}
 \delta = \frac{\mbox{Distance between fluid nod and particle 
-surface}}{\mbox{Distance between fluid node and particle node}} \in [0,1]
+surface}}{\mbox{Distance between fluid node and particle node}} \in [0,1] \,.
 \end{equation} 
 %
-For each pair of neighbouring fluid and particle nodes, a delta value has to be 
-calculated. Delta values of zero are not possible as nodes on the surface are 
-considered as the particle node. The algorithm for computation of the $\delta$ 
-value is presented in~\citet{Iglberger2008}.~\cref{fig:bouncemod} shows the 
-three possible situations for delta values in the interval of [0,1]. Since the 
-fluid particles in the LBM are always considered to move at the rate of a 
+For each pair of neighbouring fluid and grain nodes, a delta value has to be 
+calculated. Delta values of zero are not possible as the nodes on the surface 
+are considered as particle nodes. The algorithm for computation of the $\delta$ 
+value is presented in~\citet{Iglberger2008}.~\Cref{fig:bouncemod} shows the 
+three possible situations for delta values between 0 and 1. The 
+fluid particles in LBM are always considered moving at the rate of one 
 lattice per time step $(\delta \mathbf{x}/ \delta \mathbf{t})$, for delta 
 values smaller than 0.5. For $\delta$ values larger than 0.5, the fluid 
 particles would come to rest at an intermediate node $\mathbf{x}_{\mathit{i}}$. 
 In order to calculate the reflected distribution function in node 
 $\mathbf{x}_{\mathit{f}}$, an interpolation scheme has to be applied. The 
 linear interpolation scheme of~\citet{Yu2003} is used in the present study, 
-which uses a single equation, irrespective of the value of $\delta$ being less 
-or larger than 0.5, to the reflected distribution function, which is computed 
-as:
+which uses a single equation, irrespective of the value of $\delta$ being 
+smaller or larger than 0.5, to the reflected distribution function that is 
+computed as
 %
 \begin{align}
  \nonumber
@@ -1083,30 +1091,30 @@ as:
 \mathit{\mathit{f}}_{\overline{\alpha}}(\mathbf{x}_{\mathit{f2}},t + \delta t) 
 -2\mathit{w}_{\mathit{a}}\rho_{\mathit{w}}\frac{3}{\mathit{c}^{2}}
 	\mathbf{\mathit{e}}_{\mathit{a}}\cdot
- \mathbf{u}_{\mathit{w}}]
+ \mathbf{u}_{\mathit{w}}]\,,
 \end{align}
 %
 where $\mathit{w}_{\alpha}$ is the weighting factor, $\rho_{\mathit{w}}$ is the 
 fluid density in node $\mathbf{x}_{\mathit{f}}$, and $ \mathbf{u}_{\mathit{w}}  
 $ is the velocity at the bounce-back wall. In order to couple the 
-fluid-particle interaction, the LBM approach is extended by adopting a force 
-integration scheme to calculate the fluid force acting on the particle surface, 
+fluid-grain interaction, the LBM approach is extended by adopting a force 
+integration scheme, to calculate the fluid force acting on the grain surface, 
 and the momentum exchanged method described earlier. The physical force acting 
-on particle agglomerate is calculated as the sum over all fluid/particle node 
-pairs, resulting in: 
+on grain agglomerates is calculated as the sum over all fluid/particle node 
+pairs, resulting in
 %
 \begin{equation}
 \mathit{F} = 
 \sum\limits_{\mathbf{x}_{b}}\sum\limits_{\alpha=1}^{19}{\mathbf{e}_{\alpha}
 	[\mathit{f}_{\alpha}(\mathbf{x}_{b},t)
 		+\mathit{f}_{\overline{\alpha}}(\mathbf{x}_{f},t)]
- 				\delta \mathbf{x} / \delta t}
+ 				\delta \mathbf{x} / \delta t}\,.
 \end{equation}
 %
 After the force calculations, the coupled rigid body physics can be simulated 
-in order to move the particle agglomerates according to the applied forces. The 
-total hydrodynamic forces and torque exerted on a particle can be computed as 
-~\citep{Cook2004, Noble1998}:
+in order to move the grains/grain-agglomerates according to the applied forces. 
+The total hydrodynamic forces and torque exerted on a grain can be computed 
+as ~\citep{Cook2004, Noble1998}
 %
 \begin{align}
 \mathbf{F}_{f} & = \mathit{Ch}[\sum\limits_{\mathit{n}}{(\beta_{\mathit{n}} 
@@ -1114,10 +1122,10 @@ total hydrodynamic forces and torque exerted on a particle can be computed as
 \mathbf{T}_{f} & = 
 \mathit{Ch}[\sum\limits_{\mathit{n}}{(\mathbf{x}_{\mathit{n}}-\mathbf{x}_{\mathit{c}})
  \times (\beta_{\mathit{n}} \sum\limits_{\mathit{i}}{\mathit{f_i}^{\mathit{ 
-m}}\mathbf{\mathit{e}_i}})}]
+m}}\mathbf{\mathit{e}_i}})}]\,.
 \end{align}
 %
-The summation is over all lattice nodes covered by the particle and 
+The summation is over all lattice nodes covered by the particle, and 
 $\mathbf{x}_{\mathit{n}}$ represents the coordinate of the lattice node 
 \textit{n}.
 %
@@ -1127,8 +1135,8 @@ $\mathbf{x}_{\mathit{n}}$ represents the coordinate of the lattice node
 \caption{Bounce back boundaries for different values of $\delta$}
 \label{fig:bouncemod}
 \end{figure}
-%
-When particles are not in direct contact among themselves, but are driven by 
+
+When grains are not in direct contact among themselves, but are driven by 
 the fluid flow and body force, i.e. gravity, their motion can be determined by 
 Newton's equation of motion
 %
@@ -1138,17 +1146,18 @@ Newton's equation of motion
 \end{align}
 %
 \noindent where \textit{m} and \textit{J} are respectively the mass and the 
-moment of inertia of a particle; and $\ddot{\theta}$ is the angular 
-acceleration; \textbf{g} is the gravitational acceleration; $\mathbf{F_f}$ and 
-$\mathbf{T}_{f}$ are respectively the hydrodynamic forces and torque. The 
-equation can be solved numerically by an explicit numerical integration, such 
-as central difference scheme. The interaction between solid particles and the 
-solid particles with the walls are dealt with Discrete Element Method 
-technique. To solve the coupled MD-LBM, the hydrodynamic force exerted and the 
-static buoyancy force are considered by reducing the gravitational acceleration 
-to $(1- \rho/rho_{s})\mathbf{g}$, where $\rho_{s}$ is the density of the 
-particles. When taking into account all forces acting on an element, the 
-dynamic equations of Discrete Element Method can be expressed as
+moment of inertia of a grain, $\ddot{\theta}$ is the 
+angular acceleration, \textbf{g} is the gravitational acceleration,
+$\mathbf{F_f}$ and $\mathbf{T}_{f}$ are respectively the hydrodynamic forces 
+and torque. The equation can be solved numerically by an explicit numerical 
+integration, such as central difference scheme. 
+
+The interaction between the soil grains and the solid grains with the walls are 
+dealt with DEM technique. To solve the coupled DEM--LBM, the hydrodynamic force 
+exerted on the soil grain and the static buoyancy force are considered by 
+reducing the gravitational acceleration to $(1- \rho/rho_{s})\mathbf{g}$, where 
+$\rho_{s}$ is the density of the grains. When taking into account all forces 
+acting on an element, the dynamic equations of DEM can be expressed as
 %
 \begin{equation}
 \label{eq:mde}
@@ -1157,7 +1166,7 @@ dynamic equations of Discrete Element Method can be expressed as
 \end{equation} 
 %
 \noindent where $\mathbf{F}_{c}$ denotes the total contact forces from other 
-elements and/or the walls; \textit{c} is a damping coefficient; and the term 
+elements and/or the walls, and \textit{c} is a damping coefficient. The term 
 \textit{c\textbf{v}} represents a viscous force that accounts for the effect of 
 all possible dissipation forces in the system including energy lost during the 
 collision between particles. Considering a linear contact model
@@ -1184,13 +1193,14 @@ Discrete Element equations is
 \end{equation}
 %
 The time step factor $\lambda$ is chosen to be around 0.1 to ensure both 
-stability and accuracy~\citep{He1997}. When combining the Discrete Element 
-Method modelling of the particle interaction with the LB formulation, a minor 
-issue arises. There are now two time steps: $\Delta t$ for the fluid flow and 
-$\Delta t_{D}$ for the particles. Since $\Delta t_{D}$ is normally smaller than 
-$\Delta t$, $\Delta t_{D}$ is slightly reduced to a new value $\Delta t_{s}$ so 
-that $\Delta t$ and $\Delta t_{s}$ have an integer ration 
-$\mathit{n}_{\mathit{s}}$
+stability and accuracy~\citep{He1997}.
+
+When combining the Discrete Element modelling of the grain interaction with the 
+LB formulation, an issue arises. There are now two time steps: $\Delta t$ for 
+the fluid flow and $\Delta t_{D}$ for the particles. Since $\Delta t_{D}$ is 
+normally smaller than $\Delta t$, $\Delta t_{D}$ is slightly reduced to a new 
+value $\Delta t_{s}$ so that $\Delta t$ and $\Delta t_{s}$ have an integer 
+ration $\mathit{n}_{\mathit{s}}$
 %
 \begin{align}
 \Delta t_{s}=\frac{\Delta t}{\mathit{n}_{s}} \qquad(\mathit{n}_{s}=[\Delta t/ 
@@ -1202,6 +1212,8 @@ Element part. At every step of the fluid computation, $\mathit{n}_{s}$
 sub-steps of integration are performed for the Discrete Element 
 Method~\eqref{eq:mde} using the time step $\Delta t_{s}$. The hydrodynamic 
 force $\mathbf{F}_{f}$ is unchanged during the sub-cycling. 
+
+\subsection{Particle Kissing}
 %
 \begin{figure}[tbhp]
 \centering
