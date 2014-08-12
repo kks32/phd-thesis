@@ -1365,6 +1365,8 @@ for (i=0; i<nbgrains;i++) {
   for (y=0; y<ly;y++) {
     for (x=0; x<lx;x++) {
       if(obst[x][y]==i) {
+        //generate code to execute the iterations in parallel with
+        //no synchronization
         #pragma acc for independent
         for (iLB=1; iLB<Q; iLB++) {
           next_x=x+ex[iLB];
