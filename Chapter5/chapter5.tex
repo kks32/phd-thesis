@@ -1222,20 +1222,45 @@ study these two types of interactions, and many experimental and numerical
 studies have been carried out to investigate the behaviour of sedimentation
 of circular particles~\citep{Wang2014,Komiwes2005}.~\citet{Fortes1987} observed 
 experimentally that in the sedimentation of two particles in a Newtonian fluid 
-inside a vertical channel, the two particles would undergo the drafting,kissing 
-and tumbling (DKT) phenomenon.
+inside a vertical channel, the two particles would undergo the draft, 
+kissing and tumbling (DKT) phenomenon.
 
 The draft, kiss and tumbling effect may be observed when two particles fall 
-under the action of gravity in a viscous Newtonian fluid. It consists of the 
-three following steps named \emph{draft}, \emph{kiss} and \emph{tumbling}. The 
-\emph{draft}: grain 1 is first placed within the hydrodynamic drag above 
-grain 2. As the hydrodynamic drag of particle 2 is a depression zone, 
-grain 1 is attracted inside. The \emph{kiss}: particle 1 increases its 
-vertical velocity until it touches grain 2. The horizontal velocity of 
-grain 2 increases and its vertical velocity decreases below that of 
-grain 1. \emph{Tumbling}: grain 1 having the same horizontal velocity and 
-higher vertical velocity than grain 2, overtakes grain 2.
+under the action of gravity in a viscous Newtonian fluid. The 
+\emph{draft}: grain 2 is first placed within the hydrodynamic drag above 
+grain 1. As the hydrodynamic drag of grain 1 is a depression zone, 
+grain 2 is attracted inside. The \emph{kiss}: grain 2 increases its 
+vertical velocity until it touches grain 1. The horizontal velocity of 
+grain 1 increases and its vertical velocity decreases below that of 
+grain 2. \emph{Tumbling}: grain 2 having the same horizontal velocity and 
+higher vertical velocity than grain 1, overtakes grain 1.
 %
+
+LBM-DEM simulation of two grains under gravity in a viscous Newtonian fluid 
+reproduces the Draft, Kiss and Tumbled effect (see~\cref{fig:kissing}). They 
+are in agreement with the experimental description of the Draft, Kiss and 
+Tumbled effect. For better understanding of the DKT effect, the time history of 
+three distances between the particles (normalised to the diameter of the grain 
+D) i.e., the difference in the transverse coordinates $\delta_x/D$ and 
+longitudinal coordinates $\delta_y/D$ of the two grain centres, and the gap 
+between the two surfaces $\delta = \sqrt{{\delta_x}^2+{\delta_y}^2} - 1 $ 
+(see~\cref{fig:kissdelta}). 
+
+As shown in~\cref{fig:kissing}, grain 1 trails grain 2. As grain 2 approaches 
+the depression zone, corresponding to negative fluid pressure behind grain 1, 
+the velocity of the trailing grain increases as grains approach closer, 
+this is in agreement with the experimental description of the Draft. Grain 2 
+increases its vertical velocity more than grain 1 until it touches grain 1. The 
+kiss happens at normalised time ($t/\sqrt{D/g}$)  = 25. At this stage, the gap 
+$\delta$ between the particles is zero, the actual gap is about one lattice 
+spacing for the LBM collision model. After this time, the vertical velocity of 
+grain 1 decreases and its horizontal velocity increases as the grains tumble. 
+At this stage, the grains still remain in contact, i.e., the gap remains 
+unchanged $\delta=0$. Subsequently, the two grains separate and the terminal 
+velocities of the two grains are in good agreement with the terminal velocity 
+of a single grain found by an independent simulation and calculated using the 
+empericial Schiller and Nauman formula~\citep{Komiwes2005}.
+
 \begin{figure}[tbhp]
 \centering
 \includegraphics[height=0.9\textheight]{kissing}
@@ -1243,11 +1268,11 @@ higher vertical velocity than grain 2, overtakes grain 2.
 \label{fig:kissing}
 \end{figure}
 
-\begin{figure}
+\begin{figure}[tbhp]
 	\centering
 	\begin{subfigure}[b]{0.475\textwidth}
 		\includegraphics[width=\textwidth]{Kissing_xy}
-		\caption{transverse and vertical position}
+		\caption{transverse and longitudinal position}
 		\label{fig:kissxy}
 	\end{subfigure}
 	\begin{subfigure}[b]{0.475\textwidth}
@@ -1345,8 +1370,8 @@ parallelism.
 hydrodynamic force computation,style=customcpp]
 //OpenACC Kernels copy data between the host and the device
 #pragma acc kernels 
-copyout(fhf1[0:nbgrains],fhf2[0:nbgrains],fhf3[0:nbgrains]) 
-copyin(obst[0:][0:],g[0:nbgrains],ey[0:],f[0:][0:][0:],ex[0:])
+copyout(fhf1[0:nbgrains], fhf2[0:nbgrains], fhf3[0:nbgrains]) 
+copyin(obst[0:][0:], g[0:nbgrains], ey[0:], f[0:][0:][0:], ex[0:])
 //Create individual threads for each DEM grain
 #pragma acc parallel for
 for (i=0; i<nbgrains;i++) {
