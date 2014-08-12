@@ -1321,8 +1321,7 @@ parallelism.
 	\label{fig:GPUSpeed}
 \end{figure}
 
-\begin{lstlisting}[label=lst:GPU,caption= OpenACC GPU Hydrodynamic force 
-computation,style=customcpp]
+\begin{lstlisting}[label=lst:GPU,caption= OpenACC GPU implementation of hydrodynamic force computation,style=customcpp]
 #pragma acc kernels 
 copyout(fhf1[0:nbgrains],fhf2[0:nbgrains],fhf3[0:nbgrains]) 
 copyin(obst[0:][0:],g[0:nbgrains],ey[0:],f[0:][0:][0:],ex[0:])
