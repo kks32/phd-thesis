@@ -1339,13 +1339,14 @@ for (i=0; i<nbgrains;i++) {
           next_x=x+ex[iLB];
           next_y=y+ey[iLB];
           if(iLB<=half) halfq=half;
-          else halfq=-half;
+          else halfq= $-$half;
           if(obst[next_x][next_y]!=i) {
             fnx=(f[x][y][iLB+halfq]+f[next_x][next_y][iLB])*ex[iLB+halfq];
             fny=(f[x][y][iLB+halfq]+f[next_x][next_y][iLB])*ey[iLB+halfq];
             fhf1[i]=fhf1[i]+fnx;
             fhf2[i]=fhf2[i]+fny;
-            fhf3[i]=fhf3[i]-fnx*(y-(g[i].x2-Mby)/dx)+fny*(x-(g[i].x1-Mgx)/dx);
+            fhf3[i]=fhf3[i]$-$fnx*(y$-$(g[i].x2$-$Mby)/dx) 
+                    +fny*(x$-$(g[i].x1$-$Mgx)/dx);
           }			
         }
       }
