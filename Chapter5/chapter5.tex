@@ -1300,71 +1300,54 @@ more floating point operations (FLOPs) per unit time than a CPU. General
 Purpose computations on GPUs (GPGPUs) often achieve speedups of orders of 
 magnitude in comparison with optimised CPU implementations. 
 
-A GPU consists of several \emph{Streaming Multiprocessors} (SMs).  
+In the present study Nvidia GE Force GTX 580 GPU with 512 cuda cores is used. A 
+GPU consists of several \emph{Streaming Multiprocessors} (SMs). Each SM 
+contains 32 CUDA processors. Each CUDA processor has a fully pipelined integer 
+arithmetic logic unit (ALU) and floating point unit (FPU). The FPU complies 
+with the IEEE 754-2008 industry standard for floating-point arithmetic, capable 
+of double precision computations. The SM schedules work in groups of 32 threads 
+called warps. Each SM features two warp schedulers and two instruction dispatch 
+units, allowing two warps to be issued and executed concurrently. Each thread 
+has access to both L1 and L2 caches, which improves the performance for 
+programs with random memory access.
 
-Many-core processors are promising platforms for regular parallel 
+Many-core processors are promising platforms for intrinsically parallel 
 algorithms such as the Lattice Boltzmann Method (LBM). Since the global memory 
-for graphic devices shows high latency and LBM is data intensive, the
+for GPU devices shows high latency and LBM is data intensive, the
 memory access pattern is an important issue for achieving good performances. 
 Whenever possible, global memory loads and stores should be coalescent and 
 aligned, but the propagation phase in LBM can lead to frequent misaligned 
-memory accesses. The data transfer between the host and the device is very 
-expensive. In the present study, the LBM implementation follows carefully 
+memory accesses. Also, the data transfer between the host and the device is 
+very expensive. In the present study, the LBM implementation follows carefully 
 chosen data transfer schemes in global memory.
 
-In the present study Nvidia GE Force GTX 580 GPU with 512 cuda cores is used.
+There are three ways to accelerate GP-GPU applications: (a) Using `drop-in' 
+libraries, (b) using directives by exposing parallelism, and (c) using 
+dedicated GP-GPU programming languages. OpenACC (Open Accelerators) is an open 
+GPU directives programming standard for parallel computing on heterogeneous 
+CPU/GPU systems. Unlike conventional GPU programming languages, such as CUDA, 
+OpenACC uses directives to specify parallel regions in the code and performance 
+tuning works on exposing parallelism. OpenACC targets a host-directed execution 
+model where the sequential code runs on a conventional processor and 
+computationally intensive parallel pieces of code (kernels) run on an 
+accelerator such as a GPU (see~\cref{fig:GPUConcept}). 
 
-OpenACC (Open Accelerators) is an open GPU directives programming standard for 
-parallel computing on heterogeneous CPU/GPU systems. Unlike conventional GPU 
-programming languages, such as CUDA, OpenACC uses directives to specify 
-parallel regions in the code and the tuning works on exposing parallelism. 
-OpenACC targets a host-directed execution model where the sequential code runs 
-on a conventional processor and computationally intensive parallel pieces of 
-code (kernels) run on an accelerator such as a GPU 
-(see~\cref{fig:GPUConcept}). 
-OpenACC API version 2.0 is used in the present study and has two 
-compute 
-constructs, the kernels construct and the parallel construct. LBM -- 
-DEM 
-implementation predominantly uses the OpenACC gang and vector 
-parallelism.
- 
+The original GPGPU LBM -- DEM code was implemented using OpenACC API v1.0, 
+which was released in November 2011. The current implementation uses 
+OpenACC API v2.0a~\citep{OpenACCmembers2013} and has two compute 
+constructs, the kernels construct and the parallel construct. LBM -- DEM 
+implementation predominantly uses the OpenACC gang and vector parallelism. The 
+LBM -- DEM code runs sequential and computationally less intensive 
+functions on the CPU, OpenMP multi-threading is used when possible. 
+Computationally intensive functions are converted to a target accelerator 
+specific GPU parallel code. Schematics of a hybrid CPU/GPU system is shown 
+in~\Cref{fig:GPUConcept}.
 
 \begin{figure}[tbhp]
 	\centering
-	\includegraphics[width=0.95\textwidth]{GPU_Concept}
-	\caption{Hybrid CPU/GPU systems}
+	\includegraphics[width=0.9\textwidth]{GPU_Concept}
+	\caption{Schematics of a hybrid CPU/GPU system}
 	\label{fig:GPUConcept}
-\end{figure}
-
-\begin{table}[tbhp]
-	\caption{GPU vs CPU parallelisation}
-	\label{table:GPU}
-	\centering
-	\begin{tabular}{l l l}
-		\toprule
-		Execution & Computational Time (s) &  Speedup \\
-		\midrule
-		CPU 1 OpenMP thread		& 2016	 & -- \\
-		CPU 2 OpenMP threads	& 1035	 & 1.5 x \\
-		CPU 4 OpenMP threads	& 660 	 & 3.0 x \\
-		CPU 12 OpenMP threads	& 150	 & 13.5 x\\
-		GPU OpenACC				& 16	 & 126.0 x \\
-		\bottomrule
-		\multicolumn{3}{l}{\footnotesize{\textsuperscript{*}~CPU OpenMP threads 
-		- 6 core Intel Xeon $\mathrm{@}$ 3.3GHz}} \\
-		\multicolumn{3}{l}{\footnotesize{\textsuperscript{\dag}~GPU threads - 
-		GeForce GTX 580 - 512 CUDA cores}}
-	\end{tabular}
-\end{table}
-
-
-
-\begin{figure}[tbhp]
-	\centering
-	\includegraphics[width=0.95\textwidth]{GPU_Speedup}
-	\caption{GPU Speedup}
-	\label{fig:GPUSpeed}
 \end{figure}
 
 \begin{lstlisting}[label=lst:GPU,caption= OpenACC GPU implementation of 
@@ -1402,3 +1385,35 @@ for (i=0; i<nbgrains;i++) {
   }
 }
 \end{lstlisting}
+
+
+\begin{table}[tbhp]
+	\caption{GPU vs CPU parallelisation}
+	\label{table:GPU}
+	\centering
+	\begin{tabular}{l l l}
+		\toprule
+		Execution & Computational Time (s) &  Speedup \\
+		\midrule
+		CPU 1 OpenMP thread		& 2016	 & -- \\
+		CPU 2 OpenMP threads	& 1035	 & 1.5 x \\
+		CPU 4 OpenMP threads	& 660 	 & 3.0 x \\
+		CPU 12 OpenMP threads	& 150	 & 13.5 x\\
+		GPU OpenACC				& 16	 & 126.0 x \\
+		\bottomrule
+		\multicolumn{3}{l}{\footnotesize{\textsuperscript{*}~CPU OpenMP threads 
+		- 6 core Intel Xeon $\mathrm{@}$ 3.3GHz}} \\
+		\multicolumn{3}{l}{\footnotesize{\textsuperscript{\dag}~GPU threads - 
+		GeForce GTX 580 - 512 CUDA cores}}
+	\end{tabular}
+\end{table}
+
+
+
+\begin{figure}[tbhp]
+	\centering
+	\includegraphics[width=0.95\textwidth]{GPU_Speedup}
+	\caption{GPU Speedup}
+	\label{fig:GPUSpeed}
+\end{figure}
+
