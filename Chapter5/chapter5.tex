@@ -1321,12 +1321,16 @@ parallelism.
 	\label{fig:GPUSpeed}
 \end{figure}
 
-\begin{lstlisting}[label=lst:GPU,caption= OpenACC GPU implementation of hydrodynamic force computation,style=customcpp]
+\begin{lstlisting}[label=lst:GPU,caption= OpenACC GPU implementation of 
+hydrodynamic force computation,style=customcpp]
+//OpenACC Kernels copy data between the host and the device
 #pragma acc kernels 
 copyout(fhf1[0:nbgrains],fhf2[0:nbgrains],fhf3[0:nbgrains]) 
 copyin(obst[0:][0:],g[0:nbgrains],ey[0:],f[0:][0:][0:],ex[0:])
 for (i=0; i<nbgrains;i++) {
+  // Reset hydrodynamic forces to zero at the start of time step
   fhf1[i]=fhf2[i]=fhf3[i]=0.;
+  // Iterate through all lattice nodes
   for (y=0; y<ly;y++) {
     for (x=0; x<lx;x++) {
       if(obst[x][y]==i ) {
