@@ -1274,10 +1274,14 @@ programming languages, such as CUDA, OpenACC uses directives to specify
 parallel regions in the code and the tuning works on exposing parallelism. 
 OpenACC targets a host-directed execution model where the sequential code runs 
 on a conventional processor and computationally intensive parallel pieces of 
-code (kernels) run on an accelerator such as a GPU (see~\cref{fig:GPUConcept}). 
-OpenACC API version 2.0 is used in the present study and has two compute 
-constructs, the kernels construct and the parallel construct. LBM -- DEM 
-implementation predominantly uses the OpenACC gang and vector parallelism.
+code (kernels) run on an accelerator such as a GPU 
+(see~\cref{fig:GPUConcept}). 
+OpenACC API version 2.0 is used in the present study and has two 
+compute 
+constructs, the kernels construct and the parallel construct. LBM -- 
+DEM 
+implementation predominantly uses the OpenACC gang and vector 
+parallelism.
  
 
 \begin{figure}[tbhp]
@@ -1316,3 +1320,33 @@ implementation predominantly uses the OpenACC gang and vector parallelism.
 	\caption{GPU Speedup}
 	\label{fig:GPUSpeed}
 \end{figure}
+
+\begin{lstlisting}[label=lst:GPU,caption= OpenACC GPU Hydrodynamic force 
+computation,style=customcpp]
+#pragma acc kernels 
+copyout(fhf1[0:nbgrains],fhf2[0:nbgrains],fhf3[0:nbgrains]) 
+copyin(obst[0:][0:],g[0:nbgrains],ey[0:],f[0:][0:][0:],ex[0:])
+for (i=0; i<nbgrains;i++) {
+  fhf1[i]=fhf2[i]=fhf3[i]=0.;
+  for (y=0; y<ly;y++) {
+    for (x=0; x<lx;x++) {
+      if(obst[x][y]==i ) {
+        #pragma acc for independent
+        for (iLB=1; iLB<Q; iLB++) {
+          next_x=x+ex[iLB];
+          next_y=y+ey[iLB];
+          if(iLB<=half) halfq=half;
+          else halfq=-half;
+          if(obst[next_x][next_y]!=i) {
+            fnx=(f[x][y][iLB+halfq]+f[next_x][next_y][iLB])*ex[iLB+halfq];
+            fny=(f[x][y][iLB+halfq]+f[next_x][next_y][iLB])*ey[iLB+halfq];
+            fhf1[i]=fhf1[i]+fnx;
+            fhf2[i]=fhf2[i]+fny;
+            fhf3[i]=fhf3[i]-fnx*(y-(g[i].x2-Mby)/dx)+fny*(x-(g[i].x1-Mgx)/dx);
+          }			
+        }
+      }
+    }
+  }
+}
+\end{lstlisting}

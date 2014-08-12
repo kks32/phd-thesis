@@ -186,3 +186,29 @@ justification=justified]{caption}
 % Default value is 0.75
 %\SetDraftGrayScale{0.8}
 
+% ********************************** Listings **********************************
+\usepackage{listings}
+\usepackage{color}
+\usepackage{xcolor}
+
+\definecolor{light-gray}{gray}{0.95}
+\lstdefinestyle{customcpp}{
+  backgroundcolor=\color{light-gray},
+  belowcaptionskip=1\baselineskip,
+  breaklines=true,
+  xleftmargin=\parindent,
+  language=C++,
+  numbers=left,
+  numbersep=5pt, 
+  numberstyle=\tiny\color{gray},
+  showstringspaces=false,
+  keywordstyle=\bfseries\color{black},
+  commentstyle=\itshape\color{black},
+  identifierstyle=\color{black},
+  stringstyle=\color{black},
+  morekeywords={pragma, acc, independent, kernels, parallel, copyout, copyin, 
+  copy},
+}
+\DeclareCaptionFont{white}{\color{white}}
+\DeclareCaptionFormat{listing}{\colorbox{gray}{\parbox{0.95\textwidth}{#1#2#3}}}
+\captionsetup[lstlisting]{format=listing,labelfont=white,textfont=white}
