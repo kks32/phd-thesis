@@ -1350,6 +1350,26 @@ in~\Cref{fig:GPUConcept}.
 	\label{fig:GPUConcept}
 \end{figure}
 
+The loop nests in a kernels construct are converted by the compiler into 
+parallel kernels that run efficiently on GPU. There are three steps to this 
+process. The first is to identify the loops that can be executed 
+in parallel. The second is to map that abstract loop parallelism onto concrete 
+hardware parallelism. In OpenACC terms, gang parallelism maps to grid-level 
+parallelism, (equivalent to a CUDA blockIdx) and vector parallelism maps to 
+thread-level parallelism (equivalent to a CUDA threadIdx). The compiler 
+normally maps a single loop across multiple levels of parallelism using 
+strip-mining. Finally, in step three the compiler generates and optimizes the 
+actual code to implement the selected parallelism mapping.
+
+An OpenACC parallel construct creates a number of parallel threads that 
+immediately begin executing the body of the parallel construct redundantly. 
+When a thread reaches a work-sharing loop, that thread will execute some subset 
+of the loop iterations, depending on the scheduling policy as specified by the 
+program or at the runtime. The code generation and optimization for a parallel 
+construct is essentially the same as for the kernels construct. A key 
+difference is that unlike a kernels construct, the entire parallel construct 
+becomes a single target parallel operation, aka a single CUDA kernel.
+
 \begin{lstlisting}[label=lst:GPU,caption= OpenACC GPU implementation of 
 hydrodynamic force computation,style=customcpp]
 //OpenACC Kernels copy data between the host and the device
@@ -1365,8 +1385,8 @@ for (i=0; i<nbgrains;i++) {
   for (y=0; y<ly;y++) {
     for (x=0; x<lx;x++) {
       if(obst[x][y]==i) {
-        //generate code to execute the iterations in parallel with
-        //no synchronization
+        // generate code to execute the iterations in parallel with
+        // no synchronization
         #pragma acc for independent
         for (iLB=1; iLB<Q; iLB++) {
           next_x=x+ex[iLB];
@@ -1387,7 +1407,6 @@ for (i=0; i<nbgrains;i++) {
   }
 }
 \end{lstlisting}
-
 
 \begin{table}[tbhp]
 	\caption{GPU vs CPU parallelisation}
