@@ -22,82 +22,70 @@ flow. Hence, the development of an effective numerical framework for modelling
 both the fluid flow patterns and the grain--fluid interactions is very 
 challenging.
 
-Development of a numerical framework depends crucially on the 
-size of the soil grains relative to the domain/mesh 
-size~\citep{Feng2007}. Traditionally, the Navier-Stokes 
-equation is solved by a grid-based Computational Fluid Dynamics 
-(CFD) method, such as the Finite Volume 
-Method~\citep{Capecelatro2013} or a mesh-free technique such as 
-the Smooth Particle Hydrodynamics~\citep{Sun2013}. The grid 
-size in FVM or the smooth length in SPH for discretisation of 
-the Navier-Stokes equation is at least an order of magnitude 
-larger than the grain diameter~\citep{Xiong2014}. 
+Development of a numerical framework depends crucially on the size of the soil 
+grains relative to the domain/mesh size~\citep{Feng2007}. Traditionally, the 
+Navier-Stokes equation is solved by a grid-based Computational Fluid Dynamics 
+(CFD) method, such as the Finite Volume Method~\citep{Capecelatro2013} or a 
+mesh-free technique such as the Smooth Particle Hydrodynamics~\citep{Sun2013}. 
+The grid size in FVM or the smooth length in SPH for discretisation of 
+the Navier-Stokes equation is at least an order of magnitude larger than the 
+grain diameter~\citep{Xiong2014}. 
 
-In situations where the average domain concentration phase is 
-far from dilute, the computational effort is mostly devoted to 
-the grain dynamics. The hydrodynamic force on the soil grains 
-are applied based on an empirical relation using the 
-domain-averaged local porosity of soil grains in the grid. 
-As a result, developing a fast fluid hydrodynamics solver is 
-unimportant for dense flows. However, most geo-mechanics 
-problems involve complex interactions between the solid and the 
-fluid phase. This requires accurate modelling of the 
-fluid flow pattern. Additionally, geophysical problems, such as 
-submarine landslides and debris flow have a relatively large 
-simulation domain, which requires parallel computation. 
-Implementing traditional grid-based CFD methods 
-face great challenges on multi-processor systems. Although 
-mesh-free approaches are free from the problem of parallel 
-scalability, its modelling accuracy and speed are relatively 
-low when compared to grid-based CFD methods. Therefore, an 
-accurate, fast and a highly scalable scheme is required 
-to model fluid - grain systems in geo-mechanics. 
+In situations where the average domain concentration phase is far from dilute, 
+the computational effort is mostly devoted to the grain dynamics. The 
+hydrodynamic force on the soil grains are applied based on an empirical 
+relation using the domain-averaged local porosity of the soil grains in the 
+grid. As a result, developing a fast fluid hydrodynamics solver is unimportant 
+for dense flows. However, most geo-mechanics problems involve complex 
+interactions between the solid and the fluid phase. This requires accurate 
+modelling of the fluid flow pattern. Additionally, geophysical problems, such 
+as submarine landslides and debris flow have a relatively large simulation 
+domain, which requires parallel computation. Implementing traditional 
+grid-based CFD methods face great challenges on multi-processor 
+systems~\citep{Xiong2014}. Although mesh-free approaches are free from the 
+problem of parallel scalability, its modelling accuracy and speed are 
+relatively low when compared to grid-based CFD methods. Therefore, an accurate, 
+fast and a highly scalable scheme is required to model fluid - grain systems in 
+geo-mechanics. 
  
-The Navier-Stokes equation describes the motion of a 
-non-turbulent Newtonian fluid. The equation is obtained by 
-applying Newton's second law to the fluid motion, together with 
-an assumption that the fluid stress is the sum of the 
-viscous term, proportional to the gradient of the velocity, and 
-the pressure term. Conventional CFD methods compute 
-pertinent flow fields, such as velocity \textit{u} and pressure 
-\textit{p}, by numerically solving the Navier-Stokes equation 
-in space \textit{x} and time \textit{t}. Alternatively, the 
-transport equation or the Boltzmann equation, which deals with 
-the single particle distribution function $f(x,\xi,t)$ in 
-phase space $(x,\xi)$ and time \textit{t}, can be used to solve 
-various problems in fluid dynamics. 
+The Navier-Stokes equation describes the motion of a non-turbulent Newtonian 
+fluid. The equation is obtained by applying Newton's second law to the fluid 
+motion, together with an assumption that the fluid stress is the sum of the 
+viscous term, proportional to the gradient of the velocity, and the pressure 
+term. Conventional CFD methods compute pertinent flow fields, such as velocity 
+\textit{u} and pressure \textit{p}, by numerically solving the Navier-Stokes 
+equation in space \textit{x} and time \textit{t}. Alternatively, the transport 
+equation or the Boltzmann equation, which deals with a single particle 
+distribution function $f(x,\xi,t)$ in phase space $(x,\xi)$ and time 
+\textit{t}, can be used to solve various problems in fluid dynamics. 
 
 The Lattice Boltzmann Method
 (LBM)~\citep{He1997a,He1997b,Chen1998a,Mei2000,Han2007a,Zhou2012}
-is an alternative approach to the classical Navier-Stokes
-solvers for fluid flow and works on an equidistant grid of 
-cells, called lattice cells, which interact only with their 
-direct neighbours. In LBM, the discretisation of continuum 
-equations is based on microscopic models and mesoscopic 
-continuum theories. LBM is a special discretising scheme of the 
-Boltzmann equation where the particle distribution functions 
-(mass fractions) collide and propagate on a regular grid. The 
-important aspect, however is the \textit{discretisation of the 
-velocity}, which means that the particle velocities are 
-restricted to a predefined set of orientations.
+is an alternative approach to the classical Navier-Stokes solvers for fluid 
+flows. LBM works on an equidistant grid of cells, called lattice cells, which 
+interact only with their direct neighbours. In LBM, the discretisation of 
+continuum equations is based on microscopic models and mesoscopic continuum 
+theories. LBM is a special discretising scheme of the Boltzmann equation where 
+the particle distribution functions (mass fractions) collide and propagate on a 
+regular grid. The important aspect, however, is the \textit{discretisation of 
+the velocity}, which means that the particle velocities are restricted to a 
+predefined set of orientations.
 
-The theoretical premises of the LB equation are that (1) 
-hydrodynamics is insensitive to the details of microscopic 
-physics, and (2) hydrodynamics can be preserved so long as the 
-conservation laws and associated symmetries are respected in 
-the microscopic and mesoscopic level. Therefore, the 
-computational advantages of LBM are achieved by drastically 
-reducing the particle velocity space $\xi$ to only a very few 
-discrete points without seriously degrading 
-hydrodynamics~\citep{Mei2000}. This is possible 
-because LBM rigorously preserves the hydrodynamic moments of 
-the distribution function, such as mass density and momentum 
-fluxes, and the necessary symmetries~\citep{He1997a,He1997b}. 
-The process of averaging the density and the momentum over some 
-regions of the space, i.e. coarse graining, produces some 
-useful fluid simulation. LBM has evolved as a comprehensive 
-fluid solver and its theoretical aspects link well with the 
-conventional central finite difference scheme~\citep{Cook2004}.
+The theoretical premises of the LB equation are that (1) hydrodynamics is 
+insensitive to the details of microscopic physics, and (2) hydrodynamics can be 
+preserved so long as the conservation laws and associated symmetries are 
+respected in the microscopic and mesoscopic level. Therefore, the computational 
+advantages of LBM are achieved by drastically reducing the particle velocity 
+space $\xi$ to only a very few discrete points without seriously degrading the
+hydrodynamics~\citep{Mei2000}. This is possible because LBM rigorously 
+preserves the hydrodynamic moments of the distribution function, such as mass 
+density and momentum fluxes, and the necessary 
+symmetries~\citep{He1997a,He1997b}.
+% The process of averaging the density and the momentum over some regions of 
+%the space, i.e. coarse graining, produces some useful fluid simulation. 
+LBM has evolved as a comprehensive fluid solver and its theoretical aspects 
+link well with the conventional central finite difference 
+scheme~\citep{Cook2004}.
 
 \subsection{Formulation}
 
@@ -222,7 +210,7 @@ as the equilibrium distribution function that is defined as
 	\frac{1}{36}\,.
 \end{equation}
 
-The right-hand side of~\cref{eq:stream} is often denoted by 
+The right-hand side of~\cref{eq:stream} is often denoted as 
 $\mathit{f_i}(\mathbf{x}, \mathit{t}_{+})$ and termed the post 
 collision distribution. LBM ensures conservation of total 
 mass and total momentum of the fluid particles at each lattice 
@@ -320,7 +308,7 @@ by
 \begin{equation}
 	\mathit{M}_{\mathit{a}}=\frac{\mathit{v}_{\mathit{max}}}{\mathit{C}}\,.
 \end{equation}
-
+%
 Theoretically, the Mach number is required to be $<< 1$. In 
 practice, $\mathit{M}_{\mathit{a}}$ should be, at least smaller 
 than 0.1~\citep{He1997}. From a computational point of view, it 
