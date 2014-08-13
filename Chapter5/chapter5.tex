@@ -818,7 +818,7 @@ relaxation time $\tau_{*}$ is written as
 times 
 corresponding to the true fluid viscosity $\nu$ and the turbulence 
 viscosity $\nu_{\mathit{t}}$, defined by a sub-grid turbulence model. 
-The new viscosity $\nu_{*}$ corresponding to $\tau_{*}$ is defined as:
+The new viscosity $\nu_{*}$ corresponding to $\tau_{*}$ is defined as
 %
 \begin{align}
 \nu_{*} & 
@@ -836,10 +836,10 @@ viscosity $\tau_{*}$. The component $s_1$ of the collision matrix becomes $s_1
 = \frac{1}{\tau+\tau_t}$.
 
 The effectiveness of LBM-LES model in simulating unsteady flows is verified by 
-modelling the K\'{a}rm\'{a}n vortex street. In fluid dynamics, a k\'{a}rm\'{a}n 
+modelling the K\'{a}rm\'{a}n vortex street. In fluid dynamics, a K\'{a}rm\'{a}n 
 vortex street is a repeating pattern of vortices caused by unsteady separation 
-of fluid flow around circular obstacles. A vortex street will only form 
-typically above a limiting value of Reynolds number of 90. The Reynolds number 
+of fluid flow around circular obstacles. A vortex street will only be observed 
+above a limiting value of Reynolds number of 90. The Reynolds number 
 is computed based on the cylinder diameter `D' and the mean flow velocity $U$ 
 of the parabolic inflow profile
 %
@@ -854,10 +854,10 @@ H/2. The pressure gradient at the inlet and the outlet is varied to create
 flows with different mean velocities. Numerical simulations of vortex 
 shedding behind a circular obstacle is carried out for three different fluid 
 flow regimes (Reynolds number of 55, 75, and 112). The fully developed fluid 
-flows for different Reynolds numbers are shown in~\cref{fig:karman}. The von 
-K\'{a}rm\'{a}n vortex street can only be observed at high a Reynolds number of 
-112 (Re > 90), which shows the ability of the LBM turbulence model in capturing 
-instabilities in fluid flow.
+flows for different Reynolds numbers are shown in~\cref{fig:karman}. It can be 
+observed from~\cref{fig:karman} that the von K\'{a}rm\'{a}n vortex street can 
+only be observed at high a Reynolds number of 112 (Re > 90), which shows the 
+ability of the LBM turbulence model in capturing instabilities in fluid flow.
 %
 \begin{figure}[htbp]
 	\centering
@@ -879,9 +879,9 @@ St=\frac{fD}{U_{max}}\,.
 \noindent The characteristic frequency $f$ is determined by a spectral 
 analysis (Fast Fourier Transform - FFT) of time series of the fluid pressure. 
 \Cref{table:strouhal} shows that the Strouhal numbers computed from LBM 
-simulations have a very good agreement with the FVM results obtained 
-by~\citet{Breuer2000}. This shows the ability of LBM-LES in 
-capturing unsteady flow dynamics.
+simulations have a very good agreement with FVM results obtained 
+by~\citet{Breuer2000}. This shows the ability of LBM-LES in capturing unsteady 
+flow dynamics.
 
 
 \begin{table}[tbhp]
@@ -908,8 +908,7 @@ capturing unsteady flow dynamics.
 
 %************************************************************************* %
 
-\section[Coupled LBM -- DEM for fluid--grain interactions]{Coupled Lattice 
-Boltzmann and DEM for fluid-grain interactions}
+\section{Coupled LBM and DEM for fluid-grain interactions}
 
 Modelling fluid--grain interactions in submarine landslides requires the 
 ability to simulate the dynamic fluid -- solid boundary interactions. In 
