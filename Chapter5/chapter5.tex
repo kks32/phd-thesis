@@ -1248,8 +1248,7 @@ more floating point operations (FLOPs) per unit time than a CPU. General
 Purpose computations on GPUs (GPGPUs) often achieve speedups of orders of 
 magnitude in comparison with optimised CPU implementations. 
 
-In the present study Nvidia GE Force GTX 580 GPU with 512 cuda cores is used. A 
-GPU consists of several \emph{Streaming Multiprocessors} (SMs). Each SM 
+A GPU consists of several \emph{Streaming Multiprocessors} (SMs). Each SM 
 contains 32 CUDA processors. Each CUDA processor has a fully pipelined integer 
 arithmetic logic unit (ALU) and floating point unit (FPU). The FPU complies 
 with the IEEE 754-2008 industry standard for floating-point arithmetic, capable 
@@ -1258,6 +1257,15 @@ called warps. Each SM features two warp schedulers and two instruction dispatch
 units, allowing two warps to be issued and executed concurrently. Each thread 
 has access to both L1 and L2 caches, which improves the performance for 
 programs with random memory access.
+
+The occupancy rate of the SPs, i.e. the ratio between the 
+number of threads run and the maximum number of executable threads, is an 
+important aspect to take into consideration for the optimisation of a CUDA 
+kernel. Even though a block may only be run on a single SM, it is possible to 
+execute several blocks concurrently on the same SM. Hence, tuning the execution 
+grid layout allows one to increase the occupancy rate. Nevertheless, reaching 
+the maximum occupancy is usually not possible, as the threads executed in 
+parallel on one SM have to share the available registers~\citep{Obrecht2011}.
 
 Many-core processors are promising platforms for intrinsically parallel 
 algorithms such as the lattice Boltzmann Method. Since the global memory 
@@ -1269,9 +1277,9 @@ memory accesses. Also, the data transfer between the host and the device is
 very expensive. In the present study, the LBM implementation follows carefully 
 chosen data transfer schemes in global memory.
 
-There are three ways to accelerate GP-GPU applications: (a) Using `drop-in' 
+There are three ways to accelerate GPGPU applications: (a) Using `drop-in' 
 libraries, (b) using directives by exposing parallelism, and (c) using 
-dedicated GP-GPU programming languages. OpenACC (Open Accelerators) is an open 
+dedicated GPGPU programming languages. OpenACC (Open Accelerators) is an open 
 GPU directives programming standard for parallel computing on heterogeneous 
 CPU/GPU systems. Unlike conventional GPU programming languages, such as CUDA, 
 OpenACC uses directives to specify parallel regions in the code and performance 
@@ -1280,40 +1288,31 @@ model where the sequential code runs on a conventional processor and
 computationally intensive parallel pieces of code (kernels) run on an 
 accelerator such as a GPU (see~\cref{fig:GPUConcept}). 
 
-The original GPGPU LBM -- DEM code was implemented using OpenACC API v1.0, 
-which was released in November 2011. The current implementation uses 
+The original GPGPU LBM -- DEM code was implemented in C using OpenACC API v1.0, 
+which was released in November 2011. The current implementation in C++ uses 
 OpenACC API v2.0a~\citep{OpenACCmembers2013} and has two compute 
 constructs, the kernels construct and the parallel construct. LBM -- DEM 
 implementation predominantly uses the OpenACC gang and vector parallelism. The 
 LBM -- DEM code runs sequential and computationally less intensive 
 functions on the CPU, OpenMP multi-threading is used when possible. 
 Computationally intensive functions are converted to a target accelerator 
-specific GPU parallel code. Schematics of a hybrid CPU/GPU system is shown 
-in~\Cref{fig:GPUConcept}.
+specific GPU parallel code. Schematics of a heterogeneous CPU/GPU system is 
+shown in~\Cref{fig:GPUConcept}.
 
 \begin{figure}[tbhp]
 	\centering
-	\includegraphics[width=0.9\textwidth]{GPU_Concept}
-	\caption{Schematics of a hybrid CPU/GPU system.}
+	\includegraphics[width=0.92\textwidth]{GPU_Concept}
+	\caption{Schematics of a heterogeneous CPU/GPU system.}
 	\label{fig:GPUConcept}
 \end{figure}
 
-Generally speaking, the occupancy rate of the SPs, i.e. the ratio between the 
-number of threads run and the maximum number of executable threads, is an 
-important aspect to take into consideration for the optimisation of a CUDA 
-kernel. Even though a block may only be run on a single SM,it is possible to 
-execute several blocks concurrently on the same SM. Hence tuning the execution 
-grid layout allows one to increase the occupancy rate.Nevertheless,reaching the 
-maximum occupancy is usually not possible, as the threads executed in parallel 
-on one SM have to share the available registers~\citep{Obrecht2011}.
-
-The loop nests in a kernels construct are converted by the compiler into 
-parallel kernels that run efficiently on GPU. There are three steps to this 
+The loop nests in a kernel construct are converted by the compiler into 
+parallel kernels that run efficiently on a GPU. There are three steps to this 
 process. The first is to identify the loops that can be executed 
-in parallel. The second is to map that abstract loop parallelism onto concrete 
-hardware parallelism. In OpenACC terms, gang parallelism maps to grid-level 
-parallelism, (equivalent to a CUDA blockIdx) and vector parallelism maps to 
-thread-level parallelism (equivalent to a CUDA threadIdx). The compiler 
+in parallel. The second is to map that abstract loop parallelism onto a 
+concrete hardware parallelism. In OpenACC terms, gang parallelism maps to 
+grid-level parallelism, (equivalent to a CUDA blockIdx) and vector parallelism 
+maps to thread-level parallelism (equivalent to a CUDA threadIdx). The compiler 
 normally maps a single loop across multiple levels of parallelism using 
 strip-mining. Finally, in step three the compiler generates and optimizes the 
 actual code to implement the selected parallelism mapping.
@@ -1323,8 +1322,8 @@ immediately begin executing the body of the parallel construct redundantly.
 When a thread reaches a work-sharing loop, that thread will execute some subset 
 of the loop iterations, depending on the scheduling policy as specified by the 
 program or at the runtime. The code generation and optimization for a parallel 
-construct is essentially the same as for the kernels construct. A key 
-difference is that unlike a kernels construct, the entire parallel construct 
+construct is essentially the same as for the kernel construct. A key 
+difference is that unlike a kernel construct, the entire parallel construct 
 becomes a single target parallel operation, aka a single CUDA kernel. Both 
 constructs allow for automatic vectorization within the loops~\citep{Wolfe2012}.
 
@@ -1390,20 +1389,20 @@ their limited amount. Global memory, being the only one accessible by both the
 CPU and the GPU, is a critical path as it suffers from high latency. However, 
 this latency is mostly hidden by the scheduler which stalls inactive warps 
 until data are available. For data intensive LBM, this aspect is generally the 
-limiting factor~\citep{Obrecht2011}. To optimise global memory transactions, 
-the memory access is coalesced and aligned, as explained above. The memory 
-transactions between the host and the target through a PCI bus are kept to a 
-minimum.
+limiting factor~\citep{Obrecht2011}. To optimise the global memory 
+transactions, the memory access is coalesced and aligned, as explained above. 
+The memory transactions between the host and the target through a PCI bus are 
+kept to a minimum.
 
 A two-dimensional fluid -- grain system, which consists of 7.2 million LBM 
-nodes and 2500 DEM grains is used to demonstrate the ability of GPU parallel 
-code. The wall time required to compute 100 iterations of the given LBM -- DEM 
-problem is compared for executions running on a single CPU thread, 
-multi-threaded CPU (using OpenMP) and the GP-GPU implementations 
+nodes and 2500 DEM grains is used to demonstrate the ability of the GPGPU LBM 
+-- DEM code. The wall time required to compute 100 iterations of the given LBM 
+-- DEM  problem is compared for executions running on a single CPU thread, 
+multi-threaded CPU (using OpenMP) and the GPGPU implementations 
 (see~\cref{table:GPU}). The speed-up of parallel implementations are measured 
 against the single CPU thread. OpenMP parallelised multi-threaded CPU execution 
 running on 12 cores achieved a speed-up of 13.5x in comparison to a serial 
-implementation. GP-GPU implementation using OpenACC delivered an impressive 
+implementation. GPGPU implementation using OpenACC delivered an impressive 
 126x speed-up in comparison to a single thread CPU execution and about 10 times 
 quicker than a CPU parallel code. In other words, a simulation that would have 
 ordinarily taken 126 days to compute, could now be finished in a day using a 
@@ -1435,9 +1434,9 @@ GPU.
 Scalability is an important criterion when developing high-performance 
 computing codes. Scalability in GPUs is measured in terms of SM utilisation. It 
 is important to distribute sufficient work to all SMs such that on every cycle 
-the warp scheduler has at least one warp eligible to issue and instruction. In 
-general, sufficient warps on each SM should be available to hide 
-instruction and memory latency and to provide a variety of instruction types to 
+the warp scheduler has at least one warp eligible to issue instructions. In 
+general, sufficient warps on each SM should be available to hide instruction 
+and memory latency and to provide a variety of instruction types to 
 fill the execution pipeline.~\Cref{fig:GPUSpeed} shows the scalability of 
 GP-GPU implementation as the LBM domain size is increased from 500,000 to 9 
 million nodes. With increase in LBM nodes the computation time increases 
@@ -1446,7 +1445,7 @@ algorithm scales nicely with the domain size.
 
 \begin{figure}[tbhp]
 	\centering
-	\includegraphics[width=0.95\textwidth]{GPU_Speedup}
+	\includegraphics[width=0.85\textwidth]{GPU_Speedup}
 	\caption{GPU scalability with increase in LBM nodes}
 	\label{fig:GPUSpeed}
 \end{figure}
