@@ -1162,21 +1162,19 @@ sub-steps of integration are performed for the Discrete Element
 Method~\eqref{eq:mde} using the time step $\Delta t_{s}$. The hydrodynamic 
 force $\mathbf{F}_{f}$ is unchanged during the sub-cycling. 
 
-\subsection{Particle Kissing}
+\subsection{Draft, kiss and tumbling: Sedimentation of two grains}
 
 In multiphase flows, fundamental mechanisms of fluid -- grain and grain – grain 
 interactions are very important for accurately predicting the flow behaviours. 
-The sedimentation of two circular grains serves as the simplest problem to 
-study these two types of interactions, and many experimental and numerical 
-studies have been carried out to investigate the behaviour of sedimentation
-of circular particles~\citep{Wang2014,Komiwes2005}.~\citet{Fortes1987} observed 
-experimentally that in the sedimentation of two particles in a Newtonian fluid 
-inside a vertical channel, the two particles would undergo the draft, 
-kissing and tumbling (DKT) phenomenon.
+The sedimentation of two circular grains in a viscous fluid serves as the 
+simplest problem to study these two types of interactions, and many 
+experimental and numerical studies have been carried out to investigate this 
+behaviour~\citep{Wang2014,Komiwes2005}.~\citet{Fortes1987} observed 
+experimentally that in the sedimentation of two grains under gravity in a 
+Newtonian fluid, the two grains would undergo the draft, kiss and tumbling 
+(DKT) phenomenon.
 
-The draft, kiss and tumbling effect may be observed when two particles fall 
-under the action of gravity in a viscous Newtonian fluid. The 
-\emph{draft}: grain 2 is first placed within the hydrodynamic drag above 
+The \emph{draft}: grain 2 is first placed within the hydrodynamic drag above 
 grain 1. As the hydrodynamic drag of grain 1 is a depression zone, 
 grain 2 is attracted inside. The \emph{kiss}: grain 2 increases its 
 vertical velocity until it touches grain 1. The horizontal velocity of 
@@ -1186,27 +1184,27 @@ higher vertical velocity than grain 1, overtakes grain 1.
 %
 
 LBM-DEM simulation of two grains under gravity in a viscous Newtonian fluid 
-reproduces the Draft, Kiss and Tumbled effect (see~\cref{fig:kissing}). They 
-are in agreement with the experimental description of the Draft, Kiss and 
-Tumbled effect. For better understanding of the DKT effect, the time history of 
-three distances between the particles (normalised to the diameter of the grain 
-D) i.e., the difference in the transverse coordinates $\delta_x/D$ and 
+reproduces the draft, kiss and tumble effect (see~\cref{fig:kissing}). They 
+are in agreement with the experimental description of the DKT effect. For 
+better understanding of the DKT effect, the time history of three distances 
+between the particles (normalised to the diameter of the grain D) are tracked 
+i.e., the difference in the transverse coordinates $\delta_x/D$ and 
 longitudinal coordinates $\delta_y/D$ of the two grain centres, and the gap 
 between the two surfaces $\delta = \sqrt{{\delta_x}^2+{\delta_y}^2} - 1 $ 
 (see~\cref{fig:kissdelta}). 
 
 As shown in~\cref{fig:kissing}, grain 1 trails grain 2. As grain 2 approaches 
 the depression zone, corresponding to negative fluid pressure behind grain 1, 
-the velocity of the trailing grain increases as grains approach closer, 
-this is in agreement with the experimental description of the Draft. Grain 2 
+the velocity of the trailing grain increases as the grains approach closer, 
+this is in agreement with the experimental description of the draft. Grain 2 
 increases its vertical velocity more than grain 1 until it touches grain 1. The 
-kiss happens at normalised time ($t/\sqrt{D/g}$)  = 25. At this stage, the gap 
-$\delta$ between the particles is zero, the actual gap is about one lattice 
-spacing for the LBM collision model. After this time, the vertical velocity of 
-grain 1 decreases and its horizontal velocity increases as the grains tumble. 
-At this stage, the grains still remain in contact, i.e., the gap remains 
-unchanged $\delta=0$. Subsequently, the two grains separate and move away from 
-each other.~\Cref{fig:kissvelocity} shows that the terminal 
+kiss happens at a normalised time ($t/\sqrt{D/g}$)  = 25. At this stage, the 
+gap $\delta$ between the particles is zero, but the actual gap is about one 
+lattice spacing for the LBM collision model. After this time, the vertical 
+velocity of grain 1 decreases and its horizontal velocity increases as the 
+grains tumble. At this stage, the grains still remain in contact, i.e., the gap 
+remains unchanged $\delta=0$. Subsequently, the two grains separate and move 
+away from each other.~\Cref{fig:kissvelocity} shows that the terminal 
 velocities of the two grains are in good agreement with the terminal velocity 
 of a single grain found by an independent simulation and calculated using the 
 empirical Schiller and Nauman formula~\citep{Komiwes2005}.
