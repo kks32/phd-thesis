@@ -7,7 +7,7 @@
 \fi
 
 
-\section{Fluid simulation using Lattice Boltzmann method}
+\section{Fluid simulation using lattice Boltzmann method}
 
 Grain--fluid systems can be found in many scientific and engineering 
 applications, such as suspensions, fluidised beds, sediment transport, and 
@@ -99,7 +99,7 @@ lattice, with the same spacing \textit{`h'} in both the \textit{x-} and the
 \begin{figure}[htpb]
 	\centering
 	\includegraphics[width=0.95\textwidth]{D2Q9}
-	\caption[The Lattice Boltzmann discretisation and D2Q9 scheme]{The Lattice 
+	\caption[The lattice Boltzmann discretisation and D2Q9 scheme]{The Lattice 
 	Boltzmann discretisation and D2Q9 scheme: (a) a standard LB lattice and 
 	histogram views of the discrete single particle distribution 
 	function/direction-specific densities $f_i$; (b) D2Q9 model.}
@@ -312,7 +312,7 @@ The Lattice Boltzmann Bhatnagar-Gross-Krook (LGBK) method is capable of
 simulating various hydrodynamics, such as multiphase flows and 
 suspensions in fluid~\citep{Succi1989,Succi2001}. However, LBM suffers from 
 numerical instability when the dimensionless relaxation time $\tau$ is close to 
-0.5. The Lattice Boltzmann Method -- Multi-Relaxation Time (LBM-MRT) overcomes 
+0.5. The lattice Boltzmann Method -- Multi-Relaxation Time (LBM-MRT) overcomes 
 the deficiencies of linearlised single relaxation LBM-BGK, such as fixed 
 Prandtl number (Pr=$\nu/\kappa$), where the thermal conductivity `$\kappa$' is 
 unity~\citep{Liu2003a}. LBM-MRT offers better numerical stability and has 
@@ -320,7 +320,7 @@ more degrees of freedom. In LBM-MRT the advection is mapped onto the
 momentum space by a linear transformation and the flux is finished within the 
 velocity space~\citep{Du2006}.
 
-The Lattice Boltzmann equation with multiple relaxation time approximation is 
+The lattice Boltzmann equation with multiple relaxation time approximation is 
 written as
 %
 \begin{equation}
@@ -476,7 +476,7 @@ found in~\citet{Aidun1998}.
 
 \subsubsection*{No-slip boundary condition} \label{bounce}
 
-The most commonly adopted BC in the Lattice Boltzmann approach is the no-slip 
+The most commonly adopted BC in the lattice Boltzmann approach is the no-slip 
 BC, especially the simple bounce-back rule, which is quite elegant and 
 surprisingly accurate. The basic idea is that the incoming distribution 
 functions at a wall node are reflected back to the original fluid nodes, but 
@@ -522,7 +522,7 @@ bounce-back~\citep{Succi2001}.
 \subsubsection*{Pressure and velocity boundary condition}
 
 The pressure (Drichlet) boundary condition can be imposed in 
-Lattice Boltzmann by specifying a fluid density at the pressure 
+lattice Boltzmann by specifying a fluid density at the pressure 
 boundary~\citep{Zou1997}. To impose a pressure boundary along 
 the y-direction (inlet, left side boundary in
 ~\cref{fig:LBMcontour}), a density $\rho = \rho_{in}$ is 
@@ -592,7 +592,7 @@ require additional constitutive laws to determine the unknown distribution
 functions. 
 
 %*******************************************************************************
-\section{Validation of Lattice Boltzmann method}
+\section{Validation of lattice Boltzmann method}
 
 To verify the incompressible LBM model implemented in the above section, 
 numerical simulation of a transient development of steady state 
@@ -646,13 +646,11 @@ Error in predicting horizontal velocity & 0.009 \% \\ \bottomrule
 \end{tabular}
 \end{table}
 
-In order to further validate the accuracy of the Lattice Boltzmann code, the 
+In order to further validate the accuracy of the lattice Boltzmann code, the 
 transient development of the Poiseuille's flow is compared with the CFD 
 simulation performed using ANSYS Fluent. Finite Volume Method is a 
-common CFD 
-technique, which involves solving the governing partial differential 
-equation 
-(Navier-Stokes) over the discretised control volume. This guarantees 
+common CFD technique, which involves solving the governing partial differential 
+equation (Navier-Stokes) over the discretised control volume. This guarantees 
 the conservation of fluxes over a particular control volume. The finite volume 
 equations yield governing equations of the form
 %
@@ -661,10 +659,9 @@ equations yield governing equations of the form
 \int\int \mathit{F} d\mathbf{A} = 0\,,
 \end{align}
 %
-where \textit{Q} is the vector of conserved variables, 
-\textit{F} is the vector of fluxes in the Navier-Stokes 
-equation, \textit{V} is the volume of control volume element, 
-and \textit{A} is the surface area of the control volume 
+where \textit{Q} is the vector of conserved variables, \textit{F} is the vector 
+of fluxes in the Navier-Stokes equation, \textit{V} is the volume of control 
+volume element, and \textit{A} is the surface area of the control volume 
 element.
 
 A 2D rectangular plane of length 1~\si{\meter} and height 0.04~\si{\meter} 
@@ -702,10 +699,10 @@ iteration steps were carried out until the solution converged.
 
 The velocity profile obtained from the CFD simulation at cross-section `L/4' is 
 shown in~\cref{fig:CFDcontour}.~\Cref{fig:Pois} compares the development of 
-computed velocity profiles at four times with the analytical solution. At 
-normalised time $t = 1$, the flow approaches the steady state. It can be 
-observed that LBM has excellent agreement with CFD and the analytical solution 
-at various stages of flow evolution.
+computed velocity profiles with the analytical solution. At normalised time $t 
+= 1$, the flow approaches steady state. It can be observed that LBM has 
+excellent agreement with CFD and the analytical solution at various stages of 
+flow evolution.
 
 \begin{figure}[tbhp]
 	\centering
@@ -717,19 +714,20 @@ at various stages of flow evolution.
 	\label{fig:Pois}
 \end{figure}
 
-In order to study the capability of LB technique to simulate fluid--solid 
-interaction, LB simulation of fluid flow around a rectangular obstacle is 
-compared with the CFD technique. A solid wall of height `H/2' is placed at 
-length `L/4' in the channel. Bounce-back algorithm is employed to model the 
-fluid-wall interaction in LBM. In the CFD model, the control volume is 
-discretised into 10,000 cells. A constant velocity is applied in the inlet and 
-the horizontal velocity profile is recorded. Both, CFD and LBM simulations were 
-performed to study the influence of a solid wall on the fluid flow behaviour.
+In order to study the capability of the lattice Boltzmann technique to simulate 
+fluid--solid interaction, LB simulation of a fluid flow around a rectangular 
+obstacle is compared with the CFD technique. A solid wall of height `H/2' is 
+placed at length `L/4' in the channel. Bounce-back algorithm is employed to 
+model the fluid-wall interaction in LBM. In the CFD model, the control volume 
+is discretised into 10,000 cells. A constant velocity is applied in the inlet 
+and the horizontal velocity profile is recorded. Both, CFD and LBM simulations 
+were performed to study the influence of a solid wall on the fluid flow 
+behaviour.
 
 The horizontal velocity profile obtained after 50,000 LBM iterations is 
 presented in~\cref{fig:LBMobstacle}. LBM is able to capture the velocity 
 shedding around the edges of the wall. The velocity profile obtained from the 
-CFD analysis is presented in~\cref{fig:CFDobstacle}.The horizontal velocity 
+CFD analysis is presented in~\cref{fig:CFDobstacle}. The horizontal velocity 
 profile at `L/4' at $t=1$ is shown in~\cref{fig:Obstacle}. Similar 
 maximum horizontal velocities are observed in both LBM and CFD 
 analyses. The maximum horizontal velocity from the CFD analysis is slightly 
@@ -738,8 +736,8 @@ velocity profile (\cref{fig:Obstacle}) can be attributed to the relaxation
 parameter used in the LBM, which is obtained by a trial and error procedure. 
 The velocity profile obtained from the LBM simulation compares qualitatively 
 with the FE analysis performed by~\citet{Zhong1991}. Thus, it can be concluded 
-that the Lattice Boltzmann method is a suitable form of numerical 
-representation of Navier-Stokes equation to model fluid flows. 
+that the lattice Boltzmann method is a suitable form of numerical 
+representation of Navier-Stokes equation to model fluid -- solid interactions. 
 
 \begin{figure}[!t]
 \centering
@@ -767,13 +765,13 @@ with an obstacle at L/4.}
 
 %**************************************************************************
 
-\section{Turbulence in Lattice Boltzmann method}
+\section{Turbulence in lattice Boltzmann method}
 
-The above formulation of Lattice Boltzmann has been successfully 
+The above formulation of lattice Boltzmann has been successfully 
 applied to many fluid flow problems, however it is restricted to flows with low 
 Reynold's number. Modelling fluids with low viscosity like water and air 
 remains a challenge, necessitating very small values of \textit{h}, and/or 
-$\tau$ very close to 0.5~\citep{He1997}. The standard Lattice Boltzmann can 
+$\tau$ very close to 0.5~\citep{He1997}. The standard lattice Boltzmann can 
 deal with laminar flows, while practical problems with small kinematic 
 viscosity are often associated with flows having large Reynold numbers, i.e. 
 flows which are unsteady or turbulent in nature. The turbulent flows are 
@@ -832,7 +830,7 @@ The new viscosity $\nu_{*}$ corresponding to $\tau_{*}$ is defined as:
 \textit{t} \,.
 \end{align} 
 
-The Smagorinski model is easy to implement and the Lattice Boltzmann 
+The Smagorinski model is easy to implement and the lattice Boltzmann 
 formulation remains unchanged, except for the use of a new turbulence-related 
 viscosity $\tau_{*}$. The component $s_1$ of the collision matrix becomes $s_1 
 = \frac{1}{\tau+\tau_t}$.
@@ -924,12 +922,12 @@ accuracy. However, the main computational challenge is the need to continuously
 generate new geometrically adapted meshes to circumvent severe mesh distortion, 
 which is computationally very intensive~\citep{Han2007a}. 
 
-The Lattice Boltzmann approach has the advantage of accommodating large 
+The lattice Boltzmann approach has the advantage of accommodating large 
 particle sizes and the interaction between the fluid and the moving particles 
 can be modelled through relatively simple fluid - grain interface treatments. 
 Further, employing DEM to account for the grain/grain interaction naturally 
 leads to a combined LB -- DEM solution procedure. The Eulerian nature 
-of the Lattice Boltzmann formulation, together with the common explicit time 
+of the lattice Boltzmann formulation, together with the common explicit time 
 step scheme of both LBM and DEM makes this coupling strategy an efficient 
 numerical procedure for the simulation of fluid -- grain systems. 
 
@@ -1263,7 +1261,7 @@ has access to both L1 and L2 caches, which improves the performance for
 programs with random memory access.
 
 Many-core processors are promising platforms for intrinsically parallel 
-algorithms such as the Lattice Boltzmann Method (LBM). Since the global memory 
+algorithms such as the lattice Boltzmann Method. Since the global memory 
 for GPU devices shows high latency and LBM is data intensive, the
 memory access pattern is an important issue for achieving good performances. 
 Whenever possible, global memory loads and stores should be coalescent and 
