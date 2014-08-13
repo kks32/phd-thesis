@@ -911,8 +911,8 @@ flow dynamics.
 \section{Coupled LBM and DEM for fluid-grain interactions}
 
 Modelling fluid--grain interactions in submarine landslides requires the 
-ability to simulate the dynamic fluid -- solid boundary interactions. In 
-principle, the conventional FE and FVM based 
+ability to simulate the interactions at the dynamic fluid -- solid boundary . 
+In principle, the conventional FE and FVM based 
 approaches for solving the Navier-Stokes equations with moving boundaries 
 and/or structural interaction~\citep{Bathe2004} can be applied to particle 
 fluid interaction problems. The common feature of these approaches is to model 
@@ -999,11 +999,12 @@ links
 \end{equation}
 
 \citet{Ladd2001} described a methodology that minimises the oscillations 
-resulting from soil grains crossing lattice at a very high speed. The 
-fluid/grain force interaction method with momentum exchange method is 
-coupled with the treatment of moving curved boundaries scheme~\citep{Yu2003}. 
-The simulation of the moving curved grain surfaces results in the 
-intersection of links between two nodes at arbitrary 
+resulting from soil grains crossing lattices at a very high speed. The 
+methodology involves combining several extensions for the fluid simulation like 
+the treatment of moving curved boundaries with the scheme of~\citet{Yu2003} and 
+a fluid/grain force interaction method with the momentum exchange method  
+of~\citet{Ladd2001}. The simulation of the moving curved grain surfaces results 
+in the intersection of links between two nodes at arbitrary 
 distances~\citep{Iglberger2008}. These distance values are called as delta 
 values
 %
@@ -1012,9 +1013,9 @@ values
 surface}}{\mbox{Distance between fluid node and particle node}} \in [0,1] \,.
 \end{equation} 
 %
-For each pair of neighbouring fluid and grain nodes, a delta value has to be 
+For each pair of a fluid and grain node, a delta value has to be 
 calculated. Delta values of zero are not possible as the nodes on the surface 
-are considered as particle nodes. The algorithm for computation of the $\delta$ 
+are considered as solid nodes. The algorithm for computation of the $\delta$ 
 value is presented in~\citet{Iglberger2008}.~\Cref{fig:bouncemod} shows the 
 three possible situations for delta values between 0 and 1. The 
 fluid particles in LBM are always considered moving at the rate of one 
@@ -1047,7 +1048,7 @@ $ is the velocity at the bounce-back wall. In order to couple the
 fluid-grain interaction, the LBM approach is extended by adopting a force 
 integration scheme, to calculate the fluid force acting on the grain surface, 
 and the momentum exchanged method described earlier. The physical force acting 
-on grain agglomerates is calculated as the sum over all fluid/particle node 
+on grain agglomerates is calculated as the sum over all fluid/grain node 
 pairs, resulting in
 %
 \begin{equation}
@@ -1059,9 +1060,9 @@ pairs, resulting in
 \end{equation}
 %
 After the force calculations, the coupled rigid body physics can be simulated 
-in order to move the grains/grain-agglomerates according to the applied forces. 
-The total hydrodynamic forces and torque exerted on a grain can be computed 
-as ~\citep{Cook2004, Noble1998}
+in order to move the grains / grain-agglomerates according to the applied 
+forces. The total hydrodynamic forces and torque exerted on a grain can be 
+computed as ~\citep{Cook2004, Noble1998}
 %
 \begin{align}
 \mathbf{F}_{f} & = \mathit{Ch}[\sum\limits_{\mathit{n}}{(\beta_{\mathit{n}} 
@@ -1099,12 +1100,13 @@ $\mathbf{F_f}$ and $\mathbf{T}_{f}$ are respectively the hydrodynamic forces
 and torque. The equation can be solved numerically by an explicit numerical 
 integration, such as central difference scheme. 
 
-The interaction between the soil grains and the solid grains with the walls are 
-dealt with DEM technique. To solve the coupled DEM--LBM, the hydrodynamic force 
-exerted on the soil grain and the static buoyancy force are considered by 
-reducing the gravitational acceleration to $(1- \rho/rho_{s})\mathbf{g}$, where 
-$\rho_{s}$ is the density of the grains. When taking into account all forces 
-acting on an element, the dynamic equations of DEM can be expressed as
+The interaction between the soil grains, and the soil grains with the walls are 
+dealt with DEM technique. To solve the coupled DEM--LBM formulation, the 
+hydrodynamic force exerted on the soil grain and the static buoyancy force are 
+considered by reducing the gravitational acceleration to $(1- 
+\rho/rho_{s})\mathbf{g}$, where $\rho_{s}$ is the density of the grains. When 
+taking into account all forces acting on an element, the dynamic equations of 
+DEM can be expressed as
 %
 \begin{equation}
 \label{eq:mde}
@@ -1132,7 +1134,7 @@ is determined as~\citep{He1997}
 %
 \noindent where $\omega = \sqrt{\mathit{k}_{\mathit{n}}/\mathit{m}}$ is the 
 local contact natural frequency and $\xi = \mathit{c}/2\mathit{m}\omega$ is the 
-critical damping ratio. the actual time step used for the integration of the 
+critical damping ratio. The actual time step used for the integration of the 
 Discrete Element equations is
 %
 \begin{equation}
@@ -1142,19 +1144,19 @@ Discrete Element equations is
 The time step factor $\lambda$ is chosen to be around 0.1 to ensure both 
 stability and accuracy~\citep{He1997}.
 
-When combining the Discrete Element modelling of the grain interaction with the 
-LB formulation, an issue arises. There are now two time steps: $\Delta t$ for 
-the fluid flow and $\Delta t_{D}$ for the particles. Since $\Delta t_{D}$ is 
-normally smaller than $\Delta t$, $\Delta t_{D}$ is slightly reduced to a new 
-value $\Delta t_{s}$ so that $\Delta t$ and $\Delta t_{s}$ have an integer 
-ration $\mathit{n}_{\mathit{s}}$
+When combining the Discrete Element modelling of the grain interactions with 
+the LB formulation, an issue arises. There are now two time steps: $\Delta t$ 
+for the fluid flow and $\Delta t_{D}$ for the particles. Since $\Delta t_{D}$ 
+is normally smaller than $\Delta t$, $\Delta t_{D}$ is slightly reduced to a 
+new value $\Delta t_{s}$ so that $\Delta t$ and $\Delta t_{s}$ have an integer 
+ratio $\mathit{n}_{\mathit{s}}$
 %
 \begin{align}
 \Delta t_{s}=\frac{\Delta t}{\mathit{n}_{s}} \qquad(\mathit{n}_{s}=[\Delta t/ 
 \Delta t_{D}]+1) \,.
 \end{align} 
 %
-This basically results in a sub-cycling time integration for the Discrete 
+This results in a sub-cycling time integration for the Discrete 
 Element part. At every step of the fluid computation, $\mathit{n}_{s}$ 
 sub-steps of integration are performed for the Discrete Element 
 Method~\eqref{eq:mde} using the time step $\Delta t_{s}$. The hydrodynamic 
