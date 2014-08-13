@@ -563,7 +563,7 @@ bounce-back~\citep{Succi2001}.
 	\caption[Half-way bounce back algorithm for the \textit{D2Q9} model 
 	]{Half-way 
 	bounce back algorithm for the \textit{D2Q9} model adopted after 
-	\citet{Sukop2006}}
+	\citet{Sukop2006}.}
 	\label{fig:bounce}
 \end{figure}
 
@@ -680,7 +680,7 @@ maximum horizontal velocity within an error of 0.009~\%.
 
 \begin{table}[tb]
 \caption{LBM parameters used in simulating laminar flow through 
-a circular pipe}
+a circular pipe.}
 \label{table:lbm}
 \centering
 \begin{tabular}{ll}
@@ -1265,7 +1265,8 @@ empirical Schiller and Nauman formula~\citep{Komiwes2005}.
 \begin{figure}[tbhp]
 \centering
 \includegraphics[height=0.9\textheight]{kissing}
-\caption{Particle kissing and tumble}
+\caption{Time series of draft, kiss and tumble of two grains during 
+sedimentation in a viscous fluid.}
 \label{fig:kissing}
 \end{figure}
 
@@ -1346,7 +1347,7 @@ in~\Cref{fig:GPUConcept}.
 \begin{figure}[tbhp]
 	\centering
 	\includegraphics[width=0.9\textwidth]{GPU_Concept}
-	\caption{Schematics of a hybrid CPU/GPU system}
+	\caption{Schematics of a hybrid CPU/GPU system.}
 	\label{fig:GPUConcept}
 \end{figure}
 
@@ -1398,8 +1399,8 @@ coalesced memory accesses.
 
 
 
-\begin{lstlisting}[label=lst:GPU,caption= OpenACC GPU implementation of 
-hydrodynamic force computation,style=customcpp]
+\begin{lstlisting}[label=lst:GPU,caption= OpenACC GPU implementation of the 
+hydrodynamic force computation.,style=customcpp]
 //OpenACC Kernels copy data between the host and the device
 #pragma acc kernels 
 copyout(fhf1[0:nbgrains], fhf2[0:nbgrains], fhf3[0:nbgrains]) 
@@ -1442,10 +1443,24 @@ their limited amount. Global memory, being the only one accessible by both the
 CPU and the GPU, is a critical path as it suffers from high latency. However, 
 this latency is mostly hidden by the scheduler which stalls inactive warps 
 until data are available. For data intensive LBM, this aspect is generally the 
-limiting factor. To optimise global memory transactions, the memory access is 
-coalesced and aligned, as explained above. The memory transactions between the 
-host and the target through a PCI bus are kept to a minimum.
+limiting factor~\citep{Obrecht2011}. To optimise global memory transactions, 
+the memory access is coalesced and aligned, as explained above. The memory 
+transactions between the host and the target through a PCI bus are kept to a 
+minimum.
 
+A two-dimensional fluid -- grain system, which consists of 7.2 million LBM 
+nodes and 2500 DEM grains is used to demonstrate the ability of GPU parallel 
+code. The wall time required to compute 100 iterations of the given LBM -- DEM 
+problem is compared for executions running on a single CPU thread, 
+multi-threaded CPU (using OpenMP) and the GP-GPU implementations 
+(see~\cref{table:GPU}). The speed-up of parallel implementations are measured 
+against the single CPU thread. OpenMP parallelised multi-threaded CPU execution 
+running on 12 cores achieved a speed-up of 13.5x in comparison to a serial 
+implementation. GP-GPU implementation using OpenACC delivered an impressive 
+126x speed-up in comparison to a single thread CPU execution and about 10 times 
+quicker than a CPU parallel code. In other words, a simulation that would have 
+ordinarily taken 126 days to compute, could now be finished in a day using a 
+GPU.
 
 \begin{table}[tbhp]
 	\caption{GPU vs CPU parallelisation}
@@ -1461,6 +1476,8 @@ host and the target through a PCI bus are kept to a minimum.
 		CPU 12 OpenMP threads	& 150	 & 13.5 x\\
 		GPU OpenACC				& 16	 & 126.0 x \\
 		\bottomrule
+		\multicolumn{3}{l}{\footnotesize{\textsuperscript{\#}}~Wall time 
+		for 100 iteration for 7.2 Million LBM nodes and 2500 DEM grains.} \\
 		\multicolumn{3}{l}{\footnotesize{\textsuperscript{*}~CPU OpenMP threads 
 		- 6 core Intel Xeon $\mathrm{@}$ 3.3GHz}} \\
 		\multicolumn{3}{l}{\footnotesize{\textsuperscript{\dag}~GPU threads - 
@@ -1468,12 +1485,22 @@ host and the target through a PCI bus are kept to a minimum.
 	\end{tabular}
 \end{table}
 
-
+Scalability is an important criterion when developing high-performance 
+computing codes. Scalability in GPUs is measured in terms of SM utilisation. It 
+is important to distribute sufficient work to all SMs such that on every cycle 
+the warp scheduler has at least one warp eligible to issue and instruction. In 
+general, sufficient warps on each SM should be available to hide 
+instruction and memory latency and to provide a variety of instruction types to 
+fill the execution pipeline.~\Cref{fig:GPUSpeed} shows the scalability of 
+GP-GPU implementation as the LBM domain size is increased from 500,000 to 9 
+million nodes. With increase in LBM nodes the computation time increases 
+linearly with a slope of about 2, which shows that the LBM--DEM implementation 
+algorithm scales nicely with the domain size.
 
 \begin{figure}[tbhp]
 	\centering
 	\includegraphics[width=0.95\textwidth]{GPU_Speedup}
-	\caption{GPU Speedup}
+	\caption{GPU scalability with increase in LBM nodes}
 	\label{fig:GPUSpeed}
 \end{figure}
 
