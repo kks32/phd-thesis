@@ -334,16 +334,15 @@ mesh size, without automatic adaptive mesh techniques.
 
 The Lattice Boltzmann Bhatnagar-Gross-Krook (LGBK) method is capable of 
 simulating various hydrodynamics, such as multiphase flows and 
-suspensions in fluid~\citep{Succi1989,Succi2001}. LBM also offers intrinsic 
-parallelism. However, LBM suffers from numerical instability when the 
-dimensionless relaxation time $\tau$ is close to 0.5. The Multi-Relaxation Time 
--- Lattice Boltzmann Method (LBM-MRT) overcomes the deficiencies of linearlised 
-single relaxation LBM-BGK, such as fixed Prandtl number (Pr=$\nu/\kappa$), 
-where the thermal conductivity `$\kappa$' is unity~\citep{Liu2003a}. 
-LB-MRT model offers better numerical stability and has more degrees of freedom. 
-In LB-MRT model the advection is mapped onto the momentum space by a linear 
-transformation and the flux is still finished in the velocity 
-space~\citep{Du2006}.
+suspensions in fluid~\citep{Succi1989,Succi2001}. However, LBM suffers from 
+numerical instability when the dimensionless relaxation time $\tau$ is close to 
+0.5. The Lattice Boltzmann Method -- Multi-Relaxation Time (LBM-MRT) overcomes 
+the deficiencies of linearlised single relaxation LBM-BGK, such as fixed 
+Prandtl number (Pr=$\nu/\kappa$), where the thermal conductivity `$\kappa$' is 
+unity~\citep{Liu2003a}. LBM-MRT offers better numerical stability and has 
+more degrees of freedom. In LBM-MRT the advection is mapped onto the 
+momentum space by a linear transformation and the flux is finished within the 
+velocity space~\citep{Du2006}.
 
 The Lattice Boltzmann equation with multiple relaxation time approximation is 
 written as
@@ -354,8 +353,8 @@ f_{\alpha}(\mathbf{x}+\mathbf{e}_i\Delta_t, t+
 	i}(f_i(\mathbf{x},t)-f_i^{eq}(\mathbf{x},t)\,,
 \end{equation}
 %
-\noindent where \textbf{S} is collision matrix. The nine eigen values of 
-\textbf{S} are all between 0 and 2 so as to maintain linear stability and the 
+\noindent where \textbf{S} is the collision matrix. The nine eigen values of 
+\textbf{S} are all between 0 and 2 so as to maintain linear stability and 
 separation of scales. This ensures that the relaxation times of non-conserved 
 quantities are much faster than the hydrodynamic time scales. The LGBK model is 
 a special case in which the nine relaxation times are all equal and the 
@@ -372,8 +371,7 @@ f_{\alpha}^+(\mathbf{x},t)\,.
 
 The advection (Equation~\ref{eq:advection}) can be mapped to the 
 momentum space by multiplying with a transformation matrix \textbf{M}. The 
-evolutionary equation of the multi-relaxation time Lattice Boltzmann equation 
-is written as
+evolutionary equation of LBM--MRT is written as
 %
 \begin{equation}
 \mathbf{f}(\mathbf{x}+\mathbf{e}_i\Delta_t, t+ 
@@ -786,7 +784,7 @@ with an obstacle at L/4.}
 \label{fig:LBMobstacle}
 \end{figure}
 
-\begin{figure}[!h]
+\begin{figure}[!ht]
 \centering
 \includegraphics[width=0.7\textwidth]{CFD_Obstacle}
 \caption{CFD simulation of velocity contour for a laminar flow through a pipe 
