@@ -1253,7 +1253,7 @@ magnitude in comparison with optimised CPU implementations.
 
 A GPU consists of several \emph{Streaming Multiprocessors} (SMs). Each SM 
 contains 32 CUDA processors. Each CUDA processor has a fully pipelined integer 
-arithmetic logic unit (ALU) and floating point unit (FPU). The FPU complies 
+arithmetic logic unit (ALU) and a floating point unit (FPU). The FPU complies 
 with the IEEE 754-2008 industry standard for floating-point arithmetic, capable 
 of double precision computations. The SM schedules work in groups of 32 threads 
 called warps. Each SM features two warp schedulers and two instruction dispatch 
@@ -1271,7 +1271,7 @@ the maximum occupancy is usually not possible, as the threads executed in
 parallel on one SM have to share the available registers~\citep{Obrecht2011}.
 
 Many-core processors are promising platforms for intrinsically parallel 
-algorithms such as the lattice Boltzmann Method. Since the global memory 
+algorithms such as the lattice Boltzmann method. Since the global memory 
 for GPU devices shows high latency and LBM is data intensive, the
 memory access pattern is an important issue for achieving good performances. 
 Whenever possible, global memory loads and stores should be coalescent and 
@@ -1300,7 +1300,7 @@ LBM -- DEM code runs sequential and computationally less intensive
 functions on the CPU, OpenMP multi-threading is used when possible. 
 Computationally intensive functions are converted to a target accelerator 
 specific GPU parallel code. Schematics of a heterogeneous CPU/GPU system is 
-shown in~\Cref{fig:GPUConcept}.
+shown in~\cref{fig:GPUConcept}.
 
 \begin{figure}[tbhp]
 	\centering
@@ -1309,9 +1309,10 @@ shown in~\Cref{fig:GPUConcept}.
 	\label{fig:GPUConcept}
 \end{figure}
 
-The loop nests in a kernel construct are converted by the compiler into 
-parallel kernels that run efficiently on a GPU. There are three steps to this 
-process. The first is to identify the loops that can be executed 
+OpenACC offers kernel and parallel constructs to parallelise algorithms on CUDA 
+kernels. The loop nests in a kernel construct are converted by the compiler 
+into parallel kernels that run efficiently on a GPU. There are three steps to 
+this process. The first is to identify the loops that can be executed 
 in parallel. The second is to map that abstract loop parallelism onto a 
 concrete hardware parallelism. In OpenACC terms, gang parallelism maps to 
 grid-level parallelism, (equivalent to a CUDA blockIdx) and vector parallelism 
@@ -1336,7 +1337,7 @@ kernels loop construct tells the compiler to map the body of the following loop
 into an accelerator kernel. The GPU implementation uses a two-dimensional grid 
 splitting the iterations across both the vector and gang modes. The kernel is 
 mapped to a vector mode mapped (aligned with CUDA threadidx\%x) with a vector 
-length (thread block size) of 128. The kernel was also mapped to gang 
+length (thread block size) of 128. The kernel is also mapped to gang 
 parallelism, aligned to CUDA blockidx\%x, to avoid partition camping by mapping 
 the stride-1 loop to the x dimension. The compiler strip-mines the loop into 
 chunks of 256 iterations, mapping the 256 iterations of a chunk in vector mode 
@@ -1389,7 +1390,7 @@ for (i=0; i<nbgrains;i++) {
 Memory transaction optimisation is more important than computation
 optimisation. Registers do not give rise to any specific problem apart from 
 their limited amount. Global memory, being the only one accessible by both the 
-CPU and the GPU, is a critical path as it suffers from high latency. However, 
+CPU and the GPU, is the critical path as it suffers from high latency. However, 
 this latency is mostly hidden by the scheduler which stalls inactive warps 
 until data are available. For data intensive LBM, this aspect is generally the 
 limiting factor~\citep{Obrecht2011}. To optimise the global memory 
@@ -1403,13 +1404,13 @@ nodes and 2500 DEM grains is used to demonstrate the ability of the GPGPU LBM
 -- DEM  problem is compared for executions running on a single CPU thread, 
 multi-threaded CPU (using OpenMP) and the GPGPU implementations 
 (see~\cref{table:GPU}). The speed-up of parallel implementations are measured 
-against the single CPU thread. OpenMP parallelised multi-threaded CPU execution 
-running on 12 cores achieved a speed-up of 13.5x in comparison to a serial 
-implementation. GPGPU implementation using OpenACC delivered an impressive 
-126x speed-up in comparison to a single thread CPU execution and about 10 times 
-quicker than a CPU parallel code. In other words, a simulation that would have 
-ordinarily taken 126 days to compute, could now be finished in a day using a 
-GPU.
+against the single CPU thread execution time. OpenMP parallelised 
+multi-threaded CPU execution running on 12 cores achieved a speed-up of 13.5x 
+in comparison to a serial implementation. GPGPU implementation using OpenACC 
+delivered an impressive 126x speed-up in comparison to a single thread CPU 
+execution and about 10 times quicker than a CPU parallel code. In other words, 
+a simulation that would have ordinarily taken 126 days to compute, could now be 
+finished in a day using a GPU.
 
 \begin{table}[tbhp]
 	\caption{GPU vs CPU parallelisation}
