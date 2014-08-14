@@ -595,16 +595,16 @@ require additional constitutive laws to determine the unknown distribution
 functions. 
 
 %*******************************************************************************
-\section{Validation of lattice Boltzmann method}
+\section{Validation of the lattice Boltzmann method}
 
 To verify the incompressible LBM model implemented in the above section, 
 numerical simulation of a transient development of steady state 
 Poiseuille flow in a straight channel is performed. At $t=0$, the LBM water 
 particles ($\rho=1000 kg/m^{3}$) are simulated to flow through a channel of 
 width `H' (= 0.4 \si{\meter}) and simulation length `L' (2.5H) under constant 
-body force. Periodic boundary conditions are applied at either end of the pipe 
-and the pressure gradient is set to zero, which simulates the condition of a 
-continuous flow of fluid in a closed circular pipe. The length `L' has no 
+body force. Periodic boundary conditions are applied at either end of the 
+channel and the pressure gradient is set to zero, which simulates the condition 
+of a continuous flow of fluid in a closed circular pipe. The length `L' has no 
 effect on the simulation as no streamwise variation is detected in the 
 solution. The parameters adopted in LBM simulation are presented 
 in~\cref{table:lbm}. Sufficient time is allowed for the flow to travel beyond 
@@ -616,8 +616,8 @@ fully laminar is
 X_{D}/H=[(0.619)^{1.6}+(0.0567 R_{e})^{1.6}]^{1/1.6} \,,
 \end{equation}
 %
-\noindent where $R_{e}$ is the Reynold's number. The velocity profile at the 
-end of the simulation is presented in~\cref{fig:LBMcontour}. A maximum 
+\noindent where $R_{e}$ is the Reynold's number. The velocity profile at steady 
+state is presented in~\cref{fig:LBMcontour}. A maximum 
 horizontal velocity of 0.037863~\si{\meter\per\second} is observed along the 
 center-line of the channel. The maximum horizontal velocity is compared with 
 the closed-form based on the Haygen-Poiseuille's flow equation for no-slip 
@@ -732,7 +732,7 @@ presented in~\cref{fig:LBMobstacle}. LBM is able to capture the velocity
 shedding around the edges of the wall. The velocity profile obtained from the 
 CFD analysis is presented in~\cref{fig:CFDobstacle}. The horizontal velocity 
 profile at `L/4' at $t=1$ is shown in~\cref{fig:Obstacle}. Similar 
-maximum horizontal velocities are observed in both LBM and CFD 
+maximum horizontal velocity is observed in both LBM and CFD 
 analyses. The maximum horizontal velocity from the CFD analysis is slightly 
 higher in comparison with the LBM simulation. The discrepancy in the horizontal 
 velocity profile (\cref{fig:Obstacle}) can be attributed to the relaxation 
