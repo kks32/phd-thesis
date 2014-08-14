@@ -92,9 +92,9 @@ scheme~\citep{Cook2004}.
 LBM is a `micro-particle' based numerical time-stepping procedure for the 
 solution of incompressible fluid flows. Consider a 2D incompressible fluid flow 
 with density $\rho$ and kinematic viscosity \textit{v}, in a rectangular domain 
-\textit{\textbf{D}}. The fluid domain is divided into a rectangular grid or 
-lattice, with the same spacing \textit{`h'} in both the \textit{x-} and the 
-\textit{y-}directions, as shown in~\cref{fig:D2Q9}. 
+\textit{\textbf{D}}. The fluid domain is divided into rectangular grids or 
+lattices, with the same grid length \textit{`h'} in both \textit{x-} and 
+\textit{y-}directions (see~\cref{fig:D2Q9}). 
 
 \begin{figure}[htpb]
 	\centering
@@ -109,7 +109,7 @@ lattice, with the same spacing \textit{`h'} in both the \textit{x-} and the
 These lattices are usually classified in the literature using the 
 $\mathit{D}\alpha\mathit{Q}\beta$-notation, where $\alpha$ denotes the space 
 dimensionality and $\beta$ is the number of discrete velocities (but also 
-including the possibility of having particle at rest) within the momentum 
+including the possibility of having particles at rest) within the momentum 
 discretisation. The most common lattices are the $\mathit{D2Q9}$ and the 
 $\mathit{D3Q19}$-models, see~\citet{He1997}. The present study focuses on 
 two-dimensional problems, hence the $\mathit{D2Q9}$ momentum discretisation is 
@@ -117,13 +117,13 @@ adopted.
 
 LBM discretises the Boltzmann equation in space to a finite number of possible 
 particle spatial positions, microscopic momenta, and time. Particle positions 
-are confined to the nodes of the lattice. The fluid particles at each node are 
+are confined to the lattice nodes. The fluid particles at each node are 
 allowed to move to their eight intermediate neighbours with eight different 
 velocities $\mathit{e_i} (\mathit{i}=1\,,\dots\,,8)$. A particle can remain at 
-it's own node, which is equivalent to moving with zero velocity $\mathit{e_o}$. 
+its own node, which is equivalent to moving with zero velocity $\mathit{e_o}$. 
 The particle mass is uniform, hence these microscopic velocities and momentum 
 are always effectively equivalent~\citep{Han2007a}. Referring to the numbering 
-system shown in~\cref{fig:D2Q9}, these nine discrete velocity vectors are 
+system shown in~\cref{fig:D2Q9}, the nine discrete velocity vectors are 
 defined as
 %
 \begin{align} 
@@ -137,11 +137,11 @@ defined as
 \end{align}
 %
 \noindent where \textit{C} is the lattice speed that is defined as 
-$\mathit{C}=\mathit{h}/\Delta t \,,$ where $\Delta \mathit{t}$ is the discrete 
+$\mathit{C}=\mathit{h}/\Delta t \,,$ and $\Delta \mathit{t}$ is the discrete 
 time step. The primary variables in LB formulation are called the \textit{fluid 
-density distribution functions}, $\mathit{f_i}$, each relating the probable 
+density distribution functions}, $\mathit{f_i}$, each representing the probable 
 amount of fluid particles moving with the velocity $\mathit{e_i}$ along the 
-$\mathit{i^{th}}$ direction at each node. The macroscopic variables are defined 
+direction $\mathit{i}$ at each node. The macroscopic variables are defined 
 as functions of the particle distribution function (see \cref{fig:D2Q9})
 %
 \begin{align} 
@@ -170,7 +170,8 @@ at each time step for every lattice point is governed by
 	-\mathit{f_i}^{\mathit{eq}}(\mathbf{x},t)] \quad (\mathit{i}=0,\dots,8) \,,
 \end{equation}
 %
-\noindent where for any grid node $\mathbf{x},\mathbf{x}+\mathbf{e_i} \Delta t$ 
+\noindent where for any grid node $\mathbf{x},$ $\mathbf{x}+\mathbf{e_i} \Delta 
+t$ 
 is its nearest node along the direction $\mathit{i}$. $\tau$ is a 
 non-dimensional relaxation time parameter, which is related to the fluid 
 viscosity; and $\mathit{f_i}^{\mathit{eq}}$ is termed as the equilibrium 
@@ -202,7 +203,8 @@ distribution function that is defined as
 The right-hand side of~\cref{eq:stream} is often denoted as 
 $\mathit{f_i}(\mathbf{x}, \mathit{t}_{+})$ and termed the post collision 
 distribution. LBM ensures conservation of total mass and total momentum of the 
-fluid particles at each lattice node (see~\cref{eq:stream}). It essentially 
+fluid particles at each lattice node (see~\cref{eq:stream}). The lattice 
+Boltzmann modelling
 consists of two phases: \textit{collision} and \textit{streaming}. The 
 collision phase computed in the right-hand side of~\cref{eq:stream} involves 
 only those variables that are associated with each node \textbf{x}, and 
@@ -260,7 +262,7 @@ equation of state
 \end{equation}
 %
 \noindent where $\mathit{C_s}$ is termed the fluid speed of sound and is 
-related to the lattice speed \textit{C} by
+related to the lattice speed \textit{C} as
 %
 \begin{equation}
 	\mathit{C_s}=\mathit{C}/\sqrt{3}\,.
@@ -279,31 +281,32 @@ as
 and have to be appropriately selected to represent the correct fluid viscosity. 
 An additional constraint to the parameter selection is the lattice speed 
 \textit{C}, which must be sufficiently large in comparison to the maximum 
-fluid velocity $\mathit{v}_{\mathit{max}}$ in the simulation, to ensure 
-accuracy of the solution. This is measured by the `computational' Mach number, 
-$\mathit{M}_{\mathit{a}}$, defined by
+fluid velocity $\mathit{v}_{\mathit{max}}$, to ensure 
+accuracy of the solution. The `computational' Mach number, 
+$\mathit{M}_{\mathit{a}}$, defined as
 %
 \begin{equation}
 	\mathit{M}_{\mathit{a}}=\frac{\mathit{v}_{\mathit{max}}}{\mathit{C}}\,.
 \end{equation}
 %
-Theoretically, the Mach number is required to be $<< 1$. In practice, 
-$\mathit{M}_{\mathit{a}}$ should be, at least smaller than 0.1~\citep{He1997}. 
+Theoretically, for an accurate solution, the Mach number is required to be $<< 
+1$. In practice, $\mathit{M}_{\mathit{a}}$ should be at least smaller than 
+0.1~\citep{He1997}. 
 From a computational point of view, it is more convenient to choose \textit{h} 
 and $\tau$ as two independent parameters and $\Delta \mathit{t}$ as the derived 
-parameter:
+parameter
 %
 \begin{equation}
 	\Delta \mathit{t} = (\tau - \frac{1}{2}) \frac{h^{2}}{3\mathit{v}}\,.
 \end{equation}
-
-It can be observed that $\tau$ has to be greater than $1/2$ \citep{He1997}. 
+%
+It can be observed that $\tau$ has to be greater than 0.5 \citep{He1997}. 
 Since there is no a priori estimation available to determine appropriate values 
-of \textit{h} and $\tau$ for a fluid flow problem with given fluid viscosity 
-$\mathit{v}$, a \textit{trial and error} approach is employed to obtain results 
-satisfying the requirement of a smaller \textit{Mach Number}. This is similar 
-to the choice of an appropriate Finite Element mesh size, without automatic 
-adaptive mesh techniques. 
+of \textit{h} and $\tau$, for a given fluid flow problem and a know fluid 
+viscosity $\mathit{v}$, a \textit{trial and error} approach is employed to 
+ensure a smaller \textit{Mach Number}. This is similar to choosing an 
+appropriate Finite Element mesh size, without using automatic adaptive mesh 
+techniques. 
 
 %*******************************************************************************
 \subsection{Lattice Boltzmann - Multi-Relaxation Time (LBM-MRT)}
@@ -312,11 +315,11 @@ The Lattice Boltzmann Bhatnagar-Gross-Krook (LGBK) method is capable of
 simulating various hydrodynamics, such as multiphase flows and 
 suspensions in fluid~\citep{Succi1989,Succi2001}. However, LBM suffers from 
 numerical instability when the dimensionless relaxation time $\tau$ is close to 
-0.5. The lattice Boltzmann Method -- Multi-Relaxation Time (LBM-MRT) overcomes 
-the deficiencies of linearlised single relaxation LBM-BGK, such as fixed 
-Prandtl number (Pr=$\nu/\kappa$), where the thermal conductivity `$\kappa$' is 
-unity~\citep{Liu2003a}. LBM-MRT offers better numerical stability and has 
-more degrees of freedom. In LBM-MRT the advection is mapped onto the 
+0.5. The Lattice Boltzmann Method -- Multi-Relaxation Time (LBM-MRT) overcomes 
+the deficiencies of linearlised single relaxation LBM-BGK approach, such as the 
+fixed Prandtl number (Pr=$\nu/\kappa$), where the thermal conductivity 
+`$\kappa$' is unity~\citep{Liu2003a}. LBM-MRT offers better numerical stability 
+and has more degrees of freedom. In LBM-MRT the advection is mapped onto the 
 momentum space by a linear transformation and the flux is finished within the 
 velocity space~\citep{Du2006}.
 
@@ -344,8 +347,8 @@ i}(f_i(\mathbf{x},t)-f_i^{eq}(\mathbf{x},t) \label{eq:advection}\\
 f_{\alpha}(\mathbf{x}+e_{\alpha}\Delta_t, t+\Delta_t) & = 
 f_{\alpha}^+(\mathbf{x},t)\,.
 \end{align}
-
-The advection (Equation~\ref{eq:advection}) can be mapped to the 
+%
+The advection (\cref{eq:advection}) can be mapped to the 
 momentum space by multiplying with a transformation matrix \textbf{M}. The 
 evolutionary equation of LBM--MRT is written as
 %
@@ -442,7 +445,8 @@ p_{xy}^{eq} & = \frac{3}{2}\gamma_3(u_xu_y) \,.
 %
 To get the correct hydrodynamic equation, the values of the co-efficients are 
 chosen as $\alpha_2=24$,  $\alpha_3=-36$, $c_1=c_2=-2$, 
-$\gamma_1=\gamma_3=2/3$, $\gamma_2=18$ and $\gamma_4=-18$. $s_8 = s_9 = \tau$ 
+$\gamma_1=\gamma_3=2/3$, $\gamma_2=18$ and $\gamma_4=-18$. The values of the 
+elements in the collision matrix are: $s_8 = s_9 = \tau$ 
 and $s_1=s_4=s_6=1.0$ and the others vary between 1.0 and 2.0 for linear 
 stability. Through the Chapman-Enskog expansion~\citep{Du2006}, the 
 incompressible Navier-Stokes equation can be recovered and the viscosity is 
@@ -458,10 +462,10 @@ given as
 
 Boundary conditions (BC) form an important part of any numerical technique. In 
 many cases, the boundary conditions can strongly influence the accuracy of the 
-algorithm. The velocity and pressure are not primary variables in LBM, hence 
-the standard pressure, velocity, and mixed boundary conditions cannot be 
-imposed directly. Alternative conditions in terms of the distribution functions 
-are adopted to describe the boundary conditions.
+algorithm. Velocity and pressure are not the primary variables in LBM, 
+hence the standard pressure, velocity, and mixed boundary conditions cannot be 
+imposed directly. Alternative conditions in terms of the distribution 
+functions are adopted to describe the boundary conditions.
 
 \subsubsection*{Periodic boundary condition}
 
@@ -488,7 +492,7 @@ time and space~\citep{Pan2006}. A straightforward improvement is to
 consider the wall-fluid interface to be situated halfway between the wall and 
 the fluid lattice nodes~\citep{Ziegler1993}. It involves, defining the 
 \textit{solid} nodes as those lying within the stationary wall regions, and the 
-\textit{fluid} nodes otherwise. Then if \textit{i} is the direction between a 
+\textit{fluid} nodes otherwise. Then, if \textit{i} is the direction between a 
 fluid node $\mathit{n}_{1}$ and a solid node $\mathit{n_2}$, the bounce-back 
 rule requires that the incoming fluid particle from $\mathit{n}_{1}$ to 
 $\mathit{n}_{2}$ be reflected back along the direction it came from, i.e.,
@@ -524,13 +528,12 @@ bounce-back~\citep{Succi2001}.
 The pressure (Drichlet) boundary condition can be imposed in 
 lattice Boltzmann by specifying a fluid density at the pressure 
 boundary~\citep{Zou1997}. To impose a pressure boundary along 
-the y-direction (inlet, left side boundary in
-~\cref{fig:LBMcontour}), a density $\rho = \rho_{in}$ is 
-specified from which the velocity is computed. The 
-vertical component of the velocity on the boundary is set as 
-zero, $u_y=0$. After streaming, $f_2, f_3, f_4, f_6,$ and $f_7$ are 
-known, $u_x$ and $f_1, f_5, f_8$ are to be determined 
-from~\cref{eq:lbm_macroscopic} as
+the y-direction (for example, consider the left hand side inlet boundary 
+in~\cref{fig:LBMcontour}), a 
+density $\rho = \rho_{in}$ is specified from which the velocity is computed. 
+The vertical component of the velocity on the boundary is set as zero, $u_y=0$. 
+After streaming, $f_2, f_3, f_4, f_6,$ and $f_7$ are known, $u_x$ and $f_1, 
+f_5, f_8$ are to be determined from~\cref{eq:lbm_macroscopic} as
 %
 \begin{align}
  f_1+f_5+f_8 & =  \rho_{in} - (f_0+f_2+f_3+f_4+f_6+f_7) 
