@@ -914,18 +914,18 @@ flow dynamics.
 \section{Coupled LBM and DEM for fluid-grain interactions}
 
 Modelling fluid--grain interactions in submarine landslides requires the 
-ability to simulate the interactions at the dynamic fluid -- solid boundary. 
-In principle, the conventional FE and FVM based 
-approaches for solving the Navier-Stokes equations with moving boundaries 
-and/or structural interaction~\citep{Bathe2004} can be applied to particle 
-fluid interaction problems. The common feature of these approaches is to model 
-the interaction between the fluid and the solid to a high degree of 
-accuracy. However, the main computational challenge is the need to continuously 
-generate new geometrically adapted meshes to circumvent severe mesh distortion, 
-which is computationally very intensive~\citep{Han2007a}. 
+ability to simulate the interactions at the dynamic fluid -- solid boundaries. 
+In principle, the conventional FE and FVM based approaches for solving the 
+Navier-Stokes equations with moving boundaries and/or structural 
+interaction~\citep{Bathe2004} can be applied to particle fluid interaction 
+problems. The common feature of these approaches is to model the interaction 
+between the fluid and the solid to a high degree of accuracy. However, the main 
+computational challenge is the need to continuously generate new geometrically 
+adapted meshes to circumvent severe mesh distortion, which is computationally 
+very intensive~\citep{Han2007a}. 
 
 The lattice Boltzmann approach has the advantage of accommodating large 
-particle sizes and the interaction between the fluid and the moving particles 
+particle sizes and the interaction between the fluid and the moving grains 
 can be modelled through relatively simple fluid - grain interface treatments. 
 Further, employing DEM to account for the grain/grain interaction naturally 
 leads to a combined LB -- DEM solution procedure. The Eulerian nature 
@@ -934,14 +934,14 @@ step scheme of both LBM and DEM makes this coupling strategy an efficient
 numerical procedure for the simulation of fluid -- grain systems. 
 
 LBM -- DEM technique is a powerful predictive tool for gaining insights into 
-many the fundamental physical phenomena in the fluid-solid interaction domains. 
+many fundamental physical phenomena in fluid-solid systems. 
 Such a coupled methodology was first proposed by~\citep{Cook2004} for 
 simulating fluid-grain systems dominated by fluid-grain and grain-grain 
 interactions. To capture the actual physical behaviour of the fluid-grain 
 system, it is essential to model the boundary condition between the fluid and 
-the grain as a non-slip boundary condition, i.e. the fluid near the grain 
-should have similar velocity as the grain boundary. The soil grains in 
-the fluid domain are represented by lattice nodes. The discrete nature of 
+the grain as a non-slip boundary condition, i.e. the fluid velocity near the 
+grain should be similar to the velocity of the grain boundary. The soil grains 
+in the fluid domain are represented by lattice nodes. The discrete nature of 
 lattice will result in stepwise representation of the surfaces, which are 
 otherwise circular, this is  neither accurate nor smooth, unless sufficiently 
 small lattice spacing is adopted. 
@@ -1021,7 +1021,7 @@ calculated. Delta values of zero are not possible as the nodes on the surface
 are considered as solid nodes. The algorithm for computation of the $\delta$ 
 value is presented in~\citet{Iglberger2008}.~\Cref{fig:bouncemod} shows the 
 three possible situations for delta values between 0 and 1. The 
-fluid particles in LBM are always considered moving at the rate of one 
+fluid particles in LBM are always considered to be moving at the rate of one 
 lattice per time step $(\delta \mathbf{x}/ \delta \mathbf{t})$, for delta 
 values smaller than 0.5. For $\delta$ values larger than 0.5, the fluid 
 particles would come to rest at an intermediate node $\mathbf{x}_{\mathit{i}}$. 
@@ -1076,7 +1076,7 @@ computed as ~\citep{Cook2004, Noble1998}
 m}}\mathbf{\mathit{e}_i}})}]\,.
 \end{align}
 %
-The summation is over all lattice nodes covered by the particle, and 
+The summation is over all lattice nodes covered by the soil grain, and 
 $\mathbf{x}_{\mathit{n}}$ represents the coordinate of the lattice node 
 \textit{n}.
 %
@@ -1099,13 +1099,13 @@ Newton's equation of motion
 \noindent where \textit{m} and \textit{J} are respectively the mass and the 
 moment of inertia of a grain, $\ddot{\theta}$ is the 
 angular acceleration, \textbf{g} is the gravitational acceleration,
-$\mathbf{F_f}$ and $\mathbf{T}_{f}$ are respectively the hydrodynamic forces 
+$\mathbf{F}_{f}$ and $\mathbf{T}_{f}$ are respectively the hydrodynamic forces 
 and torque. The equation can be solved numerically by an explicit numerical 
-integration, such as central difference scheme. 
+integration, such as the central difference scheme. 
 
 The interaction between the soil grains, and the soil grains with the walls are 
 dealt with DEM technique. To solve the coupled DEM--LBM formulation, the 
-hydrodynamic force exerted on the soil grain and the static buoyancy force are 
+hydrodynamic force exerted on soil grains and the static buoyancy force are 
 considered by reducing the gravitational acceleration to $(1- 
 \rho/rho_{s})\mathbf{g}$, where $\rho_{s}$ is the density of the grains. When 
 taking into account all forces acting on an element, the dynamic equations of 
@@ -1113,7 +1113,7 @@ DEM can be expressed as
 %
 \begin{equation}
 \label{eq:mde}
-\mathit{m}\mathbf{a} +\mathit{c}\mathbf{v} = \mathbf{F_c} + \mathbf{F_f} 
+\mathit{m}\mathbf{a} +\mathit{c}\mathbf{v} = \mathbf{F}_{c} + \mathbf{F}_{f} 
 +\mathit{m}\mathbf{g} \,,
 \end{equation} 
 %
@@ -1121,7 +1121,7 @@ DEM can be expressed as
 elements and/or the walls, and \textit{c} is a damping coefficient. The term 
 \textit{c\textbf{v}} represents a viscous force that accounts for the effect of 
 all possible dissipation forces in the system including energy lost during the 
-collision between particles. Considering a linear contact model
+collision between grains. Considering a linear contact model
 %
 \begin{equation}
 \mathbf{F}_{c}=\mathit{k}_{\mathit{n}} \delta \,,
@@ -1190,7 +1190,7 @@ LBM-DEM simulation of two grains under gravity in a viscous Newtonian fluid
 reproduces the draft, kiss and tumble effect (see~\cref{fig:kissing}). They 
 are in agreement with the experimental description of the DKT effect. For 
 better understanding of the DKT effect, the time history of three distances 
-between the particles (normalised to the diameter of the grain D) are tracked 
+between the grains (normalised to the diameter of the grain D) are tracked 
 i.e., the difference in the transverse coordinates $\delta_x/D$ and 
 longitudinal coordinates $\delta_y/D$ of the two grain centres, and the gap 
 between the two surfaces $\delta = \sqrt{{\delta_x}^2+{\delta_y}^2} - 1 $ 
@@ -1201,8 +1201,8 @@ the depression zone, corresponding to negative fluid pressure behind grain 1,
 the velocity of the trailing grain increases as the grains approach closer, 
 this is in agreement with the experimental description of the draft. Grain 2 
 increases its vertical velocity more than grain 1 until it touches grain 1. The 
-kiss happens at a normalised time ($t/\sqrt{D/g}$)  = 25. At this stage, the 
-gap $\delta$ between the particles is zero, but the actual gap is about one 
+kiss happens at a normalised time ($t/\sqrt{(D/g)}$)  = 25. At this stage, the 
+gap $\delta$ between the grains is zero, but the actual gap is about one 
 lattice spacing for the LBM collision model. After this time, the vertical 
 velocity of grain 1 decreases and its horizontal velocity increases as the 
 grains tumble. At this stage, the grains still remain in contact, i.e., the gap 
