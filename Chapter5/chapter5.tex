@@ -590,9 +590,10 @@ velocity vector $u=\left[ u_0\mbox{ }v_0 \right]^T$ is specified, from which
 the density and pressure are computed based on the domain. The velocity 
 boundary condition can be specified in a similar way~\citep{Zou1997}. The 
 pressure and velocity boundary conditions contribute additional equation(s) 
-to determine the unknown distribution functions. In the velocity boundary, the 
-boundary condition equation is sufficient to determine the unknown distribution 
-functions in the \textit{D2Q9} model, however the pressure boundary conditions 
+to determine the unknown distribution functions. In the case of velocity 
+boundary, the boundary condition equation is sufficient to determine the 
+unknown distribution functions in the \textit{D2Q9} model, however the pressure 
+boundary conditions 
 require additional constitutive laws to determine the unknown distribution 
 functions. 
 
@@ -733,9 +734,8 @@ The horizontal velocity profile obtained after 50,000 LBM iterations is
 presented in~\cref{fig:LBMobstacle}. LBM is able to capture the velocity 
 shedding around the edges of the wall. The velocity profile obtained from the 
 CFD analysis is presented in~\cref{fig:CFDobstacle}. The horizontal velocity 
-profile at `L/4' at $t=1$ is shown in~\cref{fig:Obstacle}. Similar 
-maximum horizontal velocity is observed in both LBM and CFD 
-analyses. The maximum horizontal velocity from the CFD analysis is 0.3\% 
+profile at `L/4' at $t=1$ is shown in~\cref{fig:Obstacle}. The maximum 
+horizontal velocity from the CFD analysis is 0.3\% 
 higher in comparison with the LBM simulation. The discrepancy in the horizontal 
 velocity profile (\cref{fig:Obstacle}) can be attributed to the relaxation 
 parameter used in the LBM, which is obtained by a trial and error procedure. 
@@ -1458,5 +1458,3 @@ algorithm scales with the domain size.
 	\caption{GPU scalability with increase in LBM nodes}
 	\label{fig:GPUSpeed}
 \end{figure}
-
-
