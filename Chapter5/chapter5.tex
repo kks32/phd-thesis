@@ -11,7 +11,7 @@
 
 Grain--fluid systems can be found in many scientific and engineering 
 applications, such as suspensions, fluidised beds, sediment transport, and 
-geo-mechanical problems. In general, the fundamental physical phenomenon in 
+geo-mechanical problems. In general, the fundamental physical phenomena in 
 these systems are not well understood mainly due to the intricate complexity of 
 grain--fluid interactions and the lack of powerful analysis 
 tools~\citep{Han2007b}. In addition to the interaction among soil grains, the 
@@ -25,15 +25,16 @@ challenging.
 Development of a numerical framework depends crucially on the size of the soil 
 grains relative to the domain/mesh size~\citep{Feng2007}. Traditionally, the 
 Navier-Stokes equation is solved by a grid-based Computational Fluid Dynamics 
-(CFD) method, such as the Finite Volume Method~\citep{Capecelatro2013} or a 
-mesh-free technique such as the Smooth Particle Hydrodynamics~\citep{Sun2013}. 
+(CFD) method, such as the Finite Volume Method, FVM,~\citep{Capecelatro2013} or 
+a mesh-free technique such as Smooth Particle Hydrodynamics
+(SPH)~\citep{Sun2013}. 
 The grid size in FVM or the smooth length in SPH for discretisation of 
 the Navier-Stokes equation is at least an order of magnitude larger than the 
 grain diameter~\citep{Xiong2014}. 
 
 In situations where the average domain concentration phase is far from dilute, 
 the computational effort is mostly devoted to the grain dynamics. The 
-hydrodynamic force on the soil grains are applied based on an empirical 
+hydrodynamic forces on the soil grains are applied based on an empirical 
 relation using the domain-averaged local porosity of the soil grains in the 
 grid. As a result, developing a fast fluid hydrodynamics solver is unimportant 
 for dense flows. However, most geo-mechanical problems involve complex 
@@ -214,7 +215,7 @@ $\mathbf{x}+\mathbf{\mathit{e}_i} \Delta t$, where no computations are required
 and only data exchange between neighbouring nodes are necessary. These 
 features, together with the explicit time-stepping nature and the use of a 
 regular grid, make LB computationally efficient, simple to implement and 
-natural to parallelism~\citep{Han2007a}. 
+easy to parallelise~\citep{Han2007a}. 
 
 The streaming step involves the translation of the distribution functions to 
 their neighbouring sites according to the respective discrete velocity 
@@ -301,7 +302,8 @@ parameter
 \end{equation}
 %
 It can be observed that $\tau$ has to be greater than 0.5 \citep{He1997}. 
-Since there is no a priori estimation available to determine appropriate values 
+Since there is no a \emph{priori} estimation available to determine appropriate 
+values 
 of \textit{h} and $\tau$, for a given fluid flow problem and a know fluid 
 viscosity $\mathit{v}$, a \textit{trial and error} approach is employed to 
 ensure a smaller \textit{Mach Number}. This is similar to choosing an 
@@ -474,8 +476,8 @@ the domain is folded along the direction of the periodic boundary pair. For
 boundary nodes, the neighbouring nodes are on the opposite boundary, using the 
 normal referencing of neighbours (see~\cref{fig:D2Q9}a). From the perspective 
 of submarine landslide modelling, the periodic boundary conditions are useful 
-for preliminary analysis, as they imply higher degree of symmetry of the fluid 
-domain. Further information on the periodic boundary condition can be 
+for preliminary analysis, as they imply a higher degree of symmetry of the 
+fluid domain. Further information on the periodic boundary condition can be 
 found in~\citet{Aidun1998}.
 
 \subsubsection*{No-slip boundary condition} \label{bounce}
@@ -490,7 +492,7 @@ allows one to effortlessly introduce obstacles into the fluid domain. However,
 the boundary conditions have been proven to be only first-order accurate in 
 time and space~\citep{Pan2006}. A straightforward improvement is to 
 consider the wall-fluid interface to be situated halfway between the wall and 
-the fluid lattice nodes~\citep{Ziegler1993}. It involves, defining the 
+the fluid lattice nodes~\citep{Ziegler1993}. It involves defining the 
 \textit{solid} nodes as those lying within the stationary wall regions, and the 
 \textit{fluid} nodes otherwise. Then, if \textit{i} is the direction between a 
 fluid node $\mathit{n}_{1}$ and a solid node $\mathit{n_2}$, the bounce-back 
@@ -590,7 +592,7 @@ boundary condition can be specified in a similar way~\citep{Zou1997}. The
 pressure and velocity boundary conditions contribute additional equation(s) 
 to determine the unknown distribution functions. In the velocity boundary, the 
 boundary condition equation is sufficient to determine the unknown distribution 
-functions in \textit{D2Q9} model, however the pressure boundary conditions 
+functions in the \textit{D2Q9} model, however the pressure boundary conditions 
 require additional constitutive laws to determine the unknown distribution 
 functions. 
 
@@ -616,11 +618,11 @@ fully laminar is
 X_{D}/H=[(0.619)^{1.6}+(0.0567 R_{e})^{1.6}]^{1/1.6} \,,
 \end{equation}
 %
-\noindent where $R_{e}$ is the Reynold's number. The velocity profile at steady 
+\noindent where $R_{e}$ is the Reynolds number. The velocity profile at steady 
 state is presented in~\cref{fig:LBMcontour}. A maximum 
 horizontal velocity of 0.037863~\si{\meter\per\second} is observed along the 
 center-line of the channel. The maximum horizontal velocity is compared with 
-the closed-form based on the Haygen-Poiseuille's flow equation for no-slip 
+the closed-form based on the Haygen-Poiseuille flow equation for no-slip 
 boundary condition~\citep{Willis2008}
 %
 \begin{equation}
@@ -672,7 +674,7 @@ is discretised into 400 cells of size $1 \time 10^{-2} $~\si{\meter}
 (see~\cref{fig:CFDmesh}). A constant velocity is applied at the 
 inlet. Water ($\rho = 998.2\mbox{ }kg/m^{3},\mbox{ } 
 viscosity`\eta'=1 \times 10^{-3}\mbox{ } Ns/m^{2} $) is allowed to flow through 
-the channel and it develops into a fully laminar flow. The Least-Squares 
+the channel and it develops into a fully laminar flow. The least squares 
 approach was adopted to solve the gradient, and a maximum of 100 
 iteration steps were carried out until the solution converged. 
 
@@ -733,14 +735,15 @@ shedding around the edges of the wall. The velocity profile obtained from the
 CFD analysis is presented in~\cref{fig:CFDobstacle}. The horizontal velocity 
 profile at `L/4' at $t=1$ is shown in~\cref{fig:Obstacle}. Similar 
 maximum horizontal velocity is observed in both LBM and CFD 
-analyses. The maximum horizontal velocity from the CFD analysis is slightly 
+analyses. The maximum horizontal velocity from the CFD analysis is 0.3\% 
 higher in comparison with the LBM simulation. The discrepancy in the horizontal 
 velocity profile (\cref{fig:Obstacle}) can be attributed to the relaxation 
 parameter used in the LBM, which is obtained by a trial and error procedure. 
 The velocity profile obtained from the LBM simulation compares qualitatively 
 with the FE analysis performed by~\citet{Zhong1991}. Thus, it can be concluded 
 that the lattice Boltzmann method is a suitable form of numerical 
-representation of Navier-Stokes equation to model fluid -- solid interactions. 
+representation of the Navier-Stokes equation to model fluid -- solid 
+interactions. 
 
 \begin{figure}[!t]
 \centering
@@ -772,14 +775,14 @@ with an obstacle at L/4.}
 
 The above formulation of lattice Boltzmann has been successfully 
 applied to many fluid flow problems, however it is restricted to flows with low 
-Reynold's number. Modelling fluids with low viscosity like water and air 
+Reynolds number. Modelling fluids with low viscosity like water and air 
 remains a challenge, necessitating very small values of \textit{h}, and/or 
 $\tau$ very close to 0.5~\citep{He1997}. The standard lattice Boltzmann can 
 deal with laminar flows, while practical problems with small kinematic 
-viscosity are often associated with flows having large Reynold numbers, i.e. 
+viscosity are often associated with flows having large Reynolds numbers, i.e. 
 flows which are unsteady or turbulent in nature. The turbulent flows are 
-characterised by 
-the occurrence of eddies with multiple scales in space, time and energy.
+characterised by the occurrence of eddies with multiple scales in space, time 
+and energy.
 
 The large eddy simulation (LES) is the most widely adopted approach to 
 solve turbulent flow problems. It directly solves the large scale eddies, which 
@@ -787,7 +790,7 @@ carry the predominant portion of the energy, and the smaller eddies are
 modelled using a sub-grid approach. The separation of scales is achieved by 
 filtering of the Navier-Stokes equations, from which the resolved scales are 
 directly obtained. The unresolved scales are modelled by a one-parameter 
-Smagorinski sub-grid methodology, which assumes that the Reynold's stress 
+Smagorinski sub-grid methodology, which assumes that the Reynolds stress 
 tensor is dependent only on the local strain rate~\citep{Smagorinsky1963}. It 
 involves parametrising the turbulent energy dissipation in the flows, where the 
 larger eddies extract energy from the mean flow and ultimately transfer some of 
@@ -796,7 +799,8 @@ eddies, and so on up to the smallest scales. At the smallest scale, the eddies
 convert the kinetic energy into the internal energy of the fluid. At this 
 scale, the viscous friction dominates the flow~\citep{Frisch1995}.
 
-In Smargonisky model, the turbulent viscosity $\nu$ is related to the strain 
+In the Smargonisky model, the turbulent viscosity $\nu$ is related to the 
+strain 
 rate $S_{ij}$ and a filtered length scale `h' as follows
 %
 \begin{align}
@@ -855,12 +859,12 @@ LBM particles are simulated to flow through a 2D rectangular channel with an
 aspect ratio `L/H' of 2.5. A cylinder of diameter `d' $=0.27H$ is placed at 
 H/2. The pressure gradient at the inlet and the outlet is varied to create 
 flows with different mean velocities. Numerical simulations of vortex 
-shedding behind a circular obstacle is carried out for three different fluid 
+shedding behind a circular obstacle are carried out for three different fluid 
 flow regimes (Reynolds number of 55, 75, and 112). The fully developed fluid 
-flow for different Reynolds numbers are shown in~\cref{fig:karman}. It can be 
+flows for different Reynolds numbers are shown in~\cref{fig:karman}. It can be 
 observed from~\cref{fig:karman} that the von K\'{a}rm\'{a}n vortex street can 
 only be observed at high a Reynolds number of 112 (Re > 90), which shows the 
-ability of the LBM turbulence model in capturing instabilities in fluid flow.
+ability of the LBM turbulence model to capture instabilities in fluid flow.
 %
 \begin{figure}[htbp]
 	\centering
@@ -871,7 +875,7 @@ ability of the LBM turbulence model in capturing instabilities in fluid flow.
 
 One important quantity taken into account in the present analysis is the 
 Strouhal number St, a dimensionless number describing oscillating unsteady 
-flow dynamics. Strouhal number is computed from the cylinder diameter D, 
+flow dynamics. The Strouhal number is computed from the cylinder diameter D, 
 the measured frequency of the vortex shedding f, and the maximum velocity 
 $U_{max}$ at the inflow plane
 %
@@ -942,7 +946,7 @@ system, it is essential to model the boundary condition between the fluid and
 the grain as a non-slip boundary condition, i.e. the fluid velocity near the 
 grain should be similar to the velocity of the grain boundary. The soil grains 
 in the fluid domain are represented by lattice nodes. The discrete nature of 
-lattice will result in stepwise representation of the surfaces, which are 
+the lattice will result in stepwise representations of the surfaces, which are 
 otherwise circular, this is  neither accurate nor smooth, unless sufficiently 
 small lattice spacing is adopted. 
 
@@ -1012,8 +1016,8 @@ distances~\citep{Iglberger2008}. These distance values are called as delta
 values
 %
 \begin{equation}
-\delta = \frac{\mbox{Distance between fluid nod and particle 
-surface}}{\mbox{Distance between fluid node and particle node}} \in [0,1] \,.
+\delta = \frac{\mbox{Distance between fluid node and soil
+surface}}{\mbox{Distance between fluid node and soil node}} \in [0,1] \,.
 \end{equation} 
 %
 For each pair of a fluid and grain node, a delta value has to be 
@@ -1104,7 +1108,8 @@ and torque. The equation can be solved numerically by an explicit numerical
 integration, such as the central difference scheme. 
 
 The interaction between the soil grains, and the soil grains with the walls are 
-dealt with DEM technique. To solve the coupled DEM--LBM formulation, the 
+modelled using the DEM technique. To solve the coupled DEM--LBM formulation, 
+the 
 hydrodynamic force exerted on soil grains and the static buoyancy force are 
 considered by reducing the gravitational acceleration to $(1- 
 \rho/rho_{s})\mathbf{g}$, where $\rho_{s}$ is the density of the grains. When 
@@ -1245,7 +1250,7 @@ sedimentation in a viscous fluid.}
 
 Graphics Processing Unit (GPU) is a massively multi-threaded architecture that 
 is widely used for graphical and now non-graphical computations. Today's GPUs 
-are general purpose processors with support for accessible programming 
+are general purpose processors with support for an accessible programming 
 interface. The main advantage of GPUs is their ability to perform significantly 
 more floating point operations (FLOPs) per unit time than a CPU. General 
 Purpose computations on GPUs (GPGPUs) often achieve speedups of orders of 
@@ -1315,7 +1320,7 @@ into parallel kernels that run efficiently on a GPU. There are three steps to
 this process. The first is to identify the loops that can be executed 
 in parallel. The second is to map that abstract loop parallelism onto a 
 concrete hardware parallelism. In OpenACC terms, gang parallelism maps to 
-grid-level parallelism, (equivalent to a CUDA blockIdx) and vector parallelism 
+grid-level parallelism (equivalent to a CUDA blockIdx), and vector parallelism 
 maps to thread-level parallelism (equivalent to a CUDA threadIdx). The compiler 
 normally maps a single loop across multiple levels of parallelism using 
 strip-mining. Finally, in step three the compiler generates and optimizes the 
@@ -1341,7 +1346,7 @@ length (thread block size) of 128. The kernel is also mapped to gang
 parallelism, aligned to CUDA blockidx\%x, to avoid partition camping by mapping 
 the stride-1 loop to the x dimension. The compiler strip-mines the loop into 
 chunks of 256 iterations, mapping the 256 iterations of a chunk in vector mode 
-across the threads of a CUDA thread block, and map the n/256 chunks in gang 
+across the threads of a CUDA thread block, and maps the n/256 chunks in gang 
 mode across the thread blocks of the CUDA grid. The consecutive iterations (i 
 and i+1), which refer to contiguous array elements (fhf[i] and fhf[i+1]), are 
 mapped to adjacent CUDA threads in the same thread block, to optimize for 
@@ -1445,7 +1450,7 @@ fill the execution pipeline.~\Cref{fig:GPUSpeed} shows the scalability of
 GP-GPU implementation as the LBM domain size is increased from 500,000 to 9 
 million nodes. With increase in LBM nodes the computation time increases 
 linearly with a slope of about 2, which shows that the LBM--DEM implementation 
-algorithm scales nicely with the domain size.
+algorithm scales with the domain size.
 
 \begin{figure}[tbhp]
 	\centering
@@ -1453,4 +1458,5 @@ algorithm scales nicely with the domain size.
 	\caption{GPU scalability with increase in LBM nodes}
 	\label{fig:GPUSpeed}
 \end{figure}
+
 
