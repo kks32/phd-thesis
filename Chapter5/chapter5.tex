@@ -1454,7 +1454,16 @@ algorithm scales with the domain size.
 
 \begin{figure}[tbhp]
 	\centering
-	\includegraphics[width=0.85\textwidth]{GPU_Speedup}
+	\includegraphics[width=0.87\textwidth]{GPU_Speedup}
 	\caption{GPU scalability with increase in LBM nodes}
 	\label{fig:GPUSpeed}
 \end{figure}
+
+A two-dimensional coupled LBM--DEM technique is developed to understand the 
+local rheology of granular flows in fluid. The Smagorinsky turbulence model is 
+implement in LBM to capture the unsteady flow dynamics in 
+underwater granular avalanches. The GPGPU implementation of the coupled 
+LBM--DEM technique offers the possibility to capture the intricate microscale 
+effects such as the hydrodynamic instabilities, which are otherwise largely 
+ignored. The GPGPU implementation also offers the capability to model large 
+scale fluid -- grain systems. 
