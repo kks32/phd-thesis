@@ -1,6 +1,88 @@
 % ************************** Thesis Abstract *****************************
 % Use `abstract' as an option in the document class to print only the titlepage and the abstract.
 \begin{abstract}
-This is where you write your abstract ...
+
+
+Geophysical hazards, such as avalanches, debris flows and submarine landslides, 
+involve rapid mass movement of granular solids, water and air as a single-phase 
+system. The momentum transfer between discrete and continuum phases  
+significantly affects the dynamics of the flow. The dynamics of a granular flow 
+involve at least three distinct scales:the \textit{microscopic scale}, which is 
+characterized by contact between particles, the \textit{meso-scale}, which 
+represents micro-structural effects such as particle rearrangement, and the 
+\textit{macroscopic scale}. This study aims to understand the ability of 
+continuum models in capturing the micro-mechanism of granular flow dynamics. 
+The initiation and propagation of granular flows depend mainly on the slope, 
+density, and quantity of the material destabilised. 
+
+Collapse of a granular column on a horizontal surface is a simple case of 
+granular flow, however, the mechanism of collapse and the flow dynamics is yet 
+to be understood. In the present study, multi-scale modelling, i.e. 
+discrete-element and continuum analyses, of quasi-two dimensional collapse of 
+granular columns are performed. Material Point Method (MPM), a hybrid 
+Lagrangian and Eulerian approach is used to describe the continuum behaviour of 
+granular column collapse, while the micromechanics is captured using Discrete 
+Element Method (DEM) with tangential contact force model. 
+
+The run-out distance obtained exhibit a power law dependency with the aspect 
+ratio of the column. Discrete-element approach predicts transition behaviour in 
+the run-out distance with increase in the aspect ratio of the granular column. 
+The run-out profile predicted by the continuum simulations matches with DEM 
+simulations for columns with small aspect ratios (`h/l' $\le$ 2), however MPM 
+predicts longer run-out distances for columns with higher aspect ratios (`h/l' 
+> 2). Energy evolution study in DEM simulations reveals higher collisional 
+dissipation in the initial free-fall regime for tall columns. The lack of 
+collisional energy dissipation mechanism in MPM simulations results in longer 
+run-out distances. In DEM simulations, Voronoi tesselation is used to evaluate 
+the development of shear bands and evolution of local packing density. Studies 
+on granular collapse with different initial densities reveal the same critical 
+density at the end of the flow. A sliding flow regime is observed above the 
+distinct passive zone at the core of the column. Stress profiles obtained from 
+both the scales are compared to understand reason for a slow flow run-out 
+mobilization in MPM simulations. 
+
+Certain macroscopic models are able to capture simple mechanical behaviours, 
+however the complex physical mechanisms that occur at the grain scale, such as 
+hydrodynamic instabilities, the formation of clusters, collapse, and transport, 
+have largely been ignored. In order to describe the mechanism of saturated 
+and/or immersed granular flows, it is important to consider both the dynamics 
+of the solid phase and the role of the ambient fluid. In particular, when the 
+solid phase reaches a high volume fraction, it is important to consider the 
+strong heterogeneity arising from the contact forces between the grains, the 
+drag interactions which counteract the movement of the grains, and the 
+hydrodynamic forces that reduce the weight of the solids inducing a transition 
+from dense compacted to a dense suspended flow. Hence, it is important to 
+understand the mechanism of underwater granular flows at the granular scale. A 
+pending research issue is the parameterisation of interactions between the 
+water phase and the sediment phase. Owing to the number of flow variables 
+involved and measurement imprecision, estimating such parameters from 
+laboratory experiments remains difficult. 
+
+In this study, two-dimensional sub-grain scale numerical simulations are 
+performed to understand the local rheology of a dense granular flows in a 
+fluid. The Discrete Element Method (DEM) is coupled with the Lattice Boltzmann 
+Method (LBM) for fluid-grain interactions, to understand the evolution of 
+immersed granular flows. The fluid phase is simulated using 
+Multiple-Relaxation-Time LBM method for better numerical stabilities. The 
+Eulerian nature of the LBM formulation, together with the common explicit time 
+step scheme of both LBM and DEM makes this coupling strategy an efficient 
+numerical procedure for systems dominated by both grain--fluid and grain--grain 
+interactions. The D2Q9 Model in LBM is used to simulate the fluid phase. In 
+order to simulate interconnected pore space in 2D, a reduction in radius of the 
+grains is assumed during LBM computations. Granular materials of different 
+permeabilities are simulated by varying the reduction in radius of the grains. 
+A parametric analysis is performed to assess the influence of the grain sample 
+characteristics (initial configuration, permeability, slope of inclined plane) 
+on the evolution of flow and run-out distances. The effect of hydrodynamic 
+forces and hydroplaning on the run-out evolution is analysed by comparing the 
+mechanism of energy dissipation and flow evolution in dry and immersed granular 
+flows. Voronoi tesselation was used to study the evolution of local density and 
+water entrainment at the flow front. A parameteric analysis is performed to 
+assess the influence of the grain sample characteristics (initial 
+configuration) and the fluid properties (e.g., viscosity) on the evolution of 
+flow and run-out distances. The effect of hydrodynamic forces on the run-out 
+evolution is analysed by comparing the mechanism of energy dissipation and flow 
+evolution in dry and immersed granular flows.
+
 
 \end{abstract}
