@@ -1,4 +1,4 @@
-\chapter{Dry granular flows}
+\chapter{Multiscale Modelling of Dry granular flows}
 
 \ifpdf
     \graphicspath{{Chapter4/figs/raster/}{Chapter4/figs/pdf/}{Chapter4/figs/}}
@@ -6,4 +6,74 @@
     \graphicspath{{Chapter4/figs/vector/}{Chapter4/figs/}}
 \fi
 
+\section{Introduction}
 
+The dynamics of a homogeneous granular flow involve at least three distinct 
+scales (see Figure~\ref{fig:multiscale}): the \textit{micro-scale}, 
+\textit{meso-scale}, and the \textit{macro-scale}. At the microscopic or 
+particle scale, the granular material is a discrete system whose physical 
+properties are discontinuous with respect to the position and time. On the 
+other hand, at the macroscopic or bulk scale, the granular material is a 
+continuum system whose physical properties are continuous. Multi-scale 
+simulations generally involve modelling the granular materials as an assembly 
+of discrete-elements and as a continuum. The Discrete Element Modelling (DEM) 
+involves describing the equilibrium conditions, the kinematic conditions, and 
+the constitutive behaviour for each particle with respect to its neighbouring 
+particles. Whereas, the continuum modelling involves defining those condition 
+for an assembly of particles, using the continuum concept of stresses and 
+strains.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.95\textwidth]{multiscale}
+\caption{Multi-scale modelling of granular materials}
+\label{fig:multiscale}
+\end{figure}
+
+\section{Granular column collapse}
+The collapse of a granular column on a horizontal surface is a simple case of 
+granular flow, however a proper model that describes the flow dynamics of this 
+simple granular flow is still lacking.~\citet{Lajeunesse2005} performed 
+axis-symmetric and plane strain tests on granular column collapse. In the 
+present study, multi-scale numerical modelling, i.e. discrete-element and 
+continuum analyses, of the quasi-two dimensional collapse of granular columns 
+are performed using the Discrete Element Method and the Material Point Method. 
+Granular materials when released suddenly on a horizontal surface exhibit 
+transient flow. The mechanism of flow initiation, spreading dynamics and energy 
+dissipation are studied. The experimental configuration used 
+by~\citet{Lajeunesse2005} is shown in Figure~\ref{fig:exp}. Granular material 
+of mass `\textit{M}' was poured into a container to form a rectangular heap of 
+length `${L}_{\textit{i}}$', height `${H}_{\textit{i}}$' and thickness 
+`\textit{W}'. The internal friction angle and the wall friction between the 
+wall and the glass beads measured by ~\citet{Lajeunesse2005} are listed in 
+Table~\ref{Table:MP}. The mean packing density of the granular material was 
+estimated to vary between 0.61 and 0.65. The gate was then quickly removed to 
+release the granular mass that spreads in the horizontal channel until it comes 
+to rest. The final run-out distance `${L}_{\textit{f}}$' and the collapsed 
+height `$H_{\textit{f}}$' were measured. The run-out distance and collapse 
+height were found to exhibit power law relation with the initial aspect ratio 
+`\textit{a}' $(=H_{\textit{i}}/L_{\textit{i}})$ of the column. 
+
+\begin{figure}[tbhp]
+\centering
+\includegraphics[scale=0.15]{experiment_setup}
+\caption{Schematic of experimental configuration for 2-D collapse in a 
+rectangular channel,~\citep{Lajeunesse2005}}
+\label{fig:exp}
+\end{figure}
+
+\begin{table}[tbhp]
+\caption{Material properties,~\citep{Lajeunesse2005}}
+\label{Table:MP}
+\centering
+\begin{tabular}{ll}
+\toprule
+\textbf{Parameter} & \textbf{Value} \\ \midrule
+Material & Glass beads \\ 
+Mean diameter of the glass beads & 1.15 mm \\
+Repose angle of glass beads & 22$\pm 0.5^{o} $\\
+Avalanche angle of glass beads & 27.4$\pm 0.5^{o} $\\
+Wall friction angle of glass beads & 24.8$\pm 0.2^{o} $\\
+\bottomrule
+\end{tabular}
+\end{table}
