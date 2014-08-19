@@ -6,79 +6,46 @@
 Geophysical hazards usually involve flow of dense granular solids and water as 
 a single-phase system. The dynamics of a homogeneous granular flow involve 
 three distinct scales: the \textit{microscopic scale}, the \textit{meso-scale}, 
-and the \textit{macroscopic scale}. Although soil flows are conventionally 
-modelled as a continuum, recent studies have shown the limitations of continuum 
-models to capture the in-homogeneities at the grain-scale level. On a grain 
-scale, the granular materials exhibit complex solid-like and/or fluid-like 
-behaviour depending on how the grains interact with each other. In the present 
-study, a multi-scale approach is adopted to understand the rheology of granular 
-flows and the limitation of continuum models.
+and the \textit{macroscopic scale}. Granular materials exhibit complex 
+solid-like and/or fluid-like behaviour depending on how the grains interact 
+with each other. Although soil flows are conventionally modelled as a 
+continuum, recent studies have shown the limitations of continuum models to 
+capture the in-homogeneities at the grain-scale level. In the present study, a 
+multi-scale approach is adopted to understand the rheology of granular flows 
+and the limitation of continuum models.
 
 The Generalised Interpolation Material Point Method (GI-MPM), a  hybrid 
 Eulerian -- Lagrangian approach is implemented in the present study to describe 
 the continuum behaviour of granular flows. The Discrete Element Method (DEM) is 
-used to model the micro-mechanics of granular flows. The two-dimensional 
-plane-strain collapse of a granular column on a horizontal surface is analysed 
-both at the continuum scale and at the grain scale.
+used to model the micro-mechanics of granular flows. A two-dimensional 
+collapse of a granular column on a horizontal surface is studied. The run-out 
+distance of a granular column collapse exhibits a power law dependency with the 
+aspect ratio of the column. For columns with small aspect ratios (`h/l' $\le$ 
+2), both the approaches predict similar run-out behaviour. However, MPM 
+predicts longer run-out distances for columns with larger aspect ratios (`h/l' 
+> 2). The energy dissipation mechanism during the collapse reveals higher 
+collisional dissipation in the initial free-fall regime for tall columns. The 
+lack of collisional dissipation in MPM is found to be the reason for longer 
+run-out distances for tall columns. The classical Mohr-Coloumb model has the 
+ability to capture the rheology of granular flows  in dense-granular 
+and critical state flow regimes, such as run-out evolution of slopes 
+subjected to impact loading, where the Inertial number \textit{I} < 0.1. 
 
-The run-out distance of a granular column collapse exhibits a power law 
-dependency with the aspect ratio of the column. For columns with small aspect 
-ratios (`h/l' $\le$ 2), both MPM and DEM approaches predict similar run-out 
-behaviour. However, MPM predicts longer run-out distances for columns with 
-larger aspect ratios (`h/l' > 2). Analysis the energy evolution during the 
-collapse reveals higher collisional dissipation in the initial free-fall regime 
-for tall columns. The lack of collisional energy dissipation mechanism in MPM 
-simulations results in longer run-out distances. The dimensionless inertial 
-number \textit{I} is used to identify different flow regimes during a column 
-collapse. The classical Mohr-Coloumb model has the ability to capture the 
-rheology of granular flows  in dense-granular and critical state flow regimes 
-(for example, run-out evolution of slopes subjected to impact loading, where 
-the Inertial number \textit{I} < 0.1). Voronoi tesselation is used to study the 
-meso-scale behaviour such as the evolution of local packing density for 
-different initial volume fraction.  
-
-Certain macroscopic models are able to capture simple mechanical behaviours, 
-however the complex physical mechanisms that occur at the grain scale, such as 
-hydrodynamic instabilities, the formation of clusters, collapse, and transport, 
-have largely been ignored. In order to describe the mechanism of saturated 
-and/or immersed granular flows, it is important to consider both the dynamics 
-of the solid phase and the role of the ambient fluid. In particular, when the 
-solid phase reaches a high volume fraction, it is important to consider the 
-strong heterogeneity arising from the contact forces between the grains, the 
-drag interactions which counteract the movement of the grains, and the 
-hydrodynamic forces that reduce the weight of the solids inducing a transition 
-from dense compacted to a dense suspended flow. Hence, it is important to 
-understand the mechanism of underwater granular flows at the granular scale. A 
-pending research issue is the parameterisation of interactions between the 
-water phase and the sediment phase. Owing to the number of flow variables 
-involved and measurement imprecision, estimating such parameters from 
-laboratory experiments remains difficult. 
-
-In this study, two-dimensional sub-grain scale numerical simulations are 
-performed to understand the local rheology of a dense granular flows in a 
-fluid. The Discrete Element Method (DEM) is coupled with the Lattice Boltzmann 
-Method (LBM) for fluid-grain interactions, to understand the evolution of 
-immersed granular flows. The fluid phase is simulated using 
-Multiple-Relaxation-Time LBM method for better numerical stabilities. The 
-Eulerian nature of the LBM formulation, together with the common explicit time 
-step scheme of both LBM and DEM makes this coupling strategy an efficient 
-numerical procedure for systems dominated by both grain--fluid and grain--grain 
-interactions. The D2Q9 Model in LBM is used to simulate the fluid phase. In 
-order to simulate interconnected pore space in 2D, a reduction in radius of the 
-grains is assumed during LBM computations. Granular materials of different 
-permeabilities are simulated by varying the reduction in radius of the grains. 
-A parametric analysis is performed to assess the influence of the grain sample 
-characteristics (initial configuration, permeability, slope of inclined plane) 
-on the evolution of flow and run-out distances. The effect of hydrodynamic 
-forces and hydroplaning on the run-out evolution is analysed by comparing the 
-mechanism of energy dissipation and flow evolution in dry and immersed granular 
-flows. Voronoi tesselation was used to study the evolution of local density and 
-water entrainment at the flow front. A parameteric analysis is performed to 
-assess the influence of the grain sample characteristics (initial 
-configuration) and the fluid properties (e.g., viscosity) on the evolution of 
-flow and run-out distances. The effect of hydrodynamic forces on the run-out 
-evolution is analysed by comparing the mechanism of energy dissipation and flow 
-evolution in dry and immersed granular flows.
+The initiation and propagation of submarine granular flows depend mainly on the 
+slope, density, and quantity of the material destabilised. The
+complex physical mechanisms that occur at the grain scale, such as the 
+hydrodynamic instabilities and formation of clusters, have largely been 
+ignored. A GPU paralellised two-dimensional Lattice Boltzmann LBM -- DEM 
+coupled technique is developed to understand the local rheology of a dense 
+granular flows in a fluid. Granular materials of different permeabilities are 
+simulated by varying the hydrodynamic radius of the grains. A parametric 
+analysis is performed to assess the influence of the initial configuration, 
+permeability, and the slope of the inclined plane on the 
+evolution of flow and run-out distances. The effect of hydrodynamic forces and 
+hydroplaning on the run-out evolution is analysed by comparing the mechanism of 
+energy dissipation and the flow evolution in dry and immersed granular flows. 
+Voronoi tesselation is used to capture the meso-scale behaviour such as the 
+evolution of local density and water entrainment at the flow front. 
 
 
 \end{abstract}
