@@ -28,28 +28,28 @@ granular flow, however a proper model that describes the flow dynamics is still
 lacking. Granular flow is modelled as a frictional dissipation process in 
 continuum mechanics but studies showing the lack of influence of inter-particle 
 friction on the energy dissipation and spreading dynamics is surprising. In the 
-present study, two-dimensional plane-strain collapse of granular columns are 
-simulated using discrete and continuum approaches. The Material Point Method 
-(MPM), a hybrid Eulerian -- Lagrangian approach is used to describe the 
-continuum behaviour of granular column collapse, while the micromechanics is 
-captured using Discrete Element Method (DEM). 
+present study, the Generalised Interpolation Material Point Method (GIMPM), a 
+hybrid Eulerian -- Lagrangian approach is implemented to describe the continuum 
+behaviour of two-dimensional plane-strain granular column collapse. The 
+micro-mechanics of the granular column collapse is captured using the Discrete 
+Element Method (DEM). 
 
-The run-out distance exhibits a power law dependency with the aspect 
-ratio of the column. Discrete-element approach predicts transition behaviour in 
-the run-out distance with increase in the aspect ratio of the granular column. 
-The run-out profile predicted by the continuum simulations matches with DEM 
-simulations for columns with small aspect ratios (`h/l' $\le$ 2), however MPM 
-predicts longer run-out distances for columns with higher aspect ratios (`h/l' 
-> 2). Energy evolution study in DEM simulations reveals higher collisional 
-dissipation in the initial free-fall regime for tall columns. The lack of 
-collisional energy dissipation mechanism in MPM simulations results in longer 
-run-out distances. In DEM simulations, Voronoi tesselation is used to evaluate 
-the development of shear bands and evolution of local packing density. Studies 
-on granular collapse with different initial densities reveal the same critical 
-density at the end of the flow. A sliding flow regime is observed above the 
-distinct passive zone at the core of the column. Stress profiles obtained from 
-both the scales are compared to understand reason for a slow flow run-out 
-mobilization in MPM simulations. 
+The run-out distance of a granular column collapse exhibits a power law 
+dependency with the aspect ratio of the column. DEM predicts a transition 
+behaviour in the run-out distance with increase in the aspect ratio of the 
+granular column. For columns with small aspect ratios (`h/l' $\le$ 
+2), both MPM and DEM approaches predict similar run-out behaviour. However, MPM 
+predicts longer run-out distances for columns with larger 
+aspect ratios (`h/l' > 2). Energy evolution study in DEM simulations reveals 
+higher collisional dissipation in the initial free-fall regime for tall 
+columns. The lack of collisional energy dissipation mechanism in MPM 
+simulations results in longer run-out distances. In DEM simulations, Voronoi 
+tesselation is used to evaluate the development of shear bands and evolution of 
+local packing density. Studies on granular collapse with different initial 
+densities reveal the same critical density at the end of the flow. A sliding 
+flow regime is observed above the distinct passive zone at the core of the 
+column. Stress profiles obtained from both the scales are compared to 
+understand reason for a slow flow run-out mobilization in MPM simulations. 
 
 Certain macroscopic models are able to capture simple mechanical behaviours, 
 however the complex physical mechanisms that occur at the grain scale, such as 
