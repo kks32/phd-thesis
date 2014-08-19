@@ -17,9 +17,9 @@ flows and the limitation of continuum models.
 The Generalised Interpolation Material Point Method (GI-MPM), a  hybrid 
 Eulerian -- Lagrangian approach is implemented in the present study to describe 
 the continuum behaviour of granular flows. The Discrete Element Method (DEM) is 
-used to model the micro-mechanics of granular flows. The collapse of a granular 
-column on a horizontal surface is analysed both at the continuum scale and at 
-the grain scale.
+used to model the micro-mechanics of granular flows. The two-dimensional 
+plane-strain collapse of a granular column on a horizontal surface is analysed 
+both at the continuum scale and at the grain scale.
 
 The run-out distance of a granular column collapse exhibits a power law 
 dependency with the aspect ratio of the column. For columns with small aspect 
@@ -28,13 +28,14 @@ behaviour. However, MPM predicts longer run-out distances for columns with
 larger aspect ratios (`h/l' > 2). Analysis the energy evolution during the 
 collapse reveals higher collisional dissipation in the initial free-fall regime 
 for tall columns. The lack of collisional energy dissipation mechanism in MPM 
-simulations results in longer run-out distances. In DEM simulations, Voronoi 
-tesselation is used to evaluate the development of shear bands and evolution of 
-local packing density. Studies on granular collapse with different initial 
-densities reveal the same critical density at the end of the flow. A sliding 
-flow regime is observed above the distinct passive zone at the core of the 
-column. Stress profiles obtained from both the scales are compared to 
-understand reason for a slow flow run-out mobilization in MPM simulations. 
+simulations results in longer run-out distances. The dimensionless inertial 
+number \textit{I} is used to identify different flow regimes during a column 
+collapse. The classical Mohr-Coloumb model has the ability to capture the 
+rheology of granular flows  in dense-granular and critical state flow regimes 
+(for example, run-out evolution of slopes subjected to impact loading, where 
+the Inertial number \textit{I} < 0.1). Voronoi tesselation is used to study the 
+meso-scale behaviour such as the evolution of local packing density for 
+different initial volume fraction.  
 
 Certain macroscopic models are able to capture simple mechanical behaviours, 
 however the complex physical mechanisms that occur at the grain scale, such as 
