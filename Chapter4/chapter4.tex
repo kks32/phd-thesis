@@ -9,19 +9,21 @@
 \section{Introduction}
 
 The dynamics of a homogeneous granular flow involve at least three distinct 
-scales (see Figure~\ref{fig:multiscale}): the \textit{micro-scale}, 
-\textit{meso-scale}, and the \textit{macro-scale}. At the microscopic or 
-particle scale, the granular material is a discrete system whose physical 
-properties are discontinuous with respect to the position and time. On the 
-other hand, at the macroscopic or bulk scale, the granular material is a 
-continuum system whose physical properties are continuous. Multi-scale 
-simulations generally involve modelling the granular materials as an assembly 
-of discrete-elements and as a continuum. The Discrete Element Modelling (DEM) 
-involves describing the equilibrium conditions, the kinematic conditions, and 
-the constitutive behaviour for each particle with respect to its neighbouring 
-particles. Whereas, the continuum modelling involves defining those condition 
-for an assembly of particles, using the continuum concept of stresses and 
-strains.
+scales: the \textit{microscopic scale}, which 
+is characterised by the contact between grains, the \textit{meso-scale} that 
+represents micro-structural effects such as grain rearrangement, and the 
+\textit{macroscopic scale}, where geometric correlations can be observed (see 
+Figure~\ref{fig:multiscale}). Conventionally, granular flows are modelled as a 
+continuum because they exhibit many collective phenomena. However, on a grain 
+scale, the granular materials exhibit complex solid-like and/or fluid-like 
+behaviour.Recent studies, however, suggest that a continuum law may be unable 
+to capture the effect of inhomogeneities at the grain scale level, such as 
+orientation of force chains, which are micro-structural effects. Discrete 
+element methods (DEM) are capable of simulating these micro-structural effects, 
+however they are computationally expensive. In the present study, a multi-scale 
+approach is adopted, using both DEM and continuum techniques, to better 
+understand the rheology of granular flows and the limitations of continuum 
+models.
 
 \begin{figure}[htbp]
 \centering
