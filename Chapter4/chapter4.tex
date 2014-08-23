@@ -33,24 +33,29 @@ models.
 \end{figure}
 
 \section{Granular column collapse}
+
 The collapse of a granular column on a horizontal surface is a simple case of 
-granular flow, however a proper model that describes the flow dynamics of this 
-simple granular flow is still lacking.~\citet{Lajeunesse2005} performed 
-axis-symmetric and plane strain tests on granular column collapse. In the 
-present study, multi-scale numerical modelling, i.e. discrete-element and 
-continuum analyses, of the quasi-two dimensional collapse of granular columns 
-are performed using the Discrete Element Method and the Material Point Method. 
-Granular materials when released suddenly on a horizontal surface exhibit 
-transient flow. The mechanism of flow initiation, spreading dynamics and energy 
-dissipation are studied. The experimental configuration used 
-by~\citet{Lajeunesse2005} is shown in Figure~\ref{fig:exp}. Granular material 
-of mass `\textit{M}' was poured into a container to form a rectangular heap of 
-length `${L}_{\textit{i}}$', height `${H}_{\textit{i}}$' and thickness 
-`\textit{W}'. The internal friction angle and the wall friction between the 
-wall and the glass beads measured by ~\citet{Lajeunesse2005} are listed in 
-Table~\ref{Table:MP}. The mean packing density of the granular material was 
-estimated to vary between 0.61 and 0.65. The gate was then quickly removed to 
-release the granular mass that spreads in the horizontal channel until it comes 
+granular flow, however a proper model that describes the flow dynamics is still
+lacking. Granular flow is modelled as a frictional dissipation process in 
+continuum mechanics but studies showing the lack of influence of inter-particle 
+friction on the energy dissipation and spreading dynamics is surprising. 
+In the present study, the generalised interpolation material point method 
+(GIMPM), a hybrid Eulerian -- Lagrangian approach, is implemented with 
+Mohr-Coloumb failure criterion to describe the continuum behaviour of quasi-two 
+dimensional collapse of granular columns. The granular column collapse is also 
+simulated using DEM to understand the micro-mechanics of the flow.
+
+~\citet{Lajeunesse2005} performed axis-symmetric and plane strain tests on 
+granular column collapse. Granular materials when released suddenly on a 
+horizontal surface exhibit transient flow. The mechanism of flow initiation, 
+spreading dynamics and energy dissipation are studied. The experimental 
+configuration used by~\citet{Lajeunesse2005} is shown in Figure~\ref{fig:exp}. 
+Granular material of mass `\textit{M}' was poured into a container to form a 
+rectangular heap of length `${L}_{\textit{i}}$', height `${H}_{\textit{i}}$' 
+and thickness `\textit{W}'. The internal friction angle and the wall friction 
+between the wall and the glass beads measured by ~\citet{Lajeunesse2005} are 
+listed in Table~\ref{Table:MP}. The gate was then quickly removed to release 
+the granular mass that spreads in the horizontal channel until it comes 
 to rest. The final run-out distance `${L}_{\textit{f}}$' and the collapsed 
 height `$H_{\textit{f}}$' were measured. The run-out distance and collapse 
 height were found to exhibit power law relation with the initial aspect ratio 
