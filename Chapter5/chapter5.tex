@@ -1460,10 +1460,12 @@ algorithm scales with the domain size.
 \end{figure}
 
 A two-dimensional coupled LBM--DEM technique is developed to understand the 
-local rheology of granular flows in fluid. The Smagorinsky turbulence model is 
-implement in LBM to capture the unsteady flow dynamics in 
-underwater granular avalanches. The GPGPU implementation of the coupled 
-LBM--DEM technique offers the possibility to capture the intricate microscale 
-effects such as the hydrodynamic instabilities, which are otherwise largely 
-ignored. The GPGPU implementation also offers the capability to model large 
-scale fluid -- grain systems. 
+local rheology of granular flows in fluid. The coupled LBM--DEM technique 
+offers the possibility to capture the intricate microscale effects such as the 
+hydrodynamic instabilities. The Smagorinsky turbulence model is implement in 
+LBM to capture the unsteady flow dynamics in underwater granular avalanches. 
+The GPGPU implementation of the coupled LBM -- DEM technique offers the 
+capability to model large scale fluid -- grain systems, which are otherwise 
+impossible to model using conventional computation techniques. Efficient data 
+transfer mechanisms that achieves coalesced global memory ensures that the 
+GPGPU implementation scales linearly with the domain size.
