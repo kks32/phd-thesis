@@ -1,5 +1,7 @@
 % ******************************* PhD Thesis Template **************************
 % Please have a look at the README.md file for info on how to use the template
+\widowpenalty=10000
+\clubpenalty=10000
 
 \documentclass[a4paper,11pt,times,authoryear,chapter,draftmode]{Classes/PhDThesisPSnPDF}
 
@@ -11,19 +13,19 @@
 % Thesis title and author information, refernce file for biblatex
 \input{thesis-info}
 
-% ***************************** Abstract Separate ****************************** 
+% ***************************** Abstract Separate ******************************
 
 \ifdefineAbstract
  \pagestyle{empty}
-% \includeonly{Declaration/declaration, Abstract/abstract} 
- \includeonly{Abstract/abstract} 
+% \includeonly{Declaration/declaration, Abstract/abstract}
+ \includeonly{Abstract/abstract}
 \fi
 
 % ***************************** Chapter Mode ***********************************
 
 \ifdefineChapter
  \setcounter{chapter}{3}
- \includeonly{Chapter5/chapter5, Chapter4/chapter4} 
+ \includeonly{Chapter4/chapter4,Chapter5/chapter5}
 \fi
 
 % ******************************** Front Matter ********************************
@@ -48,7 +50,7 @@
 
 \listoffigures
 
-\listoftables 
+\listoftables
 
 % \printnomenclature[space] space can be set as 2.5cm between symbol and
 % description
@@ -69,10 +71,10 @@
 
 % ********************************** Back Matter *******************************
 % Backmatter should be commented out, if you are using appendices after References
-%\backmatter 
+%\backmatter
 
 % ********************************** Bibliography ******************************
-\begin{spacing}{0.9} 
+\begin{spacing}{0.9}
 
 % To use the conventional natbib style referencing
 % Bibliography style previews: http://nodonn.tipido.net/bibstyle.php
@@ -83,10 +85,10 @@
 \bibliography{References/references} % Path to your References.bib file
 
 
-% If you would like to use BibLaTeX for your references, pass `custombib' as 
-% an option in the document class. The location of 'reference.bib' should be 
-% specified in the preamble.tex file in the custombib section. 
-% Comment out the lines related to natbib above and uncomment the following 
+% If you would like to use BibLaTeX for your references, pass `custombib' as
+% an option in the document class. The location of 'reference.bib' should be
+% specified in the preamble.tex file in the custombib section.
+% Comment out the lines related to natbib above and uncomment the following
 %line.
 
 %\printbibliography[heading=bibintoc, title={References}]

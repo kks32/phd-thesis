@@ -4,7 +4,7 @@
 %%                                                                            %%
 %% A PhD thesis LaTeX template for Cambridge University Engineering Department%%
 %%                                                                            %%
-%% Version: v1.4                                                              %%
+%% Version: v1.4.1                                                            %%
 %% Authors: Krishna Kumar                                                     %%
 %% Date: 2013/11/16 (inception)                                               %%
 %% License: MIT License (c) 2013 Krishna Kumar                                %%
@@ -12,8 +12,11 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % ************************** Class Identification ******************************
+\newcommand\fileversion{1.4.1}
+\newcommand\filedate{2014/08/11}
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{PhDThesisPSnPDF}[2013/12/10 version 1.0 by Krishna Kumar]
+\ProvidesClass{PhDThesisPSnPDF}[\filedate\space A PhD thesis class file
+ by Krishna Kumar (v\fileversion)]
 \typeout{https://github.com/kks32/phd-thesis-template/}
 
 
@@ -82,7 +85,6 @@
       options in case you have defined two bibliography styles.}
   \else
     \PHD@biblatextrue
-%%    \setBibtrue
   \fi
 }
 
@@ -116,9 +118,15 @@
     \ClassWarning{PhDThesisPSnPDF}{Bibliography selection conflict: A
       bibliography style aleady specified. Please check the document class
       options in case you have defined two bibliography styles.}
-  \else  
-    \useCustomBibtrue
-    \setBibtrue
+  \else
+    \ifPHD@biblatex
+        \ClassWarning{PhDThesisPSnPDF}{Bibliography selection conflict: A
+          bibliography style aleady specified. Please check the document class
+          options in case you have defined two bibliography styles.}
+    \else
+      \useCustomBibtrue
+      \setBibtrue
+    \fi
   \fi
 }
 
@@ -352,6 +360,9 @@ supported!}
 
 \fi % End \ifPDH@lineno
 
+% Todo notes functionality
+\usepackage[colorinlistoftodos]{todonotes}
+\newcommand{\mynote}[1]{\todo[author={\@author},size=\small,inline,color=green!40]{#1}}
 
 % Creates a Watermark Draft at the specified location.
 % The settings can be tweaked in the preamble
@@ -409,6 +420,10 @@ supported!}
 
 % If NOT Draft Mode
 \else 
+
+% Todo notes are not displayed in production mode
+\newcommand{\mynote}[1]{}
+\newcommand{\listoftodos}{}
 
 \renewcommand\SetDraftText[1]{\ClassWarning{PhDThesisPSnPDF}{DraftMode is
     inactive, to use SetDraftText include `draftmode' in the document 
@@ -527,6 +542,12 @@ supported!}
 \pdfglyphtounicode{f_f_l}{FB04}
 \pdfgentounicode=1
 
+% Don't break enumeration (etc.) across pages in an ugly manner
+\clubpenalty=10000
+\widowpenalty=10000
+
+% If building with PDFLaTeX, use microtype spacing adjustments
+\RequirePackage{microtype}
 
 %******************************* Print / Online ********************************
 % Defines a print / online version to define page-layout and hyperrefering
@@ -1141,3 +1162,4 @@ wish to left align your text}
 			- \totalheightof{\usebox{\PHD@collegedate}}
 }
 }
+
