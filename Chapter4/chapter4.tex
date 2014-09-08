@@ -84,10 +84,10 @@ rectangular channel,~\citep{Lajeunesse2004}}
 \begin{tabular}{ll}
 \toprule
 \textbf{Parameter} & \textbf{Value} \\ \midrule
-Mean diameter & 1.15 mm \\
-Repose angle & 22$\pm 0.5^{o} $\\
-Avalanche angle & 27.4$\pm 0.5^{o} $\\
-Wall friction angle & 24.8$\pm 0.2^{o} $\\
+Mean diameter & 1.15 \si{\mm} \\
+Repose angle & 22$\pm 0.5$\si{\degree} \\
+Avalanche angle & 27.4$\pm 0.5$\si{\degree} \\
+Wall friction angle & 24.8$\pm 0.2$\si{\degree}\\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -152,17 +152,17 @@ one contact with the main mass.
 \caption{Micromechanical parameters used in Discrete Element Method simulations}
 \label{table:MDdata}
 \centering
-\begin{tabular}{|l|c|}
-\hline
-\textbf{Parameter} & \textbf{Value} \\ \hline  \hline
-Young's modulus of glass bead & $70\times10^{9}\mbox{ } N/m^{2}$ \\ \hline
-Poisson's ratio & 0.22 - 0.24\\ \hline
-Diameter of glass beads & 0.92 to 1.38 mm\\ \hline
-Normal and shear stiffness of grains & $1.6 \times 10^{8}$ N/m \\ \hline
-Normal and sear stiffness of wall & $4 \times 10^{8}$ N/m \\ \hline
-Inter-particle friction coefficient, $\mu$ & 0.53 \\ \hline
-Friction coefficient of wall & 0.466 \\ \hline
-Coefficient of restitution, $\Gamma$ & 0.4 \\ \hline
+\begin{tabular}{ll}
+\toprule
+\textbf{Parameter} & \textbf{Value} \\ \midrule
+Young's modulus of glass bead & $70\times10^{9}$ \si{\newton\per\m\squared}\\ 
+Poisson's ratio & 0.22 - 0.24\\ 
+Diameter of glass beads & 0.92 to 1.38 \si{\mm}\\
+Normal and shear stiffness of grains & $1.6 \times 10^{8}$ \si{\newton\per\m}\\ 
+Normal and sear stiffness of wall & $4 \times 10^{8}$ \si{\newton\per\m}\\
+Inter-particle friction coefficient, $\mu$ & 0.53 \\
+Wall friction coefficient & 0.466 \\ 
+Coefficient of restitution, $\Gamma$ & 0.6 \\ \bottomrule
 \end{tabular}
 \end{table}
 A plane strain collapse of granular column is simulated as a continuum using 
@@ -181,19 +181,19 @@ Discrete Element Method.
 \caption{Parameters used in continuum simulations}
 \label{table:MPMData}
 \centering
-\begin{tabular}{|l|c|}
-\hline
-\textbf{Parameters} & \textbf{Value} \\ \hline \hline
-Number of material points representing an actual particle & 4 \\ \hline
-Material point spacing & 0.575 mm \\ \hline
-Number of material points per mesh & 16 \\ \hline
-Young's Modulus, E & $1.98 \times 10 ^{6} Pa$ \\ \hline
-Poisson's ratio, $\nu$ & 0.22 to 0.24 \\ \hline 
-Friction angle, $\phi$ & $23.0^{o}$ \\ \hline
-Dilatancy angle, $\varPhi$ & $0^{o}$ \\ \hline
-Density, $\rho$ & 1800 $kg/m^{3}$\\ \hline
-Wall friction & 0.466 \\ \hline
-Time step increment & $1.0 \times 10^{-6}$ \\ \hline 
+\begin{tabular}{ll}
+\toprule
+\textbf{Parameter} & \textbf{Value} \\ \midrule
+Number of material points representing an actual particle & 4 \\
+Material point spacing & 0.575 \si{\mm} \\
+Number of material points per mesh & 16 \\
+Young's Modulus, E & $1.98 \times 10 ^{6}$ \si{\Pa} \\
+Poisson's ratio, $\nu$ & 0.22 to 0.24 \\ 
+Friction angle, $\phi$ & $23.0\si{\degree}$ \\
+Dilatancy angle, $\varPhi$ & $0$\si{\degree} \\
+Density, $\rho$ & 1800 \si{\kg\per\m\cubed}\\
+Wall friction & 0.466 \\
+Time step increment & $1.0 \times 10^{-6}$ \si{\second}\\ \bottomrule
 \end{tabular}
 \end{table}
 \subsection{Deposit morphology}
