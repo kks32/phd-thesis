@@ -546,6 +546,451 @@ for different aspect ratios.
 \label{fig:a6_energy}
 \end{figure}
 
+
+\section{Slopes subjected to impact loading}
+
+
+\subsection{Numerical procedures}
+\label{sec:num}
+
+The numerical samples are composed of $\sim13000$ disks with a uniform 
+%plus de simulation pour faire une moyenne ($\sim 6$)
+distribution of diameters by volume fractions in the range $[d_{min}, 
+d_{max}]$ with $d_{max} = 1.5 d_{min}$. The mean particle diameter and 
+mass are $d\simeq 0.0025 $ m and $m\simeq 0.0123$ kg, respectively. 
+The particles are first poured uniformly into a rectangular box of given width 
+and then the right-hand side wall is shifted further to the right to allow the 
+particles to spread. A half-pile is obtained when all particles come to 
+rest; see Fig.~\ref{fig:Initial_final_configuration}. This procedure leads to a 
+mean packing fraction $\simeq 0.83$.
+
+%\begin{figure}
+%\centerline{
+%\resizebox{0.5\textwidth}{!}{%
+% 	 \includegraphics{Figures/Initial_final_configuration}
+%}}
+%\caption{Initial geometry and dimensions of the pile}
+%\label{fig:Initial_final_configuration}
+%\end{figure}
+
+The initial static pile is set into motion by applying a constant horizontal
+gradient  $v_{0x}(y) = k (y_{max} - y)$ with $k>0$. Such a configuration 
+mimics the energy transfer mechanism of a horizontal quake along the bottom of 
+the pile. We are interested in the evolution of the geometry of the pile 
+and its total kinetic energy as a function of the initial input energy $E_0$. 
+The runout distance $R_f$ is the distance of the rightmost particles 
+from the left wall when the pile comes to rest.  It will be normalized by the 
+initial extension $R_0$ of the pile, as in the experiments of collapsing 
+columns. The total runout duration $t_f$ is the time that the pile takes to 
+reach its final runout distance $R_f$.
+
+The initial static pile is set into motion by applying a horizontal velocity 
+$v_{0x}(y)$ to all particles during a short interval of time. Different 
+velocity fields were tested: 1) The same velocity $v_{0x}(y) = v_0$ applied to 
+all particles, 2) The same velocity $v_{0x}(y) = v_0$ applied to a column of 
+particles next to the left wall, 3) a constant velocity gradient  $v_{0x}(y) = 
+k (y_{max} - y)$ with $k>0$. The first two pushing modes mimic the case of a 
+pile impacted from the left by a moving mass (tsunami, debris\dots) whereas the 
+last mode represents energy transfer by horizontal quake of the bottom line. We 
+will compare briefly below the effect of different pushing modes, but later we 
+will mainly explore the third mode. We are interested in the evolution of the 
+geometry of the pile and its total kinetic energy as a function of the initial 
+energy input $E_0$. The runout distance $R_f$ is the distance of the rightmost 
+particles from the left wall when the pile comes to rest.  
+It will be normalized by the initial extension $R_0$ of the pile, as in 
+the experiments of collapsing columns. The total runout duration $t_f$ is the 
+time that the pile takes to reach its final runout distance $R_f$.       
+
+For grain scale simulations, classical Discrete Element Method and Contact 
+Dynamics approach is used. 
+A detailed description of the Contact Dynamics 
+method can be found in \cite{Moreau1993,Jean1999,Radjai2009,Radjai2011}. 
+This method is based on implicit time integration of the equations of motion 
+and a nonsmooth formulation of mutual exclusion and dry friction between 
+particles. The CD method requires no elastic repulsive potential and no 
+smoothing of the Coulomb friction law for the determination of forces. 
+For this reason, the simulations can be performed with large time steps 
+compared to molecular dynamics simulations. The unknown variables are particle 
+velocities and contact forces, which are calculated at each time step by taking 
+into account the conservation of momenta and the constraints due to mutual 
+exclusion between particles and the Coulomb friction. We use an iterative 
+research algorithm based on a nonlinear Gauss-Seidel scheme. The only contact 
+parameters within the CD method are the friction coefficient $\mu_s$, the 
+normal restitution coefficient $e_n$ and the tangential restitution coefficient 
+$e_t$ between particles. We will investigate the effect of these parameters on 
+the evolution of kinetic energy and the profile of the pile.     
+  
+The natural units of our system are the mean particle diameter $d$, 
+mean particle mass $m$ and gravity $g$. For this reason, 
+in the following we normalize the lengths by $d$, the times by $(d/g)^{1/2}$, 
+the velocities by $(gd)^{1/2}$ and the energies by $mgd$.    
+Video samples of the simulations analyzed in this paper
+can be found by following the link http://www.cgp-gateway.org/ref018.
+
+%-------------------------------------------------------------------------------------------
+\subsection{Evolution of pile geometry and runout}
+\label{sec:evolution}
+
+In this section, we consider the spreading process following the initial energy 
+input into the pile. Fig. \ref{fig:quake_mod} shows several snapshots of the 
+pile for an initial input energy $E_0 = 61$ (in dimensionless units).
+The pile is sheared from the bottom to the top, thus leaving a cavity in the 
+vicinity of the left wall. The cavity is partially filled while the pile 
+continues to spread to the right. 
+
+
+In this section, we consider the spreading process 
+following the initial energy input into the pile. 
+Fig. \ref{fig:quake_mod} shows several snapshots of the pile 
+for each pushing mode and for the same initial 
+energy $E_0 = 61$ (in dimensionless units). 
+In mode 1, where the same velocity is imparted to 
+all particles, the whole pile moves away  from 
+the left wall over a short distance and then it 
+spreads out and declines in slope. 
+ The spreading continues farther until the slope nearly 
+declines to zero. In mode 2, where the velocity is applied to 
+a  column of particles next to the left wall, the particles belonging to 
+the column are literally expelled from the pile. They fall back farther way on 
+the pile after 
+a ballistic travel above the pile. At the same time, the right side of the 
+pile slightly spreads away  
+while the left side is filled by the particles rolling down into the gap 
+left by the column. In mode 3, the pile is  
+sheared from the bottom to the top, leaving thus a cavity in the 
+vicinity of the left wall. The cavity is partially filled while the pile 
+continues to spread. 
+
+All pushing modes involve a transient with a sharp change 
+of the geometry of the pile followed by continuous spreading to the right. 
+In mode 2, most of the energy is carried away by the ejected particles. 
+In mode 1, the pile has a rigid-body velocity component and moves 
+away from the left wall, but shows an efficient energy transfer leading to a 
+long runout distance.      
+The transient is more energy consuming in  mode 3  compared to 
+mode 1. For this reason, the runout distance in mode 3 is long but shorter 
+than in mode 1. In the following, we analyze in more detail 
+the evolution of the pile in mode 3, which mimics a  
+horizontal quake from the bottom and, despite the creation of a cavity, 
+remains always in contact with the left wall irrespective of the input 
+energy.   
+
+
+Figure \ref{fig:runout} shows the normalized runout distance $(R_f - R_0)/R_0$ 
+and total runout time $t_f$ as a function of the input energy $E_0$. We observe 
+two regimes both characterized by a power-law runout distance and time as a 
+function of $E_0$. In the first regime, corresponding to the range of low input 
+energies $E_0 < 40 \ mgd$, the runout distance varies as $R_f \propto 
+(E_0)^\alpha$ with $\alpha \simeq 0.61 \pm 0.04$ over nearly one decade while 
+the duration keeps a constant value  $t_f \simeq 60 \  (d/g)^{0.5}$ 
+irrespective of the value of $E_0$! The error  on the value of the exponent 
+represents the confidence interval of linear fits on the logarithmic scale.  
+%lancer plus de simulation pour une  moyenne 
+An average runout speed can be defined from the ratio $v_s = (R_f - R_0) / 
+t_f$. According to the data, we have $v_s \propto (E_0)^{0.61\pm 0.04}$. Since 
+the initial average velocity varies as $v_0 \propto (E_0)^{0.5}$, this 
+difference between the values of the exponents suggests that the mobilized mass 
+during runout declines when the input energy is increased. As we shall see 
+below, the constant runout time reflects also the collapse of the particles 
+into the cavity left behind the pile. 
+
+In the second regime, corresponding to the range of high input energies  $E_0 > 
+40 \ mgd$, the runout distance varies as $R_f \propto (E_0)^{\alpha'}$ over one 
+decade with $\alpha' \simeq 0.77\pm 0.03$ while the duration increases as $t_f 
+\propto (E_0)^{\beta'}$ with $\beta' \simeq 0.21 \pm 0.04$. Hence, in this 
+regime the average runout speed varies as $v_s \propto (E_0)^{0.56 \pm 0.07}$. 
+This exponent is close to the value $0.5$ in $v_0 \propto (E_0)^{0.5}$, and 
+hence, within the confidence interval of the exponents, in the second regime we 
+may assume $\beta' \simeq \alpha' - 0.5$ and $v_s \propto v_0$. 
+
+It is worth noting that a similar power-law dependence of the 
+runout distance and time were found in the case of 
+collapsing columns of grains with respect to the initial aspect ratio 
+\cite{Topin2012}.  
+In the column geometry, the particles spread away owing to the 
+kinetic energy acquired during gravitational collapse of the column. 
+Topin et al. found that the runout distance varies as a power law 
+of the available peak kinetic energy at the end of the free-fall stage with an 
+exponent $\simeq 0.5$. This value is below those obtained here 
+for both regimes. This is, however, physically plausible since the   
+distribution of particle kinetic energies at the end of the collapse 
+is more chaotic than in our simulations where the energy is supplied 
+from the very beginning in a well-defined shear mode. As pointed out 
+by \cite{Staron2005}, the distribution of kinetic energies is an essential 
+factor for the runout distance.
+
+%\begin{figure}
+%\centerline{
+%\resizebox{0.45\textwidth}{!}{%
+%	\includegraphics{Figures/Grad}
+%}}
+%\caption{Snapshots of the evolution of the pile profile for $E_0 = 61 \ mgd$.}
+%\caption{Snapshots of the initial stages of runout for 
+%different energy input modes. 
+%In (a) the same velocity is applied to all particles, in (b) 
+%the same velocity is applied to a column of particles adjacent to the left 
+%wall and in (c) a constant velocity gradient is applied to the particles 
+%from bottom to the top of the pile. The snapshots represent 
+%different instants of the evolution for $E_0 = 61 \ mgd$.}
+\label{fig:quake_mod}
+%\end{figure}
+
+%\begin{figure}
+%\centerline{
+%\resizebox{0.4\textwidth}{!}{%
+%	\includegraphics{Figures/Runout_vs_E_log-log}
+%}}
+%\centerline{
+% \resizebox{0.4\textwidth}{!}{%
+%	\includegraphics{Figures/tf_vs_E_log_log}
+%}}
+%\caption{Runout distance (a) and its duration (b) for different 
+%initial values of the kinetic energy. The dashed lines 
+%represent power-law fits to the data points in two different regimes with the 
+%their exponents.}
+%\label{fig:runout}
+%\end{figure}
+
+%-------------------------------------------------------------------------------------------
+\subsection{Decay of kinetic energy}
+\label{sec:decay}
+
+The nontrivial evolution of the pile geometry  in two regimes suggests that the 
+energy supplied to the pile is not simply dissipated by shear and friction with 
+the bottom plane. We also need to split the kinetic energy into its different 
+components ($x$, $y$ and rotation) of the velocity field. The input energy 
+is in the $x$ component, but due to both the creation of a cavity next to the 
+left wall and the rolling of the particles down the free surface of the pile 
+and between particles, a fraction of the energy is first transferred to the $y$ 
+component of the velocity field and dissipated  during the transient. 
+In this section, we analyze these features  in order to arrive in a picture 
+consistent with the evolution of the pile shape.  
+
+The decay of the total kinetic energy $E$ is displayed in 
+Fig.~\ref{fig:E_vs}(a) for values of the input energy $E_0$. We observe an 
+initial fast drop of $E$ followed by a regular fall-off until the end of the 
+runout. This regular fall-off occurs clearly with two different functional 
+forms, thus revealing two stages in the evolution of the pile. 
+Fig.~\ref{fig:E_vs}(b) shows the same plots normalized by $E_0$. We see that 
+all plots corresponding to the first regime (low energies) collapse nearly on 
+to a single time evolution. 
+%to the first regime (low energies) collapse nearly all along time evolution. 
+This is consistent with the fact that, as previously shown, in this 
+regime the runout time $t_f$ is independent of the input energy. In contrast, 
+the plots corresponding to the second regime (high energies) collapse only at 
+the beginning of runout, i.e. for $t < t_1 \simeq 7.5 \ (d/g)^{0.5}$.   
+
+\begin{figure}[tbhp]
+\centering
+\includegraphics[width=\textwidth]{Energy_Slope}
+\caption{Evolution of total kinetic energy with time}
+\label{fig:energy_slope}
+\end{figure}
+
+\begin{figure}[tbhp]
+\centering
+\includegraphics[width=\textwidth]{Normalised_Energy_Slope}
+\caption{Evolution of normalised kinetic energy with time}
+\label{fig:Normalised_Energy_Slope}
+\end{figure}
+
+\begin{figure}[tbhp]
+\centering
+\includegraphics[width=\textwidth]{Normalised_Energy_Time_Slope}
+\caption{Evolution of normalised kinetic energy with normalised time}
+\label{fig:Normalised_Energy_Time_Slope}
+\end{figure}
+
+~\Cref{fig:E_xyt_vs_t} displays the evolution of kinetic energy 
+in the translational ($E_x$ and $E_y$) and rotational ($E_\theta$) 
+degrees of freedom of the particles. $E_x$ decays as the total 
+energy, but $E_y$ and $E_\theta$ increase and pass through a peak before 
+decaying rapidly to a negligibly small level. The transient is best observed 
+for $E_y$, which has significant values only for $t< t_1$. This energy 
+represents the proportion of kinetic energy transferred to the $y$ component of 
+the velocity field  due to the destabilization of the pile and collapse of 
+particles in the cavity behind the pile. We note that the lower $E_0$, the 
+higher the peak value of $E_y/E_0$. 
+%mettre une flèche sur les courbes pour montrer la décroissance de E_0
+This means that, at low values of the input energy a larger fraction 
+of input energy $E_0$ is consumed in the destabilization process whereas 
+at a high level of input energy, most of it is dissipated in the spreading 
+phase. For this reason, the total duration $t_1$ of this destabilization 
+transient is nearly the same in both regimes and its value is controlled by the 
+gravity rather than the input energy. The height of the pile being of the order 
+of $80 \ d$, the total free-fall time for a particle located at this height is 
+$\simeq 12 \ (d/g)^{0.5}$, which is of the same order as $t_1$. As to the 
+rotational energy, its contribution both to the transient stage and spreading 
+appears to be negligible. 
+
+%\begin{figure}
+%\centerline{
+%\resizebox{0.4\textwidth}{!}{%
+%	\includegraphics{Figures/ExoE0_vs_t}
+%}}
+%\centerline{
+% \resizebox{0.4\textwidth}{!}{%
+%	\includegraphics{Figures/EyoE0_vs_t}
+%}}
+%\centerline{
+%\resizebox{0.4\textwidth}{!}{%
+%	\includegraphics{Figures/EtoE0_vs_t}
+%}}
+%\caption{Evolution of kinetic energy with time. (a) ``$horizontal$" direction; 
+%(b) "$vertical$" 
+%direction and (c) ``$rotational$" kinetic energies as a function of time.}
+%\label{fig:E_xyt_vs_t}
+%\end{figure}
+
+To analyze the second phase in the second regime, we now consider only the 
+kinetic energy $E'_{x0}$ available at the end of the transient. This energy 
+is responsible for most of the runout and hence it is expected to control the 
+runout distance and time. Fig. \ref{fig:ExoEx0_vs_t_totau}(a) shows the 
+evolution of $E_x$ normalized by $E'_{x0}$ as a function of time. The plots 
+have seemingly the same aspect but they show different decay times. A decay 
+time $\tau$ can be defined as the time required for $E_x$ to decline by a 
+factor $1/2$. Fig. \ref{fig:ExoEx0_vs_t_totau}(b) shows the same data in which 
+the time $t'$ elapsed since $t_1$ is normalized by $\tau$. Interestingly, now 
+all the data nicely collapse on the same curve. We checked that this curve can 
+not be fitted by simple functional forms such as variants of exponential decay. 
+This means that the spreading of the pile is not a self-similar process in 
+agreement with the fact that the energy fades away in a finite time $t'_f$. 
+
+
+\begin{figure}[tbhp]
+\centering
+\includegraphics[width=\textwidth]{ExEx0_vs_ttau}
+\caption{Evolution of kinetic energy in the $x$ component of 
+the velocity field  normalized by the available kinetic energy at the end of 
+the transient as a function of normalized time.}
+\label{fig:ExEx0_vs_ttau}
+\end{figure}
+
+
+The scaling of the data with the decay time $\tau$ suggests also that the 
+runout time $t'_f$ since the beginning of the second phase might be a simple 
+function of $\tau$.~\Cref{fig:ExEx0_vs_ttau} shows both $t'_f$ and $\tau$ as 
+a function of $E'_{x0}$, where we observe a power law for both times over 
+nearly one decade. The runout time $t'_f \propto (E'_{x0})^{\beta'}$ has the 
+same exponent $\beta' \simeq 0.21 \pm 0.03$ as $t_f$ as a function of $E_0$ 
+(see Fig. \ref{fig:runout}). For the decay time we have 
+$\tau \propto (E'_{x0})^{\beta''}$ with $\beta'' \simeq 0.28 \pm 0.03$. The 
+relation between the two times can thus be expressed as 
+\begin{equation}
+t'_f = k  \ \tau \, (E'_{x0})^{\beta'' - \beta'}, 
+\label{eqn:t'f}
+\end{equation}
+where $k \simeq 5 \pm 0.4$ and $\beta'' - \beta' \simeq -0.05 \pm 0.06$. This 
+value is small enough to be neglected within the confidence interval of our 
+data. It is therefore plausible to assume that  the runout time is a multiple 
+of the decay time and the spreading process is controlled by a single time. We 
+however note that a weak dependence on the energy $E'_{x0}$  is consistent with 
+the fact that the whole available energy at the beginning of the second phase 
+is not dissipated in the spreading process (calculated from the position of the 
+tip of the pile) since  the pile keeps deforming by the movements of the 
+particles at the free surface even when the tip comes to rest. 
+This can explain the small difference between the two exponents as observed 
+here.
+
+%\begin{figure}
+%\centerline{
+%\resizebox{0.4\textwidth}{!}{%
+%	\includegraphics{Figures/tau-vs-tf}
+%}}
+%\centerline{
+%\resizebox{0.4\textwidth}{!}{%
+%	\includegraphics{Figures/tf_tau-vs-Ex0}
+%}}
+%\caption{Linear relationship between decay time and runout time after the 
+%transient (a) 
+%and power law evolution of $t'_f$ and $\tau$ as a function of kinetic energy 
+%$E_{x0}$ 
+%in the $x$ component (b).}
+%\label{fig:t_tau_vs_Ex0}
+%\end{figure}
+
+
+%------------------------------------------------------------------------------------
+\subsection{Effect of friction}
+\label{sec:parameters}
+
+The runout distance and time and the dissipation of kinetic energy are 
+controlled by the input energy and collective dynamics of the whole pile, as it 
+was analyzed in the previous sections. But they are expected to depend also on 
+the friction. We performed a series of simulations with different values of 
+base friction. The results are shown in Fig. \ref{fig:para} for the profiles of 
+the pile and evolution of the kinetic energy in time. We see no difference in 
+the results for different values of $e_n = e_t$. This is a consequence of the 
+fact that,  even at large input energies, the pile remains in a dense state so 
+that multiple collisions inside the pile occur at small time scales compared to 
+the deformation time. When the restitution coefficients are increased, more 
+collisions occur during a longer time interval but the overall energy 
+dissipation rate by collisions remains the same. This effect is a seminal 
+example of collective effects which erase the influence of local parameters at 
+the macroscopic scale. In contrast with the restitution coefficients, however, 
+the effect of the friction coefficient is quite important for the runout, as 
+observed in Fig. \ref{fig:para} for both the energy decay and geometrical 
+profile of the pile. Both the runout distance and decay time decrease as the 
+friction coefficient is increased. This effect is much more pronounced at low 
+values of the friction coefficient. The runout time, for example, is reduced by 
+a factor 4 as $\mu_s$ is increased from 0.1 to 0.4 while the runout times and 
+profiles do not change much for $\mu_s = 0.7$. This ``saturation effect" was 
+evidenced in a systematic way in simple shear tests and explained by the 
+observation that the dissipation rate may reach a saturation point where the 
+dilation of the granular material and rolling of the particles change in 
+response to the increase of the friction coefficient \cite{Estrada_2008}.
+
+ 
+%\begin{figure}
+%\centerline{
+%\resizebox{0.4\textwidth}{!}{%
+%	\includegraphics{Figures/E_mu_en_et_vs_t}
+%}(a)}
+%\centerline{
+% \resizebox{0.4\textwidth}{!}{%
+%	\includegraphics{Figures/y_mu_en_et_vs_x}
+%}(b)}
+%\caption{Kinetic energy (a) and pile profile (b) for three values of the 
+%friction coefficient 
+%$\mu_s$ and for different values of the restitution coefficient $e_n = e_t$.}
+%\label{fig:para}
+%\end{figure}
+
+
+%-------------------------------------------------------------------------------
+
+
+The choice of this geometry was motivated by our main goal  to focus on the 
+effect of an input energy on the consecutive dynamics of a granular material.
+For the range of input energies investigated in this pushing test by means of 
+contact dynamics simulations, we observed a power-law dependence of the 
+runout distance and time with non-trivial exponents. This is a central result 
+of this work as it reveals that the power-law behaviour is a generic feature of 
+granular dynamics. The values of the exponents are not simple functions of 
+the geometry. 
+
+We also evidenced two regimes with different values of the exponents: 
+a low-energy regime and a high-energy regime. The first regime  
+reflects mainly the destabilization of the pile by the quake with a runout time 
+independent of the input energy whereas the second regime is governed by the 
+spreading dynamics induced by the higher value of the input energy. We showed 
+that the evolution of the pile in this high-energy regime can be described by a 
+characteristic decay time and the energy available at the end of the first 
+stage where the pile is destabilized by the quake. 
+
+This work may be pursued along two directions: 1) experimental 
+realization of a similar setup with different modes of energy injection and 
+2) investigating the effect of various particle shapes or the presence of an 
+ambient fluid. Although numerical simulations are generally reliable 
+with realistic results found in the past studies of steady flows, we believe 
+that the transients are more sensitive situations than steady states and the  
+experiments are necessary for checking the validation of the results suggested 
+by the simulations. Provided a convenient method is used for supplying kinetic 
+energy homogeneously into a pile, our configuration is also interesting for 
+the investigation of the behavior of a pile immersed in a viscous 
+fluid.
+
+
 \section{Summary}
 Multi-scale simulation of granular column collapse was performed to understand 
 the ability and limitations of continuum models to capture the micro-mechanics 
