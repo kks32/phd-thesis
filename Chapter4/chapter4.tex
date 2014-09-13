@@ -491,7 +491,7 @@ t=3\times\tau_c$)}
 \label{sec:energy}
 The time evolution of the flow exhibited three distinct stages during the 
 collapse of a granular column. Studying the energy dissipation mechanism 
-provides useful insight into the flow dynamics. %TODO: Add figure
+provides useful insight into the flow dynamics. %TODO: Add figure label
 shows 
 the time evolution of potential energy $(E_{p})$ and kinetic energy $(E_{k})$ 
 normalized by the initial potential energy $E_{o}$.
@@ -908,9 +908,8 @@ energy $E_{kx0}$.}
 \begin{figure}[tbhp]
 \centering
 \includegraphics[width=\textwidth]{tpTau}
-\caption{{Linear relationship between decay time and run-out time after the 
+\caption{Linear relationship between decay time and run-out time after the 
 transient as a function of the normalised kinetic energy $E_{kx0}$.}
-.}
 \label{fig:tpTau}
 \end{figure}
 
@@ -946,22 +945,42 @@ observation that the dissipation rate may reach a saturation point where the
 dilation of the granular material and rolling of the particles change in 
 response to the increase of the friction coefficient \cite{Estrada2008}.
 
- 
-%\begin{figure}
-%\centerline{
-%\resizebox{0.4\textwidth}{!}{%
-%	\includegraphics{Figures/E_mu_en_et_vs_t}
-%}(a)}
-%\centerline{
-% \resizebox{0.4\textwidth}{!}{%
-%	\includegraphics{Figures/y_mu_en_et_vs_x}
-%}(b)}
-%\caption{Kinetic energy (a) and pile profile (b) for three values of the 
-%friction coefficient 
-%$\mu_s$ and for different values of the restitution coefficient $e_n = e_t$.}
-%\label{fig:para}
-%\end{figure}
+\begin{figure}[tbhp]
+\centering
+\includegraphics[width=\textwidth]{runout_fric_slope}
+\caption{Effect of friction on the run-out distance as a function of the 
+normalised input kinetic energy $E_{0}$.}
+\label{fig:runout_fric_slope}
+\end{figure}
 
+
+\begin{figure}[tbhp]
+\centering
+\includegraphics[width=\textwidth]{time_fric_slope}
+\caption{Effect of friction on the duration of run-out as a function of the 
+normalised input kinetic energy $E_{0}$.}
+\label{fig:time_fric_slope}
+\end{figure}
+
+-------------------------------------------------------------------------------
+
+\subsection*{Mode of dissipation}
+
+\begin{figure}[tbph]
+\centering
+\includegraphics[width=\textwidth]{Runout_Eo_GU}
+\caption{Effect of input velocity distribution on the run-out distance with 
+normalised input kinetic energy}
+\label{fig:Runout_Eo_GU}
+\end{figure}
+
+\begin{figure}[tbph]
+\centering
+\includegraphics[width=\textwidth]{time_Eo_GU}
+\caption{Effect of input velocity distribution on the duration of run-out with 
+normalised input kinetic energy}
+\label{fig:time_Eo_GU}
+\end{figure}
 
 %-------------------------------------------------------------------------------
 
@@ -1039,6 +1058,8 @@ fluid.
 \caption{Evolution of run-out and duration of flow  for varying material points per cell ($E_0=152mgd$).}
 \label{fig:500}
 \end{figure}
+
+\subsection{Comparison with granular column collapse}
 
 \section{Summary}
 Multi-scale simulation of granular column collapse was performed to understand 
