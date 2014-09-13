@@ -740,38 +740,38 @@ factor for the run-out distance.
 %wall and in (c) a constant velocity gradient is applied to the particles 
 %from bottom to the top of the pile. The snapshots represent 
 %different instants of the evolution for $E_0 = 61 \ mgd$.}
-\label{fig:quake_mod}
+%\label{fig:quake_mod}
 %\end{figure}
 
-%\begin{figure}
-%\centerline{
-%\resizebox{0.4\textwidth}{!}{%
-%	\includegraphics{Figures/Runout_vs_E_log-log}
-%}}
-%\centerline{
-% \resizebox{0.4\textwidth}{!}{%
-%	\includegraphics{Figures/tf_vs_E_log_log}
-%}}
-%\caption{Runout distance (a) and its duration (b) for different 
-%initial values of the kinetic energy. The dashed lines 
-%represent power-law fits to the data points in two different regimes with the 
-%their exponents.}
-%\label{fig:run-out}
-%\end{figure}
+
+
+\begin{figure}[tbph]
+\centering
+\includegraphics[width=\textwidth]{Runout_Eo_MPM_CD_DEM}
+\caption{Run-out distance with normalised input kinetic energy}
+\label{fig:Runout_Eo_MPM_CD_DEM}
+\end{figure}
+
+\begin{figure}[tbph]
+\centering
+\includegraphics[width=\textwidth]{Tf_vs_Eo_Slope}
+\caption{Duration of run-out with normalised input kinetic energy}
+\label{fig:Tf_vs_Eo_Slope}
+\end{figure}
 
 %-------------------------------------------------------------------------------------------
 \subsection{Decay of kinetic energy}
 \label{sec:decay}
 
-The nontrivial evolution of the pile geometry  in two regimes suggests that the 
-energy supplied to the pile is not simply dissipated by shear and friction with 
-the bottom plane. We also need to split the kinetic energy into its different 
-components ($x$, $y$ and rotation) of the velocity field. The input energy 
-is in the $x$ component, but due to both the creation of a cavity next to the 
-left wall and the rolling of the particles down the free surface of the pile 
-and between particles, a fraction of the energy is first transferred to the $y$ 
-component of the velocity field and dissipated  during the transient. 
-In this section, we analyze these features  in order to arrive in a picture 
+The non-trivial evolution of the pile geometry  in two regimes suggests that 
+the energy supplied to the pile is not simply dissipated by shear and friction 
+with the bottom plane. We also need to split the kinetic energy into its 
+different components ($x$, $y$ and rotation) of the velocity field. The input 
+energy is in the $x$ component, but due to both the creation of a cavity next 
+to the left wall and the rolling of the particles down the free surface of the 
+pile and between particles, a fraction of the energy is first transferred to 
+the $y$ component of the velocity field and dissipated  during the transient. 
+In this section, we analyse these features  in order to arrive in a picture 
 consistent with the evolution of the pile shape.  
 
 The decay of the total kinetic energy $E$ is displayed in 
@@ -831,24 +831,19 @@ $\simeq 12 \ (d/g)^{0.5}$, which is of the same order as $t_1$. As to the
 rotational energy, its contribution both to the transient stage and spreading 
 appears to be negligible. 
 
-%\begin{figure}
-%\centerline{
-%\resizebox{0.4\textwidth}{!}{%
-%	\includegraphics{Figures/ExoE0_vs_t}
-%}}
-%\centerline{
-% \resizebox{0.4\textwidth}{!}{%
-%	\includegraphics{Figures/EyoE0_vs_t}
-%}}
-%\centerline{
-%\resizebox{0.4\textwidth}{!}{%
-%	\includegraphics{Figures/EtoE0_vs_t}
-%}}
-%\caption{Evolution of kinetic energy with time. (a) ``$horizontal$" direction; 
-%(b) "$vertical$" 
-%direction and (c) ``$rotational$" kinetic energies as a function of time.}
-%\label{fig:E_xyt_vs_t}
-%\end{figure}
+\begin{figure}[tbhp]
+\centering
+\includegraphics[width=\textwidth]{Normalised_KEx_Slope}
+\caption{Evolution of normalised horizontal kinetic energy with time}
+\label{fig:Normalised_KEx_Slope}
+\end{figure}
+
+\begin{figure}[tbhp]
+\centering
+\includegraphics[width=\textwidth]{Normalised_KEy_Slope}
+\caption{Evolution of normalised vertical kinetic energy with time}
+\label{fig:Normalised_KEy_Slope}
+\end{figure}
 
 To analyze the second phase in the second regime, we now consider only the 
 kinetic energy $E'_{x0}$ available at the end of the transient. This energy 
@@ -900,22 +895,25 @@ particles at the free surface even when the tip comes to rest.
 This can explain the small difference between the two exponents as observed 
 here.
 
-%\begin{figure}
-%\centerline{
-%\resizebox{0.4\textwidth}{!}{%
-%	\includegraphics{Figures/tau-vs-tf}
-%}}
-%\centerline{
-%\resizebox{0.4\textwidth}{!}{%
-%	\includegraphics{Figures/tf_tau-vs-Ex0}
-%}}
-%\caption{Linear relationship between decay time and run-out time after the 
-%transient (a) 
-%and power law evolution of $t'_f$ and $\tau$ as a function of kinetic energy 
-%$E_{x0}$ 
-%in the $x$ component (b).}
-%\label{fig:t_tau_vs_Ex0}
-%\end{figure}
+
+\begin{figure}[tbhp]
+\centering
+\includegraphics[width=\textwidth]{tp_tau_mgd}
+\caption{Power law evolution of $t'_f$ and $\tau$ as a function of kinetic 
+energy $E_{kx0}$.}
+\label{fig:tp_tau_mgd}
+\end{figure}
+
+
+\begin{figure}[tbhp]
+\centering
+\includegraphics[width=\textwidth]{tpTau}
+\caption{{Linear relationship between decay time and run-out time after the 
+transient as a function of the normalised kinetic energy $E_{kx0}$.}
+.}
+\label{fig:tpTau}
+\end{figure}
+
 
 
 %------------------------------------------------------------------------------------
