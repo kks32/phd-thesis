@@ -148,8 +148,9 @@ unsteady nature of the flow, the grains get dispersed on the horizontal plane
 as discrete bodies start to separate from the main mass, hence the run-out 
 distance is calculated as the position of the farthest grain which has at least 
 one contact with the main mass.
+
 \begin{table}
-\caption{Micromechanical parameters used in Discrete Element Method simulations}
+\caption{Micromechanical parameters used in DEM simulations}
 \label{table:MDdata}
 \centering
 \begin{tabular}{ll}
@@ -165,6 +166,7 @@ Wall friction coefficient & 0.466 \\
 Coefficient of restitution, $\Gamma$ & 0.6 \\ \bottomrule
 \end{tabular}
 \end{table}
+
 A plane strain collapse of granular column is simulated as a continuum using 
 MPM. The effect of number of material points on the accuracy of the simulation 
 was discussed in Chapter 4.~\citet{Guilkey2003} suggests at least four 
@@ -184,12 +186,11 @@ Discrete Element Method.
 \begin{tabular}{ll}
 \toprule
 \textbf{Parameter} & \textbf{Value} \\ \midrule
-Number of material points representing an actual particle & 4 \\
 Material point spacing & 0.575 \si{\mm} \\
-Number of material points per mesh & 16 \\
+Number of material points per cell & 16 \\
 Young's Modulus, E & $1.98 \times 10 ^{6}$ \si{\Pa} \\
 Poisson's ratio, $\nu$ & 0.22 to 0.24 \\ 
-Friction angle, $\phi$ & $23.0\si{\degree}$ \\
+Friction angle, $\phi$ & $23.2 \pm 0.2\si{\degree}$ \\
 Dilatancy angle, $\varPhi$ & $0$\si{\degree} \\
 Density, $\rho$ & 1800 \si{\kg\per\m\cubed}\\
 Wall friction & 0.466 \\
@@ -306,7 +307,7 @@ ested, the dissipation process is more complex due to
 the free-fall dynamics. Indeed the vertical acceleration
 of the grains induces a non-trivial mass distribution in
 the flow while propagating. This mass distribution plays
-a dominant role in the power-law scaling law obeyed by the runout.
+a dominant role in the power-law scaling law obeyed by the run-out.
 
 \subsection{Flow evolution and internal flow structure}
 For a fixed granular material and substrate properties, the flow dynamics and 
@@ -597,7 +598,7 @@ does not affect the early vertical dynamics, nor the power-law dependence,
 it controls the effective frictional properties of the flow,
 and its internal structure. It is interesting to note that
 the details of the structure of the flow do not influence
-the final runout dependence, and thus seem to play a
+the final run-out dependence, and thus seem to play a
 marginal role in the overall behaviour of the spread-
 ing. This could explain why simple shallow-water model
 with basic rheology but where the free-fall dynamics was
@@ -623,6 +624,75 @@ softens that of~\citet{Lube2005}.
 
 \section{Slopes subjected to impact loading}
 
+
+Transient granular flows occur very often in nature. 
+Well-known examples are rockfalls, debris flows, 
+and aerial and submarine avalanches. They form a major element of 
+lanscape reshape and their high destructive potential is a 
+substantial factor of risk. Natural granular flows may be triggered 
+as a result of different processes such as gradual degradation,   
+induced by weathering or chemical reactions, liquefaction    
+and external forces such as earthquakes.          
+
+Granular flows have been studied in laboratory experiments in different 
+geometries such as tilted piles leading to slope failure and surface avalanches 
+\citep{Legros2002, Iverson1997} or by considering vertical columns 
+of grains collapsing and spreading under their own weight 
+\citep{Lajeunesse2004, 
+Lajeunesse2005}. The dynamics observed in the experiments is often nontrivial 
+in the sense that the final configurations after the dissipation of the whole 
+kinetic energy  
+can not be readily predicted by means of simple laws based on the Mohr-Coulomb 
+nature 
+of the material. For example, in collapsing columns, the run-out distance 
+is found to obey a power-law dependence upon the initial aspect ratio of the 
+column. 
+
+The observed nontrivial transient dynamics is often correctly 
+reproduced by the discrete element method (DEM), which provides 
+a powerful tool for the grain-scale analysis of the 
+trigger and its subsequent dynamics \citep{Staron2005, Staron2009}. 
+However, even in simplified geometries such as those 
+investigated in the experiments, the DEM suffers from a serious 
+short-coming in the number of particles that can be simulated in 
+a reasonnable time. This is a critical issue when more complex geometries or 
+long-time granular processes are considered, or when particle size 
+distributions are broad. For this reason, most numerical studies 
+are performed in 2D or simple particles shapes and size distributions 
+are considered. 
+
+It is also obvious that classical modelling strategies based on 
+the finite element method (FEM) cannot be used for the 
+simulation of very large deformations. In various application of FEM, 
+this problem is treated by means of technical tools such 
+as re-meshing. Such mthods are, however, not robust and lead 
+to round-off errors and mesh-senstitivity. In contrast, the so-called 
+Material Point Method (MPM) is an alternative approach for 
+continuum problems that allows for indefinitely large deformations 
+without re-meshing \cite{Sulski??}. In this method, the material points carry 
+the information 
+on state variables and a background fixe grid is used to solve the governing 
+equations. 
+The information between the material points and the grid is exchanged via 
+suitable shape functions. The MPM has been applied with success to 
+a number of solid mechanics problems and its theoretical foundations 
+have recently been investigated by several authors. 
+
+In this paper, we are concerned with the ability of the MPM, as a continuum 
+approach, to reproduce the evolution of a granular pile 
+under its own weight or when destabilized by energy input. In particular, 
+a central issue is whether power-law dependence of the run-out distance 
+and timew ith respect to the initial geometry or energy can be reproduced 
+by a simple prescription of the Mohr-Coulomb plastic behaviour within a  
+MPM code. We therefore perform extensive simulations by varying continuously 
+different input parameters and compare the data with those obtained from 
+DEM simulations of the same system. We compare in detail the evolution of 
+the profile of the pile and its total kinetic energy between the two methods 
+and for different initial states. As we shall see, the MPM can successfully 
+simulate the transient evolution with a single input parameter, namely the 
+internal angle of friction. This opens the way to the simulation of 
+geological-scale flows on complex topographies.  
+  
 
 \subsection{Numerical procedures}
 \label{sec:num}
@@ -1029,10 +1099,10 @@ the effect of the friction coefficient is quite important for the run-out, as
 observed in Fig. \ref{fig:para} for both the energy decay and geometrical 
 profile of the pile. Both the run-out distance and decay time decrease as the 
 friction coefficient is increased. This effect is much more pronounced at low 
-values of the friction coefficient. The run-out time, for example, is reduced by 
-a factor 4 as $\mu_s$ is increased from 0.1 to 0.4 while the run-out times and 
-profiles do not change much for $\mu_s = 0.7$. This ``saturation effect" was 
-evidenced in a systematic way in simple shear tests and explained by the 
+values of the friction coefficient. The run-out time, for example, is reduced 
+by a factor 4 as $\mu_s$ is increased from 0.1 to 0.4 while the run-out times 
+and profiles do not change much for $\mu_s = 0.7$. This ``saturation effect" 
+was evidenced in a systematic way in simple shear tests and explained by the 
 observation that the dissipation rate may reach a saturation point where the 
 dilation of the granular material and rolling of the particles change in 
 response to the increase of the friction coefficient \cite{Estrada2008}.
