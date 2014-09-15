@@ -16,7 +16,7 @@ represents micro-structural effects such as grain rearrangement, and the
 Figure~\ref{fig:multiscale}). Conventionally, granular flows are modelled as a 
 continuum because they exhibit many collective phenomena. However, on a grain 
 scale, the granular materials exhibit complex solid-like and/or fluid-like 
-behaviour.Recent studies, however, suggest that a continuum law may be unable 
+behaviour. Recent studies, however, suggest that a continuum law may be unable 
 to capture the effect of inhomogeneities at the grain scale level, such as 
 orientation of force chains, which are micro-structural effects. Discrete 
 element methods (DEM) are capable of simulating these micro-structural effects, 
@@ -77,36 +77,48 @@ rectangular channel,~\citep{Lajeunesse2004}}
 \label{fig:exp}
 \end{figure}
 
-%\begin{table}[tbhp]
-%\caption{Material properties of glass ballotini,~\citep{Lajeunesse2004}}
-%\label{table:mat_prop}
-%\centering
-%\begin{tabular}{ll}
-%\toprule
-%\textbf{Parameter} & \textbf{Value} \\ \midrule
-%Mean diameter & 1.15 \si{\mm} \\
-%Repose angle & 22$\pm 0.5$\si{\degree} \\
-%Avalanche angle & 27.4$\pm 0.5$\si{\degree} \\
-%Wall friction angle & 24.8$\pm 0.2$\si{\degree}\\
-%\bottomrule
-%\end{tabular}
-%\end{table}
-
-\begin{figure}[tbhp]
+\begin{table}[tbhp]
+\caption{Material properties of glass ballotini~\citep{Lajeunesse2004}}
+\label{table:mat_prop}
 \centering
-\includegraphics[width=0.45\textwidth]{simple_shear}
-\caption{Shear test periodic boundary condition}
-\label{fig:shear}
-\end{figure}
+\begin{tabular}{ll}
+\toprule
+\textbf{Parameter} & \textbf{Value} \\ \midrule
+Mean diameter & 1.15 \si{\mm} \\
+Repose angle & 22$\pm 0.5$\si{\degree} \\
+Avalanche angle & 27.4$\pm 0.5$\si{\degree} \\
+Wall friction angle & 24.8$\pm 0.2$\si{\degree}\\
+\bottomrule
+\end{tabular}
+\end{table}
 
 In this study, numerical simulations of the granular column collapse 
 experiments are performed by varying the initial aspect ratio of the column. 
-Discrete Element Method simulations involve modelling the granular column as 
+DEM simulations involve modelling the granular column as 
 individual particles. The granular column is prepared by randomly packing 
 poly-disperse grains on a regular lattice and allowing them to undergo free 
-fall due to gravity, forming a randomly packed granular column (see \mynote{Add 
-Chapter reference} %TODO: Add 
-%Chapter). 
+fall due to gravity, forming a randomly packed granular column 
+%TODO: Add Chapter reference. 
+
+\begin{figure}[tbhp]
+\centering
+\begin{subfigure}[b]{0.495\textwidth}
+\centering
+\includegraphics[width=\textwidth]{a4b4r18}
+\caption{DEM sample prepared using ballistic deposition}
+\label{fig:a4b4r18}
+\end{subfigure}
+\begin{subfigure}[b]{0.495\textwidth}
+\centering
+\includegraphics[width=\textwidth]{PSD}
+\caption{DEM grains generated using the cumulative $\beta$ distribution}
+\label{fig:PSD}
+\end{subfigure}
+\caption{DEM sample characteristics}
+\label{fig:DEM_Sample}
+\end{figure}
+
+
 The grains are allowed to reach a stable equilibrium after undergoing some 
 elastic compressions due to gravity. 
 The overlaps between particles are determined by the stiffness 
@@ -136,7 +148,7 @@ for the materials involved:
 \textit{m}_{\textit{ij}}=\frac{\textit{m}_{\textit{i}}\textit{m}_{\textit{j}}}{\textit{m}_{\textit{i}}
  + \textit{m}_{\textit{j}}} 
 \end{align}
-10 Discrete Element Method simulations were carried out with columns having 
+10 DEM simulations were carried out with columns having 
 different initial aspect ratio `\textit{a}', varying from 0.2 to 10. In order 
 to study the effect of crystallisation on the run-out distance, 10 more MD 
 simulations were carried out on granular columns composed of grains arranged on 
@@ -177,7 +189,27 @@ difference between the particle and continuum scale description of granular
 flows. The parameters used for the continuum analyses are presented in 
 Table.~\ref{table:MPMData}. The Young's modulus of the granular assembly is 
 determined by performing a uni-axial compression of the granular column in 
-Discrete Element Method.
+DEM.
+
+\begin{figure}
+\centering
+\begin{subfigure}[b]{0.4\textwidth}
+\centering
+\includegraphics[width=\textwidth]{simple_shear}
+\caption{Boundary conditions}
+\label{fig:shear}
+\end{subfigure}
+\begin{subfigure}[b]{0.575\textwidth}
+\centering
+\includegraphics[width=\textwidth]{Sxy_vs_Syy}
+\caption{Evaluating the critical state friction angle from periodic shear 
+test}
+\label{fig:Sxy_vs_Syy}
+\end{subfigure} 
+\caption{Periodic shear test}
+\label{fig:shear_test}
+\end{figure}
+
 
 \begin{table}
 \caption{Parameters used in continuum simulations}
@@ -197,13 +229,14 @@ Wall friction & 0.466 \\
 Time step increment & $1.0 \times 10^{-6}$ \si{\second}\\ \bottomrule
 \end{tabular}
 \end{table}
+
 \subsection{Deposit morphology}
 The variation of the normalized final run-out distance, $\Delta L = 
 (L_{\textit{f}}-L_{\textit{i}})/L_{\textit{i}}$, with the initial aspect ratio 
 `a' of the column is presented in Figure~\ref{fig:run-out}. Similar to the 
 experimental results, a power law relationship is observed between the 
 normalized run-out distance and the initial aspect ratio of the column. 
-However, the molecular dynamics simulations with random packing of grains 
+However, the discrete element simulations with random packing of grains 
 overestimate the run-out distance by a factor of 1.2. In the present study, the 
 following scaling law for the run-out is observed.
 \begin{align}
@@ -215,7 +248,7 @@ following scaling law for the run-out is observed.
 \end{align}
 The run-out distance observed in the case of hexagonal packing of grains 
 matches the experimental run-out distance observed by~\citet{Lajeunesse2004}. 
-However, the Discrete Element Method simulations performed with random packing 
+However, the DEM simulations performed with random packing 
 predict longer run-out distances in comparison with the experimental data. The 
 difference in the run-out distance can be attributed to the variation in the 
 packing of grains in the granular column. Although, experimental data 
@@ -260,7 +293,7 @@ collapse, it is essential to study the relation between the final collapsed
 height of the granular column and its initial aspect ratio. 
 Figure~\ref{fig:height} shows the variation of the normalized final height with 
 the initial aspect ratio of the column. The final height predicted by the 
-Discrete Element Method and the MPM simulations matches the experimental data 
+DEM and the MPM simulations matches the experimental data 
 for 
 granular columns with aspect ratio below 0.7, which indicates that the initial 
 density of the column has negligible effect on the final collapse height. The 
@@ -379,8 +412,8 @@ aspect ratio.
 \begin{figure}[tbhp]
 \centering
 \includegraphics[width=\textwidth]{a04tc}
-\caption{Velocity profile of a granular column collapse ($`a' = 0.4 \& 
-t=\tau_c$)}
+\caption{Velocity profile of a granular column collapse ($`a' = 0.4$ \& 
+$t=\tau_c$)}
 \label{fig:a04tc}
 \end{figure}
 
@@ -389,8 +422,8 @@ t=\tau_c$)}
 \begin{figure}[tbhp]
 \centering
 \includegraphics[width=\textwidth]{a04f}
-\caption{Velocity profile of a granular column collapse ($`a' = 0.4 \& 
-t=3\times\tau_c$)}
+\caption{Velocity profile of a granular column collapse ($`a' = 0.4$ \& 
+$t=3\times\tau_c$)}
 \label{fig:a04f}
 \end{figure}
 
@@ -482,36 +515,38 @@ parameters on the deposit morphology.
 \begin{figure}[tbhp]
 \centering
 \includegraphics[width=\textwidth]{a6tc}
-\caption{Velocity profile of a granular column collapse ($`a' = 6 \& 
-t=\tau_c$)}
+\caption{Velocity profile of a granular column collapse ($`a' = 6$ \& 
+$t=\tau_c$)}
 \label{fig:a6tc}
 \end{figure}
 
 \begin{figure}[tbhp]
 \centering
 \includegraphics[width=\textwidth]{a6f}
-\caption{Velocity profile of a granular column collapse ($`a' = 6 \& 
-t=3\times\tau_c$)}
+\caption{Velocity profile of a granular column collapse ($`a' = 6$ \& 
+$t=3\times\tau_c$)}
 \label{fig:a6f}
 \end{figure}
 
-%\begin{landscape}
-%\centering
 
-%\end{landscape}
 
 \begin{figure}[tbhp]
+\centering
+\begin{subfigure}[b]{0.975\textwidth}
 \centering
 \includegraphics[width=\textwidth]{flowa04}
 \caption{Flow evolution of a column with $`a'=0.4$}
 \label{fig:flowa04}
-\end{figure}
-
-\begin{figure}[tbhp]
+\end{subfigure}
+\\
+\begin{subfigure}[b]{0.975\textwidth}
 \centering
 \includegraphics[width=\textwidth]{flowa6}
 \caption{Flow evolution of a column with $`a'=6$}
 \label{fig:flowa6}
+\end{subfigure}
+\caption{Flow evolution of granular column collapse}
+\label{fig:flow_column}
 \end{figure}
 
 \subsection{Energy dissipation mechanism}
@@ -561,16 +596,46 @@ for different aspect ratios.
 
 \begin{figure}[tbhp]
 \centering
+\begin{subfigure}[b]{0.975\textwidth}
 \includegraphics[width=\textwidth]{a04_energy}
 \caption{Energy evolution of a column with $`a'=0.4$}
 \label{fig:a04_energy}
-\end{figure}
-
-\begin{figure}[tbhp]
+\end{subfigure}
+\\
+\begin{subfigure}[b]{0.975\textwidth}
 \centering
 \includegraphics[width=\textwidth]{a6_energy}
 \caption{Energy evolution of a column with $`a'=6$}
 \label{fig:a6_energy}
+\end{subfigure}
+\caption{Energy evolution of granular column collapse}
+\label{fig:column_energy}
+\end{figure}
+
+\begin{figure}[tbhp]
+\centering
+\begin{subfigure}[b]{0.975\textwidth}
+\includegraphics[width=\textwidth]{flowa04muI}
+\caption{Flow evolution of a column with $`a'=0.4$ using $\mu(I)$ rheology}
+\label{fig:flowa04muI}
+\end{subfigure}
+\\
+\begin{subfigure}[b]{0.975\textwidth}
+\centering
+\includegraphics[width=\textwidth]{flowa6muI}
+\caption{Flow evolution of a column with $`a'=6$ using $\mu(I)$ rheology}
+\label{fig:flowa6muI}
+\end{subfigure}
+\caption{Flow evolution of granular column collapse using $\mu(I)$ rheology}
+\label{fig:flow_muI}
+\end{figure}
+
+\begin{figure}[tbhp]
+\centering
+\includegraphics[width=\textwidth]{muI}
+\caption{Evolution of inertial number with time for columns with $`a'=0.4$ and 
+$`a'=6$}
+\label{fig:muI}
 \end{figure}
 
 \subsection{Role of initial grain properties}
@@ -621,6 +686,128 @@ dependence. This corroborates the conclusion
 of~\citet{Lajeunesse2004,Balmforth2005} and 
 softens that of~\citet{Lube2005}.
 
+\begin{figure}[tbhp]
+\centering
+\includegraphics[width=\textwidth]{runout_height_dense_r18}
+\caption{Effect of density on run-out evolution $`a' = 0.8$}
+\label{fig:runout_height_dense_r18}
+\end{figure}
+
+\begin{figure}[tbhp]
+\centering
+\begin{subfigure}[b]{0.75\textwidth}
+\centering
+\includegraphics[width=\textwidth]{Energy_dense_r18}
+\caption{Evolution of potential and kinetic energy}
+\label{fig:Energy_dense_r18}
+\end{subfigure}
+\\
+\begin{subfigure}[b]{0.75\textwidth}
+\centering
+\includegraphics[width=\textwidth]{KExy_dense_r18}
+\caption{Effect of kinetic energy}
+\label{fig:KExy_dense_r18}
+\end{subfigure}
+\caption{Effect of density on energy evolution $a = 0.8$}
+\label{fig:Energy_density_r18}
+\end{figure}
+
+
+\begin{figure}[tbhp]
+\centering
+\begin{subfigure}[b]{0.95\textwidth}
+\centering
+\includegraphics[width=\textwidth]{tesselation}
+\caption{Voronoi Tesselation}
+\label{fig:tesselation}
+\end{subfigure}
+\\
+\begin{subfigure}[b]{0.95\textwidth}
+\centering
+\includegraphics[width=\textwidth]{local_density}
+\caption{Local packing density (dark - dense and light - loose)}
+\label{fig:local_density}
+\end{subfigure}
+\caption{Voronoi tessellation to average bulk properties}
+\label{fig:voro}
+\end{figure}
+
+
+\begin{figure}[tbhp]
+\centering
+\includegraphics[width=\textwidth]{voro_r18}
+\caption{Evolution of local packing density $`a' = 0.8$}
+\label{fig:voro_r18}
+\end{figure}
+
+\begin{figure}[tbhp]
+\centering
+\includegraphics[width=\textwidth]{runout_height_dense_r6}
+\caption{Effect of density on run-out evolution $`a' = 0.8$ (poly-dispersity 
+`r' = 6)}
+\label{fig:runout_height_dense_r6}
+\end{figure}
+
+
+\begin{figure}[tbhp]
+\centering
+\begin{subfigure}[b]{\textwidth}
+\centering
+\includegraphics[width=\textwidth]{dense_a08_r6_final}
+\caption{Dense initial packing}
+\label{fig:dense_a08_r6_final}
+\end{subfigure}
+\\
+\begin{subfigure}[b]{\textwidth}
+\centering
+\includegraphics[width=\textwidth]{loose_a08_r6_final}
+\caption{Loose initial packing}
+\label{fig:loose_a08_r6_final}
+\end{subfigure}
+\caption{Snapshots of granular column collapse $t = 6 \tau_c$}
+\label{fig:density_r6}
+\end{figure}
+
+
+\begin{figure}[tbhp]
+\centering
+\begin{subfigure}[b]{0.75\textwidth}
+\centering
+\includegraphics[width=\textwidth]{Energy_dense_r6}
+\caption{Evolution of potential and kinetic energy}
+\label{fig:Energy_dense_r6}
+\end{subfigure}
+\\
+\begin{subfigure}[b]{0.75\textwidth}
+\centering
+\includegraphics[width=\textwidth]{voro_r6}
+\caption{Evolution of packing density}
+\label{fig:voro_r6}
+\end{subfigure}
+\caption{Effect of density on energy and packing fraction evolution $`a' = 0.8$ 
+(poly-dispersity `r' = 6)}
+\label{fig:Energy_voro_r6}
+\end{figure}
+
+
+\begin{figure}[tbhp]
+\centering
+\begin{subfigure}[b]{0.95\textwidth}
+\includegraphics[width=\textwidth]{runout_height_dense_a6}
+\caption{Effect of density on run-out evolution}
+\label{fig:runout_height_dense_a6}
+\end{subfigure}
+\\
+\begin{subfigure}[b]{0.95\textwidth}
+\centering
+\includegraphics[width=\textwidth]{Energy_dense_a6}
+\caption{Effect of density on energy evolution}
+\label{fig:Energy_dense_a6}
+\end{subfigure}
+\caption{Effect of density on run-out behaviour and energy evolution $`a' = 
+0.6$}
+\label{fig:Density_a6}
+\end{figure}
 
 \section{Slopes subjected to impact loading}
 
@@ -649,7 +836,7 @@ is found to obey a power-law dependence upon the initial aspect ratio of the
 column. 
 
 The observed nontrivial transient dynamics is often correctly 
-reproduced by the discrete element method (DEM), which provides 
+reproduced by the DEM, which provides 
 a powerful tool for the grain-scale analysis of the 
 trigger and its subsequent dynamics \citep{Staron2005, Staron2009}. 
 However, even in simplified geometries such as those 
@@ -719,14 +906,14 @@ mean packing fraction $\simeq 0.83$.
 
 
 \begin{table}[tbhp]
-\caption{DEM simulation of simple shear test properties,~\citep{Mutabaruka2013}}
+\caption{DEM simulation of simple shear test~\citep{Mutabaruka2013}}
 \label{table:CD_Shear}
 \centering
 \begin{tabular}{ll}
 \toprule
 \textbf{Parameter} & \textbf{Value} \\ \midrule
-Mean grain diameter & $\approx 0.002455$\si{\m} \\
-Grain diameter $[d_{max}:d_{min}]$ & [0.002991:0.002003]\si{\m} \\
+Mean grain diameter & $\approx 2.455$~\si{\mm} \\
+Grain diameter $[d_{min}:d_{max}]$ & [2.0, 3.0]~\si{\mm} \\
 Friction co-efficient & 0.4\\
 Grain density & 2600\si{\kg\per\meter\cubed} \\
 Restitution co-efficient  & $0$\\
@@ -764,7 +951,7 @@ It will be normalized by the initial extension $R_0$ of the pile, as in
 the experiments of collapsing columns. The total run-out duration $t_f$ is the 
 time that the pile takes to reach its final run-out distance $R_f$.       
 
-For grain scale simulations, classical Discrete Element Method and Contact 
+For grain scale simulations, classical DEM and Contact 
 Dynamics approach is used. 
 A detailed description of the Contact Dynamics 
 method can be found in \cite{Moreau1993,Jean1999,Radjai2009,Radjai2011}. 
@@ -773,7 +960,7 @@ and a nonsmooth formulation of mutual exclusion and dry friction between
 particles. The CD method requires no elastic repulsive potential and no 
 smoothing of the Coulomb friction law for the determination of forces. 
 For this reason, the simulations can be performed with large time steps 
-compared to molecular dynamics simulations. The unknown variables are particle 
+compared to discrete element simulations. The unknown variables are particle 
 velocities and contact forces, which are calculated at each time step by taking 
 into account the conservation of momenta and the constraints due to mutual 
 exclusion between particles and the Coulomb friction. We use an iterative 
@@ -786,19 +973,27 @@ the evolution of kinetic energy and the profile of the pile.
 The natural units of our system are the mean particle diameter $d$, 
 mean particle mass $m$ and gravity $g$. For this reason, 
 in the following we normalize the lengths by $d$, the times by $(d/g)^{1/2}$, 
-the velocities by $(gd)^{1/2}$ and the energies by $mgd$.    
-Video samples of the simulations analyzed in this paper
-can be found by following the link http://www.cgp-gateway.org/ref018.
+the velocities by $(gd)^{1/2}$ and the energies by $mgd$.
 
 \begin{figure}[tbph]
 \centering
-\includegraphics[width=\textwidth]{Sxy_vs_Syy_Slope}
+\begin{subfigure}[t]{0.475\textwidth}
+\includegraphics[width=0.95\textwidth]{Sxy_vs_Syy_Slope}
 \caption{Evaluating the critical state friction angle from periodic shear 
-test~\citep{Mutabaruka2013}.}
+test.}
 \label{fig:Sxy_vs_Syy_Slope}
+\end{subfigure}
+%
+\begin{subfigure}[t]{0.475\textwidth}
+\includegraphics[width=0.95\textwidth]{mu_vs_I}
+\caption{Evolution of Inertial number with friction $\mu$}
+\label{fig:mu_vs_I}
+\end{subfigure}
+\caption{Periodic shear test using CD~\citep{Mutabaruka2013}.}
+\label{fig:Shear_Test_Slope}
 \end{figure}
 
-%-------------------------------------------------------------------------------------------
+%-------------------------------------------------------------------------------
 \subsection{Evolution of pile geometry and run-out}
 \label{sec:evolution}
 
@@ -892,33 +1087,42 @@ factor for the run-out distance.
 
 \begin{figure}[tbph]
 \centering
+\begin{subfigure}[b]{0.975\textwidth}
 \includegraphics[width=\textwidth]{Gradient_Slope_Profile_200J}
 \caption{Snapshots of MPM simulations of the evolution of granular pile 
+subjected to a gradient impact energy.}
+\label{fig:Gradient_Slope_Profile_200J}
+\end{subfigure}
+\\
+\begin{subfigure}[b]{0.975\textwidth}
+\centering
+\includegraphics[width=\textwidth]{Gradient_Slope_CD_200J}
+\caption{Snapshots of CD simulations of the evolution of granular pile 
+subjected to a gradient impact energy~\citep{Mutabaruka2013}.}
+\label{fig:Gradient_Slope_CD_200J}
+\end{subfigure}
+\caption{Snapshots of MPM and CD simulations of evolution of granular pile 
 subjected to a gradient impact energy $E_0 = 61 \ mgd$.}
 \label{fig:Gradient_Slope_Profile_200J}
 \end{figure}
 
 \begin{figure}[tbph]
 \centering
-\includegraphics[width=\textwidth]{Gradient_Slope_CD_200J}
-\caption{Snapshots of CD simulations of the evolution of granular pile 
-subjected to a gradient impact energy $E_0 = 61 \ mgd$~\citep{Mutabaruka2013}.}
-\label{fig:Gradient_Slope_CD_200J}
-\end{figure}
-
-
-\begin{figure}[tbph]
+\begin{subfigure}[b]{0.975\textwidth}
 \centering
 \includegraphics[width=\textwidth]{Runout_Eo_MPM_CD_DEM}
 \caption{Run-out distance with normalised input kinetic energy}
 \label{fig:Runout_Eo_MPM_CD_DEM}
-\end{figure}
-
-\begin{figure}[tbph]
+\end{subfigure}
+\\
+\begin{subfigure}[b]{0.975\textwidth}
 \centering
 \includegraphics[width=\textwidth]{Tf_vs_Eo_Slope}
 \caption{Duration of run-out with normalised input kinetic energy}
 \label{fig:Tf_vs_Eo_Slope}
+\end{subfigure}
+\caption{Run-out behaviour of a pile subjected a gradient impact energy}
+\label{fig:Slope}
 \end{figure}
 
 %-------------------------------------------------------------------------------------------
@@ -952,23 +1156,20 @@ the beginning of run-out, i.e. for $t < t_1 \simeq 7.5 \ (d/g)^{0.5}$.
 
 \begin{figure}[tbhp]
 \centering
+\begin{subfigure}[b]{0.975\textwidth}
 \includegraphics[width=\textwidth]{Energy_Slope}
 \caption{Evolution of total kinetic energy with time}
 \label{fig:energy_slope}
-\end{figure}
-
-\begin{figure}[tbhp]
-\centering
-\includegraphics[width=\textwidth]{Normalised_Energy_Slope}
-\caption{Evolution of normalised kinetic energy with time}
-\label{fig:Normalised_Energy_Slope}
-\end{figure}
-
-\begin{figure}[tbhp]
+\end{subfigure}
+\\
+\begin{subfigure}[b]{0.975\textwidth}
 \centering
 \includegraphics[width=\textwidth]{Normalised_Energy_Time_Slope}
 \caption{Evolution of normalised kinetic energy with normalised time}
 \label{fig:Normalised_Energy_Time_Slope}
+\end{subfigure}
+\caption{Evolution of kinetic energy with time}
+\label{fig:Energy_Time_Slope}
 \end{figure}
 
 ~\Cref{fig:E_xyt_vs_t} displays the evolution of kinetic energy 
@@ -995,16 +1196,20 @@ appears to be negligible.
 
 \begin{figure}[tbhp]
 \centering
+\begin{subfigure}[b]{0.975\textwidth}
 \includegraphics[width=\textwidth]{Normalised_KEx_Slope}
 \caption{Evolution of normalised horizontal kinetic energy with time}
 \label{fig:Normalised_KEx_Slope}
-\end{figure}
-
-\begin{figure}[tbhp]
+\end{subfigure}
+\\
+\begin{subfigure}[b]{0.975\textwidth}
 \centering
 \includegraphics[width=\textwidth]{Normalised_KEy_Slope}
 \caption{Evolution of normalised vertical kinetic energy with time}
 \label{fig:Normalised_KEy_Slope}
+\end{subfigure}
+\caption{Evolution of vertical and horizontal kinetic energy with time}
+\label{fig:Normalised_KEx_KEy_Slope}
 \end{figure}
 
 To analyze the second phase in the second regime, we now consider only the 
@@ -1060,21 +1265,24 @@ here.
 
 \begin{figure}[tbhp]
 \centering
+\begin{subfigure}[b]{0.975\textwidth}
 \includegraphics[width=\textwidth]{tp_tau_mgd}
 \caption{Power law evolution of $t'_f$ and $\tau$ as a function of kinetic 
 energy $E_{kx0}$.}
 \label{fig:tp_tau_mgd}
-\end{figure}
-
-
-\begin{figure}[tbhp]
+\end{subfigure}
+\\
+\begin{subfigure}[b]{0.975\textwidth}
 \centering
 \includegraphics[width=\textwidth]{tpTau}
 \caption{Linear relationship between decay time and run-out time after the 
 transient as a function of the normalised kinetic energy $E_{kx0}$.}
 \label{fig:tpTau}
+\end{subfigure}
+\caption{Decay time and run-out time as a function of the normalised kinetic 
+energy $E_{kx0}$.}
+\label{fig:tp_Tau}
 \end{figure}
-
 
 
 %------------------------------------------------------------------------------------
@@ -1109,19 +1317,21 @@ response to the increase of the friction coefficient \cite{Estrada2008}.
 
 \begin{figure}[tbhp]
 \centering
+\begin{subfigure}[b]{0.95\textwidth}
+\centering
 \includegraphics[width=\textwidth]{runout_fric_slope}
-\caption{Effect of friction on the run-out distance as a function of the 
-normalised input kinetic energy $E_{0}$.}
+\caption{Effect of friction on the run-out distance}
 \label{fig:runout_fric_slope}
-\end{figure}
-
-
-\begin{figure}[tbhp]
+\end{subfigure}
+\\
+\begin{subfigure}[b]{0.95\textwidth}
 \centering
 \includegraphics[width=\textwidth]{time_fric_slope}
-\caption{Effect of friction on the duration of run-out as a function of the 
-normalised input kinetic energy $E_{0}$.}
+\caption{Effect of friction on the duration of run-out.}
 \label{fig:time_fric_slope}
+\end{subfigure}
+\caption{Effect of friction on the run-out behaviour}
+\label{fig:fric_slope}
 \end{figure}
 
 -------------------------------------------------------------------------------
@@ -1130,18 +1340,21 @@ normalised input kinetic energy $E_{0}$.}
 
 \begin{figure}[tbph]
 \centering
+\begin{subfigure}[b]{0.95\textwidth}
+\centering
 \includegraphics[width=\textwidth]{Runout_Eo_GU}
-\caption{Effect of input velocity distribution on the run-out distance with 
-normalised input kinetic energy}
+\caption{Run-out distance as a function of normalised input kinetic energy}
 \label{fig:Runout_Eo_GU}
-\end{figure}
-
-\begin{figure}[tbph]
+\end{subfigure}
+\\
+\begin{subfigure}[b]{0.95\textwidth}
 \centering
 \includegraphics[width=\textwidth]{time_Eo_GU}
-\caption{Effect of input velocity distribution on the duration of run-out with 
-normalised input kinetic energy}
+\caption{Duration of run-out as a function of normalised input kinetic energy}
 \label{fig:time_Eo_GU}
+\end{subfigure}
+\caption{Effect of input velocity distribution on the run-out behaviour}
+\label{fig:GU}
 \end{figure}
 
 \begin{figure}[tbph]
@@ -1197,47 +1410,69 @@ fluid.
 
 \begin{figure}[tbhp]
 \centering
+\begin{subfigure}[b]{0.95\textwidth}
 \includegraphics[width=\textwidth]{Runout_50}
-\caption{Evolution of run-out with time for varying material points per cell ($E_0=12.7mgd$).}
+\caption{$E_0=12.7mgd$}
 \label{fig:Runout_50}
-\end{figure}
-
-\begin{figure}[tbhp]
+\end{subfigure}
+\\
+\begin{subfigure}[b]{0.95\textwidth}
 \centering
 \includegraphics[width=\textwidth]{Runout_500}
-\caption{Evolution of run-out with time for varying material points per cell ($E_0=152mgd$).}
+\caption{$E_0=152mgd$}
 \label{fig:Runout_500}
+\end{subfigure}
+\caption{Evolution of run-out with time for varying material points per cell.}
+\label{fig:Runout_MPM}
 \end{figure}
+
 
 \begin{figure}[tbhp]
 \centering
+\begin{subfigure}[b]{0.95\textwidth}
 \includegraphics[width=\textwidth]{KE_50}
-\caption{Evolution of kinetic energy with time for varying material points per cell ($E_0=12.7mgd$).}
+\caption{$E_0=12.7mgd$.}
 \label{fig:KE_50}
-\end{figure}
-
-\begin{figure}[tbhp]
+\end{subfigure}
+\\
+\begin{subfigure}[b]{0.95\textwidth}
 \centering
 \includegraphics[width=\textwidth]{KE_500}
-\caption{Evolution of kinetic with time for varying material points per cell ($E_0=152mgd$).}
+\caption{$E_0=152mgd$}
 \label{fig:KE_500}
+\end{subfigure}
+\caption{Evolution of kinetic with time for varying material points per cell}
+\label{fig:KE_MPM}
 \end{figure}
 
 \begin{figure}[tbhp]
 \centering
+\begin{subfigure}[b]{0.95\textwidth}
 \includegraphics[width=\textwidth]{50}
-\caption{Evolution of run-out and duration of flow  for varying material points per cell ($E_0=12.7mgd$).}
+\caption{$E_0=12.7mgd$.}
 \label{fig:50}
-\end{figure}
-
-\begin{figure}[tbhp]
+\end{subfigure}
+\\
+\begin{subfigure}[b]{0.95\textwidth}
 \centering
 \includegraphics[width=\textwidth]{500}
-\caption{Evolution of run-out and duration of flow  for varying material points per cell ($E_0=152mgd$).}
+\caption{$E_0=152mgd$.}
 \label{fig:500}
+\end{subfigure}
+\caption{Evolution of run-out and duration of flow  for varying material points 
+per cell.}
+\label{fig:MPM_Size_Effect}
 \end{figure}
 
 \subsection{Comparison with granular column collapse}
+
+
+\begin{figure}[tbhp]
+\centering
+\includegraphics[width=0.95\textwidth]{Slope_Column}
+\caption{Comparison of column collapse with slope subjected to impact loading.}
+\label{fig:Slope_Column}
+\end{figure}
 
 \section{Summary}
 Multi-scale simulation of granular column collapse was performed to understand 
