@@ -101,8 +101,8 @@ of continuum approaches in modelling the dense granular flows and their ability
 
 \subsection{Numerical set-up}
 
-The numerical simulations performed are validated against 
-the experimental plane strain tests on granular column collapse 
+In this study, numerical simulations of granular columns are analogous to the  
+experimental investigation of column collapse performed
 by~\citet{Lajeunesse2004}. The experimental configuration 
 of~\citet{Lajeunesse2004} is shown in \cref{fig:exp}. Granular material of mass 
 `\textit{M}' was poured into a container to form a rectangular heap of length 
@@ -217,7 +217,7 @@ $\varepsilon$:
 \textit{m}_{\textit{ij}}=\frac{\textit{m}_{\textit{i}}\textit{m}_{\textit{j}}}{\textit{m}_{\textit{i}}
  + \textit{m}_{\textit{j}}} \,.
 \end{align}
-
+%
 The micro-mechanical parameters used in this study are presented 
 in~\cref{table:DEM_data}. Due to the unsteady nature of the flow, the 
 grains get dispersed on the horizontal plane as discrete bodies start to 
@@ -265,7 +265,9 @@ the shear sample. The normal effective stress is varied in the sample and the
 average shear stress of the sample is measured. The sample was sheared until 
 critical state was reached. The slope of shear stress 
 versus normal effective stress gives the critical state friction angle. A 
-critical state friction angle of $22.2$\si{\degree} is obtained. The Young's 
+critical state friction angle of $22.2$\si{\degree} is obtained. The 
+macroscopic friction angle is in the range observed 
+by~\citet{Estrada2008,Mitchell2005}. The Young's 
 modulus of the granular assembly is obtained as the initial slope of the 
 stress-strain plot of a uni-axial compression of a granular column using DEM.
 
@@ -290,7 +292,8 @@ stress-strain plot of a uni-axial compression of a granular column using DEM.
 \citet{Guilkey2003} suggests using at least four material points per cell for 
 large deformation problems. In the present study, 16 material points 
 per cell is adopted. If the mesh is too fine and the number of particles is too 
-large, the particle size 2lp decreases, and the GIMPM interpolation function 
+large, the particle size $2lp$ decreases, and the GIMPM interpolation 
+function 
 tends to approach the original MPM function, as shown 
 by~\citet{Bardenhagen2004}. Hence GIMPM loses the merit that it reduces the 
 numerical noise due to material points crossing the background mesh. In 
@@ -321,33 +324,36 @@ Time step increment & $1.0 \times 10^{-6}$ \si{\second}\\ \bottomrule
 \end{table}
 
 \subsection{Deposit morphology}
-The variation of the normalized final run-out distance, $\Delta L = 
-(L_{\textit{f}}-L_{\textit{i}})/L_{\textit{i}}$, with the initial aspect ratio 
-`a' of the column is presented in \cref{fig:run-out}. Similar to the 
+MPM and DEM simulations of granular column collapse are 
+performed by varying the initial aspect ratio of the column. 
+The evolution of the normalized final run-out distance, $\Delta L = 
+(L_{\textit{f}}-L_{\textit{0}})/L_{\textit{0}}$, with the initial aspect ratio 
+`a' of the column is presented in~\cref{fig:run-out}. Similar to the 
 experimental results, a power law relationship is observed between the 
 normalized run-out distance and the initial aspect ratio of the column. 
-However, the discrete element simulations with random packing of grains 
-overestimate the run-out distance by a factor of 1.2. In the present study, the 
-following scaling law for the run-out is observed.
+In the present study, the following scaling law for the run-out is observed.
 \begin{align}
-\frac{L_{\textit{f}}-L_{\textit{i}}}{L_{\textit{i}}} \approx  
+\frac{L_{\textit{f}}-L_{\textit{0}}}{L_{\textit{0}}} \approx  
 \begin{cases}
 1.67 a, &\qquad \textit{a}\lesssim 2.3 \\
 2.5 a^{2/3}, &\qquad \textit{a} \gtrsim 2.3 \\
 \end{cases}
 \end{align}
-The run-out distance observed in the case of hexagonal packing of grains 
-matches the experimental run-out distance observed by~\citet{Lajeunesse2004}. 
-However, the DEM simulations performed with random packing 
-predict longer run-out distances in comparison with the experimental data. The 
-difference in the run-out distance can be attributed to the variation in the 
-packing of grains in the granular column. Although, experimental data 
+The normalised run-out distance predicted using DEM simulations are very close 
+to the run-out observed in the experiments. DEM simulations with hexagonal 
+packing estimates lower run-out distances in comparison with randomly packed 
+sample. This can be attributed to the crystallisation and jamming effects in 
+hexagonal packing. The small difference in the final run-out between DEM and 
+experimental results can be attributed to the variation in the 
+packing of grains in the granular column. Also, the experimental data 
 corresponds to granular column collapse in a rectangular channel, the collapse 
 is not a pure two-dimensional collapse as in the case of numerical simulations. 
-This can cause some variation in the run-out distance.~\citet{Balmforth2005} 
+This can cause some variation in the run-out distance.
+
+~\citet{Balmforth2005} 
 observed that the material property affects the final run-out distance and 
 included a pre-factor `$\lambda$' in the scaling law, which is in contrast to 
-the observation made by~\citet{Lube2005},. The scaling law observed in the 
+the observation made by~\citet{Lube2005}. The scaling law observed in the 
 present study for the random packing is identical to the scaling law observed 
 by~\citet{Lajeunesse2004}, except for the pre-factor in the scaling law, 
 indicating a strong correlation between the run-out distance and the material 
