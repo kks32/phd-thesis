@@ -8,67 +8,77 @@
 
 \section{Introduction}
 
-In nature, instabilities of slopes or cliffs are dramatic events involving the 
-sudden release of a large mass of soil. Understanding the mechanics of granular 
-flow is of particular importance in predicting the run-out distances of debris 
-flows for risks assessment. However, the prediction of catastrophic events 
-still represents a challenge, one difficulty being our incomplete understanding 
-of the dynamics of granular flows~\citep{Rondon2011}. Small scale laboratory 
-experiments are usually unable to properly capture the dynamics of geophysical
-events. However, they can be useful to precisely study physical mechanisms, 
-which may play a role in real flows~\citep{Iverson1997}. Conventionally, 
-granular materials such as soils are modelled as a continuum. On a macroscopic 
-scale, granular materials exhibit many collective phenomena and the use of 
-continuum mechanics to describe the macroscopic behaviour can be justified. 
-However, on a grain scale, the granular materials exhibit complex solid-like 
-and/or fluid-like behaviour depending on how the grains interact with each 
-other. Numerical studies at grain scale allows a precise study of the internal 
-structure of the flow. Recent works on granular materials suggest that a 
-continuum law may be incapable of revealing in-homogeneities at the 
-grain-scale level, such as orientation of force chains, which are purely due to 
-micro-structural effects~\cite{Rycroft2009a}. Discrete Element approaches are 
-capable of simulating the granular material as a discontinuous system allowing 
-one to probe into local variables such as position, velocities, contact forces, 
-etc. The fundamental question is how to model granular materials which 
-exhibit complex phenomenon.
+In nature, instabilities of slopes or cliffs are dramatic events involving 
+sudden release of a large mass of soil. However, the prediction of catastrophic 
+events still represents  challenge, one difficulty being our incomplete 
+understanding of the dynamics of granular flows~\citep{Rondon2011}.  
+Understanding the mechanics is of particular importance for risks assessment. 
+Small scale laboratory experiments are usually unable to properly capture the 
+dynamics of geophysical events. However, they can be useful to precisely study 
+physical mechanisms, which may play a role in real flows~\citep{Iverson1997}. 
+
+Conventionally, granular materials such as soils are modelled as a continuum. 
+On a macroscopic scale, granular materials exhibit many collective phenomena 
+and the use of continuum mechanics to describe the macroscopic behaviour can be 
+justified. However, on a grain scale, the granular materials exhibit complex 
+solid-like and/or fluid-like behaviour depending on how the grains interact 
+with each other. Numerical studies at grain scale allows a precise 
+understanding of the internal flow structure. Recent works on granular 
+materials suggest that a continuum law may be incapable of revealing 
+in-homogeneities at the grain-scale level, such as orientation of force chains, 
+which are purely due to micro-structural effects~\cite{Rycroft2009a}. Discrete 
+Element approaches are capable of simulating the granular material as a 
+discontinuous system allowing one to probe into local variables such as 
+position, velocities, contact forces, etc. The fundamental question is how to 
+model granular materials which exhibit complex phenomenon. It is important to 
+understand the mechanics of granular flows and the ability and limitations of 
+continuum methods in capturing the flow dynamics.
 
 
 \section{Granular column collapse}
 
-The collapse of a granular column on a horizontal surface is a simple case of 
-granular flow, however a proper model that describes the flow dynamics is still
-lacking. Granular flow is modelled as a frictional dissipation process in 
-continuum mechanics but studies showing the lack of influence of inter-particle 
-friction on the energy dissipation and spreading dynamics is surprising. 
-In the present study, the generalised interpolation material point method 
-(GIMPM), a hybrid Eulerian -- Lagrangian approach, is implemented with 
-Mohr-Coloumb failure criterion to describe the continuum behaviour of quasi-two 
-dimensional collapse of granular columns. The granular column collapse is also 
-simulated using DEM to understand the micro-mechanics of the flow.
+The collapse of a granular column, which mimics the
+collapse of a cliff, has been extensively studied in the case of
+dry granular 
+material~\citep{Lube2005,Lajeunesse2004,Kerswell2005,Zenit2005,Staron2007a,Hogg2007,Lo2009}.
+The granular column collapse experiment involves filling a rectangular channel 
+of height $H_0$ and width $L_0$ with a granular material of mass 
+`m' (see~\cref{fig:exp}). The granular column is then released \textit{en 
+masse} by quickly removing the gate, thus allowing the granular material to 
+collapse onto the horizontal surface, forming a deposit having a final height 
+$H_f$ and length $L_f$. Despite the complexity of the intermediate flow 
+dynamics, experimental investigations have shown that the flow evolution, the 
+spreading velocity, the final extent of the deposit, and the energy dissipation 
+can be scaled in a quantitative way independent of the substrate properties, 
+grain size, density, and shape of the granular material and released 
+mass~\citep{Staron2007a,Lajeunesse2005,Lube2005}. The granular collapse has 
+also been studied using discrete element method, which allows precise 
+measurement of the internal flow 
+structure~\citep{Lo2009,Staron2006a,Staron2007a,Utili2014}.
+Power laws relating the final run-out and height to the initial aspect ratio of 
+the column were observed. These findings immediately pose the question: are 
+these simple scaling fortuitous, an oversimplification, or in fact indicative 
+of a simple dynamical balance? 
 
-The granular column collapse experiment involves filling a cylinder of height 
-$H_0$ and width $L_0$ with a granular material of mass `m'. The granular column 
-is then released \textit{en masse} by quickly removing the cylinder, thus 
-allowing the granular material to collapse onto the horizontal surface, forming 
-a deposit having a final height $H_f$ and radius $L_f$ . A computational study 
-on an equivalent two-dimensional configuration (circular disks) was carried out 
-using Discrete Element and Continuum (MPM) approaches.
 
-~\citet{Lajeunesse2004} performed axis-symmetric and plane strain tests on 
-granular column collapse. Granular materials when released suddenly on a 
-horizontal surface exhibit transient flow. The mechanism of flow initiation, 
-spreading dynamics and energy dissipation are studied. The experimental 
-configuration used by~\citet{Lajeunesse2004} is shown in Figure~\ref{fig:exp}. 
-Granular material of mass `\textit{M}' was poured into a container to form a 
-rectangular heap of length `${L}_{\textit{i}}$', height `${H}_{\textit{i}}$' 
-and thickness `\textit{W}'. The internal friction angle and the wall friction 
-between the wall and the glass beads measured by ~\citet{Lajeunesse2004} are 
-listed in Table~\ref{table:mat_prop}. The gate was then quickly removed to 
-release the granular mass that spreads in the horizontal channel until it comes 
-to rest. The final run-out distance `${L}_{\textit{f}}$' and the collapsed 
-height `$H_{\textit{f}}$' were measured. The run-out distance and collapse 
-height were found to exhibit power law relation with the initial aspect ratio 
-`\textit{a}' $(=H_{\textit{i}}/L_{\textit{i}})$ of the column. 
+Granular flows are conventionally modelled as a frictional dissipation process 
+in continuum mechanics but the lack of influence of inter-particle friction on 
+the energy dissipation and spreading dynamics~\citep{Lube2005} is surprising. 
+However,~\citet{Kerswell2005} showed the run-out behaviour has a clear material 
+dependence, which corroborates the conclusion of~\citet{Lajeunesse2004} and 
+softens that of~\citet{Lube2005}. The collapse of a granular column on a 
+horizontal surface is a simple case of granular flow, however a proper model 
+that describes the flow dynamics is still lacking. Simple mathematical models 
+based on conservation of horizontal momentum capture the scaling laws of the 
+final deposit, but fail to describe the initial transition regime. From a 
+theoretical point of view, the spreading has been described using depth 
+averaged equations~\citep{Kerswell2005,Larrieu2006}. The depth-averaged and 
+Saint-Venant equations struggle to recover the precise dynamic behaviour of the 
+system~\citep{Warnett2013} and only succeeds in predicting the scaling observed 
+for aspect ratio less than one. However, describing larger aspect ratio and 
+capturing the initial stage of the collapse, when the grains experience a rapid 
+change of direction from vertical to horizontal, remain an open challenge, 
+
 
 \begin{figure}[tbhp]
 \centering
@@ -77,6 +87,37 @@ height were found to exhibit power law relation with the initial aspect ratio
 rectangular channel,~\citep{Lajeunesse2004}}
 \label{fig:exp}
 \end{figure}
+
+In the present study, multi-scale numerical modelling, i.e. grain-scale 
+modelling and continuum analyses, of the quasi-two dimensional collapse of 
+granular columns are performed using Discrete Element (DEM) approach and 
+Generalised Interpolation Material Point Method (GIMPM). GIMPM is a hybrid 
+Eulerian -- Lagrangian approach, is implemented with  Mohr-Coloumb failure 
+criterion to describe the continuum behaviour. While the micro-mechanics is 
+captured using DEM simulations. Comparing grain scale behaviour with continuum 
+simulations highlights the limitations of continuum approaches in modelling the 
+dense granular flows and their ability (or lack thereof) in capturing the 
+complex micro-scale rheology.
+
+
+
+\subsection{Numerical set-up}
+
+~\citet{Lajeunesse2004} performed axis-symmetric and plane strain tests on 
+granular column collapse. Granular materials when released suddenly on a 
+horizontal surface exhibit transient flow. The mechanism of flow initiation, 
+spreading dynamics and energy dissipation are studied. The experimental 
+configuration used by~\citet{Lajeunesse2004} is shown in \cref{fig:exp}. 
+Granular material of mass `\textit{M}' was poured into a container to form a 
+rectangular heap of length `${L}_{\textit{0}}$', height `${H}_{\textit{0}}$' 
+and thickness `\textit{W}'. The internal friction angle and the wall friction 
+between the wall and the glass beads measured by ~\citet{Lajeunesse2004} are 
+listed in Table~\ref{table:mat_prop}. The gate was then quickly removed to 
+release the granular mass that spreads in the horizontal channel until it comes 
+to rest. The final run-out distance `${L}_{\textit{f}}$' and the collapsed 
+height `$H_{\textit{f}}$' were measured. The run-out distance and collapse 
+height were found to exhibit power law relation with the initial aspect ratio 
+`\textit{a}' $(=H_{\textit{i}}/L_{\textit{0}})$ of the column. 
 
 \begin{table}[tbhp]
 \caption{Material properties of glass ballotini~\citep{Lajeunesse2004}}
@@ -92,6 +133,7 @@ Wall friction angle & 24.8$\pm 0.2$\si{\degree}\\
 \bottomrule
 \end{tabular}
 \end{table}
+
 
 In this study, numerical simulations of the granular column collapse 
 experiments are performed by varying the initial aspect ratio of the column. 
@@ -204,8 +246,7 @@ DEM.
 \begin{subfigure}[b]{0.575\textwidth}
 \centering
 \includegraphics[width=\textwidth]{Sxy_vs_Syy}
-\caption{Evaluating the critical state friction angle from periodic shear 
-test}
+\caption{Critical state friction angle from periodic shear test}
 \label{fig:Sxy_vs_Syy}
 \end{subfigure} 
 \caption{Periodic shear test}
@@ -235,7 +276,7 @@ Time step increment & $1.0 \times 10^{-6}$ \si{\second}\\ \bottomrule
 \subsection{Deposit morphology}
 The variation of the normalized final run-out distance, $\Delta L = 
 (L_{\textit{f}}-L_{\textit{i}})/L_{\textit{i}}$, with the initial aspect ratio 
-`a' of the column is presented in Figure~\ref{fig:run-out}. Similar to the 
+`a' of the column is presented in \cref{fig:run-out}. Similar to the 
 experimental results, a power law relationship is observed between the 
 normalized run-out distance and the initial aspect ratio of the column. 
 However, the discrete element simulations with random packing of grains 
@@ -293,7 +334,7 @@ shape of the final deposit
 In order to understand the mechanism of the run-out in a granular column 
 collapse, it is essential to study the relation between the final collapsed 
 height of the granular column and its initial aspect ratio. 
-Figure~\ref{fig:height} shows the variation of the normalized final height with 
+\cref{fig:height} shows the variation of the normalized final height with 
 the initial aspect ratio of the column. The final height predicted by the 
 DEM and the MPM simulations matches the experimental data 
 for 
@@ -359,7 +400,7 @@ grains located above the failure surface move ``\textit{en masse}'' leaving a
 static region underneath the failure surface. After a transient time of order 
 $\tau_{c}$, defined as $\sqrt{H_{\textit{i}}/g}$, the flow is fully developed. 
 The velocity profile along the granular column at critical time $\tau_{c}$ is 
-presented in Figure~\ref{fig:a04tc}. At critical time, the velocity field 
+presented in \cref{fig:a04tc}. At critical time, the velocity field 
 depends only on the position of the grain along the sliding mass. The maximum 
 velocity is observed at the front of the flowing mass corresponding to that of 
 a plug flow in horizontal direction. Particulate and continuum simulations 
@@ -375,7 +416,7 @@ by~\citet{Lajeunesse2004}.
 For columns with lower initial aspect ratios, the run-out distance is 
 proportional to the mass flowing above the failure surface. To understand the 
 amount of mass mobilized during a collapse, the angle of the failure surface 
-has to be studied. Figure~\ref{fig:a04tc} shows a distinct failure surface 
+has to be studied. \cref{fig:a04tc} shows a distinct failure surface 
 when the flow is fully developed at critical time $\tau_{\textit{c}}$. The 
 angle of the failure surface is found to be about $55^{o}$. The failure surface 
 begins from the toe of the column and protrudes inwards at an angle of 50 to 
@@ -398,7 +439,7 @@ instabilities in a narrow wedges of $56\mbox{ to }65^{o}$ for Cambridge type
 constitutive models that describes granular flows. This observation matches 
 well with the failure angle observed in the present study. The final profile of 
 the collapsed granular column with an initial aspect ratio of 0.4 is shown in 
-Figure~\ref{fig:a04f}. The failure surface is distinct and the hexagonal dense 
+\cref{fig:a04f}. The failure surface is distinct and the hexagonal dense 
 packing of grains has a steeper failure surface in comparison with the random 
 packing. The variation observed in the angle of the failure surface causes a 
 difference in the amount of mobilized mass above the failure surface, and in 
@@ -431,7 +472,7 @@ $t=3\times\tau_c$)}
 
 
 For larger aspect ratios, the flow is still initiated by a well defined failure 
-surface as can be seen in Figure~\ref{fig:a6tc}. However, in this case the 
+surface as can be seen in \cref{fig:a6tc}. However, in this case the 
 initial granular column is much higher than the top of the failure surface. Due 
 to gravity most of the grains in the column fall in the vertical direction 
 consuming the column along their way. When they reach the vicinity of the 
