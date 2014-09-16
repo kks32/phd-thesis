@@ -8,29 +8,30 @@
 
 \section{Introduction}
 
-The dynamics of a homogeneous granular flow involve at least three distinct 
-scales: the \textit{microscopic scale}, which 
-is characterised by the contact between grains, the \textit{meso-scale} that 
-represents micro-structural effects such as grain rearrangement, and the 
-\textit{macroscopic scale}, where geometric correlations can be observed (see 
-Figure~\ref{fig:multiscale}). Conventionally, granular flows are modelled as a 
-continuum because they exhibit many collective phenomena. However, on a grain 
-scale, the granular materials exhibit complex solid-like and/or fluid-like 
-behaviour. Recent studies, however, suggest that a continuum law may be unable 
-to capture the effect of inhomogeneities at the grain scale level, such as 
-orientation of force chains, which are micro-structural effects. Discrete 
-element methods (DEM) are capable of simulating these micro-structural effects, 
-however they are computationally expensive. In the present study, a multi-scale 
-approach is adopted, using both DEM and continuum techniques, to better 
-understand the rheology of granular flows and the limitations of continuum 
-models.
+In nature, instabilities of slopes or cliffs are dramatic events involving the 
+sudden release of a large mass of soil. Understanding the mechanics of granular 
+flow is of particular importance in predicting the run-out distances of debris 
+flows for risks assessment. However, the prediction of catastrophic events 
+still represents a challenge, one difficulty being our incomplete understanding 
+of the dynamics of granular flows~\citep{Rondon2011}. Small scale laboratory 
+experiments are usually unable to properly capture the dynamics of geophysical
+events. However, they can be useful to precisely study physical mechanisms, 
+which may play a role in real flows~\citep{Iverson1997}. Conventionally, 
+granular materials such as soils are modelled as a continuum. On a macroscopic 
+scale, granular materials exhibit many collective phenomena and the use of 
+continuum mechanics to describe the macroscopic behaviour can be justified. 
+However, on a grain scale, the granular materials exhibit complex solid-like 
+and/or fluid-like behaviour depending on how the grains interact with each 
+other. Numerical studies at grain scale allows a precise study of the internal 
+structure of the flow. Recent works on granular materials suggest that a 
+continuum law may be incapable of revealing in-homogeneities at the 
+grain-scale level, such as orientation of force chains, which are purely due to 
+micro-structural effects~\cite{Rycroft2009a}. Discrete Element approaches are 
+capable of simulating the granular material as a discontinuous system allowing 
+one to probe into local variables such as position, velocities, contact forces, 
+etc. The fundamental question is how to model granular materials which 
+exhibit complex phenomenon.
 
-\begin{figure}[tbhp]
-\centering
-\includegraphics[width=0.95\textwidth]{multiscale}
-\caption{Multi-scale modelling of granular materials}
-\label{fig:multiscale}
-\end{figure}
 
 \section{Granular column collapse}
 
@@ -102,13 +103,14 @@ fall due to gravity, forming a randomly packed granular column
 
 \begin{figure}[tbhp]
 \centering
-\begin{subfigure}[b]{0.495\textwidth}
+\begin{subfigure}[b]{0.95\textwidth}
 \centering
-\includegraphics[width=\textwidth]{a4b4r18}
+\includegraphics[width=0.5\textwidth]{a4b4r18}
 \caption{DEM sample prepared using ballistic deposition}
 \label{fig:a4b4r18}
 \end{subfigure}
-\begin{subfigure}[b]{0.495\textwidth}
+\\
+\begin{subfigure}[b]{0.95\textwidth}
 \centering
 \includegraphics[width=\textwidth]{PSD}
 \caption{DEM grains generated using the cumulative $\beta$ distribution}
@@ -715,26 +717,6 @@ softens that of~\citet{Lube2005}.
 
 \begin{figure}[tbhp]
 \centering
-\begin{subfigure}[b]{0.95\textwidth}
-\centering
-\includegraphics[width=\textwidth]{tesselation}
-\caption{Voronoi Tesselation}
-\label{fig:tesselation}
-\end{subfigure}
-\\
-\begin{subfigure}[b]{0.95\textwidth}
-\centering
-\includegraphics[width=\textwidth]{local_density}
-\caption{Local packing density (dark - dense and light - loose)}
-\label{fig:local_density}
-\end{subfigure}
-\caption{Voronoi tessellation to average bulk properties}
-\label{fig:voro}
-\end{figure}
-
-
-\begin{figure}[tbhp]
-\centering
 \includegraphics[width=\textwidth]{voro_r18}
 \caption{Evolution of local packing density $`a' = 0.8$}
 \label{fig:voro_r18}
@@ -1087,23 +1069,18 @@ factor for the run-out distance.
 
 \begin{figure}[tbph]
 \centering
-\begin{subfigure}[b]{0.975\textwidth}
 \includegraphics[width=\textwidth]{Gradient_Slope_Profile_200J}
 \caption{Snapshots of MPM simulations of the evolution of granular pile 
 subjected to a gradient impact energy.}
 \label{fig:Gradient_Slope_Profile_200J}
-\end{subfigure}
-\\
-\begin{subfigure}[b]{0.975\textwidth}
+\end{figure}
+
+\begin{figure}[tbph]
 \centering
 \includegraphics[width=\textwidth]{Gradient_Slope_CD_200J}
 \caption{Snapshots of CD simulations of the evolution of granular pile 
 subjected to a gradient impact energy~\citep{Mutabaruka2013}.}
 \label{fig:Gradient_Slope_CD_200J}
-\end{subfigure}
-\caption{Snapshots of MPM and CD simulations of evolution of granular pile 
-subjected to a gradient impact energy $E_0 = 61 \ mgd$.}
-\label{fig:Gradient_Slope_Profile_200J}
 \end{figure}
 
 \begin{figure}[tbph]
