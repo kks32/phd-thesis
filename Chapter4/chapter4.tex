@@ -91,33 +91,30 @@ rectangular channel,~\citep{Lajeunesse2004}}
 In the present study, multi-scale numerical modelling, i.e. grain-scale 
 modelling and continuum analyses, of the quasi-two dimensional collapse of 
 granular columns are performed using Discrete Element (DEM) approach and 
-Generalised Interpolation Material Point Method (GIMPM). GIMPM is a hybrid 
-Eulerian -- Lagrangian approach, is implemented with  Mohr-Coloumb failure 
-criterion to describe the continuum behaviour. While the micro-mechanics is 
-captured using DEM simulations. Comparing grain scale behaviour with continuum 
+Generalised Interpolation Material Point Method (GIMPM). GIMPM  with  
+Mohr-Coloumb failure criterion is used to describe the continuum behaviour of 
+granular column collapse. While the micro-mechanics of the flow is captured 
+using DEM simulations. Comparing the grain scale behaviour with the continuum 
 simulations highlights the limitations of continuum approaches in modelling the 
 dense granular flows and their ability (or lack thereof) in capturing the 
 complex micro-scale rheology.
 
-
-
 \subsection{Numerical set-up}
 
-~\citet{Lajeunesse2004} performed axis-symmetric and plane strain tests on 
-granular column collapse. Granular materials when released suddenly on a 
-horizontal surface exhibit transient flow. The mechanism of flow initiation, 
-spreading dynamics and energy dissipation are studied. The experimental 
-configuration used by~\citet{Lajeunesse2004} is shown in \cref{fig:exp}. 
-Granular material of mass `\textit{M}' was poured into a container to form a 
-rectangular heap of length `${L}_{\textit{0}}$', height `${H}_{\textit{0}}$' 
-and thickness `\textit{W}'. The internal friction angle and the wall friction 
-between the wall and the glass beads measured by ~\citet{Lajeunesse2004} are 
-listed in Table~\ref{table:mat_prop}. The gate was then quickly removed to 
+The numerical simulations performed are validated against 
+the experimental plane strain tests on granular column collapse 
+by~\citet{Lajeunesse2004}. The experimental configuration 
+of~\citet{Lajeunesse2004} is shown in \cref{fig:exp}. Granular material of mass 
+`\textit{M}' was poured into a container to form a rectangular heap of length 
+`${L}_{\textit{0}}$', height `${H}_{\textit{0}}$' and thickness `\textit{W}'. 
+The internal friction angle and the wall friction between the wall and the 
+glass beads measured by ~\citet{Lajeunesse2004} are listed 
+in~\cref{table:mat_prop}. The gate was then quickly removed to 
 release the granular mass that spreads in the horizontal channel until it comes 
 to rest. The final run-out distance `${L}_{\textit{f}}$' and the collapsed 
 height `$H_{\textit{f}}$' were measured. The run-out distance and collapse 
-height were found to exhibit power law relation with the initial aspect ratio 
-`\textit{a}' $(=H_{\textit{i}}/L_{\textit{0}})$ of the column. 
+height exhibit a power law relation with the initial aspect ratio 
+`\textit{a}' $(=H_{\textit{0}}/L_{\textit{0}})$ of the column. 
 
 \begin{table}[tbhp]
 \caption{Material properties of glass ballotini~\citep{Lajeunesse2004}}
@@ -135,13 +132,26 @@ Wall friction angle & 24.8$\pm 0.2$\si{\degree}\\
 \end{table}
 
 
-In this study, numerical simulations of the granular column collapse 
-experiments are performed by varying the initial aspect ratio of the column. 
-DEM simulations involve modelling the granular column as 
-individual particles. The granular column is prepared by randomly packing 
-poly-disperse grains on a regular lattice and allowing them to undergo free 
-fall due to gravity, forming a randomly packed granular column 
-%TODO: Add Chapter reference. 
+Granular materials when released suddenly on a 
+horizontal surface exhibit transient flow. In this study, the mechanism of flow 
+initiation, spreading dynamics and energy dissipation are studied for varying 
+initial aspect ratios of the granular column. DEM soil grain characteristics 
+match that of the experiment. The particle size distribution (PSD) is one of 
+the most important factors controlling landslide initiation and soil 
+permeability. Cumulative $\beta$ distribution (described 
+in~\cref{sec:beta_dist}) %TODO: Add section reference
+ is used to generate a graded sample with a mean grain diameter of 1.15\si{\mm} 
+ (see~\cref{fig:PSD}). 
+The DEM sample is composed of $\sim3000$ disks with a uniform distribution of 
+diameters by volume fractions in the range $[d_{min}, d_{max}] = 0.92 -- 1.38$ 
+\si{\mm} with polydispersity $r = \frac{d_{max} }{d_{min}} = 1.5$. The 
+granular column is prepared by allowing the randomly placed grains to undergo 
+ballistic deposition with a constant potential head between layers of soil 
+grains. A snapshot of the sample generated is shown in~\cref{fig:a4b4r18}. A 
+DEM sample with soil grains arranged in a regular hexagonal lattice is also 
+used to study the influence of crystallisation and jamming on the run-out 
+behaviour.
+%TODO: Add section reference for sample generation. 
 
 \begin{figure}[tbhp]
 \centering
@@ -163,51 +173,61 @@ fall due to gravity, forming a randomly packed granular column
 \end{figure}
 
 
-The grains are allowed to reach a stable equilibrium after undergoing some 
-elastic compressions due to gravity. 
-The overlaps between particles are determined by the stiffness 
+The overlap between grains are determined by the stiffness 
 $\textit{k}_{\textit{n}}$ of the spring in the normal direction. Typically, 
-average overlaps in the range 0.1 to 1.0\% are desirable and the spring 
-constant is chosen to produce particle overlaps in this range. The stiffness is 
-determined using the following equation:
+an average overlap in the range 0.1 to 1.0\% is desirable~\cite{Zenit2005} and 
+the spring constant is chosen to produce grain overlaps in this range. The 
+stiffness is determined as
 \begin{align}
 & \textit{k}_{\textit{n}}=\frac{2 \pi G}{(1-\nu)[2\ln(\frac{2r}{A})-1]} \\ 
-& A = [\frac{2r(1-\nu)f_{n}}{\pi G}]^{\frac{1	}{2}}
+& A = [\frac{2r(1-\nu)f_{n}}{\pi G}]^{\frac{1	}{2}}\,,
 \end{align}
 where $f_{n}$ is the normal contact force; G is the shear modulus; $\nu$ is the 
 Poisson's ratio and r is the radius of the grain. A simpler form of stiffness 
-for a spherical grain is defined as:
-\begin{align}
-& \textit{k}_{\textit{n}}=4ER
-\end{align}
+for a spherical grain is defined as
+\begin{equation}
+\textit{k}_{\textit{n}}=4ER\,,
+\end{equation}
 where E is the Young's modulus of the material and R is the radius of the 
-grain. The normal damping coefficient $C_{\textit{n}}$ is chosen to give a 
-required coefficient of restitution $\varepsilon$ (defined as the ratio of the 
-post-collisional to pre-collisional normal component of the relative velocity) 
-for the materials involved:
+grain.~\citet{Cambou2009} observed that the contact model has negligible 
+influence on the run-out behaviour of rapid granular flows. The granular 
+collapse simulations performed using non-linear Hertz-Mindlin contact model and 
+the linear-elastic contact model showed no significant difference on the 
+granular flow behaviour~\citet{Utili2014}. Linear-elastic contact model is used 
+in the present study due to its simplicity and lower computation time 
+requirement. The maximum tangential force is limited by the Mohr-Coloumb 
+criterion. 
+
+
+\citet{Staron2006a} observed that the coefficient of restitution $\varepsilon$ 
+was dramatically changing the behaviour of the systems for 
+$\varepsilon\longrightarrow 1$; in particular, this dramatic change is expected 
+to become more important for increasing values of a. On the contrary, for 
+$\varepsilon \le 0.8$, the influence of the coefficient of restitution becomes 
+negligible. In the present study, a value of 0.75 is adopted as the coefficient 
+of restitution, similar values of restitution coefficient was adopted 
+by~\citet{Zenit2005,Girolami}. The normal damping coefficient 
+$C_{\textit{n}}$ 
+is appropriately chosen to achieve the required coefficient of restitution 
+$\varepsilon$:
 \begin{align}
 & C_{\textit{n}}=2\gamma \sqrt{m_{\textit{ij}}k_{\textit{n}}} \\ 
 & \mbox{where} \quad \gamma = -\frac{\ln(\varepsilon)}{\sqrt{\pi^{2}+\ln^2 
 (\varepsilon)}},\quad \mbox{and} \quad 
 \textit{m}_{\textit{ij}}=\frac{\textit{m}_{\textit{i}}\textit{m}_{\textit{j}}}{\textit{m}_{\textit{i}}
- + \textit{m}_{\textit{j}}} 
+ + \textit{m}_{\textit{j}}} \,.
 \end{align}
-10 DEM simulations were carried out with columns having 
-different initial aspect ratio `\textit{a}', varying from 0.2 to 10. In order 
-to study the effect of crystallisation on the run-out distance, 10 more MD 
-simulations were carried out on granular columns composed of grains arranged on 
-a hexagonal lattice. In order to maintain a threshold amount of grains, in all 
-the cases the columns contain at least 1000 grains, which is the safe lower 
-limit for DEM as suggested by~\citet{Oda1999}. The micro-mechanical parameters 
-used in this study are presented in Table.~\ref{table:MDdata}. Due to the 
-unsteady nature of the flow, the grains get dispersed on the horizontal plane 
-as discrete bodies start to separate from the main mass, hence the run-out 
-distance is calculated as the position of the farthest grain which has at least 
-one contact with the main mass.
+
+The micro-mechanical parameters used in this study are presented 
+in~\cref{table:DEM_data}. Due to the unsteady nature of the flow, the 
+grains get dispersed on the horizontal plane as discrete bodies start to 
+separate from the main mass, hence the run-out distance is calculated as the 
+position of the farthest grain which has at least one contact with the main 
+mass.
 
 \begin{table}
-\caption{Micromechanical parameters used in DEM simulations}
-\label{table:MDdata}
+\caption{Micro-mechanical parameters used in DEM simulations}
+\label{table:DEM_data}
 \centering
 \begin{tabular}{ll}
 \toprule
@@ -219,7 +239,7 @@ Normal and shear stiffness of grains & $1.6 \times 10^{8}$ \si{\newton\per\m}\\
 Normal and sear stiffness of wall & $4 \times 10^{8}$ \si{\newton\per\m}\\
 Inter-particle friction coefficient, $\mu$ & 0.53 \\
 Wall friction coefficient & 0.466 \\ 
-Coefficient of restitution, $\Gamma$ & 0.6 \\ \bottomrule
+Coefficient of restitution, $\Gamma$ & 0.755 \\ \bottomrule
 \end{tabular}
 \end{table}
 
@@ -231,7 +251,7 @@ simulations of the granular column collapse were performed using Mohr-Coulomb
 constitutive law by varying the initial aspect ratio, to understand the 
 difference between the particle and continuum scale description of granular 
 flows. The parameters used for the continuum analyses are presented in 
-Table.~\ref{table:MPMData}. The Young's modulus of the granular assembly is 
+Table.~\cref{table:MPMData}. The Young's modulus of the granular assembly is 
 determined by performing a uni-axial compression of the granular column in 
 DEM.
 
@@ -513,7 +533,8 @@ the flow front \textit{L}(\textit{t}) and the maximum height of column
 $(H_{\textit{f}}/L_{\textit{i}})$ and the run-out distance 
 $(L_{\textit{f}}-L_{\textit{i}})/L_{\textit{i}}$ with time for granular columns 
 with an initial aspect ratio of 0.4 and 6 are presented in 
-Figures.~\ref{fig:flowa04} and~\ref{fig:flowa6}. Time is scaled with respect to 
+Figures.~\cref{fig:flowa04} and~\cref{fig:flowa6}. Time is scaled with respect 
+to 
 the critical time $\tau_{c}$, defined as the time at which the flow is fully 
 mobilized. Three distinct regions can be observed in the flow evolution of 
 granular column collapse regardless of the initial aspect ratio of the column. 
@@ -915,7 +936,8 @@ mass are $d\simeq 0.0025 $ m and $m\simeq 0.0123$ kg, respectively.
 The particles are first poured uniformly into a rectangular box of given width 
 and then the right-hand side wall is shifted further to the right to allow the 
 particles to spread. A half-pile is obtained when all particles come to 
-rest; see Fig.~\ref{fig:Initial_final_configuration}. This procedure leads to a 
+rest; see Fig.~\cref{fig:Initial_final_configuration}. This procedure leads to 
+a 
 mean packing fraction $\simeq 0.83$.
 
 %\begin{figure}
@@ -937,9 +959,9 @@ mean packing fraction $\simeq 0.83$.
 \textbf{Parameter} & \textbf{Value} \\ \midrule
 Mean grain diameter & $\approx 2.455$~\si{\mm} \\
 Grain diameter $[d_{min}:d_{max}]$ & [2.0, 3.0]~\si{\mm} \\
-Friction co-efficient & 0.4\\
+Friction coefficient & 0.4\\
 Grain density & 2600\si{\kg\per\meter\cubed} \\
-Restitution co-efficient  & $0$\\
+Restitution coefficient  & $0$\\
 Number of grains & 1174 \\
 \bottomrule
 \end{tabular}
@@ -1159,11 +1181,11 @@ In this section, we analyse these features  in order to arrive in a picture
 consistent with the evolution of the pile shape.  
 
 The decay of the total kinetic energy $E$ is displayed in 
-Fig.~\ref{fig:E_vs}(a) for values of the input energy $E_0$. We observe an 
+Fig.~\cref{fig:E_vs}(a) for values of the input energy $E_0$. We observe an 
 initial fast drop of $E$ followed by a regular fall-off until the end of the 
 run-out. This regular fall-off occurs clearly with two different functional 
 forms, thus revealing two stages in the evolution of the pile. 
-Fig.~\ref{fig:E_vs}(b) shows the same plots normalized by $E_0$. We see that 
+Fig.~\cref{fig:E_vs}(b) shows the same plots normalized by $E_0$. We see that 
 all plots corresponding to the first regime (low energies) collapse nearly on 
 to a single time evolution. 
 %to the first regime (low energies) collapse nearly all along time evolution. 
