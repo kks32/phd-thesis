@@ -365,15 +365,15 @@ Similar behaviour in the run-out distance was observed by~\citet{Bandara2013} fo
 with large the aspect ratio $\ge 2$.
 
 The longer run-out distance in MPM simulations at large aspect ratios might be influenced 
-by the amount of material participating (mobilised) during the collapse. In tall columns, 
+by the amount of material mobilised during the collapse. In tall columns, 
 the entire column participates in the flow, in contrast to short columns where the 
-collapse is due to avalanching of the flanks,~\citet{Lajeunesse2004}. It is possible that 
+collapse is due to avalanching of flanks,~\citet{Lajeunesse2004}. It is possible that 
 MPM simulations 
-collapses more resulting in longer run-out distance.~\cref{fig:height} shows the 
+collapses more resulting in longer run-out distance.~\cref{fig:height} shows 
 the normalized final height as a function of the initial aspect ratio of the column. 
-Similar to the run-out behaviour, the normalised-height also shows two distinct regimes 
-with the initial aspect ratio.The scaling of final height of the column with the initial 
-aspect ratio of the column can be written as:
+Similar to the run-out behaviour, the normalised-height also shows two distinct 
+regimes. The scaling of final height of the column with the initial 
+aspect ratio of the column can be written as
 \begin{align}
 \frac{H_{\textit{f}}}{L_{\textit{i}}} \propto  
 \begin{cases}
@@ -382,27 +382,19 @@ aspect ratio of the column can be written as:
 \end{cases}
 \end{align} 
 
-The final height predicted by both, DEM and MPM simulations match the experimental data 
-for columns with aspect ratio smaller than 0.7. Linear relation between the final height 
-and the aspect ratio indicates that only a part of the granular column is active during 
-the collapse. For tall columns, both approaches predict similar normalised height. 
-However, the normalised height observed in MPM is higher than DEM simulations, which is 
-in contrast to the original idea of amount of material participating in the flow. 
-
-% % THIS IS WHERE I STOPPED.
-
-The Material Point Method predicts a higher final height of the column in 
-comparison with the particular simulations that should result in shorter 
-run-outs, however it is inconsistent with the observations. In case of granular 
-columns with smaller aspect ratios, only a tiny portion of the total mass is 
-mobilized and the rest remains static, thus predicting the final collapse 
-height accurately. The final height of a column is controlled by the amount of 
-static region in the granular column collapse, while the run-out distance is 
-essentially a function of the flowing mass. Hence, it is essential to compare 
-the evolution of flow and the internal flow structure in the Discrete Element 
-Method 
-and Material Point Method simulations to understand the limitations of both the 
-continuum and discrete element approaches.
+The final height predicted by both DEM and MPM simulations match the experimental data 
+for columns with smaller aspect ratio ($`a' \le 0.7$). Linear relationship between the 
+final height and the aspect ratio indicates that only a part of the granular column is 
+mobilised during the collapse. For tall columns, both approaches predict similar 
+normalised height. However, the normalised height observed in MPM is higher than in DEM 
+simulations, which is in contrast to the idea of increase in the amount of 
+material mobilised during the collapse in MPM simulations resulting in longer run-out 
+distance. Hence, the longer run-out observed in MPM simulations is due a change in the 
+flow dynamics at higher aspect ratios, which is not captured in MPM simulations. The 
+final height of a column is controlled by the amount of static region in the granular 
+column collapse, while the run-out distance is essentially a function of the flowing 
+mass. Hence, it is essential to compare the evolution of flow and the internal flow 
+structure in DEM and MPM simulations.
 
 \begin{figure}[tbhp]
 \centering
@@ -420,25 +412,7 @@ aspect ratio}
 \label{fig:height}
 \end{figure}
 
-For large aspect ratios, in which we were mainly inter-
-ested, the dissipation process is more complex due to
-the free-fall dynamics. Indeed the vertical acceleration
-of the grains induces a non-trivial mass distribution in
-the flow while propagating. This mass distribution plays
-a dominant role in the power-law scaling law obeyed by the run-out~\citep{Staron2006a}.
-
 \subsection{Flow evolution and internal flow structure}
-
-For small aspect ratio, the spreading results from a Coulomb-like
-failure of the edges and imply no free fall of the column. In this case, the 
-effective friction properties of the flow can be simply predicted from the 
-shape of the final deposit. ~\citet{Daerr1999} also proposed an interpretation 
-in terms of active Coulomb yielding to account for their experimental
-observation of the transient granular surface flow occurring
-when a highly compacted cylindrical pile of granular media
-supported by a disc is suddenly released and crumbles to
-form a cone.
-
 
 For a fixed granular material and substrate properties, the flow dynamics and 
 the final deposit morphology do not depend on the volume of granular material 
@@ -466,6 +440,16 @@ profiles are locally parallel to the failure plane. The flow is composed of
 upper linear part and a lower exponential tail in the static granular bed. The 
 velocity profile is similar to steady granular surface flow as observed 
 by~\citet{Lajeunesse2004}. 
+
+For small aspect ratio, the spreading results from a Coulomb-like
+failure of the edges and imply no free fall of the column. In this case, the 
+effective friction properties of the flow can be simply predicted from the 
+shape of the final deposit. ~\citet{Daerr1999} also proposed an interpretation 
+in terms of active Coulomb yielding to account for their experimental
+observation of the transient granular surface flow occurring
+when a highly compacted cylindrical pile of granular media
+supported by a disc is suddenly released and crumbles to
+form a cone.
 
 For columns with lower initial aspect ratios, the run-out distance is 
 proportional to the mass flowing above the failure surface. To understand the 
@@ -560,6 +544,13 @@ down leaving a static region underneath the failure plane. Depending on the
 aspect ratio of the column, two asymptotic behaviours are observed. For smaller 
 aspect ratios, the flow is dominated by friction and by the pressure gradient 
 for larger aspect ratio.
+
+For large aspect ratios, in which we were mainly inter-
+ested, the dissipation process is more complex due to
+the free-fall dynamics. Indeed the vertical acceleration
+of the grains induces a non-trivial mass distribution in
+the flow while propagating. This mass distribution plays
+a dominant role in the power-law scaling law obeyed by the run-out~\citep{Staron2006a}.
 
 To study the flow dynamics of granular columns with different aspect ratios, 
 the flow front \textit{L}(\textit{t}) and the maximum height of column 
