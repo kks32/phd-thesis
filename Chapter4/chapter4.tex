@@ -326,12 +326,14 @@ Time step increment & $1.0 \times 10^{-6}$ \si{\second}\\ \bottomrule
 \subsection{Deposit morphology}
 MPM and DEM simulations of granular column collapse are 
 performed by varying the initial aspect ratio of the column. 
-The evolution of the normalized final run-out distance, $\Delta L = 
-(L_{\textit{f}}-L_{\textit{0}})/L_{\textit{0}}$, with the initial aspect ratio 
-`a' of the column is presented in~\cref{fig:run-out}. Similar to the 
-experimental results, a power law relationship is observed between the 
-normalized run-out distance and the initial aspect ratio of the column. 
-In the present study, the following scaling law for the run-out is observed.
+The normalized final run-out distance, $\Delta L = 
+(L_{\textit{f}}-L_{\textit{0}})/L_{\textit{0}}$, as a function of the initial aspect 
+ratio `a' of the column is presented in~\cref{fig:run-out}. Similar to the experimental 
+behaviour a power law relation between the run-out and the initial aspect ratio of the 
+column is observed. Two distinct flow regimes can 
+be seen: (a) for `a' <1.7 a linear relation between the spread and aspect ratio can 
+be observed, and (b) for `a' > 1.7 a power-law relationship exists. In the present study, 
+the following scaling law for the run-out (using DEM) is observed:
 \begin{align}
 \frac{L_{\textit{f}}-L_{\textit{0}}}{L_{\textit{0}}} \approx  
 \begin{cases}
@@ -339,69 +341,56 @@ In the present study, the following scaling law for the run-out is observed.
 2.5 a^{2/3}, &\qquad \textit{a} \gtrsim 2.3 \\
 \end{cases}
 \end{align}
-The normalised run-out distance predicted using DEM simulations are very close 
-to the run-out observed in the experiments. DEM simulations with hexagonal 
-packing estimates lower run-out distances in comparison with randomly packed 
-sample. This can be attributed to the crystallisation and jamming effects in 
-hexagonal packing. The small difference in the final run-out between DEM and 
-experimental results can be attributed to the variation in the 
-packing of grains in the granular column. Also, the experimental data 
-corresponds to granular column collapse in a rectangular channel, the collapse 
-is not a pure two-dimensional collapse as in the case of numerical simulations. 
-This can cause some variation in the run-out distance.
+Both, MPM and DEM simulations are able to capture the linear relationship for `a' < 1.7, 
+and the simulation results agree with the experimental 
+investigation~\cite{Lajeunesse2005}. This shows that a simple frictional dissipation 
+model is able to capture the flow dynamics for columns with smaller aspect ratio.
+For `a' < 1.7, the normalised run-out distance predicted using DEM simulations are very 
+close to the run-out observed in the experiments. DEM simulations with hexagonal 
+packing shows shorter run-out distances in comparison to randomly packed 
+sample. This difference in the run-out behaviour might be due to the crystallisation and 
+jamming effects in hexagonal packing. The small difference in the final run-out between 
+DEM and experimental results can be attributed to the variation in the 
+packing of grains. Also, the experimental data corresponds to granular column collapse in 
+a rectangular channel, the collapse is not a pure two-dimensional collapse as in the case 
+of numerical simulations. 
 
-~\citet{Balmforth2005} 
-observed that the material property affects the final run-out distance and 
-included a pre-factor `$\lambda$' in the scaling law, which is in contrast to 
-the observation made by~\citet{Lube2005}. The scaling law observed in the 
-present study for the random packing is identical to the scaling law observed 
-by~\citet{Lajeunesse2004}, except for the pre-factor in the scaling law, 
-indicating a strong correlation between the run-out distance and the material 
-property.~\citet{Daerr1999} also observed the effect of initial packing density 
-and the internal structure on the behaviour of granular flows. The continuum 
-description of the granular column collapse using Material Point Method shows 
-good agreement with the experimental results for columns with lower aspect 
-ratio (`\textit{a}' $\lesssim 2.3$), however it exhibits a significant increase 
-in the run-out distance beyond the aspect ratio of 2.3.~\citet{Bandara2013} 
-also observed a jump in the run-out distance at the initial aspect ratio of 2.
+Significant difference in the final run-out between MPM, which is based on a simple 
+frictional model for dissipation of potential energy, and DEM simulations for `a' > 1.7 
+indicates a change in the mechanism of energy dissipation for columns with large aspect 
+ratios (`a' > 1.7).~\cite{Staron2005b} observed that a constant frictional dissipation 
+model cannot describe a power-law relation observed at large aspect ratio. A transition 
+in the run-out behaviour at an aspect ratio of 1.7 indicates a change in flow dynamics. 
+Similar behaviour in the run-out distance was observed by~\citet{Bandara2013} for columns 
+with large the aspect ratio $\ge 2$.
 
-~\citet{Daerr1999} also proposed an interpretation in terms
-of active Coulomb yielding to account for their experimental
-observation of the transient granular surface flow occurring
-when a highly compacted cylindrical pile of granular media
-supported by a disc is suddenly released and crumbles to
-form a cone.
-
-~\citet{Staron2006a} observed influence of role of friction. We first observed 
-that the coefficient of restitution e was dramatically changing the behaviour 
-of the systems for $e\longrightarrow 1$; in particular, this dramatic change is 
-expected to become more important for increasing values of a. On the contrary, 
-for $e \le 0.8$, the influence of the coefficient of restitution becomes 
-negligible.
-
-For small aspect ratio, the spreading results from a Coulomb-like
-failure of the edges and imply no free fall of the column. In this case, the 
-effective friction properties of the flow can be simply predicted from the 
-shape of the final deposit
-
-In order to understand the mechanism of the run-out in a granular column 
-collapse, it is essential to study the relation between the final collapsed 
-height of the granular column and its initial aspect ratio. 
-\cref{fig:height} shows the variation of the normalized final height with 
-the initial aspect ratio of the column. The final height predicted by the 
-DEM and the MPM simulations matches the experimental data 
-for 
-granular columns with aspect ratio below 0.7, which indicates that the initial 
-density of the column has negligible effect on the final collapse height. The 
-scaling of final height of the column with the initial aspect ratio of the 
-column can be written as:
+The longer run-out distance in MPM simulations at large aspect ratios might be influenced 
+by the amount of material participating (mobilised) during the collapse. In tall columns, 
+the entire column participates in the flow, in contrast to short columns where the 
+collapse is due to avalanching of the flanks,~\citet{Lajeunesse2004}. It is possible that 
+MPM simulations 
+collapses more resulting in longer run-out distance.~\cref{fig:height} shows the 
+the normalized final height as a function of the initial aspect ratio of the column. 
+Similar to the run-out behaviour, the normalised-height also shows two distinct regimes 
+with the initial aspect ratio.The scaling of final height of the column with the initial 
+aspect ratio of the column can be written as:
 \begin{align}
 \frac{H_{\textit{f}}}{L_{\textit{i}}} \propto  
 \begin{cases}
 \textit{a}, \qquad & \textit{a}\lesssim0.7 \\
 \textit{a}^{2/3}, \qquad & \textit{a}\gtrsim0.7 \\
 \end{cases}
-\end{align}
+\end{align} 
+
+The final height predicted by both, DEM and MPM simulations match the experimental data 
+for columns with aspect ratio smaller than 0.7. Linear relation between the final height 
+and the aspect ratio indicates that only a part of the granular column is active during 
+the collapse. For tall columns, both approaches predict similar normalised height. 
+However, the normalised height observed in MPM is higher than DEM simulations, which is 
+in contrast to the original idea of amount of material participating in the flow. 
+
+% % THIS IS WHERE I STOPPED.
+
 The Material Point Method predicts a higher final height of the column in 
 comparison with the particular simulations that should result in shorter 
 run-outs, however it is inconsistent with the observations. In case of granular 
@@ -436,9 +425,21 @@ ested, the dissipation process is more complex due to
 the free-fall dynamics. Indeed the vertical acceleration
 of the grains induces a non-trivial mass distribution in
 the flow while propagating. This mass distribution plays
-a dominant role in the power-law scaling law obeyed by the run-out.
+a dominant role in the power-law scaling law obeyed by the run-out~\citep{Staron2006a}.
 
 \subsection{Flow evolution and internal flow structure}
+
+For small aspect ratio, the spreading results from a Coulomb-like
+failure of the edges and imply no free fall of the column. In this case, the 
+effective friction properties of the flow can be simply predicted from the 
+shape of the final deposit. ~\citet{Daerr1999} also proposed an interpretation 
+in terms of active Coulomb yielding to account for their experimental
+observation of the transient granular surface flow occurring
+when a highly compacted cylindrical pile of granular media
+supported by a disc is suddenly released and crumbles to
+form a cone.
+
+
 For a fixed granular material and substrate properties, the flow dynamics and 
 the final deposit morphology do not depend on the volume of granular material 
 released, but depend only on the aspect ratio `\textit{a}' of the column. A 
@@ -736,6 +737,21 @@ $`a'=6$}
 \end{figure}
 
 \subsection{Role of initial grain properties}
+
+\citet{Lube2005} observed that the run-out distance scales with the initial 
+aspect ratio of the column, independent of the material properties. The run-out 
+evolution after the initial transition regime is a frictional dissipation 
+process, and the lack of influence of material properties on the run-out 
+behaviour is inconsistent with continuum modelling of granular flow behaviour. 
+~\citet{Balmforth2005} observed that the material properties has almost no 
+influence on the exponent of the normalised run-out as a function of the 
+initial aspect ratio. The numerical constant of proportionality, however, 
+showed clear material dependence. This corroborates the conclusions 
+of~\citet{Lajeunesse2004} and softens that of~\citet{Lube2005}. 
+~\citet{Daerr1999} observed 
+the strong influence of initial packing density and the internal structure on 
+the behaviour of granular flows. 
+
 
 It should be noted that the collapse experiment is
 highly transient and no clear stationary regime was ob
