@@ -91,13 +91,13 @@ rectangular channel,~\citep{Lajeunesse2004}}
 In the present study, multi-scale numerical modelling, i.e. grain-scale 
 modelling and continuum analyses, of the quasi-two dimensional collapse of 
 granular columns are performed using Discrete Element (DEM) approach and 
-Generalised Interpolation Material Point Method (GIMPM). GIMPM  with  
-Mohr-Coloumb failure criterion is used to describe the continuum behaviour of 
-granular column collapse. While the micro-mechanics of the flow is captured 
-using DEM simulations. Comparing the grain scale behaviour with the continuum 
-simulations highlights the limitations of continuum approaches in modelling the 
-dense granular flows and their ability (or lack thereof) in capturing the 
-complex micro-scale rheology.
+Generalised Interpolation Material Point Method (GIMPM). GIMPM, a hybrid 
+Eulerian -- Lagrangian approach, with Mohr-Coloumb failure criterion is used to 
+describe the continuum behaviour of granular column collapse. While the 
+micro-mechanics of the flow is captured using DEM simulations. Comparing the 
+grain scale behaviour with the continuum simulations highlights the limitations 
+of continuum approaches in modelling the dense granular flows and their ability 
+(or lack thereof) in capturing the complex micro-scale rheology.
 
 \subsection{Numerical set-up}
 
@@ -239,21 +239,35 @@ Normal and shear stiffness of grains & $1.6 \times 10^{8}$ \si{\newton\per\m}\\
 Normal and sear stiffness of wall & $4 \times 10^{8}$ \si{\newton\per\m}\\
 Inter-particle friction coefficient, $\mu$ & 0.53 \\
 Wall friction coefficient & 0.466 \\ 
-Coefficient of restitution, $\Gamma$ & 0.755 \\ \bottomrule
+Coefficient of restitution, $\varepsilon$ & 0.755 \\ \bottomrule
 \end{tabular}
 \end{table}
 
-A plane strain collapse of granular column is simulated as a continuum using 
-MPM. The effect of number of material points on the accuracy of the simulation 
-was discussed in Chapter 4.~\citet{Guilkey2003} suggests at least four 
-particles per cell for problems involving large deformations. 10 MPM 
-simulations of the granular column collapse were performed using Mohr-Coulomb 
-constitutive law by varying the initial aspect ratio, to understand the 
-difference between the particle and continuum scale description of granular 
-flows. The parameters used for the continuum analyses are presented in 
-Table.~\cref{table:MPMData}. The Young's modulus of the granular assembly is 
-determined by performing a uni-axial compression of the granular column in 
-DEM.
+GIMPM with Mohr-Coloumb constitutive model is used to simulate plane strain 
+collapse of granular columns.~\citet{Crosta2009} observed that the Mohr-Coloumb 
+with non-associate flow rule is able to capture granular collapse dynamics and 
+models the strong vertical motion components, but it does not suffer the 
+limitations of typical shallow water equation methods. In order to understand 
+the ability and limitations of continuum approaches in capturing the local 
+rheology, it is important to scale the grain scale properties, such as 
+inter-particle friction and stiffness, to the continuum 
+scale (macroscopic friction and Young's modulus).~\citet{Crosta2009} observed 
+that the friction angle plays a significant role on the run-out behaviour. In 
+MPM simulations, the granular flow is assumed to be in critical state and the 
+critical state friction angle is used in the Mohr-Coloumb model. In order to 
+obtain the critical state friction angle of the granular sample, a shear test 
+is performed using 1078 DEM grains. A bi-periodic boundary condition is adopted 
+on the sides of the sample (see~\cref{fig:shear}. Two layers of fixed grains 
+(shown in black) is placed at the top and the bottom of the shear sample. A 
+normal pressure `P' and a horizontal velocity \textit{v} is applied to the 
+fixed grains  at the top of 
+the shear sample. The normal effective stress is varied in the sample and the 
+average shear stress of the sample is measured. The sample was sheared until 
+critical state was reached. The slope of shear stress 
+versus normal effective stress gives the critical state friction angle. A 
+critical state friction angle of $22.2$\si{\degree} is obtained. The Young's 
+modulus of the granular assembly is obtained as the initial slope of the 
+stress-strain plot of a uni-axial compression of a granular column using DEM.
 
 \begin{figure}
 \centering
@@ -273,6 +287,19 @@ DEM.
 \label{fig:shear_test}
 \end{figure}
 
+\citet{Guilkey2003} suggests using at least four material points per cell for 
+large deformation problems. In the present study, 16 material points 
+per cell is adopted. If the mesh is too fine and the number of particles is too 
+large, the particle size 2lp decreases, and the GIMPM interpolation function 
+tends to approach the original MPM function, as shown 
+by~\citet{Bardenhagen2004}. Hence GIMPM loses the merit that it reduces the 
+numerical noise due to material points crossing the background mesh. In 
+addition, the probability of particles crossing the background mesh increases 
+with decrease in mesh size, hence, more noise can be produced~\cite{Abe2013}. 
+The effect of number of material points per cell on the run-out behaviour is 
+discussed in~\cref{sec:MPM_points_per_cell}. Each material point represents 
+one-fourth of a DEM soil grain. The parameters used for the continuum analyses 
+are presented in~\cref{table:MPMData}. 
 
 \begin{table}
 \caption{Parameters used in continuum simulations}
@@ -1447,7 +1474,7 @@ the investigation of the behavior of a pile immersed in a viscous
 fluid.
 
 \subsection{Effect of material points}
-
+\label{sec:MPM_points_per_cell}
 \begin{figure}[tbhp]
 \centering
 \begin{subfigure}[b]{0.95\textwidth}
