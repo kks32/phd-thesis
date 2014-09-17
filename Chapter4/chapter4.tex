@@ -616,11 +616,15 @@ evolution plot for a granular column with initial aspect ratio of 6 (see
 behaviour observed in the case of DEM simulation matches the experimental 
 observation by~\citet{Lajeunesse2004}. Hexagonal packing predicts longer time 
 for the flow to evolve, which can be attributed to crystallisation of grains. 
-MPM overestimates the critical time by 50\%, however has the same value of 
-run-out as the particulate simulations, at time $\textit{t}=3\tau_{c}$, beyond 
-which the material continues to flow until it ceases at 6$\tau_{c}$. In order 
-to understand the flow dynamics in the case of Material Point Method it is 
-important to study the mechanism of energy dissipation. 
+In MPM simulations, the failure starts at the toe of the column and slowly 
+propagates up to form the failure surface. This results in slower initiation of 
+the flow. It can be observed that MPM overestimates the critical time by 50\%. 
+Although, MPM and DEM simulations show the same run-out at time 
+$\textit{t}=3\tau_{c}$, the flow evolution between both the approaches is 
+different. MPM simulations continue to accelerate beyond $3\tau_c$ and ceases 
+to flow at $6\tau_{c}$. In order to understand the difference in the flow 
+dynamics in the case of Material Point Method it is important to study the 
+mechanism of energy dissipation. 
 
 
 \begin{figure}[tbhp]
@@ -648,11 +652,11 @@ important to study the mechanism of energy dissipation.
 The energy dissipation mechanism during the collapse provides useful insight 
 into the flow dynamics. In the case of small aspect ratios, the columns undergo 
 no free fall. The spreading mainly results from the failure of the edges, while 
-the top of the column remains essentially undisturbed in the central areas. 
-Hence, the amount of energy dissipated during the spreading $\delta E$ can be 
-easily recovered using the simple shape of the final deposit and volume 
-conservation (see~\cref{fig:volume_conservation}). The difference of potential 
-energy between the initial and the final states gives
+the top of the column remains essentially undisturbed in the central area. 
+~\citet{Staron2006a} showed that the amount of energy dissipated during the 
+spreading $\delta E$ can be easily recovered using the simple shape of the 
+final deposit and volume conservation (see~\cref{fig:volume_conservation}). The 
+difference of potential energy between the initial and the final states gives
 
 \begin{equation}
 \delta E = \frac{1}{6} g \rho (L_f - L_0) H_0^2 \,,
@@ -683,18 +687,19 @@ W_{\mu} = \frac{1}{6} \mu_e g \rho (L_f - L_0) H_0^2 \,,
 Equating $\delta_E$ and $W_{\mu}$ gives $\mu_e (L_f - L_0) = H_0$. The scaling
 of the runout leads directly to the relation $\mu_e = \lambda^-1$, which is the 
 numerical constant in the power law of the run-out that depends on the material 
-properties~\cite{Balmforth2005}. The amount of energy $\delta E$ dissipated 
-during the spreading is compare with $W = N_p g m_p r_p$ ,where $N_p$ is the 
+properties~\citep{Balmforth2005}. The amount of energy $\delta E$ dissipated 
+during the spreading is compared with $W = N_p g m_p r_p$, where $N_p$ is the 
 total number of grains, $m_p$ is their mass, and $r_p$ is the total horizontal 
 distance run by each of them. We observe that the dissipation energy $\delta E$ 
 is proportional to $W$.~\cite{Staron2006a} observed that the coefficient of 
-proportionality gives a measure of the effective coefficient of friction and 
+proportionality gives a measure of the effective friction and 
 observed a power law dependence between $\mu_e$ and internal friction angle 
 $\mu$: $\mu_e=0.425\mu^{0.2}$. The effective friction angle $\mu_e$ of 
-21\si{\degree} observed is very close to the critical state friction angle of 
-22\si{\degree} used in MPM. This proves that the energy dissipation mechanism 
-modelled in a continuum sense as a frictional dissipation process captures the 
-flow kinematics observed in DEM and experiments.
+21\si{\degree} is observed, which is very close to the critical state friction 
+angle of 22\si{\degree} used in MPM simulations. This proves that the energy 
+dissipation mechanism modelled in a continuum sense as a frictional dissipation 
+process captures the flow kinematics observed in DEM and experiments, for short 
+columns.
 
 ~\Cref{a04_energy} shows the time evolution of the normalised potential energy 
 $(E_{p}/E_0)$ and kinetic energy $(E_{k}/E_0)$ for granular columns with 
@@ -715,10 +720,10 @@ energy is computed as
 \frac{E_d}{E_0} = 1 - \frac{E_k}{E_0} - \frac{E_p}{E_0} \,.
 \end{align}
 %
-It can be observed that both MPM and DEM show similar dissipation mechanism. 
-The DEM simulation shows 3\% more potential energy dissipation in comparison 
-with MPM simulations. The small difference in the potential energy is due to 
-grain scale rearrangements. This shows the ability of continuum approach in 
+It can be observed that both MPM and DEM show similar energy dissipation 
+mechanism. The DEM simulation shows 3\% more potential energy dissipation in 
+comparison with MPM simulations. This small difference in the potential energy 
+is due to grain rearrangements. This shows the ability of continuum approach in 
 capturing the flow kinematics of columns with small aspect ratios ($`a' \le 
 2.3$). 
 
@@ -731,7 +736,7 @@ material flows down. Three successive stages can be identified in the granular
 column collapse. The flow is still initiated by a well defined failure surface. 
 However, the centre of gravity of the granular column is much higher than the 
 top of the failure surface, which results in free fall of grains under gravity 
-consuming the column along their way. In the initial acceleration stage 
+consuming the column along their way. In this stage 
 $(t<0.8\tau_{c})$, the initial potential energy stored in the grains is 
 converted into vertical motion. In the second stage, when the grains reach the 
 vicinity of the failure surface, they undergo collisions with the bottom plane 
@@ -739,34 +744,35 @@ and the neighbouring grains, thus causing the flow to deviate along the
 horizontal direction releasing a large amount of kinetic energy gained during 
 the free fall (see~\cref{fig:a6f}). In the third stage, the grains eventually 
 leave the base area of the column and flow sideways~\citep{Lajeunesse2004}. As 
-the process involves collective dynamics of all the particles, it is difficult 
+the process involves collective dynamics of all the grains, it is difficult 
 to predict the exact trajectory of a grain, however, the overall dynamics can 
 be explained. 
 
 
-The process involves collective dynamics of all the particles, and DEM 
-simulations model both collisional and frictional dissipation process. However, 
-MPM simulations assume that the total initial potential energy stored in the 
-system is completely dissipated through friction over the entire run-out 
-distance, resulting in larger run-out distance. To explain the dissipation of 
-energy during the collapse,~\citet{Staron2005} assumed that the total initial 
-potential energy stored in the system is completely dissipated through friction 
-over the entire run-out distance as
-\begin{align}
-\mu \textit{m}_{o}g \times (L_{f}-L_{i}) = \textit{m}_{o}g \textit{H}_{o} \,,
-\end{align}
-where $\mu$ is the friction coefficient. It can be observed 
+DEM simulations model both collisional and frictional dissipation process 
+during the collapse of tall columns. However, MPM simulations assume that the 
+total initial potential energy stored in the system is completely dissipated 
+through friction over the entire run-out distance, this results in longer 
+run-out distance.~\Cref{fig:a6_energy} shows the evolution of energy with time. 
+At the initial stage of collapse, characterised by free fall of grains under 
+gravity, DEM simulation due its particulate nature shows a rapid reduction in 
+the potential energy in comparison with MPM, where the failure begins from the 
+toe of the column. The continuum nature of MPM simulations results in slower 
+initiation of collapse (see~\cref{fig:flowa6}). It can be also observed 
 from~\cref{fig:a6_energy} that dissipation energy in MPM is 25\% less than DEM 
-simulations. In order to understand the mechanism of energy dissipation, the 
-dissipation term is split in to cumulative frictional and collisional part. The 
-frictional dissipation observed in MPM is almost identical to the frictional 
-dissipation observed in DEM. The difference in the dissipation is due to the 
-collisional regime, which occurs at $0.8\tau_c$. The total and frictional 
-dissipation curves diverge around $0.8\tau_c$ where the grains near the 
-vicinity of the failure surface undergo collisions with the bottom plane 
-and the neighbouring grains resulting in collisional dissipation of the stored 
-potential energy. MPM lacks the collision dissipation mechanism, which results 
-in longer run-out distances for columns with large aspect ratios. 
+simulations. In order to understand the mechanism of energy dissipation, it is 
+important to understand the contribution from the cumulative frictional and 
+collisional parts. The frictional dissipation (basal and internal friction) 
+observed in DEM is almost identical to the frictional dissipation observed in 
+MPM. The difference in the dissipation energy is due to the collisional regime, 
+which occurs at $0.8\tau_c$. The total and frictional dissipation curves 
+diverge around $0.8\tau_c$ where the grains near the vicinity of the failure 
+surface undergo collisions with the bottom plane and the neighbouring grains 
+resulting in collisional dissipation of the stored potential energy. DEM 
+simulation show drop in the peak kinetic energy at $\approx0.8\tau_c$, which is 
+at the beginning collisional dissipate stage. MPM lacks this collision 
+dissipation mechanism, which results in longer run-out distances for columns 
+with large aspect ratios. 
 
 \begin{figure}[tbhp]
 \centering
@@ -786,6 +792,24 @@ in longer run-out distances for columns with large aspect ratios.
 \label{fig:column_energy}
 \end{figure}
 
+$\mu(I)$ rheology, discussed in~\cref{sec:muI}, describes the granular 
+behaviour using a dimensionless number, called the \textit{inertial number I}, 
+which is the ratio of inertia to pressure forces. Small values of I 
+corresponds to critical state of soil mechanics and large values of I 
+corresponds to the fully collisional regime of kinetic theory. $\mu(I)$ 
+rheology is adopted in MPM simulations to understand the characteristics of the 
+flow regime. Mohr-Coulomb model was used along with $\mu(I)$ rheology. Friction 
+angle is changed according to the value obtained by~\citet{DaCruz2005} friction 
+law that is dependent on the inertial number \textit{I} as $\mu = \mu_{min} + b 
+\mathit{I}$ where $\mu_{min} = 0.22$ and b = 1.~\Cref{fig:flow_muI} shows the 
+flow evolution of granular column collapse for aspect ratio `a' of 0.4 and 6 
+using $\mu(I)$ rheology. For short columns, the evolution of flow based on 
+$\mu(I)$ rheology is identical to the MPM simulation using Mohr-Coloumb model. 
+However, for tall columns, $\mu(I)$ rheology evolves at the same rate as the 
+DEM simulations up to $t = 0.8\tau_c$, after which MPM simulation continues to 
+accelerate due to lack of collisional dissipation, while the DEM simulation 
+decelerates with time. 
+
 \begin{figure}[tbhp]
 \centering
 \begin{subfigure}[b]{0.975\textwidth}
@@ -803,6 +827,16 @@ in longer run-out distances for columns with large aspect ratios.
 \caption{Flow evolution of granular column collapse using $\mu(I)$ rheology}
 \label{fig:flow_muI}
 \end{figure}
+
+~\Cref{fig:mu_vs_I} shows that the short column attains a maximum inertial 
+number of 0.012, which is in the dense granular flow regime, inertial number 
+\textit{I}$\approx10^{-3}$ to $0.1$~\citep{DaCruz2005}. However, the maximum 
+inertial number $I\approx0.04$, for tall is still within the 
+dense granular flow regime. DEM simulations, however, showed a collisional 
+regime that has inertial number higher than 0.1. This shows that continuum 
+approach using frictional laws are able to capture the flow kinematics at small 
+aspect ratios, however are unable to precisely describe the flow behaviour for 
+tall columns, which is characterised by an initial collisional regime.
 
 \begin{figure}[tbhp]
 \centering
@@ -823,29 +857,22 @@ behaviour is inconsistent with continuum modelling of granular flow behaviour.
 influence on the exponent of the normalised run-out as a function of the 
 initial aspect ratio. The numerical constant of proportionality, however, 
 showed clear material dependence. This corroborates the conclusions 
-of~\citet{Lajeunesse2004} and softens that of~\citet{Lube2005}. 
-~\citet{Daerr1999} observed 
-the strong influence of initial packing density and the internal structure on 
-the behaviour of granular flows. 
+of~\citet{Lajeunesse2004} and softens that 
+of~\citet{Lube2005}.~\citet{Daerr1999} observed the strong influence of initial 
+packing density and the internal structure on the behaviour of granular flows. 
 
 
-It should be noted that the collapse experiment is
-highly transient and no clear stationary regime was ob
-served. On the contrary, the acceleration and the deceleration 
-phases cover 
-nearly the whole duration of the
-spreading. This makes the analysis of the structure of
-the flow and its relation with other characteristic of the
-system uneasy.
-Considering this, we were able to show nevertheless
-how the initial condition was dominating the behaviour
-of the spreading through the mass distribution induced
-in the flow. This means that the knowledge of the final
-run-out is not a sufficient characterization of the deposit:
-one also needs to know how mass is distributed to under-
-stand the dynamics and the dissipation process. This is
-expected to be true in natural contexts as well as in
-experiments.
+It should be noted that the collapse experiment is highly transient and no 
+clear stationary regime was observed. On the contrary, the acceleration and the 
+deceleration phases cover nearly the whole duration of the spreading. This 
+makes the analysis of the structure of the flow and its relation with other 
+characteristic of the system uneasy. Considering this, we were able to show 
+nevertheless how the initial condition was dominating the behaviour
+of the spreading through the mass distribution induced in the flow. This means 
+that the knowledge of the final run-out is not a sufficient characterization of 
+the deposit: one also needs to know how mass is distributed to under-
+stand the dynamics and the dissipation process. This is expected to be true in 
+natural contexts as well as in experiments.
 While the inter-grain friction
 $\mu$
 does not affect the early vertical dynamics, nor the power-law dependence,
