@@ -1,7 +1,221 @@
-\chapter{Granular flows}
+\chapter{Introduction}
 
 \ifpdf
     \graphicspath{{Chapter1/figs/raster/}{Chapter1/figs/pdf/}{Chapter1/figs/}}
 \else
     \graphicspath{{Chapter1/figs/vector/}{Chapter1/figs/}}
 \fi
+
+\section{Introduction}
+Avalanches, debris flows, and landslides are geophysical hazards which involve 
+rapid mass movement of granular solids, water and air as a single phase system. 
+The presence of water in a granular flow distinguishes `\textit{mud and debris 
+flow}' from `\textit{granular avalanches}'. Debris flow is a rapid mass 
+movement of liquefied, unconsolidated, saturated soil. The speed of the debris 
+flow varies from 3 mph to 50 mph in extreme cases, transporting 100 to 100,000 
+cubic meters of unconsolidated sediments down very steep slopes. 
+Figure.~\ref{fig:debris} shows the debris flow that occurred during an 
+earthquake-triggered landslide in Las Colinas,  El Salvador. Submarine 
+landslides are marine landslides that transport sediments across continental 
+shelves. Unlike a debris flow, the submarine landslides can occur on slopes as 
+flat as $1^{o}$ and can reach speeds of 50 mph.~\cref{fig:Landslide} 
+shows the Storegga Landslide, the largest recorded continental slope failure, 
+which struck off the coast of central Norway, transporting materials over 300 
+miles~\citep{Ward2002}. Granular avalanches, debris flow and submarine 
+landslides cause significant damage to life and property. Globally, landslides 
+cause billions of pounds in damage, and thousands of deaths and injuries each 
+year. In July 2011, at least 32 people were killed in a debris flow induced by 
+a rainfall-triggered landslide in South Korea (Source: BBC, 2011). 
+Understanding the triggering mechanism and the granular flow process provides 
+an insight into the force and velocity distribution in a granular flow, 
+enabling us to design appropriate defensive measures. 
+
+Granular flows have been extensively studied during the past two decades 
+through experimental and numerical simulations~\citep{Jaeger1996}. In most 
+cases, granular flows exhibit three distinct regimes: the slow quasi-static 
+regime, a dilute collisional regime and an intermediate regime. Kinetic theory 
+~\citep{Jenkins1983, Savage1981} which assumes binary collision between 
+particles, captures the rapid-collisional regime, but is incapable of 
+predicting the dense quasi-static behaviour. By drawing a simple analogy from 
+fluid dynamics one can model granular flows as non-Newtonian fluids using a 
+variant of the Navier-Stokes equation; one such approach is the depth-averaged 
+shallow water equation~\citep{Savage1991}, which has been applied to solve 
+granular flow dynamics with a reasonable amount of success. However, the basic 
+assumption of neglecting the effect of vertical acceleration restricts the 
+approach from describing the triggering mechanism, in which vertical 
+acceleration plays a significant role. The dynamics of a homogeneous granular 
+flow involve at least three distinct scales: the \textit{microscopic scale} 
+which is characterized by contact between particles, the \textit{meso-scale} 
+which represents micro-structural effects such as particle rearrangement, and 
+the \textit{macroscopic scale}. A continuum description of granular flows is 
+incapable of revealing inhomogeneities at particle level, such as force chains, 
+which are purely due to micro-structural effects. Non-trivial relations have 
+been found between the run-out distance and the initial aspect ratio of a 
+granular column~\citep{Staron2007, Lajeunesse2005, Lube2005}. Simple 
+mathematical models based on conservation of horizontal momentum capture the 
+scaling laws of the final deposit, but fail to describe the initial transition 
+regime. Rheology is concerned with describing the mechanical behaviour of those 
+materials which cannot be described using classical theories, by establishing 
+an empirical relation between deformations and stresses. 
+Recently,~\citet{Midi2004} proposed a new rheology based on extensive 
+experimental and numerical investigation on gravity-driven dry granular flows. 
+The spreading dynamics are found to be similar for the continuum and particle 
+approaches, however the rheology falls short in predicting the run-out distance 
+for steeper slopes and in the transition regime where the shear-rate effect 
+diminishes. The flow of granular materials in a fluid remains largely 
+unexplored. 
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.95\textwidth]{Debrisflow}
+\caption[Debris slide in Las Colinas, El Salvador, January 2001]{Initiation, 
+channelling, spreading and deposition of debris slide in Las Colinas, El 
+Salvador, January 2001. The debris flow buried as many as 500 homes. (Source: 
+USGS report on `\textit{Landslides in Central America}', 2001)}
+\label{fig:debris}
+\end{figure}
+
+Geophysical hazards usually involve multi-phase interactions. The momentum 
+transfer between the discrete and continuous phases significantly affects the 
+dynamics of the flow. Certain macroscopic models were unable to capture the 
+complex physical mechanisms occurring at the particle scale, i.e. the 
+hydrodynamic instabilities, formation of clusters, collapse, and transport 
+phenomena. In order to describe the mechanism of multi-phase granular flows, it 
+is important to consider both the dynamics of the solid phase and the role of 
+the ambient fluid. Most models which simulate submarine landslides assume a 
+single homogeneous grain-fluid mixture governed by a non-Newtonian fluid 
+behaviour~\citep{Denlinger2001,Iverson2000}. Although successful in accounting 
+for the general phenomenology on analytical grounds, such models fail to 
+capture certain phenomena such as porosity gradient and fluid-induced 
+size-segregation. Moreover, application of these models involves additional 
+assumptions about the boundary/interface between the grains and the fluid, and 
+the transition between high and low shear stresses. The $\mu(\textit{I})$ 
+rheology is found to capture the dense submarine granular flows, if the 
+inertial time scale in the rheology is replaced with a viscous time scale. 
+However, the transition to the quasi-static regime where the shear rate 
+vanishes is not captured by the simple model. The flow threshold or the 
+hysteresis characterizing the flow or no-flow condition is also not correctly 
+captured by the model. When the scale of the system is larger than the size of 
+the structure, a simple rheology is expected to capture the overall flow 
+behaviour, however the size of the correlated motion is of the same size as the 
+system, causing difficulties in modelling the flow behaviour. Hence, it is 
+essential to study the behaviour of granular flows at various scales, i.e. 
+microscopic, meso-scale and continuum-scale levels, in order to develop a 
+constitutive model that captures the entire flow process.
+
+Typical continuum laws are only used when there is a strong separation of 
+scales between the micro-scale and the macro-scale sizes of the flow geometry. 
+Although granular materials are composed of discrete grains which interact only 
+at contacts, the deformations of individual grains are negligible in comparison 
+with the deformation of the granular assembly as a whole. Hence, the 
+deformation is primarily due to the movements of grains as rigid bodies. 
+Therefore, continuum models are still widely used to solve engineering problems 
+associated with granular materials and flows. Conventional mesh-based 
+approaches, such as Finite Element (FE) and Finite Difference (FD) methods, 
+involve complex re-meshing and remapping of variables, which cause additional 
+errors in simulating large deformation problems. Mesh-free methods, such as the 
+Material Point Method (MPM) and Smooth Particle Hydrodynamics (SPH), are not 
+constrained by the mesh size and its distortion, and hence are effective in 
+simulating large deformation problems such as debris flow and submarine 
+landslides. The analytical and finite element models which consider granular 
+materials as a continuum cannot take into account the local geometrical 
+processes that govern the mechanical behaviour of non-homogeneous soils, and 
+pose subtle problems for statistical analysis. The particle level description 
+of the granular material enriches the macro-scale variables that happen to 
+poorly account for the local rheology of the materials. Numerical models based 
+on the Discrete Element Method (DEM) allow us to evaluate quantities which are 
+not accessible experimentally, thus providing useful insight into the flow 
+dynamics. Particle-fluid interactions can now be simulated by interfacing 
+discrete-element methods with a Lattice Boltzmann solver or a fluid-coupled 
+continuum model, however both methods have their inherent limitations. Even 
+though millions of particles can be simulated, the possible length of such a 
+particle system is generally too small to regard it as `\textit{macroscopic}'. 
+Therefore, methods to perform a micro-macro transition are important and these 
+`\textit{microscopic}' simulations of a small sample, i.e. the 
+`\textit{representative volume element}', can be used to derive a macroscopic 
+constitutive relation which describes the material within the continuum 
+framework. 
+
+\begin{figure}[htpb]
+\centering
+\includegraphics[width=0.95\textwidth]{Storegga}
+\caption[The extent of the Storegga landslide]{The extent of the Storegga 
+landslide (Source: School of geoscience, University of Sydney)}
+\label{fig:Landslide}
+\end{figure}
+
+\section{Objectives}
+The aim of this research work is to understand and describe the mechanism of 
+granular flows in dry and submerged conditions using a multi-scale approach. 
+This research work involves identification of fundamental microscopic 
+parameters that control the granular flow dynamics. Continuum and 
+discrete-element modelling of granular flows will be performed to understand 
+the limits of the continuum approach in modelling large deformation granular 
+flow problems. This study will provide an insight into the mechanics of 
+granular flows, and will enable us to understand geophysical hazards, such as 
+avalanches, debris flows and sub-marine landslides. The study involves, but is 
+not limited to, the following goals:
+
+\tochide\subsubsection{Multi-scale simulation of dry granular flows}
+
+Two-dimensional simulations of the collapse of a dry granular column and the 
+flow of dry granular material on an inclined plane will be performed in 
+particulate and continuum scales, using the Molecular Dynamics and Material 
+Point Method, respectively. It involves understanding the parameters 
+influencing the granular flow, i.e. the mechanism of flow initiation, flow 
+propagation and the energy dissipation process. The study will highlight the 
+limitations of the continuum and the microscopic approaches in capturing the 
+mechanics behind the complex-flow problems.
+
+\tochide\subsubsection{Constitutive modelling and fluid coupling in Material 
+Point Method}
+
+Advanced constitutive models, such as NorSand constitutive law and 
+$\mu\left(\textit{I}\right)$ rheology models will be implemented in the 
+Material Point Method. Large deformation plasticity theory and objective stress 
+rates will implemented in the MPM code to describe the granular flow dynamics. 
+The coupling of soil and fluid material points, which considers the dynamic 
+fluid-solid interface will be developed. The effect of fluid pressure 
+oscillations at the fluid-solid interface, will be studied. The fluid-coupled 
+\textit{MPM} code will be implemented in a structured framework and robust 
+visualization and parallelization algorithms will be implemented.
+
+\tochide\subsubsection{Multi-scale simulation of saturated granular flows}
+
+The Molecular Dynamics technique has been coupled with the Lattice Boltzmann 
+method to simulate granular flows in a fluid domain. The validity of 
+$\mu\left(\textit{I}\right)$ rheology in simulating granular flow in a fluid 
+will be investigated. Continuum and particle level simulations of granular 
+flows in fluids will be performed. The triggering mechanism, spreading dynamics 
+and the energy dissipation mechanism between the dry and fluid saturated 
+granular flows will be compared. The parameters influencing the granular 
+collapse in fluids will also be investigated. 
+
+\section{Thesis outline}
+This thesis consists of seven chapters. Chapter one gives a brief introduction 
+to geophysical hazards, such as submarine landslides, granular avalanches and 
+debris flow. The behaviour of granular materials and the mechanism of granular 
+flow is discussed in detail in chapter two, drawing attention to previous 
+research on granular flow regimes. Experimental and numerical investigations on 
+various granular flow problems and modelling techniques are also discussed in 
+this chapter. By exploring different regimes in a granular flow and the 
+limitations of various theoretical models, potential areas of improvement and 
+future research in describing the mechanics of granular flow are identified. 
+Continuum modelling of granular flow, the possibility of using a continuum 
+model to describe the flow dynamics, and the limitations of a continuum 
+approach are discussed in chapter three. Chapter three also elaborates on the 
+Material Point Method, a Eulerian-Lagrangian approach, and its implementation 
+in the present study to model granular flows. Chapter four explains the various 
+discrete-element modelling techniques and explains the implementation of the 
+Molecular Dynamics technique in modelling granular flow problems. The 
+particle-assembling method adopted in the present study and the results of 
+statistical analysis performed to verify the homogeneity of the prepared sample 
+are also discussed in this chapter. Chapter five elaborates on the Lattice 
+Boltzmann approach in modelling fluid flow and the coupling of the LBM approach 
+with the Molecular Dynamics technique to simulate fluid-particle interactions. 
+The validation of the Lattice Boltzmann technique in simulating fluid flow 
+through a pipe with Computational Fluid Dynamics simulations is also discussed. 
+The multi-scale simulations of granular column collapse using the Molecular 
+Dynamics and the Material Point Method are discussed in chapter six. The final 
+chapter summarizes the mechanics involved in a granular flow and outlines the 
+goals and time-line of future research.
