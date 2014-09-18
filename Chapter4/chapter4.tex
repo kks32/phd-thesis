@@ -1486,7 +1486,8 @@ are controlled by the input energy and collective dynamics of the whole pile.
 However, the run-out behaviour is expected to also depend on the base friction. 
 A series of simulations with different values of base friction was performed 
 using MPM to analyse the influence of friction on the run-out behaviour. The 
-results are shown in~\cref{fig:runout_fric_slope}. The exponent of the 
+influence of friction on the run-out behaviour is shown in
+~\cref{fig:runout_fric_slope}. The exponent of the 
 power-law relation between the run-out and input energy has a weak dependence 
 on the base friction, the proportionality constant, however, is affected by the 
 change in the base friction. This behaviour is similar to that observed in 
@@ -1537,9 +1538,21 @@ rolling of the grains change in response to increase in friction coefficient
 
 %-------------------------------------------------------------------------------
 
-\subsection*{Mode of dissipation}
+\subsection*{Effect kinetic energy distribution}
 
-
+~\citet{Staron2005} observed that the distribution of kinetic energies is an 
+essential factor for the run-out distance. In order to understand the influence 
+of energy distribution on the run-out behaviour, granular pile subjected to two 
+different velocity fields was studied. A uniform velocity $V_{xo} (y) = V_0$ is 
+applied to the entire pile, in contrast to the gradient impact velocity. 
+Snapshots of flow kinematics at initial stages are shown 
+in~\cref{fig:Uniform_Slope_Profile_200J} (MPM simulations) 
+and~\cref{fig:Uniform_Slope_DEM_200J} (DEM). It can be observed from the 
+figures that the continuum behaviour is identical to that of grain-scale 
+simulations. As each grain experiences the same velocity, grains located at the 
+top of the slope are pushed farther away and unlike the gradient input 
+velocity, the cavity left behind the granular mass is not filled by the soil 
+grains at the top. 
 \begin{figure}[tbph]
 \centering
 \includegraphics[width=\textwidth]{Uniform_Slope_Profile_200J}
@@ -1555,6 +1568,24 @@ subjected to a gradient impact energy $E_0 = 61 \ mgd$.}
 subjected to a gradient impact energy $E_0 = 61 \ mgd$.}
 \label{fig:Uniform_Slope_DEM_200J}
 \end{figure}
+
+~\Cref{fig:Runout_Eo_GU} shows the influence of velocity distribution on the 
+run-out behaviour. At low input energy, the gradient velocity distribution 
+shows significanly longer run-out in comparison to uniform velocity 
+distribution.~\Cref{sec:decay} showed that at lower input energies a larger 
+fraction of the energy is consumed in the destabilization process. Which means 
+that the amount energy available for flow is less, in uniform velocity 
+distribution, this energy is even smaller due to the uniform distribution of 
+the initial impact velocity. However at higher input energy, where most of the 
+energy is dissipated during the spreading phase, the run-out distance has a 
+weak dependence on the distribution of velocity in the granular mass. The 
+duration of the flow shows similar behaviour to the run-out, however, the slope 
+subjected a gradient velocity flows quicker than the uniform velocity 
+distribution. Gradient velocity distribution provides more input energy at the 
+initial stage to overcome the frictional resistance at the base. Hence, it can 
+be observed that the material property and the distribution of kinetic energy 
+in the system has a non-trivial influence on the flow kinematics and the 
+internal flow structure.
 
 \begin{figure}[tbph]
 \centering
@@ -1574,42 +1605,9 @@ subjected to a gradient impact energy $E_0 = 61 \ mgd$.}
 \caption{Effect of input velocity distribution on the run-out behaviour}
 \label{fig:GU}
 \end{figure}
-
-
 %-------------------------------------------------------------------------------
 
-
-The choice of this geometry was motivated by our main goal  to focus on the 
-effect of an input energy on the consecutive dynamics of a granular material.
-For the range of input energies investigated in this pushing test by means of 
-contact dynamics simulations, we observed a power-law dependence of the 
-run-out distance and time with non-trivial exponents. This is a central result 
-of this work as it reveals that the power-law behaviour is a generic feature of 
-granular dynamics. The values of the exponents are not simple functions of 
-the geometry. 
-
-We also evidenced two regimes with different values of the exponents: 
-a low-energy regime and a high-energy regime. The first regime  
-reflects mainly the destabilization of the pile by the quake with a run-out time 
-independent of the input energy whereas the second regime is governed by the 
-spreading dynamics induced by the higher value of the input energy. We showed 
-that the evolution of the pile in this high-energy regime can be described by a 
-characteristic decay time and the energy available at the end of the first 
-stage where the pile is destabilized by the quake. 
-
-This work may be pursued along two directions: 1) experimental 
-realization of a similar setup with different modes of energy injection and 
-2) investigating the effect of various particle shapes or the presence of an 
-ambient fluid. Although numerical simulations are generally reliable 
-with realistic results found in the past studies of steady flows, we believe 
-that the transients are more sensitive situations than steady states and the  
-experiments are necessary for checking the validation of the results suggested 
-by the simulations. Provided a convenient method is used for supplying kinetic 
-energy homogeneously into a pile, our configuration is also interesting for 
-the investigation of the behavior of a pile immersed in a viscous 
-fluid.
-
-\subsection{Effect of material points}
+\subsection{Effect of mesh size and number of material points per cell}
 \label{sec:MPM_points_per_cell}
 \begin{figure}[tbhp]
 \centering
@@ -1704,9 +1702,41 @@ Multi-scale simulation of granular column collapse was performed to understand
 the ability and limitations of continuum models to capture the micro-mechanics 
 of dense granular flows. The run-out behaviour predicted by both continuum and 
 DEM simulations matches for columns with small aspect ratios, where the 
-dissipation is predominantly frictional. However, MPM predicts larger run-out 
-distances for columns with higher aspect ratios. Energy evolution studies using 
+dissipation is predominantly frictional. However, MPM predicts longer run-out 
+distance for columns with higher aspect ratios. Energy evolution studies using 
 DEM simulations reveal that the run-out behaviour is independent of frictional 
 properties of the granular material and collision predominates the initial 
 free-fall regime. The lack of a collisional energy dissipation mechanism in MPM 
 results in over prediction of run-out distances. 
+
+
+The choice of this geometry was motivated by our main goal  to focus on the 
+effect of an input energy on the consecutive dynamics of a granular material.
+For the range of input energies investigated in this pushing test by means of 
+contact dynamics simulations, we observed a power-law dependence of the 
+run-out distance and time with non-trivial exponents. This is a central result 
+of this work as it reveals that the power-law behaviour is a generic feature of 
+granular dynamics. The values of the exponents are not simple functions of 
+the geometry. 
+
+We also evidenced two regimes with different values of the exponents: 
+a low-energy regime and a high-energy regime. The first regime  
+reflects mainly the destabilization of the pile by the quake with a run-out 
+time 
+independent of the input energy whereas the second regime is governed by the 
+spreading dynamics induced by the higher value of the input energy. We showed 
+that the evolution of the pile in this high-energy regime can be described by a 
+characteristic decay time and the energy available at the end of the first 
+stage where the pile is destabilized by the quake. 
+
+This work may be pursued along two directions: 1) experimental 
+realization of a similar setup with different modes of energy injection and 
+2) investigating the effect of various particle shapes or the presence of an 
+ambient fluid. Although numerical simulations are generally reliable 
+with realistic results found in the past studies of steady flows, we believe 
+that the transients are more sensitive situations than steady states and the  
+experiments are necessary for checking the validation of the results suggested 
+by the simulations. Provided a convenient method is used for supplying kinetic 
+energy homogeneously into a pile, our configuration is also interesting for 
+the investigation of the behavior of a pile immersed in a viscous 
+fluid.
