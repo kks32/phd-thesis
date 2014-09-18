@@ -1065,149 +1065,74 @@ using continuum approaches to predict realistic granular flow behaviour.
 \section{Slopes subjected to impact loading}
 
 Transient granular flows occur very often in nature. Well-known examples are 
-rockfalls, debris flows, and aerial and submarine avalanches. They form major 
-elements that reshape the landscape and their high destructive potential is a 
-substantial factor of risk. Natural granular flows may be triggered as a result 
-of different processes such as gradual degradation, induced by weathering or 
-chemical reactions, liquefaction and external forces such as earthquakes. Most 
-contemporary research on granular materials deals with the steady-state 
-flow. Transients and inho-
-mogeneous boundary conditions are much less amenable
-to observation and analysis, and have thus been less ex-
-tensively studied despite their primary importance in en-
-gineering practice [3,22,33]. In the geological context, for
-example, transient movements of large granular slopes and
-heaps are of special interest with regard to their destruc-
-tive force and the transformations that they may produce
-in the landscape [9,19,8]. Such movements may be induced
-by the action of various forces and energy sources such as
-sudden collapse of a rock, tsunamis or earthquakes [14, 6].
-In all cases, an initially static pile of grains is rst dis-
-turbed by external forces, it then undergoes an abrupt
-accelerated motion and spreads over long distances before
-relaxing to a new equilibrium state when the whole ki-
-netic energy acquired during destabilization is dissipated
+rockfalls, debris flows, and aerial and submarine avalanches. In the 
+geotechnical context, transient movements of large granular slopes 
+is a substantial factor of risk due to their destructive force and the 
+transformations they may produce in the landscape. Natural granular flows 
+may be triggered as a result of different processes such as gradual 
+degradation, induced by weathering or chemical reactions, liquefaction and 
+external forces such as earthquakes. Most contemporary research on granular 
+materials deals with the steady-state flow. Transients and inhomogeneous 
+boundary conditions are much less amenable to observation and analysis, and 
+have thus been less extensively studied despite their primary importance in 
+engineering practice. In all cases, an initially static pile of grains is 
+disturbed by external forces, it then undergoes an abrupt accelerated motion 
+and spreads over long distances before relaxing to a new equilibrium state when 
+the whole kinetic energy acquired during destabilization is dissipated
 by friction and inelastic collisions.
 
-Granular flows have been studied in laboratory experiments in different 
-geometries such as tilted piles leading to slope failure and surface 
-avalanches \citep{Legros2002, Iverson1997} or by considering vertical columns 
-of grains collapsing and spreading under their own weight~\citep{Lajeunesse2004,
-Lajeunesse2005}. The dynamics observed in these cases is often nontrivial 
-in the sense that the final configurations after the dissipation of the whole 
-kinetic energy  can not be readily predicted by means of simple laws based on 
-the Mohr-Coulomb nature of the material. For example, in collapsing columns, 
-the run-out distance is found to obey a power-law dependence upon the initial 
-aspect ratio of the column. 
+This section investigates the ability of MPM, as a continuum approach, to 
+reproduce the evolution of a granular pile destabilized by an external energy 
+source. In particular, a central issue is whether power-law dependence of the 
+run-out distance and time observed with respect to the initial geometry or 
+energy can be reproduced by a simple Mohr-Coulomb plastic behaviour for 
+granular slopes subjected an impact energy. Effect of different input 
+parameters, such as the distribution of energy and base friction, on the 
+run-out kinematics are studied by comparing the data obtained from DEM and MPM 
+simulations. As we shall see, MPM is successfully able to simulate the 
+transient evolution with a single input parameter, the internal angle of 
+friction. This opens the way to the simulation of geological-scale flows on 
+complex topographies.
 
-The observed nontrivial transient dynamics is often correctly 
-reproduced by the DEM, which provides 
-a powerful tool for the grain-scale analysis of the 
-trigger and its subsequent dynamics \citep{Staron2005, Staron2009}. 
- In contrast, the so-called 
-Material Point Method (MPM) is an alternative approach for 
-continuum problems that allows for indefinitely large deformations 
-without re-meshing \cite{Sulski??}. In this method, the material points carry 
-the information 
-on state variables and a background fixe grid is used to solve the governing 
-equations. 
-The information between the material points and the grid is exchanged via 
-suitable shape functions. The MPM has been applied with success to 
-a number of solid mechanics problems and its theoretical foundations 
-have recently been investigated by several authors. 
-
-In this paper, we are concerned with the ability of the MPM, as a continuum 
-approach, to reproduce the evolution of a granular pile 
-under its own weight or when destabilized by energy input. In particular, 
-a central issue is whether power-law dependence of the run-out distance 
-and timew ith respect to the initial geometry or energy can be reproduced 
-by a simple prescription of the Mohr-Coulomb plastic behaviour within a  
-MPM code. We therefore perform extensive simulations by varying continuously 
-different input parameters and compare the data with those obtained from 
-DEM simulations of the same system. We compare in detail the evolution of 
-the profile of the pile and its total kinetic energy between the two methods 
-and for different initial states. As we shall see, the MPM can successfully 
-simulate the transient evolution with a single input parameter, namely the 
-internal angle of friction. This opens the way to the simulation of 
-geological-scale flows on complex topographies.  
-  
-
-\subsection{Numerical procedures}
+\subsection{Numerical set-up}
 \label{sec:num}
 
-The numerical samples are composed of $\sim13000$ disks with a uniform 
-plus de simulation pour faire une moyenne ($\sim 6$)
-distribution of diameters by volume fractions in the range $[d_{min}, 
-d_{max}]$ with $d_{max} = 1.5 d_{min}$. The mean particle diameter and 
-mass are $d\simeq 0.0025 $ m and $m\simeq 0.0123$ kg, respectively. 
-The particles are first poured uniformly into a rectangular box of given width 
-and then the right-hand side wall is shifted further to the right to allow the 
-particles to spread. A half-pile is obtained when all particles come to 
-rest; see ~\cref{fig:Initial_final_configuration}. This procedure leads to 
-a 
-mean packing fraction $\simeq 0.83$.
+The DEM sample 
+is composed of $\sim13000$ disks with a uniform distribution of diameters by 
+volume fractions ($d_{max} = 1.5 d_{min}$). The mean grain diameter and mass 
+are $d\simeq 2.455 $ \si{\mm} and $m\simeq 0.0123$ \si{\kg}, respectively. The 
+grains are first poured uniformly into a rectangular box of given width and 
+then the right-hand side wall is shifted further to the right to allow the 
+grain to spread. A talus is obtained when all grains come to rest; 
+see~\cref{fig:slope_configuration}. This procedure leads to a mean packing 
+fraction $\simeq 0.83$. Soil grains with mean density of 2600 
+\si{\kg\per\m\cubed} and internal friction coefficient of 0.4 between grains 
+is adopted.
 
-%\begin{figure}
-%\centerline{
-%\resizebox{0.5\textwidth}{!}{%
-% 	 \includegraphics{Figures/Initial_final_configuration}
-%}}
-%\caption{Initial geometry and dimensions of the pile}
-%\label{fig:Initial_final_configuration}
-%\end{figure}
-
-
-\begin{table}[tbhp]
-\caption{DEM simulation of simple shear test~\citep{Mutabaruka2013}}
-\label{table:CD_Shear}
-\centering
-\begin{tabular}{ll}
-\toprule
-\textbf{Parameter} & \textbf{Value} \\ \midrule
-Mean grain diameter & $\approx 2.455$~\si{\mm} \\
-Grain diameter $[d_{min}:d_{max}]$ & [2.0, 3.0]~\si{\mm} \\
-Friction coefficient & 0.4\\
-Grain density & 2600\si{\kg\per\meter\cubed} \\
-Restitution coefficient  & $0$\\
-Number of grains & 1174 \\
-\bottomrule
-\end{tabular}
-\end{table}
+\begin{figure}[tbph]
+\includegraphics[width=0.95\textwidth]{slope_configuration}
+\caption{Initial geometry and dimensions of the pile}
+\label{fig:slope_configuration}
+\end{figure}
 
 
 The initial static pile is set into motion by applying a constant horizontal
 gradient  $v_{0x}(y) = k (y_{max} - y)$ with $k>0$. Such a configuration 
 mimics the energy transfer mechanism of a horizontal quake along the bottom of 
-the pile. We are interested in the evolution of the geometry of the pile 
-and its total kinetic energy as a function of the initial input energy $E_0$. 
-The run-out distance $R_f$ is the distance of the rightmost particles 
-from the left wall when the pile comes to rest.  It will be normalized by the 
-initial extension $R_0$ of the pile, as in the experiments of collapsing 
-columns. The total run-out duration $t_f$ is the time that the pile takes to 
-reach its final run-out distance $R_f$.
+the pile. The evolution of pile geometry and the total kinetic energy as a 
+function of the initial input energy $E_0$ is studied. The run-out distance 
+$L_f$ is the distance of the rightmost grain, which is still in contact with 
+the main mass when the pile comes to rest.  The run-out will be normalized by 
+the initial length $L_0$ of the pile, as in the experiments of collapsing 
+columns. The total run-out duration $t_f$ is the time taken by the pile to 
+reach its final run-out distance $L_f$.
 
-The initial static pile is set into motion by applying a horizontal velocity 
-$v_{0x}(y)$ to all particles during a short interval of time. Different 
-velocity fields were tested: 1) The same velocity $v_{0x}(y) = v_0$ applied to 
-all particles, 2) The same velocity $v_{0x}(y) = v_0$ applied to a column of 
-particles next to the left wall, 3) a constant velocity gradient  $v_{0x}(y) = 
-k (y_{max} - y)$ with $k>0$. The first two pushing modes mimic the case of a 
-pile impacted from the left by a moving mass (tsunami, debris\dots) whereas the 
-last mode represents energy transfer by horizontal quake of the bottom line. We 
-will compare briefly below the effect of different pushing modes, but later we 
-will mainly explore the third mode. We are interested in the evolution of the 
-geometry of the pile and its total kinetic energy as a function of the initial 
-energy input $E_0$. The run-out distance $R_f$ is the distance of the rightmost 
-particles from the left wall when the pile comes to rest.  
-It will be normalized by the initial extension $R_0$ of the pile, as in 
-the experiments of collapsing columns. The total run-out duration $t_f$ is the 
-time that the pile takes to reach its final run-out distance $R_f$.       
-
-For grain scale simulations, classical DEM and Contact 
-Dynamics approach is used. 
-A detailed description of the Contact Dynamics 
+For grain scale simulations, classical DEM and Contact Dynamics approach are 
+used. This research is done in collaboration with Patrick Mutabaruka, 
+University of Montpellier, who performed Contact Dynamics (CD) simulations that are 
+presented in this section. A detailed description of the Contact Dynamics 
 method can be found in \cite{Moreau1993,Jean1999,Radjai2009,Radjai2011}. 
-This method is based on implicit time integration of the equations of motion 
+The CD method is based on implicit time integration of the equations of motion 
 and a nonsmooth formulation of mutual exclusion and dry friction between 
 particles. The CD method requires no elastic repulsive potential and no 
 smoothing of the Coulomb friction law for the determination of forces. 
@@ -1215,19 +1140,23 @@ For this reason, the simulations can be performed with large time steps
 compared to discrete element simulations. The unknown variables are particle 
 velocities and contact forces, which are calculated at each time step by taking 
 into account the conservation of momenta and the constraints due to mutual 
-exclusion between particles and the Coulomb friction. We use an iterative 
-research algorithm based on a nonlinear Gauss-Seidel scheme. The only contact 
-parameters within the CD method are the friction coefficient $\mu_s$, the 
-normal restitution coefficient $e_n$ and the tangential restitution coefficient 
-$e_t$ between particles. We will investigate the effect of these parameters on 
-the evolution of kinetic energy and the profile of the pile.     
-  
-The natural units of our system are the mean particle diameter $d$, 
-mean particle mass $m$ and gravity $g$. For this reason, 
-in the following we normalize the lengths by $d$, the times by $(d/g)^{1/2}$, 
-the velocities by $(gd)^{1/2}$ and the energies by $mgd$.
+exclusion between particles and the Coulomb friction. An iterative 
+research algorithm based on a non-linear Gauss-Seidel scheme is used. The only contact 
+parameters within the CD method are the friction coefficient $\mu$, the 
+normal restitution coefficient $\varepsilon_n$ and the tangential restitution coefficient 
+$\varepsilon_t$ between particles. 
 
-\begin{figure}[tbph]
+The natural units of the system are the mean grain diameter $d$, 
+mean grain mass $m$ and gravity $g$. For this reason, the length scales are normalised 
+by $d$, time by $(d/g)^{1/2}$, velocities by $(gd)^{1/2}$ and energies by $mgd$. In MPM simulations 
+the material point spacing is kept the same as the mean grain diameter. A mesh size of 0.0125m is 
+adopted with 25 material points per cell. The effect of mesh size and the number of material points 
+per cell is investigated in~\cref{sec:MPM_points_per_cell}. A Mohr-Coulomb model with no dilation 
+is used to simulate the continuum behaviour of the granular pile. Periodic shear tests using CD, 
+see~\cref{fig:Sxy_vs_Syy_Slope}, reveals a macroscopic friction coefficient of 0.22. The evolution 
+of inertial number with friction is presented in~\cref{fig:mu_vs_I}.
+
+\begin{figure}[tbhp]
 \centering
 \begin{subfigure}[t]{0.475\textwidth}
 \includegraphics[width=0.95\textwidth]{Sxy_vs_Syy_Slope}
