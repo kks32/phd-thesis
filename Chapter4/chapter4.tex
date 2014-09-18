@@ -1105,7 +1105,7 @@ grains are first poured uniformly into a rectangular box of given width and
 then the right-hand side wall is shifted further to the right to allow the 
 grain to spread. A talus is obtained when all grains come to rest; 
 see~\cref{fig:slope_configuration}. This procedure leads to a mean packing 
-fraction $\simeq 0.83$. Soil grains with mean density of 2600 
+fraction $\simeq 0.82$. Soil grains with mean density of 2600 
 \si{\kg\per\m\cubed} and internal friction coefficient of 0.4 between grains 
 is adopted.
 
@@ -1149,22 +1149,17 @@ normal restitution coefficient $\varepsilon_n$ and the tangential restitution
 coefficient 
 $\varepsilon_t$ between particles. 
 
-The natural units of the system are the mean grain diameter $d$, 
-mean grain mass $m$ and gravity $g$. For this reason, the length scales are 
-normalised 
+The natural units of the system are the mean grain diameter $d$, mean grain 
+mass $m$ and gravity $g$. For this reason, the length scales are normalised 
 by $d$, time by $(d/g)^{1/2}$, velocities by $(gd)^{1/2}$ and energies by 
-$mgd$. In MPM simulations 
-the material point spacing is kept the same as the mean grain diameter. A mesh 
-size of 0.0125m is 
-adopted with 25 material points per cell. The effect of mesh size and the 
-number of material points 
-per cell is investigated in~\cref{sec:MPM_points_per_cell}. A Mohr-Coulomb 
-model with no dilation 
-is used to simulate the continuum behaviour of the granular pile. Periodic 
-shear tests using CD, 
-see~\cref{fig:Sxy_vs_Syy_Slope}, reveals a macroscopic friction coefficient of 
-0.22. The evolution 
-of inertial number with friction is presented in~\cref{fig:mu_vs_I}.
+$mgd$. In MPM simulations the material point spacing is kept the same as the 
+mean grain diameter. A mesh size of 0.0125m is adopted with 25 material points 
+per cell. The effect of mesh size and the number of material points per cell is 
+investigated in~\cref{sec:MPM_points_per_cell}. A Mohr-Coulomb model with no 
+dilation is used to simulate the continuum behaviour of the granular pile. 
+Periodic shear tests using CD, see~\cref{fig:Sxy_vs_Syy_Slope}, reveals a 
+macroscopic friction coefficient of 0.22. The evolution of inertial number with 
+friction is presented in~\cref{fig:mu_vs_I}.
 
 \begin{figure}[tbhp]
 \centering
@@ -1273,7 +1268,7 @@ declines when the input energy is increased.
 In the second regime, corresponding to the range of high input energies  $E_0 > 
 40 \ mgd$, the run-out distance varies as $L_f \propto (E_0)^{\alpha'}$ over 
 one decade with $\alpha' \simeq 0.56\pm 0.04$ while the duration increases as 
-$t_f \propto (E_0)^{\beta'}$ with $\beta' \simeq 0.2 \pm 0.04$. Hence, in this 
+$t_f \propto (E_0)^{\beta'}$ with $\beta' \simeq 0.33 \pm 0.02$. Hence, in this 
 regime the average run-out speed varies as $v_s \propto (E_0)^{0.498 \pm 
 0.01}$. This exponent is close to the value $0.5$ in $v_0 \propto (E_0)^{0.5}$, 
 and hence, within the confidence interval of the exponents, in the second 
@@ -1301,28 +1296,34 @@ distance.
 
 The non-trivial evolution of the pile geometry in two regimes suggests that 
 the energy supplied to the pile is not simply dissipated by shear and friction 
-with the bottom plane. We also need to split the kinetic energy into its 
-different components ($x$ and $y$) of the velocity field. The input 
-energy is in the $x$ component, but due to both the creation of a cavity next 
-to the left wall and the rolling of the grains down the free surface of the 
-pile and between grains, a fraction of the energy is first transferred to 
-the $y$ component of the velocity field and dissipated  during the transient. 
-In this section, these features are analysed in order to understand the 
-behaviour that is consistent with the evolution of the pile shape.  
+along the bottom plane. It is important to split the kinetic energy into the 
+vertical and horizontal components ($K_{Ex}$ and $K_{Ey}$) of the velocity 
+field. The input energy is in the $x$ component, but due to the creation 
+of a cavity next  to the left wall and the rolling of the grains down the free 
+surface of the pile and between grains, a fraction of the energy is first 
+transferred to the vertical component of the velocity field and dissipated  
+during the transient phase. The evolution of kinetic energy is studied to  
+understand the behaviour of granular flow that is consistent with the evolution 
+of pile shape.
 
-The decay of the total kinetic energy $E$ is displayed in 
-~\cref{fig:E_vs}(a) for values of the input energy $E_0$. We observe an 
-initial fast drop of $E$ followed by a regular fall-off until the end of the 
-run-out. This regular fall-off occurs clearly with two different functional 
-forms, thus revealing two stages in the evolution of the pile. 
-~\cref{fig:E_vs}(b) shows the same plots normalized by $E_0$. We see that 
-all plots corresponding to the first regime (low energies) collapse nearly on 
-to a single time evolution. 
-%to the first regime (low energies) collapse nearly all along time evolution. 
-This is consistent with the fact that, as previously shown, in this 
-regime the run-out time $t_f$ is independent of the input energy. In contrast, 
-the plots corresponding to the second regime (high energies) collapse only at 
-the beginning of run-out, i.e. for $t < t_1 \simeq 7.5 \ (d/g)^{0.5}$.   
+The evolution of total kinetic energies $E_k$ with time for different values of 
+the input energy $E_{ki}$ based on MPM simulations are shown in 
+~\cref{fig:Energy_Time_Slope}. MPM simulations shows two distinct regimes in 
+the normalised kinetic energy plot as a function of 
+normalised time~\cref{fig:Normalised_Energy_Time_Slope}. However, DEM 
+simulations (see~\cref{fig:Normalised_Energy_Time_Slope_DEM}) show that the 
+energy evolution corresponding to low energy regime collapse nearly on to a 
+single time evolution. This is consistent with the observation of run-out time 
+$t_f$ independent of the input energy. In contrast, MPM simulations predict a 
+power law relation between the run-out duration and input energy. However, the 
+plots corresponding to high energy regime collapse only at the beginning of the 
+run-out i.e. for $t < t_1 \simeq 7.5 \ (d/g)^{0.5}$. Although MPM simulations 
+show higher duration of run-out (~\cref{fig:Energy_Time_Slope}), the total 
+kinetic energy is completely dissipated at $t = 60 \sqrt{d/g}$. DEM simulations 
+predict $t = 80 \sqrt{d/g}$ for the kinetic energy to be completely dissipated. 
+This is due particle rearrangement at the free surface (~\cref{fig:voro_500}). 
+The granular pile shows some dilation behaviour initially, which is due to 
+grains rolling down to fill the cavity. 
 
 \begin{figure}[tbhp]
 \centering
@@ -1338,31 +1339,43 @@ the beginning of run-out, i.e. for $t < t_1 \simeq 7.5 \ (d/g)^{0.5}$.
 \caption{Evolution of normalised kinetic energy with normalised time}
 \label{fig:Normalised_Energy_Time_Slope}
 \end{subfigure}
-\caption{Evolution of kinetic energy with time}
+\caption{Evolution of kinetic energy with time (MPM)}
 \label{fig:Energy_Time_Slope}
 \end{figure}
 
-~\Cref{fig:E_xyt_vs_t} displays the evolution of kinetic energy 
-in the translational ($E_x$ and $E_y$) and rotational ($E_\theta$) 
-degrees of freedom of the particles. $E_x$ decays as the total 
-energy, but $E_y$ and $E_\theta$ increase and pass through a peak before 
-decaying rapidly to a negligibly small level. The transient is best observed 
-for $E_y$, which has significant values only for $t< t_1$. This energy 
+\begin{figure}[tbhp]
+\centering
+\includegraphics[width=0.9\textwidth]{Normalised_Energy_Time_Slope_DEM}
+\caption{Evolution of normalised kinetic energy with normalised time}
+\label{fig:Normalised_Energy_Time_Slope_DEM}
+\end{figure}
+
+\begin{figure}[tbhp]
+\centering
+\includegraphics[width=0.9\textwidth]{voro_500}
+\caption{Evolution of packing density with time $E_0 = 152 mgd$ (DEM)}
+\label{fig:voro_500}
+\end{figure}
+
+~\Cref{fig:Normalised_KEx_KEy_Slope} displays the evolution of kinetic energy 
+in the translational ($E_x$ and $E_y$) degrees of freedom. $E_x$ decays similar 
+to the total energy dissipation, but $E_y$ increases and passes through a peak 
+before decaying rapidly to a negligible level. The transient is best 
+observed for $E_y$, which has significant values only for $t< t_1$. This energy 
 represents the proportion of kinetic energy transferred to the $y$ component of 
 the velocity field  due to the destabilization of the pile and collapse of 
-particles in the cavity behind the pile. We note that the lower $E_0$, the 
-higher the peak value of $E_y/E_0$. 
-%mettre une flèche sur les courbes pour montrer la décroissance de E_0
-This means that, at low values of the input energy a larger fraction 
-of input energy $E_0$ is consumed in the destabilization process whereas 
-at a high level of input energy, most of it is dissipated in the spreading 
-phase. For this reason, the total duration $t_1$ of this destabilization 
-transient is nearly the same in both regimes and its value is controlled by the 
-gravity rather than the input energy. The height of the pile being of the order 
-of $80 \ d$, the total free-fall time for a particle located at this height is 
-$\simeq 12 \ (d/g)^{0.5}$, which is of the same order as $t_1$. As to the 
-rotational energy, its contribution both to the transient stage and spreading 
-appears to be negligible. 
+grains in the cavity behind the pile. Higher proportion of vertical 
+acceleration $E_{ky}/E_0$ is observed for lower values of input energy $E_0$. 
+This means that, at lower input energies a larger fraction of the energy is 
+consumed in the destabilization process. Whereas at a higher input energies, 
+most of the energy is dissipated in the spreading phase. For this reason, the 
+total duration $t_1$ of this destabilization phase is nearly the same in 
+both regimes and its value is controlled by the gravity rather than the input 
+energy. The height of the pile being of the order of $80 \ d$, the total 
+free-fall time for a particle located at this height is $\simeq 12 \ 
+(d/g)^{0.5}$, which is of the same order as $t_1$. The contribution of the  
+rotational energy during the transient stage and the spreading stage is 
+negligible. 
 
 \begin{figure}[tbhp]
 \centering
@@ -1378,59 +1391,68 @@ appears to be negligible.
 \caption{Evolution of normalised vertical kinetic energy with time}
 \label{fig:Normalised_KEy_Slope}
 \end{subfigure}
-\caption{Evolution of vertical and horizontal kinetic energy with time}
+\caption{Evolution of vertical and horizontal kinetic energy with time (MPM)}
 \label{fig:Normalised_KEx_KEy_Slope}
 \end{figure}
 
-To analyze the second phase in the second regime, we now consider only the 
-kinetic energy $E'_{x0}$ available at the end of the transient. This energy 
-is responsible for most of the run-out and hence it is expected to control the 
-run-out distance and time. Fig. \ref{fig:ExoEx0_vs_t_totau}(a) shows the 
-evolution of $E_x$ normalized by $E'_{x0}$ as a function of time. The plots 
-have seemingly the same aspect but they show different decay times. A decay 
-time $\tau$ can be defined as the time required for $E_x$ to decline by a 
-factor $1/2$. Fig. \ref{fig:ExoEx0_vs_t_totau}(b) shows the same data in which 
-the time $t'$ elapsed since $t_1$ is normalized by $\tau$. Interestingly, now 
-all the data nicely collapse on the same curve. We checked that this curve can 
+To analyse the second phase for higher input energies, the 
+kinetic energy $E'_{kx0}$ available at the end of the transient phase is 
+considered. This energy is responsible for most of the run-out and hence it is 
+expected to 
+control the run-out distance and time.~\Cref{fig:Normalised_KExExop_Slope} 
+shows the evolution of $E_{kx}$ normalized by $E'_{kx0}$ as a function of time. 
+The plots have seemingly the same aspect but they show different decay times. A 
+decay time $\tau$ can be defined as the time required for $E_{kx}$ to decline 
+by a factor $1/2$.~\Cref{fig:ExEx0_vs_ttau} shows the same data in 
+which the time $t'$ elapsed since $t_1$ is normalized by $\tau$. Interestingly, 
+now all the data nicely collapse on to a single curve. However, this curve can 
 not be fitted by simple functional forms such as variants of exponential decay. 
 This means that the spreading of the pile is not a self-similar process in 
 agreement with the fact that the energy fades away in a finite time $t'_f$. 
 
+\begin{figure}[tbhp]
+\centering
+\includegraphics[width=\textwidth]{Normalised_KExExop_Slope}
+\caption{Evolution of kinetic energy in the $x$ component of the
+velocity field normalized by the available kinetic energy at the
+end of the transient as a function of time elapsed since the
+same instant (MPM).}
+\label{fig:Normalised_KExExop_Slope}
+\end{figure}
 
 \begin{figure}[tbhp]
 \centering
 \includegraphics[width=\textwidth]{EkxKoTTau_Slope}
 \caption{Evolution of kinetic energy in the $x$ component of 
 the velocity field  normalized by the available kinetic energy at the end of 
-the transient as a function of normalized time.}
+the transient as a function of normalized time (MPM).}
 \label{fig:ExEx0_vs_ttau}
 \end{figure}
 
 
-The scaling of the data with the decay time $\tau$ suggests also that the 
-run-out time $t'_f$ since the beginning of the second phase might be a simple 
-function of $\tau$.~\Cref{fig:ExEx0_vs_ttau} shows both $t'_f$ and $\tau$ as 
-a function of $E'_{x0}$, where we observe a power law for both times over 
-nearly one decade. The run-out time $t'_f \propto (E'_{x0})^{\beta'}$ has the 
-same exponent $\beta' \simeq 0.21 \pm 0.03$ as $t_f$ as a function of $E_0$ 
-(see Fig. \ref{fig:run-out}). For the decay time we have 
-$\tau \propto (E'_{x0})^{\beta''}$ with $\beta'' \simeq 0.28 \pm 0.03$. The 
-relation between the two times can thus be expressed as 
+The scaling of the data with the decay time $\tau$ suggests that the 
+run-out time $t'_f$, since the beginning of the second phase, might be a simple 
+function of $\tau$.~\Cref{fig:tp_tau_mgd} shows both $t'_f$ and $\tau$ as 
+a function of $E'_{x0}$, where a power-law relation can be observed for both 
+time scales. The run-out time $t'_f \propto (E'_{x0})^{\beta'}$ has the 
+same exponent $\beta' \simeq 0.33 \pm 0.02$ as $t_f$ as a function of $E_0$. 
+For the decay time we have $\tau \propto (E'_{x0})^{\beta''}$ with $\beta'' 
+\simeq 0.38 \pm 0.03$. The relation between the two times can thus be expressed 
+as (see~\cref{fig:tpTau})
 \begin{equation}
-t'_f = k  \ \tau \, (E'_{x0})^{\beta'' - \beta'}, 
+t'_f = k  \ \tau \, (E'_{x0})^{\beta'' - \beta'} \,,
 \label{eqn:t'f}
 \end{equation}
-where $k \simeq 5 \pm 0.4$ and $\beta'' - \beta' \simeq -0.05 \pm 0.06$. This 
-value is small enough to be neglected within the confidence interval of our 
-data. It is therefore plausible to assume that  the run-out time is a multiple 
-of the decay time and the spreading process is controlled by a single time. We 
-however note that a weak dependence on the energy $E'_{x0}$  is consistent with 
-the fact that the whole available energy at the beginning of the second phase 
-is not dissipated in the spreading process (calculated from the position of the 
-tip of the pile) since  the pile keeps deforming by the movements of the 
-particles at the free surface even when the tip comes to rest. 
-This can explain the small difference between the two exponents as observed 
-here.
+where $k \simeq 5 \pm 0.4$ and $\beta'' - \beta' \simeq -0.06 \pm 0.05$. This 
+value is small enough to be neglected within the confidence interval of the 
+data. It is therefore plausible to assume that the run-out time is a multiple 
+of the decay time and the spreading process is controlled by a single time. A 
+weak dependence on the energy $E'_{kx0}$ is consistent with the fact that the  
+energy available at the beginning of the second phase is not dissipated in the 
+spreading process (calculated from the position of the tip of the pile) since  
+the pile keeps deforming by the movements of the grains at the free surface 
+even when the tip comes to rest. This can explain the small difference between 
+the two exponents as observed here.
 
 
 \begin{figure}[tbhp]
@@ -1438,7 +1460,7 @@ here.
 \begin{subfigure}[b]{0.975\textwidth}
 \includegraphics[width=\textwidth]{tp_tau_mgd}
 \caption{Power law evolution of $t'_f$ and $\tau$ as a function of kinetic 
-energy $E_{kx0}$.}
+energy $E'_{kx0}$.}
 \label{fig:tp_tau_mgd}
 \end{subfigure}
 \\
@@ -1455,35 +1477,44 @@ energy $E_{kx0}$.}
 \end{figure}
 
 
-%------------------------------------------------------------------------------------
+%-------------------------------------------------------------------------------
 \subsection{Effect of friction}
 \label{sec:parameters}
 
-The run-out distance and time and the dissipation of kinetic energy are 
-controlled by the input energy and collective dynamics of the whole pile, as it 
-was analyzed in the previous sections. But they are expected to depend also on 
-the friction. We performed a series of simulations with different values of 
-base friction. The results are shown in Fig. \ref{fig:para} for the profiles of 
-the pile and evolution of the kinetic energy in time. We see no difference in 
-the results for different values of $e_n = e_t$. This is a consequence of the 
-fact that,  even at large input energies, the pile remains in a dense state so 
-that multiple collisions inside the pile occur at small time scales compared to 
-the deformation time. When the restitution coefficients are increased, more 
-collisions occur during a longer time interval but the overall energy 
-dissipation rate by collisions remains the same. This effect is a seminal 
-example of collective effects which erase the influence of local parameters at 
-the macroscopic scale. In contrast with the restitution coefficients, however, 
-the effect of the friction coefficient is quite important for the run-out, as 
-observed in Fig. \ref{fig:para} for both the energy decay and geometrical 
-profile of the pile. Both the run-out distance and decay time decrease as the 
-friction coefficient is increased. This effect is much more pronounced at low 
-values of the friction coefficient. The run-out time, for example, is reduced 
-by a factor 4 as $\mu_s$ is increased from 0.1 to 0.4 while the run-out times 
-and profiles do not change much for $\mu_s = 0.7$. This ``saturation effect" 
-was evidenced in a systematic way in simple shear tests and explained by the 
-observation that the dissipation rate may reach a saturation point where the 
-dilation of the granular material and rolling of the particles change in 
-response to the increase of the friction coefficient \cite{Estrada2008}.
+The run-out distance, duration of flow, and the dissipation of kinetic energy 
+are controlled by the input energy and collective dynamics of the whole pile. 
+However, the run-out behaviour is expected to also depend on the base friction. 
+A series of simulations with different values of base friction was performed 
+using MPM to analyse the influence of friction on the run-out behaviour. The 
+results are shown in~\cref{fig:runout_fric_slope}. The exponent of the 
+power-law relation between the run-out and input energy has a weak dependence 
+on the base friction, the proportionality constant, however, is affected by the 
+change in the base friction. This behaviour is similar to that observed in 
+granular column collapse with varying initial 
+properties~\citep{Balmforth2005,Lajeunesse2005}. 
+
+CD simulations using different values of coefficient of restitution shows no 
+difference in the run-out behaviour. At large input energies, the pile remains 
+in a dense state so that multiple collisions inside the pile occur at small 
+time scales compared to the deformation time. When the restitution coefficients 
+are increased, more collisions occur during a longer time interval but the 
+overall energy dissipation rate by collisions remains the same. This effect is 
+a seminal example of collective effects which erase the influence of local 
+parameters at the macroscopic scale.
+
+In contrast with the restitution coefficients, the effect of friction 
+coefficient, however, is quite important for the run-out. MPM simulations with 
+varying friction coefficient shows that, both the run-out distance and the 
+decay time decrease as the friction coefficient is increased. This 
+effect is much more pronounced at low values of the friction coefficient. 
+Similar behaviour was observed in CD simulations. The run-out time, for 
+example, is reduced by a factor of $\approx 4$ as $\mu_s$ is increased from 0.1 
+to 0.2 while the change in the run-out and duration is less effected with 
+increase in friction coefficient. This ``saturation effect" 
+can be observed in a systematic way in simple shear tests. The dissipation rate 
+may reach a saturation point where the dilation of granular materials and 
+rolling of the grains change in response to increase in friction coefficient 
+\cite{Estrada2008}.
 
 \begin{figure}[tbhp]
 \centering
@@ -1504,9 +1535,26 @@ response to the increase of the friction coefficient \cite{Estrada2008}.
 \label{fig:fric_slope}
 \end{figure}
 
--------------------------------------------------------------------------------
+%-------------------------------------------------------------------------------
 
 \subsection*{Mode of dissipation}
+
+
+\begin{figure}[tbph]
+\centering
+\includegraphics[width=\textwidth]{Uniform_Slope_Profile_200J}
+\caption{Snapshots of MPM simulations of the evolution of granular pile 
+subjected to a gradient impact energy $E_0 = 61 \ mgd$.}
+\label{fig:Uniform_Slope_Profile_200J}
+\end{figure}
+
+\begin{figure}[tbph]
+\centering
+\includegraphics[width=\textwidth]{Uniform_Slope_DEM_200J}
+\caption{Snapshots of DEM simulations of the evolution of granular pile 
+subjected to a gradient impact energy $E_0 = 61 \ mgd$.}
+\label{fig:Uniform_Slope_DEM_200J}
+\end{figure}
 
 \begin{figure}[tbph]
 \centering
@@ -1527,21 +1575,6 @@ response to the increase of the friction coefficient \cite{Estrada2008}.
 \label{fig:GU}
 \end{figure}
 
-\begin{figure}[tbph]
-\centering
-\includegraphics[width=\textwidth]{Uniform_Slope_Profile_200J}
-\caption{Snapshots of MPM simulations of the evolution of granular pile 
-subjected to a gradient impact energy $E_0 = 61 \ mgd$.}
-\label{fig:Uniform_Slope_Profile_200J}
-\end{figure}
-
-\begin{figure}[tbph]
-\centering
-\includegraphics[width=\textwidth]{Uniform_Slope_DEM_200J}
-\caption{Snapshots of DEM simulations of the evolution of granular pile 
-subjected to a gradient impact energy $E_0 = 61 \ mgd$.}
-\label{fig:Uniform_Slope_DEM_200J}
-\end{figure}
 
 %-------------------------------------------------------------------------------
 
