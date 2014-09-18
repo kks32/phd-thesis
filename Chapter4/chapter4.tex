@@ -1129,7 +1129,8 @@ reach its final run-out distance $L_f$.
 
 For grain scale simulations, classical DEM and Contact Dynamics approach are 
 used. This research is done in collaboration with Patrick Mutabaruka, 
-University of Montpellier, who performed Contact Dynamics (CD) simulations that are 
+University of Montpellier, who performed Contact Dynamics (CD) simulations that 
+are 
 presented in this section. A detailed description of the Contact Dynamics 
 method can be found in \cite{Moreau1993,Jean1999,Radjai2009,Radjai2011}. 
 The CD method is based on implicit time integration of the equations of motion 
@@ -1141,19 +1142,28 @@ compared to discrete element simulations. The unknown variables are particle
 velocities and contact forces, which are calculated at each time step by taking 
 into account the conservation of momenta and the constraints due to mutual 
 exclusion between particles and the Coulomb friction. An iterative 
-research algorithm based on a non-linear Gauss-Seidel scheme is used. The only contact 
+research algorithm based on a non-linear Gauss-Seidel scheme is used. The only 
+contact 
 parameters within the CD method are the friction coefficient $\mu$, the 
-normal restitution coefficient $\varepsilon_n$ and the tangential restitution coefficient 
+normal restitution coefficient $\varepsilon_n$ and the tangential restitution 
+coefficient 
 $\varepsilon_t$ between particles. 
 
 The natural units of the system are the mean grain diameter $d$, 
-mean grain mass $m$ and gravity $g$. For this reason, the length scales are normalised 
-by $d$, time by $(d/g)^{1/2}$, velocities by $(gd)^{1/2}$ and energies by $mgd$. In MPM simulations 
-the material point spacing is kept the same as the mean grain diameter. A mesh size of 0.0125m is 
-adopted with 25 material points per cell. The effect of mesh size and the number of material points 
-per cell is investigated in~\cref{sec:MPM_points_per_cell}. A Mohr-Coulomb model with no dilation 
-is used to simulate the continuum behaviour of the granular pile. Periodic shear tests using CD, 
-see~\cref{fig:Sxy_vs_Syy_Slope}, reveals a macroscopic friction coefficient of 0.22. The evolution 
+mean grain mass $m$ and gravity $g$. For this reason, the length scales are 
+normalised 
+by $d$, time by $(d/g)^{1/2}$, velocities by $(gd)^{1/2}$ and energies by 
+$mgd$. In MPM simulations 
+the material point spacing is kept the same as the mean grain diameter. A mesh 
+size of 0.0125m is 
+adopted with 25 material points per cell. The effect of mesh size and the 
+number of material points 
+per cell is investigated in~\cref{sec:MPM_points_per_cell}. A Mohr-Coulomb 
+model with no dilation 
+is used to simulate the continuum behaviour of the granular pile. Periodic 
+shear tests using CD, 
+see~\cref{fig:Sxy_vs_Syy_Slope}, reveals a macroscopic friction coefficient of 
+0.22. The evolution 
 of inertial number with friction is presented in~\cref{fig:mu_vs_I}.
 
 \begin{figure}[tbhp]
@@ -1178,143 +1188,127 @@ test.}
 \subsection{Evolution of pile geometry and run-out}
 \label{sec:evolution}
 
-In this section, we consider the spreading process following the initial energy 
-input into the pile. Fig. \ref{fig:quake_mod} shows several snapshots of the 
-pile for an initial input energy $E_0 = 61$ (in dimensionless units).
-The pile is sheared from the bottom to the top, thus leaving a cavity in the 
-vicinity of the left wall. The cavity is partially filled while the pile 
-continues to spread to the right. 
-
-
-In this section, we consider the spreading process 
-following the initial energy input into the pile. 
-Fig. \ref{fig:quake_mod} shows several snapshots of the pile 
-for each pushing mode and for the same initial 
-energy $E_0 = 61$ (in dimensionless units). 
-In mode 1, where the same velocity is imparted to 
-all particles, the whole pile moves away  from 
-the left wall over a short distance and then it 
-spreads out and declines in slope. 
- The spreading continues farther until the slope nearly 
-declines to zero. In mode 2, where the velocity is applied to 
-a  column of particles next to the left wall, the particles belonging to 
-the column are literally expelled from the pile. They fall back farther way on 
-the pile after 
-a ballistic travel above the pile. At the same time, the right side of the 
-pile slightly spreads away  
-while the left side is filled by the particles rolling down into the gap 
-left by the column. In mode 3, the pile is  
-sheared from the bottom to the top, leaving thus a cavity in the 
-vicinity of the left wall. The cavity is partially filled while the pile 
-continues to spread. 
-
-All pushing modes involve a transient with a sharp change 
-of the geometry of the pile followed by continuous spreading to the right. 
-In mode 2, most of the energy is carried away by the ejected particles. 
-In mode 1, the pile has a rigid-body velocity component and moves 
-away from the left wall, but shows an efficient energy transfer leading to a 
-long run-out distance.      
-The transient is more energy consuming in  mode 3  compared to 
-mode 1. For this reason, the run-out distance in mode 3 is long but shorter 
-than in mode 1. In the following, we analyze in more detail 
-the evolution of the pile in mode 3, which mimics a  
-horizontal quake from the bottom and, despite the creation of a cavity, 
-remains always in contact with the left wall irrespective of the input 
-energy.   
-
-
-Figure \ref{fig:run-out} shows the normalized run-out distance $(R_f - R_0)/R_0$ 
-and total run-out time $t_f$ as a function of the input energy $E_0$. We observe 
-two regimes both characterized by a power-law run-out distance and time as a 
-function of $E_0$. In the first regime, corresponding to the range of low input 
-energies $E_0 < 40 \ mgd$, the run-out distance varies as $R_f \propto 
-(E_0)^\alpha$ with $\alpha \simeq 0.61 \pm 0.04$ over nearly one decade while 
-the duration keeps a constant value  $t_f \simeq 60 \  (d/g)^{0.5}$ 
-irrespective of the value of $E_0$! The error  on the value of the exponent 
-represents the confidence interval of linear fits on the logarithmic scale.  
-%lancer plus de simulation pour une  moyenne 
-An average run-out speed can be defined from the ratio $v_s = (R_f - R_0) / 
-t_f$. According to the data, we have $v_s \propto (E_0)^{0.61\pm 0.04}$. Since 
-the initial average velocity varies as $v_0 \propto (E_0)^{0.5}$, this 
-difference between the values of the exponents suggests that the mobilized mass 
-during run-out declines when the input energy is increased. As we shall see 
-below, the constant run-out time reflects also the collapse of the particles 
-into the cavity left behind the pile. 
-
-In the second regime, corresponding to the range of high input energies  $E_0 > 
-40 \ mgd$, the run-out distance varies as $R_f \propto (E_0)^{\alpha'}$ over one 
-decade with $\alpha' \simeq 0.77\pm 0.03$ while the duration increases as $t_f 
-\propto (E_0)^{\beta'}$ with $\beta' \simeq 0.21 \pm 0.04$. Hence, in this 
-regime the average run-out speed varies as $v_s \propto (E_0)^{0.56 \pm 0.07}$. 
-This exponent is close to the value $0.5$ in $v_0 \propto (E_0)^{0.5}$, and 
-hence, within the confidence interval of the exponents, in the second regime we 
-may assume $\beta' \simeq \alpha' - 0.5$ and $v_s \propto v_0$. 
-
-It is worth noting that a similar power-law dependence of the 
-run-out distance and time were found in the case of 
-collapsing columns of grains with respect to the initial aspect ratio 
-\cite{Topin2012}.  
-In the column geometry, the particles spread away owing to the 
-kinetic energy acquired during gravitational collapse of the column. 
-Topin et al. found that the run-out distance varies as a power law 
-of the available peak kinetic energy at the end of the free-fall stage with an 
-exponent $\simeq 0.5$. This value is below those obtained here 
-for both regimes. This is, however, physically plausible since the   
-distribution of particle kinetic energies at the end of the collapse 
-is more chaotic than in our simulations where the energy is supplied 
-from the very beginning in a well-defined shear mode. As pointed out 
-by \cite{Staron2005}, the distribution of kinetic energies is an essential 
-factor for the run-out distance.
+\Cref{fig:Gradient_Slope_Profile_200J} shows the initial evolution of granular 
+slope subjected to an initial impact energy $E_0 = 61$ (in dimensionless units) 
+using MPM. As the granular slope is sheared along the bottom, the shear 
+propagates to the top leaving a cavity in the vicinity of the left wall. This 
+cavity gets partially filled as the granular mass at the top collapse behind 
+the flowing mass due to inertia. Similar behaviour is observed during the 
+initial stages of the flow evolution using DE and CD techniques
+(see~\cref{fig:Gradient_Slope_CD_200J}. Due to inertia, the grains at the top 
+of the granular heap roll down to fill the cavity, while the pile continues to 
+spread. 
 
 \begin{figure}[tbph]
 \centering
 \includegraphics[width=\textwidth]{Gradient_Slope_Profile_200J}
-\caption{Snapshots of MPM simulations of the evolution of granular pile 
-subjected to a gradient impact energy.}
+\caption{MPM simulation of the initial stages of granular pile subjected to a 
+gradient impact 
+energy.}
 \label{fig:Gradient_Slope_Profile_200J}
 \end{figure}
 
-\begin{figure}[tbph]
+\begin{figure}
 \centering
 \includegraphics[width=\textwidth]{Gradient_Slope_CD_200J}
-\caption{Snapshots of CD simulations of the evolution of granular pile 
-subjected to a gradient impact energy~\citep{Mutabaruka2013}.}
+\caption{CD simulation of the initial stages of granular pile subjected to a 
+gradient impact 
+energy.~\citep{Mutabaruka2013}.}
 \label{fig:Gradient_Slope_CD_200J}
 \end{figure}
+
+The flow involves a transient with a sharp change in the geometry of the pile 
+followed by continuous spreading. The gradient input energy applied to the 
+granular slope mimics a horizontal quake from the bottom. Despite the creation 
+of a cavity behind the flowing mass, the granular heap always remains in 
+contact with the left wall irrespective of the input 
+energy.~\Cref{fig:Runout_Eo_MPM_CD_DEM} shows the normalized run-out distance 
+$(L_f - L_0)/L_0$ and total run-out time $t_f$ as a function of the input 
+energy $E_0$. Two regimes characterized by power-law relationship between 
+the run-out distance and time as a function of $E_0$ can be observed. In the 
+first regime, corresponding to the range of low input energies $E_0 < 40 \ 
+mgd$, the run-out distance observed varies as $L_f \propto (E_0)^\alpha$ with 
+$\alpha 
+\simeq 0.206 \pm 0.012$ over nearly one decade. Overall, the run-out distance 
+predicted by the continuum approach matches the DEM simulations. At very low 
+energies, DEM simulations show longer run-out distance due to local 
+fluidisation. The difference in the run-out between DEM and CD arise mainly 
+from the scales of description and the inelastic nature of Contact Dynamics. 
+Similar behaviour between DEM and CD approaches was observed 
+by~\citet{Radjai1997}. 
+
+
+While the run-out exhibits a power-law relation with the initial input energy, 
+DEM simulations show that the flow duration remains constant at a value  $t_f 
+\simeq 60 \  (d/g)^{0.5}$ irrespective of the value of $E_0$. The constant 
+run-out time, in grain-scale simulations, indicates the collapse of grain into 
+the cavity left behind the pile. An average run-out speed can be defined as 
+$v_s = (L_f - L_0) / t_f$. According to the data, $v_s \propto 
+(E_0)^{0.52\pm 0.012}$. The error on the exponent represents the 
+confidence interval of linear fits on the logarithmic scale. Since the initial 
+average velocity varies as $v_0 \propto (E_0)^{0.5}$, this difference between 
+the values of the exponents suggests that the mobilized mass during run-out 
+declines when the input energy is increased.
+
 
 \begin{figure}[tbph]
 \centering
 \begin{subfigure}[b]{0.975\textwidth}
 \centering
 \includegraphics[width=\textwidth]{Runout_Eo_MPM_CD_DEM}
-\caption{Run-out distance with normalised input kinetic energy}
+\caption{Run-out distance as a function of normalised input kinetic energy}
 \label{fig:Runout_Eo_MPM_CD_DEM}
 \end{subfigure}
 \\
 \begin{subfigure}[b]{0.975\textwidth}
 \centering
 \includegraphics[width=\textwidth]{Tf_vs_Eo_Slope}
-\caption{Duration of run-out with normalised input kinetic energy}
+\caption{Duration of run-out as a function of normalised input kinetic energy}
 \label{fig:Tf_vs_Eo_Slope}
 \end{subfigure}
 \caption{Run-out behaviour of a pile subjected a gradient impact energy}
 \label{fig:Slope}
 \end{figure}
 
+In the second regime, corresponding to the range of high input energies  $E_0 > 
+40 \ mgd$, the run-out distance varies as $L_f \propto (E_0)^{\alpha'}$ over 
+one decade with $\alpha' \simeq 0.56\pm 0.04$ while the duration increases as 
+$t_f \propto (E_0)^{\beta'}$ with $\beta' \simeq 0.2 \pm 0.04$. Hence, in this 
+regime the average run-out speed varies as $v_s \propto (E_0)^{0.498 \pm 
+0.01}$. This exponent is close to the value $0.5$ in $v_0 \propto (E_0)^{0.5}$, 
+and hence, within the confidence interval of the exponents, in the second 
+regime we may assume $\beta' \simeq \alpha' - 0.5$ and $v_s \propto v_0$. In 
+the second regime, both DEM and MPM predict almost the same run-out behaviour. 
+However, MPM predicts longer duration with increase in input energy.
+
+It is worth noting that a similar power-law dependence of the run-out distance 
+and time were found in the case of granular column collapse with respect to 
+the initial aspect ratio. In the column geometry, the grains spread away 
+owing to the kinetic energy acquired during gravitational collapse of the 
+column.~\citet{Topin2012} found that the run-out distance varies as a power-law 
+of the available peak kinetic energy at the end of the free-fall stage with an 
+exponent $\simeq 0.5$. This value of exponent is lower than the run-out 
+evolution observed in the second regime. This is, however, physically plausible 
+since the distribution of particle kinetic energies at the end of the collapse 
+is more chaotic than in this case where the energy is supplied from the very 
+beginning in a well-defined shear mode. As pointed out by~\citet{Staron2005}, 
+the distribution of kinetic energies is an essential factor for the run-out 
+distance.
+
 %-------------------------------------------------------------------------------------------
 \subsection{Decay of kinetic energy}
 \label{sec:decay}
 
-The non-trivial evolution of the pile geometry  in two regimes suggests that 
+The non-trivial evolution of the pile geometry in two regimes suggests that 
 the energy supplied to the pile is not simply dissipated by shear and friction 
 with the bottom plane. We also need to split the kinetic energy into its 
-different components ($x$, $y$ and rotation) of the velocity field. The input 
+different components ($x$ and $y$) of the velocity field. The input 
 energy is in the $x$ component, but due to both the creation of a cavity next 
-to the left wall and the rolling of the particles down the free surface of the 
-pile and between particles, a fraction of the energy is first transferred to 
+to the left wall and the rolling of the grains down the free surface of the 
+pile and between grains, a fraction of the energy is first transferred to 
 the $y$ component of the velocity field and dissipated  during the transient. 
-In this section, we analyse these features  in order to arrive in a picture 
-consistent with the evolution of the pile shape.  
+In this section, these features are analysed in order to understand the 
+behaviour that is consistent with the evolution of the pile shape.  
 
 The decay of the total kinetic energy $E$ is displayed in 
 ~\cref{fig:E_vs}(a) for values of the input energy $E_0$. We observe an 
@@ -1644,8 +1638,10 @@ per cell.}
 \begin{figure}[tbhp]
 \centering
 \includegraphics[height=\textheight]{MPM_50ppc}
-\caption{Effect of number of material points on cell on the run-out behaviour $E_0=12.7mgd$. 
-Velocity profile (\si{\m\per\s}) of granular pile subjected to gradient impact loading.}
+\caption{Effect of number of material points on cell on the run-out behaviour 
+$E_0=12.7mgd$. 
+Velocity profile (\si{\m\per\s}) of granular pile subjected to gradient impact 
+loading.}
 \label{fig:MPM_50ppc}
 \end{figure}
 
@@ -1653,8 +1649,10 @@ Velocity profile (\si{\m\per\s}) of granular pile subjected to gradient impact l
 \begin{figure}[tbhp]
 \centering
 \includegraphics[height=\textheight]{MPM_500ppc}
-\caption{Effect of number of material points on cell on the run-out behaviour $E_0=152mgd$. 
-Velocity profile (\si{\m\per\s}) of granular pile subjected to gradient impact loading.}
+\caption{Effect of number of material points on cell on the run-out behaviour 
+$E_0=152mgd$. 
+Velocity profile (\si{\m\per\s}) of granular pile subjected to gradient impact 
+loading.}
 \label{fig:MPM_500ppc}
 \end{figure}
 
