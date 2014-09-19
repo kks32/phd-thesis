@@ -1089,11 +1089,12 @@ external forces such as earthquakes. Most contemporary research on granular
 materials deals with the steady-state flow. Transients and inhomogeneous 
 boundary conditions are much less amenable to observation and analysis, and 
 have thus been less extensively studied despite their primary importance in 
-engineering practice. In all cases, an initially static pile of grains is 
+engineering practice. In most cases of granular flow, an initially static pile 
+of grains is 
 disturbed by external forces, it then undergoes an abrupt accelerated motion 
-and spreads over long distances before relaxing to a new equilibrium state when 
-the whole kinetic energy acquired during destabilisation is dissipated
-by friction and inelastic collisions.
+and spreads over long distances before relaxing to a new equilibrium state. The 
+kinetic energy acquired during destabilisation is dissipated by friction and 
+inelastic collisions.
 
 This section investigates the ability of MPM, as a continuum approach, to 
 reproduce the evolution of a granular pile destabilised by an external energy 
@@ -1103,22 +1104,20 @@ energy can be reproduced by a simple Mohr-Coulomb plastic behaviour for
 granular slopes subjected an impact energy. Effect of different input 
 parameters, such as the distribution of energy and base friction, on the 
 run-out kinematics are studied by comparing the data obtained from DEM and MPM 
-simulations. As we shall see, MPM is successfully able to simulate the 
-transient evolution with a single input parameter, the internal angle of 
-friction. This opens the way to the simulation of geological-scale flows on 
-complex topographies.
+simulations.
 
 \subsection{Numerical set-up}
 \label{sec:num}
 
-The DEM sample 
-is composed of $\sim13000$ disks with a uniform distribution of diameters by 
+The DEM sample is composed of $\sim13000$ disks with a uniform distribution of 
+diameters by 
 volume fractions ($d_{max} = 1.5 d_{min}$). The mean grain diameter and mass 
 are $d\simeq 2.455 $~\si{\mm} and $m\simeq 0.0123$~\si{\kg}, respectively. The 
 grains are first poured uniformly into a rectangular box of given width and 
 then the right-hand side wall is shifted further to the right to allow the 
-grain to spread. A talus is obtained when all grains come to rest; 
-see~\cref{fig:slope_configuration}. This procedure leads to a mean packing 
+grain to spread. A stable granular slope is obtained when all grains come to 
+rest; see~\cref{fig:slope_configuration}. This procedure leads to a mean 
+packing 
 fraction $\simeq 0.82$. Soil grains with mean density of 2600 
 \si{\kg\per\m\cubed} and internal friction coefficient of 0.4 between grains 
 is adopted.
@@ -1161,19 +1160,22 @@ contact
 parameters within the CD method are the friction coefficient $\mu$, the 
 normal restitution coefficient $\varepsilon_n$ and the tangential restitution 
 coefficient 
-$\varepsilon_t$ between particles. 
+$\varepsilon_t$ between grains. 
 
-The natural units of the system are the mean grain diameter $d$, mean grain 
+
+
+In MPM simulations the material point spacing is same as the 
+mean grain diameter in DEM. A mesh size of 0.0125m is adopted with 25 material 
+points per cell. The effect of mesh size and the number of material points per 
+cell is investigated in~\cref{sec:MPM_points_per_cell}. A Mohr-Coulomb model 
+with no dilation is used to simulate the continuum behaviour of the granular 
+pile. Periodic shear tests using CD, see~\cref{fig:Sxy_vs_Syy_Slope}, reveals a 
+macroscopic friction coefficient of 0.22. The evolution of inertial number with 
+friction is presented in~\cref{fig:mu_vs_I}. The natural units of the system 
+are the mean grain diameter $d$, the mean grain 
 mass $m$ and gravity $g$. For this reason, the length scales are normalised 
 by $d$, time by $(d/g)^{1/2}$, velocities by $(gd)^{1/2}$ and energies by 
-$mgd$. In MPM simulations the material point spacing is kept the same as the 
-mean grain diameter. A mesh size of 0.0125m is adopted with 25 material points 
-per cell. The effect of mesh size and the number of material points per cell is 
-investigated in~\cref{sec:MPM_points_per_cell}. A Mohr-Coulomb model with no 
-dilation is used to simulate the continuum behaviour of the granular pile. 
-Periodic shear tests using CD, see~\cref{fig:Sxy_vs_Syy_Slope}, reveals a 
-macroscopic friction coefficient of 0.22. The evolution of inertial number with 
-friction is presented in~\cref{fig:mu_vs_I}.
+$mgd$. 
 
 \begin{figure}[tbhp]
 \centering
@@ -1203,8 +1205,8 @@ using MPM. As the granular slope is sheared along the bottom, the shear
 propagates to the top leaving a cavity in the vicinity of the left wall. This 
 cavity gets partially filled as the granular mass at the top collapse behind 
 the flowing mass due to inertia. Similar behaviour is observed during the 
-initial stages of the flow evolution using DE and CD techniques
-(see~\cref{fig:Gradient_Slope_CD_200J}. Due to inertia, the grains at the top 
+initial stages of the flow evolution using DEM and CD techniques
+(see~\cref{fig:Gradient_Slope_CD_200J}). Due to inertia, the grains at the top 
 of the granular heap roll down to fill the cavity, while the pile continues to 
 spread. 
 
@@ -1233,7 +1235,7 @@ of a cavity behind the flowing mass, the granular heap always remains in
 contact with the left wall irrespective of the input 
 energy.~\Cref{fig:Runout_Eo_MPM_CD_DEM} shows the normalized run-out distance 
 $(L_f - L_0)/L_0$ and total run-out time $t_f$ as a function of the input 
-energy $E_0$. Two regimes characterized by power-law relationship between 
+energy $E_0$. Two regimes characterized by a power-law relation between 
 the run-out distance and time as a function of $E_0$ can be observed. In the 
 first regime, corresponding to the range of low input energies $E_0 < 40 \ 
 mgd$, the run-out distance observed varies as $L_f \propto (E_0)^\alpha$ with 
@@ -1285,10 +1287,12 @@ one decade with $\alpha' \simeq 0.56\pm 0.04$ while the duration increases as
 $t_f \propto (E_0)^{\beta'}$ with $\beta' \simeq 0.33 \pm 0.02$. Hence, in this 
 regime the average run-out speed varies as $v_s \propto (E_0)^{0.498 \pm 
 0.01}$. This exponent is close to the value $0.5$ in $v_0 \propto (E_0)^{0.5}$, 
-and hence, within the confidence interval of the exponents, in the second 
-regime we may assume $\beta' \simeq \alpha' - 0.5$ and $v_s \propto v_0$. In 
-the second regime, both DEM and MPM predict almost the same run-out behaviour. 
-However, MPM predicts longer duration with increase in input energy.
+and hence, within the confidence interval of the exponents
+%, in the second 
+%regime we may assume $\beta' \simeq \alpha' - 0.5$ and $v_s \propto v_0$. 
+In the second regime, both DEM and MPM predict almost the same run-out 
+behaviour. However, MPM predicts longer duration with increase in the input 
+energy.
 
 It is worth noting that a similar power-law dependence of the run-out distance 
 and time were found in the case of granular column collapse with respect to 
@@ -1332,12 +1336,12 @@ $t_f$ independent of the input energy. In contrast, MPM simulations predict a
 power law relation between the run-out duration and input energy. However, the 
 plots corresponding to high energy regime collapse only at the beginning of the 
 run-out i.e. for $t < t_1 \simeq 7.5 \ (d/g)^{0.5}$. Although MPM simulations 
-show higher duration of run-out (~\cref{fig:Energy_Time_Slope}), the total 
+show higher duration of run-out (\cref{fig:Energy_Time_Slope}), the total 
 kinetic energy is completely dissipated at $t = 60 \sqrt{d/g}$. DEM simulations 
 predict $t = 80 \sqrt{d/g}$ for the kinetic energy to be completely dissipated. 
 This is due particle rearrangement at the free surface (~\cref{fig:voro_500}). 
-The granular pile shows some dilation behaviour initially, which is due to 
-grains rolling down to fill the cavity. 
+The granular mass densifies as the flow progresses, after the initial dilation 
+phase.
 
 \begin{figure}[tbhp]
 \centering
