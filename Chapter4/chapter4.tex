@@ -1078,11 +1078,11 @@ have thus been less extensively studied despite their primary importance in
 engineering practice. In all cases, an initially static pile of grains is 
 disturbed by external forces, it then undergoes an abrupt accelerated motion 
 and spreads over long distances before relaxing to a new equilibrium state when 
-the whole kinetic energy acquired during destabilization is dissipated
+the whole kinetic energy acquired during destabilisation is dissipated
 by friction and inelastic collisions.
 
 This section investigates the ability of MPM, as a continuum approach, to 
-reproduce the evolution of a granular pile destabilized by an external energy 
+reproduce the evolution of a granular pile destabilised by an external energy 
 source. In particular, a central issue is whether power-law dependence of the 
 run-out distance and time observed with respect to the initial geometry or 
 energy can be reproduced by a simple Mohr-Coulomb plastic behaviour for 
@@ -1363,13 +1363,13 @@ to the total energy dissipation, but $E_y$ increases and passes through a peak
 before decaying rapidly to a negligible level. The transient is best 
 observed for $E_y$, which has significant values only for $t< t_1$. This energy 
 represents the proportion of kinetic energy transferred to the $y$ component of 
-the velocity field  due to the destabilization of the pile and collapse of 
+the velocity field  due to the destabilisation of the pile and collapse of 
 grains in the cavity behind the pile. Higher proportion of vertical 
 acceleration $E_{ky}/E_0$ is observed for lower values of input energy $E_0$. 
 This means that, at lower input energies a larger fraction of the energy is 
-consumed in the destabilization process. Whereas at a higher input energies, 
+consumed in the destabilisation process. Whereas at a higher input energies, 
 most of the energy is dissipated in the spreading phase. For this reason, the 
-total duration $t_1$ of this destabilization phase is nearly the same in 
+total duration $t_1$ of this destabilisation phase is nearly the same in 
 both regimes and its value is controlled by the gravity rather than the input 
 energy. The height of the pile being of the order of $80 \ d$, the total 
 free-fall time for a particle located at this height is $\simeq 12 \ 
@@ -1573,7 +1573,7 @@ subjected to a gradient impact energy $E_0 = 61 \ mgd$.}
 run-out behaviour. At low input energy, the gradient velocity distribution 
 shows significanly longer run-out in comparison to uniform velocity 
 distribution.~\Cref{sec:decay} showed that at lower input energies a larger 
-fraction of the energy is consumed in the destabilization process. Which means 
+fraction of the energy is consumed in the destabilisation process. Which means 
 that the amount energy available for flow is less, in uniform velocity 
 distribution, this energy is even smaller due to the uniform distribution of 
 the initial impact velocity. However at higher input energy, where most of the 
@@ -1755,14 +1755,18 @@ mesh size and the number of particles is necessary.
 
 \Cref{fig:Runout_Slope_Column} shows the run-out behaviour of granular column 
 collapse and the slope subjected to impact velocities as a function of 
-normalise energy. It can be observed that MPM and DEM predict similar run-out 
-behaviour for short columns, which undergo frictional failure. However MPM 
-predicts longer run-out for high (a > 2.3) aspect ratio columns, where there is 
-a significant collisional dissipation.  The lack of a collisional 
-energy dissipation mechanism in MPM results in over prediction of run-out 
-distances. In the case of granular column subjected to impact velocity, the 
-dissipation is friction and MPM is able to predict the run-out response in good 
-agreement with DEM simulations.
+normalise energy. In the case of column collapse, the peak energy at $\tau_c$ 
+is used as the energy available for the flow. It can be observed that MPM and 
+DEM predict similar run-out behaviour for low energy regime (short columns), 
+which undergo frictional failure along the flanks. However MPM predicts longer 
+run-out for high energy regime (corresponding to a > 2.3), where the granular 
+column experiences significant collisional dissipation.  The lack of a 
+collisional energy dissipation mechanism in MPM results in over prediction of 
+run-out distances. In the case of granular column subjected to impact velocity, 
+the dissipation is friction and MPM is able to predict the run-out response in 
+good agreement with DEM simulations. At very low energy, DEM simulations show 
+longer run-out in the case of slope subjected to impact due to local 
+destabilisation at the flow front. 
 
 \begin{figure}[tbhp]
 \centering
@@ -1773,33 +1777,33 @@ agreement with DEM simulations.
 
 \section{Summary}
 
-The choice of this geometry was motivated by our main goal  to focus on the 
-effect of an input energy on the consecutive dynamics of a granular material.
-For the range of input energies investigated in this pushing test by means of 
-contact dynamics simulations, we observed a power-law dependence of the 
-run-out distance and time with non-trivial exponents. This is a central result 
-of this work as it reveals that the power-law behaviour is a generic feature of 
-granular dynamics. The values of the exponents are not simple functions of 
-the geometry. 
+Multi-scale simulation of dry granular flows were performed to capture the 
+local rheology, which causes complex flow dynamics, and to understand the 
+capability of limitations of continuum models in capturing granular flow 
+dynamics. MPM with a simple frictional dissipation model is able to capture 
+the flow kinematics of dry granular flows. However, the lack of collisional 
+dissipation in MPM is a limitation in capturing collapse of tall columns. Both 
+DEM and MPM simulations show a power-law dependence of the run-out and time 
+with the initial aspect ratio of the column. The initial configuration and 
+material properties shows a significant influence on the run-out behaviour. 
 
-We also evidenced two regimes with different values of the exponents: 
-a low-energy regime and a high-energy regime. The first regime  
-reflects mainly the destabilization of the pile by the quake with a run-out 
-time 
-independent of the input energy whereas the second regime is governed by the 
-spreading dynamics induced by the higher value of the input energy. We showed 
-that the evolution of the pile in this high-energy regime can be described by a 
-characteristic decay time and the energy available at the end of the first 
-stage where the pile is destabilized by the quake. 
+Natural granular flows are triggered by different mechanisms. The distribution 
+of kinetic energy in the granular mass is found to have an effect on the flow 
+kinematics. A multi-scale analyses of granular slope subjected to impact 
+velocity reveals a power-law dependence of the run-out distance and time as a 
+function of the input energy with non-trivial exponents. This reveals that the 
+power-law behaviour is a generic feature of granular dynamics. The values of 
+the exponents are not simple functions of the geometry. 
 
-This work may be pursued along two directions: 1) experimental 
-realization of a similar setup with different modes of energy injection and 
-2) investigating the effect of various particle shapes or the presence of an 
-ambient fluid. Although numerical simulations are generally reliable 
-with realistic results found in the past studies of steady flows, we believe 
-that the transients are more sensitive situations than steady states and the  
-experiments are necessary for checking the validation of the results suggested 
-by the simulations. Provided a convenient method is used for supplying kinetic 
-energy homogeneously into a pile, our configuration is also interesting for 
-the investigation of the behavior of a pile immersed in a viscous 
-fluid.
+We also observe two regimes with different values of the exponents: 
+a low-energy regime and a high-energy regime. The low energy regime reflects 
+mainly the destabilisation of the pile, with a run-out time independent of the 
+input energy. Whereas, the second regime is governed by the spreading dynamics 
+induced by higher input energy. The evolution of granular slope in the 
+high-energy regime can be described by a characteristic decay time and the 
+energy available at the end of the first stage, where the pile is destabilised. 
+MPM is successfully able to simulate the transient evolution with a single 
+input parameter, the macroscopic friction angle. This study exemplifies the 
+ability of MPM, a continuum approach,  in modelling complex granular flow 
+dynamics and opens the possibility of realistic simulation of geological-scale 
+flows on complex topographies.
