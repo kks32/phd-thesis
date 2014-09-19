@@ -1494,7 +1494,7 @@ change in the base friction. This behaviour is similar to that observed in
 granular column collapse with varying initial 
 properties~\citep{Balmforth2005,Lajeunesse2005}. 
 
-CD simulations using different values of coefficient of restitution shows no 
+CD simulations using different values of coefficient of restitution show no 
 difference in the run-out behaviour. At large input energies, the pile remains 
 in a dense state so that multiple collisions inside the pile occur at small 
 time scales compared to the deformation time. When the restitution coefficients 
@@ -1753,26 +1753,25 @@ mesh size and the number of particles is necessary.
 
 \subsection{Comparison with granular column collapse}
 
+\Cref{fig:Runout_Slope_Column} shows the run-out behaviour of granular column 
+collapse and the slope subjected to impact velocities as a function of 
+normalise energy. It can be observed that MPM and DEM predict similar run-out 
+behaviour for short columns, which undergo frictional failure. However MPM 
+predicts longer run-out for high (a > 2.3) aspect ratio columns, where there is 
+a significant collisional dissipation.  The lack of a collisional 
+energy dissipation mechanism in MPM results in over prediction of run-out 
+distances. In the case of granular column subjected to impact velocity, the 
+dissipation is friction and MPM is able to predict the run-out response in good 
+agreement with DEM simulations.
 
 \begin{figure}[tbhp]
 \centering
-\includegraphics[width=0.95\textwidth]{Slope_Column}
+\includegraphics[width=0.95\textwidth]{Runout_Slope_Column}
 \caption{Comparison of column collapse with slope subjected to impact loading.}
-\label{fig:Slope_Column}
+\label{fig:Runout_Slope_Column}
 \end{figure}
 
 \section{Summary}
-Multi-scale simulation of granular column collapse was performed to understand 
-the ability and limitations of continuum models to capture the micro-mechanics 
-of dense granular flows. The run-out behaviour predicted by both continuum and 
-DEM simulations matches for columns with small aspect ratios, where the 
-dissipation is predominantly frictional. However, MPM predicts longer run-out 
-distance for columns with higher aspect ratios. Energy evolution studies using 
-DEM simulations reveal that the run-out behaviour is independent of frictional 
-properties of the granular material and collision predominates the initial 
-free-fall regime. The lack of a collisional energy dissipation mechanism in MPM 
-results in over prediction of run-out distances. 
-
 
 The choice of this geometry was motivated by our main goal  to focus on the 
 effect of an input energy on the consecutive dynamics of a granular material.
