@@ -104,30 +104,29 @@ rectangular channel,~\citep{Lajeunesse2004}}
 
 In the present study, multi-scale numerical modelling, i.e. grain-scale 
 modelling and continuum analyses, of quasi-two dimensional collapse of 
-granular columns are performed using Discrete Element (DEM) approach and 
-Generalised Interpolation Material Point Method (GIMPM). GIMPM, a hybrid 
-Eulerian -- Lagrangian approach, with Mohr-Coloumb failure criterion is used to 
-describe the continuum behaviour of the granular column collapse. While the 
-micro-mechanics of the flow is captured using DEM simulations. Comparing the 
-grain scale behaviour with the continuum simulations highlights the limitations 
-of the continuum approach in modelling dense granular flows and their ability 
-(or lack thereof) in capturing the complex micro-scale rheology.
+granular columns are performed using two-dimensional Discrete Element Method 
+(DEM) and Generalised Interpolation Material Point Method (GIMPM). GIMPM, a 
+hybrid Eulerian -- Lagrangian approach, with Mohr-Coloumb failure criterion is 
+used to describe the continuum behaviour of the granular column collapse. While 
+the micro-mechanics of the flow is captured using DEM simulations. Comparing 
+the grain scale behaviour with the continuum simulations highlights the 
+limitations of the continuum approach in modelling dense granular flows and 
+their ability (or lack thereof) in capturing the complex micro-scale rheology.
 
 \subsection{Numerical set-up}
 
-In this study, numerical simulations of granular columns are analogous to the  
-experimental investigation of column collapse performed
-by~\citet{Lajeunesse2004}. The experimental configuration 
-of~\citet{Lajeunesse2004} is shown in \cref{fig:exp}. Granular material of mass 
-`\textit{M}' was poured into a container to form a rectangular heap of length 
-`${L}_{\textit{0}}$', height `${H}_{\textit{0}}$' and thickness `\textit{W}'. 
-The internal friction angle and the wall friction between the wall and the 
-glass beads measured by ~\citet{Lajeunesse2004} are listed 
-in~\cref{table:mat_prop}. The gate was then quickly removed to 
-release the granular mass that spreads in the horizontal channel until it comes 
-to rest. The final run-out distance `${L}_{\textit{f}}$' and the collapsed 
-height `$H_{\textit{f}}$' were measured. The run-out distance and collapse 
-height exhibit a power law relation with the initial aspect ratio 
+In this study, the numerical set-up of granular columns are analogous to the  
+experimental investigation performed by~\citet{Lajeunesse2004}. The 
+experimental configuration of~\citet{Lajeunesse2004} is shown in 
+\cref{fig:exp}. Granular material of mass `\textit{M}' was poured into a 
+container to form a rectangular heap of length `${L}_{\textit{0}}$', height 
+`${H}_{\textit{0}}$' and thickness `\textit{W}'. The internal friction angle 
+and the wall friction between the wall and the glass beads measured by 
+~\citet{Lajeunesse2004} are listed in~\cref{table:mat_prop}. The gate was then 
+quickly removed to release the granular mass that spreads in the horizontal 
+channel until it comes to rest. The final run-out distance `${L}_{\textit{f}}$' 
+and the collapsed height `$H_{\textit{f}}$' were measured. The run-out distance 
+and collapse height exhibit a power law relation with the initial aspect ratio 
 `\textit{a}' $(=H_{\textit{0}}/L_{\textit{0}})$ of the column. 
 
 \begin{table}[tbhp]
@@ -137,7 +136,7 @@ height exhibit a power law relation with the initial aspect ratio
 \begin{tabular}{ll}
 \toprule
 \textbf{Parameter} & \textbf{Value} \\ \midrule
-Mean diameter & 1.15~\si{\mm} \\
+Mean grain diameter & 1.15~\si{\mm} \\
 Repose angle & 22$\pm 0.5$\si{\degree} \\
 Avalanche angle & 27.4$\pm 0.5$\si{\degree} \\
 Wall friction angle & 24.8$\pm 0.2$\si{\degree}\\
@@ -149,16 +148,17 @@ Wall friction angle & 24.8$\pm 0.2$\si{\degree}\\
 Granular materials when released suddenly on a 
 horizontal surface exhibit transient flow. In this study, the mechanism of flow 
 initiation, spreading dynamics and energy dissipation are studied for varying 
-initial aspect ratios of the granular column. DEM soil grain characteristics 
-match that of the experiment. The particle size distribution (PSD) is one of 
+initial aspect ratios of the granular column. The soil grain characteristics in 
+DEM simulations match that of the experiment. The particle size distribution 
+(PSD) is one of 
 the most important factors controlling landslide initiation and soil 
-permeability. Cumulative $\beta$ distribution (described 
+permeability~\citep{Utili2014}. Cumulative $\beta$ distribution (described 
 in~\cref{sec:beta_dist}) is used to generate a graded sample with a mean grain 
 diameter of 1.15\si{\mm} (see~\cref{fig:PSD}). 
 The DEM sample is composed of $\sim3000$ disks with a uniform distribution of 
-diameters by volume fractions in the range $[d_{min}, d_{max}] = 0.92 -- 1.38$ 
+diameters by volume fractions in the range $[d_{min}, d_{max}] = 0.92 - 1.38$ 
 \si{\mm} with polydispersity $r = \frac{d_{max} }{d_{min}} = 1.5$. The 
-granular column is prepared by allowing the randomly placed grains to undergo 
+granular column is prepared by allowing randomly placed grains to undergo 
 ballistic deposition with a constant potential head between layers of soil 
 grains. A snapshot of the sample generated is shown in~\cref{fig:a4b4r18}. A 
 DEM sample with soil grains arranged in a regular hexagonal lattice is also 
@@ -188,7 +188,7 @@ behaviour.
 
 The overlap between grains are determined by the stiffness 
 $\textit{k}_{\textit{n}}$ of the spring in the normal direction. Typically, 
-an average overlap in the range 0.1 to 1.0\% is desirable~\cite{Zenit2005} and 
+an average overlap in the range 0.1 to 1.0\% is desirable~\citep{Zenit2005} and 
 the spring constant is chosen to produce grain overlaps in this range. The 
 stiffness is determined as
 \begin{align}
@@ -206,20 +206,20 @@ grain.~\citet{Cambou2009} observed that the contact model has negligible
 influence on the run-out behaviour of rapid granular flows. The granular 
 collapse simulations performed using non-linear Hertz-Mindlin contact model and 
 the linear-elastic contact model showed no significant difference on the 
-granular flow behaviour~\citet{Utili2014}. Linear-elastic contact model is used 
+granular flow behaviour~\citep{Utili2014}. Linear-elastic contact model is used 
 in the present study due to its simplicity and lower computation time 
 requirement. The maximum tangential force is limited by the Mohr-Coloumb 
 criterion. 
 
 
 \citet{Staron2007a} observed that the coefficient of restitution $\varepsilon$ 
-was dramatically changing the behaviour of the systems for 
+dramatically changes the behaviour of the system for 
 $\varepsilon\longrightarrow 1$; in particular, this dramatic change is expected 
 to become more important for increasing values of a. On the contrary, for 
 $\varepsilon \le 0.8$, the influence of the coefficient of restitution becomes 
 negligible. In the present study, a value of 0.75 is adopted as the coefficient 
 of restitution, similar values of restitution coefficient was adopted 
-by~\citet{Zenit2005,Girolami}. The normal damping coefficient 
+by~\citet{Girolami} and~\citet{Zenit2005}. The normal damping coefficient 
 $C_{\textit{n}}$ 
 is appropriately chosen to achieve the required coefficient of restitution 
 $\varepsilon$:
@@ -259,28 +259,30 @@ Coefficient of restitution, $\varepsilon$ & 0.755 \\ \bottomrule
 GIMPM with Mohr-Coloumb constitutive model is used to simulate plane strain 
 collapse of granular columns.~\citet{Crosta2009} observed that the Mohr-Coloumb 
 with non-associate flow rule is able to capture granular collapse dynamics and 
-models the strong vertical motion components, but it does not suffer the 
-limitations of typical shallow water equation methods. In order to understand 
-the ability and limitations of continuum approaches in capturing the local 
-rheology, it is important to scale the grain scale properties, such as 
-inter-particle friction and stiffness, to the continuum 
-scale (macroscopic friction and Young's modulus).~\citet{Crosta2009} observed 
-that the friction angle plays a significant role on the run-out behaviour. In 
-MPM simulations, the granular flow is assumed to be in critical state and the 
-critical state friction angle is used in the Mohr-Coloumb model. In order to 
-obtain the critical state friction angle of the granular sample, a shear test 
-is performed using 1078 DEM grains. A bi-periodic boundary condition is adopted 
-on the sides of the sample (see~\cref{fig:shear}. Two layers of fixed grains 
-(shown in black) is placed at the top and the bottom of the shear sample. A 
-normal pressure `P' and a horizontal velocity \textit{v} is applied to the 
-fixed grains  at the top of 
-the shear sample. The normal effective stress is varied in the sample and the 
-average shear stress of the sample is measured. The sample was sheared until 
-critical state was reached. The slope of shear stress 
+models the strong vertical motion. This method does not suffer 
+the limitations of typical shallow water equation techniques. In order to 
+understand the ability and limitations of continuum approaches in capturing the 
+local rheology, it is important to scale the grain scale material properties, 
+such as the inter-particle friction and stiffness, to the continuum scale 
+(macroscopic friction and Young's modulus).~\citet{Crosta2009} observed that 
+the friction 
+angle plays a significant role on the run-out behaviour. 
+
+In MPM simulations, the granular flow is assumed to be in critical state and 
+the critical state friction angle is used in the Mohr-Coloumb model. In order 
+to obtain the critical state friction angle of the granular sample, a shear 
+test is performed using 1078 DEM grains. A bi-periodic boundary condition is 
+adopted on the sides of the sample (see~\cref{fig:shear}). Two layers of fixed 
+grains (shown in black) is placed at the top and the bottom of the shear 
+sample. A normal pressure `P' and a horizontal velocity \textit{v} is applied 
+to the fixed grains  at the top of 
+the shear sample. As the normal effective stress is varied, 
+the average shear stress in the sample is measured. The sample is sheared 
+until critical state is reached. The slope of shear stress 
 versus normal effective stress gives the critical state friction angle. A 
 critical state friction angle of $22.2$\si{\degree} is obtained. The 
 macroscopic friction angle is in the range observed 
-by~\citet{Estrada2008,Mitchell2005}. The Young's 
+by~\citet{Estrada2008} and~\citet{Mitchell2005}. The Young's 
 modulus of the granular assembly is obtained as the initial slope of the 
 stress-strain plot of a uni-axial compression of a granular column using DEM.
 
@@ -306,16 +308,16 @@ stress-strain plot of a uni-axial compression of a granular column using DEM.
 large deformation problems. In the present study, 16 material points 
 per cell is adopted. If the mesh is too fine and the number of particles is too 
 large, the particle size $2lp$ decreases, and the GIMPM interpolation 
-function 
-tends to approach the original MPM function, as shown 
-by~\citet{Bardenhagen2004}. Hence GIMPM loses the merit that it reduces the 
+function tends to approach the original MPM function, as shown 
+by~\citet{Bardenhagen2004}. Hence, GIMPM loses the merit that it reduces the 
 numerical noise due to material points crossing the background mesh. In 
 addition, the probability of particles crossing the background mesh increases 
-with decrease in mesh size, hence, more noise can be produced~\cite{Abe2013}. 
-The effect of number of material points per cell on the run-out behaviour is 
-discussed in~\cref{sec:MPM_points_per_cell}. Each material point represents 
-one-fourth of a DEM soil grain. The parameters used for the continuum analyses 
-are presented in~\cref{table:MPMData}. 
+with decrease in the mesh size, hence, more noise may be 
+produced~\cite{Abe2013}. The effect of number of material points per cell on 
+the run-out behaviour is discussed in~\cref{sec:MPM_points_per_cell}. In the 
+present study, each material point represents one-fourth of a DEM soil grain. 
+The parameters used for the continuum analyses are presented 
+in~\cref{table:MPMData}. 
 
 \begin{table}
 \caption{Parameters used in continuum simulations}
@@ -338,58 +340,54 @@ Time step increment & $1.0 \times 10^{-6}$~\si{\second}\\ \bottomrule
 
 \subsection{Deposit morphology}
 MPM and DEM simulations of granular column collapse are 
-performed by varying the initial aspect ratio of the column. 
+performed by varying the initial aspect ratio of the column from 0.2 to 10. 
 The normalized final run-out distance, $\Delta L = 
 (L_{\textit{f}}-L_{\textit{0}})/L_{\textit{0}}$, as a function of the initial 
-aspect 
-ratio `a' of the column is presented in~\cref{fig:run-out}. Similar to the 
-experimental 
-behaviour a power law relation between the run-out and the initial aspect ratio 
-of the 
-column is observed. Two distinct flow regimes can 
-be seen: (a) for `a' <1.7 a linear relation between the spread and aspect ratio 
-can 
-be observed, and (b) for `a' > 1.7 a power-law relationship exists. In the 
-present study, 
-the following scaling law for the run-out (using DEM) is observed:
+aspect ratio `a' of the column is presented in~\cref{fig:run-out}. Similar to 
+the experimental behaviour a power law relation between the run-out and the 
+initial aspect ratio of the column is observed. Two distinct flow regimes can 
+be seen: (a) for `a' < 2.7 a linear relation between the spread and aspect 
+ratio can be observed, and (b) for `a' > 2.7 a power-law relationship exists. 
+In the present study, the following scaling law for the run-out (using DEM) is 
+observed:
 \begin{align}
 \frac{L_{\textit{f}}-L_{\textit{0}}}{L_{\textit{0}}} \approx  
 \begin{cases}
-1.67 a, &\qquad \textit{a}\lesssim 2.3 \\
-2.5 a^{2/3}, &\qquad \textit{a} \gtrsim 2.3 \\
+1.67 a, &\qquad \textit{a}\lesssim 2.7 \\
+2.7 a^{2/3}, &\qquad \textit{a} \gtrsim 2.7 \\
 \end{cases}
 \end{align}
 Both, MPM and DEM simulations are able to capture the linear relationship for 
-`a' < 1.7, and the simulation results agree with the experimental 
-investigation~\cite{Lajeunesse2005}. This shows that a simple frictional 
-dissipation model is able to capture the flow dynamics for columns with smaller 
-aspect ratio. For `a' < 1.7, the normalised run-out distance predicted using 
-DEM simulations are very close to the run-out observed in the experiments. DEM 
+`a' < 2.7, and the simulation results agree with the experimental 
+investigation~\citep{Lajeunesse2005}. This shows that a simple frictional 
+dissipation model is able to capture the flow dynamics for columns with small 
+aspect ratios. For `a' < 2.7, the normalised run-out distance predicted using 
+DEM simulations are very close to those observed in the experiment. DEM 
 simulations with hexagonal packing shows shorter run-out distances in 
 comparison to randomly packed sample. This difference in the run-out behaviour 
 might be due to the crystallisation and jamming effects in hexagonal packing. 
-The small difference in the final run-out between DEM and experimental results 
-can be attributed to the variation in the packing of grains. Also, the 
+The small difference in the final run-out between the DEM and the experimental 
+results can be attributed to the variation in the packing of grains. Also, the 
 experimental data corresponds to granular column collapse in a rectangular 
-channel, the collapse is not a pure two-dimensional collapse as in the case 
-of numerical simulations. 
+channel, where the collapse is not a pure two-dimensional collapse as in the 
+case of numerical simulations. 
 
 Significant difference in the final run-out between MPM, which is based on a 
 simple frictional model for dissipation of potential energy, and DEM 
-simulations for `a' > 1.7 indicates a change in the mechanism of energy 
+simulations indicates a change in the mechanism of energy 
 dissipation for columns with large aspect ratios (`a' > 
-1.7).~\cite{Staron2005b} observed that a constant frictional dissipation 
-model cannot describe a power-law relation observed at large aspect ratio. A 
-transition in the run-out behaviour at an aspect ratio of 1.7 indicates a 
-change in flow dynamics. Similar behaviour in the run-out distance was observed 
-by~\citet{Bandara2013} for columns with large the aspect ratio $\ge 2$.
+2.7).~\cite{Staron2005b} observed that a constant frictional dissipation 
+model cannot describe a power-law relation observed at large aspect ratios. A 
+transition in the run-out behaviour at an aspect ratio of 2.7 indicates a 
+change in the flow kinematics. Similar behaviour in the run-out distance was 
+observed by~\citet{Bandara2013} for columns with large aspect ratio $\ge 2$.
 
 The longer run-out distance in MPM simulations at large aspect ratios might be 
 influenced by the amount of material mobilised during the collapse. In tall 
 columns, the entire column participates in the flow, in contrast to short 
 columns where the collapse is due to avalanching of 
-flanks,~\citet{Lajeunesse2004}. It is possible that MPM simulations 
-collapses more resulting in longer run-out distance.~\Cref{fig:height} shows 
+flanks~\citep{Lajeunesse2004}. It is possible that MPM simulations 
+collapse more resulting in longer run-out distances.~\Cref{fig:height} shows 
 the normalized final height as a function of the initial aspect ratio of the 
 column. Similar to the run-out behaviour, the normalised-height also shows two 
 distinct regimes. The scaling of final height of the column with the initial 
@@ -428,7 +426,7 @@ aspect ratio}
 
 \begin{figure}[tbhp]
 \centering
-\includegraphics[width=\textwidth]{height}
+\includegraphics[width=0.975\textwidth]{height}
 \caption{Normalised final collapse height for columns with different initial 
 aspect ratio}
 \label{fig:height}
@@ -452,7 +450,7 @@ truncated cone-like deposit (`\textit{a}' < 0.7) or conical deposit
 ``\textit{en masse}'' leaving a static region underneath the failure surface. 
 
 Dimensional analysis of granular column collapse reveals an intrinsic time 
-defined as $\sqrt{H_{\textit{i}}/g}$. This intrinsic time is a transient time 
+defined as $\sqrt{H_{\textit{0}}/g}$. This intrinsic time is a transient time 
 of order $\tau_{c}$, at which the flow is fully developed, i.e., the potential 
 energy available at the initiation of collapse is now fully converted to 
 kinetic energy. Numerical simulation of the velocity profile of a granular 
@@ -461,10 +459,10 @@ At critical time, the velocity field depends only on the position of the grain
 along the sliding mass. The maximum velocity is observed at the front of the 
 flowing mass corresponding to that of a plug flow in horizontal direction. 
 Particulate and continuum simulations show similar run-out distance at the 
-critical time. Both approaches show similar quantity of material destabilised 
-above the failure surface. However, the crystalline arrangement of soil grains 
-in a hexagonal packing results in a different flow mechanics, which also 
-shows the effect of jamming at the flow front. The continuum nature of MPM 
+critical time. Both approaches show similar quantity of material 
+destabilised above the failure surface. However, the crystalline arrangement of 
+soil grains in a hexagonal packing results in a different flow mechanics, which 
+also shows the effect of jamming at the flow front. The continuum nature of MPM 
 results in a slightly different geometry of the material destabilised above the 
 failure surface in comparison to DEM simulations. The velocity profile is 
 similar to a steady granular surface flow observed by~\citet{Lajeunesse2004}. 
@@ -479,16 +477,16 @@ deposit. The amount of mass mobilized during the collapse is significantly
 affected by the angle of the failure surface.~\Cref{fig:a04tc} shows that both 
 numerical techniques predict a distinct failure surface when the flow is fully 
 developed at critical time $\tau_{\textit{c}}$. The angle of the failure 
-surface is found to be about $55^{o}$. The failure surface begins from the toe 
-of the column and protrudes inwards at an angle of $50$ to 
+surface is found to be about $55\si{\degree}$. The failure surface begins from 
+the toe of the column and propagates inwards at an angle of $50$ to 
 $55\si{\degree}$. The formation of the ``truncated conical deposit'' or 
 ``conical deposit'' depends only on the initial length of the column, as the 
 angle of the failure surface is found to be independent of the aspect ratio. 
 The failure angle is consistent with the interpretation in terms of 
 \textit{active Coulomb failure}~\citep{Lajeunesse2004}, which leads to a 
 predicted failure angle $\theta_{\textit{y}}=45\si{\degree}+\delta / 2$, where 
-$\delta$ is the internal friction angle of the granular material. In the 
-present study, the friction angle of the glass beads is $22\si{\degree}$, which 
+$\delta$ is the friction angle of the granular material. In the 
+present study, the macroscopic friction angle is $22\si{\degree}$, which 
 leads to $\theta_{\textit{y}}=45\si{\degree}+22\si{\degree}/ 2=56\si{\degree}$, 
 which is in good agreement with the numerical simulations and experimental 
 observations by~\citet{Lajeunesse2004}. The fracture angle has a 
@@ -501,10 +499,10 @@ in-line with the failure angle observed in the present study.
 The final profile of the granular column with an initial aspect ratio 
 of 0.4 is shown in \cref{fig:a04f}. Both MPM and DEM show similar run-out 
 behaviour. The continuum approach is able to capture the flow dynamics of short 
-columns, wher the failure mechanism is active Coulomb failure. In dense 
+columns, where the failure mechanism is active Coulomb failure. In dense 
 hexagonal packing, the failure surface is steep due to crystallisation effect. 
 The variation in the angle of the failure surface causes a difference in the 
-amount of material destabilised, and in turn in the run-out distance. 
+amount of material destabilised, and in turn the run-out distance. 
 This crystallisation phenomenon is found to have a significant influence on the 
 final deposit of the granular column.~\citet{Lacaze2009} observed that 
 poly-disperse grains have lesser tendency to crystallize especially in the case 
@@ -549,26 +547,26 @@ time $\tau_{c}$. As the collapse of the granular collapse progresses,
 successive failure planes parallel to the initial failure surface are formed 
 and shear failure occurs along these planes. The presence of several shear 
 bands in the final profile of the collapsed granular column confirms this 
-hypothesis. Crystallisation in hexagonal packing has a significant effect on 
+behaviour. Crystallisation in hexagonal packing has a significant effect on 
 the run-out distance by forming series of parallel shear bands, resulting in 
-unnatural flow kinematics. However, MPM exhibits a single failure surface. This 
-observation throws light on 
+unnatural flow kinematics. This observation throws light on 
 the mechanics of propagation of shear bands in massive landslides such as the 
 Storegga submarine landslide. The flow behaviour becomes similar to that of 
 columns with lower aspect ratio as the flow starts descending along the failure 
 plane. The final profile of the collapsed granular column with an initial 
-aspect ratio of 6 is presented in Figure.\ref{fig:a6f}. For tall columns, the 
+aspect ratio of 6 is presented in~\cref{fig:a6f}. For tall columns, the 
 dissipation process is more complex due to the free-fall dynamics. The vertical 
 acceleration of the grains induces a non-trivial mass distribution in the flow 
-while spreading. This mass distribution plays a dominant role in the power-law 
-scaling law obeyed by the run-out~\citep{Staron2007a}.
+during spreading. This mass distribution plays a dominant role in the power-law 
+scaling observed in the run-out~\citep{Staron2007a}.
 
 Regardless of the experimental configuration and the initial aspect ratio of 
 the columns, the flow is initiated by a well-defined rupture surface, above 
 which the material slides down leaving a static region underneath the failure 
 plane. Depending on the aspect ratio of the column, two asymptotic behaviours 
 are observed. For smaller aspect ratios, the flow is dominated by friction 
-where as large aspect ratio columns are influenced by the pressure gradient.
+where as the large aspect ratio columns are influenced by the collisional 
+behaviour.
 
 \begin{figure}[tbhp]
 \centering
@@ -591,8 +589,8 @@ columns, the flow front \textit{L}(\textit{t}) and the maximum height of column
 \textit{H}(\textit{t}) are tracked. The evolution of scaled height 
 $(H_{\textit{f}}/L_{\textit{0}})$ and the run-out distance 
 $(L_{\textit{f}}-L_{\textit{0}})/L_{\textit{0}}$ with time for granular columns 
-with an initial aspect ratio of 0.4 and 6 are presented in
-~\cref{fig:flow_column}. Three distinct regions can be observed in the flow 
+with an initial aspect ratio of 0.4 and 6 are presented 
+in~\cref{fig:flow_column}. Three distinct regions can be observed in the flow 
 evolution of a granular column collapse regardless of the initial aspect ratio 
 of the column. An initial transient acceleration phase is observed for a time 
 0.8$\tau_{c}$. 
@@ -612,23 +610,23 @@ due to internal rearrangement, the duration of which can last up to $\textit{t}
 The critical time is evaluated as the time at which the potential energy 
 available for the flow has been converted to the kinetic energy. In short 
 columns, the critical time observed in both hexagonal and random packing of 
-grains matches the experimental observations. However, the Material Point 
-Method overestimates the critical time by a factor of 1.25, which means that it 
+grains matches the experimental observations. However, the material point 
+method overestimates the critical time by a factor of 0.75, which means that it 
 takes longer for the flow to be fully mobilized. However, the actual run-out 
 duration of the flow is short and the granular mass comes to rest at about 
 $\textit{t}=3\tau_{c}$.
  
 For columns with larger aspect ratios, the continuum and particulate approaches 
-simulate similar flow evolution behaviour for times up to 3$\tau_{c}$, beyond 
+simulate similar flow evolution up to 3$\tau_{c}$, beyond 
 which particulate simulation decelerates and comes to rest, while the flow 
-continues to evolve in MPM simulations resulting in longer run-out distance. 
+continues to evolve in MPM simulation resulting in longer run-out distance. 
 The flow comes to rest at time $\textit{t}=6\tau_{c}$. The 
 three phases in a granular flow can be distinctly observed in the flow 
-evolution plot for a granular column with initial aspect ratio of 6 (see 
+evolution plot for a column with an initial aspect ratio of 6 (see 
 ~\cref{fig:flowa6}). The flow evolution 
 behaviour observed in the case of DEM simulation matches the experimental 
 observation by~\citet{Lajeunesse2004}. Hexagonal packing predicts longer time 
-for the flow to evolve, which can be attributed to crystallisation of grains. 
+for the flow to evolve, which can be attributed to jamming of grains. 
 In MPM simulations, the failure starts at the toe of the column and slowly 
 propagates up to form the failure surface. This results in slower initiation of 
 the flow. It can be observed that MPM overestimates the critical time by 50\%. 
@@ -636,7 +634,7 @@ Although, MPM and DEM simulations show the same run-out at time
 $\textit{t}=3\tau_{c}$, the flow evolution between both the approaches is 
 different. MPM simulations continue to accelerate beyond $3\tau_c$ and ceases 
 to flow at $6\tau_{c}$. In order to understand the difference in the flow 
-dynamics in the case of Material Point Method it is important to study the 
+dynamics in the case of material point method, it is important to study the 
 mechanism of energy dissipation. 
 
 
