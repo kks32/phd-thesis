@@ -978,7 +978,7 @@ condition, almost 20\% of the initial potential energy available for collapse
 is lost in densification due to grain rearrangements in comparison to the dense 
 condition (see~\cref{fig:Energy_voro_r6}). The compaction of grains in loose 
 column and the dilation in dense column results in significantly different flow 
-structure, especially at the flow front (~\cref{fig:density_r6}). As the loose 
+structure, especially at the flow front (\cref{fig:density_r6}). As the loose 
 column densifies, more granular mass is pushed to the flow front resulting in 
 higher vertical effective stress. The loose column exhibits a more parabolic 
 final deposit profile in comparison to the dense column, which shows a 
@@ -1314,34 +1314,33 @@ distance.
 
 The non-trivial evolution of the pile geometry in two regimes suggests that 
 the energy supplied to the pile is not simply dissipated by shear and friction 
-along the bottom plane. It is important to split the kinetic energy into the 
+along the bottom plane. It is important to split the kinetic energy into 
 vertical and horizontal components ($K_{Ex}$ and $K_{Ey}$) of the velocity 
-field. The input energy is in the $x$ component, but due to the creation 
-of a cavity next  to the left wall and the rolling of the grains down the free 
-surface of the pile and between grains, a fraction of the energy is first 
-transferred to the vertical component of the velocity field and dissipated  
-during the transient phase. The evolution of kinetic energy is studied to  
-understand the behaviour of granular flow that is consistent with the evolution 
-of pile shape.
+field. Although, the input energy is in the $x$ component, a fraction of 
+energy is transferred to the vertical component of the velocity field and 
+dissipated during the transient phase. The evolution of kinetic energy is 
+studied to understand the behaviour of granular flow that is consistent with 
+the evolution of the pile shape.
 
 The evolution of total kinetic energies $E_k$ with time for different values of 
-the input energy $E_{ki}$ based on MPM simulations are shown in 
+the input energy $E_{ki}$ based on MPM simulations are shown in
 ~\cref{fig:Energy_Time_Slope}. MPM simulations shows two distinct regimes in 
 the normalised kinetic energy plot as a function of 
-normalised time~\cref{fig:Normalised_Energy_Time_Slope}. However, DEM 
+normalised time in ~\cref{fig:Normalised_Energy_Time_Slope}. However, DEM 
 simulations (see~\cref{fig:Normalised_Energy_Time_Slope_DEM}) show that the 
-energy evolution corresponding to low energy regime collapse nearly on to a 
+energy evolution corresponding to low energy regime nearly collapse on to a 
 single time evolution. This is consistent with the observation of run-out time 
 $t_f$ independent of the input energy. In contrast, MPM simulations predict a 
 power law relation between the run-out duration and input energy. However, the 
-plots corresponding to high energy regime collapse only at the beginning of the 
-run-out i.e. for $t < t_1 \simeq 7.5 \ (d/g)^{0.5}$. Although MPM simulations 
-show higher duration of run-out (\cref{fig:Energy_Time_Slope}), the total 
-kinetic energy is completely dissipated at $t = 60 \sqrt{d/g}$. DEM simulations 
-predict $t = 80 \sqrt{d/g}$ for the kinetic energy to be completely dissipated. 
-This is due particle rearrangement at the free surface (~\cref{fig:voro_500}). 
-The granular mass densifies as the flow progresses, after the initial dilation 
-phase.
+plots corresponding to the high energy regime (\cref{fig:Energy_Time_Slope}), 
+collapse only at the beginning of the run-out i.e. for $t < t_1 \simeq 7.5 \ 
+(d/g)^{0.5}$. Although MPM simulations show longer duration of run-out 
+(\cref{fig:Energy_Time_Slope}), the total kinetic energy is completely 
+dissipated at $t = 60 \sqrt{d/g}$. DEM simulations predict $t = 80 \sqrt{d/g}$ 
+for the kinetic energy to be completely dissipated. This is due particle 
+rearrangement at the free surface (\cref{fig:voro_500}). The granular mass 
+densifies as the flow progresses, after the initial dilation phase $t = 
+20\sqrt{d/g}$.
 
 \begin{figure}[tbhp]
 \centering
@@ -1375,7 +1374,7 @@ phase.
 \label{fig:voro_500}
 \end{figure}
 
-~\Cref{fig:Normalised_KEx_KEy_Slope} displays the evolution of kinetic energy 
+\Cref{fig:Normalised_KEx_KEy_Slope} displays the evolution of kinetic energy 
 in the translational ($E_x$ and $E_y$) degrees of freedom. $E_x$ decays similar 
 to the total energy dissipation, but $E_y$ increases and passes through a peak 
 before decaying rapidly to a negligible level. The transient is best 
@@ -1391,9 +1390,9 @@ total duration $t_1$ of this destabilisation phase is nearly the same in
 both regimes and its value is controlled by the gravity rather than the input 
 energy. The height of the pile being of the order of $80 \ d$, the total 
 free-fall time for a particle located at this height is $\simeq 12 \ 
-(d/g)^{0.5}$, which is of the same order as $t_1$. The contribution of the  
-rotational energy during the transient stage and the spreading stage is 
-negligible. 
+(d/g)^{0.5}$, which is of the same order as $t_1$. DEM simulations show that 
+the contribution of the rotational energy during the transient stage and the 
+spreading stage is negligible. 
 
 \begin{figure}[tbhp]
 \centering
@@ -1422,7 +1421,7 @@ shows the evolution of $E_{kx}$ normalized by $E'_{kx0}$ as a function of time.
 The plots have seemingly the same aspect but they show different decay times. A 
 decay time $\tau$ can be defined as the time required for $E_{kx}$ to decline 
 by a factor $1/2$.~\Cref{fig:ExEx0_vs_ttau} shows the same data in 
-which the time $t'$ elapsed since $t_1$ is normalized by $\tau$. Interestingly, 
+which the time $t'$ elapsed since $t_1$, normalized by $\tau$. Interestingly, 
 now all the data nicely collapse on to a single curve. However, this curve can 
 not be fitted by simple functional forms such as variants of exponential decay. 
 This means that the spreading of the pile is not a self-similar process in 
@@ -1501,13 +1500,13 @@ energy $E_{kx0}$.}
 
 The run-out distance, duration of flow, and the dissipation of kinetic energy 
 are controlled by the input energy and collective dynamics of the whole pile. 
-However, the run-out behaviour is expected to also depend on the base friction. 
+However, the run-out behaviour is expected to depend also on the base friction. 
 A series of simulations with different values of base friction was performed 
 using MPM to analyse the influence of friction on the run-out behaviour. The 
-influence of friction on the run-out behaviour is shown in
-~\cref{fig:runout_fric_slope}. The exponent of the 
+influence of friction on the run-out behaviour is shown 
+in~\cref{fig:runout_fric_slope}. The exponent of the 
 power-law relation between the run-out and input energy has a weak dependence 
-on the base friction, the proportionality constant, however, is affected by the 
+on the base friction, however, the proportionality constant is affected by the 
 change in the base friction. This behaviour is similar to that observed in 
 granular column collapse with varying initial 
 properties~\citep{Balmforth2005,Lajeunesse2005}. 
@@ -1526,14 +1525,13 @@ coefficient, however, is quite important for the run-out. MPM simulations with
 varying friction coefficient shows that, both the run-out distance and the 
 decay time decrease as the friction coefficient is increased. This 
 effect is much more pronounced at low values of the friction coefficient. 
-Similar behaviour was observed in CD simulations. The run-out time, for 
-example, is reduced by a factor of $\approx 4$ as $\mu_s$ is increased from 0.1 
-to 0.2 while the change in the run-out and duration is less effected with 
-increase in friction coefficient. This ``saturation effect" 
+The run-out time, for example, is reduced by a factor of $\approx 4$ as $\mu_s$ 
+is increased from 0.1 to 0.2 while the change in the run-out and duration is 
+less effected with increase in friction coefficient. This ``saturation effect" 
 can be observed in a systematic way in simple shear tests. The dissipation rate 
 may reach a saturation point where the dilation of granular materials and 
-rolling of the grains change in response to increase in friction coefficient 
-\cite{Estrada2008}.
+rolling of the grains change in response to increase in friction 
+coefficient~\citep{Estrada2008}.
 
 \begin{figure}[tbhp]
 \centering
@@ -1558,13 +1556,13 @@ rolling of the grains change in response to increase in friction coefficient
 
 \subsection*{Effect kinetic energy distribution}
 
-~\citet{Staron2005} observed that the distribution of kinetic energies is an 
-essential factor for the run-out distance. In order to understand the influence 
-of energy distribution on the run-out behaviour, granular pile subjected to two 
-different velocity fields was studied. A uniform velocity $V_{xo} (y) = V_0$ is 
-applied to the entire pile, in contrast to the gradient impact velocity. 
-Snapshots of flow kinematics at initial stages are shown 
-in~\cref{fig:Uniform_Slope_Profile_200J} (MPM simulations) 
+\citet{Staron2005} observed that the distribution of kinetic energy in the 
+granular system is an essential factor for the run-out distance. In order to 
+understand the influence of energy distribution on the run-out behaviour, 
+granular pile subjected to two different velocity fields were studied. A 
+uniform velocity $V_{xo} (y) = V_0$ is applied to the entire pile, in contrast 
+to the gradient impact velocity. Snapshots of flow kinematics at initial stages 
+are shown in~\cref{fig:Uniform_Slope_Profile_200J} (MPM simulations) 
 and~\cref{fig:Uniform_Slope_DEM_200J} (DEM). It can be observed from the 
 figures that the continuum behaviour is identical to that of grain-scale 
 simulations. As each grain experiences the same velocity, grains located at the 
@@ -1590,20 +1588,20 @@ subjected to a gradient impact energy $E_0 = 61 \ mgd$.}
 ~\Cref{fig:Runout_Eo_GU} shows the influence of velocity distribution on the 
 run-out behaviour. At low input energy, the gradient velocity distribution 
 shows significanly longer run-out in comparison to uniform velocity 
-distribution.~\Cref{sec:decay} showed that at lower input energies a larger 
+distribution.~\Cref{sec:decay} shows that at low input energies a larger 
 fraction of the energy is consumed in the destabilisation process. Which means 
 that the amount energy available for flow is less, in uniform velocity 
-distribution, this energy is even smaller due to the uniform distribution of 
-the initial impact velocity. However at higher input energy, where most of the 
-energy is dissipated during the spreading phase, the run-out distance has a 
-weak dependence on the distribution of velocity in the granular mass. The 
-duration of the flow shows similar behaviour to the run-out, however, the slope 
-subjected a gradient velocity flows quicker than the uniform velocity 
-distribution. Gradient velocity distribution provides more input energy at the 
-initial stage to overcome the frictional resistance at the base. Hence, it can 
-be observed that the material property and the distribution of kinetic energy 
-in the system has a non-trivial influence on the flow kinematics and the 
-internal flow structure.
+distribution, this energy is even smaller as the initial velocity is distrubted 
+uniformly throughout the granular mass. However at higher input energy, where 
+most of the energy is dissipated during the spreading phase, the run-out 
+distance has a weak dependence on the distribution of velocity in the granular 
+mass. The duration of the flow shows similar behaviour to the run-out, however, 
+a slope subjected to a gradient velocity flows quicker than a slope subjected 
+to a uniform impact velocity. Gradient velocity distribution provides more 
+input energy at the initial stage to overcome the frictional resistance at the 
+base. This shows that the material property and the distribution 
+of kinetic energy in the system has a non-trivial influence on the flow 
+kinematics and the internal flow structure.
 
 \begin{figure}[tbph]
 \centering
@@ -1630,7 +1628,7 @@ internal flow structure.
 
 \citet{Abe2013} observed that for a coarse mesh, the numerical error 
 decreases with increase in the number of material points per cell. In contrast, 
-they observed an opposite trend for the fine meshes (0.01 ). The 
+they observed an opposite trend for the fine meshes (0.01 \si{\m}). The 
 influence of numerical noise due to particles crossing the background mesh was 
 not observed when the mesh size is greater than 0.05 
 \si{\m}.~\citet{Coetzee2005} also found that the numerical error decreases with 
@@ -1639,14 +1637,14 @@ increase in mesh refinement.
 In the present study, the effect of mesh size and the number of material points 
 per cell on the run-out behaviour is investigated. For a mesh size of 0.0125 
 \si{\m}, the number of material points per cell (PPC) is varied as 4, 16, 25, 
-36, 64, 
-81 and 100. The effect of number of material points on the run-out behaviour is 
-presented in~\cref{fig:Runout_MPM}. At low input energy of 50~\si{\J}, 4 and 16 
-material points per cell result in longer run-out distance, where as the 
+36, 64, 81 and 100. The effect of number of material points on the run-out 
+behaviour is presented in~\cref{fig:Runout_MPM}. At a low input energy of 
+50~\si{\J}, 4 and 16 material points per cell result in longer run-out 
+distance, where as the 
 run-out distance converges when the number of PPC is more 
-than 25. While at higher input energy (500~\si{J}), both 4 and 16 PPC results 
-in almost the same run-out distance, but is higher than the run-out predicted 
-with more than 25 points per cell. 
+than 25. While at a high input energy of 500~\si{J}, both 4 and 16 PPC predict 
+almost the same run-out distance, but is higher than the run-out predicted 
+with more than 25 material points per cell. 
 
 \begin{figure}[tbhp]
 \centering
@@ -1668,11 +1666,13 @@ with more than 25 points per cell.
 
 The evolution of the granular pile during the initial stage of flow is show 
 in~\cref{fig:MPM_50ppc} for different number of material points per cell. At 
-low input energy, fewer material points per cell result in larger separation 
-from the left wall. Distinct shear bands can be observed for more than 16 PPC. 
-The flow structure is similar for more than 25 PPC. At higher input energy 
+low input energy, fewer material points per cell results in larger separation 
+of the spreading mass from the left wall. Distinct shear bands can be observed 
+for more than 16 PPC. 
+The flow structure remains unchanged with increase in PPC of more than 25. At 
+a higher input energy
 (see~\cref{fig:MPM_500ppc}), almost all cases predict similar flow structure, 
-except 4 PPC.
+except in the case of 4 PPC.
 
 \begin{figure}[tbhp]
 \centering
@@ -1698,9 +1698,9 @@ loading.}
 \Cref{fig:KE_MPM} shows the evolution of kinetic energy with time for varying 
 number of material points per cell. At low input energy, the horizontal kinetic 
 energy evolution is identical for all cases. A slightly quicker run-out 
-evolution during the spreading phase can be observed for the case of 4 material 
-points per cell. However, increase in material points per cell significantly 
-affects the evolution of the vertical kinetic energy $KE_{y}$. At low energy, a 
+evolution during the spreading phase can be observed for the case of 4 PPC.  
+However, increase in the number of material points per cell significantly 
+affects the evolution of the vertical kinetic energy $E_{ky}$. At low energy, a 
 large proportion of the input energy is dissipated in the destabilisation 
 process. This results in material points falling behind the spreading mass to 
 the fill the cavity. Fewer number of material points per cell results in cell 
@@ -1710,9 +1710,9 @@ osciallation of vertical kinetic energy for fewer material points per cell.
 However, at high input energy, most of the input velocity is dissipated during 
 the spreading process. This means that only a small fraction of energy is 
 available in the vertical component resulting in almost similar behaviour for 
-all cases. Four material points per cell results in a higher peak vertical 
-kinetic energy than other cases, unlike low energy case, no oscillations were 
-observed at high input energy.
+all cases. Four material points per cell predicts a higher peak vertical 
+kinetic energy in comparison with other cases, unlike the low energy case, no 
+oscillations were observed for the high input energy.
 
 \begin{figure}[tbhp]
 \centering
@@ -1763,28 +1763,29 @@ per cell.}
 This shows that the run-out distance is affected by the number of material 
 points per cell. However, the duration of the run-out is independent of the 
 number of material points per cell. The computation time increases with 
-increase in material points per cell and for finer mesh. However, the run-out 
-distance converges with increase in number of material points per cell. Hence, 
-an optimum number of 25 material points per cell was adopted in this case. In 
-summary, for conducting a successful MPM analysis, a careful selection of the 
-mesh size and the number of particles is necessary.
+increase in the number of material points per cell and decrease in the mesh 
+size. However, the run-out distance converges with increase in number of 
+material points per cell. Hence, an optimum number of 25 material points per 
+cell was adopted in this case. In summary, for conducting a successful MPM 
+analysis, a careful selection of the mesh size and the number of particles is 
+necessary.
 
 \subsection{Comparison with granular column collapse}
 
 \Cref{fig:Runout_Slope_Column} shows the run-out behaviour of granular column 
 collapse and the slope subjected to impact velocities as a function of 
-normalise energy. In the case of column collapse, the peak energy at $\tau_c$ 
-is used as the energy available for the flow. It can be observed that MPM and 
-DEM predict similar run-out behaviour for low energy regime (short columns), 
-which undergo frictional failure along the flanks. However MPM predicts longer 
-run-out for high energy regime (corresponding to a > 2.3), where the granular 
-column experiences significant collisional dissipation.  The lack of a 
-collisional energy dissipation mechanism in MPM results in over prediction of 
-run-out distances. In the case of granular column subjected to impact velocity, 
-the dissipation is friction and MPM is able to predict the run-out response in 
-good agreement with DEM simulations. At very low energy, DEM simulations show 
-longer run-out in the case of slope subjected to impact due to local 
-destabilisation at the flow front. 
+normalised kinetic energy. In the case of column collapse, the peak energy at 
+$\tau_c$ is used as the energy available for the flow. It can be observed that 
+MPM and DEM predict similar run-out behaviour for low energy regime (short 
+columns), which undergo frictional failure along the flanks. However MPM 
+predicts longer run-out for high energy regime (corresponding to a > 2.7), 
+where the granular column experiences significant collisional dissipation. The 
+lack of a collisional energy dissipation mechanism in MPM results in over 
+prediction of run-out distances. In the case of granular column subjected to 
+impact velocity, the dissipation is friction and MPM is able to predict the 
+run-out response in good agreement with DEM simulations. At very low energy, 
+DEM simulations show longer run-out in the case of slope subjected to impact 
+due to local destabilisation at the flow front. 
 
 \begin{figure}[tbhp]
 \centering
@@ -1796,14 +1797,14 @@ destabilisation at the flow front.
 \section{Summary}
 
 Multi-scale simulation of dry granular flows were performed to capture the 
-local rheology, which causes complex flow dynamics, and to understand the 
-capability of limitations of continuum models in capturing granular flow 
-dynamics. MPM with a simple frictional dissipation model is able to capture 
-the flow kinematics of dry granular flows. However, the lack of collisional 
-dissipation in MPM is a limitation in capturing collapse of tall columns. Both 
-DEM and MPM simulations show a power-law dependence of the run-out and time 
-with the initial aspect ratio of the column. The initial configuration and 
-material properties shows a significant influence on the run-out behaviour. 
+local rheology, and to understand the capability and limitations of continuum 
+models in realistic simulation of granular flow dynamics. MPM with a simple 
+frictional dissipation model is able to capture the flow kinematics of dry 
+granular flows. However, the lack of collisional dissipation in MPM is a 
+limitation in modelling the collapse of tall columns. Both DEM and MPM 
+simulations show a power-law dependence of the run-out and time with the 
+initial aspect ratio of the column. The initial configuration and the material 
+properties have a significant influence on the run-out behaviour. 
 
 Natural granular flows are triggered by different mechanisms. The distribution 
 of kinetic energy in the granular mass is found to have an effect on the flow 
