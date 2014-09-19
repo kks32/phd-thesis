@@ -6,7 +6,102 @@
     \graphicspath{{Chapter6/figs/vector/}{Chapter6/figs/}}
 \fi
 
+\section{Subaqueous granular flows}
+
+Avalanches, landslides, and debris flows are geophysical hazards, which involve 
+rapid mass movement of granular solids, water, and air. Globally, landslides 
+cause billions of pounds in damage, and thousands of deaths and injuries each 
+year. Hence, it is important to understand the triggering mechanism and the 
+evolution of flow. The momentum transfer between the discrete and continuous 
+phases significantly affects the dynamics of the flow as a whole.1 Although 
+certain macroscopic models are able to capture simple mechanical behaviours,2 
+the complex physical mechanisms occurring at the grain scale, such as 
+hydrodynamic instabilities, formation of clusters, collapse, and transport,1 
+have largely been ignored. In particular, when the solid phase reaches a high 
+volume fraction, the strong heterogeneity arising from the contact forces 
+between the grains, and the hydrodynamic forces, are difficult to integrate 
+into the homogenization process involving global averages.1 In order to 
+describe the mechanism of immersed granular flows, it is important to consider 
+both the dynamics of the solid phase and the role of the ambient fluid.3 The 
+dynamics of the solid phase alone are insufficient to describe the mechanism of 
+granular flow in a fluid; it is important to consider the effect of 
+hydrodynamic forces that reduce the weight of the solids inducing a transition 
+from dense-compacted to dense-suspended flows, and the drag interactions which 
+counteract the movement of the solids.4 Transient regimes characterized by 
+change in solid fraction, dilation at the onset of flow and development of 
+excess pore pressure, result in altering the balance between the stress carried 
+by the fluid and that carried by the grains, thereby changing the overall 
+behaviour of the flow.3 In the present study, 2D Lattice-Boltzmann and Discrete 
+Element Method is adopted to capture the fluid-soil interactions in underwater 
+avalanches.
+
+
+\subsection{LBM-DEM Coupling}
+
+Lattice Boltzmann approach can accommodate large grain sizes and the 
+interaction between the fluid and the moving grains can be modelled through 
+relatively simple fluid – grain interface treatments. Further, employing the 
+Discrete Element Method (DEM) to account for the grain – grain interaction 
+naturally leads to a combined LB – DEM procedure.7 The Eulerian nature of the 
+LBM formulation, together with the common explicit time step scheme of both LBM 
+and DEM makes this coupling strategy an efficient numerical procedure for the 
+simulation of grain – fluid systems. Such a coupled methodology is used in 
+simulating grain – fluid systems dominated by grain – fluid and grain – grain 
+interactions. To capture the actual physical behavior of the fluid – grain 
+system, it is essential to model the boundary condition between the fluid and 
+the grain as a non-slip boundary condition, i.e. the fluid near the grain 
+should have similar velocity as the grain boundary. The solid grains inside the 
+fluid are represented by lattice nodes. The discrete nature of lattice, results 
+in a stepwise representation of the surfaces, which are circular, hence 
+sufficiently small lattice spacing is adopted. 
+
+\subsection{Permeability}
+
+In DEM, the grain – grain interaction is described based on the contact 
+interactions. In a 3D granular assembly, the pore spaces between grains are 
+interconnected, whereas in 2-D assembly, the grains are in contact with each 
+other that result in a non-interconnected pore-fluid space. This results in a 
+no flow condition in a 2-D case. In order to overcome this difficulty, a 
+reduction in radius is assumed only during LBM computations (fluid and fluid – 
+solid interaction). The reduction in radius allows interconnected pore space 
+through which the surrounding fluid can flow (reduced R=0.7r to 0.95r, ‘r’ is 
+grain radius). The reduction in radius is assumed only during LBM computations, 
+hence this technique has no effect on the grain – grain interactions computed 
+using DEM. Different permeability can be obtained, for any given initial 
+packing, by varying the reduction in the radius for the grains, without 
+changing the actual granular packing. Cumulative $\beta$ method is adopted to 
+generate a randomly packed granular assembly with a polydispersity of 1.8 (see 
+Figure 2).8 The size of the grains varies between 1.25mm to 2.2mm. 
+
+A square sample of 50 mm x 50 mm is used to determine the transverse 
+permeability. Dirichlet boundary condition,9 i.e. pressure/density constrain is 
+applied at the left and the right boundaries. A small increment (10-4 ) in 
+density is applied at the left hand side boundary and a constant density is 
+maintained at the right hand side boundary. This results in a gradient of 
+pressure causing the fluid in the domain to flow. The mean velocity of flow (v) 
+is determined and the permeability of the sample (k) is computed as:
+
+
+where $\mu$ is the dynamic viscosity of the fluid (Pa.s), $\Delta x$ is the 
+thickness 
+of the bed of porous medium (m), and $\Delta P$ is the applied pressure 
+difference (Pa).  In the present study, the radius is varied from 0.7 to 0.95 
+to obtain a 
+wide range of permeability for the sample. Increase in the size of the grain 
+from 0.7 to 0.95 reduces the porosity from 0.60 to 0.27. The permeability 
+computed from LB – DEM method is verified by comparing it with an analytical 
+solution. One of the widely used analytical solutions for permeability is the 
+Carman – Kozeny equation (i.e. the CK Model), which is based on Poiseuille flow 
+through pipe and is mainly used for 3D, homogenous, isotropic, granular porous 
+media at moderate porosities. In the present study, a modified Carman – Kozeny 
+equation that takes into account the microstructure of the fibers and is valid 
+in a wide range of porosities is adopted.10 The normalized permeability is 
+defined as
+
+
 \section{Submarine granular flows down incline plane}
+
+
 
 The flow of dense granular material is a common phenomenon in engineering 
 predictions, such as avalanches, landslides, and debris-flow modelling. Despite 
