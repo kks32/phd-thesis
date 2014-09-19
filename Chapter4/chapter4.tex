@@ -34,20 +34,22 @@ performed in 2D or simple particles shapes and size distributions are
 considered. 
 
 Classical modelling strategies based on the finite element method (FEM) cannot 
-be used for the simulation of very large deformations due to mesh distortion. 
+be used for the simulation of very large deformations due to mesh distortion 
+effects. 
 In various application of FEM, this problem is treated by means of technical 
 tools such as re-meshing. These methods are, however, not robust and lead to 
-round-off errors and mesh sensitivity. Recent works on granular materials also 
-suggest that a continuum law may be incapable of revealing in-homogeneities at 
+round-off errors and are sensitive to the mesh characteristics. Recent works on 
+granular materials suggest that a continuum law may be incapable of revealing 
+in-homogeneities at 
 the grain-scale level, such as orientation of force chains, collapse of local 
-void and grain rearrangements, which are purely due to micro-structural 
+voids and grain rearrangements, which are purely micro-structural 
 effects~\citep{Rycroft2009a}. Discrete element approaches 
 are capable of simulating the granular material as a discontinuous system 
 allowing one to probe into local variables such as position, velocities, 
 contact forces, etc. The fundamental question is how to model granular 
 materials which exhibit complex phenomenon. It is important to understand the 
 mechanics of granular flows and the ability and limitations of continuum 
-methods in capturing the flow dynamics.
+methods in modelling the granular flow dynamics.
 
 \section{Granular column collapse}
 
@@ -64,7 +66,7 @@ $H_f$ and length $L_f$. Despite the complexity of the intermediate flow
 dynamics, experimental investigations have shown that the flow evolution, the 
 spreading velocity, the final extent of the deposit, and the energy dissipation 
 can be scaled in a quantitative way independent of the substrate properties, 
-grain size, density, and shape of the granular material and the released 
+grain size, density, the shape of the granular material and the released 
 mass~\citep{Staron2007a,Lajeunesse2005,Lube2005}. The granular collapse has 
 also been studied using discrete element method, which allows precise 
 measurement of the internal flow 
@@ -107,25 +109,26 @@ modelling and continuum analyses, of quasi-two dimensional collapse of
 granular columns are performed using two-dimensional Discrete Element Method 
 (DEM) and Generalised Interpolation Material Point Method (GIMPM). GIMPM, a 
 hybrid Eulerian -- Lagrangian approach, with Mohr-Coloumb failure criterion is 
-used to describe the continuum behaviour of the granular column collapse. While 
-the micro-mechanics of the flow is captured using DEM simulations. Comparing 
-the grain scale behaviour with the continuum simulations highlights the 
-limitations of the continuum approach in modelling dense granular flows and 
-their ability (or lack thereof) in capturing the complex micro-scale rheology.
+used to describe the continuum behaviour of the granular column collapse. 
+Whereas, the micro-mechanics of the flow is captured using DEM simulations. 
+Comparing the grain scale behaviour with the continuum simulations highlights 
+the limitations of the continuum approach in modelling dense granular flows and 
+their ability in capturing the complex flow kinematics which are due to 
+micro-scale rheology.
 
 \subsection{Numerical set-up}
 
 In this study, the numerical set-up of granular columns are analogous to the  
 experimental investigation performed by~\citet{Lajeunesse2004}. The 
 experimental configuration of~\citet{Lajeunesse2004} is shown in 
-\cref{fig:exp}. Granular material of mass `\textit{M}' was poured into a 
+\cref{fig:exp}. Granular material of mass `\textit{m}' is poured into a 
 container to form a rectangular heap of length `${L}_{\textit{0}}$', height 
 `${H}_{\textit{0}}$' and thickness `\textit{W}'. The internal friction angle 
 and the wall friction between the wall and the glass beads measured by 
-~\citet{Lajeunesse2004} are listed in~\cref{table:mat_prop}. The gate was then 
+~\citet{Lajeunesse2004} are listed in~\cref{table:mat_prop}. The gate is then 
 quickly removed to release the granular mass that spreads in the horizontal 
 channel until it comes to rest. The final run-out distance `${L}_{\textit{f}}$' 
-and the collapsed height `$H_{\textit{f}}$' were measured. The run-out distance 
+and the collapsed height `$H_{\textit{f}}$' are measured. The run-out distance 
 and collapse height exhibit a power law relation with the initial aspect ratio 
 `\textit{a}' $(=H_{\textit{0}}/L_{\textit{0}})$ of the column. 
 
@@ -148,11 +151,10 @@ Wall friction angle & 24.8$\pm 0.2$\si{\degree}\\
 Granular materials when released suddenly on a 
 horizontal surface exhibit transient flow. In this study, the mechanism of flow 
 initiation, spreading dynamics and energy dissipation are studied for varying 
-initial aspect ratios of the granular column. The soil grain characteristics in 
-DEM simulations match that of the experiment. The particle size distribution 
-(PSD) is one of 
-the most important factors controlling landslide initiation and soil 
-permeability~\citep{Utili2014}. Cumulative $\beta$ distribution (described 
+initial aspect ratios of the granular column. The soil grain characteristics of 
+the DEM sample match that of the experiment. The particle size distribution 
+(PSD) is one of the most important factors controlling landslide initiation and 
+soil permeability~\citep{Utili2014}. Cumulative $\beta$ distribution (described 
 in~\cref{sec:beta_dist}) is used to generate a graded sample with a mean grain 
 diameter of 1.15\si{\mm} (see~\cref{fig:PSD}). 
 The DEM sample is composed of $\sim3000$ disks with a uniform distribution of 
@@ -205,7 +207,7 @@ where E is the Young's modulus of the material and R is the radius of the
 grain.~\citet{Cambou2009} observed that the contact model has negligible 
 influence on the run-out behaviour of rapid granular flows. The granular 
 collapse simulations performed using non-linear Hertz-Mindlin contact model and 
-the linear-elastic contact model showed no significant difference on the 
+the linear-elastic contact model showed no significant difference in the 
 granular flow behaviour~\citep{Utili2014}. Linear-elastic contact model is used 
 in the present study due to its simplicity and lower computation time 
 requirement. The maximum tangential force is limited by the Mohr-Coloumb 
@@ -313,7 +315,7 @@ by~\citet{Bardenhagen2004}. Hence, GIMPM loses the merit that it reduces the
 numerical noise due to material points crossing the background mesh. In 
 addition, the probability of particles crossing the background mesh increases 
 with decrease in the mesh size, hence, more noise may be 
-produced~\cite{Abe2013}. The effect of number of material points per cell on 
+produced~\citep{Abe2013}. The effect of number of material points per cell on 
 the run-out behaviour is discussed in~\cref{sec:MPM_points_per_cell}. In the 
 present study, each material point represents one-fourth of a DEM soil grain. 
 The parameters used for the continuum analyses are presented 
@@ -328,7 +330,7 @@ in~\cref{table:MPMData}.
 \textbf{Parameter} & \textbf{Value} \\ \midrule
 Material point spacing & 0.575~\si{\mm} \\
 Number of material points per cell & 16 \\
-Young's Modulus, E & $1.98 \times 10 ^{6}$~\si{\Pa} \\
+Young's Modulus, E & $1.98 \times 10 ^{6}$~\si{\N\per\m\squared} \\
 Poisson's ratio, $\nu$ & 0.22 to 0.24 \\ 
 Friction angle, $\phi$ & $23.2 \pm 0.2\si{\degree}$ \\
 Dilatancy angle, $\varPhi$ & $0$\si{\degree} \\
@@ -339,7 +341,8 @@ Time step increment & $1.0 \times 10^{-6}$~\si{\second}\\ \bottomrule
 \end{table}
 
 \subsection{Deposit morphology}
-MPM and DEM simulations of granular column collapse are 
+Two-dimensional plane-strain MPM and DEM simulations of granular column 
+collapse are 
 performed by varying the initial aspect ratio of the column from 0.2 to 10. 
 The normalized final run-out distance, $\Delta L = 
 (L_{\textit{f}}-L_{\textit{0}})/L_{\textit{0}}$, as a function of the initial 
@@ -380,7 +383,8 @@ dissipation for columns with large aspect ratios (`a' >
 model cannot describe a power-law relation observed at large aspect ratios. A 
 transition in the run-out behaviour at an aspect ratio of 2.7 indicates a 
 change in the flow kinematics. Similar behaviour in the run-out distance was 
-observed by~\citet{Bandara2013} for columns with large aspect ratio $\ge 2$.
+observed by~\citet{Bandara2013} for columns with large aspect ratios ($a \ge 
+2$).
 
 The longer run-out distance in MPM simulations at large aspect ratios might be 
 influenced by the amount of material mobilised during the collapse. In tall 
@@ -401,7 +405,7 @@ aspect ratio of the column can be written as
 \end{align} 
 
 The final height predicted by both DEM and MPM simulations match the 
-experimental data for columns with smaller aspect ratio ($`a' \le 0.7$). Linear 
+experimental data for columns with smaller aspect ratio ($a \le 0.7$). Linear 
 relationship between the final height and the aspect ratio indicates that only 
 a part of the granular column is mobilised during the collapse. For tall 
 columns, both approaches predict similar normalised height. However, the 
@@ -412,7 +416,7 @@ the longer run-out observed in MPM simulations is due a change in the
 flow dynamics at higher aspect ratios, which is not captured in MPM 
 simulations. The final height of a column is controlled by the amount of static 
 region in the granular column collapse, while the run-out distance is 
-essentially a function of the flowing mass. Hence, it is essential to compare 
+essentially a function of the flowing mass. Hence, it is important to compare 
 the evolution of flow and the internal flow structure in DEM and MPM 
 simulations.
 
@@ -440,9 +444,9 @@ and the final deposit morphology are independent of the volume of granular
 material released, but depend only on the geometry of the column. A 
 power law relationship is observed between the run-out distance and the initial 
 aspect ratio of the column. A transition in the run-out behaviour at an aspect 
-ratio of 2.3 indicates a change in the flow dynamics. 
+ratio of 2.7 indicates a change in the flow dynamics. 
 
-For smaller aspect columns (`a' < 2.3), the flow is initiated 
+For short columns (`a' < 2.7), the flow is initiated 
 by a failure at the edge of the pile along a well-defined fracture surface.
 The granular mass fails through avalanching of flanks producing a 
 truncated cone-like deposit (`\textit{a}' < 0.7) or conical deposit 
@@ -452,7 +456,7 @@ truncated cone-like deposit (`\textit{a}' < 0.7) or conical deposit
 Dimensional analysis of granular column collapse reveals an intrinsic time 
 defined as $\sqrt{H_{\textit{0}}/g}$. This intrinsic time is a transient time 
 of order $\tau_{c}$, at which the flow is fully developed, i.e., the potential 
-energy available at the initiation of collapse is now fully converted to 
+energy available at the initial stage of collapse is now fully converted to 
 kinetic energy. Numerical simulation of the velocity profile of a granular 
 column (`a'=0.4) at critical time $\tau_{c}$ is presented in \cref{fig:a04tc}. 
 At critical time, the velocity field depends only on the position of the grain 
@@ -470,7 +474,7 @@ similar to a steady granular surface flow observed by~\citet{Lajeunesse2004}.
 For columns with lower initial aspect ratios, the run-out distance is 
 proportional to the mass flowing above the failure surface. The spreading 
 results from a Coulomb-like failure of the edges and implies no free fall of 
-the column. ~\citet{Daerr1999} also observed active Coulomb yielding in 
+the column.~\citet{Daerr1999} also observed active Coulomb yielding in 
 transient granular surface flows. In this case, the effective friction 
 properties of the flow can be simply predicted from the shape of the final 
 deposit. The amount of mass mobilized during the collapse is significantly 
@@ -505,13 +509,13 @@ The variation in the angle of the failure surface causes a difference in the
 amount of material destabilised, and in turn the run-out distance. 
 This crystallisation phenomenon is found to have a significant influence on the 
 final deposit of the granular column.~\citet{Lacaze2009} observed that 
-poly-disperse grains have lesser tendency to crystallize especially in the case 
+poly-disperse grains are less susceptible to crystallize especially in the case 
 of tall columns. 
 
 \begin{figure}[tbhp]
 \centering
 \includegraphics[width=\textwidth]{a04tc}
-\caption{Velocity profile of a granular column collapse ($`a' = 0.4$ \& 
+\caption{Velocity profile of a granular column collapse ($a = 0.4$ \& 
 $t=\tau_c$)}
 \label{fig:a04tc}
 \end{figure}
@@ -519,13 +523,13 @@ $t=\tau_c$)}
 \begin{figure}[tbhp]
 \centering
 \includegraphics[width=\textwidth]{a04f}
-\caption{Velocity profile of a granular column collapse ($`a' = 0.4$ \& 
+\caption{Velocity profile of a granular column collapse ($a = 0.4$ \& 
 $t=3\times\tau_c$)}
 \label{fig:a04f}
 \end{figure}
 
 
-For tall columns (`a' > 2.3), the flow is still initiated by a well defined 
+For tall columns (`a' > 2.7), the flow is still initiated by a well defined 
 failure surface as can be seen in~\cref{fig:a6tc}. However, in this case the 
 initial granular column is much higher than the top of the failure surface. Due 
 to gravity most of the grains in the column experience free-fall 
@@ -542,8 +546,8 @@ morphology between the axis-symmetric case and the rectangular collapse to be a
 geometrical effect rather than as an experimental artefact. 
 
 An initial failure surface starting from the toe end 
-of the column at an angle of about 55$^{o}$ can be observed at the critical 
-time $\tau_{c}$. As the collapse of the granular collapse progresses, 
+of the column at an angle of about 55$\si{\degree}$ can be observed at the 
+critical time $\tau_{c}$. As the collapse of the granular collapse progresses, 
 successive failure planes parallel to the initial failure surface are formed 
 and shear failure occurs along these planes. The presence of several shear 
 bands in the final profile of the collapsed granular column confirms this 
@@ -565,13 +569,12 @@ the columns, the flow is initiated by a well-defined rupture surface, above
 which the material slides down leaving a static region underneath the failure 
 plane. Depending on the aspect ratio of the column, two asymptotic behaviours 
 are observed. For smaller aspect ratios, the flow is dominated by friction 
-where as the large aspect ratio columns are influenced by the collisional 
-behaviour.
+where as the large aspect ratio columns are influenced by the pressure gradient.
 
 \begin{figure}[tbhp]
 \centering
 \includegraphics[width=\textwidth]{a6tc}
-\caption{Velocity profile of a granular column collapse ($`a' = 6$ \& 
+\caption{Velocity profile of a granular column collapse ($a = 6$ \& 
 $t=\tau_c$)}
 \label{fig:a6tc}
 \end{figure}
@@ -579,7 +582,7 @@ $t=\tau_c$)}
 \begin{figure}[tbhp]
 \centering
 \includegraphics[width=\textwidth]{a6f}
-\caption{Velocity profile of a granular column collapse ($`a' = 6$ \& 
+\caption{Velocity profile of a granular column collapse ($a = 6$ \& 
 $t=3\times\tau_c$)}
 \label{fig:a6f}
 \end{figure}
@@ -629,8 +632,9 @@ observation by~\citet{Lajeunesse2004}. Hexagonal packing predicts longer time
 for the flow to evolve, which can be attributed to jamming of grains. 
 In MPM simulations, the failure starts at the toe of the column and slowly 
 propagates up to form the failure surface. This results in slower initiation of 
-the flow. It can be observed that MPM overestimates the critical time by 50\%. 
-Although, MPM and DEM simulations show the same run-out at time 
+the flow. Whereas in DEM, the initial stage of collapse is characterised by 
+free-fall under gravity. It can be observed that MPM overestimates the critical 
+time by 50\%. Although, MPM and DEM simulations show the same run-out at time 
 $\textit{t}=3\tau_{c}$, the flow evolution between both the approaches is 
 different. MPM simulations continue to accelerate beyond $3\tau_c$ and ceases 
 to flow at $6\tau_{c}$. In order to understand the difference in the flow 
@@ -643,14 +647,14 @@ mechanism of energy dissipation.
 \begin{subfigure}[b]{0.975\textwidth}
 \centering
 \includegraphics[width=\textwidth]{flowa04}
-\caption{Flow evolution of a column with $`a'=0.4$}
+\caption{Flow evolution of a column with $a=0.4$}
 \label{fig:flowa04}
 \end{subfigure}
 \\
 \begin{subfigure}[b]{0.975\textwidth}
 \centering
 \includegraphics[width=\textwidth]{flowa6}
-\caption{Flow evolution of a column with $`a'=6$}
+\caption{Flow evolution of a column with $a=6$}
 \label{fig:flowa6}
 \end{subfigure}
 \caption{Flow evolution of granular column collapse}
@@ -660,7 +664,7 @@ mechanism of energy dissipation.
 \subsection{Energy dissipation mechanism}
 \label{sec:energy}
 
-The energy dissipation mechanism during the collapse provides useful insight 
+The energy dissipation mechanism during the collapse provides useful insights 
 into the flow dynamics. In the case of small aspect ratios, the columns undergo 
 no free fall. The spreading mainly results from the failure of the edges, while 
 the top of the column remains essentially undisturbed in the central area. 
@@ -708,16 +712,17 @@ distance run by each of them. We observe that the dissipation energy $\delta E$
 is proportional to $W$.~\cite{Staron2007a} observed that the coefficient of 
 proportionality gives a measure of the effective friction and 
 observed a power law dependence between $\mu_e$ and internal friction angle 
-$\mu$: $\mu_e=0.425\mu^{0.2}$. The effective friction angle $\mu_e$ of 
-21\si{\degree} is observed, which is very close to the critical state friction 
-angle of 22\si{\degree} used in MPM simulations. This proves that the energy 
+$\mu$: $\mu_e=0.425\mu^{0.2}$. In this study, an effective friction angle 
+$\mu_e$ of 21\si{\degree} is observed, which is very close to the critical 
+state friction angle of 22\si{\degree} used in MPM simulations. This proves 
+that the energy 
 dissipation mechanism modelled in a continuum sense as a frictional dissipation 
 process captures the flow kinematics observed in DEM and experiments, for short 
 columns.
 
-~\Cref{a04_energy} shows the time evolution of the normalised potential energy 
-$(E_{p}/E_0)$ and kinetic energy $(E_{k}/E_0)$ for granular columns with an
-initial aspect ratio `a' = 0.4. The normalised potential and kinetic energy 
+~\Cref{fig:a04_energy} shows the time evolution of the normalised potential 
+energy $(E_{p}/E_0)$ and kinetic energy $(E_{k}/E_0)$ for granular columns with 
+an initial aspect ratio `a' = 0.4. The normalised potential and kinetic energy 
 are computed as
 %
 \begin{align}
@@ -725,9 +730,9 @@ E_p & = \sum\limits_{p=1}^{N_p}{m_p g h_p} \,, \\
 E_{ki} & = \frac{1}{2}\sum\limits_{p=1}^{N_p}{m_p v_p^2} \,,
 \end{align}
 %
-where $N_p$ is the total number of particles, $m_p$ is 
-the mass of a particle `\textit{p}', $h_p$ is the height and 
-$v_p$ is the velocity of the particle `\textit{p}'. The cumulative dissipation 
+where $N_p$ is the total number of grains, $m_p$ is 
+the mass of a grain `\textit{p}', $h_p$ is the height and 
+$v_p$ is the velocity of the grain `\textit{p}'. The cumulative dissipation 
 energy is computed as
 %
 \begin{align}
@@ -738,20 +743,20 @@ It can be observed that both MPM and DEM show similar energy dissipation
 mechanism. The DEM simulation shows 3\% more potential energy dissipation in 
 comparison with MPM simulations. This small difference in the potential energy 
 is due to grain rearrangements. This shows the ability of continuum approach in 
-capturing the flow kinematics of columns with small aspect ratios ($`a' \le 
-2.3$). 
+capturing the flow kinematics of columns with small aspect ratios ($a \le 
+2.7$). 
 
- 
 The evolution of normalised kinetic and potential energy of a tall column 
 collapse (`a' of 6) is shown in~\cref{fig:a6_energy}. It can be 
 observed that the initial potential energy stored in the 
 grains is converted to kinetic energy which is dissipated as the granular 
 material flows down. Three successive stages can be identified in the granular 
-column collapse. In first stage, the flow is still initiated by a well defined 
-failure surface. However, the centre of gravity of the granular column is much 
+column collapse. In first stage, similar to short columns, the flow is 
+initiated by a well defined failure surface. However, the centre of gravity of 
+the granular column is much 
 higher than the top of the failure surface, which results in free fall of 
 grains under gravity 
-consuming the column along their way. This stage which lasts for
+consuming the column along their way. In this stage which lasts for
 $(t<0.8\tau_{c})$, the initial potential energy stored in the grains is 
 converted into vertical motion. In the second stage, when the grains reach the 
 vicinity of the failure surface, they undergo collisions with the bottom plane 
@@ -780,11 +785,11 @@ important to separate the contribution from the cumulative frictional and
 collisional parts. The frictional dissipation (basal and internal friction) 
 observed in DEM is almost identical to the frictional dissipation observed in 
 MPM (\cref{fig:a6_energy}). The difference in the dissipation energy is due to 
-the collisional regime, which occurs at $0.8\tau_c$. The total and frictional 
-dissipation curves diverge around $0.8\tau_c$ where the grains near the 
-vicinity of the failure surface undergo collisions with the bottom plane and 
-the neighbouring grains resulting in collisional dissipation of the stored 
-potential energy. DEM simulation show drop in the peak kinetic energy at 
+the collisional regime, which occurs at $0.8\tau_c$. The total dissipation and 
+the frictional dissipation curves diverge around $0.8\tau_c$ where the grains 
+near the vicinity of the failure surface undergo collisions with the bottom 
+plane and the neighbouring grains resulting in collisional dissipation of the 
+stored potential energy. DEM simulation show drop in the peak kinetic energy at 
 $\approx0.8\tau_c$, which is at the beginning collisional dissipation stage. 
 MPM lacks this collision dissipation mechanism, which results in longer run-out 
 distances for columns with large aspect ratios. 
@@ -793,14 +798,14 @@ distances for columns with large aspect ratios.
 \centering
 \begin{subfigure}[b]{0.975\textwidth}
 \includegraphics[width=\textwidth]{a04_energy}
-\caption{Energy evolution of a column with $`a'=0.4$}
+\caption{Energy evolution of a column with $a=0.4$}
 \label{fig:a04_energy}
 \end{subfigure}
 \\
 \begin{subfigure}[b]{0.975\textwidth}
 \centering
 \includegraphics[width=\textwidth]{a6_energy}
-\caption{Energy evolution of a column with $`a'=6$}
+\caption{Energy evolution of a column with $a=6$}
 \label{fig:a6_energy}
 \end{subfigure}
 \caption{Energy evolution of granular column collapse}
@@ -816,7 +821,7 @@ rheology is adopted in MPM simulations to understand the characteristics of the
 flow regime. Mohr-Coulomb model was used along with $\mu(I)$ rheology. The 
 friction 
 angle is changed according to a friction 
-law ~\citep{DaCruz2005} that is dependent on the inertial number \textit{I} as 
+law~\citep{DaCruz2005} that is dependent on the inertial number \textit{I} as 
 $\mu = \mu_{min} + b 
 \mathit{I}$ where $\mu_{min} = 0.22$ and b = 1.~\Cref{fig:flow_muI} shows the 
 flow evolution of granular column collapse for aspect ratio `a' of 0.4 and 6 
@@ -831,14 +836,14 @@ decelerates with time.
 \centering
 \begin{subfigure}[b]{0.975\textwidth}
 \includegraphics[width=\textwidth]{flowa04muI}
-\caption{Flow evolution of a column with $`a'=0.4$ using $\mu(I)$ rheology}
+\caption{Flow evolution of a column with $a=0.4$ using $\mu(I)$ rheology}
 \label{fig:flowa04muI}
 \end{subfigure}
 \\
 \begin{subfigure}[b]{0.975\textwidth}
 \centering
 \includegraphics[width=\textwidth]{flowa6muI}
-\caption{Flow evolution of a column with $`a'=6$ using $\mu(I)$ rheology}
+\caption{Flow evolution of a column with $a=6$ using $\mu(I)$ rheology}
 \label{fig:flowa6muI}
 \end{subfigure}
 \caption{Flow evolution of granular column collapse using $\mu(I)$ rheology}
@@ -858,8 +863,8 @@ tall columns, which is characterised by an initial collisional regime.
 \begin{figure}[tbhp]
 \centering
 \includegraphics[width=\textwidth]{muI}
-\caption{Evolution of inertial number with time for columns with $`a'=0.4$ and 
-$`a'=6$}
+\caption{Evolution of inertial number with time for columns with $a=0.4$ and 
+$a=6$}
 \label{fig:muI}
 \end{figure}
 
@@ -870,7 +875,8 @@ aspect ratio of the column, independent of the material properties. The
 run-out 
 evolution after the initial transition regime is a frictional dissipation 
 process, and the lack of influence of material properties on the run-out 
-behaviour is inconsistent with continuum modelling of granular flow behaviour. 
+behaviour is inconsistent with frictional dissipation in continuum modelling of 
+granular flow behaviour. 
 ~\citet{Balmforth2005} observed that the material properties have almost no 
 influence on the exponent of the normalised run-out as a function of the 
 initial aspect ratio. The numerical constant of proportionality, however, 
@@ -912,14 +918,14 @@ a part of the column is destabilised during the collapse.
 \begin{figure}[h]
 \centering
 \includegraphics[width=0.9\textwidth]{runout_height_dense_r18}
-\caption{Effect of density on run-out evolution $`a' = 0.8$}
+\caption{Effect of density on run-out evolution $a = 0.8$}
 \label{fig:runout_height_dense_r18}
 \end{figure}
 
 \begin{figure}[h]
 \centering
 \includegraphics[width=0.9\textwidth]{voro_r18}
-\caption{Evolution of local packing density $`a' = 0.8$}
+\caption{Evolution of local packing density $a = 0.8$}
 \label{fig:voro_r18}
 \end{figure}
 
@@ -942,9 +948,10 @@ achieve the same critical density. The dense
 condition has higher mobilised potential energy during the initial stage of 
 collapse, which 
 yields higher horizontal kinetic energy for the flow. However in loose 
-condition, a higher proportion of 
-kinetic energy is lost during compaction. This behaviour in addition to higher 
-mobilised potential results in longer run-out distance in dense granular 
+condition, a higher proportion of the
+available energy is lost during compaction. This behaviour in addition to 
+higher 
+mobilised potential energy results in longer run-out distance in dense granular 
 column.~\citet{Lajeunesse2004} observed that the 
 flow comes to rest at around $3\tau_c$, but the grains continue to re-arrange 
 until $6\tau_c$, similar behaviour is observed in DEM simulations.
@@ -987,7 +994,7 @@ triangular deposit at the front.
 \begin{figure}[tbhp]
 \centering
 \includegraphics[width=0.9\textwidth]{runout_height_dense_r6}
-\caption{Effect of density on run-out evolution $`a' = 0.8$ (poly-dispersity 
+\caption{Effect of density on run-out evolution $a = 0.8$ (poly-dispersity 
 `r' = 6)}
 \label{fig:runout_height_dense_r6}
 \end{figure}
@@ -1028,7 +1035,7 @@ triangular deposit at the front.
 \caption{Evolution of packing density}
 \label{fig:voro_r6}
 \end{subfigure}
-\caption{Effect of density on energy and packing fraction evolution $`a' = 
+\caption{Effect of density on energy and packing fraction evolution $a = 
 0.8$ 
 (poly-dispersity `r' = 6)}
 \label{fig:Energy_voro_r6}
@@ -1041,14 +1048,15 @@ shows a large vertical acceleration, while the second stage
 consists of a ``conventional'' horizontal granular flows. The effect of density 
 on the run-out behaviour of tall columns is investigated. Similar to short 
 columns, the dense granular column with an aspect ratio of 6 shows higher 
-run-out distance in comparison to the loose condition. The dense granular flows 
-almost twice as much as that of the loose granular column. Unlike short 
+run-out distance in comparison to the loose condition. The dense granular 
+column flows 
+almost twice as much as that of the loose column. Unlike short 
 columns, the evolution of run-out is different even at the initial stage of the 
 collapse. The dense granular column, which has higher initial potential energy 
 show a rapid increase in the run-out due to free-fall and higher mobilised 
 potential energy. During this stage of collapse, the dense granular column has 
 15 \% higher normalised kinetic energy available for the horizontal push. This 
-results in longer run-out distance for dense granular column in comparison with 
+results in longer run-out distance for dense granular column in comparison to 
 initially loose granular column.
 
 \begin{figure}[tbhp]
@@ -1065,12 +1073,13 @@ initially loose granular column.
 \caption{Effect of density on energy evolution}
 \label{fig:Energy_dense_a6}
 \end{subfigure}
-\caption{Effect of density on run-out behaviour and energy evolution $`a' = 
+\caption{Effect of density on run-out behaviour and energy evolution $a = 
 0.6$}
 \label{fig:Density_a6}
 \end{figure}
 
-The initial packing fraction has a significant influence on the flow kinematics 
+The initial packing fraction and the distribution of kinetic energy in the 
+system has a significant influence on the flow kinematics 
 and the run-out behaviour, this suggests that triggering mechanisms play a
 crucial role in the case of natural flows. This stresses the necessity of 
 accounting for initiation mechanisms while modelling the run-out behaviour 
@@ -1096,7 +1105,7 @@ and spreads over long distances before relaxing to a new equilibrium state. The
 kinetic energy acquired during destabilisation is dissipated by friction and 
 inelastic collisions.
 
-This section investigates the ability of MPM, as a continuum approach, to 
+This section investigates the ability of MPM, a continuum approach, to 
 reproduce the evolution of a granular pile destabilised by an external energy 
 source. In particular, a central issue is whether power-law dependence of the 
 run-out distance and time observed with respect to the initial geometry or 
@@ -1228,10 +1237,10 @@ energy.~\citep{Mutabaruka2013}.}
 \label{fig:Gradient_Slope_CD_200J}
 \end{figure}
 
-The flow involves a transient with a sharp change in the geometry of the pile 
+The flow involves a transient phase with a change in the geometry of the pile 
 followed by continuous spreading. The gradient input energy applied to the 
-granular slope mimics a horizontal quake from the bottom. Despite the creation 
-of a cavity behind the flowing mass, the granular heap always remains in 
+granular slope mimics a horizontal quake. Despite the creation 
+of a cavity behind the flowing mass, the granular heap remains in 
 contact with the left wall irrespective of the input 
 energy.~\Cref{fig:Runout_Eo_MPM_CD_DEM} shows the normalized run-out distance 
 $(L_f - L_0)/L_0$ and total run-out time $t_f$ as a function of the input 
@@ -1302,7 +1311,7 @@ column.~\citet{Topin2012} found that the run-out distance varies as a power-law
 of the available peak kinetic energy at the end of the free-fall stage with an 
 exponent $\simeq 0.5$. This value of exponent is lower than the run-out 
 evolution observed in the second regime. This is, however, physically plausible 
-since the distribution of particle kinetic energies at the end of the collapse 
+since the distribution of kinetic energies at the end of the collapse 
 is more chaotic than in this case where the energy is supplied from the very 
 beginning in a well-defined shear mode. As pointed out by~\citet{Staron2005}, 
 the distribution of kinetic energies is an essential factor for the run-out 
@@ -1323,10 +1332,10 @@ studied to understand the behaviour of granular flow that is consistent with
 the evolution of the pile shape.
 
 The evolution of total kinetic energies $E_k$ with time for different values of 
-the input energy $E_{ki}$ based on MPM simulations are shown in
-~\cref{fig:Energy_Time_Slope}. MPM simulations shows two distinct regimes in 
+the input energy $E_{ki}$ based on MPM simulations are shown 
+in~\cref{fig:Energy_Time_Slope}. MPM simulations shows two distinct regimes in 
 the normalised kinetic energy plot as a function of 
-normalised time in ~\cref{fig:Normalised_Energy_Time_Slope}. However, DEM 
+normalised time in~\cref{fig:Normalised_Energy_Time_Slope}. However, DEM 
 simulations (see~\cref{fig:Normalised_Energy_Time_Slope_DEM}) show that the 
 energy evolution corresponding to low energy regime nearly collapse on to a 
 single time evolution. This is consistent with the observation of run-out time 
@@ -1339,7 +1348,7 @@ collapse only at the beginning of the run-out i.e. for $t < t_1 \simeq 7.5 \
 dissipated at $t = 60 \sqrt{d/g}$. DEM simulations predict $t = 80 \sqrt{d/g}$ 
 for the kinetic energy to be completely dissipated. This is due particle 
 rearrangement at the free surface (\cref{fig:voro_500}). The granular mass 
-densifies as the flow progresses, after the initial dilation phase $t = 
+densifies as the flow progresses, after the initial dilation phase for $t = 
 20\sqrt{d/g}$.
 
 \begin{figure}[tbhp]
@@ -1785,7 +1794,10 @@ prediction of run-out distances. In the case of granular column subjected to
 impact velocity, the dissipation is friction and MPM is able to predict the 
 run-out response in good agreement with DEM simulations. At very low energy, 
 DEM simulations show longer run-out in the case of slope subjected to impact 
-due to local destabilisation at the flow front. 
+due to local destabilisation at the flow front. Both granular flows, column 
+collapse and slope subjected to impact, show power-law relation with the 
+energy. This shows that the power-law behaviour is a granular flow 
+characteristic.
 
 \begin{figure}[tbhp]
 \centering
