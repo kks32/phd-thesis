@@ -9,42 +9,45 @@
 \section{Introduction}
 
 In nature, instabilities of slopes or cliffs are dramatic events involving 
-sudden release of a large mass of soil. However, the prediction of catastrophic 
-events still represents  challenge, one difficulty being our incomplete 
-understanding of the dynamics of granular flows~\citep{Rondon2011}.  
-Understanding the mechanics is of particular importance for risks assessment. 
+sudden release of a large mass of soil. The prediction of these catastrophic 
+events represents several challenges, one difficulty being our incomplete 
+understanding of the granular flow dynamics~\citep{Rondon2011}.  
+Understanding the mechanics is of particular importance for risk assessment. 
 Small scale laboratory experiments are usually unable to properly capture the 
 dynamics of geophysical events. However, they can be useful to precisely study 
-physical mechanisms, which may play a role in real flows~\citep{Iverson1997}. 
+the physical mechanisms, which may play a crucial role in real 
+flows~\citep{Iverson1997}. 
 
 Conventionally, granular materials such as soils are modelled as a continuum. 
 On a macroscopic scale, granular materials exhibit many collective phenomena 
 and the use of continuum mechanics to describe the macroscopic behaviour can be 
-justified. However, on a grain scale, the granular materials exhibit complex 
+justified. However on a grain scale, the granular materials exhibit complex 
 solid-like and/or fluid-like behaviour depending on how the grains interact 
-with each other. Numerical studies at grain scale allows a precise 
+with each other. Numerical studies at grain scale allow a precise 
 understanding of the internal flow structure. However, even in simplified 
-geometries such as those investigated in the experiments, DEM suffers from a 
-serious short-coming in the number of grains that can be simulated in 
-a reasonable time. This is a critical issue when more complex geometries or 
-long-time granular processes are considered, or when particle size 
-distributions are broad. For this reason, most numerical studies are performed 
-in 2D or simple particles shapes and size distributions are considered. 
+geometries such as those investigated in the laboratory-scale experiments, DEM 
+suffers from a serious short-coming in the number of grains that can be 
+simulated in a reasonable time. This is a critical issue when more complex 
+geometries or long-time granular processes are considered, or when particle 
+size distributions are broad. For this reason, most numerical studies are 
+performed in 2D or simple particles shapes and size distributions are 
+considered. 
 
 Classical modelling strategies based on the finite element method (FEM) cannot 
-be used for the simulation of very large deformations. In various application 
-of FEM, this problem is treated by means of technical tools such as re-meshing. 
-These methods are, however, not robust and lead to round-off errors and mesh 
-sensitivity. Recent works on granular materials also suggest that a continuum 
-law may be incapable of revealing in-homogeneities at the grain-scale level, 
-such as orientation of force chains, which are purely due to micro-structural 
-effects~\citep{Rycroft2009a}. Discrete Element approaches are capable of 
-simulating the granular material as a discontinuous system allowing one to 
-probe into local variables such as position, velocities, contact forces, etc. 
-The fundamental question is how to model granular materials which exhibit 
-complex phenomenon. It is important to understand the mechanics of granular 
-flows and the ability and limitations of continuum methods in capturing the 
-flow dynamics.
+be used for the simulation of very large deformations due to mesh distortion. 
+In various application of FEM, this problem is treated by means of technical 
+tools such as re-meshing. These methods are, however, not robust and lead to 
+round-off errors and mesh sensitivity. Recent works on granular materials also 
+suggest that a continuum law may be incapable of revealing in-homogeneities at 
+the grain-scale level, such as orientation of force chains, collapse of local 
+void and grain rearrangements, which are purely due to micro-structural 
+effects~\citep{Rycroft2009a}. Discrete element approaches 
+are capable of simulating the granular material as a discontinuous system 
+allowing one to probe into local variables such as position, velocities, 
+contact forces, etc. The fundamental question is how to model granular 
+materials which exhibit complex phenomenon. It is important to understand the 
+mechanics of granular flows and the ability and limitations of continuum 
+methods in capturing the flow dynamics.
 
 \section{Granular column collapse}
 
@@ -66,10 +69,10 @@ mass~\citep{Staron2007a,Lajeunesse2005,Lube2005}. The granular collapse has
 also been studied using discrete element method, which allows precise 
 measurement of the internal flow 
 structure~\citep{Lo2009,Staron2005,Staron2007a,Utili2014}.
-Power laws relating the final run-out and height to the initial aspect ratio of 
-the column were observed. These findings immediately pose the question: are 
-these simple scaling fortuitous, an oversimplification, or in fact indicative 
-of a simple dynamical balance? 
+Power laws relating the final run-out and height to the initial aspect ratio 
+($a = H_0 / L_0$) of the column were observed. These findings immediately pose 
+a question: are these simple scaling fortuitous, an oversimplification, or in 
+fact indicative of a simple dynamical balance? 
 
 
 Granular flows are conventionally modelled as a frictional dissipation process 
@@ -83,7 +86,12 @@ based on conservation of horizontal momentum capture the scaling laws of the
 final deposit, but fail to describe the initial transition regime. From a 
 theoretical point of view, the spreading has been described using depth 
 averaged equations~\citep{Kerswell2005,Larrieu2006}. The depth-averaged and 
-Saint-Venant equations, however, struggle to recover the precise dynamic behaviour of the system~\citep{Warnett2013} and only succeeds in predicting the scaling observed for aspect ratio less than one. Describing the behaviour of larger aspect ratio and capturing the initial stage of the collapse, when the grains experience a rapid change of direction from vertical to horizontal, remain an open challenge.
+Saint-Venant equations, however, struggle to recover the precise dynamic 
+behaviour of the system~\citep{Warnett2013} and only succeeds in predicting the 
+scaling observed for aspect ratio less than one. Describing the behaviour of 
+larger aspect ratio and capturing the initial stage of the collapse, when the 
+grains experience a rapid change of direction from vertical to horizontal, 
+remain an open challenge.
 
 
 \begin{figure}[tbhp]
@@ -102,7 +110,7 @@ Eulerian -- Lagrangian approach, with Mohr-Coloumb failure criterion is used to
 describe the continuum behaviour of the granular column collapse. While the 
 micro-mechanics of the flow is captured using DEM simulations. Comparing the 
 grain scale behaviour with the continuum simulations highlights the limitations 
-of the continuum approache in modelling dense granular flows and their ability 
+of the continuum approach in modelling dense granular flows and their ability 
 (or lack thereof) in capturing the complex micro-scale rheology.
 
 \subsection{Numerical set-up}
@@ -145,9 +153,8 @@ initial aspect ratios of the granular column. DEM soil grain characteristics
 match that of the experiment. The particle size distribution (PSD) is one of 
 the most important factors controlling landslide initiation and soil 
 permeability. Cumulative $\beta$ distribution (described 
-in~\cref{sec:beta_dist}) %TODO: Add section reference
- is used to generate a graded sample with a mean grain diameter of 1.15\si{\mm} 
- (see~\cref{fig:PSD}). 
+in~\cref{sec:beta_dist}) is used to generate a graded sample with a mean grain 
+diameter of 1.15\si{\mm} (see~\cref{fig:PSD}). 
 The DEM sample is composed of $\sim3000$ disks with a uniform distribution of 
 diameters by volume fractions in the range $[d_{min}, d_{max}] = 0.92 -- 1.38$ 
 \si{\mm} with polydispersity $r = \frac{d_{max} }{d_{min}} = 1.5$. The 
