@@ -80,13 +80,15 @@ density is applied at the left hand side boundary and a constant density is
 maintained at the right hand side boundary. This results in a gradient of 
 pressure causing the fluid in the domain to flow. The mean velocity of flow (v) 
 is determined and the permeability of the sample (k) is computed as:
-
-
-where $\mu$ is the dynamic viscosity of the fluid (Pa.s), $\Delta x$ is the 
-thickness 
-of the bed of porous medium (m), and $\Delta P$ is the applied pressure 
-difference (Pa).  In the present study, the radius is varied from 0.7 to 0.95 
-to obtain a 
+%
+\begin{equation}
+k=v\cdot\mu\cdot\frac{\Delta x}{\Delta P} \,,
+\end{equation}
+%
+where $\mu$ is the dynamic viscosity of the fluid (\si{\Pa\s}), $\Delta x$ is 
+the thickness of the bed of porous medium \si{\m}, and $\Delta P$ is the 
+applied pressure difference \si{\Pa}.  In the present study, the radius is 
+varied from 0.7 to 0.95 to obtain a 
 wide range of permeability for the sample. Increase in the size of the grain 
 from 0.7 to 0.95 reduces the porosity from 0.60 to 0.27. The permeability 
 computed from LB – DEM method is verified by comparing it with an analytical 
@@ -97,8 +99,32 @@ media at moderate porosities. In the present study, a modified Carman – Kozeny
 equation that takes into account the microstructure of the fibers and is valid 
 in a wide range of porosities is adopted.10 The normalized permeability is 
 defined as
-
-
+\begin{equation}
+\frac{k}{d^2} = \frac{\epsilon}{\psi_{CK}(1-\epsilon)^2}
+\end{equation}
+%
+In the CK model, the hydraulic diameter $D_h$ , is expressed as a function of 
+measurable quantities: porosity and specific surface area
+\begin{align}
+D_h & = \frac{4\epsilon V}{S_v}=\frac{\epsilon d}{(1 - \epsilon)}; \\
+a_v & = \frac{\mbox{grain surface}}{\mbox{grain volume}} = 
+\frac{S_v}{(1-\epsilon V)} = \frac{4}{d} \,,
+\end{align}
+With the total wetted surface, $S_v$, and the specific surface area, $a_v$. The 
+above value of $a_v$ is for circles (cylinders) - for spheres $a_v = 6/d$. 
+$\psi_{CK}$ is the empirically  measure CK factor.
+Which represents both the shape factor and the deviation of flow direction from 
+that in a duct. It is approximated for randomly packed beds of spherical 
+grains. The variation in the flow rate for different reduction in radius is 
+presented in Figure 3a. The normalized permeability for different porosity 
+obtained by varying the radius from 0.7 to 0.95 is presented in Figure 3b.
+It can be observed from the figure that the permeability decreases drastically 
+as the radius is varied from 0.7r to 0.95r. The granular assembly is almost 
+impermeable for a radius of 0.95r. The normalized permeability is found to 
+match the qualitative trend of the Carman-Kozeny equations. The LB – DEM 
+permeability curve lies between the permeability curves for spherical and 
+cylindrical grain arrangements implying a better approximation of permeability 
+in 2D granular assembly by reducing the radius during LBM computations.
 \section{Submarine granular flows down incline plane}
 
 
