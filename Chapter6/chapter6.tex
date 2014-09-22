@@ -57,62 +57,152 @@ underwater granular flows.
 
 \section{Granular collapse in fluid}
 
+The collapse of a granular column, which mimics the
+collapse of a cliff, has been extensively studied in the case of
+dry granular material, when the interstitial fluid plays no
+role (see~\cref{sec:dry_granular_column}). The problem of the granular collapse 
+in a liquid,which is of importance for submarine landslides, has to our
+knowledge attracted less attention~\citep{Rondon2011}.~\citet{THOMPSON2007} 
+observed that the presence of liquid dramatically changes the way a granular 
+column collapses compared to the dry case. The destabilization of a granular 
+pile strongly depends on the initial volume fraction of the packing. For dense 
+packings the granular flow is localized at the free surface of the pile, 
+whereas for loose packings the destabilization occurs in the bulk of the
+material and has a parabolic profile~\citep{Bonnet2010,Topin2011,Iverson2000}. 
+In the present study, the collapse of a granular column in fluid is studied 
+using 2D LBM - DEM and the flow kinematics is compared with dry granular 
+collapse. The role of permeability and initial volume fraction on the run-out 
+behaviour is also investigated.  
+
 \subsection{LBM-DEM Coupling}
 
 Lattice Boltzmann approach can accommodate large grain sizes and the 
 interaction between the fluid and the moving grains can be modelled through 
-relatively simple fluid – grain interface treatments. Further, employing the 
+a relatively simple fluid – grain interface treatment. Further, employing the 
 Discrete Element Method (DEM) to account for the grain – grain interaction 
-naturally leads to a combined LB – DEM procedure.7 The Eulerian nature of the 
-LBM formulation, together with the common explicit time step scheme of both LBM 
-and DEM makes this coupling strategy an efficient numerical procedure for the 
-simulation of grain – fluid systems. Such a coupled methodology is used in 
-simulating grain – fluid systems dominated by grain – fluid and grain – grain 
-interactions. To capture the actual physical behavior of the fluid – grain 
-system, it is essential to model the boundary condition between the fluid and 
-the grain as a non-slip boundary condition, i.e. the fluid near the grain 
-should have similar velocity as the grain boundary. The solid grains inside the 
-fluid are represented by lattice nodes. The discrete nature of lattice, results 
-in a stepwise representation of the surfaces, which are circular, hence 
-sufficiently small lattice spacing is adopted. 
+naturally leads to a combined LB – DEM procedure~\citep{Mansouri2009}. 
 
 In this study, a 2D poly-disperse system ($d_{max}/d_{min} = 1.8$) of circular 
-discs in fluid was used to understand the behaviour of granular flows on 
-inclined planes (see~\Cref{fig:setup}). The soil column was modelled using 1000 
-discs of density \SI{2650}{\kg\per\cubic\meter} and a contact friction angle of 
-\SI{26}{\degree}. The collapse of the column was simulated inside a fluid with 
-a density of \SI{1000}{\kg\per\cubic\meter}  and a kinematic viscosity of 
-\SI{1e-6}{\square\meter\per\second}. The choice of a 2D geometry has the 
-advantage of cheaper computational effort than a 3D case, making it feasible to 
-simulate very large systems. A granular column of aspect ratio `a' of 0.8 was 
-used. A hydrodynamic radius r = 0.9R was adopted during the LBM computations. 
-Dry analyses were also performed to study the effect of hydrodynamic forces on 
-the run-out distance.
+discs in fluid is used to simulate the behaviour of granular collapse in 
+fluid (see~\Cref{fig:geometry}). A cumulative $\beta$ distribution is adopted 
+to generate grains with $d_{max}$ and $d_{min}$ as 1.25~\si{\mm} and 
+2.2~\si{\mm}, respectively. The soil column is modelled using 
+$\approx 2000$ discs of density \SI{2650}{\kg\per\cubic\meter} and a contact 
+friction angle of \SI{26}{\degree}. A linear-elastic contact model is used in 
+DEM simulations. The collapse of the column was simulated inside a fluid with a 
+density of \SI{1000}{\kg\per\cubic\meter}  and a kinematic viscosity of 
+\SI{1e-6}{\square\meter\per\second}. The gravity angle $\theta$ is set to 
+zero to simulate collapse onto a horizontal surface. The choice of a 2D 
+geometry has the advantage of cheaper computational effort than a 3D case, 
+making it feasible to simulate very large systems. 
+
+\begin{figure}[htpb]
+\centering
+\includegraphics[width=0.97\columnwidth]{geometry}
+\caption{Underwater granular collapse set-up.}
+\label{fig:geometry}
+\end{figure}
+
+The Eulerian nature of the LBM formulation, together with the common explicit 
+time step scheme of both LBM and DEM makes this coupling strategy an efficient 
+numerical procedure for the simulation of grain – fluid systems. The critical 
+time step for DEM is computed based on the local contact natural frequency and 
+damping ratio. A sub-cycling time integration is adopted in DEM 
+(see~\cref{sec:coupled_lbm_dem}). A fluid flow (LBM) time step, $\Delta t = 
+2.0E^-5s$ is determined based on the viscosity and relaxation parameter $\tau = 
+0.506$. An integer ratio $n_s$, between the fluid flow time step $\Delta t$ and 
+DEM time step $\Delta t_D$ is determined as 15, i.e., every LBM iteration 
+involves a sub-cycle of 15 DEM iterations.
+
+In order to capture realistic physical behaviour of the fluid – grain system, 
+it is essential to model the boundary condition between the fluid and the grain 
+as a non-slip boundary condition, i.e. the fluid near the grain should have 
+similar velocity as the grain boundary. The solid grains inside the fluid are 
+represented by lattice nodes. The discrete nature of lattice, results in a 
+stepwise representation of the surfaces (see~\cref{fig:LBM-DEM}), which are 
+circular, hence sufficiently small lattice spacing $h$ is required. The 
+smallest DEM grain in the system controls the length of the lattice spacing. In 
+the present study, a very fine discretisation of $d_{min}/h = 10$ is adopted, 
+i.e., the smallest grain with a  diameter $d_min$ in the system is discretised 
+into 100 lattice nodes ($ 10h \times 10h$). This represents a very accurate 
+representation of the interaction between the solid and the fluid nodes.
+
+\begin{figure}[htpb]
+\centering
+\includegraphics[width=0.97\textwidth]{LBM-DEM}
+\caption{Discretisation of solid grains in LBM grid. Shows the step-wise 
+representation of circular disks in the lattice.}
+\label{fig:LBM-DEM}
+\end{figure}
+
 
 \subsection{Permeability}
 
 In DEM, the grain – grain interaction is described based on the contact 
 interactions. In a 3D granular assembly, the pore spaces between grains are 
-interconnected, whereas in 2-D assembly, the grains are in contact with each 
-other that result in a non-interconnected pore-fluid space. This results in a 
-no flow condition in a 2-D case. In order to overcome this difficulty, a 
+interconnected, whereas in a 2-D assembly, the grains are in contact with each 
+other and this results in a non-interconnected pore-fluid space. Which means 
+that the pore-fluid enclosed between the grains cannot flow to neighbouring 
+pore-space.  This results in a unnatural no flow condition in a 2-D case 
+(see~\cref{fig:reduction}). In 
+order to overcome this difficulty, a 
 reduction in radius is assumed only during LBM computations (fluid and fluid – 
-solid interaction). The reduction in radius allows interconnected pore space 
-through which the surrounding fluid can flow (reduced R=0.7r to 0.95r, ‘r’ is 
-grain radius). The reduction in radius is assumed only during LBM computations, 
-hence this technique has no effect on the grain – grain interactions computed 
-using DEM. Different permeability can be obtained, for any given initial 
-packing, by varying the reduction in the radius for the grains, without 
-changing the actual granular packing. Cumulative $\beta$ method is adopted to 
-generate a randomly packed granular assembly with a polydispersity of 1.8 (see 
-Figure 2).8 The size of the grains varies between 1.25mm to 2.2mm. 
+solid interaction). The reduced radius of the soil grain, i.e., the 
+\textit{hydrodynamic radius} `r', allows for interconnected pore space through 
+which the pore-fluid can flow similar to 3D behaviour. The reduction in radius 
+is assumed only during LBM computations, hence this technique has no effect on 
+the grain – grain interactions computed using DEM. 
 
-A square sample of 50 mm x 50 mm is used to determine the transverse 
-permeability. Dirichlet boundary condition,9 i.e. pressure/density constrain is 
-applied at the left and the right boundaries. A small increment (10-4 ) in 
-density is applied at the left hand side boundary and a constant density is 
-maintained at the right hand side boundary. This results in a gradient of 
-pressure causing the fluid in the domain to flow. The mean velocity of flow (v) 
+\begin{figure}[htpb]
+\centering
+\includegraphics[width=0.45\textwidth]{reduction}
+\caption{Schematic representation of the hydrodynamic radius in LBM-DEM 
+computation}
+\label{fig:reduction}
+\end{figure}
+
+Realistically, the hydrodynamic radius can be varied from $ r = 0.7 R$ to 
+$0.95R$, where ‘R’ is the grain radius. Different permeability can be 
+obtained, for any given initial packing, by varying the hydrodynamic radius of 
+the grains, without changing the actual granular packing. Hence, the 
+hydrodynamic radius represents the permeability of the granular assembly. In 
+another sense, the hydrodynamic radius can be assumed to represent the 
+irregularities on the granular surface. Reducing the hydrodynamic radius 
+represents wider channel and more flow between the grains. 
+
+In order to understand the relation between the hydrodynamic radius and the 
+permeability of the granular assembly, horizontal permeability tests are 
+performed by varying the hydrodynamic radius as 0.7R, 0.75R, 0.8R, 0.85R, 0.9 
+and 0.95R. A square sample of $50~\si{\mm} \times 50~\si{\mm}$ is used to 
+determine the transverse permeability. Dirichlet boundary condition (discussed 
+in~\cref{sec:lbm_bc}), i.e.,  pressure/density constrain is applied along the 
+left and the right boundaries. The density on the left boundary is increased in 
+small increments ($10^{-4} \Delta P$), which a constant density is maintained 
+on the right boundary. This results in a pressure gradient causing the fluid to 
+flow (see~\cref{fig:perm}). 
+
+ 
+\begin{figure}[tbhp]
+	\centering
+	\begin{subfigure}[b]{0.475\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{Pressure}
+		\caption{Pressure gradient in the granular assembly}
+		\label{fig:pressure}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.475\textwidth}
+		\centering
+		\includegraphics[width=0.8\textwidth]{Velocity}
+		\caption{Horizontal flow due to pressure gradient}
+		\label{fig:velocity}
+	\end{subfigure}
+	\caption{Evaluation of the horizontal permeability for a 
+	hydrodynamic radius of 0.7R.}
+	\label{fig:perm}
+\end{figure}
+
+
+The mean velocity of flow (v) 
 is determined and the permeability of the sample (k) is computed as:
 %
 \begin{equation}
@@ -121,44 +211,77 @@ k=v\cdot\mu\cdot\frac{\Delta x}{\Delta P} \,,
 %
 where $\mu$ is the dynamic viscosity of the fluid (\si{\Pa\s}), $\Delta x$ is 
 the thickness of the bed of porous medium \si{\m}, and $\Delta P$ is the 
-applied pressure difference \si{\Pa}.  In the present study, the radius is 
-varied from 0.7 to 0.95 to obtain a 
-wide range of permeability for the sample. Increase in the size of the grain 
-from 0.7 to 0.95 reduces the porosity from 0.60 to 0.27. The permeability 
-computed from LB – DEM method is verified by comparing it with an analytical 
-solution. One of the widely used analytical solutions for permeability is the 
-Carman – Kozeny equation (i.e. the CK Model), which is based on Poiseuille flow 
-through pipe and is mainly used for 3D, homogenous, isotropic, granular porous 
-media at moderate porosities. In the present study, a modified Carman – Kozeny 
-equation that takes into account the microstructure of the fibers and is valid 
-in a wide range of porosities is adopted.10 The normalized permeability is 
-defined as
+applied pressure difference \si{\Pa}. For a given hydrodynamic radius, the 
+pressure gradient $\Delta P$ is varied to obtain different flow rates. Probing 
+the fluid space showed a Poiseuille flow behaviour between grains. The flow is 
+still within the Darcy's laminar flow regime, which is verified by the linear 
+slope between the pressure gradient and mean flow velocity 
+(see~\cref{fig:permeability}). It can be observed that with increase in the 
+hydrodynamic radius the permeability decreases, i.e., the slope of the mean 
+flow velocity 
+to the pressure gradient decreases. At very low pressure gradient ($\Delta P 
+\le 0.1$), both 0.9R and 0.95r has a no flow condition. A hydrodynamic radius 
+of $r = 0.95R$ shows almost no flow behaviour, even at higher pressure 
+gradients. A high value of hydrodynamic radius $r > 0.95R$ 
+results in unnatural flow behaviour. Hence, hydrodynamic radii in the range of 
+0.7 to 0.95R are adopted in the present study.
+
+\begin{figure}[htpb]
+\centering
+\includegraphics[width=0.95\textwidth]{permeability}
+\caption{Variation of the mean flow velocity with pressure gradient for 
+different hydrodynamic radius.}
+\label{fig:permeability}
+\end{figure}
+
+
+Increase in the hydrodynamic radius from 0.7 to 0.95 reduces the porosity from 
+0.60 to 0.27. The permeability computed from LB – DEM method is verified by 
+comparing it with the analytical solution. One of the widely used analytical 
+solution for permeability is the Carman – Kozeny equation (CK Model), 
+which is based on the Poiseuille flow through a pipe and is mainly used for 3D, 
+homogeneous, isotropic, granular porous media at moderate porosities. In the 
+present study, a modified Carman – Kozeny equation that takes into account the 
+micro-structure of the fibres and that is valid in a wide range of porosities 
+is adopted~\citep{Yazdchi2011}. The normalized permeability is defined as
 \begin{equation}
 \frac{k}{d^2} = \frac{\epsilon}{\psi_{CK}(1-\epsilon)^2} \,.
 \end{equation}
 %
 In the CK model, the hydraulic diameter $D_h$ , is expressed as a function of 
 measurable quantities: porosity and specific surface area
+%
 \begin{align}
 D_h & = \frac{4\epsilon V}{S_v}=\frac{\epsilon d}{(1 - \epsilon)} \,, \\
 a_v & = \frac{\mbox{grain surface}}{\mbox{grain volume}} = 
 \frac{S_v}{(1-\epsilon V)} = \frac{4}{d} \,,
 \end{align}
-With the total wetted surface, $S_v$, and the specific surface area, $a_v$. The 
-above value of $a_v$ is for circles (cylinders) - for spheres $a_v = 6/d$. 
-$\psi_{CK}$ is the empirically  measure CK factor.
-Which represents both the shape factor and the deviation of flow direction from 
-that in a duct. It is approximated for randomly packed beds of spherical 
-grains. The variation in the flow rate for different reduction in radius is 
-presented in Figure 3a. The normalized permeability for different porosity 
-obtained by varying the radius from 0.7 to 0.95 is presented in Figure 3b.
-It can be observed from the figure that the permeability decreases drastically 
-as the radius is varied from 0.7r to 0.95r. The granular assembly is almost 
-impermeable for a radius of 0.95r. The normalized permeability is found to 
+%
+where $S_v$ is the total wetted surface, and $a_v$ is the specific surface 
+area. The above value of $a_v$ is for circles (cylinders) - for spheres $a_v = 
+6/d$. $\psi_{CK}$ is the empirically  measured CK factor, which represents both 
+the shape factor and the deviation of flow direction from that in a duct. It is 
+approximated for randomly packed beds of spherical grains. The normalized 
+permeability for different porosity obtained by varying the radius from 0.7 to 
+0.95 is presented in~\cref{fig:Carman}. The normalized permeability is found to 
 match the qualitative trend of the Carman-Kozeny equations. The LB – DEM 
 permeability curve lies between the permeability curves for spherical and 
 cylindrical grain arrangements implying a better approximation of permeability 
 in 2D granular assembly by reducing the radius during LBM computations.
+
+\begin{figure}[htpb]
+\centering
+\includegraphics[width=0.95\textwidth]{Carman}
+\caption{Relation between permeability and porosity for 
+different hydrodynamic radius and comparison with the analytical solution.}
+\label{fig:Carman}
+\end{figure}
+
+\subsection{Collapse in fluid: Flow evolution}
+A granular column of aspect ratio `a' of 0.8 was 
+used. A hydrodynamic radius r = 0.9R was adopted during the LBM computations. 
+Dry analyses were also performed to study the effect of hydrodynamic forces on 
+the run-out distance.x
 
 
 \section{Submarine granular flows down incline plane}
@@ -206,11 +329,6 @@ used. A hydrodynamic radius r = 0.9R was adopted during the LBM computations.
 Dry analyses were also performed to study the effect of hydrodynamic forces on 
 the run-out distance.
 
-\begin{figure}[htpb]
-\includegraphics[width=0.97\columnwidth]{geometry}
-\caption{Underwater granular collapse set-up}
-\label{fig:setup}
-\end{figure}
 
 \subsection{Effect of initial density}
 The morphology of the granular deposits in fluid is shown to be mainly controlled by the initial volume fraction of the granular mass and not by the aspect ratio of the column~\citep{Rondon2011,Pailha2008}. In order to understand the influence of the initial packing density on the run-out behaviour, a dense sand column (initial packing density, $\Phi=83\%$) and a loose sand column ($\Phi=79\%$) were used. The granular columns collapse and flow down slopes of varying inclinations (\SI{2.5}{\degree}, \SI{5}{\degree} and \SI{7.5}{\degree}).
