@@ -6,35 +6,49 @@
     \graphicspath{{Chapter6/figs/vector/}{Chapter6/figs/}}
 \fi
 
-\section{Granular collapse in fluid}
+\section{Introduction}
 
 Avalanches, landslides, and debris flows are geophysical hazards, which involve 
 rapid mass movement of granular solids, water, and air. Globally, landslides 
 cause billions of pounds in damage, and thousands of deaths and injuries each 
 year. Hence, it is important to understand the triggering mechanism and the 
 evolution of flow. The momentum transfer between the discrete and continuous 
-phases significantly affects the dynamics of the flow as a whole.1 Although 
-certain macroscopic models are able to capture simple mechanical behaviours,2 
-the complex physical mechanisms occurring at the grain scale, such as 
-hydrodynamic instabilities, formation of clusters, collapse, and transport,1 
-have largely been ignored. In particular, when the solid phase reaches a high 
-volume fraction, the strong heterogeneity arising from the contact forces 
-between the grains, and the hydrodynamic forces, are difficult to integrate 
-into the homogenization process involving global averages.1 In order to 
-describe the mechanism of immersed granular flows, it is important to consider 
-both the dynamics of the solid phase and the role of the ambient fluid.3 The 
-dynamics of the solid phase alone are insufficient to describe the mechanism of 
-granular flow in a fluid; it is important to consider the effect of 
-hydrodynamic forces that reduce the weight of the solids inducing a transition 
-from dense-compacted to dense-suspended flows, and the drag interactions which 
-counteract the movement of the solids.4 Transient regimes characterized by 
+phases significantly affects the dynamics of the flow as a 
+whole~\citep{Topin2012}. Although 
+certain macroscopic models are able to capture simple mechanical 
+behaviours,~\citep{Peker2007} the complex physical mechanisms occurring at the 
+grain scale, such as hydrodynamic instabilities, formation of clusters, 
+collapse, and transport,~\citep{Topin2011} have largely been ignored. In 
+particular, when the solid phase reaches a high volume fraction, the strong 
+heterogeneity arising from the contact forces between the grains, and the 
+hydrodynamic forces, are difficult to integrate into the homogenization process 
+involving global averages. In order to describe the mechanism of immersed 
+granular flows, it is important to consider both the dynamics of the solid 
+phase and the role of the ambient fluid~\citep{Denlinger2001}. The dynamics of 
+the solid phase alone are insufficient to describe the mechanism of granular 
+flow in a fluid; it is important to consider the effect of hydrodynamic forces 
+that reduce the weight of the solids inducing a transition from dense-compacted 
+to dense-suspended flows, and the drag interactions which counteract the 
+movement of the solids~\citep{Meruane2010}. Transient regimes characterized by 
 change in solid fraction, dilation at the onset of flow and development of 
 excess pore pressure, result in altering the balance between the stress carried 
 by the fluid and that carried by the grains, thereby changing the overall 
-behaviour of the flow.3 In the present study, 2D Lattice-Boltzmann and Discrete 
-Element Method is adopted to capture the fluid-soil interactions in underwater 
-avalanches.
+behaviour of the flow. 
+The presence of a fluid phase in a granular medium has profound effects on its 
+mechanical behaviour. In dry granular media the rheology is governed by grain 
+inertia and static stresses sustained by the contact network depending on the 
+shear-rate and confining pressure, respectively~\citep{Midi2004}. As the fluid 
+inertia and viscosity come into play, complications arise as a result of 
+contradictory effects. On one hand, the fluid may delay the onset of
+granular flow or prevent the dispersion of the grains by
+developing negative pore pressures~\citep{Pailha2008,Topin2011}. On the other
+hand, the fluid lubricates the contacts between grains, enhancing in this way 
+the granular flow, and it has a retarding effect at the same time by inducing 
+drag forces on the grains.In the present study, 2D Lattice-Boltzmann and 
+Discrete Element Method is used to understand the fluid-soil interactions and 
+the rheology of underwater granular flows.
 
+\section{Granular collapse in fluid}
 
 \subsection{LBM-DEM Coupling}
 
@@ -54,6 +68,19 @@ should have similar velocity as the grain boundary. The solid grains inside the
 fluid are represented by lattice nodes. The discrete nature of lattice, results 
 in a stepwise representation of the surfaces, which are circular, hence 
 sufficiently small lattice spacing is adopted. 
+
+In this study, a 2D poly-disperse system ($d_{max}/d_{min} = 1.8$) of circular 
+discs in fluid was used to understand the behaviour of granular flows on 
+inclined planes (see~\Cref{fig:setup}). The soil column was modelled using 1000 
+discs of density \SI{2650}{\kg\per\cubic\meter} and a contact friction angle of 
+\SI{26}{\degree}. The collapse of the column was simulated inside a fluid with 
+a density of \SI{1000}{\kg\per\cubic\meter}  and a kinematic viscosity of 
+\SI{1e-6}{\square\meter\per\second}. The choice of a 2D geometry has the 
+advantage of cheaper computational effort than a 3D case, making it feasible to 
+simulate very large systems. A granular column of aspect ratio `a' of 0.8 was 
+used. A hydrodynamic radius r = 0.9R was adopted during the LBM computations. 
+Dry analyses were also performed to study the effect of hydrodynamic forces on 
+the run-out distance.
 
 \subsection{Permeability}
 
@@ -183,7 +210,7 @@ The morphology of the granular deposits in fluid is shown to be mainly controlle
 
 \begin{figure}
 \centering
-\includegraphics[width=0.97\columnwidth]{Runout_dense}
+\includegraphics[width=0.97\columnwidth]{Runout_dense_slope}
 \caption{Evolution of run-out with time (dense)}
 \label{fig:run_dense}
 \end{figure}
@@ -196,7 +223,7 @@ It can be seen that the viscous drag on the dense column tend to predominate ove
 
 \begin{figure}
 \centering
-\includegraphics[width=0.97\columnwidth]{KE_dense}
+\includegraphics[width=0.97\columnwidth]{KE_dense_slope}
 \caption{Evolution of Kinetic Energy with time (dense case)}
 \label{fig:KE_dense}
 \end{figure}
@@ -206,7 +233,7 @@ It can be seen that the viscous drag on the dense column tend to predominate ove
 \makebox[\linewidth][c]{
 \begin{subfigure}[b]{0.95\textwidth}
 	\centering
-    \includegraphics[width=0.95\textwidth]{dense_slope25r09}
+    \includegraphics[width=0.95\textwidth]{dense_slope/dense_slope25r09}
     \caption{Slope 2.5}
     \label{fig:ds2.5}
 \end{subfigure}
@@ -215,7 +242,7 @@ It can be seen that the viscous drag on the dense column tend to predominate ove
 \makebox[\linewidth][c]{
 \begin{subfigure}[b]{0.95\textwidth}
 	\centering
-    \includegraphics[width=0.95\textwidth]{dense_slope5r09}
+    \includegraphics[width=0.95\textwidth]{dense_slope/dense_slope5r09}
     \caption{Slope 5.0}
     \label{fig:ds5.0}
 \end{subfigure}
@@ -224,7 +251,7 @@ It can be seen that the viscous drag on the dense column tend to predominate ove
 \makebox[\linewidth][c]{
 \begin{subfigure}[b]{0.95\textwidth}
 	\centering
-    \includegraphics[width=0.95\textwidth]{dense_slope75r09}
+    \includegraphics[width=0.95\textwidth]{dense_slope/dense_slope75r09}
     \caption{Slope 7.5}
     \label{fig:ds7.5}
 \end{subfigure}
@@ -237,7 +264,7 @@ In contrast to the dense granular columns, the loose granular columns (relative 
 
 \begin{figure}
 \centering
-\includegraphics[width=0.97\columnwidth]{Runout_loose}
+\includegraphics[width=0.97\columnwidth]{Runout_loose_slope}
 \caption{Evolution of run-out with time (loose)}
 \label{fig:run_loose}
 \end{figure}
@@ -246,7 +273,7 @@ In contrast to the dense granular columns, the loose granular columns (relative 
 \makebox[\linewidth][c]{
 \begin{subfigure}[b]{0.95\textwidth}
 	\centering
-    \includegraphics[width=0.95\textwidth]{loose_slope25r09}
+    \includegraphics[width=0.95\textwidth]{loose_slope/loose_slope25r09}
     \caption{Slope 2.5}
     \label{fig:ls2.5}
 \end{subfigure}
@@ -255,7 +282,7 @@ In contrast to the dense granular columns, the loose granular columns (relative 
 \makebox[\linewidth][c]{
 \begin{subfigure}[b]{0.95\textwidth}
 	\centering
-    \includegraphics[width=0.95\textwidth]{loose_slope5r09}
+    \includegraphics[width=0.95\textwidth]{loose_slope/loose_slope5r09}
     \caption{Slope 5.0}
     \label{fig:ls5.0}
 \end{subfigure}
@@ -264,7 +291,7 @@ In contrast to the dense granular columns, the loose granular columns (relative 
 \makebox[\linewidth][c]{
 \begin{subfigure}[b]{0.95\textwidth}
 	\centering
-    \includegraphics[width=0.95\textwidth]{loose_slope75r09}
+    \includegraphics[width=0.95\textwidth]{loose_slope/loose_slope75r09}
     \caption{Slope 7.5}
     \label{fig:ls7.5}
 \end{subfigure}
@@ -276,7 +303,7 @@ In contrast to the dense granular columns, the loose granular columns (relative 
 
 \begin{figure}
 \centering
-\includegraphics[width=0.97\columnwidth]{KE_loose}
+\includegraphics[width=0.97\columnwidth]{KE_loose_slope}
 \caption{Evolution of Kinetic Energy with time (loose)}
 \label{fig:KE_loose}
 \end{figure}
@@ -333,7 +360,7 @@ The permeability of the granular column did not have an influence on the evoluti
 
 \begin{figure}
 \centering
-\includegraphics[width=0.97\columnwidth]{Runout_loose_5}
+\includegraphics[width=0.97\columnwidth]{Runout_loose_5_slope}
 \caption{Evolution of run-out with time for different permeability (loose slope \SI{5}{\degree})}
 \label{fig:run5}
 \end{figure}
@@ -341,14 +368,14 @@ The permeability of the granular column did not have an influence on the evoluti
 
 \begin{figure}
 \centering
-\includegraphics[width=0.97\columnwidth]{Height_loose_5}
+\includegraphics[width=0.97\columnwidth]{Height_loose_5_slope}
 \caption{Evolution of height with time for different permeability (loose slope \SI{5}{\degree})}
 \label{fig:height5}
 \end{figure}
 
 \begin{figure}
 \centering
-\includegraphics[width=0.97\columnwidth]{KE_loose_5}
+\includegraphics[width=0.97\columnwidth]{KE_loose_5_slope}
 \caption{Evolution of Kinetic Energy with time for different permeability (loose slope \SI{5}{\degree})}
 \label{fig:KE5}
 \end{figure}
