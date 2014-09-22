@@ -278,15 +278,570 @@ different hydrodynamic radius and comparison with the analytical solution.}
 \end{figure}
 
 \subsection{Collapse in fluid: Flow evolution}
-A granular column of aspect ratio `a' of 0.8 was 
-used. A hydrodynamic radius r = 0.9R was adopted during the LBM computations. 
-Dry analyses were also performed to study the effect of hydrodynamic forces on 
-the run-out distance.x
+Two-dimensional plane-strain LBM-DEM simulations of granular column 
+collapse are performed by varying the initial aspect ratio of the column from 
+0.2 to 6. A hydrodynamic radius of 0.7R is adopted during LBM computations.  
+The granular assemble has a packing fraction of $83\%$. The normalized final 
+run-out distance is computed as $\Delta L = 
+(L_{\textit{f}}-L_{\textit{0}})/L_{\textit{0}}$. Similar to dry granular 
+collapse, the duration of collapse is normalised with a criticial time $\tau_c 
+= \sqrt{H/g}$. Where, $H$ is the initial height of the granular column and g is 
+the acceleration due to gravity.  Dry and buoyant analyses of granular column 
+collapse are also performed to understand the effect of hydrodynamic forces on 
+the run-out distance.
+
+Snapshots of flow evolution of a granular column collapse with an initial 
+aspect ratio of 0.4 is shown in~\cref{fig:a04_snapshots}. The failure begins at 
+the toe end of the column, and the fracture surface propagates into the column 
+at an angle of about $50\si{\degree}$, similar to dry column. For the short 
+column, the failure is due to collapse of the flanks. Once the material is 
+destabilisied, the granular mass interacts with the surrounding fluid resulting 
+in formation of turbulent vortices. These vortices interact with the grains at 
+the surface, resulting in irregularities on the free surface. Force chains can 
+be observed in the static region of collapse, which indicates the flow can be 
+described using a continuum theory. As the granular material ceases to flow, 
+force chains develop at the flow front, revealing consolidation of the granular 
+mass resulting in increase in strength. 
+
+\begin{figure}
+\makebox[\linewidth][c]{
+\begin{subfigure}[b]{0.95\textwidth}
+	\centering
+    \includegraphics[width=0.95\textwidth]{a04/a04_0}
+    \caption{$t = 0\tau_c$}
+    \label{fig:a04_0}
+\end{subfigure}
+}\\
+
+\makebox[\linewidth][c]{
+\begin{subfigure}[b]{0.95\textwidth}
+	\centering
+    \includegraphics[width=0.95\textwidth]{a04/a04_tc}
+    \caption{$t = 1\tau_c$}
+    \label{fig:a04_tc}
+\end{subfigure}
+}\\
+
+\makebox[\linewidth][c]{
+\begin{subfigure}[b]{0.95\textwidth}
+	\centering
+    \includegraphics[width=0.95\textwidth]{a04/a04_3tc}
+    \caption{$t = 3\tau_c$}
+    \label{fig:a04_3tc}
+\end{subfigure}
+}\\
+
+\makebox[\linewidth][c]{
+\begin{subfigure}[b]{0.95\textwidth}
+	\centering
+    \includegraphics[width=0.95\textwidth]{a04/a04_6tc}
+    \caption{$t = 6\tau_c$}
+    \label{fig:a04_6tc}
+\end{subfigure}
+}\\
+
+\makebox[\linewidth][c]{
+\begin{subfigure}[b]{0.95\textwidth}
+	\centering
+    \includegraphics[width=0.95\textwidth]{a04/a04_8tc}
+    \caption{$t = 8\tau_c$}
+    \label{fig:a04_8tc}
+\end{subfigure}
+}
+\caption{Flow evolution of a granular column collapse in fluid (a = 0.4). Shows 
+the velocity profile of fluid due to interaction with the grains (red - higher 
+velocity).}
+\label{fig:a04_snapshots}
+\end{figure}
+
+
+The evolution of run-out with time for a short column (a = 0.4) is presented 
+in~\cref{fig:Runout_a04f}. The dry column exhibits longer run-out distance in 
+comparison to the submerged column. The collapse of a dry column using DEM 
+represents a collapse in vacuum, without any influence of drag forces or 
+viscosity of air. A LBM-DEM simulation of a granular column collapse using the 
+kinematic viscosity of air is performed to compare the dry column with the 
+collapse in air. It can be observed that both the ``dry'' condition and the 
+collapse in air show almost the same run-out behaviour. However, the collapse 
+in fluid (water) results in a much shorter run-out distance. The granular mass 
+in fluid has the buoyant mass, in contrast to the dry density. A dry granular 
+collapse with the buoyant unit weight is performed to understand the effect of 
+buoyancy on the run-out behaviour. The dry column with buoyant unit weight also 
+exhibits longer run-out behaviour than the collapse in fluid. However, due to 
+decrease in the initial potential energy, the run-out observed in the buoyant 
+condition is shorter than the dry condition. The column collapse in fluid takes 
+longer to evolve when submerged in water, which might be due to the development 
+of large negative porewater pressure that is generated during the shear failure 
+along the fracture surface. The large negative pore pressure has to be 
+dissipated before the granular mass above the fracture surface can collapse and 
+flow. The shorter run-out distance in the fluid case, in comparison with the 
+dry and buoyant conditions, shows that the collapse in fluid is significantly 
+affected by the hydrodynamic drag force acting on the soil grains. The 
+evolution of height $H/L$ is presented in~\cref{}. Since the failure of the 
+column is only at the flank, the central static region remains unaffected. 
+Hence, the final height of the column is the same in dry and submerged 
+conditions.
+
+\begin{figure}[htpb]
+\centering
+\includegraphics[width=0.9\textwidth]{Runout_a04f}
+\caption{Evolution of run-out for a column collapse in fluid (a = 0.4)}
+\label{fig:Runout_a04f}
+\end{figure}
+
+\begin{figure}[htpb]
+\centering
+\includegraphics[width=0.9\textwidth]{Height_a04f}
+\caption{Evolution of height with time for a column collapse in fluid 
+(a = 0.4)}
+\label{fig:Height_a04f}
+\end{figure}
+
+The evolution of normalised kinetic energy with time for a column with an 
+initial aspect ratio of 0.4 is shown in~\cref{fig:a04f_energy}. It can be 
+observed that the peak kinetic energy is attained later in the submerged 
+condition than the dry collapse. This can be attributed to the time required to 
+overcome the negative pore pressure generated during the shear along the 
+fracture surface. For short columns the critical time $\tau_c$ is controlled by 
+the vertical kinetic energy. The amount of kinetic energy in submerged case is 
+significanlty lower than the dry condition. Also, the potential energy 
+evolution (see~\cref{fig:PE_a04f}) shows a significant influence of the 
+hydrodynamic forces on the amount of material destabilised during the collapse. 
+The drag forces reduces and slows down the amount of material that undergo 
+collapse resulting in shorter run-out distance for short columns. 
+\begin{figure}
+\centering
+\makebox[\linewidth][c]{
+\begin{subfigure}[t]{0.8\textwidth}
+	\centering
+    \includegraphics[width=\textwidth]{KE_a04f}
+    \caption{Evolution of the total kinetic energy}
+    \label{fig:KE_a04f}
+\end{subfigure}
+}\\
+\makebox[\linewidth][c]{
+\begin{subfigure}[t]{0.95\textwidth}
+	\centering
+    \includegraphics[width=\textwidth]{KExy_a04f}
+    \caption{Evolution of horizontal and vertical kinetic energies}
+    \label{fig:KExy_a04f}
+\end{subfigure}
+}
+\caption{Evolution of kinetic energies with time for a granular column collapse 
+in fluid (a = 0.4)}
+\label{fig:a04f_energy}
+\end{figure}
+
+\begin{figure}
+	\centering
+    \includegraphics[width=0.9\textwidth]{PE_a04f}
+    \caption{Evolution of the potential energy with time for a granular column 
+    collapse in fluid (a = 0.4)}
+    \label{fig:PE_a04f}
+\end{figure}
+
+Snapshots of flow evolution of a granular column collapse with an initial 
+aspect ratio of 4 is shown in~\cref{fig:a4_snapshots}. 
+
+\begin{figure}
+\makebox[\linewidth][c]{
+\begin{subfigure}[b]{0.95\textwidth}
+	\centering
+    \includegraphics[width=0.95\textwidth]{a4/a4_0}
+    \caption*{$t = 0\tau_c$}
+    \label{fig:a4_0}
+\end{subfigure}
+}\\
+
+\makebox[\linewidth][c]{
+\begin{subfigure}[b]{0.95\textwidth}
+	\centering
+    \includegraphics[width=0.95\textwidth]{a4/a4_tc}
+    \caption*{$t = 1\tau_c$}
+    \label{fig:a4_tc}
+\end{subfigure}
+}\\
+\makebox[\linewidth][c]{
+\begin{subfigure}[b]{0.95\textwidth}
+	\centering
+    \includegraphics[width=0.95\textwidth]{a4/a4_3tc}
+    \caption*{$t = 3\tau_c$}
+    \label{fig:a4_3tc}
+\end{subfigure}
+}
+\end{figure}
+\begin{figure}
+\ContinuedFloat
+\makebox[\linewidth][c]{
+\begin{subfigure}[b]{0.95\textwidth}
+	\centering
+    \includegraphics[width=0.95\textwidth]{a4/a4_6tc}
+    \caption*{$t = 6\tau_c$}
+    \label{fig:a4_6tc}
+\end{subfigure}
+}\\
+\makebox[\linewidth][c]{
+\begin{subfigure}[b]{0.95\textwidth}
+	\centering
+    \includegraphics[width=0.95\textwidth]{a4/a4_8tc}
+    \caption*{$t = 8\tau_c$}
+    \label{fig:a4_8tc}
+\end{subfigure}
+}
+\caption{Flow evolution of a granular column collapse in fluid (a = 4). Shows 
+the velocity profile of fluid due to interaction with the grains (red - higher 
+velocity).}
+\label{fig:a4_snapshots}
+\end{figure}
+
+
+\begin{figure}[htpb]
+\centering
+\includegraphics[width=0.9\textwidth]{LBM_DEM_a6}
+\caption{Flow evolution of a granular column collapse in fluid (a = 6)}
+\label{fig:LBM_DEM_a6}
+\end{figure}
+
+\begin{figure}[htpb]
+\centering
+\includegraphics[width=0.9\textwidth]{Runout_a4f}
+\caption{Evolution of run-out for a column collapse in fluid (a = 4)}
+\label{fig:Runout_a4f}
+\end{figure}
+
+\begin{figure}[htpb]
+\centering
+\includegraphics[width=0.9\textwidth]{Height_a4f}
+\caption{Evolution of height with time for a column collapse in fluid 
+(a = 4)}
+\label{fig:Height_a4f}
+\end{figure}
+
+\begin{figure}
+\centering
+\makebox[\linewidth][c]{
+\begin{subfigure}[t]{0.8\textwidth}
+	\centering
+    \includegraphics[width=\textwidth]{KE_a4f}
+    \caption{Evolution of the total kinetic energy}
+    \label{fig:KE_a4f}
+\end{subfigure}
+}\\
+\makebox[\linewidth][c]{
+\begin{subfigure}[t]{0.95\textwidth}
+	\centering
+    \includegraphics[width=\textwidth]{KExy_a4f}
+    \caption{Evolution of horizontal and vertical kinetic energies}
+    \label{fig:KExy_a4f}
+\end{subfigure}
+}
+\caption{Evolution of kinetic energies with time for a granular column collapse 
+in fluid (a = 4)}
+\label{fig:a4f_energy}
+\end{figure}
+
+\begin{figure}
+	\centering
+    \includegraphics[width=0.9\textwidth]{PE_a4f}
+    \caption{Evolution of the potential energy with time for a granular column 
+    collapse in fluid (a = 4)}
+    \label{fig:PE_a4f}
+\end{figure}
+
+\begin{figure}[tbhp]
+	\centering
+	\includegraphics[width=\textwidth]{runoutf}
+	\caption{Normalised final run-out distance for columns with different 
+	initial aspect ratios. Comparison of dry and submerged granular column 
+	collapse.}
+	\label{fig:runoutf}
+\end{figure}
+
+\begin{figure}[tbhp]
+	\centering
+	\includegraphics[width=0.975\textwidth]{Heightf}
+	\caption{Normalised final collapse height for columns with different 
+	initial aspect ratios. Comparison of dry and submerged granular column 
+	collapse.}
+	\label{fig:heightf}
+\end{figure}
+
+\subsection{Effect of permeability}
+
+\begin{figure}
+\makebox[\linewidth][c]{
+\begin{subfigure}[b]{0.95\textwidth}
+	\centering
+    \includegraphics[width=0.95\textwidth]{a08/a08r07_dense}
+    \caption{High permeability (r = 0.7 R)}
+    \label{fig:a08r07_dense}
+\end{subfigure}
+}\\
+\makebox[\linewidth][c]{
+\begin{subfigure}[b]{0.95\textwidth}
+	\centering
+    \includegraphics[width=0.95\textwidth]{a08/a08r095_dense}
+    \caption{Low permeability (r = 0.95 R)}
+    \label{fig:a08r095_dense}
+\end{subfigure}
+}
+\caption{Effect of permeability on the deposit morphology of a granular column 
+collapse in fluid (a = 0.8)}
+\label{fig:a08_dense_snapshots}
+\end{figure}
+
+
+\begin{figure}[htpb]
+\centering
+\includegraphics[width=0.9\textwidth]{Runout_a08_dense}
+\caption{Effect of permeability on the evolution of run-out for a column 
+collapse in fluid (a = 0.8)}
+\label{fig:Runout_a08_dense}
+\end{figure}
+
+\begin{figure}
+\centering
+\makebox[\linewidth][c]{
+\begin{subfigure}[t]{0.8\textwidth}
+	\centering
+    \includegraphics[width=\textwidth]{KE_a08_dense}
+    \caption{Evolution of the total kinetic energy}
+    \label{fig:KE_a08_dense}
+\end{subfigure}
+}\\
+\makebox[\linewidth][c]{
+\begin{subfigure}[t]{0.95\textwidth}
+	\centering
+    \includegraphics[width=\textwidth]{KExy_a08_dense}
+    \caption{Evolution of horizontal and vertical kinetic energies}
+    \label{fig:KExy_a08_dense}
+\end{subfigure}
+}
+\caption{Effect of permeability on the evolution of kinetic energies with time 
+for a granular column collapse in fluid (a = 0.8)}
+\label{fig:a08_dense_energy}
+\end{figure}
+
+\begin{figure}
+	\centering
+    \includegraphics[width=0.9\textwidth]{PE_a08_dense}
+    \caption{Effect of permeability on the evolution of the potential energy 
+    with time for a granular column collapse in fluid (a = 0.8)}
+    \label{fig:PE_a08_dense}
+\end{figure}
+
+\begin{figure}
+	\centering
+    \includegraphics[width=0.9\textwidth]{Packing_Density_a08_dense}
+    \caption{Effect of permeability on the evolution of packing density for a 
+    granular column collapse in fluid (a = 0.8 \& dense initial packing)}
+    \label{fig:Packing_Density_a08_dense}
+\end{figure}
+
+\begin{figure}[tbhp]
+	\centering
+	\includegraphics[width=\textwidth]{runout_fluid_dry}
+	\caption{Normalised final run-out distance for columns with different 
+	initial aspect ratios. Comparison of dry and submerged granular column 
+	collapse for different hydrodynamic radius (0.7R, 0.8R and 0.9R).}
+	\label{fig:runout_fluid_dry}
+\end{figure}
+
+\begin{figure}[tbhp]
+	\centering
+	\includegraphics[width=\textwidth]{runout_fluid_dry_energy}
+	\caption{Normalised final run-out distance for columns as a function of 
+	peak kinetic energy. Comparison of dry and submerged granular column 
+	collapse for different hydrodynamic radius (0.7R, 0.8R and 0.9R).}
+	\label{fig:runout_fluid_dry_energy}
+\end{figure}
+
+\clearpage
+\subsection{Effect of initial packing density}
+
+\begin{figure}
+\centering
+\includegraphics[width=0.9\textwidth]{Runout_a08_loose}
+\caption{Effect of permeability on the evolution of run-out for a column 
+collapse in fluid (a = 0.8 \& loose packing)}
+\label{fig:Runout_a08_loose}
+\end{figure}
+
+\begin{figure}
+\centering
+\makebox[\linewidth][c]{
+\begin{subfigure}[t]{0.975\textwidth}
+	\centering
+    \includegraphics[width=\textwidth]{a08/Loose_r07_PWP_ini}
+    \caption{High permeability (r = 0.7 R)}
+    \label{fig:Loose_r07_PWP_ini}
+\end{subfigure}
+}\\
+\makebox[\linewidth][c]{
+\begin{subfigure}[t]{0.975\textwidth}
+	\centering
+    \includegraphics[width=\textwidth]{a08/Loose_r095_PWP_ini}
+    \caption{Low permeability (r = 0.95 R)}
+    \label{fig:Loose_r095_PWP_ini}
+\end{subfigure}
+}
+\caption{Effect of permeability on the excess pore water pressure distribution 
+for a granular column collapse in fluid (a = 0.8 \& loose packing) at $t = 
+\tau_c$}
+\label{fig:Loose_PWP_ini}
+\end{figure}
+
+\begin{figure}
+\centering
+\makebox[\linewidth][c]{
+\begin{subfigure}[t]{0.975\textwidth}
+	\centering
+    \includegraphics[width=\textwidth]{a08/Loose_r07_PWP_flow}
+    \caption{High permeability (r = 0.7 R)}
+    \label{fig:Loose_r07_PWP_flow}
+\end{subfigure}
+}\\
+\makebox[\linewidth][c]{
+\begin{subfigure}[t]{0.975\textwidth}
+	\centering
+    \includegraphics[width=\textwidth]{a08/Loose_r095_PWP_flow}
+    \caption{Low permeability (r = 0.95 R)}
+    \label{fig:Loose_r095_PWP_flow}
+\end{subfigure}
+}
+\caption{Effect of permeability on the excess pore water pressure distribution 
+for a granular column collapse in fluid (a = 0.8 \& loose packing) at $t = 
+2\tau_c$}
+\label{fig:Loose_PWP_flow}
+\end{figure}
+
+
+\begin{figure}
+\centering
+\makebox[\linewidth][c]{
+\begin{subfigure}[t]{0.975\textwidth}
+	\centering
+    \includegraphics[width=\textwidth]{a08/LBM_MD_loose_a08_r07_pt}
+    \caption{High permeability (r = 0.7 R)}
+    \label{fig:LBM_MD_loose_a08_r07_pt}
+\end{subfigure}
+}\\
+\makebox[\linewidth][c]{
+\begin{subfigure}[t]{0.975\textwidth}
+	\centering
+    \includegraphics[width=\textwidth]{a08/LBM_MD_a08_Loose_r09}
+    \caption{Low permeability (r = 0.95 R)}
+    \label{fig:LBM_MD_a08_Loose_r09}
+\end{subfigure}
+}
+\caption{Particle tracking of the deposit morphology
+for a granular column collapse in fluid (a = 0.8 \& loose packing), influence 
+of permeability}
+\label{fig:Loose_a08_permeability}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics[width=0.97\columnwidth]{a08/effective_stress_a08}
+\caption{Effect of permeability on the normalised effective stress for loose 
+initial packing at $t = \tau_c$}
+\label{fig:effective_stress_a08}
+\end{figure}
+
+\begin{figure}
+\centering
+\makebox[\linewidth][c]{
+\begin{subfigure}[t]{0.8\textwidth}
+	\centering
+    \includegraphics[width=\textwidth]{KE_a08_loose}
+    \caption{Evolution of the total kinetic energy}
+    \label{fig:KE_a08_loose}
+\end{subfigure}
+}\\
+\makebox[\linewidth][c]{
+\begin{subfigure}[t]{0.95\textwidth}
+	\centering
+    \includegraphics[width=\textwidth]{KExy_a08_loose}
+    \caption{Evolution of horizontal and vertical kinetic energies}
+    \label{fig:KExy_a08_loose}
+\end{subfigure}
+}
+\caption{Effect of permeability on the evolution of kinetic energies with time 
+for a granular column collapse in fluid (a = 0.8 \& loose packing)}
+\label{fig:a08_loose_energy}
+\end{figure}
+
+
+\begin{figure}
+	\centering
+    \includegraphics[width=0.9\textwidth]{PE_a08_loose}
+    \caption{Effect of permeability on the evolution of the potential energy 
+    with time for a granular column collapse in fluid (a = 0.8 \& loose 
+    packing)}
+    \label{fig:PE_a08_loose}
+\end{figure}
+
+
+\begin{figure}
+	\centering
+    \includegraphics[width=0.9\textwidth]{Packing_Density_a08_loose}
+    \caption{Effect of permeability on the evolution of packing density for a 
+    granular column collapse in fluid (a = 0.8 \& loose initial packing)}
+    \label{fig:Packing_Density_a08_loose}
+\end{figure}
+
+\begin{figure}
+\centering
+\makebox[\linewidth][c]{
+\begin{subfigure}[t]{0.975\textwidth}
+	\centering
+    \includegraphics[width=\textwidth]{a08/PT_Dense_R095}
+    \caption{Dense initial packing (79\%)}
+    \label{fig:PT_Dense_R095}
+\end{subfigure}
+}\\
+\makebox[\linewidth][c]{
+\begin{subfigure}[t]{0.975\textwidth}
+	\centering
+    \includegraphics[width=\textwidth]{a08/PT_Loose_R095}
+    \caption{Loose initial packing (83\%)}
+    \label{fig:PT_Loose_R095}
+\end{subfigure}
+}
+\caption{Effect of initial density on the deposit morphology
+for a granular column collapse in fluid (a = 0.8). Dense vs loose initial 
+packing fraction.}
+\label{fig:Dense_Loose_PT}
+\end{figure}
+
+
+\begin{figure}
+\centering
+\makebox[\linewidth][c]{
+\begin{subfigure}[t]{0.975\textwidth}
+	\centering
+    \includegraphics[width=\textwidth]{a08/Dense_a08_voro_tc}
+    \caption{Dense initial packing (83\%)}
+    \label{fig:Dense_a08_voro_tc}
+\end{subfigure}
+}\\
+\makebox[\linewidth][c]{
+\begin{subfigure}[t]{0.975\textwidth}
+	\centering
+    \includegraphics[width=\textwidth]{a08/Loose_a08_voro_tc}
+    \caption{Loose initial packing (79\%)}
+    \label{fig:Loose_a08_voro_tc}
+\end{subfigure}
+}
+\caption{Evolution of packing fraction at $t = \tau_c$ for dense and loose 
+initial packing fraction.}
+\label{fig:Dense_Loose_voro}
+\end{figure}
+
+
 
 
 \section{Submarine granular flows down incline plane}
-
-
 
 The flow of dense granular material is a common phenomenon in engineering 
 predictions, such as avalanches, landslides, and debris-flow modelling. Despite 
