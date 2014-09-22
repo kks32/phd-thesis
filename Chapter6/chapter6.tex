@@ -497,13 +497,6 @@ velocity).}
 
 \begin{figure}[htpb]
 \centering
-\includegraphics[width=0.9\textwidth]{LBM_DEM_a6}
-\caption{Flow evolution of a granular column collapse in fluid (a = 6)}
-\label{fig:LBM_DEM_a6}
-\end{figure}
-
-\begin{figure}[htpb]
-\centering
 \includegraphics[width=0.9\textwidth]{Runout_a4f}
 \caption{Evolution of run-out for a column collapse in fluid (a = 4)}
 \label{fig:Runout_a4f}
@@ -1073,6 +1066,157 @@ irrespective of their permeability, reaches almost the same packing density.
 \includegraphics[width=0.97\columnwidth]{Voronoi_5}
 \caption{Evolution of packing density with time for different permeability (loose slope \SI{5}{\degree})}
 \label{fig:voro5}
+\end{figure}
+
+\subsection{Tall columns}
+
+\begin{figure}[htpb]
+\centering
+\includegraphics[width=0.9\textwidth]{LBM_DEM_a6}
+\caption{Flow evolution of a granular column collapse in fluid (a = 6) on a 
+horizontal surface}
+\label{fig:LBM_DEM_a6}
+\end{figure}
+
+
+\begin{figure}
+\makebox[\linewidth][c]{
+\begin{subfigure}[b]{0.95\textwidth}
+	\centering
+    \includegraphics[width=0.95\textwidth]{a6/a6slope5t_0}
+    \caption*{$t = 0\tau_c$}
+    \label{fig:a6slope5t_0}
+\end{subfigure}
+}\\
+
+\makebox[\linewidth][c]{
+\begin{subfigure}[b]{0.95\textwidth}
+	\centering
+    \includegraphics[width=0.95\textwidth]{a6/a6slope5t_1tc}
+    \caption*{$t = 1\tau_c$}
+    \label{fig:a6slope5t_1tc}
+\end{subfigure}
+}\\
+\makebox[\linewidth][c]{
+\begin{subfigure}[b]{0.95\textwidth}
+	\centering
+    \includegraphics[width=0.95\textwidth]{a6/a6slope5t_3tc}
+    \caption*{$t = 3\tau_c$}
+    \label{fig:a6slope5t_3tc}
+\end{subfigure}
+}
+\end{figure}
+\begin{figure}
+\ContinuedFloat
+\makebox[\linewidth][c]{
+\begin{subfigure}[b]{0.95\textwidth}
+	\centering
+    \includegraphics[width=0.95\textwidth]{a6/a6slope5t_6tc}
+    \caption*{$t = 6\tau_c$}
+    \label{fig:a6slope5t_6tc}
+\end{subfigure}
+}\\
+\makebox[\linewidth][c]{
+\begin{subfigure}[b]{0.95\textwidth}
+	\centering
+    \includegraphics[width=0.95\textwidth]{a6/a6slope5t_8tc}
+    \caption*{$t = 8\tau_c$}
+    \label{fig:a6slope5t_8tc}
+\end{subfigure}
+}
+\caption{Flow evolution of a granular column collapse in fluid (a = 6) on a 
+slope of 5\si{\degree}. Shows the velocity profile of fluid due to interaction 
+with the grains (red - higher 
+velocity).}
+\label{fig:a6_slope_snapshots}
+\end{figure}
+
+
+\begin{figure}[htpb]
+\centering
+\includegraphics[width=0.9\textwidth]{Runout_a6_slope}
+\caption{Evolution of run-out for a column collapse in fluid (a = 6) on a 
+slope of 5\si{\degree}}
+\label{fig:Runout_a6_slope}
+\end{figure}
+
+\begin{figure}[htpb]
+\centering
+\includegraphics[width=0.9\textwidth]{Height_a6_slope}
+\caption{Evolution of height with time for a column collapse in fluid (a = 6) 
+on a slope of 5\si{\degree}}
+\label{fig:Height_a6_slope}
+\end{figure}
+
+\begin{figure}
+\centering
+\makebox[\linewidth][c]{
+\begin{subfigure}[t]{0.8\textwidth}
+	\centering
+    \includegraphics[width=\textwidth]{KE_a6_slope}
+    \caption{Evolution of the total kinetic energy}
+    \label{fig:KE_a6_slope}
+\end{subfigure}
+}\\
+\makebox[\linewidth][c]{
+\begin{subfigure}[t]{0.95\textwidth}
+	\centering
+    \includegraphics[width=\textwidth]{PE_a6_slope}
+    \caption{Evolution of the total potential energy}
+    \label{fig:PE_a6_slope}
+\end{subfigure}
+}
+\caption{Evolution of the kinetic and the potential energy with time for a 
+granular 
+column collapse in fluid (a = 6) on a slope of 5\si{\degree}}
+\label{fig:a6_KEPE}
+\end{figure}
+
+
+\begin{figure}
+\centering
+\makebox[\linewidth][c]{
+\begin{subfigure}[t]{0.8\textwidth}
+	\centering
+    \includegraphics[width=\textwidth]{KEx_a6_slope}
+    \caption{Evolution of the vertical kinetic energy}
+    \label{fig:KEx_a6_slope}
+\end{subfigure}
+}\\
+\makebox[\linewidth][c]{
+\begin{subfigure}[t]{0.95\textwidth}
+	\centering
+    \includegraphics[width=\textwidth]{KEy_a6_slope}
+    \caption{Evolution of the horizontal kinetic energy}
+    \label{fig:KEy_a6_slope}
+\end{subfigure}
+}
+\caption{Evolution of the kinetic energies with time for a granular 
+column collapse in fluid (a = 6) on a slope of 5\si{\degree}}
+\label{fig:a6_KEPE}
+\end{figure}
+
+
+\begin{figure}
+\makebox[\linewidth][c]{
+\begin{subfigure}[b]{0.95\textwidth}
+	\centering
+    \includegraphics[width=0.95\textwidth]{a6/a6_slope5_6tc}
+    \caption*{$t = 6\tau_c$}
+    \label{fig:a6_slope5_6tc}
+\end{subfigure}
+}\\
+\makebox[\linewidth][c]{
+\begin{subfigure}[b]{0.95\textwidth}
+	\centering
+    \includegraphics[width=0.95\textwidth]{a6/a6_slope5_8tc}
+    \caption*{$t = 8\tau_c$}
+    \label{fig:a6_slope5_8tc}
+\end{subfigure}
+}
+\caption{Packing density of a granular column collapse in fluid (a = 6) on a 
+slope of 5\si{\degree}.}
+\label{fig:a6_slope_voro}
 \end{figure}
 
 \subsection{Summary}
