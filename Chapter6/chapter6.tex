@@ -208,7 +208,7 @@ collapse of a cliff, has been extensively studied in the case of
 dry granular material, when the interstitial fluid plays no
 role (see~\cref{sec:dry_granular_column}). The problem of the granular collapse 
 in a liquid,which is of importance for submarine landslides, has to our
-knowledge attracted less attention~\citep{Rondon2011}.~\citet{THOMPSON2007} 
+knowledge attracted less attention~\citep{Rondon2011}.~\citet{Thompson2007} 
 observed that the presence of liquid dramatically changes the way a granular 
 column collapses compared to the dry case. The destabilization of a granular 
 pile strongly depends on the initial volume fraction of the packing. For dense 
@@ -1162,10 +1162,19 @@ initial packing fraction.}
 \label{fig:Dense_Loose_voro}
 \end{figure}
 
-
+\clearpage
 
 
 \section{Submarine granular flows down incline plane}
+
+Slope failure is a problem of high practical importance for both civil 
+engineering structures and natural hazards management. Catastrophic events as 
+landslides, debris flows, rock avalanches or reservoir embankment failures 
+exemplify the potential consequences of a soil gravitational instability. One 
+of the most critical situation concerns a submerged sandy slope since pore 
+pressure changes, related to groundwater seepage flow or soil 
+dilation/contraction, can significantly affect the stability of many earth 
+structures or natural soils.
 
 In this study, a 2D poly-disperse system ($d_{max}/d_{min} = 1.8$) of circular 
 discs in fluid was used to understand the behaviour of granular flows on 
@@ -1298,21 +1307,29 @@ hydroplaning resulting in longer run-out distance.
 \label{fig:voro}
 \end{figure}
 
+\begin{figure}
+	\centering
+\begin{subfigure}[b]{0.95\textwidth}
+	\centering
+    \includegraphics[width=0.95\textwidth]{slope_runout_dense}
+    \caption{Effect of slope angle on the run-out distance (Dense). Comparison 
+    between dry and submerged granular column.}
+    \label{fig:slope_runout_dense}
+\end{subfigure}\\
+\begin{subfigure}[b]{0.95\textwidth}
+	\centering
+    \includegraphics[width=0.95\textwidth]{slope_runout_loose}
+    \caption{Effect of slope angle on the run-out distance (Loose). Comparison 
+    between dry and submerged granular column.}
+    \label{fig:slope_runout_loose}
+\end{subfigure}
+\caption{Effect of slope angle on the run-out distance (Dense and Loose). 
+	Comparison between dry and submerged granular column.}
+\label{fig:slope_loose_dense}
+\end{figure}
+
 
 \subsection{Effect of permeability}
-
-In DEM, the grain -- grain interaction is described based on the overlap 
-between the grains at the contact surface. In a 3D granular assembly, the pore 
-spaces between grains are interconnected. Whereas in a 2-D assembly, the grains 
-are in contact with each other that result in a non-interconnected pore-fluid 
-space. This causes a no flow condition in a 2-D case. In order to overcome this 
-difficulty, a reduction in radius is assumed only during the LBM computation 
-phase (fluid and fluid -- solid interaction). The reduction in radius allows 
-interconnected pore space through which the surrounding fluid can flow. This 
-technique has no effect on the grain -- grain interactions computed using DEM. 
-See~\citet{Kumar2012} for more details about the relationship between reduction 
-in radius and permeability of the granular assembly.
-
 
 For a slope angle of \SI{5}{\degree}, the hydrodynamic radius of the loosely 
 packed grains was varied from r = 0.7R (high permeability), 0.75R, 0.8R, 0.85R 
@@ -1370,6 +1387,32 @@ irrespective of their permeability, reaches almost the same packing density.
 \caption{Evolution of packing density with time for different permeability (loose slope \SI{5}{\degree})}
 \label{fig:voro5}
 \end{figure}
+
+
+\begin{figure}
+	\centering
+\begin{subfigure}[b]{0.95\textwidth}
+	\centering
+    \includegraphics[width=0.95\textwidth]{Perm_Runout_a08_dense}
+    \caption{Effect of permeability on the run-out distance (Dense). Comparison 
+    between dry and submerged granular column for a slope angle of 
+    0~\si{\degree} and 5~\si{\degree}.}
+    \label{fig:Perm_Runout_a08_dense}
+\end{subfigure}\\
+\begin{subfigure}[b]{0.95\textwidth}
+	\centering
+    \includegraphics[width=0.95\textwidth]{Perm_Runout_a08_loose}
+    \caption{Effect of permeability on the run-out distance (Loose). Comparison 
+        between dry and submerged granular column for a slope angle of 
+        0~\si{\degree} and 5~\si{\degree}.}
+    \label{fig:Perm_Runout_a08_loose}
+\end{subfigure}
+\caption{EEffect of permeability on the run-out distance (Dense and Loose). 
+	Comparison between dry and submerged granular column for a slope angle of 
+    0~\si{\degree} and 5~\si{\degree}..}
+\label{fig:Perm_Runout_loose_dense}
+\end{figure}
+
 
 \section{Tall columns}
 
