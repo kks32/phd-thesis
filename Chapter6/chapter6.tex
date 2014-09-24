@@ -61,18 +61,18 @@ simulate very large systems.
 
 \section{LBM-DEM Permeability}
 
-In a 3D granular assembly, the pore spaces between grains are 
+In a 3D granular assembly, the pore spaces between the grains are 
 interconnected, whereas in a 2-D assembly, a non-interconnected pore-fluid 
 space is formed as the grains are in contact with each 
-other. Which means that the pore-fluid enclosed between the grains cannot flow 
+other. Which means that the fluid enclosed between the grains cannot flow 
 to neighbouring pore-spaces.  This results in a unnatural no flow condition in 
-a 2-D case (see~\cref{fig:reduction}). In order to overcome this difficulty, a 
-reduction in radius is assumed only during LBM computations (fluid and fluid – 
-solid interaction). The reduced radius of the soil grain, i.e., the 
-\textit{hydrodynamic radius} `r', allows for interconnected pore space through 
-which the pore-fluid can flow similar to 3D behaviour. The reduction in radius 
-is assumed only during LBM computations, hence this technique has no effect on 
-the grain – grain interactions computed using DEM. 
+a 2-D case (see~\cref{fig:reduction}). In order to overcome this effect, a 
+reduction in radius is assumed only during the LBM computation (fluid and fluid 
+– solid interaction) steps. The reduced radius of the soil grain, i.e., the 
+\textit{hydrodynamic radius r}, allows for interconnected pore space through 
+which the pore-fluid can flow similar to the 3D behaviour. The reduction in 
+the radius is assumed only during LBM computations, hence this technique has no 
+effect on the grain – grain interactions computed using DEM. 
 
 \begin{figure}[htpb]
 \centering
@@ -83,25 +83,31 @@ computation}
 \end{figure}
 
 Realistically, the hydrodynamic radius can be varied from $ r = 0.7 R$ to 
-$0.95R$, where ‘R’ is the grain radius. Different permeability can be 
-obtained, for any given initial packing, by varying the hydrodynamic radius of 
-the grains, without changing the actual granular packing. Hence, the 
-hydrodynamic radius represents the permeability of the granular assembly. In 
-another sense, the hydrodynamic radius can be assumed to represent the 
-irregularities on the granular surface. Reducing the hydrodynamic radius 
-represents wider channel and more flow between the grains. 
+$0.95R$, where \textit{R} is the grain radius. Different permeabilities can be 
+obtained for any given initial packing by varying the hydrodynamic radius of 
+the grains, without having to change the actual granular packing. This 
+introduces a new parameter into the system. In a physical sense, a 
+hydrodynamic radius represents the three-dimensional permeability of a 
+granular assembly simulated as a two-dimensional geometry. The hydrodynamic 
+radius can also be assumed to represent the irregularities on the granular 
+surface. The hydrodynamic radius represents simulating asperities on 
+the grain surface, which represents a channel for the fluid to flow between the 
+grains. 
 
 In order to understand the relation between the hydrodynamic radius and the 
 permeability of the granular assembly, horizontal permeability tests are 
-performed by varying the hydrodynamic radius as 0.7R, 0.75R, 0.8R, 0.85R, 0.9 
-and 0.95R. The transverse permeability of a square sample of $50~\si{\mm} 
+performed by varying the hydrodynamic radius as 0.7 R, 0.75 R, 0.8 R, 0.85 R, 
+0.9 R and 0.95 R. A square sample of 
+$50~\si{\mm} 
 \times 50~\si{\mm}$ filled with poly-disperse ($d_{max}/d_{min} = 1.8$) grains 
-with a mean diameter of 1.7\si{\mm} is determined. Dirichlet boundary condition 
-(discussed in~\cref{sec:lbm_bc}), i.e.,  pressure/density constrain is applied 
-along the left and the right boundaries. The density on the left boundary is 
-increased in small increments ($10^{-4} \Delta P$), which a constant density is 
-maintained on the right boundary. This results in a pressure gradient causing 
-the fluid to flow (see~\cref{fig:perm}). 
+having a mean diameter of 1.7~\si{\mm} is used to determine the relation 
+between the hydrodyamic radius and the permeability. Dirichlet boundary 
+condition (discussed in~\cref{sec:lbm_bc}), i.e., density constrain,  
+is applied along the left and the right boundaries of the sample. The fluid 
+density on the left boundary is increased in small steps ($10^{-4} \Delta P$), 
+while a constant density is maintained on the right boundary. This results in a 
+pressure gradient causing 
+the fluid to flow (see~\cref{fig:perm}) through the pore-space. 
 
  
 \begin{figure}[tbhp]
@@ -124,8 +130,13 @@ the fluid to flow (see~\cref{fig:perm}).
 \end{figure}
 
 
-The mean velocity of flow (v) 
-is determined and the permeability of the sample (k) is computed as:
+For a given hydrodynamic radius, the 
+pressure gradient $\Delta P$ is varied to obtain different flow rates. Probing 
+the fluid space showed a Poiseuille flow behaviour between grains. The flow is 
+still within the Darcy's laminar flow regime, which is verified by the linear 
+slope between the pressure gradient and mean flow velocity 
+(see~\cref{fig:permeability}). From the mean velocity of the flow (\textit{v}), 
+the transverse permeability (k) of the sample is computed as:
 %
 \begin{equation}
 k=v\cdot\mu\cdot\frac{\Delta x}{\Delta P} \,,
@@ -133,20 +144,14 @@ k=v\cdot\mu\cdot\frac{\Delta x}{\Delta P} \,,
 %
 where $\mu$ is the dynamic viscosity of the fluid (\si{\Pa\s}), $\Delta x$ is 
 the thickness of the bed of porous medium \si{\m}, and $\Delta P$ is the 
-applied pressure difference \si{\Pa}. For a given hydrodynamic radius, the 
-pressure gradient $\Delta P$ is varied to obtain different flow rates. Probing 
-the fluid space showed a Poiseuille flow behaviour between grains. The flow is 
-still within the Darcy's laminar flow regime, which is verified by the linear 
-slope between the pressure gradient and mean flow velocity 
-(see~\cref{fig:permeability}). It can be observed that with increase in the 
-hydrodynamic radius the permeability decreases, i.e., the slope of the mean 
-flow velocity 
-to the pressure gradient decreases. At very low pressure gradient ($\Delta P 
-\le 0.1$), both 0.9R and 0.95r has a no flow condition. A hydrodynamic radius 
-of $r = 0.95R$ shows almost no flow behaviour, even at higher pressure 
-gradients. A high value of hydrodynamic radius $r > 0.95R$ 
-results in unnatural flow behaviour. Hence, hydrodynamic radii in the range of 
-0.7 to 0.95R are adopted in the present study.
+applied pressure difference \si{\Pa}. It can be observed that with increase in 
+the hydrodynamic radius the permeability decreases, i.e., the slope of the mean 
+flow velocity to the pressure gradient decreases. At very low pressure gradient 
+($\Delta P \le 0.1$), both 0.9 R and 0.95 R have no flow. Even at 
+higher pressure gradients, a hydrodynamic radius of $r = 0.95R$ shows almost no 
+flow behaviour. A high value of hydrodynamic radius $r > 0.95R$ 
+results in unnatural flow/no-flow behaviour. Hence, hydrodynamic radii in the 
+range of 0.7 to 0.95 R are adopted in the present study.
 
 \begin{figure}[htpb]
 \centering
@@ -161,11 +166,12 @@ Increase in the hydrodynamic radius from 0.7 to 0.95 reduces the porosity from
 0.60 to 0.27. The permeability computed from LB – DEM method is verified by 
 comparing it with the analytical solution. One of the widely used analytical 
 solution for permeability is the Carman – Kozeny equation (CK Model), 
-which is based on the Poiseuille flow through a pipe and is mainly used for 3D, 
-homogeneous, isotropic, granular porous media at moderate porosities. In the 
-present study, a modified Carman – Kozeny equation that takes into account the 
-micro-structure of the fibres and that is valid in a wide range of porosities 
-is adopted~\citep{Yazdchi2011}. The normalized permeability is defined as
+which is based on the Poiseuille's flow through a pipe and is mainly used for 
+3D, homogeneous, isotropic, granular porous media at moderate porosities. In 
+the present study, a modified Carman – Kozeny equation that takes into account 
+the micro-structure of the fibres and that is valid in a wide range of 
+porosities is adopted~\citep{Yazdchi2011}. The normalized permeability is 
+defined as
 \begin{equation}
 \frac{k}{d^2} = \frac{\epsilon}{\psi_{CK}(1-\epsilon)^2} \,.
 \end{equation}
@@ -183,19 +189,19 @@ where $S_v$ is the total wetted surface, and $a_v$ is the specific surface
 area. The above value of $a_v$ is for circles (cylinders) - for spheres $a_v = 
 6/d$. $\psi_{CK}$ is the empirically  measured CK factor, which represents both 
 the shape factor and the deviation of flow direction from that in a duct. It is 
-approximated for randomly packed beds of spherical grains. The normalized 
-permeability for different porosity obtained by varying the radius from 0.7 to 
-0.95 is presented in~\cref{fig:Carman}. The normalized permeability is found to 
-match the qualitative trend of the Carman-Kozeny equations. The LB – DEM 
-permeability curve lies between the permeability curves for spherical and 
-cylindrical grain arrangements implying a better approximation of 
-three-dimensional permeability using a 2D granular assembly with a reduced 
-grain radius during LBM computations. Thus using hydrodynamic radius, realistic 
-fluid - grain interactions can be obtained in a 2D geometry.
+approximated for randomly packed beds of spherical grains. The variation of 
+normalized permeability with porosity, obtained by varying the radius from 0.7 
+to 0.95, is presented in~\cref{fig:Carman}. The permeability values obtained 
+from LBM - DEM simulations are found to match the qualitative trend of the 
+Carman-Kozeny equation. The LB – DEM permeability curve lies between the 
+permeability curves for spherical and cylindrical grain arrangements implying a 
+better approximation of three-dimensional permeability using a 2D granular 
+assembly. Thus using a hydrodynamic radius, realistic 3D fluid - grain 
+interactions can be simulated in a 2D geometry.
 
 \begin{figure}[htpb]
 \centering
-\includegraphics[width=0.95\textwidth]{Carman}
+\includegraphics[width=0.975\textwidth]{Carman}
 \caption{Relation between permeability and porosity for 
 different hydrodynamic radius and comparison with the analytical solution.}
 \label{fig:Carman}
