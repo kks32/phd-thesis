@@ -9,20 +9,18 @@
 \section{Introduction}
 Avalanches, landslides, and debris flows are geophysical hazards, which involve 
 rapid mass movement of granular solids, water, and air as a single phase 
-system. Globally, landslides 
-cause billions of pounds in damage, and thousands of deaths and injuries each 
-year. Hence, it is important to understand the triggering mechanism and the flow
-evolution. The momentum transfer between the discrete and continuous 
-phases significantly affects the dynamics of the flow as a 
-whole~\citep{Topin2012}. Although certain macroscopic models are able to 
-capture simple mechanical 
-behaviours~\citep{Peker2007}, the complex physical mechanisms occurring at the 
-grain scale, such as hydrodynamic instabilities, formation of clusters, 
-collapse, and transport,~\citep{Topin2011} have largely been ignored. In 
-particular, when the solid phase reaches a high volume fraction, the strong 
-heterogeneity arising from the contact forces between the grains, and the 
-hydrodynamic forces, are difficult to integrate into the homogenization process 
-involving global averages. 
+system. Globally, landslides cause billions of pounds in damage, and thousands 
+of deaths and injuries each year. Hence, it is important to understand the 
+triggering mechanism and the flow evolution. The momentum transfer between the 
+discrete and continuous phases significantly affects the dynamics of the flow 
+as a whole~\citep{Topin2012}. Although certain macroscopic models are able to 
+capture simple mechanical behaviours~\citep{Peker2007}, the complex physical 
+mechanisms occurring at the grain scale, such as hydrodynamic instabilities, 
+formation of clusters, collapse, and transport,~\citep{Topin2011} have largely 
+been ignored. In particular, when the solid phase reaches a high volume 
+fraction, the strong heterogeneity arising from the contact forces between the 
+grains, and the hydrodynamic forces, are difficult to integrate into the 
+homogenization process involving global averages. 
 
 In order to describe the mechanism of immersed 
 granular flows, it is important to consider both the dynamics of the solid 
@@ -1199,15 +1197,16 @@ inclined plane with a slope angle of 5~\si{\degree} is analysed.
 
 
 \subsection{Effect of initial density}
-The morphology of the granular deposits in fluid is shown to be mainly 
+The morphology of granular deposits in fluid is shown to be mainly 
 controlled by the initial volume fraction of the granular mass and not by the 
 aspect ratio of the column~\citep{Rondon2011,Pailha2008}. In order to 
 understand the influence of the initial packing density on the run-out 
 behaviour, a dense sand column (initial packing density, $\Phi=83\%$) and a 
-loose sand column ($\Phi=79\%$) are used. The granular columns collapse and 
-flow down slopes of varying inclinations (\SI{2.5}{\degree}, \SI{5}{\degree} 
-and \SI{7.5}{\degree}). The run-out behaviour is compared with the collapse of 
-a granular column in fluid on a horizontal surface. For all slope angles, the 
+loose sand column ($\Phi=79\%$) are considered. The granular columns collapse 
+and flow down slopes of varying inclinations (\SI{2.5}{\degree}, 
+\SI{5}{\degree} and \SI{7.5}{\degree}). The run-out behaviour is compared with 
+the collapse of a granular column in fluid on a horizontal surface. For all 
+slope angles, the 
 flow kinematics in submerged condition is compared with its dry counterpart to 
 understand the influence of lubrication and viscous drag.
 
@@ -1523,6 +1522,7 @@ angle and the initial packing density.}
 \label{fig:Perm_Runout_slope}
 \end{figure}
 
+\clearpage
 
 \section{Tall columns}
 
@@ -1588,20 +1588,24 @@ velocity).}
 \end{figure}
 
 
-\begin{figure}[htpb]
+\begin{figure}
 \centering
+\begin{subfigure}[t]{0.9\textwidth}
 \includegraphics[width=0.9\textwidth]{Runout_a6_slope}
 \caption{Evolution of run-out for a column collapse in fluid (a = 6) on a 
 slope of 5\si{\degree}}
 \label{fig:Runout_a6_slope}
-\end{figure}
-
-\begin{figure}[htpb]
+\end{subfigure} \\
+\begin{subfigure}[t]{0.9\textwidth}
 \centering
 \includegraphics[width=0.9\textwidth]{Height_a6_slope}
 \caption{Evolution of height with time for a column collapse in fluid (a = 6) 
 on a slope of 5\si{\degree}}
 \label{fig:Height_a6_slope}
+\end{subfigure}
+\caption{Evolution of  run-out and height  for a column collapse in fluid (a = 
+6) on a slope of 5\si{\degree}}
+\label{fig:a6_slope}
 \end{figure}
 
 \begin{figure}
@@ -1623,8 +1627,7 @@ on a slope of 5\si{\degree}}
 \end{subfigure}
 }
 \caption{Evolution of the kinetic and the potential energy with time for a 
-granular 
-column collapse in fluid (a = 6) on a slope of 5\si{\degree}}
+granular column collapse in fluid (a = 6) on a slope of 5\si{\degree}}
 \label{fig:a6_KEPE}
 \end{figure}
 
