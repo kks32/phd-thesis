@@ -1176,42 +1176,73 @@ pressure changes, related to groundwater seepage flow or soil
 dilation/contraction, can significantly affect the stability of many earth 
 structures or natural soils.
 
-In this study, a 2D poly-disperse system ($d_{max}/d_{min} = 1.8$) of circular 
-discs in fluid was used to understand the behaviour of granular flows on 
-inclined planes (see~\Cref{fig:setup}). The soil column was modelled using 1000 
-discs of density \SI{2650}{\kg\per\cubic\meter} and a contact friction angle of 
-\SI{26}{\degree}. The collapse of the column was simulated inside a fluid with 
-a density of \SI{1000}{\kg\per\cubic\meter}  and a kinematic viscosity of 
-\SI{1e-6}{\square\meter\per\second}. The choice of a 2D geometry has the 
-advantage of cheaper computational effort than a 3D case, making it feasible to 
-simulate very large systems. A granular column of aspect ratio `a' of 0.8 was 
-used. A hydrodynamic radius r = 0.9R was adopted during the LBM computations. 
-Dry analyses were also performed to study the effect of hydrodynamic forces on 
-the run-out distance.
+The influence of slope angle on the effect of permeability and initial packing 
+density on the run-out behaviour is studied. In this study, a 2D poly-disperse 
+system ($d_{max}/d_{min} = 2$) of circular discs in fluid is used to understand 
+the behaviour of granular flows on inclined planes (see~\Cref{fig:setup}). The 
+soil column is modelled using 1000 discs of density 
+\SI{2650}{\kg\per\cubic\meter} and a contact friction angle of 
+\SI{26}{\degree}. The collapse of the granular column is simulated inside a 
+fluid with a density of \SI{1000}{\kg\per\cubic\meter} and a kinematic 
+viscosity of \SI{1e-6}{\square\meter\per\second}. A granular column with an 
+initial aspect ratio \textit{a} of 0.8 is used. A hydrodynamic radius r = 0.9 R 
+is adopted during the LBM computations. Dry analyses are also performed to 
+study the effect of hydrodynamic forces on the run-out distance. The slope 
+angle is varied as \SI{0}{\degree}, \SI{2.5}{\degree}, \SI{5}{\degree}, and 
+\SI{7.5}{\degree}. The effect of initial packing density is studied using two 
+different initial packing: a dense packing (83\% packing fraction) and a loose 
+packing (79\% packing fraction) for collapse on to an inclined plane at 
+different slope angles. The influence of permeability (with hydrodynamic radius 
+varied as 0.7, 0.75, 0.8, 0.85 and 0.9 R) on the run-out behaviour of collapse 
+of granular columns with initial packing density of 83\% and 79 \% on to an 
+inclined plane with a slope angle of 5~\si{\degree} is analysed.
 
 
 \subsection{Effect of initial density}
-The morphology of the granular deposits in fluid is shown to be mainly controlled by the initial volume fraction of the granular mass and not by the aspect ratio of the column~\citep{Rondon2011,Pailha2008}. In order to understand the influence of the initial packing density on the run-out behaviour, a dense sand column (initial packing density, $\Phi=83\%$) and a loose sand column ($\Phi=79\%$) were used. The granular columns collapse and flow down slopes of varying inclinations (\SI{2.5}{\degree}, \SI{5}{\degree} and \SI{7.5}{\degree}).
+The morphology of the granular deposits in fluid is shown to be mainly 
+controlled by the initial volume fraction of the granular mass and not by the 
+aspect ratio of the column~\citep{Rondon2011,Pailha2008}. In order to 
+understand the influence of the initial packing density on the run-out 
+behaviour, a dense sand column (initial packing density, $\Phi=83\%$) and a 
+loose sand column ($\Phi=79\%$) are used. The granular columns collapse and 
+flow down slopes of varying inclinations (\SI{2.5}{\degree}, \SI{5}{\degree} 
+and \SI{7.5}{\degree}). The run-out behaviour is compared with the collapse of 
+a granular column in fluid on a horizontal surface. For all slope angles, the 
+flow kinematics in submerged condition is compared with its dry counterpart to 
+understand the influence of lubrication and viscous drag.
+
+
+The evolution of run-out for a dense sand column with time in dry and submerged 
+conditions for varying slope inclinations are presented 
+in~\cref{fig:run_dense}. For all slope angles, the run-out distance in the dry 
+condition is longer than the submerged condition. This indicates that the  
+
+The 
+run-out distance is longer in submerged condition 
+than the dry condition for a flow on a horizontal surface. However, with 
+increase in the slope angle the run-out in the fluid decreases.
 
 \begin{figure}
 \centering
-\includegraphics[width=0.97\columnwidth]{Runout_dense_slope}
+\begin{subfigure}[t]{0.95\textwidth}
+\centering
+\includegraphics[width=0.95\columnwidth]{Runout_dense_slope}
 \caption{Evolution of run-out with time (dense)}
 \label{fig:run_dense}
+\end{subfigure}\\
+\begin{subfigure}[t]{0.95\textwidth}
+\centering
+\includegraphics[width=0.95\columnwidth]{KE_dense_slope}
+\caption{Evolution of Kinetic Energy with time (dense case)}
+\label{fig:KE_dense}
+\end{subfigure}
+\caption{Evolution of run-out with time (dense)}
+\label{fig:run_KE_dense}
 \end{figure}
-
-The evolution of run-out distances for a dense sand column with time in dry and submerged conditions for varying slope inclinations are presented in~\cref{fig:run_dense}. The run-out distance is longer in submerged condition than the dry condition for a flow on a horizontal surface. However, with increase in the slope angle the run-out in the fluid decreases.
 
 Dense granular columns in fluid take a longer time to collapse and flow, due to the development of large negative pore-pressures, as the dense granular material dilates during the initial phase of the flow. The morphology of dense granular flows down slopes of varying inclinations at the critical time ($t=\tau_{c}=\sqrt{H/g}$, when the flow is fully mobilised) are shown in~\cref{fig:slope_dense}.
 
 It can be seen that the viscous drag on the dense column tend to predominate over the influence of hydroplaning on the run-out behaviour. This influence can be observed in the smaller peak kinetic energy for granular column in fluid compared to it's dry counterpart (see~\Cref{fig:KE_dense}). With increase in slope angle, the volume of material that dilates increases. This results in large negative pore pressures and more viscous drag on the granular material. Hence, the difference in the run-out between the dry and the submerged condition, for a dense granular assembly, increases with increase in the slope angle.
-
-\begin{figure}
-\centering
-\includegraphics[width=0.97\columnwidth]{KE_dense_slope}
-\caption{Evolution of Kinetic Energy with time (dense case)}
-\label{fig:KE_dense}
-\end{figure}
 
 
 \begin{figure}
@@ -1249,9 +1280,20 @@ In contrast to the dense granular columns, the loose granular columns (relative 
 
 \begin{figure}
 \centering
+\begin{subfigure}[b]{0.95\textwidth}
+\centering
 \includegraphics[width=0.97\columnwidth]{Runout_loose_slope}
 \caption{Evolution of run-out with time (loose)}
 \label{fig:run_loose}
+\end{subfigure} \\
+\begin{subfigure}[b]{0.95\textwidth}
+\centering
+\includegraphics[width=0.97\columnwidth]{KE_loose_slope}
+\caption{Evolution of Kinetic Energy with time (loose)}
+\label{fig:KE_loose}
+\end{subfigure}
+\caption{Evolution of runout and kinetic energy with time (loose)}
+\label{fig:KE_run_loose}
 \end{figure}
 
 \begin{figure}
@@ -1286,12 +1328,6 @@ In contrast to the dense granular columns, the loose granular columns (relative 
 \end{figure}
 
 
-\begin{figure}
-\centering
-\includegraphics[width=0.97\columnwidth]{KE_loose_slope}
-\caption{Evolution of Kinetic Energy with time (loose)}
-\label{fig:KE_loose}
-\end{figure}
 
 The evolution of packing density (see~\Cref{fig:voro}) shows that dense and the 
 loose conditions reach similar packing density. This indicates that the dense 
@@ -1329,19 +1365,27 @@ hydroplaning resulting in longer run-out distance.
 \end{figure}
 
 
+\begin{figure}
+\centering
+\includegraphics[width=0.97\columnwidth]{slope_runout}
+\caption{Effect of slope angle on the run-out behaviour for different initial 
+packing density.}
+\label{fig:slope_runout}
+\end{figure}
+
 \subsection{Effect of permeability}
 
 For a slope angle of \SI{5}{\degree}, the hydrodynamic radius of the loosely 
-packed grains was varied from r = 0.7R (high permeability), 0.75R, 0.8R, 0.85R 
+packed grains is varied from r = 0.7R (high permeability), 0.75R, 0.8R, 0.85R 
 to 0.9R (low permeability). The run-out distance is found to increase with 
 decrease in the permeability of the granular assembly (see~\Cref{fig:run5}). 
-The run-out distance for high permeable conditions (r = 0.7R -- 0.8R) were 
+The run-out distance for high permeable conditions (r = 0.7R -- 0.8R) are 
 lower than their dry counterparts. Although, decrease in permeability resulted 
 in an increase in the run-out distance, no significant change in the run-out 
-behaviour was observed for a hydrodynamic radius of up to 0.8R.
+behaviour is observed for a hydrodynamic radius of up to 0.8R.
 
 With further decrease in permeability (r = 0.85R and 0.9R), the run-out 
-distance in the fluid was greater than the run-out observed in the dry 
+distance in the fluid is greater than the run-out observed in the dry 
 condition. At very low permeability (r = 0.9R), granular material started to 
 entrain more water at the base, which causes a reduction in the effective 
 stress accompanied by a lubrication effect on the flowing granular media. This 
@@ -1353,27 +1397,91 @@ The permeability of the granular column did not have an influence on the evoluti
 
 \begin{figure}
 \centering
-\includegraphics[width=0.97\columnwidth]{Runout_loose_5_slope}
+\begin{subfigure}[b]{0.95\textwidth}
+\centering
+\includegraphics[width=0.95\columnwidth]{Runout_loose_5_slope}
 \caption{Evolution of run-out with time for different permeability (loose slope \SI{5}{\degree})}
 \label{fig:run5}
-\end{figure}
-
-
-\begin{figure}
+\end{subfigure}\\
+\begin{subfigure}[b]{0.95\textwidth}
 \centering
-\includegraphics[width=0.97\columnwidth]{Height_loose_5_slope}
+\includegraphics[width=0.95\columnwidth]{Height_loose_5_slope}
 \caption{Evolution of height with time for different permeability (loose slope \SI{5}{\degree})}
 \label{fig:height5}
+\end{subfigure}
+\caption{Evolution of run-out and height with time for different permeability 
+(loose slope \SI{5}{\degree})}
+\label{fig:height_run_5}
 \end{figure}
 
 \begin{figure}
 \centering
-\includegraphics[width=0.97\columnwidth]{KE_loose_5_slope}
-\caption{Evolution of Kinetic Energy with time for different permeability (loose slope \SI{5}{\degree})}
+\begin{subfigure}[b]{0.95\textwidth}
+\includegraphics[width=0.95\columnwidth]{KE_loose_5_slope}
+\caption{Evolution of kinetic energy with time for different permeability 
+(loose slope \SI{5}{\degree})}
 \label{fig:KE5}
+\end{subfigure} \\
+\begin{subfigure}[b]{0.95\textwidth}
+\centering
+\includegraphics[width=0.95\columnwidth]{Voronoi_5}
+\caption{Evolution of packing density with time for different permeability 
+(loose slope \SI{5}{\degree})}
+\label{fig:voro5}
+\end{subfigure}
+\caption{Evolution of kinetic energy and packing density with time for 
+different permeability 
+(loose slope \SI{5}{\degree})}
+\label{fig:voro_ke_5}
 \end{figure}
 
-Positive pore-pressure generation at the base of the flow was observed for low 
+\begin{figure}
+\makebox[\linewidth][c]{
+\begin{subfigure}[b]{0.95\textwidth}
+	\centering
+    \includegraphics[width=0.95\textwidth]{loose_slope/LBM_660_Slope5_r07}
+    \caption{r = 0.7 R}
+    \label{fig:LBM_660_Slope5_r07}
+\end{subfigure}
+}\\
+\makebox[\linewidth][c]{
+\begin{subfigure}[b]{0.95\textwidth}
+	\centering
+    \includegraphics[width=0.95\textwidth]{loose_slope/LBM_660_Slope5_r075}
+    \caption{r = 0.75 R}
+    \label{fig:LBM_660_Slope5_r075}
+\end{subfigure}
+} \\
+\makebox[\linewidth][c]{
+\begin{subfigure}[b]{0.95\textwidth}
+	\centering
+    \includegraphics[width=0.95\textwidth]{loose_slope/LBM_660_Slope5_r08}
+    \caption{r = 0.8 R}
+    \label{fig:LBM_660_Slope5_r08}
+\end{subfigure}
+}\\
+\makebox[\linewidth][c]{
+\begin{subfigure}[b]{0.95\textwidth}
+	\centering
+    \includegraphics[width=0.95\textwidth]{loose_slope/LBM_660_Slope5_r085}
+    \caption{r = 0.85 R}
+    \label{fig:LBM_660_Slope5_r085}
+\end{subfigure}
+}\\
+\makebox[\linewidth][c]{
+\begin{subfigure}[b]{0.95\textwidth}
+	\centering
+    \includegraphics[width=0.95\textwidth]{loose_slope/LBM_660_Slope5_r09}
+    \caption{r = 0.9 R}
+    \label{fig:LBM_660_Slope5_r09}
+\end{subfigure}
+}
+\caption{Evolution of the flow front at $t = 2\tau_c$ for different 
+permeabilities (loose slope 5\si{\degree}).}
+\label{fig:slope_loose_5}
+\end{figure}
+
+Positive pore-pressure generation at the base of the flow is observed for low 
 permeable conditions. Inspection of the local packing density showed 
 entrainment of water at the base of the flow, which can also be observed by the 
 steep decrease in the packing density (see~\Cref{fig:voro5}) for the very low 
@@ -1381,12 +1489,6 @@ permeability condition (r = 0.9R). At the end of the flow ($t \ge 3 \times
 \tau_c$), the excess pore-pressure dissipates and the granular material, 
 irrespective of their permeability, reaches almost the same packing density.
 
-\begin{figure}
-\centering
-\includegraphics[width=0.97\columnwidth]{Voronoi_5}
-\caption{Evolution of packing density with time for different permeability (loose slope \SI{5}{\degree})}
-\label{fig:voro5}
-\end{figure}
 
 
 \begin{figure}
@@ -1396,7 +1498,7 @@ irrespective of their permeability, reaches almost the same packing density.
     \includegraphics[width=0.95\textwidth]{Perm_Runout_a08_dense}
     \caption{Effect of permeability on the run-out distance (Dense). Comparison 
     between dry and submerged granular column for a slope angle of 
-    0~\si{\degree} and 5~\si{\degree}.}
+    0\si{\degree} and 5\si{\degree}.}
     \label{fig:Perm_Runout_a08_dense}
 \end{subfigure}\\
 \begin{subfigure}[b]{0.95\textwidth}
@@ -1404,13 +1506,21 @@ irrespective of their permeability, reaches almost the same packing density.
     \includegraphics[width=0.95\textwidth]{Perm_Runout_a08_loose}
     \caption{Effect of permeability on the run-out distance (Loose). Comparison 
         between dry and submerged granular column for a slope angle of 
-        0~\si{\degree} and 5~\si{\degree}.}
+        0\si{\degree} and 5\si{\degree}.}
     \label{fig:Perm_Runout_a08_loose}
 \end{subfigure}
-\caption{EEffect of permeability on the run-out distance (Dense and Loose). 
+\caption{Effect of permeability on the run-out distance (Dense and Loose). 
 	Comparison between dry and submerged granular column for a slope angle of 
-    0~\si{\degree} and 5~\si{\degree}..}
+    0~\si{\degree} and 5~\si{\degree}.}
 \label{fig:Perm_Runout_loose_dense}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics[width=0.97\columnwidth]{Perm_Runout_slope}
+\caption{Effect of permeability on the run-out behaviour for different slope 
+angle and the initial packing density.}
+\label{fig:Perm_Runout_slope}
 \end{figure}
 
 
@@ -1567,7 +1677,7 @@ slope of 5\si{\degree}.}
 
 \section{Summary}
 
-Two-dimensional LB-DEM simulations were performed to understand the behaviour 
+Two-dimensional LB-DEM simulations are performed to understand the behaviour 
 of submarine granular flows. Unlike dry granular collapse, the run-out 
 behaviour in fluid is dictated by the initial volume fraction. Granular columns 
 with loose packing tend to flow longer in comparison to dense columns, due to 
