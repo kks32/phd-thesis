@@ -14,8 +14,9 @@ of deaths and injuries each year. Hence, it is important to understand the
 triggering mechanism and the flow evolution. The momentum transfer between the 
 discrete and continuous phases significantly affects the dynamics of the flow 
 as a whole~\citep{Topin2012}. Although certain macroscopic models are able to 
-capture simple mechanical behaviours~\citep{Peker2007}, the complex physical 
-mechanisms occurring at the grain scale, such as hydrodynamic instabilities, 
+capture the simple mechanical behaviours~\citep{Peker2007}, the complex 
+physical mechanisms occurring at the grain scale, such as hydrodynamic 
+instabilities, 
 formation of clusters, collapse, and transport,~\citep{Topin2011} have largely 
 been ignored. In particular, when the solid phase reaches a high volume 
 fraction, the strong heterogeneity arising from the contact forces between the 
@@ -1214,13 +1215,16 @@ understand the influence of lubrication and viscous drag.
 The evolution of run-out for a dense sand column with time in dry and submerged 
 conditions for varying slope inclinations are presented 
 in~\cref{fig:run_dense}. For all slope angles, the run-out distance in the dry 
-condition is longer than the submerged condition. This indicates that the  
-
-The 
-run-out distance is longer in submerged condition 
-than the dry condition for a flow on a horizontal surface. However, with 
-increase in the slope angle the run-out in the fluid decreases.
-
+condition is longer than the submerged condition. Similar to the case of 
+collapse on a horizontal plane, the dense granular columns experience 
+significant drag forces than the lubrication effect. The difference in the 
+run-out between the dry and submerged conditions decreases with increase in the 
+slope angle. At a slope of 5\si{\degree} the difference in the run-out between 
+the dry and the submerged condition is the smallest. This is due to significant 
+hydroplaning of a thin flowing layer, the occurrence of hydroplaning can be 
+observed by a sustained peak kinetic energy (see~\cref{fig:KE_dense}). At 
+higher slope angles (> 5\si{\degree}), the drag force predominates over the 
+lubrication effect and results in shorter run-out distance. 
 \begin{figure}
 \centering
 \begin{subfigure}[t]{0.95\textwidth}
@@ -1239,9 +1243,23 @@ increase in the slope angle the run-out in the fluid decreases.
 \label{fig:run_KE_dense}
 \end{figure}
 
-Dense granular columns in fluid take a longer time to collapse and flow, due to the development of large negative pore-pressures, as the dense granular material dilates during the initial phase of the flow. The morphology of dense granular flows down slopes of varying inclinations at the critical time ($t=\tau_{c}=\sqrt{H/g}$, when the flow is fully mobilised) are shown in~\cref{fig:slope_dense}.
+Similar to the case of collapse on a horizontal surface, dense granular columns 
+in fluid require a longer time to collapse and flow, due to the development of 
+large negative pore-pressures. Large negative pore pressure is developed as the 
+dense granular material dilates due to shearing along the fracture surface in 
+the initial phase of the flow. The snapshots of dense granular column collapse 
+down slopes of varying inclinations at the critical time 
+($t=\tau_{c}=3\sqrt{H/g}$), are shown in~\cref{fig:slope_dense}.
 
-It can be seen that the viscous drag on the dense column tend to predominate over the influence of hydroplaning on the run-out behaviour. This influence can be observed in the smaller peak kinetic energy for granular column in fluid compared to it's dry counterpart (see~\Cref{fig:KE_dense}). With increase in slope angle, the volume of material that dilates increases. This results in large negative pore pressures and more viscous drag on the granular material. Hence, the difference in the run-out between the dry and the submerged condition, for a dense granular assembly, increases with increase in the slope angle.
+It can be seen that the viscous drag on the dense column tend to predominate 
+over the influence of hydroplaning on the run-out behaviour. This influence can 
+be observed in the smaller peak kinetic energy for granular column in fluid 
+compared to it's dry counterpart (see~\Cref{fig:KE_dense}). With increase in 
+slope angle, the volume of material that dilates increases. This results in 
+large negative pore pressures and more viscous drag on the granular material. 
+Hence, the difference in the run-out between the dry and the submerged 
+condition, for a dense granular assembly, increases with increase in the slope 
+angle above an inclination of 5\si{\degree}.
 
 
 \begin{figure}
@@ -1271,11 +1289,21 @@ It can be seen that the viscous drag on the dense column tend to predominate ove
     \label{fig:ds7.5}
 \end{subfigure}
 }
-\caption{Flow morphology at critical time for different slope angles (dense)}
+\caption{Flow morphology at $t = 3 \tau_c$ for different slope angles (dense)}
 \label{fig:slope_dense}
 \end{figure}
 
-In contrast to the dense granular columns, the loose granular columns (relative density $I_D=30 \%$) show longer run-out distance in immersed conditions (see~\Cref{fig:run_loose}). The run-out distance in fluid increases with increase in the slope angle compared to the dry cases. Loose granular material tends to entrain more water at the base of the flow front, creating a lubricating surface, which causes longer run-out distance (see~\Cref{fig:slope_loose}). The hydroplaning effect causes an increase in the velocity the loose condition in comparison with the dense condition (see~\Cref{fig:KE_loose}).
+In contrast to the dense granular columns, the loose granular columns (packing 
+fraction of 79\%) show longer run-out distance in immersed conditions 
+(see~\Cref{fig:run_loose}). The run-out distance in fluid increases with 
+increase in the slope angle compared to the dry cases. Loose granular material 
+tends to entrain more water at the base of the flow 
+front, creating a lubricating surface, which causes longer run-out distance 
+(see~\Cref{fig:slope_loose}). For the same thickness of flow, loose granular 
+flow has smaller density and hence higher Froude's number than the dense flow 
+resulting in higher probability of hydroplaning. The hydroplaning effect causes 
+an increase in the flow velocity for loose granular material in comparison with 
+the dense condition (see~\Cref{fig:KE_loose}).
 
 \begin{figure}
 \centering
@@ -1294,6 +1322,8 @@ In contrast to the dense granular columns, the loose granular columns (relative 
 \caption{Evolution of runout and kinetic energy with time (loose)}
 \label{fig:KE_run_loose}
 \end{figure}
+
+The sna
 
 \begin{figure}
 \makebox[\linewidth][c]{
@@ -1322,7 +1352,8 @@ In contrast to the dense granular columns, the loose granular columns (relative 
     \label{fig:ls7.5}
 \end{subfigure}
 }
-\caption{Flow morphology at critical time for different slope angles (loose)}
+\caption{Flow morphology at time $t = 3\tau_c$ for different slope angles 
+(loose)}
 \label{fig:slope_loose}
 \end{figure}
 
@@ -1475,7 +1506,7 @@ different permeability
     \label{fig:LBM_660_Slope5_r09}
 \end{subfigure}
 }
-\caption{Evolution of the flow front at $t = 2\tau_c$ for different 
+\caption{Evolution of the flow front at $t = 3\tau_c$ for different 
 permeabilities (loose slope 5\si{\degree}).}
 \label{fig:slope_loose_5}
 \end{figure}
@@ -1495,17 +1526,13 @@ irrespective of their permeability, reaches almost the same packing density.
 \begin{subfigure}[b]{0.95\textwidth}
 	\centering
     \includegraphics[width=0.95\textwidth]{Perm_Runout_a08_dense}
-    \caption{Effect of permeability on the run-out distance (Dense). Comparison 
-    between dry and submerged granular column for a slope angle of 
-    0\si{\degree} and 5\si{\degree}.}
+    \caption{Effect of permeability on the run-out distance (Dense)}
     \label{fig:Perm_Runout_a08_dense}
 \end{subfigure}\\
 \begin{subfigure}[b]{0.95\textwidth}
 	\centering
     \includegraphics[width=0.95\textwidth]{Perm_Runout_a08_loose}
-    \caption{Effect of permeability on the run-out distance (Loose). Comparison 
-        between dry and submerged granular column for a slope angle of 
-        0\si{\degree} and 5\si{\degree}.}
+    \caption{Effect of permeability on the run-out distance (Loose).}
     \label{fig:Perm_Runout_a08_loose}
 \end{subfigure}
 \caption{Effect of permeability on the run-out distance (Dense and Loose). 
@@ -1638,7 +1665,7 @@ granular column collapse in fluid (a = 6) on a slope of 5\si{\degree}}
 \begin{subfigure}[t]{0.8\textwidth}
 	\centering
     \includegraphics[width=\textwidth]{KEx_a6_slope}
-    \caption{Evolution of the vertical kinetic energy}
+    \caption{Evolution of the horizontal kinetic energy}
     \label{fig:KEx_a6_slope}
 \end{subfigure}
 }\\
@@ -1646,7 +1673,7 @@ granular column collapse in fluid (a = 6) on a slope of 5\si{\degree}}
 \begin{subfigure}[t]{0.95\textwidth}
 	\centering
     \includegraphics[width=\textwidth]{KEy_a6_slope}
-    \caption{Evolution of the horizontal kinetic energy}
+    \caption{Evolution of the vertical kinetic energy}
     \label{fig:KEy_a6_slope}
 \end{subfigure}
 }
