@@ -8,7 +8,8 @@
 
 \section{Introduction}
 
-In nature, instabilities of slopes or cliffs are dramatic events involving 
+In nature, instabilities of slopes or cliffs can manifest themselves in 
+dramatic events involving 
 sudden release of a large mass of soil. The prediction of these catastrophic 
 events represents several challenges, one difficulty being our incomplete 
 understanding of the granular flow dynamics~\citep{Rondon2011}. Understanding 
@@ -21,15 +22,15 @@ flows~\citep{Iverson1997}.
 Conventionally, granular materials such as soils are modelled as a continuum. 
 On a macroscopic scale, granular materials exhibit many collective phenomena 
 and the use of continuum mechanics to describe the macroscopic behaviour can be 
-justified. However on a grain scale, the granular materials exhibit complex 
+justified. However on a grain-scale, the granular materials exhibit complex 
 solid-like and/or fluid-like behaviour depending on how the grains interact 
-with each other. Numerical studies at grain scale allow a precise 
+with each other. Numerical studies at grain-scale allow a precise 
 understanding of the internal flow structure. However, even in simplified 
 geometries such as those investigated in the laboratory-scale experiments, DEM 
 suffers from a serious short-coming in the number of grains that can be 
-simulated in a reasonable time. This is a critical issue when more complex 
-geometries or long-time granular processes are considered, or when particle 
-size distributions are broad. For this reason, most numerical studies are 
+simulated in a reasonable time. This is a critical issue for more complex 
+geometries or when granular processes which occur on a long time-scale are 
+considered. For this reason, most numerical studies are 
 performed in 2D or simple particles shapes and size distributions are 
 considered. 
 
@@ -47,7 +48,7 @@ effects~\citep{Rycroft2009a}. Discrete element approaches
 are capable of simulating the granular material as a discontinuous system 
 allowing one to probe into local variables such as position, velocities, 
 contact forces, etc. The fundamental question is how to model granular 
-materials which exhibit complex phenomenon. It is important to understand the 
+materials which exhibit complex phenomena. It is important to understand the 
 mechanics of granular flows and the ability and limitations of continuum 
 methods in modelling the granular flow dynamics.
 
@@ -73,7 +74,7 @@ measurement of the internal flow
 structure~\citep{Lo2009,Staron2005,Staron2007a,Utili2014}.
 Power laws relating the final run-out and height to the initial aspect ratio 
 ($a = H_0 / L_0$) of the column were observed. These findings immediately pose 
-a question: are these simple scaling fortuitous, an oversimplification, or in 
+a question: are these simple scalings fortuitous, an oversimplification, or in 
 fact indicative of a simple dynamical balance? 
 
 
@@ -90,7 +91,7 @@ theoretical point of view, the spreading has been described using depth
 averaged equations~\citep{Kerswell2005,Larrieu2006}. The depth-averaged and 
 Saint-Venant equations, however, struggle to recover the precise dynamic 
 behaviour of the system~\citep{Warnett2013} and only succeeds in predicting the 
-scaling observed for aspect ratio less than one. Describing the behaviour of 
+scaling observed for an aspect ratio less than one. Describing the behaviour of 
 larger aspect ratio and capturing the initial stage of the collapse, when the 
 grains experience a rapid change of direction from vertical to horizontal, 
 remain an open challenge.
@@ -105,13 +106,13 @@ rectangular channel,~\citep{Lajeunesse2004}}
 \end{figure}
 
 In the present study, multi-scale numerical modelling, i.e. grain-scale 
-modelling and continuum analyses, of quasi-two dimensional collapse of 
+modelling and continuum analyses, of quasi-two-dimensional collapse of 
 granular columns are performed using two-dimensional Discrete Element Method 
 (DEM) and Generalised Interpolation Material Point Method (GIMPM). GIMPM, a 
-hybrid Eulerian -- Lagrangian approach, with Mohr-Coloumb failure criterion is 
+hybrid Eulerian--Lagrangian approach, with a Mohr-Coloumb failure criterion is 
 used to describe the continuum behaviour of the granular column collapse. 
 Whereas, the micro-mechanics of the flow is captured using DEM simulations. 
-Comparing the grain scale behaviour with the continuum simulations highlights 
+Comparing the grain-scale behaviour with the continuum simulations highlights 
 the limitations of the continuum approach in modelling dense granular flows and 
 their ability in capturing the complex flow kinematics which are due to 
 micro-scale rheology.
@@ -121,14 +122,14 @@ micro-scale rheology.
 In this study, the numerical set-up of granular columns are analogous to the  
 experimental investigation performed by~\citet{Lajeunesse2004}. The 
 experimental configuration of~\citet{Lajeunesse2004} is shown in 
-\cref{fig:exp}. Granular material of mass `\textit{m}' is poured into a 
-container to form a rectangular heap of length `${L}_{\textit{0}}$', height 
-`${H}_{\textit{0}}$' and thickness `\textit{W}'. The internal friction angle 
+\cref{fig:exp}. Granular material of mass \textit{m} is poured into a 
+container to form a rectangular heap of length ${L}_{\textit{0}}$, height 
+${H}_{\textit{0}}$ and thickness \textit{W}. The internal friction angle 
 and the wall friction between the wall and the glass beads measured by 
 ~\citet{Lajeunesse2004} are listed in~\cref{table:mat_prop}. The gate is then 
 quickly removed to release the granular mass that spreads in the horizontal 
-channel until it comes to rest. The final run-out distance `${L}_{\textit{f}}$' 
-and the collapsed height `$H_{\textit{f}}$' are measured. The run-out distance 
+channel until it comes to rest. The final run-out distance ${L}_{\textit{f}}$ 
+and the collapsed height $H_{\textit{f}}$ are measured. The run-out distance 
 and collapse height exhibit a power law relation with the initial aspect ratio 
 `\textit{a}' $(=H_{\textit{0}}/L_{\textit{0}})$ of the column. 
 
@@ -188,14 +189,15 @@ behaviour.
 \end{figure}
 
 
-The overlap between grains are determined by the stiffness 
+The overlap between grains is determined by the stiffness 
 $\textit{k}_{\textit{n}}$ of the spring in the normal direction. Typically, 
 an average overlap in the range 0.1 to 1.0\% is desirable~\citep{Zenit2005} and 
 the spring constant is chosen to produce grain overlaps in this range. The 
 stiffness is determined as
 \begin{align}
-& \textit{k}_{\textit{n}}=\frac{2 \pi G}{(1-\nu)[2\ln(\frac{2r}{A})-1]} \\ 
-& A = [\frac{2r(1-\nu)f_{n}}{\pi G}]^{\frac{1	}{2}}\,,
+& \textit{k}_{\textit{n}}=\frac{2 \pi 
+G}{(1-\nu)\left[2\ln(\frac{2r}{A})-1\right]} \\ 
+& A = \left[\frac{2r(1-\nu)f_{n}}{\pi G}\right]^{\frac{1	}{2}}\,,
 \end{align}
 where $f_{n}$ is the normal contact force; G is the shear modulus; $\nu$ is the 
 Poisson's ratio and r is the radius of the grain. A simpler form of stiffness 
@@ -216,9 +218,10 @@ criterion.
 
 \citet{Staron2007a} observed that the coefficient of restitution $\varepsilon$ 
 dramatically changes the behaviour of the system for 
-$\varepsilon\longrightarrow 1$; in particular, this dramatic change is expected 
-to become more important for increasing values of a. On the contrary, for 
-$\varepsilon \le 0.8$, the influence of the coefficient of restitution becomes 
+$\varepsilon\rightarrow 1$; in particular, this dramatic change is expected 
+to become more important for increasing values of \textit{a}. On the contrary, 
+for $\varepsilon \le 0.8$, the influence of the coefficient of restitution 
+becomes 
 negligible. In the present study, a value of 0.75 is adopted as the coefficient 
 of restitution, similar values of restitution coefficient was adopted 
 by~\citet{Girolami} and~\citet{Zenit2005}. The normal damping coefficient 
@@ -226,7 +229,7 @@ $C_{\textit{n}}$
 is appropriately chosen to achieve the required coefficient of restitution 
 $\varepsilon$:
 \begin{align}
-& C_{\textit{n}}=2\gamma \sqrt{m_{\textit{ij}}k_{\textit{n}}} \\ 
+& C_{\textit{n}}=2\gamma \sqrt{m_{\textit{ij}}k_{\textit{n}}} \,,\\ 
 & \mbox{where} \quad \gamma = -\frac{\ln(\varepsilon)}{\sqrt{\pi^{2}+\ln^2 
 (\varepsilon)}},\quad \mbox{and} \quad 
 \textit{m}_{\textit{ij}}=\frac{\textit{m}_{\textit{i}}\textit{m}_{\textit{j}}}{\textit{m}_{\textit{i}}
@@ -258,13 +261,14 @@ Coefficient of restitution, $\varepsilon$ & 0.755 \\ \bottomrule
 \end{tabular}
 \end{table}
 
-GIMPM with Mohr-Coloumb constitutive model is used to simulate plane strain 
+GIMPM with a Mohr-Coloumb constitutive model is used to simulate plane strain 
 collapse of granular columns.~\citet{Crosta2009} observed that the Mohr-Coloumb 
-with non-associate flow rule is able to capture granular collapse dynamics and 
+model with non-associate flow rule is able to capture granular collapse 
+dynamics and 
 models the strong vertical motion. This method does not suffer 
 the limitations of typical shallow water equation techniques. In order to 
 understand the ability and limitations of continuum approaches in capturing the 
-local rheology, it is important to scale the grain scale material properties, 
+local rheology, it is important to scale the grain-scale material properties, 
 such as the inter-particle friction and stiffness, to the continuum scale 
 (macroscopic friction and Young's modulus).~\citet{Crosta2009} observed that 
 the friction 
@@ -275,8 +279,9 @@ the critical state friction angle is used in the Mohr-Coloumb model. In order
 to obtain the critical state friction angle of the granular sample, a shear 
 test is performed using 1078 DEM grains. A bi-periodic boundary condition is 
 adopted on the sides of the sample (see~\cref{fig:shear}). Two layers of fixed 
-grains (shown in black) is placed at the top and the bottom of the shear 
-sample. A normal pressure `P' and a horizontal velocity \textit{v} is applied 
+grains (shown in black) are placed at the top and the bottom of the shear 
+sample. A normal pressure \textit{P} and a horizontal velocity \textit{v} is 
+applied 
 to the fixed grains  at the top of 
 the shear sample. As the normal effective stress is varied, 
 the average shear stress in the sample is measured. The sample is sheared 
@@ -315,8 +320,8 @@ by~\citet{Bardenhagen2004}. Hence, GIMPM loses the merit that it reduces the
 numerical noise due to material points crossing the background mesh. In 
 addition, the probability of particles crossing the background mesh increases 
 with decrease in the mesh size, hence, more noise may be 
-produced~\citep{Abe2013}. The effect of number of material points per cell on 
-the run-out behaviour is discussed in~\cref{sec:MPM_points_per_cell}. In the 
+produced~\citep{Abe2013}. The effect of the number of material points per cell 
+on the run-out behaviour is discussed in~\cref{sec:MPM_points_per_cell}. In the 
 present study, each material point represents one-fourth of a DEM soil grain. 
 The parameters used for the continuum analyses are presented 
 in~\cref{table:MPMData}. 
@@ -1149,7 +1154,7 @@ the initial length $L_0$ of the pile, as in the experiments of collapsing
 columns. The total run-out duration $t_f$ is the time taken by the pile to 
 reach its final run-out distance $L_f$.
 
-For grain scale simulations, classical DEM and Contact Dynamics approach are 
+For grain-scale simulations, classical DEM and Contact Dynamics approach are 
 used. This research is done in collaboration with Patrick Mutabaruka, 
 University of Montpellier, who performed Contact Dynamics (CD) simulations that 
 are 
