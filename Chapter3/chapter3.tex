@@ -535,100 +535,156 @@ density, such as 4 particles per cell, for large deformation problems. Very low
 particle density will result in non-physical opening of cracks in large 
 deformation simulations and can be a source for the cell crossing noise. 
 However, higher value of particle density affects the computation time. 
-%To 
-%study the effect of number of material points on the accuracy of the 
-%simulation, three simulations were carried out, by varying the number of 
-%material points in each simulation. A 2D plain strain collapse of a granular 
-%column with an aspect ratio `a' = 0.67 is simulated. The initial width 
-%${L}_{\mathit{i}}$ of the column is 0.06m. The actual size of the glass beads 
-%that is simulated is 1mm. 600, 2400, and 9600 material points were used to 
-%discretize the continuum, in reality each material point represents 4, 1, and 
-%0.25 of the actual glass particles, respectively. Table~\cref{t:mpm} presents 
-%the parameters used in the analyses to study the effect of number of particles 
-%on the accuracy of MPM simulations for large deformation problems. The initial 
-%configuration of the granular columns discretized in to 600, 2400, and 9600 
-%material points are presented in~\cref{fig:MPMgc}.
-%\begin{table}
-%\caption{Parameters used in the MPM simulation of a granular column collapse}
-%\label{t:mpm}
-%\centering
-%\begin{tabular}{|l|l|c|c|c|}
-%\hline
-%\multicolumn{2}{|c|}{{\mathbf{Parameter}}} & \mathbf{Case I} & \mathbf{Case 
-%II} 
-%& \mathbf{Case III} \\ \hline \hline
-%\multirow{5}{*}{Model geometry} & Number of particles & 600 & 2400 & 9600 \\ 
-%\cline{2-5}
-%& Particle interval (mm) & 2 & 1 & 0.5 \\ \cline{2-5}
-%& Mesh interval (mm) & 4.0 & 2.0 & 1.0 \\  \cline{2-5}
-%& Number of particles per mesh & \multicolumn{3}{c|}{4} \\ \cline{2-5}
-%& Dimension & \multicolumn{3}{c|}{2-D Plane strain}\\ \hline
-%\multirow{8}{*}{Material properties} & Constitutive model & 
-%\multicolumn{3}{c|}{Mohr-Coulomb} \\ \cline{2-5}
-%& Young's modulus, E (Pa) & \multicolumn{3}{c|}{$1.0 \times 10^{6}$} \\ 
-%\cline{2-5}
-%& Poisson's ration, $\nu$  & \multicolumn{3}{c|}{0.23} \\ \cline{2-5}
-%& Cohesion, \mathit{c} (Pa)  & \multicolumn{3}{c|}{0.0} \\ \cline{2-5}
-%& Friction angle, $\phi$  & \multicolumn{3}{c|}{22.5$^{o}$} \\ \cline{2-5}
-%& Dilation angle, $\varphi$  & \multicolumn{3}{c|}{0.0$^{o}$} \\ \cline{2-5}
-%& Density, $\rho (kg/m^{3})$   & \multicolumn{3}{c|}{1800} \\ \cline{2-5}
-%& Surface friction angle & \multicolumn{3}{c|}{24.5$^{o}$} \\ \hline
-%\multirow{3}{*}{MPM simulation} & Time increment (\mathit{s}) & 
-%\multicolumn{3}{c|}{$1.0 \times 10^{-5}$} \\ \cline{2-5}
-%& Number of steps & \multicolumn{3}{c|}{100,000} \\ \cline{2-5}
-%& Time (s) & \multicolumn{3}{c|}{1.0} \\ \hline
-%\end{tabular}
-%\end{table}
-%
-%The final profile of the quasi two-dimensional granular column collapse 
-%obtained from the MPM analyses are presented in~\cref{fig:MPMgc}. 
-%\citet{Lajeunesse2005} observed that for a quasi 2-D granular column collapse, 
-%the final collapse height and the run-out distance are 0.04m and 0.115m, 
-%respectively. Comparing the MPM simulation with the experimental results of 
-%\citet{Lajeunesse2005}, the MPM simulation with 9600 material points, i.e. 4 
-%material points representing an actual particle, is found to be a better 
-%representation of the 2-D granular collapse profile. The final collapse height 
-%obtained from the MPM simulations are the same and it matches the experimental 
-%collapse height. However, the MPM simulations with 600, 2400, and 9600 
-%material 
-%points over estimate the run-out distance by 8.7\%, 6\%, and 1.7\%, 
-%respectively. It should be noted that the~\cref{fig:MPMgc} is plotted 
-%using data only from the material points, and the data from nodes were not 
-%considered in plotting the collapse profile. This may have some non-trivial 
-%effect on the profile of the collapsed granular column predicted with lesser 
-%number of material points, however, the mechanism of collapse remains largely 
-%unaffected.~\citet{Andersen2010} observed that the MPM simulations are 
-%significantly affected by the number of material points used to model the 
-%slope. Friction, is also found to play a significant role in the failure 
-%mechanism, for relatively high angles of friction, the soil moved as a bulk 
-%and 
-%for low friction angles, the soil behaved almost like a 
-%fluid~\citep{Andersen2010}. Closer observation of the collapse profile shows a 
-%clear gap at the initial toe end of the column and the base surface even after 
-%the granular material has ceased to flow. This effect is concealed in MPM 
-%simulations with lower number of material points. Although the final collapsed 
-%profile obtained using 9600 material points matches with the experimental 
-%observations, a gap of about 25\% of initial width of the column is observed 
-%at 
-%the toe end of the initial configuration of the granular column. The 
-%observation of gap is non-physical and can be attributed to the continuum 
-%modelling of a particulate assembly. Thus, it can be concluded that at least 4 
-%material points should represent a granular particle for the continuum 
-%simulation to be more realistic and the computation grid should enclose at 
-%least 4 material points in its initial configuration.
 
-%\begin{figure}[tbhp]
-%\includegraphics[width=0.975\textwidth]{MPM2}
-%\caption[MPM simulations of 2-D granular column collapse with different 
-%numbers 
-%of material points]{Comparison of MPM simulations of 2-D granular column 
-%collapse with different numbers of material points, showing variation in 
-%horizontal strain}
-%\label{fig:MPMgc}
-%\end{figure}
+\subsection{Effect of mesh size and number of material points per cell}
+\label{sec:MPM_points_per_cell}
+
+\citet{Abe2013} observed that for a coarse mesh, the numerical error 
+decreases with increase in the number of material points per cell. In contrast, 
+they observed an opposite trend for the fine meshes (0.01 \si{\m}). The 
+influence of numerical noise due to particles crossing the background mesh was 
+not observed when the mesh size is greater than 0.05 
+\si{\m}.~\citet{Coetzee2005} also found that the numerical error decreases with 
+increase in mesh refinement.
+
+In the present study, the effect of mesh size and the number of material points 
+per cell on the run-out behaviour is investigated. For a mesh size of 0.0125 
+\si{\m}, the number of material points per cell (PPC) is varied as 4, 16, 25, 
+36, 64, 81 and 100. The effect of number of material points on the run-out 
+behaviour is presented in~\cref{fig:Runout_MPM}. At a low input energy of 
+50~\si{\J}, 4 and 16 material points per cell result in longer run-out 
+distance, where as the 
+run-out distance converges when the number of PPC is more 
+than 25. While at a high input energy of 500~\si{J}, both 4 and 16 PPC predict 
+almost the same run-out distance, but is higher than the run-out predicted 
+with more than 25 material points per cell. 
+
+\begin{figure}[tbhp]
+\centering
+\begin{subfigure}[b]{0.95\textwidth}
+\includegraphics[width=\textwidth]{Runout_50}
+\caption{$E_0=12.7mgd$}
+\label{fig:Runout_50}
+\end{subfigure}
+\\
+\begin{subfigure}[b]{0.95\textwidth}
+\centering
+\includegraphics[width=\textwidth]{Runout_500}
+\caption{$E_0=152mgd$}
+\label{fig:Runout_500}
+\end{subfigure}
+\caption{Evolution of run-out with time for varying material points per cell.}
+\label{fig:Runout_MPM}
+\end{figure}
+
+The evolution of the granular pile during the initial stage of flow is show 
+in~\cref{fig:MPM_50ppc} for different number of material points per cell. At 
+low input energy, fewer material points per cell results in larger separation 
+of the spreading mass from the left wall. Distinct shear bands can be observed 
+for more than 16 PPC. 
+The flow structure remains unchanged with increase in PPC of more than 25. At 
+a higher input energy
+(\cref{fig:MPM_500ppc}), almost all cases predict similar flow structure, 
+except in the case of 4 PPC.
+
+\begin{figure}[tbhp]
+\centering
+\includegraphics[height=\textheight]{MPM_50ppc}
+\caption{Effect of number of material points on cell on the run-out behaviour 
+$E_0=12.7mgd$. 
+Velocity profile (\si{\m/\s}) of granular pile subjected to gradient impact 
+loading.}
+\label{fig:MPM_50ppc}
+\end{figure}
+
+
+\begin{figure}[tbhp]
+\centering
+\includegraphics[height=\textheight]{MPM_500ppc}
+\caption{Effect of number of material points on cell on the run-out behaviour 
+$E_0=152mgd$. 
+Velocity profile (\si{\m/\s}) of granular pile subjected to gradient impact 
+loading.}
+\label{fig:MPM_500ppc}
+\end{figure}
+
+\Cref{fig:KE_MPM} shows the evolution of kinetic energy with time for varying 
+number of material points per cell. At low input energy, the horizontal kinetic 
+energy evolution is identical for all cases. A slightly quicker run-out 
+evolution during the spreading phase can be observed for the case of 4 PPC.  
+However, increase in the number of material points per cell significantly 
+affects the evolution of the vertical kinetic energy $E_{ky}$. At low energy, a 
+large proportion of the input energy is dissipated in the destabilisation 
+process. This results in material points falling behind the spreading mass to 
+the fill the cavity. Fewer material points per cell results in cell 
+crossing noise as the material points filling the cavity experience free-fall 
+due to gravity. The effect of cell-crossing noise can be seen in the 
+osciallation of vertical kinetic energy for fewer material points per cell. 
+However, at high input energy, most of the input velocity is dissipated during 
+the spreading process. This means that only a small fraction of energy is 
+available in the vertical component resulting in almost similar behaviour for 
+all cases. Four material points per cell predicts a higher peak vertical 
+kinetic energy in comparison with other cases, unlike the low energy case, no 
+oscillations were observed for the high input energy.
+
+\begin{figure}[tbhp]
+\centering
+\begin{subfigure}[b]{0.95\textwidth}
+\includegraphics[width=\textwidth]{KE_50}
+\caption{$E_0=12.7mgd$.}
+\label{fig:KE_50}
+\end{subfigure}
+\\
+\begin{subfigure}[b]{0.95\textwidth}
+\centering
+\includegraphics[width=\textwidth]{KE_500}
+\caption{$E_0=152mgd$}
+\label{fig:KE_500}
+\end{subfigure}
+\caption{Evolution of kinetic with time for varying material points per cell}
+\label{fig:KE_MPM}
+\end{figure}
+
+The effect of mesh size on the flow kinematics is studied by comparing two mesh 
+sizes: 0.01~\si{\m} and 0.0125~\si{\m} (\cref{fig:MPM_Size_Effect}). It can 
+be observed that the run-out distance converges with an increase in the number 
+of material points per cell in both cases. Less than ~1\% difference in the 
+run-out distance was observed between a mesh size of 0.0125~\si{\m} and 
+0.01~\si{\m}. The final run-out duration is almost unaffected by the increase 
+in the number of material points per cell. 
+ 
+
+\begin{figure}[tbhp]
+\centering
+\begin{subfigure}[b]{0.95\textwidth}
+\includegraphics[width=\textwidth]{50}
+\caption{$E_0=12.7mgd$.}
+\label{fig:50}
+\end{subfigure}
+\\
+\begin{subfigure}[b]{0.95\textwidth}
+\centering
+\includegraphics[width=\textwidth]{500}
+\caption{$E_0=152mgd$.}
+\label{fig:500}
+\end{subfigure}
+\caption{Evolution of run-out and duration of flow  for varying material points 
+per cell.}
+\label{fig:MPM_Size_Effect}
+\end{figure}
+
+This shows that the run-out distance is affected by the number of material 
+points per cell. However, the duration of the run-out is independent of the 
+number of material points per cell. The computation time increases with 
+increase in the number of material points per cell and decrease in the mesh 
+size. However, the run-out distance converges with increase in number of 
+material points per cell. Hence, an optimum number of 25 material points per 
+cell was adopted in this case. In summary, for conducting a successful MPM 
+analysis, a careful selection of the mesh size and the number of particles is 
+necessary.
 
 \section{Particulate modelling of granular flows}
-\subsection{Introduction}
+
 Granular materials often exhibit different behaviour under different 
 circumstances. Fluidized 
 granular material often resembles a liquid, and reveals surface waves. In 
