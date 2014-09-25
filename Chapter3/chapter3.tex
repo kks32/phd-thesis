@@ -54,13 +54,13 @@ representative volume element, in which, properties averaged over discrete
 grains exhibit deterministic relationships. Recent works on granular 
 materials suggest that a continuum law may be incapable of revealing 
 in-homogeneities at the grain-scale level, such as force 
-chains, fabric tensor, etc~\citep{Rycroft2009}. 
+chains, fabric tensor, etc~\citep{Rycroft2009b}. 
 
 Granular materials exhibit many collective phenomenon \citep{Jaeger1996}. 
 However, no continuum model is still capable of describing the parabolic flow, 
 the plug flow~\citep{Rycroft2006} and the occurrence of localized shear bands 
-in the granular materials. Most constitutive models, even in the simple case of 
-dry granular flows, cannot describe the entire range of flow from solid to 
+in the granular materials. Most constitutive models, even in the simple case 
+of dry granular flows, cannot describe the entire range of flow from solid to 
 fluid. In certain cases, the granular flow is modelled as a fluid behaviour. 
 Continuum models that are based on averaging techniques applied to a 
 representative volume elements are not successful even in quas-static 
@@ -73,66 +73,68 @@ of the shear stress to the normal stress in any plane reaches a critical value
 of the Coulomb internal friction coefficient $\mu$. The stress is determined 
 based on the mechanical equilibrium of the system along with the hypothesis of 
 \textit{incipient yield}, i.e. the yield criterion is attained everywhere at 
-all times. In limit-state Mohr-Coulomb plasticity, these conditions are assumed 
-to hold even if the wall allows for a plastic yielding, due to the assumption 
-of coaxiality~\citep{Rycroft2009}. The fundamental assumption of a limit-state 
-stress field at incipient yield everywhere is questionable.
+all times. In limit-state Mohr-Coulomb plasticity, these conditions are 
+assumed to hold even if the wall allows for a plastic yielding, due to the 
+assumption of coaxiality~\citep{Rycroft2009b}. The fundamental assumption of a 
+limit-state stress field at incipient yield everywhere is questionable.
 
-Granular flows can contain regions lying within the yield surface. For example, 
-in the case of a granular column collapse the central cone remains stagnant, 
-and thus cannot be considered as yielded. In fact, discrete-element simulations 
-show that the grains in this region essentially remain 
-static~\citep{Staron2005}. The coaxiality feature of Mohr-Coulomb plasticity is 
-useful in describing the debris flow. Granular material deforms solely based on 
-the alignment of the principle plane. In general, the major principle plane is 
-usually vertical due to gravity, and the coaxiality rule requires the material 
-to expand horizontally, which is the case for granular column collapse. 
-However, the coaxiality can be troubling depending on the circumstances, for 
-example, in a slow dense granular flow through a silo, the principle plane 
-remains vertical and the coaxiality requires the granular material to expand 
-horizontally, thus making it geometrically impossible for the granular material 
-to converge and exit through the orifice. Depending on the boundary conditions, 
-Mohr-Coulomb plasticity can result in discontinuity or jumps in the velocity 
-and stress fields~\citep{Rycroft2006}. 
+Granular flows can contain regions lying within the yield surface. For 
+example, in the case of a granular column collapse the central cone remains 
+stagnant, and thus cannot be considered as yielded. In fact, discrete-element 
+simulations show that the grains in this region essentially remain 
+static~\citep{Staron2005}. The coaxiality feature of Mohr-Coulomb plasticity 
+is useful in describing the debris flow. Granular material deforms solely based 
+on the alignment of the principle plane. In general, the major principle plane 
+is usually vertical due to gravity, and the coaxiality rule requires the 
+material to expand horizontally, which is the case for granular column 
+collapse. However, the coaxiality can be troubling depending on the 
+circumstances, for example, in a slow dense granular flow through a silo, the 
+principle plane remains vertical and the coaxiality requires the granular 
+material to expand horizontally, thus making it geometrically impossible for 
+the granular material to converge and exit through the orifice. Depending on 
+the boundary conditions, Mohr-Coulomb plasticity can result in discontinuity or 
+jumps in the velocity and stress fields~\citep{Rycroft2006}. 
 
 Advanced elasto-plastic models based on the \textit{critical state} theory
-provide a better representation of granular 
-flows in quasi-static regime, but they fail to capture the mechanism of rapid 
-granular flows which involves rate dependent behaviour. Another continuum based 
-model is the partial fluidization model, which uses a set of equations that 
-describes the flow velocity and the shear stresses along with a auxiliary order 
-parameter to predict the granular flow behaviour. The order parameter of the 
-granular media controls the size of the viscous-like contribution to the stress 
-tensor, and describes the transition between the flowing and the static 
-components of the granular system~\citep{Aranson2001}. A constitutive model, 
-which considers the solid fraction as the main microscopic parameter for 
-describing dense granular flow was proposed by~\citet{Josserand2004}. The 
-stress in the granular material is divided into rate-dependent part 
-representing the rebound-less impact between grains, and a rate-independent 
-part associated with longer contacts, i.e. quasi-static regime. Although, the 
-model captures shear localization behaviour, it fails to describe the granular 
-flow behaviour at rough boundaries.
+provide a better representation of granular flows in quasi-static regime, but 
+they fail to capture the mechanism of rapid granular flows which involves rate 
+dependent behaviour. Another continuum based model is the partial fluidization 
+model, which uses a set of equations that describes the flow velocity and the 
+shear stresses along with a auxiliary order parameter to predict the granular 
+flow behaviour. The order parameter of the granular media controls the size of 
+the viscous-like contribution to the stress tensor, and describes the 
+transition between the flowing and the static components of the granular 
+system~\citep{Aranson2001}. A constitutive model, which considers the solid 
+fraction as the main microscopic parameter for describing dense granular flow 
+was proposed by~\citet{Josserand2004}. The stress in the granular material is 
+divided into rate-dependent part representing the rebound-less impact between 
+grains, and a rate-independent part associated with longer contacts, i.e. 
+quasi-static regime. Although, the model captures shear localization behaviour, 
+it fails to describe the granular flow behaviour at rough boundaries.
 
-In the case of fluid-saturated soil, most of these techniques does not consider 
-the fully coupled behaviour. Instead, they consider the soil-fluid mixture as a 
-single phase material. However, modelling of pore pressure dissipation is 
-important to capture accurate flow behaviour, especially in submarine 
-conditions, where they play a crucial role in the flow dynamics. Presence of 
-ambient fluid may retard the flow due to viscous drag or accelerate the flow 
-through lubrication effect. Fully coupled constitutive models are essential to 
-realistically capture the initiation and propagation of rapid granular flows.
+In the case of saturated/submerged soil conditions, most of these techniques 
+do not consider the fully coupled behaviour. Instead, they consider the 
+soil-fluid mixture as a single phase material. However, modelling of pore 
+pressure dissipation is important to capture accurate flow behaviour, 
+especially in submarine conditions, where they play a crucial role in the flow 
+dynamics. Presence of ambient fluid may retard the flow due to viscous drag or 
+accelerate the flow through lubrication effect. Fully coupled constitutive 
+models are essential to realistically capture the initiation and propagation of 
+rapid granular flows.
 
 Granular materials are composed of distinct grains, which interact only at 
 the contact points. It is assumed that the deformations of individual grains 
-are negligible in comparison with the deformation of the granular assembly as a 
-whole. The latter deformation is primarily due to the movement of the grains as 
-a rigid body. Therefore, it can be argued that precise modelling of grain 
+are negligible in comparison with the deformation of the granular assembly as 
+a whole. The latter deformation is primarily due to the movement of the grains 
+as a rigid body. Therefore, it can be argued that precise modelling of grain 
 deformation is not necessary to obtain a good approximation of the overall 
 mechanical behaviour. An Eulerian grain-level continuum model describes the 
 response of individual grains to the applied loads. However, continuum 
 mechanics solves over the whole domain using initial and boundary conditions 
 appropriate for the problem. Hence, continuum models are still widely used to 
 solve engineering problems associated with granular materials and flows.
+
+\subsection{Mesh-based and mesh-free techniques}
 
 In continuum mechanics, there are two different view points describing the 
 deformation of a continuum, namely Lagrangian and Eulerian 
@@ -149,21 +151,21 @@ Conventional mesh based Lagragian approaches, such as Finite Element Method or
 Finite Difference Method are capable of modelling history dependant material 
 behaviour and have well-defined free surface. However, they require complex 
 re-meshing and remapping of variables, which cause additional errors in 
-simulating large deformation problems~\citep{Li2002}. Unlike Lagrangian FEM, in 
-Eulerian FEM the computational mesh is kept spatially fixed while the material 
-is deforming in time. This allows the capability of handling large deformation 
-without the problem of mesh distortion. As the computational mesh is completely 
-decoupled from the material, convective terms appear in Eulerian FEM, 
-introducing numerical difficulties because of their non-symmetrical 
+simulating large deformation problems~\citep{Li2002}. Unlike Lagrangian FEM, 
+in Eulerian FEM the computational mesh is kept spatially fixed while the 
+material is deforming in time. This allows the capability of handling large 
+deformation without the problem of mesh distortion. As the computational mesh 
+is completely decoupled from the material, convective terms appear in Eulerian 
+FEM, introducing numerical difficulties because of their non-symmetrical 
 properties~\citep{Donea1982}. Additionally, Eulerian FEM is difficult to use
 with history dependent constitutive models. Coupled Eulerian–Lagrangian (CEL) 
-method attempts to capture the advantages both of the Lagrangian and the 
-Eulerian method in modelling large deformation problems in 
-geomechanics~\citep{Qiu2011}. This approach involves solving the governing 
-equation in the Lagrangian step and thus obtaining the material displacement 
-followed by the Eulerian step where a new mesh is generated and and the 
-variables are transferred to the the new mesh. Thus requiring higher
-computational time. 
+method is an arbitrary Lagrangian-Eulerian that attempts to capture the 
+advantages of both the Lagrangian and the Eulerian method in modelling large 
+deformation problems in geomechanics~\citep{Qiu2011}. This approach involves 
+solving the governing equation in the Lagrangian step and thus obtaining the 
+material displacement followed by the Eulerian step where a new mesh is 
+generated and and the variables are transferred to the the new mesh. Thus 
+requiring higher computational time. 
 
 \begin{figure}[tbhp]
 \centering
@@ -173,51 +175,64 @@ large deformation flow.}
 \label{fig:NumericalMethods}
 \end{figure}
 
-An alternative to the mesh-based approach is using meshless methods 
-(\cref{fig:NumericalMethods}) where the 
-nodes representing the solid transforms as the continuum deforms, avoiding 
-the problem of mesh distortion, i.e., the nodes representing the solid can move 
-freely within the domain. Mesh free methods such as Smooth Particle 
-Hydrodynamics and Material Point Method are not constrained by the mesh size 
-and mesh distortion effects, and hence can be effectively used in simulating 
-large deformation problems, such as debris flow and submarine landslides.
+An alternative to the mesh-based approach is using meshless Lagrangian methods 
+(\cref{fig:NumericalMethods}) where the nodes representing the solid transforms 
+as the continuum deforms, avoiding the problem of mesh distortion, i.e., the 
+nodes representing the solid can move freely within the domain. Mesh free 
+methods such as Smooth Particle Hydrodynamics and Material Point Method are not 
+constrained by the mesh size and mesh distortion effects, and hence can be 
+effectively used in simulating large deformation problems, such as debris flow 
+and submarine landslides.
 
+The element-free Galerkin (EFG) method is a relatively new meshless 
+method, in which the trial functions for the weak form are constructed using 
+moving least squares interpolation~\citep{Belytschko1994}. The particle finite 
+element method (PFEM) is another meshless method that involves the meshless 
+finite element interpolation. In PFEM, the nodal points represent the 
+particles and the computational mesh is constructed by connecting these points. 
+The mesh is then used to solve the governing equations in Lagrangian fashion. 
+In PFEM, large deformation requires frequent re-meshing~\citep{Kafaji2013}.
 
-The element-free Galerkin (EFG) method is a relatively younger meshless method, 
-in which the trial functions for the weak form are constructed using moving 
-least squares interpolation~\citep{Belytschko1994}. The particle finite element 
-method (PFEM) is another meshless method as it involves the meshless finite 
-element interpolation. In PFEM, the nodal points represent the particles and 
-the computational mesh is constructed by connecting these points. The mesh is 
-then used to solve the governing equations in Lagrangian fashion. Large 
-deformation requires frequent re-meshing~\citep{Kafaji2013}.
+Smooth Particle Hydrodynamics is the oldest meshfree technique, in the domain 
+is discretised into particles that have a spatial distance, called the 
+\textit{smoothing length} over which the material properties are ``smoothed'' 
+by a kernel function. SPH was developed to solve astrophysical 
+problem~\citep{Monaghan2005}. SPH has been widely applied 
+in geomechanics for solving large deformation 
+problem~\citep{Augarde2009,Maeda2010,Mori2008}. Although, SPH has been widely 
+adopted it has a few drawbacks: SPH exhibits 
+spatial instabilities, as a consequence of the point-wise 
+integration~\citep{Bonet2000}, insufficient neighbouring particles causes 
+inconsistencies and is computationally expensive as a result of search for the 
+neighbouring particles~\citep{Bandara2013}.
 
 \section{Material Point Method (MPM)}
 Material Point Method (MPM)~\citep{Sulsky1994,Sulsky1995} is a particle based 
 method that represents the material as a collection of \textit{material 
 points}, and their deformations are determined by \textit{Newton's laws of 
 motion}. \citet{Sulsky1994} extended the Particle-in-Cell (PIC) 
-method~\citep{harlow1964} to computational solid mechanics by taking advantage 
+method~\citep{Harlow1964} to computational solid mechanics by taking advantage 
 of the combined Eulerian-Lagrangian approach. Material Point Method is a hybrid 
 Eulerian-Lagrangian approach, which uses moving material points, and 
 computational nodes on a background mesh. This approach is very effective 
 particularly in the context of large 
-deformations~\citep{mackenzie2010,shin2010}. Although, not derived directly 
-from what is classically considered as mesh-free or mesh-less methods, MPM is 
+deformations~\citep{Mackenzie-Helnwein2010,Shin2010a}. Although, not derived 
+directly from what is classically considered as mesh-free or mesh-less methods, 
+MPM is 
 still considered as a mesh-free approach, primarily because the initial 
-discretization of the material does not involve a polygonal tessellation, as in 
+discretisation of the material does not involve a polygonal tessellation, as in 
 Finite Element Method. However, MPM utilizes a background mesh to perform 
 differentiation, integration, and to solve equations of 
 motions~\citep{Steffen2008}. The background mesh can be of any form, however 
 for computational efficiency a Cartesian lattice is adopted. A typical 2D 
-discretization of a solid body is shown in~\cref{fig:MPM}. 
+discretisation of a solid body is shown in~\cref{fig:MPM}. 
 
 \begin{figure}
 \centering
 \includegraphics[width=0.45\textwidth]{MPM}
-\caption[Typical discretization of a domain in MPM]{Typical discretization of a 
+\caption[Typical discretisation of a domain in MPM]{Typical discretisation of a 
 domain in MPM. The dotted line represents the boundary of the simulated object 
-$\Omega$ and each closed point represents a material point used to discretize 
+$\Omega$ and each closed point represents a material point used to discretise 
 $\Omega$. The square mesh represents the background grid. Each square in the 
 background grid is a grid cell, and grid nodes are located at the corners of 
 grid cells.}
@@ -227,7 +242,7 @@ grid cells.}
 The grey-shaded circles are the material points ($x_{p}$, where `p' represents 
 a material point) and the computational nodes are the points of intersection of 
 the grid (denoted as $X_{i}$, where \textit{i} represents a computational 
-node). The Material Point Method involves discretizing the domain $\Omega$ with 
+node). The Material Point Method involves discretising the domain $\Omega$ with 
 a set of material points. The material points are assigned an initial value of 
 position, velocity, mass, volume, and stress denoted as $\mathbf{x}_{p},\mbox{  
 } \mathbf{\mathit{v}}_{p},\mbox{  } \mathit{m}_{p}, \mbox{  
@@ -260,7 +275,7 @@ where $\rho (\mathbf{x},t)$ is the mass density, $\mathit{\mathbf{v}}
 acceleration,  $\sigma (\mathbf{x},t)$ is the Cauchy's stress tensor, and  
 $\mathit{\mathbf{b}} (\mathbf{x},t)$ is the body force. The vector 
 \textbf{\textit{x}} represents the current position of any material point in 
-the continuum, at time \textit{t}. MPM discretizes the continuum body into 
+the continuum, at time \textit{t}. MPM discretises the continuum body into 
 finite number of material points $\mathit{N}_{p}$. Let 
 $\mathit{\mathbf{x}}_{p}^{t}$ $(\mathit{p}=1,2,\dots,\mathit{N}_{p})$ denote 
 the current position of material point \textit{p} at time t.
@@ -291,7 +306,7 @@ the divergence theorem, similar to the standard procedure adopted in Finite
 Element Methods \citep{Sulsky1994,Sulsky1995, Chen2002}. The differential 
 volume and the surface elements are denoted by d$\Omega$ and \textit{dS}, 
 respectively. \\
-As the whole continuum is discretized into a finite set of material points, the 
+As the whole continuum is discretised into a finite set of material points, the 
 mass density can be written as:
 \begin{align}
 \rho(\mathbf{x},t)=\sum\limits_{\mathit{p}=1}^{\mathit{N}_{p}}{\mathit{M}_{p}\delta(\mathbf{\mathit{x}}-\mathbf{\mathit{x}}_{p}^{t})}
@@ -400,12 +415,12 @@ forces are applied, only if the particles are in contact. The normal velocity
 and acceleration on the boundary plane is zero.
 
 \subsection{Solution scheme}
-A step-by-step solution scheme for Material Point Method~\citep{Bandara2009} is 
+A step-by-step solution scheme for Material Point Method~\citep{Bandara2013} is 
 described below. It involves: 
 
 \begin{itemize}
 \item
-A continuum body is discretized into a finite set of material points 
+A continuum body is discretised into a finite set of material points 
 corresponding to the original configuration of the body. The number of material 
 points corresponds to the resolution of the mesh size adopted in Finite Element 
 Method. The material points are followed throughout the deformation of the 
@@ -531,7 +546,7 @@ involving contact between multiple objects~\citep{Bardenhagen2000}. The MPM
 poses a whole new set of visualization problem, it is essential to visualize 
 the general configuration of the body as well as to observe the finer details 
 like development of cracks or separation of chunk of material from the body. 
-The body is discretized into conceptual material points, which carry all the 
+The body is discretised into conceptual material points, which carry all the 
 relevant information of the corresponding segment. The unique qualities of the 
 MPM necessitate the need to visualize the particle data in a way that is 
 informative and appropriate. In the MPM, the particle data represents the 
