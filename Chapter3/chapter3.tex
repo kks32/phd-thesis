@@ -216,18 +216,17 @@ of the combined Eulerian-Lagrangian approach. Material Point Method is a hybrid
 Eulerian-Lagrangian approach, which uses moving material points, and 
 computational nodes on a background mesh. This approach is very effective 
 particularly in the context of large 
-deformations~\citep{Mackenzie-Helnwein2010,Shin2010a}. Although, not derived 
-directly from what is classically considered as mesh-free or mesh-less methods, 
-MPM is 
-still considered as a mesh-free approach, primarily because the initial 
-discretisation of the material does not involve a polygonal tessellation, as in 
-Finite Element Method. However, MPM utilizes a background mesh to perform 
-differentiation, integration, and to solve equations of 
-motions~\citep{Steffen2008}. The background mesh can be of any form, however 
+deformations~\citep{Mackenzie-Helnwein2010,Shin2010a,Mast2014,Andersen2010,Zhang2009,Bandara2013}.
+Although, not derived directly from what is classically considered as mesh-free 
+or mesh-less methods, MPM is still considered as a mesh-free approach, 
+primarily because the initial discretisation of the material does not involve a 
+polygonal tessellation, as in Finite Element Method. However, MPM utilizes a 
+background mesh to perform differentiation, integration, and to solve equations 
+of motions~\citep{Steffen2008}. The background mesh can be of any form, however 
 for computational efficiency a Cartesian lattice is adopted. A typical 2D 
 discretisation of a solid body is shown in~\cref{fig:MPM}. 
 
-\begin{figure}
+\begin{figure}[tbhp]
 \centering
 \includegraphics[width=0.45\textwidth]{MPM}
 \caption[Typical discretisation of a domain in MPM]{Typical discretisation of a 
@@ -239,44 +238,44 @@ grid cells.}
 \label{fig:MPM}
 \end{figure}
 
-The grey-shaded circles are the material points ($x_{p}$, where `p' represents 
-a material point) and the computational nodes are the points of intersection of 
+The grey circles are the material points $x_{p}$, where `p' represents 
+a material point, and the computational nodes are the points of intersection of 
 the grid (denoted as $X_{i}$, where \textit{i} represents a computational 
-node). The Material Point Method involves discretising the domain $\Omega$ with 
+node). MPM involves discretising the domain $\Omega$ with 
 a set of material points. The material points are assigned an initial value of 
 position, velocity, mass, volume, and stress denoted as $\mathbf{x}_{p},\mbox{  
 } \mathbf{\mathit{v}}_{p},\mbox{  } \mathit{m}_{p}, \mbox{  
 }\mathbf{V}_{p}\mbox{ and }\sigma_{p} $. Depending on the material being 
-simulated, additional parameters, like pressure, temperature, etc., should be 
-specified at the material points. The material points are assumed to be within 
-the computational grid, which is assumed to be a Cartesian lattice for 
-convenience (see~\cref{fig:MPM}). At every time step $\mathit{t}_{k}$, 
-the MPM computation cycle involves projecting the data, such as position, mass, 
-and velocity from the material points to the computational grid using standard 
-nodal basis functions, called \textit{shape functions}, derived based on the 
-position of particle with respect to the grid. Gradient terms are calculated in 
-the computational grid and the governing equation, i.e. the equation of motion, 
-is solved and the updated position and velocity values are mapped back to the 
-material points. The mesh is reinitialized to its original state and the 
-computational cycle is repeated. 
+simulated, additional parameters, like pressure, temperature, pore-water 
+pressure, etc., are specified at the material points. The material points are 
+assumed to be within the computational grid, which for the ease of computation, 
+is assumed to be a Cartesian lattice (see~\cref{fig:MPM}). At 
+every time step $\mathit{t}_{k}$, the MPM computation cycle involves projecting 
+the data, such as position, mass, and velocity from the material points to the 
+computational grid using the standard nodal basis functions, called the 
+\textit{shape functions}, derived based on the position of particle with 
+respect to the grid. Gradient terms are calculated in the computational grid 
+and the governing equation, i.e. the equation of motion, is solved and the 
+updated position and velocity values are mapped back to the material points. 
+The mesh is reinitialized to its original state and the computational cycle is 
+repeated. 
 
 \subsection{Discrete formulation of the governing equations}
 The governing differential equation for a continuum is derived from the 
-conservation of mass and momentum.
+conservation of mass and momentum:
 \begin{align}
 \label{eq:mass}
-& \frac{\partial \rho}{dt}\rho \Delta \cdot \mathbf{\mathit{v}}=0  \\  
-\nonumber & \mbox{and} \\ 
+\frac{\partial \rho}{dt}\rho \Delta \cdot \mathbf{\mathit{v}} & = 0 \,, \\   
  \label{eq:mom}
-& \rho a = \Delta \cdot \sigma + \rho \mathbf{\mathit{b}}
+ \rho a & = \Delta \cdot \sigma + \rho \mathbf{\mathit{b}} \,,
 \end{align}
 where $\rho (\mathbf{x},t)$ is the mass density, $\mathit{\mathbf{v}} 
 (\mathbf{x},t)$ is the velocity,  $\mathit{\mathbf{a}} (\mathbf{x},t)$ is the 
 acceleration,  $\sigma (\mathbf{x},t)$ is the Cauchy's stress tensor, and  
 $\mathit{\mathbf{b}} (\mathbf{x},t)$ is the body force. The vector 
 \textbf{\textit{x}} represents the current position of any material point in 
-the continuum, at time \textit{t}. MPM discretises the continuum body into 
-finite number of material points $\mathit{N}_{p}$. Let 
+the continuum, at time \textit{t}. In MPM, the continuum body is discretised 
+into finite number of material points $\mathit{N}_{p}$. Let 
 $\mathit{\mathbf{x}}_{p}^{t}$ $(\mathit{p}=1,2,\dots,\mathit{N}_{p})$ denote 
 the current position of material point \textit{p} at time t.
 Each material point, at any given time \textit{t}, has an associated mass 
@@ -291,14 +290,14 @@ of~\cref{eq:mom} is described. The weak form of~\cref{eq:mom} is
 obtained 
 by multiplying~\cref{eq:mom} with a test function 
 $\mathbf{\mathit{w}}(\mathbf{x},t)$.
-\begin{align}
+\begin{equation}
 \int_{\Omega}\rho \mathit{\mathbf{w}} \cdot \mathbf{\mathit{a}} 
 \mathit{d}\Omega = - \int_{\Omega} \rho {\sigma}^{s} : \Delta 
 \mathit{\mathbf{w}} \mathit{d}\Omega + \int_{{\partial \Omega}_{\tau}} 
 \mathbf{\mathit{w}} \cdot \tau \mathit{d} \mathit{S} + \int_{\Omega}\rho 
-\mathbf{\mathit{w}} \cdot \mathbf{b} \mathit{d} \Omega 
+\mathbf{\mathit{w}} \cdot \mathbf{b} \mathit{d} \Omega \,,
 \label{eq:weak}
-\end{align}
+\end{equation}
 where $\sigma^{s}$ is the specific stress (i.e. stress divided by mass density, 
 $\sigma^{s} = \sigma / \rho$), $\Omega$ is the current configuration of the 
 continuum, $\tau$ is the traction.~\cref{eq:weak} is obtained by applying 
@@ -308,10 +307,11 @@ volume and the surface elements are denoted by d$\Omega$ and \textit{dS},
 respectively. \\
 As the whole continuum is discretised into a finite set of material points, the 
 mass density can be written as:
-\begin{align}
-\rho(\mathbf{x},t)=\sum\limits_{\mathit{p}=1}^{\mathit{N}_{p}}{\mathit{M}_{p}\delta(\mathbf{\mathit{x}}-\mathbf{\mathit{x}}_{p}^{t})}
+\begin{equation}
+\rho(\mathbf{x},t)=\sum\limits_{\mathit{p}=1}^{\mathit{N}_{p}}
+{\mathit{M}_{p}\delta(\mathbf{\mathit{x}}-\mathbf{\mathit{x}}_{p}^{t})} \,,
 \label{eq:massd}
-\end{align}
+\end{equation}
 where $\delta$ is the Dirac delta function. Substituting~\cref{eq:massd} in 
 ~\cref{eq:weak}, the sum of quantities of material points can be evaluated 
 as:
@@ -326,7 +326,7 @@ as:
 & + \mathbf{\mathit{w}}(\mathit{x}_{p}^{t},t) \cdot 
 \tau^{s}(\mathit{x}_{p}^{t},t)h^{-1} +  
 \mathbf{\mathit{w}}(\mathit{x}_{p}^{t},t) \cdot 
-\mathbf{\mathit{b}}(\mathit{x}_{p}^{t},t)]
+\mathbf{\mathit{b}}(\mathit{x}_{p}^{t},t)] \,,
 \label{eq:MPM}
 \end{align}
 where \textit{h} is the thickness of the boundary layer. It can be noted from 
@@ -341,44 +341,55 @@ $\mathit{N}_{n}$ represents the total number of mesh nodes. The nodal basis
 functions are assembled by using the conventional finite-element shape 
 functions~\citep{Chen2002}. The co-ordinates of any material point in a cell 
 can be represented by
-\begin{align}
+%
+\begin{equation}
 \mathbf{\mathit{x}}_{p}^{t} = \sum\limits_{\mathit{i}=1}^{\mathit{N}_{n}} 
-\mathbf{\mathit{x}}_{\mathit{i}}^{t}\mathit{N}_{\mathit{i}}(\mathbf{x}_{p}^{t})
+\mathbf{\mathit{x}}_{\mathit{i}}^{t}\mathit{N}_{\mathit{i}}(\mathbf{x}_{p}^{t}) 
+\,.
 \label{eq:x}
-\end{align}
+\end{equation}
+%
 Similarly the nodal displacements, velocity and acceleration of any material 
 point in a cell are represented using the basis functions. Thus, the test 
-function has to be of the form:
-\begin{align}
+function has to be of the form
+%
+\begin{equation}
 \mathbf{\mathit{w}}_{p}^{t} = \sum\limits_{\mathit{i}=1}^{\mathit{N}_{n}} 
-\mathbf{\mathit{w}}_{\mathit{i}}^{t}\mathit{N}_{\mathit{i}}(\mathbf{w}_{p}^{t})
+\mathbf{\mathit{w}}_{\mathit{i}}^{t}\mathit{N}_{\mathit{i}}(\mathbf{w}_{p}^{t}) 
+\,.
 \label{eq:wtest}
-\end{align}
-~\cref{eq:x} and \ref{eq:wtest} ensures that the associated vectors are 
+\end{equation}
+%
+The ~\cref{eq:x,eq:wtest} ensures that the associated vectors are 
 continuous across the cell boundary. However, the gradient of these functions 
 are not continuous, due to the use of linear shape functions. Substituting, 
-~\cref{eq:x} and \ref{eq:wtest} into~\cref{eq:MPM}, the weak form of the 
-equation of motion reduces to:
-\begin{align}
+~\cref{eq:x} and \cref{eq:wtest} into~\cref{eq:MPM}, the weak form of the 
+equation of motion reduces to
+%
+\begin{equation}
 \sum\limits_{\mathit{j}=1}^{\mathit{N}_{n}} m_{\mathit{ij}}^{\mathit{t}} 
 \mathbf{a}_{\mathit{j}}^{\mathit{t}} = \mathbf{f}_{\mathit{i}}^{int,\mathit{t}} 
-+ \mathbf{f}_{\mathit{i}}^{ext,\mathit{t}}
++ \mathbf{f}_{\mathit{i}}^{ext,\mathit{t}} \,,
 \label{eq:fmaMPM}
-\end{align}
-where the nodal mass, $m_{\mathit{ij}}^{\mathit{t}}$ is represented as:
-\begin{align}
+\end{equation}
+%
+where the nodal mass, $m_{\mathit{ij}}^{\mathit{t}}$ is represented as
+%
+\begin{equation}
 m_{\mathit{ij}}^{\mathit{t}} = \sum\limits_{\mathit{p=1}}^{N_{p}} 
 \mathit{M}_{p} \mathit{N}_{\mathit{i}} (\mathbf{\mathit{x}}^{\mathit{t}}) 
-\mathit{N}_{\mathit{j}} (\mathbf{\mathit{x}}^{\mathit{t}})
-\end{align}
+\mathit{N}_{\mathit{j}} (\mathbf{\mathit{x}}^{\mathit{t}}) \,.
+\end{equation}
+%
 The nodal internal force, $\mathbf{f}_{\mathit{i}}^{int,\mathit{t}}$ and the 
-nodal external force, $\mathbf{f}_{\mathit{i}}^{ext,\mathit{t}}$ are defined as:
+nodal external force, $\mathbf{f}_{\mathit{i}}^{ext,\mathit{t}}$ are defined as
+%
 \begin{align}
 \nonumber
-& \mathbf{f}_{\mathit{i}}^{int,\mathit{t}} = - 
+ \mathbf{f}_{\mathit{i}}^{int,\mathit{t}} & = - 
 \sum\limits_{\mathit{p}=1}^{\mathit{N}_{p}}\mathit{M}_{p} \mathbf{G}_{ip}^{t} 
 \cdot \sigma_{p}^{\mathit{s,t}} \\ 
-& \mathbf{f}_{\mathit{i}}^{int,\mathit{t}} = - 
+\mathbf{f}_{\mathit{i}}^{int,\mathit{t}} & = - 
 \sum\limits_{\mathit{p}=1}^{\mathit{N}_{p}}\mathit{M}_{p}  
 \mathbf{b}_{p}^{\mathit{t}}\mathit{N}_{\mathit{i}}(\mathbf{x}_{p}^{\mathit{t}}) 
 + \sum\limits_{\mathit{p}=1}^{\mathit{N}_{p}}\mathit{M}_{p} 
@@ -391,13 +402,21 @@ The nodal accelerations are obtained by explicit time integration of
 ~\cref{eq:fmaMPM}. To obtain stable solutions, the time step used in the 
 analysis should be less than the critical time step, which is defined as the 
 ratio of the smallest cell size to the wave speed~\citep{Chen2002}. The 
-boundary conditions are enforced on the cell nodes and the nodal velocities are 
-obtained by solving the equation of motion at each node. The strain increment 
-for each material point is determined using the gradients of the nodal basis 
-functions. The corresponding stress increments are computed using the adopted 
-constitutive law. After all the material points have been completely updated, 
-the computational mesh is discarded, and a new mesh is defined for the next 
-time step. 
+critical time increment is obtained as
+%
+\begin{align}
+\Delta t_{crit} = L / c \,, \\
+c = \frac{K+\frac{4}{3}G}{\rho_s} \,,
+\end{align}
+where $L$ is the background cell size, \textit{c} is the pressure wave 
+velocity, $K$ and $G$ are the bulk modulus and the shear modulus of the solid 
+and $\rho_s$ is the density of the soil skeleton. The boundary conditions are 
+enforced on the cell nodes and the nodal velocities are obtained by solving the 
+equation of motion at each node. The strain increment for each material point 
+is determined using the gradients of the nodal basis functions. The 
+corresponding stress increments are computed using the adopted constitutive 
+law. After updating all the material points, the computational mesh is 
+discarded, and a new mesh is defined for the next time step. 
 
 \subsection{Boundary conditions}
 The Material Point Method uses standard shape functions, similar to those used 
@@ -407,115 +426,209 @@ the traditional FEM. The free surface boundary conditions are satisfied, as MPM
 is formulated in the weak form. Implementation of traction boundary conditions 
 requires a set of material points to represent the boundary 
 layer.~\citet{Bandara2013} proposed a friction interaction for the planar 
-boundary condition, using Coulomb's friction criterion. The nodal accelerations 
+boundary condition, using Coulomb's friction criterion. The friction boundary 
+conditions are applied on the mesh nodes by controlling the nodal acceleration 
+tangential to the boundary. The nodal accelerations 
 were considered to include the frictional effects instead of the forces, as the 
-forces are proportional to the corresponding accelerations. The static and 
-kinematic frictions are applied tangential to the nodal boundary. Friction 
+forces are proportional to the corresponding accelerations. Both static and 
+kinetic friction are considered, and are applied only when the particles 
+are in contact with the boundary. The static and kinematic frictions are 
+applied in the direction tangential to the nodal boundary. Friction 
 forces are applied, only if the particles are in contact. The normal velocity 
-and acceleration on the boundary plane is zero.
+and acceleration on the boundary plane is zero. Displacement boundary 
+conditions are applied as velocity constrains on the nodes in the background 
+mesh.
+
+\subsection{Integration scheme}
+
+\citet{Love2006} investigated the energy consistency of MPM and observed that 
+the MPM algorithm is more suited to flow calculations than Lagrangian finite 
+element methods. In dynamic MPM, the explicit time integration scheme is 
+adopted to advance the solution.~\citet{Bardenhagen2002} studied the energy 
+consistency of MPM using two 
+different explicit integration schemes. The \textit{update stress first} USF
+involves updating the strain and the stress at the beginning of the time step 
+from the velocities of the previous time step. In the \textit{update stress 
+last} USL approach the updated particle momentums are used to calculate the 
+nodal velocities, which are then used to update the particle strain and 
+stress.~\citet{Bardenhagen2002} observed that the USL approach performed better 
+than the USF. The USL approach dissipates the energy slowly, while the USF 
+approach is found to gain energy~\citep{Kafaji2013}. The USL approach yields 
+almost the same result as using the central difference scheme that is second 
+order in time~\citep{Wallstedt2008}. The \textit{update stress last} approach 
+is used in the present study, due to its dissipative nature, which in certain 
+conditions simulate artificial damping, and the numerical stability.
+
+In problems involving slow rate of loading, i.e., quasi-static problems, the 
+flow of the material is much slower than the speed of wave propagation in the 
+material. Hence, employing an implicit time integration scheme reduces the 
+computational time considerably~\citep{Kafaji2013}.~\citet{Guilkey2003a} 
+proposed an implicit time integration method for MPM using quasi-static 
+governing equations, using the Newmark integration scheme.~\citet{Love2006} 
+showed that the implicit time integration in MPM to be unconditionally stable. 
+Although, MPM did not suffer from the limitations of FEM in simulating large 
+deformations, more research is required for applying implicit time integration 
+for large deformation problems. 
 
 \subsection{Solution scheme}
-A step-by-step solution scheme for Material Point Method~\citep{Bandara2013} is 
-described below. It involves: 
+A step-by-step solution scheme for Material Point Method is described below:
 
 \begin{itemize}
+
 \item
 A continuum body is discretised into a finite set of material points 
 corresponding to the original configuration of the body. The number of material 
 points corresponds to the resolution of the mesh size adopted in Finite Element 
 Method. The material points are followed throughout the deformation of the 
 material, which gives a Lagrangian description of the motion. 
+
 \item
 An arbitrary computational grid is initialized to describe the natural 
 coordinates of the material points. For the purpose of simplicity, a Cartesian 
 grid is usually adopted. 
+
 \item
 The state variables (mass/density, velocity, strain, stress, other material 
 parameter corresponding to the adopted constitutive relation) are initialized 
 at every material point. 
 
 \item
-For each material point, the mapping of the properties from the particles to 
-the cell nodes is accomplished using the shape functions computed from the 
-particle position. The nodal mass matrix is obtained as:
-\begin{align}
-\mathit{m}_{\mathit{i}}^{\mathit{k}} = 
-\sum\limits_{\mathit{p}=1}^{\mathit{N}_{\mathit{p}}} \mathit{M}_{\mathit{p}} 
-\mathit{N}_{\mathit{ip}}^{\mathit{k}} 
-\end{align}
+The shape function $N_{ip}^t(x_p)$ and the gradient of the shape function 
+$G_{ip}^t$ for each material point is computed.
+
+\item
+The information and properties carried by each material point is projected on 
+to the background mesh using the shape functions computed from the 
+particle position. 
+
+\item
+The nodal mass matrix is obtained as
+%
+\begin{equation}
+\mathit{m}_{\mathit{i}}^{\mathit{t}} = 
+\sum\limits_{\mathit{p}=1}^{\mathit{N}_{\mathit{p}}} \mathit{m}_{\mathit{p}} 
+\mathit{N}_{\mathit{ip}}^{\mathit{t}}(x^t_p) \,,
+\end{equation}
+%
 where $\mathit{m}_{i}^{t}$ is the mass at node \textit{i} at time \textit{t}, 
-$\mathit{M}_{\mathit{p}}$ the particle mass, $\mathit{N}_{\mathit{i}}$ the 
+$\mathit{m}_{\mathit{p}}$ the particle mass, $\mathit{N}_{\mathit{i}}$ the 
 shape function associated with node \textit{i}, and 
-$\mathit{x}_{\mathit{p}}^{\mathit{t}}$ the location of the particle at 
+$\mathit{x}_{\mathit{p}}^{\mathit{t}}$ the location of the particle at time
 \textit{t}.
+% The numerical solution of the momentum balance equation is obtained 
+%at a discrete set of times $t^k$, where \textit{k} = 1,\dots,\textit{K}. A 
+%discrete approximation 
+%at time $t^k$ is indicated by a superscript \textit{k}.
+
 \item
 The nodal velocity is obtained by mapping the particle velocity to the nodes 
-using the shape functions:
-\begin{align}
-\mathbf{\mathit{v}}_{\mathit{i}}^{\mathit{k}} = 
+using the shape functions. If necessary, the boundary conditions
+for the nodal velocities are applied.
+%
+\begin{equation}
+\mathbf{v}_{\mathit{i}}^{\mathit{t}} = 
 \sum\limits_{\mathit{p}=1}^{\mathit{N}_{\mathit{p}}} \mathit{m}_{\mathit{p}} 
-\mathbf{\mathit{v}}_{\mathit{p}}^{\mathit{t}} 
-\mathbf{\mathit{N}}_{\mathit{ip}}^{\mathit{t}} / 
-\mathit{m}_{\mathit{i}}^{\mathit{t}}
-\end{align}
+\mathbf{v}_{\mathit{p}}^{\mathit{t}} 
+\mathbf{\mathit{N}}_{\mathit{ip}}^{\mathit{t}} (x^t_p) / 
+\mathit{m}_{\mathit{i}}^{\mathit{t}} \,.
+\end{equation}
+
 \item
-Strain increment $\Delta \epsilon_{p}^{t+1}$ for particle is then computed as:
+The momentum balance equation for the solid phase is solved and the nodal 
+acceleration is computed as
+\begin{equation}
+\mathbf{\mathit{a}}_i^t = \frac{1}{m_i^t} \left( - \sum\limits_{p = 
+1}^{N_p}{G}_{ip}^t \sigma_p^t \Omega_p^t + \sum\limits_{p = 
+1}^{N_p}m_p^t \mathbf{b}_p^t N_{ip}^t(x^t_p)  \right) \,.
+\end{equation}
+If necessary, the boundary conditions for the nodal accelerations are applied.
+
+
+\item
+The nodal velocity at the end of the Lagrangian time step (L) is obtained from 
+the computed nodal acceleration as:
+\begin{equation}
+\mathbf{\mathit{v}}_{\mathit{i}}^{L} = 
+\mathit{\mathbf{v}}_{\mathit{i}}^{\mathit{t}} + 
+\mathbf{\mathit{a}}_{\mathit{i}}^{\mathit{t}} \Delta \mathit{t} \,.
+\end{equation}
+where $\Delta t = (t+1) - t$.
+
+\item
+The particle position and its velocity are updated according to:
 \begin{align}
-\Delta \epsilon_{p}^{t+1} = \frac{\Delta t}{2} 
-\sum\limits_{\mathit{i}=1}^{\mathit{N}_{n}}{\mathbf{G}_{\mathit{ip}}^{t} 
-\mathbf{v}_{\mathit{i}}^{t} + (\mathbf{G}_{\mathit{ip}}^{t} 
-\mathbf{v}_{\mathit{i}}^{t})^{\mathit{T}}}
+\nonumber
+\mathbf{x}_{\mathit{p}}^{\mathit{t}+1} &  = 
+\mathbf{x}_{\mathit{p}}^{\mathit{t}} + 
+\Delta \mathit{t} \sum\limits_{\mathit{i}=1}^{\mathit{N}_{n}} 
+\mathbf{\mathit{v}}_{\mathit{i}}^{L}\mathit{N}_{\mathit{ip}}^{\mathit{t}} \,, \\
+\mathbf{v}_{\mathit{p}}^{\mathit{t}+1} & = \mathbf{v}_{\mathit{p}}^{\mathit{t}} 
++ 
+\Delta \mathit{t} \sum\limits_{\mathit{i}=1}^{\mathit{N}_{n}} 
+\mathbf{\mathit{a}}_{\mathit{i}}^{t}\mathit{N}_{\mathit{ip}}^{\mathit{t}} \,.
 \end{align}
+
+
+\item
+Strain increment $\Delta \epsilon_{p}^{t+1}$ for particle is then computed as
+%
+\begin{equation}
+\Delta \epsilon_{p}^{t+1} = \frac{\Delta t}{2} 
+\sum\limits_{\mathit{i}=1}^{\mathit{N}_{n}}{{G}_{\mathit{ip}}^{t} 
+\mathbf{v}_{\mathit{i}}^{t} + ({G}_{\mathit{ip}}^{t} 
+\mathbf{v}_{\mathit{i}}^{t})^{\mathit{T}}} \,.
+\end{equation}
 \item
 The stress increment for the particle $\Delta \sigma_{\mathit{p}}^{t+1}$ is 
 computed from the strain increment using the constitutive model adopted in the 
 simulation
+%
+\begin{equation}
+\Delta \sigma_{\mathit{p}}^{t+1} = \mathbf{D} : \Delta \epsilon_{p}^{t+1} \,.
+\end{equation}
+%
+In large deformation problems, the Jaumann rate is used to update the effective 
+stress of the solid particles
 \begin{align}
-\Delta \sigma_{\mathit{p}}^{t+1} = \mathbf{D} : \Delta \epsilon_{p}^{t+1}
+\sigma_p^{t+1} & = \Delta t \left( \sigma_p^t - \mathbf{W}_p^t - 
+\mathbf{W}_p^t \sigma_p^t\right) x+ 
+\mathbf{D} : \Delta \epsilon_{p}^{t+1} \,, \\
+\mathbf{W}_p^t & = \sum\limits_{i = 1}^{N_n}\left[ \mathbf{G}_{ip}^t 
+\textbf{v}_i^t -  \left(\mathbf{G}_{ip}^t \textbf{v}_i^t\right)^T\right]  \,.
 \end{align}
 \item
-The stress and the strain of the material points are updated based on:
+The stress and the strain of the material points are updated based on
+%
 \begin{align}
 \nonumber
-\sigma_{\mathit{p}}^{t+1} = \sigma_{\mathit{p}}^{t} + \Delta 
-\sigma_{\mathit{p}}^{t+1} \\
-\epsilon_{p}^{t+1} =\epsilon_{p}^{t} + \Delta \epsilon_{p}^{t+1}
+\sigma_{\mathit{p}}^{t+1} & = \sigma_{\mathit{p}}^{t} + \Delta 
+\sigma_{\mathit{p}}^{t+1} \,, \\
+\epsilon_{p}^{t+1} & =\epsilon_{p}^{t} + \Delta \epsilon_{p}^{t+1} \,.
 \end{align}
+%
+
 \item
-The material point density is then updated as:
-\begin{align}
-\rho_{p}^{t+1}=\frac{\rho_{p}^{t}}{\{1+tr(\Delta \epsilon_{p}^{t+1})\}}
-\end{align}
+In large deformation the volume of solid material points $\Omega_p$ is updated 
+using the determinant \textit{J} of the deformation gradient 
+$\mathbf{F}_p^{t+1}$:
+\begin{equation}
+\Omega_p^{t+1} = J \Omega_p^{t_0} \,.
+\end{equation}
+
 \item
-Then the nodal acceleration is computed using the equation of motion as:
-\begin{align}
-\mathbf{a}_{\mathit{i}}^{\mathit{t}} = 
-(\mathbf{f}_{\mathit{i}}^{\mathit{int,t}} + 
-\mathbf{f}_{\mathit{i}}^{\mathit{ext,t}}) / \mathit{m}_{\mathit{i}}^{\mathit{t}}
-\end{align}
-\item
-The nodal velocity is obtained from the computed nodal acceleration as:
-\begin{align}
-\mathbf{\mathit{v}}_{\mathit{i}}^{L} = 
-\mathit{\mathbf{v}}_{\mathit{i}}^{\mathit{k}} + 
-\mathbf{\mathit{a}}_{\mathit{i}}^{\mathit{k}} \Delta \mathit{t}
-\end{align}
-\item
-Finally, the particle position and its velocity are updated according to:
-\begin{align}
-\nonumber
-\mathbf{x}_{\mathit{p}}^{\mathit{t}+1} = \mathbf{x}_{\mathit{p}}^{\mathit{t}} + 
-\Delta \mathit{t} \sum\limits_{\mathit{i}=1}^{\mathit{N}_{n}} 
-\mathbf{\mathit{v}}_{\mathit{i}}^{L}\mathit{N}_{\mathit{ip}}^{\mathit{t}} \\
-\mathbf{v}_{\mathit{p}}^{\mathit{t}+1} = \mathbf{v}_{\mathit{p}}^{\mathit{t}} + 
-\Delta \mathit{t} \sum\limits_{\mathit{i}=1}^{\mathit{N}_{n}} 
-\mathbf{\mathit{a}}_{\mathit{i}}^{t}\mathit{N}_{\mathit{ip}}^{\mathit{t}} 
-\end{align}
+The material point density is then updated as
+%
+\begin{equation}
+\rho_{p}^{t+1}=\frac{\rho_{p}^{t}}{\{1+tr(\Delta \epsilon_{p}^{t+1})\}} \,.
+\end{equation}
+%
+
 \item
 At the end of every time step, all the variables on the grid nodes are 
-initialized to zero.
+initialized to zero. The material points carry all the information about the
+solution and the computational grid is re-initialised for the next step.
 \end{itemize}
-~\cref{fig:MPMsteps} illustrates the steps involved in a MPM analysis. 
+\Cref{fig:MPMsteps} illustrates the steps involved in a MPM analysis. 
 
 \begin{figure}[htbp]
 \centering
