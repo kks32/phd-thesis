@@ -112,10 +112,12 @@ granular columns are performed using two-dimensional Discrete Element Method
 hybrid Eulerian--Lagrangian approach, with a Mohr-Coloumb failure criterion is 
 used to describe the continuum behaviour of the granular column collapse. 
 Whereas, the micro-mechanics of the flow is captured using DEM simulations. 
-Comparing the grain-scale behaviour with the continuum simulations highlights 
-the limitations of the continuum approach in modelling dense granular flows and 
-their ability in capturing the complex flow kinematics which are due to 
-micro-scale rheology.
+In this section, the run-out behaviour of quasi-two-dimensional collapse using 
+both MPM and DEM will be studied for initial aspect ratio varying from 0.2 to 
+10. The flow kinematics and the run-out behaviour between the grain-scale and 
+the continuum simulations highlights the limitations of the continuum approach 
+in modelling dense granular flows and their ability in capturing the complex 
+flow kinematics which are due to micro-scale rheology.
 
 \subsection{Numerical set-up}
 
@@ -352,7 +354,9 @@ Time step increment & $1.0 \times 10^{-6}$~\si{\second}\\ \bottomrule
 \subsection{Deposit morphology}
 Two-dimensional plane-strain MPM and DEM simulations of granular column 
 collapse are 
-performed by varying the initial aspect ratio of the column from 0.2 to 10. 
+performed by varying the initial aspect ratio of the column from 0.2 to 10. The 
+evolution of run-out and the flow kinematics observed in both approaches are 
+compared to understand the ability and limitations of theses approaches.  
 The normalized final run-out distance, $\Delta L = 
 (L_{\textit{f}}-L_{\textit{0}})/L_{\textit{0}}$, as a function of the initial 
 aspect ratio \textit{a} of the column is presented in~\cref{fig:run-out}. 
@@ -404,7 +408,7 @@ The longer run-out distance in MPM simulations at large aspect ratios might be
 influenced by the amount of material mobilised during the collapse. In tall 
 columns, the entire column participates in the flow, in contrast to short 
 columns where the collapse is due to avalanching of 
-flanks~\citep{Lajeunesse2004}. It is possible that MPM simulations 
+flanks. It is possible that MPM simulations 
 collapse more resulting in longer run-out distances.~\Cref{fig:height} shows 
 the normalized final height as a function of the initial aspect ratio of the 
 column. Similar to the run-out behaviour, the normalised-height also shows two 
@@ -489,8 +493,7 @@ similar to a steady granular surface flow observed by~\citet{Lajeunesse2004}.
 For columns with lower initial aspect ratios, the run-out distance is 
 proportional to the mass flowing above the failure surface. The spreading 
 results from a Coulomb-like failure of the edges and implies no free fall of 
-the column.~\citet{Daerr1999} also observed active Coulomb yielding in 
-transient granular surface flows. In this case, the effective friction 
+the column. In this case, the effective friction 
 properties of the flow can be simply predicted from the shape of the final 
 deposit. The amount of mass mobilized during the collapse is significantly 
 affected by the angle of the failure surface.~\Cref{fig:a04tc} shows that both 
@@ -502,18 +505,15 @@ $55\si{\degree}$. The formation of the ``truncated conical deposit'' or
 ``conical deposit'' depends only on the initial length of the column, as the 
 angle of the failure surface is found to be independent of the aspect ratio. 
 The failure angle is consistent with the interpretation in terms of 
-\textit{active Coulomb failure}~\citep{Lajeunesse2004}, which leads to a 
+\textit{active Coulomb failure}, which leads to a 
 predicted failure angle $\theta_{\textit{y}}=45\si{\degree}+\delta / 2$, where 
 $\delta$ is the friction angle of the granular material. In the 
 present study, the macroscopic friction angle is $22\si{\degree}$, which 
 leads to $\theta_{\textit{y}}=45\si{\degree}+22\si{\degree}/ 2=56\si{\degree}$, 
-which is in good agreement with the numerical simulations and experimental 
+which is in good agreement with the numerical simulations and the experimental 
 observations by~\citet{Lajeunesse2004}. The fracture angle has a 
 direct effect on the transition between the truncated cone and the conical 
-deposit occurring at an aspect ratio of 0.7.~\citet{Schaeffer1990} observed the 
-onset of instabilities in a narrow wedges of 56 to 65\si{\degree} for 
-Cambridge-type constitutive models that describes granular flows, which is 
-in-line with the failure angle observed in the present study. 
+deposit occurring at an aspect ratio of 0.7.
 
 The final profile of the granular column with an initial aspect ratio 
 of 0.4 is shown in \cref{fig:a04f}. Both MPM and DEM show similar run-out 
@@ -523,9 +523,7 @@ hexagonal packing, the failure surface is steep due to crystallisation effects.
 The variation in the angle of the failure surface causes a difference in the 
 amount of material destabilised, and in turn the run-out distance. 
 This crystallisation phenomenon is found to have a significant influence on the 
-final deposit of the granular column.~\citet{Lacaze2009} observed that 
-poly-disperse grains are less susceptible to crystallize especially in the case 
-of tall columns. 
+final deposit of the granular column.
 
 \begin{figure}[tbhp]
 \centering
@@ -554,12 +552,13 @@ failure surface, the flow gets deviated along the horizontal direction
 releasing a huge amount of kinetic energy gained during the free fall. For 
 larger aspect ratio (\textit{a} > 0.7), the resulting static region is a cone, 
 the final height of the cone $\textit{H}_{\textit{f}}$ lies above the 
-summit of the failure surface. Hence, a different evolution is observed from 
-that of the axis-symmetric geometry~\citep{Lube2005}, where the final height 
-coincides with the summit of the failure surface forming a truncated conical 
-deposit.~\citet{Lajeunesse2004} observed that the variation in the deposit 
-morphology between the axis-symmetric case and the rectangular collapse to be a 
-geometrical effect rather than as an experimental artefact. 
+summit of the failure surface. 
+%Hence, a different evolution is observed from 
+%that of the axis-symmetric geometry~\citep{Lube2005}, where the final height 
+%coincides with the summit of the failure surface forming a truncated conical 
+%deposit.~\citet{Lajeunesse2004} observed that the variation in the deposit 
+%morphology between the axis-symmetric case and the rectangular collapse to be 
+%a geometrical effect rather than as an experimental artefact. 
 
 An initial failure surface starting from the toe end 
 of the column at an angle of about 55$\si{\degree}$ can be observed at the 
@@ -577,8 +576,9 @@ plane. The final profile of the collapsed granular column with an initial
 aspect ratio of 6 is presented in~\cref{fig:a6f}. For tall columns, the 
 dissipation process is more complex due to the free-fall dynamics. The vertical 
 acceleration of the grains induces a non-trivial mass distribution in the flow 
-during spreading. This mass distribution plays a dominant role in the power-law 
-scaling observed in the run-out~\citep{Staron2007a}.
+during spreading.~\citet{Staron2007a} observed that the mass distribution plays 
+a dominant role in the power-law 
+scaling observed in the run-out.
 
 Regardless of the experimental configuration and the initial aspect ratio of 
 the columns, the flow is initiated by a well-defined rupture surface, above 
@@ -706,8 +706,8 @@ from the run-out distance $L_f - L_0$ (after~\citet{Staron2007a}).}
 where $\rho$ is the density of the packing. It is assumed that this energy is 
 dissipated by the work of frictional forces $W_{\mu}$ over the total run-out 
 distance by the center of mass \textit{G} of the spreading 
-material.~\citet{Staron2006} considers 
-two regions of dissipation: the amount of mass destabilised $\frac{1}{4}(L_f - 
+material. The collapse involves two regions of dissipation: the amount of mass 
+destabilised $\frac{1}{4}(L_f - 
 L_0) H_0$ over two thirds of the runout distance $2(L_f - L_0) / 3$ (considering
 the triangular shape of the final deposit and the initial and the final 
 positions of the center of mass). The effective coefficient of friction $\mu_e$ 
@@ -720,8 +720,8 @@ W_{\mu} = \frac{1}{6} \mu_e g \rho (L_f - L_0) H_0^2 \,.
 Equating $\delta_E$ and $W_{\mu}$ gives $\mu_e (L_f - L_0) = H_0$. The scaling
 of the runout leads directly to the relation $\mu_e = \lambda^{-1}$, which is 
 the numerical constant, which depends on the 
-material properties~\citep{Balmforth2005}, in the power-law relation between 
-the run-out and the initial aspect ratio. 
+material properties, in the power-law relation between the run-out and the 
+initial aspect ratio. 
 The amount of energy $\delta E$ dissipated 
 during the spreading is compared with $W = N_p g m_p r_p$, where $N_p$ is the 
 total number of grains, $m_p$ is their mass, and $r_p$ is the total horizontal 
@@ -892,224 +892,7 @@ $a=6$}
 \label{fig:muI}
 \end{figure}
 
-\subsection{Role of initial grain properties}
 
-\citet{Lube2005} observed that the run-out distance scales with the initial 
-aspect ratio of the column, independent of the material properties. The 
-run-out 
-evolution after the initial transition regime is a frictional dissipation 
-process, and the lack of influence of material properties on the run-out 
-behaviour is inconsistent with frictional dissipation in continuum modelling of 
-granular flow behaviour. 
-~\citet{Balmforth2005} observed that the material properties have almost no 
-influence on the exponent of the normalised run-out as a function of the 
-initial aspect ratio. The numerical constant of proportionality, however, 
-showed clear material dependence. This corroborates the conclusions 
-of~\citet{Lajeunesse2004} and refutes that 
-of~\citet{Lube2005}.~\citet{Daerr1999} also observed strong influence of 
-initial packing density and the internal structure on the behaviour of 
-granular 
-flows. 
-
-
-It should be noted that the collapse experiment is highly transient and no 
-clear stationary regime is observed. On the contrary, the acceleration and the 
-deceleration phases cover nearly the whole duration of the spreading. This 
-makes it difficult to analyse the flow structure and its relation with other 
-characteristic of the system. The knowledge of the final run-out is not a 
-sufficient characterization of the deposit: one also needs to know how the mass 
-is distributed during the flow to understand the dynamics and the dissipation 
-process. This is expected to be true in natural contexts as well as in 
-experiments. While the inter-grain friction does not affect the early vertical 
-dynamics, nor the power-law dependence, it controls the effective frictional 
-properties of the flow, and its internal structure~\citep{Staron2007a}. It is 
-interesting to note that the details of the structure of the flow do not 
-influence the final run-out dependence, and thus seem to play a marginal role 
-in the overall behaviour of the spreading. This could explain why a simple 
-continuum model with a frictional dissipation could reproduce the run-out 
-scaling for columns with small aspect ratios.
-
-The run-out behaviour of a loose (79\% packing density) and a dense (83\% 
-packing density) granular column (\textit{a} = 0.8) are studied to understand 
-the 
-influence of material properties. The evolution of normalised run-out with time 
-for two different initial packing 
-densities are presented in~\cref{fig:runout_height_dense_r18}. At the initial 
-stage of collapse $t=\tau_c$, the flow evolution is identical in both dense and 
-loose conditions. However, the dense column flows 30\% longer than the loose 
-condition. Both the columns come to rest at around $t = 4\tau_c$. The columns, 
-however, show similar evolution of the normalised height. This shows that only 
-a part of the column is destabilised during the collapse.
-\begin{figure}[h]
-\centering
-\includegraphics[width=0.9\textwidth]{runout_height_dense_r18}
-\caption{Effect of density on run-out evolution $a = 0.8$}
-\label{fig:runout_height_dense_r18}
-\end{figure}
-
-\begin{figure}[h]
-\centering
-\includegraphics[width=0.9\textwidth]{voro_r18}
-\caption{Evolution of local packing density $a = 0.8$}
-\label{fig:voro_r18}
-\end{figure}
-
-\Cref{fig:Energy_density_r18} shows the evolution of potential and kinetic 
-energy with time. Similar potential energy evolution in both dense and loose 
-conditions reveals that there is no change in the overall mechanism of 
-collapse. The dense condition has slightly higher peak kinetic energy than the 
-loose column. In the free-fall phase, the dense column shows a steeper increase 
-in the horizontal kinetic energy in comparison to the loose column. This 
-indicates that dense granular mass is pushed farther away more quickly than the 
-loose column. A loose column exhibits higher vertical kinetic energy which may 
-be 
-due to particle rearrangement resulting in densification of the granular 
-mass.~\Cref{fig:voro_r18} shows that the loose sample densifies as the flow 
-evolves. Both dense and loose granular columns dilate during the initial stage 
-of collapse, this is due to grains experiencing shear along the fracture 
-surface. 
-In both cases, the granular mass attains similar packing density at the end of 
-the flow. The dense granular column dilates, while the loose column compacts to 
-achieve the same critical density. The dense 
-condition has higher mobilised potential energy during the initial stage of 
-collapse, which 
-yields higher horizontal kinetic energy for the flow. However in loose 
-conditions, a higher proportion of the
-available energy is lost during compaction. This behaviour in addition to 
-higher 
-mobilised potential energy results in longer run-out distance in dense granular 
-column.~\citet{Lajeunesse2004} observed that the 
-flow comes to rest at around $3\tau_c$, but the grains continue to re-arrange 
-until $6\tau_c$. Similar behaviour is observed in DEM simulations.
-
-\begin{figure}[tbhp]
-\centering
-\begin{subfigure}[b]{0.75\textwidth}
-\centering
-\includegraphics[width=\textwidth]{Energy_dense_r18}
-\caption{Evolution of potential and kinetic energy}
-\label{fig:Energy_dense_r18}
-\end{subfigure}
-\\
-\begin{subfigure}[b]{0.75\textwidth}
-\centering
-\includegraphics[width=\textwidth]{KExy_dense_r18}
-\caption{Effect of kinetic energy}
-\label{fig:KExy_dense_r18}
-\end{subfigure}
-\caption{Effect of density on energy evolution $a = 0.8$}
-\label{fig:Energy_density_r18}
-\end{figure}
-
-In order to remove the effect of crystallisation on the run-out behaviour, a 
-highly poly-disperse sample ($r = d_{max}/d_{min} = 6)$ is used. 
-The flow kinematics of a dense (relative density $D_r = 74\%$) and a loose 
-($D_r = 22\%$) granular column with aspect ratio of 0.8 is studied. Similar to 
-the previous case, the dense granular column exhibits longer run-out distance 
-(\cref{fig:runout_height_dense_r6}. Due to compaction of grains in loose 
-condition, almost 20\% of the initial potential energy available for collapse 
-is lost in densification due to grain rearrangements in comparison to the dense 
-condition (\cref{fig:Energy_voro_r6}). The compaction of grains in loose 
-column and the dilation in dense column results in significantly different flow 
-structure, especially at the flow front (\cref{fig:density_r6}). As the loose 
-column densifies, more granular mass is pushed to the flow front resulting in 
-higher vertical effective stress. The loose column exhibits a more parabolic 
-final deposit profile in comparison to the dense column, which shows a 
-triangular deposit at the front.
-
-\begin{figure}[tbhp]
-\centering
-\includegraphics[width=0.9\textwidth]{runout_height_dense_r6}
-\caption{Effect of density on run-out evolution $a = 0.8$ (poly-dispersity 
-\textit{r} = 6)}
-\label{fig:runout_height_dense_r6}
-\end{figure}
-
-
-\begin{figure}[bhp]
-\centering
-\begin{subfigure}[b]{\textwidth}
-\centering
-\includegraphics[width=\textwidth]{dense_a08_r6_final}
-\caption{Dense initial packing}
-\label{fig:dense_a08_r6_final}
-\end{subfigure}
-\\
-\begin{subfigure}[b]{\textwidth}
-\centering
-\includegraphics[width=\textwidth]{loose_a08_r6_final}
-\caption{Loose initial packing}
-\label{fig:loose_a08_r6_final}
-\end{subfigure}
-\caption{Snapshots of granular column collapse $t = 6 \tau_c$}
-\label{fig:density_r6}
-\end{figure}
-
-
-\begin{figure}[tbhp]
-\centering
-\begin{subfigure}[b]{0.75\textwidth}
-\centering
-\includegraphics[width=\textwidth]{Energy_dense_r6}
-\caption{Evolution of potential and kinetic energy}
-\label{fig:Energy_dense_r6}
-\end{subfigure}
-\\
-\begin{subfigure}[b]{0.75\textwidth}
-\centering
-\includegraphics[width=\textwidth]{voro_r6}
-\caption{Evolution of packing density}
-\label{fig:voro_r6}
-\end{subfigure}
-\caption{Effect of density on energy and packing fraction evolution $a = 
-0.8$ 
-(poly-dispersity `r' = 6)}
-\label{fig:Energy_voro_r6}
-\end{figure}
-
-In short columns, only a part of the granular column above the failure surface 
-participates in the flow. However, it appears that the collapse for 
-large aspect ratios mixes two very different dynamics: the first stage 
-shows a large vertical acceleration, while the second stage 
-consists of a ``conventional'' horizontal granular flows. The effect of density 
-on the run-out behaviour of tall columns is investigated. Similar to short 
-columns, the dense granular column with an aspect ratio of 6 shows higher 
-run-out distance in comparison to the loose condition. The dense granular 
-column flows 
-almost twice as much as that of the loose column. Unlike short 
-columns, the evolution of run-out is different even at the initial stage of the 
-collapse. The dense granular column, which has higher initial potential energy 
-shows a rapid increase in the run-out due to free-fall and higher mobilised 
-potential energy. During this stage of collapse, the dense granular column has 
-15 \% higher normalised kinetic energy available for the horizontal push. This 
-results in a longer run-out distance for a dense granular column in comparison 
-to an initially loose granular column.
-
-\begin{figure}[tbhp]
-\centering
-\begin{subfigure}[b]{0.95\textwidth}
-\includegraphics[width=\textwidth]{runout_height_dense_a6}
-\caption{Effect of density on run-out evolution}
-\label{fig:runout_height_dense_a6}
-\end{subfigure}
-\\
-\begin{subfigure}[b]{0.95\textwidth}
-\centering
-\includegraphics[width=\textwidth]{Energy_dense_a6}
-\caption{Effect of density on energy evolution}
-\label{fig:Energy_dense_a6}
-\end{subfigure}
-\caption{Effect of density on run-out behaviour and energy evolution $a = 
-0.6$}
-\label{fig:Density_a6}
-\end{figure}
-
-The initial packing fraction and the distribution of kinetic energy in the 
-system has a significant influence on the flow kinematics 
-and the run-out behaviour, this suggests that triggering mechanisms play a
-crucial role in the case of natural flows. This stresses the necessity of 
-accounting for initiation mechanisms while modelling the run-out behaviour 
-using continuum approaches to predict realistic granular flow behaviour.
 
 \section{Slopes subjected to impact loading}
 
@@ -1689,6 +1472,225 @@ characteristic.
 \caption{Comparison of column collapse with slope subjected to impact loading.}
 \label{fig:Runout_Slope_Column}
 \end{figure}
+
+\section{Role of initial grain properties on the collapse of granular column}
+
+\citet{Lube2005} observed that the run-out distance scales with the initial 
+aspect ratio of the column, independent of the material properties. The 
+run-out 
+evolution after the initial transition regime is a frictional dissipation 
+process, and the lack of influence of material properties on the run-out 
+behaviour is inconsistent with frictional dissipation in continuum modelling of 
+granular flow behaviour. 
+~\citet{Balmforth2005} observed that the material properties have almost no 
+influence on the exponent of the normalised run-out as a function of the 
+initial aspect ratio. The numerical constant of proportionality, however, 
+showed clear material dependence. This corroborates the conclusions 
+of~\citet{Lajeunesse2004} and refutes that 
+of~\citet{Lube2005}.~\citet{Daerr1999} also observed strong influence of 
+initial packing density and the internal structure on the behaviour of 
+granular 
+flows. 
+
+
+It should be noted that the collapse experiment is highly transient and no 
+clear stationary regime is observed. On the contrary, the acceleration and the 
+deceleration phases cover nearly the whole duration of the spreading. This 
+makes it difficult to analyse the flow structure and its relation with other 
+characteristic of the system. The knowledge of the final run-out is not a 
+sufficient characterization of the deposit: one also needs to know how the mass 
+is distributed during the flow to understand the dynamics and the dissipation 
+process. This is expected to be true in natural contexts as well as in 
+experiments. While the inter-grain friction does not affect the early vertical 
+dynamics, nor the power-law dependence, it controls the effective frictional 
+properties of the flow, and its internal structure~\citep{Staron2007a}. It is 
+interesting to note that the details of the structure of the flow do not 
+influence the final run-out dependence, and thus seem to play a marginal role 
+in the overall behaviour of the spreading. This could explain why a simple 
+continuum model with a frictional dissipation could reproduce the run-out 
+scaling for columns with small aspect ratios.
+
+The run-out behaviour of a loose (79\% packing density) and a dense (83\% 
+packing density) granular column (\textit{a} = 0.8) are studied to understand 
+the 
+influence of material properties. The evolution of normalised run-out with time 
+for two different initial packing 
+densities are presented in~\cref{fig:runout_height_dense_r18}. At the initial 
+stage of collapse $t=\tau_c$, the flow evolution is identical in both dense and 
+loose conditions. However, the dense column flows 30\% longer than the loose 
+condition. Both the columns come to rest at around $t = 4\tau_c$. The columns, 
+however, show similar evolution of the normalised height. This shows that only 
+a part of the column is destabilised during the collapse.
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.9\textwidth]{runout_height_dense_r18}
+\caption{Effect of density on run-out evolution $a = 0.8$}
+\label{fig:runout_height_dense_r18}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.9\textwidth]{voro_r18}
+\caption{Evolution of local packing density $a = 0.8$}
+\label{fig:voro_r18}
+\end{figure}
+
+\Cref{fig:Energy_density_r18} shows the evolution of potential and kinetic 
+energy with time. Similar potential energy evolution in both dense and loose 
+conditions reveals that there is no change in the overall mechanism of 
+collapse. The dense condition has slightly higher peak kinetic energy than the 
+loose column. In the free-fall phase, the dense column shows a steeper increase 
+in the horizontal kinetic energy in comparison to the loose column. This 
+indicates that dense granular mass is pushed farther away more quickly than the 
+loose column. A loose column exhibits higher vertical kinetic energy which may 
+be 
+due to particle rearrangement resulting in densification of the granular 
+mass.~\Cref{fig:voro_r18} shows that the loose sample densifies as the flow 
+evolves. Both dense and loose granular columns dilate during the initial stage 
+of collapse, this is due to grains experiencing shear along the fracture 
+surface. 
+In both cases, the granular mass attains similar packing density at the end of 
+the flow. The dense granular column dilates, while the loose column compacts to 
+achieve the same critical density. The dense 
+condition has higher mobilised potential energy during the initial stage of 
+collapse, which 
+yields higher horizontal kinetic energy for the flow. However in loose 
+conditions, a higher proportion of the
+available energy is lost during compaction. This behaviour in addition to 
+higher 
+mobilised potential energy results in longer run-out distance in dense granular 
+column.~\citet{Lajeunesse2004} observed that the 
+flow comes to rest at around $3\tau_c$, but the grains continue to re-arrange 
+until $6\tau_c$. Similar behaviour is observed in DEM simulations.
+
+\begin{figure}[tbhp]
+\centering
+\begin{subfigure}[b]{0.75\textwidth}
+\centering
+\includegraphics[width=\textwidth]{Energy_dense_r18}
+\caption{Evolution of potential and kinetic energy}
+\label{fig:Energy_dense_r18}
+\end{subfigure}
+\\
+\begin{subfigure}[b]{0.75\textwidth}
+\centering
+\includegraphics[width=\textwidth]{KExy_dense_r18}
+\caption{Effect of kinetic energy}
+\label{fig:KExy_dense_r18}
+\end{subfigure}
+\caption{Effect of density on energy evolution $a = 0.8$}
+\label{fig:Energy_density_r18}
+\end{figure}
+
+In order to remove the effect of crystallisation on the run-out behaviour, a 
+highly poly-disperse sample ($r = d_{max}/d_{min} = 6)$ is used. 
+The flow kinematics of a dense (relative density $D_r = 74\%$) and a loose 
+($D_r = 22\%$) granular column with aspect ratio of 0.8 is studied. Similar to 
+the previous case, the dense granular column exhibits longer run-out distance 
+(\cref{fig:runout_height_dense_r6}. Due to compaction of grains in loose 
+condition, almost 20\% of the initial potential energy available for collapse 
+is lost in densification due to grain rearrangements in comparison to the dense 
+condition (\cref{fig:Energy_voro_r6}). The compaction of grains in loose 
+column and the dilation in dense column results in significantly different flow 
+structure, especially at the flow front (\cref{fig:density_r6}). As the loose 
+column densifies, more granular mass is pushed to the flow front resulting in 
+higher vertical effective stress. The loose column exhibits a more parabolic 
+final deposit profile in comparison to the dense column, which shows a 
+triangular deposit at the front.
+
+\begin{figure}[tbhp]
+\centering
+\includegraphics[width=0.9\textwidth]{runout_height_dense_r6}
+\caption{Effect of density on run-out evolution $a = 0.8$ (poly-dispersity 
+\textit{r} = 6)}
+\label{fig:runout_height_dense_r6}
+\end{figure}
+
+
+\begin{figure}[bhp]
+\centering
+\begin{subfigure}[b]{\textwidth}
+\centering
+\includegraphics[width=\textwidth]{dense_a08_r6_final}
+\caption{Dense initial packing}
+\label{fig:dense_a08_r6_final}
+\end{subfigure}
+\\
+\begin{subfigure}[b]{\textwidth}
+\centering
+\includegraphics[width=\textwidth]{loose_a08_r6_final}
+\caption{Loose initial packing}
+\label{fig:loose_a08_r6_final}
+\end{subfigure}
+\caption{Snapshots of granular column collapse $t = 6 \tau_c$}
+\label{fig:density_r6}
+\end{figure}
+
+
+\begin{figure}[tbhp]
+\centering
+\begin{subfigure}[b]{0.75\textwidth}
+\centering
+\includegraphics[width=\textwidth]{Energy_dense_r6}
+\caption{Evolution of potential and kinetic energy}
+\label{fig:Energy_dense_r6}
+\end{subfigure}
+\\
+\begin{subfigure}[b]{0.75\textwidth}
+\centering
+\includegraphics[width=\textwidth]{voro_r6}
+\caption{Evolution of packing density}
+\label{fig:voro_r6}
+\end{subfigure}
+\caption{Effect of density on energy and packing fraction evolution $a = 
+0.8$ 
+(poly-dispersity `r' = 6)}
+\label{fig:Energy_voro_r6}
+\end{figure}
+
+In short columns, only a part of the granular column above the failure surface 
+participates in the flow. However, it appears that the collapse for 
+large aspect ratios mixes two very different dynamics: the first stage 
+shows a large vertical acceleration, while the second stage 
+consists of a ``conventional'' horizontal granular flows. The effect of density 
+on the run-out behaviour of tall columns is investigated. Similar to short 
+columns, the dense granular column with an aspect ratio of 6 shows higher 
+run-out distance in comparison to the loose condition. The dense granular 
+column flows 
+almost twice as much as that of the loose column. Unlike short 
+columns, the evolution of run-out is different even at the initial stage of the 
+collapse. The dense granular column, which has higher initial potential energy 
+shows a rapid increase in the run-out due to free-fall and higher mobilised 
+potential energy. During this stage of collapse, the dense granular column has 
+15 \% higher normalised kinetic energy available for the horizontal push. This 
+results in a longer run-out distance for a dense granular column in comparison 
+to an initially loose granular column.
+
+\begin{figure}[tbhp]
+\centering
+\begin{subfigure}[b]{0.95\textwidth}
+\includegraphics[width=\textwidth]{runout_height_dense_a6}
+\caption{Effect of density on run-out evolution}
+\label{fig:runout_height_dense_a6}
+\end{subfigure}
+\\
+\begin{subfigure}[b]{0.95\textwidth}
+\centering
+\includegraphics[width=\textwidth]{Energy_dense_a6}
+\caption{Effect of density on energy evolution}
+\label{fig:Energy_dense_a6}
+\end{subfigure}
+\caption{Effect of density on run-out behaviour and energy evolution $a = 
+0.6$}
+\label{fig:Density_a6}
+\end{figure}
+
+The initial packing fraction and the distribution of kinetic energy in the 
+system has a significant influence on the flow kinematics 
+and the run-out behaviour, this suggests that triggering mechanisms play a
+crucial role in the case of natural flows. This stresses the necessity of 
+accounting for initiation mechanisms while modelling the run-out behaviour 
+using continuum approaches to predict realistic granular flow behaviour.
 
 \section{Summary}
 
