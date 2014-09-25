@@ -8,22 +8,28 @@
 
 \section{Introduction}
 
+Most of the geotechnical analysis involves failure prediction and design of 
+structures that can safely with stand applied loads. However, it is very 
+important to study the post-failure behaviour to mitigate risk posed by 
+geophysical and gravity-driven flows such as landslides, avalanches, slope 
+failures, and debris flows. Granular flows are complex problems in continuum 
+mechanics for which no closed-form solution exists. Hence it is essential to 
+develop alternative solution schemes, which are capable of simulating failure 
+mechanisms and post-failure dynamics of the granular media. 
+
 The dynamics of a homogeneous granular flow involve at least three distinct 
-scales: the \textit{microscopic scale}, which 
-is characterised by the contact between grains, the \textit{meso-scale} that 
-represents micro-structural effects such as grain rearrangement, and the 
-\textit{macroscopic scale}, where geometric correlations can be observed (see 
-~\cref{fig:multiscale}). Conventionally, granular flows are modelled as a 
-continuum because they exhibit many collective phenomena. However, on a grain 
-scale, the granular materials exhibit complex solid-like and/or fluid-like 
-behaviour. Recent studies, however, suggest that a continuum law may be unable 
-to capture the effect of inhomogeneities at the grain scale level, such as 
-orientation of force chains, which are micro-structural effects. Discrete 
-element methods (DEM) are capable of simulating these micro-structural effects, 
-however they are computationally expensive. In the present study, a multi-scale 
-approach is adopted, using both DEM and continuum techniques, to better 
-understand the rheology of granular flows and the limitations of continuum 
-models.
+scales: the \textit{microscopic scale}, which is characterised by the contact 
+between grains, the \textit{meso-scale} that represents micro-structural 
+effects such as grain rearrangement, and the \textit{macroscopic scale}, where 
+geometric correlations can be observed (\cref{fig:multiscale}). Conventionally, 
+granular flows are modelled as a continuum because they exhibit many collective 
+phenomena. However, on a grain scale, the granular materials exhibit complex 
+solid-like and/or fluid-like behaviour. Recent studies, however, suggest that a 
+continuum law may be unable to capture the effect of inhomogeneities at the 
+grain scale level, such as orientation of force chains, which are 
+micro-structural effects. Discrete element methods (DEM) are capable of 
+simulating these micro-structural effects, however they are computationally 
+expensive. 
 
 \begin{figure}[tbhp]
 \centering
@@ -34,11 +40,7 @@ models.
 
 
 \section{Continuum modelling of granular flows}
-%Granular material is a large conglomeration of discrete macroscopic particles, 
-%which can slide over each other but cannot inter-penetrate. Granular materials 
-%behave like a fluid and flow upon shearing, but they can also resist loads 
-%like 
-%a solid.
+
 The most powerful way of modelling the granular assembly is through numerical 
 techniques. It is important to argue, why it is acceptable to model the 
 granular materials as a continuum. At the outset, it may even appear for some 
@@ -48,19 +50,22 @@ small enough to warrant a continuum description~\citep{Kamrin2007}. Typical
 continuum laws are only expected to apply when there is a strong separation of 
 scales, i.e. separation of the micro-scale from the macro-scale, in the flow 
 geometry. Continuum mechanics relies on the fundamental notion of a 
-representative volume element, in which properties averaged over discrete 
-particles exhibit deterministic relationships. Recent works on granular 
+representative volume element, in which, properties averaged over discrete 
+grains exhibit deterministic relationships. Recent works on granular 
 materials suggest that a continuum law may be incapable of revealing 
-in-homogeneities at the particle-scale level, such as force 
-chains~\citep{Rycroft2009}. Granular materials exhibit many collective 
-phenomenon \citep{Jaeger1996}. However, no continuum model is still capable of 
-describing the parabolic flow, the plug flow~\citep{Rycroft2006} and the 
-occurrence of localized shear bands in the granular materials. This is in 
-contrast to the hydrodynamics of dilute granular materials and the molecular 
-fluids for which accurate continuum models can be systematically derived, by 
-averaging over particle collisions in an idealized element~\citep{Jenkins1983}. 
-The fundamental question is how to model granular materials which exhibit 
-complex phenomenon, meaningfully. 
+in-homogeneities at the grain-scale level, such as force 
+chains, fabric tensor, etc~\citep{Rycroft2009}. 
+
+Granular materials exhibit many collective phenomenon \citep{Jaeger1996}. 
+However, no continuum model is still capable of describing the parabolic flow, 
+the plug flow~\citep{Rycroft2006} and the occurrence of localized shear bands 
+in the granular materials. Most constitutive models, even in the simple case of 
+dry granular flows, cannot describe the entire range of flow from solid to 
+fluid. In certain cases, the granular flow is modelled as a fluid behaviour. 
+Continuum models that are based on averaging techniques applied to a 
+representative volume elements are not successful even in quas-static 
+conditions. The fundamental question is how to model granular materials which 
+exhibit complex phenomenon, meaningfully. 
 
 The oldest approach involves modelling the granular material as a rigid solid, 
 which behaves as an ideal Coulomb material and undergoes failure if the ratio 
@@ -71,24 +76,27 @@ based on the mechanical equilibrium of the system along with the hypothesis of
 all times. In limit-state Mohr-Coulomb plasticity, these conditions are assumed 
 to hold even if the wall allows for a plastic yielding, due to the assumption 
 of coaxiality~\citep{Rycroft2009}. The fundamental assumption of a limit-state 
-stress field at incipient yield everywhere is questionable. Granular flows can 
-contain regions lying within the yield surface. For example, in the case of a 
-granular column collapse the central cone remains stagnant, and thus cannot be 
-considered as yielded. In fact, discrete-element simulations show that the 
-grains in this region essentially remain static~\citep{Staron2005}. The 
-coaxiality feature of Mohr-Coulomb plasticity is useful in describing the 
-debris flow. Granular material deforms solely based on the alignment of the 
-principle plane. In general, the major principle plane is usually vertical due 
-to gravity, and the coaxiality rule requires the material to expand 
-horizontally, which is the case for granular column collapse. However, the 
-coaxiality can be troubling depending on the circumstances, for example, in a 
-slow dense granular flow through a silo, the principle plane remains vertical 
-and the coaxiality requires the granular material to expand horizontally, thus 
-making it geometrically impossible for the granular material to converge and 
-exit through the orifice. Depending on the boundary conditions, Mohr-Coulomb 
-plasticity can result in discontinuity or jumps in the velocity and stress 
-fields~\citep{Rycroft2006}. Advanced elasto-plastic models based on 
-\textit{critical state} theories provide a better representation of granular 
+stress field at incipient yield everywhere is questionable.
+
+Granular flows can contain regions lying within the yield surface. For example, 
+in the case of a granular column collapse the central cone remains stagnant, 
+and thus cannot be considered as yielded. In fact, discrete-element simulations 
+show that the grains in this region essentially remain 
+static~\citep{Staron2005}. The coaxiality feature of Mohr-Coulomb plasticity is 
+useful in describing the debris flow. Granular material deforms solely based on 
+the alignment of the principle plane. In general, the major principle plane is 
+usually vertical due to gravity, and the coaxiality rule requires the material 
+to expand horizontally, which is the case for granular column collapse. 
+However, the coaxiality can be troubling depending on the circumstances, for 
+example, in a slow dense granular flow through a silo, the principle plane 
+remains vertical and the coaxiality requires the granular material to expand 
+horizontally, thus making it geometrically impossible for the granular material 
+to converge and exit through the orifice. Depending on the boundary conditions, 
+Mohr-Coulomb plasticity can result in discontinuity or jumps in the velocity 
+and stress fields~\citep{Rycroft2006}. 
+
+Advanced elasto-plastic models based on the \textit{critical state} theory
+provide a better representation of granular 
 flows in quasi-static regime, but they fail to capture the mechanism of rapid 
 granular flows which involves rate dependent behaviour. Another continuum based 
 model is the partial fluidization model, which uses a set of equations that 
@@ -105,24 +113,84 @@ part associated with longer contacts, i.e. quasi-static regime. Although, the
 model captures shear localization behaviour, it fails to describe the granular 
 flow behaviour at rough boundaries.
 
-Granular materials are composed of distinct grains, which displace 
-independently from one another and interact only at contact points. It is 
-assumed that the deformations of individual grains are negligible in comparison 
-with the deformation of the granular assembly as a whole. The latter 
-deformation is primarily due to the movement of the grains as a rigid body. 
-Therefore, it can be argued that precise modelling of particle deformation is 
-not necessary to obtain a good approximation of the overall mechanical 
-behaviour. An Eulerian grain-level continuum model describes the response of 
-individual grains to the applied loads. However, continuum mechanics solves 
-over the whole domain using initial and boundary conditions appropriate for the 
-problem. Hence, continuum models are still widely used to solve engineering 
-problems associated with granular materials and flows. Conventional mesh based 
-approaches, such as Finite Element Method or Finite Difference Method involves 
-complex re-meshing and remapping of variables, which causes additional errors 
-in simulating large deformation problems~\citep{Li2002}. Mesh free methods such 
-as Material Point Method are not constrained by the mesh size and mesh 
-distortion, and hence can be effectively used in simulating large deformation 
-problems, such as debris flow and submarine landslides.
+In the case of fluid-saturated soil, most of these techniques does not consider 
+the fully coupled behaviour. Instead, they consider the soil-fluid mixture as a 
+single phase material. However, modelling of pore pressure dissipation is 
+important to capture accurate flow behaviour, especially in submarine 
+conditions, where they play a crucial role in the flow dynamics. Presence of 
+ambient fluid may retard the flow due to viscous drag or accelerate the flow 
+through lubrication effect. Fully coupled constitutive models are essential to 
+realistically capture the initiation and propagation of rapid granular flows.
+
+Granular materials are composed of distinct grains, which interact only at 
+the contact points. It is assumed that the deformations of individual grains 
+are negligible in comparison with the deformation of the granular assembly as a 
+whole. The latter deformation is primarily due to the movement of the grains as 
+a rigid body. Therefore, it can be argued that precise modelling of grain 
+deformation is not necessary to obtain a good approximation of the overall 
+mechanical behaviour. An Eulerian grain-level continuum model describes the 
+response of individual grains to the applied loads. However, continuum 
+mechanics solves over the whole domain using initial and boundary conditions 
+appropriate for the problem. Hence, continuum models are still widely used to 
+solve engineering problems associated with granular materials and flows.
+
+In continuum mechanics, there are two different view points describing the 
+deformation of a continuum, namely Lagrangian and Eulerian 
+description. In the Lagrangian description  the movement of the continuum is 
+specified as a function of the material coordinates and time. This is a 
+particle description that is often applied in solid mechanics. On the other 
+hand, the Eulerian description focuses on the current configuration, giving 
+attention to what is occurring at a fixed point in space as time progresses, 
+instead of giving attention to individual particles as they move through space 
+and time. The Eulerian description is commonly used for describing fluid flows 
+where kinematic properties are of great interest. 
+
+Conventional mesh based Lagragian approaches, such as Finite Element Method or 
+Finite Difference Method are capable of modelling history dependant material 
+behaviour and have well-defined free surface. However, they require complex 
+re-meshing and remapping of variables, which cause additional errors in 
+simulating large deformation problems~\citep{Li2002}. Unlike Lagrangian FEM, in 
+Eulerian FEM the computational mesh is kept spatially fixed while the material 
+is deforming in time. This allows the capability of handling large deformation 
+without the problem of mesh distortion. As the computational mesh is completely 
+decoupled from the material, convective terms appear in Eulerian FEM, 
+introducing numerical difficulties because of their non-symmetrical 
+properties~\citep{Donea1982}. Additionally, Eulerian FEM is difficult to use
+with history dependent constitutive models. Coupled Eulerian–Lagrangian (CEL) 
+method attempts to capture the advantages both of the Lagrangian and the 
+Eulerian method in modelling large deformation problems in 
+geomechanics~\citep{Qiu2011}. This approach involves solving the governing 
+equation in the Lagrangian step and thus obtaining the material displacement 
+followed by the Eulerian step where a new mesh is generated and and the 
+variables are transferred to the the new mesh. Thus requiring higher
+computational time. 
+
+\begin{figure}[tbhp]
+\centering
+\includegraphics[width=0.95\textwidth]{NumericalMethods}
+\caption{Difference between mesh-based and mesh-free techniques in modelling 
+large deformation flow.}
+\label{fig:NumericalMethods}
+\end{figure}
+
+An alternative to the mesh-based approach is using meshless methods 
+(\cref{fig:NumericalMethods}) where the 
+nodes representing the solid transforms as the continuum deforms, avoiding 
+the problem of mesh distortion, i.e., the nodes representing the solid can move 
+freely within the domain. Mesh free methods such as Smooth Particle 
+Hydrodynamics and Material Point Method are not constrained by the mesh size 
+and mesh distortion effects, and hence can be effectively used in simulating 
+large deformation problems, such as debris flow and submarine landslides.
+
+
+The element-free Galerkin (EFG) method is a relatively younger meshless method, 
+in which the trial functions for the weak form are constructed using moving 
+least squares interpolation~\citep{Belytschko1994}. The particle finite element 
+method (PFEM) is another meshless method as it involves the meshless finite 
+element interpolation. In PFEM, the nodal points represent the particles and 
+the computational mesh is constructed by connecting these points. The mesh is 
+then used to solve the governing equations in Lagrangian fashion. Large 
+deformation requires frequent re-meshing~\citep{Kafaji2013}.
 
 \section{Material Point Method (MPM)}
 Material Point Method (MPM)~\citep{Sulsky1994,Sulsky1995} is a particle based 
@@ -143,9 +211,10 @@ differentiation, integration, and to solve equations of
 motions~\citep{Steffen2008}. The background mesh can be of any form, however 
 for computational efficiency a Cartesian lattice is adopted. A typical 2D 
 discretization of a solid body is shown in~\cref{fig:MPM}. 
-\begin{figure}[htbp]
+
+\begin{figure}
 \centering
-\includegraphics[width=0.975\textwidth]{MPM}
+\includegraphics[width=0.45\textwidth]{MPM}
 \caption[Typical discretization of a domain in MPM]{Typical discretization of a 
 domain in MPM. The dotted line represents the boundary of the simulated object 
 $\Omega$ and each closed point represents a material point used to discretize 
@@ -155,7 +224,7 @@ grid cells.}
 \label{fig:MPM}
 \end{figure}
 
-The grey-shaded circles are the material points ($X_{p}$, where `p' represents 
+The grey-shaded circles are the material points ($x_{p}$, where `p' represents 
 a material point) and the computational nodes are the points of intersection of 
 the grid (denoted as $X_{i}$, where \textit{i} represents a computational 
 node). The Material Point Method involves discretizing the domain $\Omega$ with 
@@ -322,55 +391,18 @@ conditions can be applied to the background grid nodes in the same way as in
 the traditional FEM. The free surface boundary conditions are satisfied, as MPM 
 is formulated in the weak form. Implementation of traction boundary conditions 
 requires a set of material points to represent the boundary 
-layer.~\citet{Bandara2009} proposed a friction interaction for the planar 
+layer.~\citet{Bandara2013} proposed a friction interaction for the planar 
 boundary condition, using Coulomb's friction criterion. The nodal accelerations 
 were considered to include the frictional effects instead of the forces, as the 
 forces are proportional to the corresponding accelerations. The static and 
 kinematic frictions are applied tangential to the nodal boundary. Friction 
 forces are applied, only if the particles are in contact. The normal velocity 
-and acceleration on the boundary plane is zero. The shape functions used in the 
-MPM are continuous, and hence penetration between bodies are handled 
-automatically without the need for any supplemental contact 
-algorithm~\citep{Chen2002}. In the MPM, the continuum body deforms and moves in 
-an arbitrary computation grid and all the boundary conditions are carried by 
-the boundary particles. If a boundary particle is present in a cell, then the 
-cell boundary becomes a part of the continuum body, and the cell size 
-represents the thickness of the boundary. However, in certain cases both the 
-boundary particle and an interior particle can be found in a cell, in which 
-case the cell is still treated as a boundary cell, and the interior particle 
-temporarily acts as a boundary particle. To avoid numerical errors, it is 
-essential to consider smaller cell size along the boundary~\citep{Chen2002}. 
-
-In the MPM simulations, numerical noises are observed when the material points 
-crosses the cell boundaries during deformation of the material, this is termed 
-as cell crossing noise. If a material point is located very close to the cell 
-boundary, it results in discontinuous nature of the gradient of the weighing 
-function causing a force imbalance on the grid~\citep{bardenhagen2004}. This 
-results in large non-physical acceleration values resulting in separation of 
-material points from the continuum~\citep{Sulsky1995}. 
-~\cref{fig:cellnoise} illustrates the problem of cell crossing noise. The 
-main reason for the occurrence of cell crossing noise is the use of piecewise 
-linear shape functions. However, this problem, which is predominant when using 
-fine mesh size, can be overcome by changing the order of arithmetic operation 
-as proposed by \citet{Sulsky1995}. To overcome the problem of cell crossing 
-noise, \citet{bardenhagen2004} proposed an alternate method called the 
-Generalized Interpolation Material Point Method that uses smoother shape 
-functions and a larger influence region for each grid node. This approach 
-minimizes the cell crossing noise. However, special attention is required to 
-simulate the boundaries in the Generalized Interpolation Material Point Method 
-(GIMP).
-\begin{figure}[htbp]
-\centering
-\includegraphics{cellnoise}
-\caption{Cell crossing noise}
-\label{fig:cellnoise}
-\end{figure}
+and acceleration on the boundary plane is zero.
 
 \subsection{Solution scheme}
 A step-by-step solution scheme for Material Point Method~\citep{Bandara2009} is 
-described below. It involves three stages: preprocessing, computation, and 
-post-processing: 
-\subsubsection{Preprocessing}
+described below. It involves: 
+
 \begin{itemize}
 \item
 A continuum body is discretized into a finite set of material points 
@@ -386,10 +418,7 @@ grid is usually adopted.
 The state variables (mass/density, velocity, strain, stress, other material 
 parameter corresponding to the adopted constitutive relation) are initialized 
 at every material point. 
-\end{itemize}
 
-\subsubsection{Computation scheme}
-\begin{itemize}
 \item
 For each material point, the mapping of the properties from the particles to 
 the cell nodes is accomplished using the shape functions computed from the 
@@ -683,121 +712,115 @@ cell was adopted in this case. In summary, for conducting a successful MPM
 analysis, a careful selection of the mesh size and the number of particles is 
 necessary.
 
+\subsection{GIMPM}
+
+The shape functions used in the 
+MPM are continuous, and hence penetration between bodies are handled 
+automatically without the need for any supplemental contact 
+algorithm~\citep{Chen2002}. In the MPM, the continuum body deforms and moves in 
+an arbitrary computation grid and all the boundary conditions are carried by 
+the boundary particles. If a boundary particle is present in a cell, then the 
+cell boundary becomes a part of the continuum body, and the cell size 
+represents the thickness of the boundary. However, in certain cases both the 
+boundary particle and an interior particle can be found in a cell, in which 
+case the cell is still treated as a boundary cell, and the interior particle 
+temporarily acts as a boundary particle. To avoid numerical errors, it is 
+essential to consider smaller cell size along the boundary~\citep{Chen2002}. 
+
+In the MPM simulations, numerical noises are observed when the material points 
+crosses the cell boundaries during deformation of the material, this is termed 
+as cell crossing noise. If a material point is located very close to the cell 
+boundary, it results in discontinuous nature of the gradient of the weighing 
+function causing a force imbalance on the grid~\citep{bardenhagen2004}. This 
+results in large non-physical acceleration values resulting in separation of 
+material points from the continuum~\citep{Sulsky1995}. 
+~\cref{fig:cellnoise} illustrates the problem of cell crossing noise. The 
+main reason for the occurrence of cell crossing noise is the use of piecewise 
+linear shape functions. However, this problem, which is predominant when using 
+fine mesh size, can be overcome by changing the order of arithmetic operation 
+as proposed by \citet{Sulsky1995}. To overcome the problem of cell crossing 
+noise, \citet{bardenhagen2004} proposed an alternate method called the 
+Generalized Interpolation Material Point Method that uses smoother shape 
+functions and a larger influence region for each grid node. This approach 
+minimizes the cell crossing noise. However, special attention is required to 
+simulate the boundaries in the Generalized Interpolation Material Point Method 
+(GIMP).
+\begin{figure}[htbp]
+\centering
+\includegraphics{cellnoise}
+\caption{Cell crossing noise}
+\label{fig:cellnoise}
+\end{figure}
+
+
 \section{Particulate modelling of granular flows}
 
 Granular materials often exhibit different behaviour under different 
-circumstances. Fluidized 
-granular material often resembles a liquid, and reveals surface waves. In 
-certain situations, 
-granular materials behave more like a solid exhibiting plastic deformations. 
-Despite the wide 
-variations in the physical and chemical properties of the grains, the discrete 
-granular structure 
-has a rich generic phenomenology, which motivates us to understand the 
-fundamental behaviour of 
-these materials. A granular material can be considered as a continuous material 
-if it is viewed at 
-a macroscopic scale, ignoring the fact that it is composed of grains. On a 
-macroscopic scale, the 
+circumstances. Fluidized granular material often resembles a liquid, and 
+reveals surface waves. In certain situations, granular materials behave more 
+like a solid exhibiting plastic deformations. Despite the wide variations in 
+the physical and chemical properties of the grains, the discrete granular 
+structure has a rich generic phenomenology, which motivates us to understand 
+the fundamental behaviour of these materials. A granular material can be 
+considered as a continuous material if it is viewed at a macroscopic scale, 
+ignoring the fact that it is composed of grains. On a macroscopic scale, the 
 behaviour of the granular material could be approximately defined using 
-continuum mechanics. 
-However, On a particle level, the granular materials exhibit complex solid-like 
-and/or fluid like 
-behaviour depending on the way the grains interact with each other. The 
-Analytical and Finite 
-Element models, which consider granular materials as continuum cannot take into 
-account the local 
-geometrical processes that govern the mechanical behaviour of a non-homogeneous 
-soil. The 
-application of continuum models to describe granular flow poses subtle problems 
-for statistical 
-analysis~\citep{mehta1994}. The particle level description of the granular 
-material enriches the 
-macro-scale variables which poorly account for the local rheology of the 
-materials. Numerical 
-models based on the Discrete Element approach proposed by~\citet{Cundall1979} 
-are capable of  
-simulating the granular material as a discontinuous system. Although, modern 
-measurement 
-techniques 
-can probe into the local granular variables, like particle position, 
-velocities, contact forces, 
-etc., they have inherent limitations in acquiring those variables. The 
-\textit{discrete-element} 
-approach is a powerful and reliable research tool to study the behaviour 
-granular materials at the 
-grain-scale. This approach involves applying Newton's equation of motion 
-simultaneously to all 
-particles described as rigid solid bodies by considering the contact forces and 
-the external 
-forces 
-acting on the particles. For a given boundary condition, the collective 
-mechanical response of 
-particles to the external force leads to the relative motion between particles 
-constrained in a 
-dense state and/or by in-elastic collisions in the loose 
-state.~\citet{Cundall1979} applied this 
+continuum mechanics. However, On a grain level, the granular materials 
+exhibit complex solid-like and/or fluid like behaviour depending on the way the 
+grains interact with each other. The Analytical and Finite Element models, 
+which consider granular materials as continuum cannot take into account the 
+local geometrical processes that govern the mechanical behaviour of a 
+non-homogeneous soil. The application of continuum models to describe granular 
+flow poses subtle problems for statistical analysis~\citep{mehta1994}. The 
+grain level description of the granular material enriches the macro-scale 
+variables which poorly account for the local rheology of the materials. 
+Numerical models based on the Discrete Element approach proposed 
+by~\citet{Cundall1979} are capable of simulating the granular material as a 
+discontinuous system. Although, modern measurement techniques can probe into 
+the local granular variables, like grain position, velocities, contact 
+forces, etc., they have inherent limitations in acquiring those variables. The 
+\textit{discrete-element} approach is a powerful and reliable research tool to 
+study the behaviour granular materials at the grain-scale. This approach 
+involves applying Newton's equation of motion simultaneously to all grains 
+described as rigid solid bodies by considering the contact forces and the 
+external forces acting on the grains. For a given boundary condition, the 
+collective mechanical response of grains to the external force leads to the 
+relative motion between grains constrained in a dense state and/or by 
+in-elastic collisions in the loose state.~\citet{Cundall1979} applied this 
 method to granular geomaterials, and called it the \textit{Distinct Element 
-Method}, to 
-differentiate from the existing \textit{Finite Element method} used in 
-geomechanics. The attribute 
-``distinct'' refers to the degrees of freedom of individual particles, but it 
-was later replaced 
-by 
-``discrete'' to underline the discrete nature of the system. A similar method 
-called 
-\textit{Discrete Element Method} (DEM) was used at the same time for the 
-simulation of molecular 
-systems 
-with classical schemes that could be directly applied to granular materials. 
-Hence, the acronyms 
-DEM 
-and DEM are used synonymously to describe the methods of simulating granular 
-materials at particle 
-scale. In-spite of the formal analogy (particles and force laws) between 
-granular and molecular 
-systems, the physics is fundamentally different. The interactions between 
-individual grains are 
-governed by unilateral contact laws, and the mechanism of energy dissipation is 
-through friction 
-and inelastic collisions. Moreover, granular materials have a wide variation in 
-their particle 
-shape and size distribution that require appropriate numerical treatments. In 
-the Molecular 
-Dynamics approach, the normal reaction force, which prevents the 
-interpenetration of two grains is 
-proportional to the depth of penetration. Thus, frictional contact between 
-grains can be expressed 
+Method}, to differentiate from the existing \textit{Finite Element method} used 
+in geomechanics. The attribute ``distinct'' refers to the degrees of freedom of 
+individual grains, but it was later replaced by ``discrete'' to underline 
+the discrete nature of the system. A similar method called \textit{Discrete 
+Element Method} (DEM) was used at the same time for the simulation of molecular 
+systems with classical schemes that could be directly applied to granular 
+materials. In-spite of the formal analogy (grains and force laws) between 
+granular and molecular systems, the physics is fundamentally different. The 
+interactions between individual grains are governed by unilateral contact laws, 
+and the mechanism of energy dissipation is through friction and inelastic 
+collisions. Moreover, granular materials have a wide variation in their 
+grain shape and size distribution that require appropriate numerical 
+treatments. In the Molecular Dynamics approach, the normal reaction force, 
+which prevents the interpenetration of two grains is proportional to the depth 
+of penetration. Thus, frictional contact between grains can be expressed 
 as a function of the configuration variables, which describe the positions and 
-velocities of the 
-grains~\citep{Radjai2011}. Discrete-Element methods, which describe 
-interactions between grains 
-based on the explicit overlap between the grains are termed as \textit{smooth 
-methods}. Another 
-approach is the \textit{non-smooth approach}~\citep{Jean1999}, which describes 
-the behaviour of 
+velocities of the grains~\citep{Radjai2011}. Discrete-Element methods, which 
+describe interactions between grains based on the explicit overlap between the 
+grains are termed as \textit{smooth methods}. Another approach is the 
+\textit{non-smooth approach}~\citep{Jean1999}, which describes the behaviour of 
 discrete elements using the main features of uni-laterality and Coulomb 
-friction, and by 
-neglecting 
-the finer details such as interpenetration and overlap between grains. The 
-fundamental difference 
+friction, and by neglecting the finer details such as interpenetration and 
+overlap between grains. The fundamental difference 
 between the non-smooth method and the common DEM or Discrete Element Method 
-(DEM) approach lies in 
-the 
-treatment of small length and time scales involved in the dynamics of granular 
-media. In DEM-type 
-DEM, the particles are treated as rigid bodies but the contacts between 
-particles are assumed to 
-obey the visco-elastic constitutive law. The time-stepping schemes used for the 
-numerical 
-integration of the equations of motion in Discrete Element Method, imply that 
-the contact 
-interactions 
-involve smaller time and length scales. In the CD method, these small scales 
-are neglected and 
-their effects are absorbed into the contact laws. In non-smooth formulation, 
-the particle dynamics 
-is described at a larger scale than the elastic response time and displacement 
+(DEM) approach lies in the treatment of small length and time scales involved 
+in the dynamics of granular media. In DEM-type DEM, the grains are treated 
+as rigid bodies but the contacts between grains are assumed to obey the 
+visco-elastic constitutive law. The time-stepping schemes used for the 
+numerical integration of the equations of motion in Discrete Element Method, 
+imply that the contact interactions involve smaller time and length scales. In 
+the CD method, these small scales are neglected and their effects are absorbed 
+into the contact laws. In non-smooth formulation, the grain dynamics is 
+described at a larger scale than the elastic response time and displacement 
 scales~\citep{Jean1999, Radjai2009}. 
 
 
@@ -834,7 +857,7 @@ non-linear
 differential equations cannot be solved analytically. The approximate 
 numerical 
 solution of these 
-equations, which describes the trajectories of all the particles of the system 
+equations, which describes the trajectories of all the grains of the system 
 is called as 
 Discrete Element Method. The idea of Discrete Element Method goes back to 
 Alder 
@@ -848,7 +871,7 @@ Discrete Element Method simulations are identical to the real experiments,
 this 
 involve generation 
 of 
-samples (initial conditions) with \textit{N} particles and solving the 
+samples (initial conditions) with \textit{N} grains and solving the 
 Newton's 
 equation of motion 
 for the system until the properties of the system no longer change with time 
@@ -860,7 +883,7 @@ Element Method
 simulation. 
 The dynamics of the granular material is governed by Newton's equation of 
 motion which depends on 
-the centre-of-mass coordinates and the Euler angles of the particles 
+the centre-of-mass coordinates and the Euler angles of the grains 
 \textit{i} 
 (\textit{i}=1,\dots,\textit{N}):
 \begin{align} 
@@ -874,16 +897,16 @@ the centre-of-mass coordinates and the Euler angles of the particles
 The force $\overrightarrow{\mathbf{F}_{i}}$ and the torque 
 $\overrightarrow{\mathbf{M}_{i}}$, 
 which 
-act on particle \textit{i} of mass $\mathit{m}_{\mathit{i}}$ and the tensorial 
+act on grain \textit{i} of mass $\mathit{m}_{\mathit{i}}$ and the tensorial 
 moment of inertia 
-${\hat{J}_i}$ are (sometimes complicated) functions of the particle 
+${\hat{J}_i}$ are (sometimes complicated) functions of the grain 
 positions 
 $\overrightarrow{\mathit{r}_{\mathit{j}}}$, their angular orientations 
 $\overrightarrow{\varphi}_{\mathit{j}}$, and their corresponding velocities 
 $\overrightarrow{\mathit{v}_{\mathit{j}}}$ and 
 $\overrightarrow{\omega}_{\mathit{j}}$. In a two-dimensional system, the 
 angular 
-orientation of a particle is described by a single (scalar) quantity 
+orientation of a grain is described by a single (scalar) quantity 
 $\varphi_{i}$ and the moment 
 of inertia reduces to a scalar value $\mathit{J}_{i}$. The Newton's equation 
 of motion can be written as:
@@ -897,14 +920,14 @@ of motion can be written as:
 	\overrightarrow{\omega_j}), (j=1,...,N) \nonumber
 \end{align}
 
- For granular particles in the absence of long range fields, the force 
+ For granular grains in the absence of long range fields, the force 
  $\overrightarrow{\mathbf{F}_{i}}$ and the torque 
  $\overrightarrow{\mathbf{M}_{i}}$ acting upon 
 the 
- particle \textit{i} are given as sum of the pairwise interaction of particle 
+ grain \textit{i} are given as sum of the pairwise interaction of grain 
  `\textit{i}' with 
 all 
- other particles of the system:
+ other grains of the system:
 
 \begin{align}
    \overrightarrow{{\mathbf{F}}_i}=\sum\limits_{j=1,j\ne 
@@ -915,10 +938,10 @@ all
 
 The limitation to pairwise interaction is an abstraction, which is justified 
 if 
-the particles 
+the grains 
 deformation at the contact is trivial. To describe the deformation of granular 
 assemblies one has 
-to take into account the effect of multi-particle interactions. This method is 
+to take into account the effect of multi-grain interactions. This method is 
 general and can be 
 applied to a wide range of systems. The Discrete Element Method can be used to 
 study the 
@@ -927,12 +950,12 @@ both
 the conditions in 
 exactly the same way, it is not necessary to divide the system and then treat 
 each condition 
-differently. The simplest model for granular particle is a sphere. In a 
+differently. The simplest model for granular grain is a sphere. In a 
 two-dimensions case, the 
-sphere is reduced to a circular disk. Simulations using spherical particles 
+sphere is reduced to a circular disk. Simulations using spherical grains 
 are 
 numerically very 
-effective since particle collisions can be easily identified and described in 
+effective since grain collisions can be easily identified and described in 
 a 
 simple 
 way~\citep{Posch2005}.
@@ -988,20 +1011,20 @@ are discussed.
 
 %****************************************** %
 \subsubsection*{Normal force}
-When granular particles collide, part of the kinetic energy is dissipated as 
+When granular grains collide, part of the kinetic energy is dissipated as 
 heat and the other 
-part causes deformation of the particle. These deformations generate 
+part causes deformation of the grain. These deformations generate 
 interaction forces. The 
 grains 
 are considered to be rigid while their contact is assumed to be soft. Thus, the 
 grains do not 
-change their shape, instead they overlap. The shapes of the particles are 
+change their shape, instead they overlap. The shapes of the grains are 
 conserved on an average, 
 after many collisions. The overlap at the contact is limited to very small 
 deformations, which are 
 achieved by defining a repulsive normal force that opposes the overlap. The 
 mutual compression 
-($\delta_{n}$) of the particles \textit{i} and \textit{j} is defined as:
+($\delta_{n}$) of the grains \textit{i} and \textit{j} is defined as:
 \begin{align}
  \delta_{n}=\left|x_{\mathbf{i}}-x_{\mathit{j}}\right|-r_{i}-r_{j}
 \label{eq:delta}
@@ -1043,7 +1066,7 @@ solution has an
 undesirable property of generating an attractive force~\citep{Posch2005}. It 
 arises just before 
 the 
-two particles separate. In this case, we have ${d{\delta_{n}}}$$/{dt} > 0$  
+two grains separate. In this case, we have ${d{\delta_{n}}}$$/{dt} > 0$  
 while $\delta_{n}$ 
 approaches zero. To avoid the attractive force, the force is computed in two 
 stages: a candidate 
@@ -1059,7 +1082,7 @@ force $\hat{F}_{n}$ is calculated, and verified whether it is non-negative:
 For pairwise collisions, the normal force $(F_{n})$ represented as 
 ${{k}_{n}}{{\delta}_{n}}+{{\gamma}_{n}}$ causes a decrease in the relative 
 normal velocity of the 
-particles by a factor $\epsilon$. This factor is the \textit{coefficient of 
+grains by a factor $\epsilon$. This factor is the \textit{coefficient of 
 restitution}, and is 
 defined as $\epsilon\approx g'/g$, where \textit{g} is the absolute normal 
 relative velocity 
@@ -1091,14 +1114,14 @@ restitution, which is defined as:
 % %
 
 \subsubsection*{Tangential force}
-Granular particles are not perfect spheres, but have a complicated surface 
+Granular grains are not perfect spheres, but have a complicated surface 
 texture, therefore at 
 oblique collisions, besides the normal force there is a tangential force too. 
 Even perfectly 
 smooth 
 spheres exert a tangential force due to their bulk viscosity~\citep{Posch2005}. 
 To build a heap of 
-spheres on a flat surface, the particles as well as the surface has to be 
+spheres on a flat surface, the grains as well as the surface has to be 
 sufficiently rough, 
 indicating the dependence of the tangential force on the surface properties of 
 the granular 
@@ -1110,7 +1133,7 @@ fashion as the normal force, arising from a spring stretched by the relative
 motion of the grain. 
 Tangential forces are modelled by considering the relevant relative tangential 
 velocity of the 
-particle surfaces at the point of contact. The point of contact is an 
+grain surfaces at the point of contact. The point of contact is an 
 approximation, as the 
 description of the normal force assumes a compression $\delta_{n}$, which 
 implies a contact 
@@ -1119,7 +1142,7 @@ in 3-D or a contact line in 2-D. Assuming a tangential spring of length
 $\delta_{t}$ exerts an 
 opposing force to the relative tangential displacements (ignoring the effect of 
 relative rolling 
-between the particles), the tangential force can be postulated similar to the 
+between the grains), the tangential force can be postulated similar to the 
 normal force 
 (~\cref{eq:vn}) as:
 \begin{equation}
@@ -1239,7 +1262,7 @@ such as a quasi-static packing, a non-linear law can have significant influence
 on the acoustic 
 properties~\citep{Tou2004}, and on the global stiffness~\citep{Agn2007}. 
 However, in case of rapid 
-granular flows, the interaction force between the particles has almost no 
+granular flows, the interaction force between the grains has almost no 
 effect on the 
 phenomenon, 
 and a linear law can be used to describe this kind of 
@@ -1250,20 +1273,20 @@ behaviour~\citep{Radjai2011}.
 %
 \subsection{Numerical algorithm and integration scheme}
 The efficiency of a Discrete Element Method program is mainly determined by 
-its efficiency to compute the interaction forces between particles. If we 
+its efficiency to compute the interaction forces between grains. If we 
 consider a model system with pairwise interactions, we have to consider the 
-contribution of the force on particle \textit{i} due to all its 
-neighbours. If we consider only the interaction between a particle and the 
-nearest image of another particle, then for a system of \textit{N} particles, 
+contribution of the force on grain \textit{i} due to all its 
+neighbours. If we consider only the interaction between a grain and the 
+nearest image of another grain, then for a system of \textit{N} grains, 
 we must evaluate $N \times (N-1)/2$ pair distances. Consider a system of 1000 
-particles, at every time step all possible pairs of particles have to be 
+grains, at every time step all possible pairs of grains have to be 
 considered to compute the interaction forces, hence, 
 $\mathit{N}(\mathit{N}-1)/2 \approx 500,000$ 
-force computations are required. For short-range particle interactions, the 
+force computations are required. For short-range grain interactions, the 
 majority of these force evaluations is unnecessary as the corresponding 
-particles are located far apart and do not necessarily touch each other. For a 
-dense system of equally sized particles, the particles can have 
-contacts with not more than 6 particles, this reduces the number of force 
+grains are located far apart and do not necessarily touch each other. For a 
+dense system of equally sized grains, the grains can have 
+contacts with not more than 6 grains, this reduces the number of force 
 computation required to $3\mathit{N} \approx 3000$. In the preliminary force 
 computation scheme, at least 166 times more pair interactions are considered 
 than necessary. Therefore, the numerical methods employed in the 
@@ -1277,30 +1300,30 @@ present study.
 \clearpage
 \subsubsection{Verlet list algorithm}
 The Verlet list algorithm assumes a cut-off value, so that only neighbouring 
-particles that contribute to the energy of a particle \textit{i} are 
-considered. It is advantageous to exclude the particles that do not interact in 
+grains that contribute to the energy of a grain \textit{i} are 
+considered. It is advantageous to exclude the grains that do not interact in 
 the memory expensive energy computation.~\citet{Verlet1967} 
 developed a book-keeping technique, commonly referred to as the Verlet list or 
 neighbour list, which is illustrated in~\ref{fig:Verletb}. In this method a 
 second cut-off radius $r_{\mathit{v}}>r_{c}$ is introduced, and before we 
-calculate the interactions, a list is made (the Verlet list) of all particles 
-within a radius $r_{\mathit{v}}$ of the particle \textit{i}. In the 
-subsequent calculations of the interactions, only those particles in this list 
+calculate the interactions, a list is made (the Verlet list) of all grains 
+within a radius $r_{\mathit{v}}$ of the grain \textit{i}. In the 
+subsequent calculations of the interactions, only those grains in this list 
 will be considered. The idea of the Verlet algorithm is based on a simple 
-property of particle dynamics: neighbourhood relation between particles can 
-only change slowly, i.e. two particles which are close to each other 
+property of grain dynamics: neighbourhood relation between grains can 
+only change slowly, i.e. two grains which are close to each other 
 at a given time step will remain as neighbours, at least in the following few 
 time steps. During initialization the neighbourhood relations between the 
-particles, i.e. the distance of all close 
-pairs of particles are computed. Two particles are considered as neighbours if 
+grains, i.e. the distance of all close 
+pairs of grains are computed. Two grains are considered as neighbours if 
 the distance of 
 their surface is smaller than a predefined distance \textit{Verlet distance}:
 \begin{figure}[htbp]	
 \centering
 \includegraphics[scale=0.75]{Verletb}
-\caption[Verlet list]{The Verlet list: a particle \textit{i} interacts with 
-those particles with 
-the cut-off radius $r_{c}$, the Verlet list contains all the particles within 
+\caption[Verlet list]{The Verlet list: a grain \textit{i} interacts with 
+those grains with 
+the cut-off radius $r_{c}$, the Verlet list contains all the grains within 
 a sphere with radius 
 $r_{\mathit{v}>r_{c}}$}
 \label{fig:Verletb}
@@ -1310,41 +1333,41 @@ $r_{\mathit{v}>r_{c}}$}
  distance}}
 \end{equation}
 
-For each particle there is a \textit{Verlet list} in which the close 
+For each grain there is a \textit{Verlet list} in which the close 
 neighbours are saved. To 
 initialise the Verlet lists efficiently, a grid that covers the simulation 
 area is defined. Its 
-mesh size is larger than the largest particle. For construction of the lists 
+mesh size is larger than the largest grain. For construction of the lists 
 only pairs whose 
-particles reside in the same or adjacent grids are considered. This procedure 
+grains reside in the same or adjacent grids are considered. This procedure 
 guarantees the 
-detection of all close pairs of particles~\citep{Posch2005}. Redundancy in 
+detection of all close pairs of grains~\citep{Posch2005}. Redundancy in 
 Verlet lists, i.e. if 
-particle \textit{i} is a neighbour of \textit{j}, then particle \textit{j} is 
+grain \textit{i} is a neighbour of \textit{j}, then grain \textit{j} is 
 a neighbour of 
-\textit{i}, are avoided by imposing a restriction on the list of particle 
+\textit{i}, are avoided by imposing a restriction on the list of grain 
 \textit{i} contains, 
 such 
 that it contains only neighbours with index $\mathit{j}<\mathit{i}$. For the 
 computation of 
-interaction forces, the Verlet list of particle \textit{i} is scanned and only 
+interaction forces, the Verlet list of grain \textit{i} is scanned and only 
 pairs which are 
 recorded in one of the Verlet lists are considered. Hence, the Verlet list of 
-each particle 
+each grain 
 \textit{i} is scanned and the interaction force of \textit{i} with each entry 
 \textit{j} in its 
-list is computed. Initially to build the Verlet list, the particles are sorted 
+list is computed. Initially to build the Verlet list, the grains are sorted 
 into a grid of mesh 
 size $\mathit{dx}\times\mathit{dy}$. For each grid there is a list of 
-particles residing in the 
-cell. During the simulation, the neighbourhood relation among the particles 
+grains residing in the 
+cell. During the simulation, the neighbourhood relation among the grains 
 change, therefore, the 
 Verlet lists have to be updated. The decision to update a Verlet list depends 
 on how far the 
-particles have travelled since the time when the present list was built. The 
+grains have travelled since the time when the present list was built. The 
 Verlet list of a 
-particle \textit{i} must contain at any time all neighbours \textit{j} with 
-$\mathit{j}<\mathit{i}$. This assures that two particles \textit{i} and 
+grain \textit{i} must contain at any time all neighbours \textit{j} with 
+$\mathit{j}<\mathit{i}$. This assures that two grains \textit{i} and 
 \textit{j} never touch and 
 are not considered as neighbours, i.e. \textit{j} is not in the list of 
 \textit{i} and \textit{i} 
@@ -1355,18 +1378,18 @@ is not in the list of \textit{j}. Hence,
 \end{equation}
 %
 The above condition is required for all pairs $(\mathit{i},\mathit{j})$ of 
-particles which are 
+grains which are 
 \textit{not} known as neighbours. This condition is a criterion to update the 
 Verlet 
 lists~\citep{Posch2005}. Assume at the instant when the Verlet lists are 
 constructed, the surfaces 
-of the particles have the distance $\left| \overrightarrow{r_{\mathit{i}}} - 
+of the grains have the distance $\left| \overrightarrow{r_{\mathit{i}}} - 
 \overrightarrow{r_{\mathit{i}}}\right| - 
 \mathit{R}_{\mathit{i}}-\mathit{R}_{\mathit{j}} > 
 \mbox{Verlet distance}
 $, i.e. they are not classified as neighbours. If the 
 Verlet lists are 
-updated before one of these particles has travelled the distance 
+updated before one of these grains has travelled the distance 
 $\mathit{verlet distance}/2$ 
 since 
 the lists were constructed, they can never collide without being recognized as 
@@ -1393,20 +1416,20 @@ $r_{\mathit{v}}$~\citep{Posch2005}.
 \includegraphics{Verlet}
 \caption[Checking the validity of Verlet list]{Checking the validity of Verlet 
 lists. 
-\textit{Left}: the particles \textit{i} and \textit{j} are not recognized as 
+\textit{Left}: the grains \textit{i} and \textit{j} are not recognized as 
 neighbours since the 
 distance of their surface is larger than the Verlet distance. The radius of 
 the dashed circle is 
 $\mathit{R}_{\mathit{i}}+\mathit{R}_{\mathit{max}}+\mbox{\textit{Verlet 
 distance}}$. 
-\textit{Right:} in the most unfortunate case the particles approach each other 
+\textit{Right:} in the most unfortunate case the grains approach each other 
 directly, 
 travelling 
-at the same velocity. As soon as one of the particles has travelled the 
+at the same velocity. As soon as one of the grains has travelled the 
 distance $\mbox{\textit{Verlet distance}}/2$ (\textit{arrows}), the Verlet 
 lists have 
 to be rebuilt. The 
-particles \textit{i} and \textit{j} are now recognized as neighbours. Figure 
+grains \textit{i} and \textit{j} are now recognized as neighbours. Figure 
 redrawn after~\citet{Posch2005}.}
 \label{fig:Verlet}
 \end{figure}
@@ -1439,7 +1462,7 @@ allow the use of
 large 
 time steps, achieve this by storing information on increasingly higher-order 
 derivatives of the 
-particle coordinates. Consequently, they tend to require more memory storage. 
+grain coordinates. Consequently, they tend to require more memory storage. 
 However, the most 
 important aspect to consider is the energy conservation. It is important to 
 distinguish between 
@@ -1457,7 +1480,7 @@ useful. They are more
 complicated to program, and do not yield a more precise 
 solution~\citep{Sean2011}. It might seem 
 important to have an algorithm that accurately predicts the trajectories of 
-all particles for both 
+all grains for both 
 short and long durations, however no such algorithm exists. In certain cases, 
 two trajectories 
 that 
@@ -1494,7 +1517,7 @@ Newton's equations of motion are time reversible, and so should be the
 integration algorithm. The 
 ``leapfrog'' algorithm or the Verlet integration algorithm is a numerical 
 scheme used to integrate 
-the Newton's equation of motion to calculate the trajectories of particles and 
+the Newton's equation of motion to calculate the trajectories of grains and 
 was implemented in 
 Discrete Element Method simulation by~\citet{Verlet1967}. Verlet algorithm is 
 fast and requires 
@@ -1502,7 +1525,7 @@ less
 storage memory, it is not particularly accurate for long time steps, and 
 hence, we should expect 
 to 
-compute the forces on all particles rather frequently. Its short-term energy 
+compute the forces on all grains rather frequently. Its short-term energy 
 conservation is fair 
 (in versions that use more accurate expression for velocity), but most 
 importantly it exhibits 
@@ -1512,7 +1535,7 @@ reversible and area preserving, however, it does not conserve the total energy
 of the system 
 exactly~\citep{Daan1996}. Verlet algorithm is simply based on a truncated 
 Taylor expansion of 
-particle co-ordinates. 
+grain co-ordinates. 
 \begin{equation}
 t(t+\Delta t)=r{t} +\mathbf{v}(t) \Delta t + \frac{f(t)}{2\mathit{m}} \Delta 
 t^{2}+ \dots
@@ -1625,7 +1648,7 @@ that the fastest grains move only by a small fraction of their size during one
 time step. The 
 grains must be stiff enough so that violent collisions do not lead to large 
 overlaps between 
-particles. 
+grains. 
 %%*************************************************************************************************************************************************************************
 %% %
 \subsection{Boundary conditions}
@@ -1649,12 +1672,12 @@ importance is the realistic modelling of the wall surface roughness.
 Unfortunately the mechanical 
 interaction of a granular materials with a rough wall is poorly 
 understood~\citep{Posch2005}. A 
-simple way to define the wall property is to build up the wall from particles, 
+simple way to define the wall property is to build up the wall from grains, 
 which obey the same 
-rules of interaction as the particles of granular material. By varying the size 
+rules of interaction as the grains of granular material. By varying the size 
 and position of 
 the 
-wall particles, system boundaries of adjustable roughness can be described. 
+wall grains, system boundaries of adjustable roughness can be described. 
 However, the surface 
 roughness that characterizes the frictional properties of the wall has to be 
 arrived iteratively, 
@@ -1662,33 +1685,33 @@ and may not represent the real conditions. In the present case, a solid wall
 with corresponding 
 stiffness, damping and frictional characteristics is introduced to model the 
 interaction between 
-particles and the wall. The interaction force is computed in a similar fashion 
+grains and the wall. The interaction force is computed in a similar fashion 
 to that of a pair 
 of 
-particles in contact and is divided into the normal and tangential components. 
+grains in contact and is divided into the normal and tangential components. 
 The compression of 
-the particle upon collision with the wall is calculated along the normal 
+the grain upon collision with the wall is calculated along the normal 
 direction to the wall and 
-the particle contact.   
+the grain contact.   
 
 \subsubsection{Periodic boundary} \label{periodic}
-The effect of a wall on the response of particles is very critical, especially 
+The effect of a wall on the response of grains is very critical, especially 
 in numerical 
-simulation where the number of particles is relatively fewer in comparison to 
+simulation where the number of grains is relatively fewer in comparison to 
 the experiments. The 
 undesired effect of a wall can be eliminated using periodic boundary 
 conditions, i.e. a periodic 
-extension of the simulation area in one or more dimensions. Any particle 
+extension of the simulation area in one or more dimensions. Any grain 
 leaving the system at one 
 side is reintroduced at the opposite side, and correspondingly the interaction 
 forces between 
-particles at opposite sides of the simulation area are taken into account. In 
+grains at opposite sides of the simulation area are taken into account. In 
 this framework, the 
-simulation domain becomes a unit area containing particles with periodic copies 
+simulation domain becomes a unit area containing grains with periodic copies 
 paving the whole 
 system. The periodic boundary conditions extend the system boundaries to 
 infinity, so that the 
-simulation cell simply plays the role of a coordinate system to locate particle 
+simulation cell simply plays the role of a coordinate system to locate grain 
 positions~\ref{fig:periodic}. 
 
 The external stresses or displacements are applied on the simulation box by 
@@ -1703,7 +1726,7 @@ become dynamic variables, and their conjugate stresses are expressed as a state
 function of the 
 granular configuration~\citep{Par1980}. In the case of granular systems, there 
 is dissipation of 
-energy during particle interactions. The kinematics, equation of dynamics, and 
+energy during grain interactions. The kinematics, equation of dynamics, and 
 the time-stepping 
 schemes for Discrete Element Method are discussed in detail 
 in~\citet{Voiv2011}. The periodicity 
@@ -1715,14 +1738,14 @@ position implemented in the present study is discussed below.
 \caption[A 2D simulation cell $\omega$ with its basis vectors in an absolute 
 frame]{A 2D 
 simulation 
-cell $\omega$ with its basis vectors in an absolute frame. A particle located 
+cell $\omega$ with its basis vectors in an absolute frame. A grain located 
 at the right 
 boundary 
-interacts with the image of another particle located at the left boundary.}
+interacts with the image of another grain located at the left boundary.}
 \label{fig:periodic}
 \end{figure}
 
-Let us consider a collection of $N_{p}$ particles with their centres contained 
+Let us consider a collection of $N_{p}$ grains with their centres contained 
 in a cell of volume 
 V . The cell can have any shape allowing for a periodic tessellation of space. 
 The simplest shape 
@@ -1741,60 +1764,60 @@ translation of the origin by the vector
 $i_{1}\overrightarrow{\mathbf{a}_{1}}+i_{1}\overrightarrow{\mathbf{a}_{2}}$. 
 Then, the coordinates 
 $\overrightarrow{r}(\mathit{i})$ of the image $\mathit{i}^{\prime}$ of a 
-particle $\mathit{i} \in 
+grain $\mathit{i} \in 
 \Omega$ of coordinates  $\overrightarrow{r}(\mathit{i}^{\prime})$ are given by:
 \begin{align}
 \overrightarrow{r}(i^{\prime})=\overrightarrow{r}(i)+\sum\limits_{k=1}^{2}{\mathit{i}_{\mathit{k}}\overrightarrow{\mathbf{\mathit{a}}}_{\mathit{k}}}
 \end{align}
-The particles belonging to the cell $\Omega$, characterized by $\mathit{i}_{1} 
+The grains belonging to the cell $\Omega$, characterized by $\mathit{i}_{1} 
 = \mathit{i}_{2} = 
-0$, can interact with the particles of the same cell but also with image 
-particles in the 
+0$, can interact with the grains of the same cell but also with image 
+grains in the 
 neighbouring cells characterized by $\mathit{i}_{k}\in {1, 1}$. There are  
 $3^{D} - 1$ cells 
 surrounding the simulation cell and they are involved in the search of contact 
 partners for each 
-particle. The distance between two particles \textit{i} and \textit{j} $\in 
+grain. The distance between two grains \textit{i} and \textit{j} $\in 
 \Omega$ is the 
 shortest 
 distance separating \textit{i} from \textit{j} or from one of its images 
 $\mathit{j}^{\prime}$. As 
-the system evolves in time, a particle \textit{i} may leave but one of its 
+the system evolves in time, a grain \textit{i} may leave but one of its 
 images 
 $\mathit{i}^{\prime}$ enters at the same moment. In order to keep all original 
-particles in the 
-cell, the status ``original'' should be reserved to the particles whose centres 
+grains in the 
+cell, the status ``original'' should be reserved to the grains whose centres 
 belongs to 
-$\Omega$. Hence, whenever a particle \textit{i} leaves the simulation cell, it 
+$\Omega$. Hence, whenever a grain \textit{i} leaves the simulation cell, it 
 becomes an image of 
 $\mathit{i}^{\prime}$, which then becomes the original. This means that a 
-particle crossing a 
+grain crossing a 
 border of the simulation cell, returns to the cell by crossing another border.
 %%***********************************************************************************************************************************************
 %% %
 \subsection{Particle Assembling Methods}
 In order to simulate a granular assembly, it is essential to assign an initial 
 position and 
-velocity to all the particles in the system. Particle positions should be 
+velocity to all the grains in the system. Particle positions should be 
 chosen to be compatible 
 to the structure (granular fabric) we are trying to simulate. In any event, the 
-particles should 
-not be positioned such that there is an appreciable overlap between particles. 
+grains should 
+not be positioned such that there is an appreciable overlap between grains. 
 In order to achieve 
-the initial position of the particles, various particle-assembling methods can 
+the initial position of the grains, various grain-assembling methods can 
 be adopted. The 
-particle assembling methods can be classified into two broad categories: 
+grain assembling methods can be classified into two broad categories: 
 dynamic methods and 
 geometrical approaches. The dynamic approach involves packing of grains using 
 laws of mechanics 
 and 
-contacts, while in the geometrical method the particles are packed considering 
+contacts, while in the geometrical method the grains are packed considering 
 their geometry, 
 i.e. 
-grain size, shape and its position. In general, the packing of particles can be 
+grain size, shape and its position. In general, the packing of grains can be 
 categorized into 
 two types: crystal/lattice packing, like hexagonal or square pattern of 
-mono-disperse particles, 
+mono-disperse grains, 
 and random packing with varying density employing mono-disperse or 
 poly-disperse grains. The 
 crystalline packing arrangements, such as hexagon and square lattices, are 
@@ -1818,7 +1841,7 @@ $\eta_{\mathit{h}}=\frac{1}{6}\pi\sqrt{3}\approx 0.9068$
 
 The rheology of a granular material is controlled by the geometry of the 
 assembly, which includes 
-the particle shape, size distribution, and their arrangement. This prevailing 
+the grain shape, size distribution, and their arrangement. This prevailing 
 role of geometry 
 sometimes permits to simplify the dynamics in favour of a better description of 
 the geometry 
@@ -1832,19 +1855,19 @@ much simpler and
 numerically faster than dynamic or quasi-static methods. Contrary to dynamic 
 simulation methods, 
 the geometrical methods allow for quick assembling of a large number of 
-particles. Such packing 
+grains. Such packing 
 may 
 then be used as the initial state for dynamic simulations. The issue of the 
 assembling methods is 
-to construct configurations of particles as close as possible to a state of 
+to construct configurations of grains as close as possible to a state of 
 mechanical equilibrium 
 with built-in packing properties. This can be a target packing density for a 
-given particle size 
-distribution. In the same way, the average connectivity of the particles 
+given grain size 
+distribution. In the same way, the average connectivity of the grains 
 (coordination number) and 
 the anisotropy of the contact network are basic geometrical properties. The 
 coordination number 
-represents the mechanical response of packing. The homogeneity of the particle 
+represents the mechanical response of packing. The homogeneity of the grain 
 assembly in terms 
 of 
 packing fraction and connectivity is another important property, which depends 
@@ -1854,15 +1877,15 @@ ballistic deposition
 technique.
 
 \subsubsection{Ballistic deposition}
-Initially a random arrangement of particles which do not touch each other is 
+Initially a random arrangement of grains which do not touch each other is 
 generated 
-(~\cref{fig:ini}). The radii of the particles are chosen from the interval of 
+(~\cref{fig:ini}). The radii of the grains are chosen from the interval of 
 $(\mathit{R}_{\mathit{min}},\mathit{R}_{\mathit{max}})$ in such a way that the 
 total mass of all 
-particles from a certain size interval is the same for all sizes, thus ensuring 
+grains from a certain size interval is the same for all sizes, thus ensuring 
 that neither 
 larger 
-nor smaller particles dominate the system. This distribution can be obtained, 
+nor smaller grains dominate the system. This distribution can be obtained, 
 if the radii are 
 chosen according to the probability distribution:
 \begin{align}
@@ -1877,27 +1900,27 @@ numbers $\mathit{z}\in [0,1]$ via the transformation
  - 
 z(\mathit{R}_{\mathit{max}} - \mathit{R}_{\mathit{min}})}
 \end{align}
-This transformation is applied to initialise the particle radii and the 
-particles are arranged 
-randomly on a regular lattice. The configuration of particles obtained after 
+This transformation is applied to initialise the grain radii and the 
+grains are arranged 
+randomly on a regular lattice. The configuration of grains obtained after 
 this step is 
 presented 
 in~\cref{fig:ini}.
 %\begin{figure}[htbp]
 %\centering
 %\includegraphics[scale=0.23]{ini}
-%\caption{Radom polydisperse particles arranged in a regular lattice, showing 
+%\caption{Radom polydisperse grains arranged in a regular lattice, showing 
 %the variation in the 
-%particle size}
+%grain size}
 %\label{fig:ini}
 %\end{figure}
-In the second step, the particles arranged in a regular lattice are allowed to 
+In the second step, the grains arranged in a regular lattice are allowed to 
 fall down and are 
 packed using the \textit{random deposition with relaxation method}, a ballistic 
 deposition 
 technique. The geometrical methods help in this way to improve numerical 
 efficiency in the 
-preparation phase. For example, gravitational deposition of particles located 
+preparation phase. For example, gravitational deposition of grains located 
 initially on a 
 regular grid can require hours of computation whereas a nearly similar result 
 may be obtained by 
@@ -1919,12 +1942,12 @@ proposed by~\citet{vold1959a,vold1959b} and developed by~\citet{jullien1992}
 and 
 \citet{meakin1985}, is adopted in the present study. The general principle of 
 this method is quite 
-simple (see~\cref{fig:ballistic}); it consists of placing the particles 
+simple (see~\cref{fig:ballistic}); it consists of placing the grains 
 consecutively on a 
-substrate or a layer of already deposited particles. Each particle first 
+substrate or a layer of already deposited grains. Each grain first 
 touches the substrate or 
 a 
-deposited particle, then undergoes a relaxation process (single-particle 
+deposited grain, then undergoes a relaxation process (single-grain 
 restructuring) along the 
 steepest descent (steepest-descent model) until a more stable position 
 according to a stability 
@@ -1932,25 +1955,25 @@ criterion is reached. The construction of the packing proceeds layer by layer
 from the substrate, 
 hence this deposition model is also known as bottom-to-top restructuring model. 
 The first step is 
-to release a particle from a random position above the substrate. Upon contact 
+to release a grain from a random position above the substrate. Upon contact 
 with the first 
-deposited particle, the particle rolls following the steepest descent until a 
+deposited grain, the grain rolls following the steepest descent until a 
 new contact is 
 formed 
-with a second particle. In 2D, two contacts are sufficient to balance a 
-particle if its centre of 
+with a second grain. In 2D, two contacts are sufficient to balance a 
+grain if its centre of 
 gravity lies between the two contacts. This corresponds to a position of local 
 stable equilibrium. 
-If this criterion is not met, the particle continues to roll and the procedure 
+If this criterion is not met, the grain continues to roll and the procedure 
 is iterated until a 
 local stable position is reached. The wall effects are eliminated by adopting 
 periodic boundaries 
 (Sec~\ref{periodic})in the horizontal direction (perpendicular to that of 
 deposition). 
 ~\cref{fig:ballistic} shows a small sample prepared by this method (the grey 
-particles are 
+grains are 
 periodic images of the black ones). In this method, the order of deposited 
-particles is generally 
+grains is generally 
 random and independent of their sizes. The mechanically stable sample obtained 
 from equilibrating 
 the random deposited and relaxed sample is presented in~\cref{fig:sample} 
@@ -1963,30 +1986,17 @@ small-scale periodic sample~\citep{Radjai2011}}
 \label{fig:ballistic}
 \end{figure} 
 
-%\begin{figure}[htbp]
-%\centering
-%\includegraphics[scale=0.23]{sample1}
-%\caption[Mechanically stable sample prepared by ballistic deposition 
-%technique]{Mechanically 
-%stable 
-%sample prepared by ballistic deposition technique and Molecular 
-%Dynamics, showing the number of contacts per particle, the highlighted 
-%portions are used as 
-%representative elements in the statistical analysis}
-%\label{fig:sample}
-%\end{figure}
-
 \subsubsection{Statistical analysis of prepared sample}
 In order to ensure the homogeneity of the sample prepared using the above 
 technique, a statistical 
-analysis of the sample is performed. Various parameters such as particle size, 
+analysis of the sample is performed. Various parameters such as grain size, 
 coordination 
 number, 
 contact normal direction, contact normal force, etc., can be used in the 
 statistical analysis to 
 verify the homogeneity of the prepared sample. Of the various parameters 
 available, the 
-coordination number, i.e. the average number of contacts per particle is chosen 
+coordination number, i.e. the average number of contacts per grain is chosen 
 to study the 
 homogeneity of the sample, because of its simplicity and its physical 
 significance in representing 
@@ -1998,15 +2008,15 @@ presented in~\cref{fig:sample} is used for the statistical analysis.
 Representative elements 
 of size 0.02 m $\times$ 0.01 m (highlighted segments in~\cref{fig:sample}) were 
 considered. 
-Each representative element has approximately 40 particles. A histogram is 
+Each representative element has approximately 40 grains. A histogram is 
 plotted showing the 
-number of particles having a particular coordination number for all the 
+number of grains having a particular coordination number for all the 
 representative elements 
-(~\cref{fig:Hist}). A normal distribution of the number of particles and the 
+(~\cref{fig:Hist}). A normal distribution of the number of grains and the 
 coordination 
-number can be observed from~\cref{fig:Hist}. Most particles are found to have 2 
+number can be observed from~\cref{fig:Hist}. Most grains are found to have 2 
 or 3 contacts 
-with its neighbours. The number of particles with higher coordination number, 
+with its neighbours. The number of grains with higher coordination number, 
 i.e. coordination 
 number greater than 3, is found to increase as we go down the sample. This is 
 attributed to the 
@@ -2023,13 +2033,13 @@ number. Thus, the prepared sample is a good representation of the actual
 granular assembly and the 
 simulations based on these samples are found to be more realistic in comparison 
 to 
-crystalline/lattice packing of granular particles. 
+crystalline/lattice packing of granular grains. 
 %\begin{figure}[htbp]
 %\centering
 %\includegraphics[scale=0.6]{Hist}
 %\caption[Statistical analysis of the sample prepared by ballistic deposition 
 %technique]{Histogram 
-%showing the variation in the number of particles with the coordination number 
+%showing the variation in the number of grains with the coordination number 
 %for 9 
 %representative 
 %elements from the sample in~\cref{fig:sample}}
