@@ -633,17 +633,7 @@ solution and the computational grid is re-initialised for the next step.
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=0.975\textwidth]{MPMsteps}
-\caption[Illustration of the MPM algorithm for particles occupying a single 
-cell in the background grid]{Illustration of the steps in the MPM algorithm for 
-particles occupying a single cell in the background grid. (1). A representation 
-of four material points (filled circles), overlaid with the computational grid 
-(solid lines). Arrows represent displacement vectors. (2). The material point 
-state vector (mass, volume, velocity, etc.) is projected to the nodes of the 
-computational grid. (3). The discrete form of the equations of motion is solved 
-on the computational grid, resulting in updated nodal velocities and positions. 
-(4). The updated nodal kinematics are interpolated back to the material points 
-and their state updated. (5). The computational grid is reset to its original 
-configuration and the process repeated. Reproduced after~\citet{bigler2006}}. 
+\caption[Illustration of the MPM algorithm]{Illustration of the MPM algorithm (1) A representation of material points overlaid on a computational grid. Arrows represent material point state vector (mass, volume, velocity, etc.) being projected to the nodes of the computational grid. (2) The equations of motion is solved on the nodes, resulting in updated nodal velocities and positions. (3) The updated nodal kinematics are interpolated back to the material points. (4)  The state of the material points are updated and the computational grid is reset.} 
 \label{fig:MPMsteps}
 \end{figure}
 
