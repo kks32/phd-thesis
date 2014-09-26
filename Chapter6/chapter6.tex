@@ -18,7 +18,7 @@ as a whole~\citep{Topin2012}. Although certain macroscopic models are able to
 capture the simple mechanical behaviours~\citep{Peker2007}, the complex 
 physical mechanisms occurring at the grain scale, such as hydrodynamic 
 instabilities, 
-formation of clusters, collapse, and transport,~\citep{Topin2011} have largely 
+formation of clusters, collapse, and transport~\citep{Topin2011}, have largely 
 been ignored. In particular, when the solid phase reaches a high volume 
 fraction, the strong heterogeneity arising from the contact forces between the 
 grains, and the hydrodynamic forces, are difficult to integrate into the 
@@ -59,7 +59,7 @@ the advantage of cheaper computational effort than a 3D case, making it
 feasible to simulate very large systems. The configuration and parameters 
 studied in this chapter are presented in~\cref{table:lbm-dem-setup}.
 
-\begin{landscape}
+\begin{landscape}[tbph]
 \centering
 \begin{table}[tbph]
 \centering
@@ -266,10 +266,13 @@ is investigated.
 
 The granular column collapse set-up in fluid is very similar to the dry 
 granular column collapse. A rectangular channel of length $L_0$ and height 
-$H_0$ is 
-filled with poly-dispersed discs, $d_{max}/d_{min} = 1.8$  
-(see~\Cref{fig:geometry}). The granular column is then placed in a fluid with a 
-density of \SI{1000}{\kg\per\cubic\meter}  and a kinematic viscosity of 
+$H_0$ is filled with poly-dispersed discs, $d_{max}/d_{min} = 1.8$  
+(\Cref{fig:geometry}). Once the DEM soil grains reach equilibrium in the dry 
+condition, the granular sample is then placed in the fluid domain simulated 
+using LBM. The LBM-DEM set-up of a granular column with an aspect ratio 
+\textit{a} of 6 in fluid is shown in~\cref{fig:LBMgeometry}. The fluid has a 
+density of 
+\SI{1000}{\kg\per\cubic\meter}  and a kinematic viscosity of 
 \SI{1e-6}{\square\meter\per\second}. The gate supporting the right-hand 
 side 
 boundary of the granular column is opened allowing the column to collapse and 
@@ -280,10 +283,24 @@ surface. The initial aspect ratio of the column is varied as 0.2, 0.4, 0.6,
 
 \begin{figure}[htpb]
 \centering
+\begin{subfigure}[b]{0.95\textwidth}
+\centering
 \includegraphics[width=0.97\columnwidth]{geometry}
-\caption{Underwater granular collapse set-up.}
+\caption{Schematic view of underwater granular collapse set-up.}
 \label{fig:geometry}
+\end{subfigure} \\
+
+\begin{subfigure}[b]{0.95\textwidth}
+\centering
+\includegraphics[width=0.97\columnwidth]{a6/ini_a6_geom}
+\caption{LBM-DEM simulation of underwater granular collapse set-up (\textit{a} 
+= 6).}
+\label{fig:LBMgeometry}
+\end{subfigure}
+\caption{Underwater granular collapse set-up.}
+\label{fig:LBM_Scheme_geometry}
 \end{figure}
+
 
 The cumulative $\beta$ distribution is adopted to generate grains with 
 $d_{max}$ and $d_{min}$ as 2.2~\si{\mm} and 1.25~\si{\mm}, respectively. The 
@@ -295,27 +312,28 @@ critical time step for DEM is computed based on the local
 contact natural frequency and damping ratio. A sub-cycling time integration is 
 adopted in DEM (\cref{sec:coupled_lbm_dem}). A fluid flow (LBM) time step 
 of $\Delta t = 2.0\times 10^{-5}$\si{\s} is determined based on the viscosity 
-and 
-the 
-relaxation 
-parameter $\tau = 0.506$. An integer ratio $n_s$, between the fluid flow time 
-step $\Delta t$ and the DEM time step $\Delta t_D$ is determined as 15, i.e., 
-every LBM iteration involves a sub-cycle of 15 DEM iterations.
+and the relaxation parameter $\tau = 0.506$. An integer ratio $n_s$, between 
+the fluid flow time step $\Delta t$ and the DEM time step $\Delta t_D$ is 
+determined as 15, i.e., every LBM iteration involves a sub-cycle of 15 DEM 
+iterations.
 
 In order to capture the realistic physical behaviour of the fluid – grain 
 systems, it is essential to model the boundary condition between the fluid and 
-the grain 
-as a non-slip boundary condition, i.e. the fluid near the grain should have 
-similar velocity as the grain boundary. The solid grains inside the fluid are 
-represented by lattice nodes. The discrete nature of the lattice results in a 
-stepwise representation of the surfaces (\cref{fig:LBM-DEM}), which are 
-otherwise circular, hence sufficiently small lattice spacing $h$ is required. 
-The smallest DEM grain in the system controls the size of the lattice. In the 
-present study, a very fine discretisation of $d_{min}/h = 10$ is adopted, 
-i.e., the smallest grain with a diameter $d_{min}$ in the system is discretised 
-into 100 lattice nodes ($ 10h \times 10h$). This provides a very accurate 
-representation of the interaction between the solid and the fluid nodes.  A 
-hydrodynamic radius of 0.7R is adopted during the LBM computations. 
+the grain as a non-slip boundary condition, i.e. the fluid near the grain 
+should have similar velocity as the grain boundary. The solid grains inside the 
+fluid are represented by lattice nodes. The discrete nature of the lattice 
+results in a stepwise representation of the surfaces (\cref{fig:LBM-DEM}), 
+which are otherwise circular, hence sufficiently small lattice spacing $h$ is 
+required. The smallest DEM grain in the system controls the size of the 
+lattice. In the present study, a very fine discretisation of $d_{min}/h = 10$ 
+is adopted, i.e., the smallest grain with a diameter $d_{min}$ in the system is 
+discretised into 100 lattice nodes ($ 10h \times 10h$). This provides a very 
+accurate representation of the interaction between the solid and the fluid 
+nodes.  A hydrodynamic radius of 0.7R is adopted during the LBM computations. 
+The fluid pressure on the top and right boundaries are maintained constant. 
+Hence, any pressure wave that is generated during the collapse is absorbed in 
+the boundary. Frictional boundary constraint is applied along the bottom 
+boundary.
 
 \begin{figure}[htpb]
 \centering
@@ -1244,7 +1262,7 @@ The influence of slope angle on the effect of permeability and the initial
 packing density on the run-out behaviour are studied. In this study, a 2D 
 poly-disperse system ($d_{max}/d_{min} = 2$) of circular discs forming a 
 granular column in fluid is used to understand 
-the behaviour of granular flows down inclined planes (see~\Cref{fig:setup}). 
+the behaviour of granular flows down inclined planes (\Cref{fig:setup}). 
 The soil column is modelled using $\sim 1000$ to $2000$ discs of density 
 \SI{2650}{\kg$\cdot$\per\cubic\meter} and a contact friction angle of 
 \SI{26}{\degree}. The collapse of the granular column is simulated inside a 
@@ -1330,7 +1348,7 @@ collapse down slopes of varying inclinations at the time
 It can be seen that the viscous drag on the dense column tends to predominate 
 over the influence of hydroplaning on the run-out behaviour. This influence can 
 be observed in the smaller peak kinetic energy for submerged granular in 
-comparison to the dry condition (see~\Cref{fig:KE_dense}). With increase in 
+comparison to the dry condition (\Cref{fig:KE_dense}). With increase in 
 the slope angle, the volume of material that dilates increases. This results in 
 large negative pore-pressures and more viscous drag on the granular material. 
 Hence, the difference in the run-out between the dry and the submerged 
@@ -1371,16 +1389,16 @@ angle above an inclination of 5\si{\degree}.
 
 In contrast to the dense granular columns, the loose granular columns (packing 
 fraction of 79\%) show longer run-out distance in immersed conditions 
-(see~\Cref{fig:run_loose}). The run-out distance in fluid increases with 
+(\Cref{fig:run_loose}). The run-out distance in fluid increases with 
 increase in the slope angle in comparison to the dry cases. The loose granular 
 flow tends to entrain more water at the base of the flow 
 front, creating a lubricating surface, which results in a longer run-out 
-distance (see~\Cref{fig:slope_loose}). For the same thickness of the flow, 
+distance (\Cref{fig:slope_loose}). For the same thickness of the flow, 
 the loose granular flow has smaller density and hence a higher Froude's number 
 than the dense flow resulting in a higher probability of hydroplaning. The 
 hydroplaning effect causes an increase in the flow velocity for the loose 
 granular material in comparison with the dense condition 
-(see~\Cref{fig:KE_loose}).
+(\Cref{fig:KE_loose}).
 
 \begin{figure}
 \centering
@@ -1523,7 +1541,7 @@ of 0.8 is simulated with different permeabilities. The hydrodynamic radius of
 a loosely packed granular column is varied from r = 0.7 R (high permeability), 
 0.75 R, 0.8 R, 0.85 R to 0.9 R (low permeability). The run-out distance is 
 found to increase with decrease in the permeability of the granular assembly 
-(see~\Cref{fig:run5}). The run-out distance for high permeable conditions (r = 
+(\Cref{fig:run5}). The run-out distance for high permeable conditions (r = 
 0.7 R -- 0.8 R) are lower than their dry counterparts. Although, decrease in 
 permeability resulted in an increase in the run-out distance, no significant 
 change in the run-out behaviour is observed for a hydrodynamic radius of up to 
@@ -1536,10 +1554,10 @@ entrains more water at the base, which causes a reduction in the effective
 stress accompanied by a lubrication effect on the flowing granular media. This 
 can be seen by a significant increase in the peak kinetic energy and the 
 duration of the peak energy, in comparison to the dry and the highly permeable 
-conditions (see~\Cref{fig:KE5}). However, the permeability of the granular 
+conditions (\Cref{fig:KE5}). However, the permeability of the granular 
 column did not have an influence on the evolution of height during the flow. 
 But, the dry granular column tends to collapse more than the immersed granular 
-column due to lack of viscous dissipation (see~\Cref{fig:height5}).
+column due to lack of viscous dissipation (\Cref{fig:height5}).
 
 \begin{figure}
 \centering
@@ -1627,7 +1645,7 @@ permeabilities (loose slope 5\si{\degree}).}
 Positive pore-pressure generation at the base of the flow is observed for low 
 permeable conditions. Inspection of the local packing density showed 
 entrainment of water at the base of the flow, which can also be observed by the 
-steep decrease in the packing density (see~\Cref{fig:voro5}) for the very low 
+steep decrease in the packing density (\Cref{fig:voro5}) for the very low 
 permeability condition (r = 0.9R). At the end of the flow ($t \ge 10 \times 
 \tau_c$), the excess pore-pressure dissipates and the granular flows, 
 irrespective of their permeability, reach almost the same packing density.
@@ -1934,9 +1952,9 @@ required for the flow to initiate takes longer due to the development of large
 negative pore-pressures. However, the low permeability of the granular mass 
 results in entrainment of water causing hydroplaning. For the same 
 thickness and velocity of the flow, the potential of hydroplaning is influenced 
-by the density of the flowing mass. Loose column has more potential of 
-hydroplaning than the dense granular mass. The loose column entrains more water 
+by the density of the flowing mass. Loose column is more likely to hydroplane 
+than the dense granular mass. The loose column entrains more water 
 at the flow front, leading to a partial fluidisation of the material. Thus 
-resulting in longer run-out distance than the dry condition. However, 
+resulting in a longer run-out distance than the dry condition. However, 
 with increase in the slope angle, the run-out in fluid is influenced by the 
-viscous drag on the granular materials. 
+viscous drag acting on the granular materials more than the lubrication effect. 
