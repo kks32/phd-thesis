@@ -34,7 +34,7 @@ to dense-suspended flows, and the drag interactions which counteract the
 movement of the solids~\citep{Meruane2010}. Transient regimes characterized by 
 a change in the solid fraction, dilation at the onset of flow and the 
 development 
-of excess pore pressure, result in altering the balance between the stress 
+of excess pore-pressure, result in altering the balance between the stress 
 carried by the fluid and that carried by the grains, thereby changing the 
 overall behaviour of the flow. 
 
@@ -46,7 +46,7 @@ shear-rate and the confining pressure, respectively~\citep{Midi2004}. As the
 fluid inertia and viscosity come into play, complications arise as a result of 
 contradictory effects. On one hand, the fluid may delay the onset of
 granular flow or prevent the dispersion of the grains by
-developing negative pore pressures~\citep{Pailha2008,Topin2011}. On the other
+developing negative pore-pressures~\citep{Pailha2008,Topin2011}. On the other
 hand, the fluid lubricates the contacts between grains, enhancing the rate of 
 granular flow, but it has a retarding effect at the same time by 
 inducing drag forces on the grains. The objective of the present study is to 
@@ -95,7 +95,7 @@ space is formed as the grains are in contact with each
 other. This means that the fluid enclosed between the grains cannot flow 
 to the neighbouring pore-spaces.  This results in an unnatural no flow 
 condition in 
-a 2-D case (see~\cref{fig:reduction}). In order to overcome this effect, a 
+a 2-D case (\cref{fig:reduction}). In order to overcome this effect, a 
 reduction in radius is assumed only during the LBM computation (fluid and fluid 
 – solid interaction) steps. The reduced radius of the soil grain, i.e., the 
 \textit{hydrodynamic radius r}, allows for interconnected pore space through 
@@ -136,7 +136,7 @@ is applied along the left and the right boundaries of the sample. The fluid
 density on the left boundary is increased in small steps ($10^{-4} \Delta P$), 
 while a constant density is maintained on the right boundary. This results in a 
 pressure gradient causing 
-the fluid to flow (see~\cref{fig:perm}) through the pore-space. 
+the fluid to flow (\cref{fig:perm}) through the pore-space. 
 
  
 \begin{figure}[tbhp]
@@ -164,7 +164,7 @@ pressure gradient $\Delta P$ is varied to obtain different flow rates. Probing
 the fluid space showed a Poiseuille flow behaviour between the grains. The flow 
 is still within the Darcy's laminar flow regime, which is verified by the 
 linear slope between the pressure gradient and the mean flow velocity 
-(see~\cref{fig:permeability}). From the mean flow velocity (\textit{v}), 
+(\cref{fig:permeability}). From the mean flow velocity (\textit{v}), 
 the transverse permeability (\textit{k}) of the sample is computed as:
 %
 \begin{equation}
@@ -243,7 +243,7 @@ different hydrodynamic radius and comparison with the analytical solution.}
 The collapse of a granular column, which mimics the
 collapse of a cliff, has been extensively studied in the case of
 dry granular material, when the interstitial fluid plays no
-role (see~\cref{sec:dry_granular_column}). The problem of the granular collapse 
+role (\cref{sec:dry_granular_column}). The problem of the granular collapse 
 in a liquid, which is of importance for submarine landslides, has attracted 
 less attention~\citep{Rondon2011}.~\citet{Thompson2007} 
 observed that the presence of liquid dramatically changes the way a granular 
@@ -293,7 +293,7 @@ soil column is modelled using $\sim 2000$ discs of density
 DEM simulations. The granular assembly has a packing fraction of $83\%$. The 
 critical time step for DEM is computed based on the local 
 contact natural frequency and damping ratio. A sub-cycling time integration is 
-adopted in DEM (see~\cref{sec:coupled_lbm_dem}). A fluid flow (LBM) time step 
+adopted in DEM (\cref{sec:coupled_lbm_dem}). A fluid flow (LBM) time step 
 of $\Delta t = 2.0\times 10^{-5}$\si{\s} is determined based on the viscosity 
 and 
 the 
@@ -308,7 +308,7 @@ the grain
 as a non-slip boundary condition, i.e. the fluid near the grain should have 
 similar velocity as the grain boundary. The solid grains inside the fluid are 
 represented by lattice nodes. The discrete nature of the lattice results in a 
-stepwise representation of the surfaces (see~\cref{fig:LBM-DEM}), which are 
+stepwise representation of the surfaces (\cref{fig:LBM-DEM}), which are 
 otherwise circular, hence sufficiently small lattice spacing $h$ is required. 
 The smallest DEM grain in the system controls the size of the lattice. In the 
 present study, a very fine discretisation of $d_{min}/h = 10$ is adopted, 
@@ -414,7 +414,7 @@ decrease in the initial potential energy, the run-out observed in the buoyant
 condition is shorter than the dry condition. The column collapse in fluid takes 
 longer to evolve, which might be due to the development 
 of large negative pore water pressure that is generated during the shear 
-failure along the fracture surface. This large negative pore pressure has to be 
+failure along the fracture surface. This large negative pore-pressure has to be 
 dissipated before the granular mass, above the fracture surface, can collapse 
 and flow. The shorter run-out distance in the fluid case, in comparison with 
 the dry and buoyant conditions, shows that the collapse in fluid is 
@@ -448,11 +448,11 @@ The evolution of the normalised kinetic energy with time for a column with an
 initial aspect ratio of 0.4 is shown in~\cref{fig:a04f_energy}. It can be 
 observed that the peak kinetic energy is attained later in the submerged 
 condition than the dry collapse. This can be attributed to the time required to 
-overcome the negative pore pressure generated during the shear along the 
+overcome the negative pore-pressure generated during the shear along the 
 fracture surface. For short columns the critical time $\tau_c$ is controlled by 
 the vertical kinetic energy. The amount of kinetic energy in submerged case is 
 significanlty lower than the dry condition. Also, the potential energy 
-evolution (see~\cref{fig:PE_a04f}) shows a significant influence of the 
+evolution (\cref{fig:PE_a04f}) shows a significant influence of the 
 hydrodynamic forces on the amount of material destabilised during the collapse. 
 The drag forces on the soil grains reduce and slow down the amount of material 
 that undergo collapse resulting in a shorter run-out distance for short 
@@ -558,7 +558,7 @@ longer than that observed in the submerged condition. Also, the evolution of
 run-out is slower in the case of submerged condition, which indicates the 
 influence of drag force on the run-out evolution. The height of the column is 
 strongly influenced by the hydrodynamic forces 
-(see~\cref{fig:Height_a4f,fig:PE_a4f}), which reduces the amount of material 
+(\cref{fig:Height_a4f,fig:PE_a4f}), which reduces the amount of material 
 destabilised during the collapse.  
 
 \begin{figure}[htpb]
@@ -674,8 +674,8 @@ fluid.
 \clearpage
 
 \subsection{Effect of permeability}
-\citet{Topin2011} observed development of large negative pore pressure during 
-dispersion of grains. The rate of dissipation of the negative pore pressure is 
+\citet{Topin2011} observed development of large negative pore-pressure during 
+dispersion of grains. The rate of dissipation of the negative pore-pressure is 
 directly proportional to the permeability of the granular assembly. In the 
 previous section, the evolution of run-out with the initial aspect ratio is 
 studied using a constant hydrodynamic radius r = 0.7 R. In order to understand 
@@ -683,7 +683,7 @@ the effect of permeability on the run-out behaviour, the hydrodynamic radius
 \textit{r} 
 is varied from 0.7 R to 0.95 R for all aspect ratios. Increase in 
 the hydrodynamic radius decreases the permeability of the granular assembly 
-resulting in a longer duration for the dissipation of negative pore pressure. 
+resulting in a longer duration for the dissipation of negative pore-pressure. 
 
 The normalised run-out for different hydrodynamic radii for a granular column 
 with an initial aspect ratio of 0.8 are presented 
@@ -718,7 +718,7 @@ in the shearing zone of a low permeable column (r = 0.9 R). This shows that not
 only does it take longer for the pore-pressure to dissipate with a decrease 
 in permeability, but also results in almost twice the negative pore-pressure 
 than what is observed in the high permeable case 
-(see~\cref{fig:r095_PWP_ini_dense}).
+(\cref{fig:r095_PWP_ini_dense}).
 
 \begin{figure}
 \centering
@@ -745,20 +745,20 @@ run-out to evolve, the final run-out distance is found to be much longer than
 the high permeable condition.~\Cref{fig:PE_a08_dense} shows that the potential 
 energy available for the flow of a low permeable column is 20\% smaller than 
 the collapse of a high permeable granular column. The kinetic energy evolution 
-(see~\cref{fig:a08_dense_energy}) shows that the low permeable column has a 
+(\cref{fig:a08_dense_energy}) shows that the low permeable column has a 
 wider peak kinetic energy distribution in comparison to a sharp peak observed 
 in the high permeable condition. This indicates the influence of lubrication, 
 i.e., 
 hydroplaning of the granular flow in low permeable conditions. The evolution of 
 the horizontal kinetic energy with time reveals that the peak kinetic energy is 
 sustained longer as the permeability of the granular material decreases 
-(see~\cref{fig:KExy_a08_dense}). Although, the peak kinetic energy is smaller 
+(\cref{fig:KExy_a08_dense}). Although, the peak kinetic energy is smaller 
 in the low permeability case, the hydroplaning of the flowing granular mass 
 results in a longer run-out distance. A high positive pore-pressure is observed 
 at the base of the granular flow in low permeability condition 
 (\cref{fig:r095_PWP_flow_dense}) indicating the occurrence of hydroplaning. The 
 evolution of local packing density shows a drop in the packing density at low 
-permeability (see~\cref{fig:Packing_Density_a08_dense}). This drop in the value 
+permeability (\cref{fig:Packing_Density_a08_dense}). This drop in the value 
 of packing density between $t = 2\tau_c$ and $t=3\tau_c$ corroborates with the 
 duration of hydroplaning during which a large amount of water in entrained at 
 the flow front.  
@@ -958,12 +958,12 @@ column, the run-out distance increases with increase in the hydrodynamic radius
 (i.e., decrease in permeability). At low permeabilities (r = 0.9 and 0.95R), 
 the run-out distance is longer than the dry condition. This shows that the 
 lubrication effect in low permeability condition overcomes the influence of 
-the drag force and the development of large negative pore pressure resulting in 
+the drag force and the development of large negative pore-pressure resulting in 
 a longer run-out distance. Although suspended granular masses experience high 
 drag 
 force and turbulent effects, the run-out evolves almost at the same rate in 
 comparison with granular columns with high permeability. This shows the effect 
-of permeability on the dissipation rate of negative pore pressure developed 
+of permeability on the dissipation rate of negative pore-pressure developed 
 during the initial stage of collapse.
 
 \begin{figure}
@@ -974,15 +974,15 @@ collapse in fluid (a = 0.8 \& loose packing)}
 \label{fig:Runout_a08_loose}
 \end{figure}
 
-\Cref{fig:Loose_PWP_ini} shows the development of negative pore pressure in low 
-permeability (r = 0.95 R) and dissipation of negative pore pressure in high 
+\Cref{fig:Loose_PWP_ini} shows the development of negative pore-pressure in low 
+permeability (r = 0.95 R) and dissipation of negative pore-pressure in high 
 permability (r = 0.7 R) at the same time $ t = \tau_c$. This difference in the 
-quantity and the rate of dissipation of negative pore pressure results in 
+quantity and the rate of dissipation of negative pore-pressure results in 
 a difference in the rate of flow evolution. A low permeable column requires a 
 longer 
 duration to evolve. As the flow progresses, the low permeability of 
 the granular column causes hydroplaning to occur at the base of the column 
-resulting in longer run-out distance (see~\cref{fig:Loose_PWP_flow}).
+resulting in longer run-out distance (\cref{fig:Loose_PWP_flow}).
 \begin{figure}
 \centering
 \makebox[\linewidth][c]{
@@ -1034,12 +1034,12 @@ for a granular column collapse in fluid (a = 0.8 \& loose packing) at $t =
 The evolution of the potential energy with time reveals that at a very low 
 permeability (r = 0.95 R), the initial potential energy mobilised is smaller 
 than at r = 0.9R. Also with decrease in permeability, the time required to 
-dissipate the negative pore pressure increases. This results in a shorter 
+dissipate the negative pore-pressure increases. This results in a shorter 
 run-out distance in the case of r = 0.95 R to that of r = 0.9 R. As the 
 quantity of material destabilised is small, the flow is thinner and thus has a 
 high Froude's number. However, the peak horizontal kinetic velocity observed in 
 the case of r = 0.9 R is higher than r = 0.95 R 
-(see~\cref{fig:KExy_a08_loose}).  A Froude's number of 0.59 for r = 0.9 R is 
+(\cref{fig:KExy_a08_loose}).  A Froude's number of 0.59 for r = 0.9 R is 
 observed in contrast to 0.46 for r = 0.95 R. Both values of hydrodynamic radii 
 result in a Froude's number that indicates occurrence of hydroplaning. However, 
 the difference in the amount of material destabilised for r = 0.95 R and the 
@@ -1051,7 +1051,7 @@ As the column collapses, water is entrained at the flow front. This can
 observed by the decrease in the packing fraction during $t = 1\tau_c$ and $t = 
 3\tau_c$. As the flow progresses, the entrained water is expelled and the soil 
 grains consolidate to reach a critical packing density at the end of the flow 
-(see~\cref{fig:Packing_Density_a08_loose}). The permeability (hydrodynamic 
+(\cref{fig:Packing_Density_a08_loose}). The permeability (hydrodynamic 
 radius) plays a crucial role in the rate of dissipation of the entrained water. 
 As the permeability decreases, the water entrained at the flow front takes 
 longer time to be dissipated resulting in lubrication of the flow at low 
@@ -1169,7 +1169,7 @@ same, however the density of the flow results in a Froude's number of 0.46 and
 results in more hydroplaning in the loose condition. The effect of water 
 entrainment at the flow front between dense and loose condition can be seen 
 in~\cref{fig:Dense_Loose_voro}. Comparing the packing density 
-(see~\cref{fig:Packing_Density_a08_dense,fig:Packing_Density_a08_loose}) 
+(\cref{fig:Packing_Density_a08_dense,fig:Packing_Density_a08_loose}) 
 reveals almost the same amount of water entrainment in both dense and loose 
 conditions. Hence, it is the density of the flowing granular mass that controls 
 the influence of hydroplaning for a given hydrodynamic radius and initial 
@@ -1236,10 +1236,9 @@ Slope failure is a problem of high practical importance for both civil
 engineering structures and natural hazards management. Catastrophic events such 
 as landslides, debris flows, rock avalanches or reservoir embankment failures 
 exemplify the potential consequences of a soil gravitational instability. One 
-of the most critical situation concerns a submerged sandy slope since pore 
-pressure changes, related to groundwater seepage flow or soil 
-dilation/contraction, can significantly affect the stability of many earth 
-structures or natural soils.
+of the most critical situations concerns a submerged sandy slope as pore 
+pressure changes, seepage or earthquakes can cause significant damages to 
+off-shore structures and may generate a tsunami.
 
 The influence of slope angle on the effect of permeability and the initial 
 packing density on the run-out behaviour are studied. In this study, a 2D 
@@ -1289,15 +1288,15 @@ conditions for varying slope inclinations are presented
 in~\cref{fig:run_dense}. For all slope angles, the run-out distances in the dry 
 condition are longer than those observed in the submerged condition. Similar to 
 the case of collapse on a horizontal plane, the dense granular columns 
-experience significant drag forces than the lubrication effect. The difference 
-in the 
+experience drag forces that have a significant influence than the lubrication 
+effect. The difference in the 
 run-out between the dry and the submerged condition decreases with increase in 
 the slope angle. At a slope angle of 5\si{\degree} the difference in the 
 run-out 
 between 
 the dry and the submerged condition is the smallest. This is due to significant 
 hydroplaning of a thin flowing layer, the occurrence of hydroplaning can be 
-observed by a sustained peak kinetic energy (see~\cref{fig:KE_dense}). At 
+observed by a sustained peak kinetic energy (\cref{fig:KE_dense}). At 
 higher slope angles (> 5\si{\degree}), the drag force predominates over the 
 lubrication effect and results in shorter run-out distance. 
 \begin{figure}
@@ -1321,19 +1320,19 @@ lubrication effect and results in shorter run-out distance.
 Similar to the case of collapse on a horizontal surface, the dense granular 
 columns 
 in fluid require a longer time to collapse and flow, due to the development of 
-large negative pore-pressures. Large negative pore pressures are developed as 
+large negative pore-pressures. Large negative pore-pressures are developed as 
 the 
 dense granular material dilates due to shearing along the fracture surface in 
 the initial phase of the flow. The snapshots of the dense granular column 
 collapse down slopes of varying inclinations at the time 
 ($t=\tau_{c}=3\sqrt{H/g}$), are shown in~\cref{fig:slope_dense}.
 
-It can be seen that the viscous drag on the dense column tend to predominate 
+It can be seen that the viscous drag on the dense column tends to predominate 
 over the influence of hydroplaning on the run-out behaviour. This influence can 
 be observed in the smaller peak kinetic energy for submerged granular in 
 comparison to the dry condition (see~\Cref{fig:KE_dense}). With increase in 
 the slope angle, the volume of material that dilates increases. This results in 
-large negative pore pressures and more viscous drag on the granular material. 
+large negative pore-pressures and more viscous drag on the granular material. 
 Hence, the difference in the run-out between the dry and the submerged 
 conditions, for a dense granular assembly, increases with increase in the slope 
 angle above an inclination of 5\si{\degree}.
@@ -1409,8 +1408,8 @@ the
 water entrapped in the flow front results in a drop in the density of the 
 flowing mass thus enabling hydroplaning. The turbulence effect observed on the 
 surface of the dense granular flow is absent in the loose granular collapse. 
-This along with the lubrication effect result in longer run-out distance in 
-the submerged condition for a loose granular column than the dry collapse. 
+This, along with the lubrication effect, results in a longer run-out distance 
+in the submerged condition for a loose granular column than the dry collapse. 
 
 \begin{figure}
 \makebox[\linewidth][c]{
@@ -1445,7 +1444,7 @@ the submerged condition for a loose granular column than the dry collapse.
 \end{figure}
 
 
-The evolution of packing density (see~\Cref{fig:voro}) shows that, at the end 
+The evolution of packing density (\cref{fig:voro}) shows that, at the end 
 of the flow, both the dense and the loose conditions reach similar packing 
 density. 
 This indicates that the dense granular column dilates more and is susceptible 
@@ -1467,9 +1466,8 @@ packing fraction observed between $2\tau_c$ and $5 \tau_c$.
 \Cref{fig:slope_runout_dense} shows the evolution of run-out with slope angle 
 for an initially dense granular column. With increase in the slope angle, the 
 run-out increases in both dry and submerged conditions. For all slope angles, 
-the 
-run-out in the dry condition is higher than the submerged conditions. With 
-increase in the slope angle, the drag force experienced by the dense granular 
+the run-out in the dry condition is higher than the submerged conditions. As 
+the slope angle increases, the drag force experienced by the dense granular 
 column predominates over the lubrication effect on the run-out behaviour, this 
 results in an increase in the difference between the dry and the submerged 
 conditions with increase in the slope angle. Whereas with increase in slope 
@@ -1686,11 +1684,12 @@ angle and the initial packing density.}
 \section{Tall columns}
 
 In contrast to the collapse of short columns in fluid, the amount of material 
-destablisied and in turn the surface area of the mobilised mass that interacts 
-with the surround fluid increases. This increased interaction of the granular 
+destabilised and in turn the surface area of the mobilised mass that interacts 
+with the surrounding fluid increases. This increased interaction of the 
+granular 
 mass with the surrounding fluid results in the formation of turbulent vortices 
-that alters the deposit morphology during the collapse. It was observed 
-(see~\cref{sec:collapse_fluid_evolution}) that the 
+that alter the deposit morphology during the collapse. It was observed 
+(\cref{sec:collapse_fluid_evolution}) that the 
 vortices result in formation of heaps that significantly affects the 
 distribution of mass in the flow.~\citet{Staron2007a} observed that the 
 distribution of the mass in the granular flow plays a crucial role in the flow 
@@ -1701,7 +1700,7 @@ studied. The collapse of a tall granular column on slopes of 0\si{\degree},
 radius of r = 0.85 R is adopted. Unnatural permeability conditions were 
 observed at higher hydrodynamic radii.
 
-The snapshots of the collapse of an aspect ratio 6 column on a horizontal 
+Snapshots of the collapse of an aspect ratio 6 column on a horizontal 
 surface are shown in~\cref{fig:LBM_DEM_a6}. The initial stage of collapse is 
 characterised by the free-fall of grains above the failure surface. As the 
 grains experience free-fall due to gravity, they interact with the surrounding 
@@ -1709,7 +1708,7 @@ fluid experiencing drag force. This results in a significant drop in the
 kinetic 
 energy available for the flow. As the grains reach the static region, they 
 interact with the neighbouring grains and the energy gained during the free 
-fall is converted into horizontal acceleration. Only during this stage ($t 
+fall is converted into horizontal acceleration. Uniquely during this stage ($t 
 = 3\tau_c$) the interactions between the soil grains on the surface with 
 the surrounding fluid result in the formation of eddies. The number of eddies 
 formed during the flow is proportional to the surface area interacting with the 
@@ -1717,7 +1716,7 @@ fluid. Hydroplaning can be observed at the flow front ($t = 3\tau_c$). Two
 large vortices with almost the same size can be observed at the final stage of 
 collapse. The soil grains on the surface experience suction due to formation of 
 eddies and this results in formation of heaps of granular mass in front of each 
-vortex. The formation of heaps, although is evident, doesn't significantly 
+vortex. The formation of heaps, although in evidence, doesn't significantly 
 affect the distribution of mass in the case of collapse on a horizontal plane. 
 
 \begin{figure}[htpb]
@@ -1729,14 +1728,14 @@ horizontal surface}
 \end{figure}
 
 
-The snapshots of a collapse of a granular column (\textit{a} = 6) on a inclined 
+Snapshots of the collapse of a granular column (\textit{a} = 6) on a inclined 
 plane at angle of 5\si{\degree} are shown in~\cref{fig:a6_slope_snapshots}. 
 Similar behaviour in the flow evolution is observed for the collapse on a slope 
 of 5\si{\degree}. The vortices are formed only during the horizontal spreading 
 stage $t = 3\tau_c$, but the number of vortices formed during the collapse is 
 higher than the collapse on a horizontal plane. However, as the flow progresses 
 a single large vortex engulfs other smaller vortices, thus having a 
-significant influence on the mass distribution.~\cref{fig:a6_slope_voro} shows 
+significant influence on the mass distribution.~\Cref{fig:a6_slope_voro} shows 
 the distribution of mass and the packing density at $t = 6\tau_c$ and $t = 
 8\tau_c$. A heap can be observed in front of the large vortex almost at the 
 middle of the flow. The height of the heap is higher than the collapse height 
@@ -1837,7 +1836,7 @@ eddies. This effect predominates over the hydroplaning that is observed during
 the flow resulting in a shorter run-out distance in the case of fluid. The 
 evolution of height with time indicates that the amount of material 
 destabilised is much smaller due to the drag forces experienced by the grains 
-(see~\cref{fig:Height_a6_slope}).
+(\cref{fig:Height_a6_slope}).
 
 \begin{figure}
 \centering
@@ -1860,7 +1859,7 @@ on a slope of 5\si{\degree}}
 \end{figure}
 
 The amount of kinetic energy available for the flow in the submerged condition 
-is almost half that of the dry condition (see~\cref{fig:KE_a6_slope}). It can 
+is almost half that of the dry condition (\cref{fig:KE_a6_slope}). It can 
 be see from~\cref{fig:KEy_a6_slope} that the vertical kinetic energy is 
 dissipate over a longer duration, in contrast to the free-fall release observed 
 in the dry condition. The slower dissipation is attributed to the viscous drag 
@@ -1927,11 +1926,11 @@ permeability and packing density on the run-out evolution of tall columns.
 Two-dimensional LB-DEM simulations are performed to understand the behaviour 
 of submarine granular flows. Unlike dry granular collapse, the run-out 
 behaviour in fluid is dictated by the initial volume fraction. Granular columns 
-with loose packing and low permeability tend to flow longer in comparison to 
+with loose packing and low permeability tend to flow further in comparison to 
 dense columns, due to entrainment of water at the base resulting in 
 lubrication. In both dense and loose conditions, the run-out distance increases 
 with decrease in the permeability. With decrease in permeability, the duration 
-required for the flow to initiate takes longer due to development of large 
+required for the flow to initiate takes longer due to the development of large 
 negative pore-pressures. However, the low permeability of the granular mass 
 results in entrainment of water causing hydroplaning. For the same 
 thickness and velocity of the flow, the potential of hydroplaning is influenced 
