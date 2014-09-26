@@ -243,6 +243,22 @@ grains get dispersed on the horizontal plane as discrete bodies start to
 separate from the main mass, hence the run-out distance is calculated as the 
 position of the farthest grain which has at least one contact with the main 
 mass.
+%
+
+The configuration of the granular column collapse using DEM is show 
+in~\cref{fig:DEM_Column_Sample} for a column with an initial aspect ratio of 
+0.8. The soil grains are packed using ballistic deposition technique, once a 
+stable state is reached, the gate is opened allowing the granular column to 
+collapse and flow. Frictional boundaries are specified on the left and 
+the bottom boundaries.
+
+\begin{figure}
+\centering
+\includegraphics[width=0.95\textwidth]{DEM_Column_Sample}
+\caption{DEM set-up for a granular collapse simulation (\textit{a} = 0.8). 
+Shows the grains in a stable state under the influence of gravity.}
+\label{fig:DEM_Column_Sample}
+\end{figure}
 
 \begin{table}
 \caption{Micro-mechanical parameters used in DEM simulations}
@@ -268,35 +284,30 @@ Coefficient of restitution, $\varepsilon$ & 0.75 \\ \bottomrule
 GIMPM with a Mohr-Coloumb constitutive model is used to simulate plane strain 
 collapse of granular columns.~\citet{Crosta2009} observed that the Mohr-Coloumb 
 model with non-associate flow rule is able to capture granular collapse 
-dynamics and 
-models the strong vertical motion. This method does not suffer 
+dynamics and models the strong vertical motion. This method does not suffer 
 the limitations of typical shallow water equation techniques. In order to 
 understand the ability and limitations of continuum approaches in capturing the 
 local rheology, it is important to scale the grain-scale material properties, 
 such as the inter-particle friction and stiffness, to the continuum scale 
 (macroscopic friction and Young's modulus).~\citet{Crosta2009} observed that 
-the friction 
-angle plays a significant role on the run-out behaviour. 
+the friction angle plays a significant role on the run-out behaviour. 
 
 In MPM simulations, the granular flow is assumed to be in the critical state 
 and the critical state friction angle is used as an input in the Mohr-Coloumb 
-model. In order 
-to obtain the critical state friction angle of the granular sample, a shear 
-test is performed using 1078 DEM grains. A bi-periodic boundary condition is 
-adopted on the sides of the sample (\cref{fig:shear}). Two layers of fixed 
-grains (shown in black) are placed at the top and the bottom of the shear 
-sample. A normal pressure \textit{P} and a horizontal velocity \textit{v} is 
-applied 
-to the fixed grains  at the top of 
-the shear sample. As the normal effective stress is varied, 
-the average shear stress in the sample is measured. The sample is sheared 
-until the critical state is reached. The slope of shear stress 
-versus normal effective stress gives the critical state friction angle. A 
-critical state friction angle of $22.2$\si{\degree} is obtained. The 
-macroscopic friction angle is in the range observed 
-by~\citet{Estrada2008} and~\citet{Mitchell2005}. The Young's 
-modulus of the granular assembly is obtained as the initial slope of the 
-stress-strain plot of a uni-axial compression of a granular column using DEM.
+model. In order to obtain the critical state friction angle of the granular 
+sample, a shear test is performed using 1078 DEM grains. A bi-periodic boundary 
+condition is adopted on the sides of the sample (\cref{fig:shear}). Two layers 
+of fixed grains (shown in black) are placed at the top and the bottom of the 
+shear sample. A normal pressure \textit{P} and a horizontal velocity \textit{v} 
+is applied to the fixed grains  at the top of the shear sample. As the normal 
+effective stress is varied, the average shear stress in the sample is measured. 
+The sample is sheared until the critical state is reached. The slope of shear 
+stress versus normal effective stress gives the critical state friction angle. 
+A critical state friction angle of $22.2$\si{\degree} is obtained. The 
+macroscopic friction angle is in the range observed by~\citet{Estrada2008} 
+and~\citet{Mitchell2005}. The Young's modulus of the granular assembly is 
+obtained as the initial slope of the stress-strain plot of a uni-axial 
+compression of a granular column using DEM.
 
 \begin{figure}
 \centering
@@ -326,9 +337,21 @@ numerical noise due to material points crossing the background mesh. In
 addition, the probability of particles crossing the background mesh increases 
 with decrease in the mesh size, hence, more noise may be 
 produced~\citep{Abe2013}. The effect of the number of material points per cell 
-on the run-out behaviour is discussed in~\cref{sec:MPM_points_per_cell}. In the 
-present study, each material point represents one-fourth of a DEM soil grain. 
-The parameters used for the continuum analyses are presented 
+on the run-out behaviour is discussed in~\cref{sec:MPM_points_per_cell}.
+
+The initial set-up of a granular column collapse (a = 1) using MPM is shown 
+in~\cref{fig:MPM_Sample}. For all MPM simulations, a cell size of 
+$2\times10^{-3}\si{\m}$ with 16 material points per cell is adopted 
+(\cref{fig:ini_mesh_mpm_column}). A granular column of aspect ratio 1 is 
+discretised into 40,000 material points. Each material point represents 
+one-eigth of a DEM soil grain. The initial vertical effective stress simulated 
+in MPM, before the collapse stage, is shown 
+in~\cref{fig:ini_stress_mpm_column}. The extent of the 
+background mesh in MPM is much larger than the initial column. In MPM, the 
+material points move inside the grid, so it is important to have a sufficiently 
+large domain for the collapse. Frictional boundaries are applied as constrains 
+on the nodal accelerations on the left and the bottom boundaries. The 
+parameters used for the continuum analyses are presented 
 in~\cref{table:MPMData}. 
 
 \begin{table}
@@ -350,47 +373,66 @@ Time step increment & $1.0 \times 10^{-6}$~\si{\second}\\ \bottomrule
 \end{tabular}
 \end{table}
 
+\begin{figure}[tbhp]
+\centering
+\begin{subfigure}[b]{0.95\textwidth}
+\centering
+\includegraphics[width=0.95\textwidth]{ini_mesh_mpm_column}
+\caption{Initial arrangement of material points in the mesh. Closer view of 
+16 material points per cell for a column with an initial aspect ratio of 1. 
+Cell size of $2\times10^{-3}\si{\m}$.}
+\label{fig:ini_mesh_mpm_column}
+\end{subfigure}
+\\
+\begin{subfigure}[b]{0.95\textwidth}
+\centering
+\includegraphics[width=0.95\textwidth]{ini_stress_mpm_column}
+\caption{Initial vertical effective stress in MPM for a column with an aspect 
+ratio of 1.}
+\label{fig:ini_stress_mpm_column}
+\end{subfigure}
+\caption{MPM initial mesh and vertical stress}
+\label{fig:MPM_Sample}
+\end{figure}
+
+
+
 \subsection{Deposit morphology}
 Two-dimensional plane-strain MPM and DEM simulations of granular column 
-collapse are 
-performed by varying the initial aspect ratio of the column from 0.2 to 10. The 
-evolution of run-out and the flow kinematics observed in both approaches are 
-compared to understand the ability and limitations of theses approaches.  
-The normalized final run-out distance, $\Delta L = 
+collapse are performed by varying the initial aspect ratio of the column from 
+0.2 to 10. The evolution of run-out and the flow kinematics observed in both 
+approaches are compared to understand the ability and limitations of theses 
+approaches. The normalized final run-out distance, $\Delta L = 
 (L_{\textit{f}}-L_{\textit{0}})/L_{\textit{0}}$, as a function of the initial 
 aspect ratio \textit{a} of the column is presented in~\cref{fig:run-out}. 
-Similar to 
-the experimental behaviour a power law relation between the run-out and the 
-initial aspect ratio of the column is observed. Two distinct flow regimes can 
-be seen: (a) for \textit{a} < 2.7 a linear relation between the spread and 
-aspect 
-ratio can be observed, and (b) for \textit{a} > 2.7 a power-law relationship 
-exists. 
-In the present study, the following scaling law for the run-out (using DEM) is 
-observed:
-\begin{align}
+Similar to the experimental behaviour a power law relation between the run-out 
+and the initial aspect ratio of the column is observed. Two distinct flow 
+regimes can be seen: (a) for \textit{a} < 2.7 a linear relation between the 
+spread and aspect ratio can be observed, and (b) for \textit{a} > 2.7 a 
+power-law relationship exists. In the present study, the following scaling law 
+for the run-out (using DEM) is observed:
+%
+\begin{equation}
 \frac{L_{\textit{f}}-L_{\textit{0}}}{L_{\textit{0}}} \approx  
 \begin{cases}
 1.67 a, &\qquad \textit{a}\lesssim 2.7 \\
 2.7 a^{2/3}, &\qquad \textit{a} \gtrsim 2.7 \\
 \end{cases}
-\end{align}
+\end{equation}
 Both, MPM and DEM simulations are able to capture the linear relationship for 
 \textit{a} < 2.7, and the simulation results agree with the experimental 
 investigation~\citep{Lajeunesse2005}. This shows that a simple frictional 
 dissipation model is able to capture the flow dynamics for columns with small 
 aspect ratios. For \textit{a} < 2.7, the normalised run-out distance predicted 
-using 
-DEM simulations are very close to those observed in the experiment. DEM 
+using DEM simulations are very close to those observed in the experiment. DEM 
 simulations with a hexagonal packing shows shorter run-out distances in 
 comparison to the randomly packed sample. This difference in the run-out 
-behaviour 
-might be due to the crystallisation and jamming effects in hexagonal packing. 
-The small difference in the final run-out between the DEM and the experimental 
-results can be attributed to the variation in the packing of grains. Also, the 
-experimental data corresponds to granular column collapse in a rectangular 
-channel, where the collapse is not a pure two-dimensional collapse as in the 
-case of numerical simulations. 
+behaviour might be due to the crystallisation and jamming effects in hexagonal 
+packing. The small difference in the final run-out between the DEM and the 
+experimental results can be attributed to the variation in the packing of 
+grains. Also, the experimental data corresponds to granular column collapse in 
+a rectangular channel, where the collapse is not a pure two-dimensional 
+collapse as in the case of numerical simulations. 
 
 A significant difference in the final run-out between MPM, which is based on a 
 simple frictional model for dissipation of potential energy, and DEM 
@@ -1200,23 +1242,53 @@ algorithm based on a non-linear Gauss-Seidel scheme is used. The only
 contact 
 parameters within the CD method are the friction coefficient $\mu$, the 
 normal restitution coefficient $\varepsilon_n$ and the tangential restitution 
-coefficient 
-$\varepsilon_t$ between grains. 
+coefficient $\varepsilon_t$ between grains. 
 
-
-
-In MPM simulations, the material point spacing is same as the 
+In MPM simulations, the material point spacing is adopted to be the same as the 
 mean grain diameter in DEM. A mesh size of 0.0125m is adopted with 25 material 
 points per cell. The effect of mesh size and the number of material points per 
-cell is investigated in~\cref{sec:MPM_points_per_cell}. A Mohr-Coulomb model 
+cell is investigated in~\cref{sec:MPM_points_per_cell}. The initial 
+configuration of the slope in MPM is shown in~\cref{fig:MPM_Initial_PIC_Slope}. 
+Frictional boundary condition is applied on the left and the bottom boundaries 
+by applying constraints to the nodal acceleration. The initial vertical stress 
+of the granular pile in equilibrium, before the impact, in the MPM simulation 
+is shown in~\cref{fig:MPM_Stress_Slope}. The Mohr-Coulomb model 
 with no dilation is used to simulate the continuum behaviour of the granular 
 pile. Periodic shear tests using CD, see~\cref{fig:Sxy_vs_Syy_Slope}, reveals a 
 macroscopic friction coefficient of 0.22. The evolution of inertial number with 
-friction is presented in~\cref{fig:mu_vs_I}. The natural units of the system 
-are the mean grain diameter $d$, the mean grain 
-mass $m$ and acceleration due to gravity $g$. For this reason, the length 
-scales are normalised by $d$, time by $(d/g)^{1/2}$, velocities by $(gd)^{1/2}$ 
-and energies by $mgd$. 
+friction is presented in~\cref{fig:mu_vs_I}. The distribution of the initial 
+impact velocity of 50~\si{J} on the granular pile is shown 
+in~\cref{fig:MPM_Velocity_Slope}.
+
+
+\begin{figure}[tbhp]
+\centering
+\begin{subfigure}[t]{0.75\textwidth}
+\centering
+\includegraphics[width=0.95\textwidth]{MPM_Initial_PIC_Slope}
+\caption{Initial configuration of material points per cell. 25 material points 
+per cell. Cell size of 0.0125m.}
+\label{fig:MPM_Initial_PIC_Slope}
+\end{subfigure} \\
+%
+\begin{subfigure}[t]{0.95\textwidth}
+\centering
+\includegraphics[width=0.95\textwidth]{MPM_Stress_Slope}
+\caption{Initial stress in MPM}
+\label{fig:MPM_Stress_Slope}
+\end{subfigure} \\
+%
+\begin{subfigure}[t]{0.95\textwidth}
+\centering
+\includegraphics[width=0.95\textwidth]{MPM_Velocity_Slope}
+\caption{Initial horizontal velocity for a pile subjected to an impact velocity 
+of 50J.}
+\label{fig:MPM_Velocity_Slope}
+\end{subfigure}
+\caption{MPM initial configuration.}
+\label{fig:MPM_Slope_setup}
+\end{figure}
+
 
 \begin{figure}[tbhp]
 \centering
@@ -1234,6 +1306,12 @@ and energies by $mgd$.
 \caption{Periodic shear test using CD~\citep{Mutabaruka2013}.}
 \label{fig:Shear_Test_Slope}
 \end{figure}
+
+The natural units of the system 
+are the mean grain diameter $d$, the mean grain 
+mass $m$ and acceleration due to gravity $g$. For this reason, the length 
+scales are normalised by $d$, time by $(d/g)^{1/2}$, velocities by $(gd)^{1/2}$ 
+and energies by $mgd$. 
 
 %-------------------------------------------------------------------------------
 \subsection{Evolution of pile geometry and run-out}
