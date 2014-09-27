@@ -846,9 +846,9 @@ temporarily acts as a boundary particle. To avoid numerical errors, it is
 essential to consider smaller cell size along the boundary~\citep{Chen2002}. 
 
 In the MPM simulations, numerical noises are observed when the material points 
-crosses the cell boundaries during deformation of the material, this is termed 
-as cell crossing noise. If a material point is located very close to the cell 
-boundary, it results in discontinuous nature of the gradient of the weighing 
+crosses the cell boundaries as the body deforms, this is termed 
+as \textit{cell crossing noise}. If a material point is located very close to 
+the cell boundary, it results in discontinuous gradient of the weighing 
 function causing a force imbalance on the grid~\citep{bardenhagen2004}. This 
 results in large non-physical acceleration values resulting in separation of 
 material points from the continuum~\citep{Sulsky1995}. 
@@ -870,6 +870,124 @@ simulate the boundaries in the Generalized Interpolation Material Point Method
 \label{fig:cellnoise}
 \end{figure}
 
+\begin{figure}[tbhp]
+	\centering
+	\begin{subfigure}[b]{0.95\textwidth}
+		\centering
+		\includegraphics[width=0.95\textwidth]{4GIMPM_tc}
+		\caption{GIMP method (4 material points per cell)}
+		\label{fig:4GIMPM_tc}
+	\end{subfigure} \\
+	\begin{subfigure}[b]{0.95\textwidth}
+		\centering
+		\includegraphics[width=0.95\textwidth]{16GIMPM_tc}
+		\caption{GIMP method (16 material points per cell)}
+		\label{fig:16GIMPM_tc}
+	\end{subfigure} \\
+	\begin{subfigure}[b]{0.95\textwidth}
+		\centering
+		\includegraphics[width=0.95\textwidth]{16MPM_tc}
+		\caption{Conventional MPM (16 material points per cell)}
+		\label{fig:16MPM_tc}
+	\end{subfigure}
+	\caption{Evolution of granular column collapse at $t = \tau_c$.}
+	\label{fig:MPM_GIMP_TC}
+\end{figure}
+
+\begin{figure}[tbhp]
+	\centering
+	\begin{subfigure}[b]{0.95\textwidth}
+		\centering
+		\includegraphics[width=0.95\textwidth]{4GIMPM_6tc}
+		\caption{GIMP method (4 material points per cell)}
+		\label{fig:4GIMPM_6tc}
+	\end{subfigure} \\
+	\begin{subfigure}[b]{0.95\textwidth}
+		\centering
+		\includegraphics[width=0.95\textwidth]{16GIMPM_6tc}
+		\caption{GIMP method (16 material points per cell)}
+		\label{fig:16GIMPM_6tc}
+	\end{subfigure} \\
+	\begin{subfigure}[b]{0.95\textwidth}
+		\centering
+		\includegraphics[width=0.95\textwidth]{16MPM_6tc}
+		\caption{Conventional MPM (16 material points per cell)}
+		\label{fig:16MPM_6tc}
+	\end{subfigure}
+	\caption{Evolution of granular column collapse at $t = 6\tau_c$.}
+	\label{fig:MPM_GIMP_6TC}
+\end{figure} 
+
+\begin{figure}[tbhp]
+	\centering
+	\begin{subfigure}[b]{0.95\textwidth}
+		\centering
+		\includegraphics[width=0.95\textwidth]{Runout_MPM_GIMPM}
+		\caption{Evolution of run-out (GIMP method vs MPM)}
+		\label{fig:Runout_MPM_GIMPM}
+	\end{subfigure} \\
+	\begin{subfigure}[b]{0.95\textwidth}
+		\centering 
+		\includegraphics[width=0.95\textwidth]{Height_MPM_GIMP}
+		\caption{Evolution of height (GIMP method vs MPM)}
+		\label{fig:Height_MPM_GIMP}
+	\end{subfigure} \\
+	\caption{Evolution of run-out and height with time. Difference between 
+	conventional MPM and GIMP method.}
+	\label{fig:MPM_GIMP}
+\end{figure}
+
+
+\subsection{Application of MPM in geomechanics}
+
+The studies on using the material point method in modelling
+geotechnical problems are limited. The potential of Material Point Method in 
+modelling granular flows, discharge of silos, was first recognised 
+by~\citet{Wieckowski1999}.~\citet{Bardenhagen2001} developed a frictional 
+contact algorithm to model granular materials. The Mohr-Coloumb is used to 
+describe the kinematics of the grains. In this model, a contact is defined when 
+the nodal velocity interpolated from all material points in the cell differs 
+from the nodal velocity interpolated from a single material 
+point.~\citet{Coetzee2005} applied this contact algorithm to understand the 
+pull-out behaviour of anchors.~\citet{Ma2014} developed a new contact algorithm 
+with a penalty contact function and a limited maximum shear stress for 
+soil-structure interaction, i.e, interaction of pipe-line with debris flow or 
+submarine landslide. The penalty contact function behaves similar to numerical 
+damping and thus reduces the oscillations during the impact. 
+
+\citet{Beuth2010} applied Gaussian integration in quasi-static MPM to model 
+large strain problems. However in this approach, the conservation mass is not 
+valid as a larger filled volume of material is considered.~\citet{Andersen2010} 
+used GIMP method with an elasto-plastic model to simulate slope failures. The 
+solution is found to be dependant on the number of material points used to 
+describe the slope geometry.~\citet{Mast2014} studied the behaviour of granular 
+column collapse using a non-associative flow rule. They observed a 
+significant increase in the run-out distance for large aspect ratio 
+columns.~\citet{Mast2014a} investigated the suitability of Material Point 
+Method is realistic prediction of large deformation problems such as snow 
+avalanches. 
+
+~\citet{Guilkey2007} developed a coupled numerical scheme for fluid-structure 
+interaction. The solid field is modelled in a Lagrangian frame, while an 
+Eulerian frame, compressible CFD, is used for the fluid. As the MPM computation 
+grid is reset at every stage, the same Eulerian grid is adopted for both the 
+solid and the fluid. Similar approach was adopted by~\cite{Zhang2008} to model 
+multiphase flows, where the interactions between the solid and gas are modelled 
+using the MPM background mesh as an Eulerian 
+grid.~\citet{Mackenzie-Helnwein2010} investigated various techniques to model 
+multiphase drag forces. Both solid and the fluid are modelled as Lagrangian 
+particles using the mixture theory.~\citet{Abe2013} developed a soil–pore fluid 
+coupled MPM algorithm based on Biot’s mixture theory for solving 
+hydro-mechanical interaction problems. ~\citet{Bandara2013} developed a unique 
+approach in modelling solid-fluid interactions. Two sets of Lagrangian 
+particles are used to represent soil skeleton and pore water, 
+separately.~\citet{Bandara2013} applied the coupled MPM to solve large 
+deformation problems such as slope failure due to seepage.
+
+In the present study, the Material Point Method is used to model large 
+deformation problems, such as collapse of dry columns and soil slopes subjected 
+to impact loading. The suitability of continuum approach (MPM) in modelling 
+large deformation problems is also investigated.
 
 \section{Particulate modelling of granular flows}
 
