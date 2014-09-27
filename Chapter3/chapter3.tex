@@ -648,23 +648,23 @@ reset.}
 
 The post-processing stage, as in any analysis, involves visualization 
 and extraction of the data from the analysis. In mesh-less methods, like the 
-Material Point Method, structures are generally represented as points which 
-represent a discrete region of the body. MPM facilitates representation of 
+material point method, structures are generally represented as points which 
+describe a discrete region of the body. MPM facilitates representation of 
 arbitrarily complex geometries and has advantages over strictly grid based 
-methods especially in simulations involving contact between multiple 
-objects~\citep{Bardenhagen2000}. MPM poses a whole new set of visualization 
-problem, it is essential to visualize the general configuration of the body as 
-well as to observe the finer details like development of cracks or separation 
-of chunk of material from the body. The body is discretised into conceptual 
-material points, which carry all the relevant information of the corresponding 
-segment. The unique qualities of MPM necessitate the need to visualize the 
-particle data in a way that is informative and appropriate.
+methods especially in simulations involving large 
+deformations~\citep{Bardenhagen2000}. MPM poses a whole new set of 
+visualization problem, it is essential to visualize the general configuration 
+of the body as well as observe the finer details like development of cracks or 
+separation of chunks of material from the body. The body is discretised into 
+conceptual material points, which carry all the relevant information of the 
+corresponding segment. The unique qualities of MPM necessitate the need to 
+visualize the particle data in a way that is informative and appropriate.
 
 In MPM, the particle data represents the finite portion of a larger 
 continuum, and the ability to see and interpret the 
 macroscopic structure created by these particles is vital~\citep{bigler2006}. 
-There are two vital aspects in visualizing MPM data: (1) visualization of 
-the structure represented by material points, and (2) understanding the 
+There are two main aspects in visualizing MPM data: (1) visualization of 
+the structure represented by the material points, and (2) understanding the 
 qualitative trend associated with the material points like mass, velocity or 
 stress. 
 
@@ -682,7 +682,7 @@ size and location of the fraction of the
 continuum~\citep{kuester2001,krogh1997,gumhold2003}. In the present study, MPM 
 data points are represented as spheres.  Colour mapping of scalar 
 quantities such as mass, velocity, or stress of a material point are applied to 
-provide additional qualitative understanding of data.
+provide additional qualitative understanding of the data.
 
 
 
@@ -690,23 +690,21 @@ provide additional qualitative understanding of data.
 \label{sec:MPM_points_per_cell}
 
 The accuracy of MPM simulations largely depends on the number of material 
-points representing the continuum. The MPM utilizes a grid to compute the 
-deformation of the continuum, hence the size of the cells affects the accuracy 
+points representing the continuum. MPM utilizes a grid to compute the 
+deformation of a continuum, hence the size of the cells affects the accuracy 
 of the results. Generally in MPM, the number of particles per cell controls 
 the accuracy of the simulation. \citet{Guilkey2003} recommends higher particle 
 density, such as 4 particles per cell, for large deformation problems. Very low 
 particle density will result in non-physical opening of cracks in large 
 deformation simulations. However, a higher value of particle density affects 
-the computation time. 
+the computational time. 
 
 \citet{Abe2013} observed that for a coarse mesh, the numerical error 
 decreases with increase in the number of material points per cell. In contrast, 
-they observed an opposite trend for the fine meshes (0.01~\si{\m}). The 
-influence of numerical noise due to particles crossing the background mesh was 
-not observed when the mesh size is greater than 
-0.05~\si{\m}.~\citet{Coetzee2005} also found that the numerical error decreases 
-with 
-increase in mesh refinement.
+they observed an opposite trend for the fine meshes. The influence of numerical 
+noise due to particles crossing the background mesh was not observed in coarse 
+meshes.~\citet{Coetzee2005} also found that the numerical error decreases 
+with increase in mesh refinement.
 
 In the present study, the effect of mesh size and the number of material points 
 per cell on the run-out behaviour is investigated. The run-out behaviour of  a 
@@ -716,6 +714,8 @@ static slope is set into motion by applying a horizontal
 gradient velocity $v_{0x}(y) = k (y_{max} - y)$ with 
 $k>0$.~\cref{fig:MPM_Velocity_Slope} shows the initial configuration and 
 distribution of initial horizontal impact velocity of 50J in the granular mass. 
+Detailed description of this problem and the material properties used in the 
+simulations are found in~\cref{sec:slope}.
 A mesh size of 0.0125~\si{\m} is adopted. The number of material points per 
 cell (PPC) is varied as 4, 16, 25, 36, 64, 81 and 100.
 
@@ -854,8 +854,8 @@ necessary.
 
 \subsection{GIMPM}
 
-The shape functions used in the 
-MPM are continuous, and hence penetration between bodies are handled 
+The shape functions used in MPM are continuous, and hence penetration between 
+bodies are handled 
 automatically without the need for any supplemental contact 
 algorithm~\citep{Chen2002}. In MPM, the continuum body deforms and moves in 
 an arbitrary computation grid and all the boundary conditions are carried by 
@@ -874,70 +874,202 @@ the cell boundary, it results in discontinuous gradient of the weighing
 function causing a force imbalance on the grid~\citep{bardenhagen2004}. This 
 results in large non-physical acceleration values resulting in separation of 
 material points from the continuum~\citep{Sulsky1995}. 
-~\cref{fig:cellnoise} illustrates the problem of cell crossing noise. The 
+~\Cref{fig:cellnoise} illustrates the problem of cell crossing noise. The 
 main reason for the occurrence of cell crossing noise is the use of piecewise 
 linear shape functions. However, this problem, which is predominant when using 
 fine mesh size, can be overcome by changing the order of arithmetic operation 
-as proposed by \citet{Sulsky1995}. To overcome the problem of cell crossing 
-noise, \citet{bardenhagen2004} proposed an alternate method called the 
-Generalized Interpolation Material Point Method that uses smoother shape 
-functions and a larger influence region for each grid node. This approach 
-minimizes the cell crossing noise. However, special attention is required to 
-simulate the boundaries in the Generalized Interpolation Material Point Method 
-(GIMP).
+as proposed by \citet{Sulsky1995}. 
+
 \begin{figure}[htbp]
 \centering
-\includegraphics{cellnoise}
+\includegraphics[width=0.7\textwidth]{cellnoise}
 \caption{Cell crossing noise}
 \label{fig:cellnoise}
 \end{figure}
 
-\begin{figure}[tbhp]
-	\centering
-	\begin{subfigure}[b]{0.95\textwidth}
-		\centering
-		\includegraphics[width=0.95\textwidth]{4GIMPM_tc}
-		\caption{GIMP method (4 material points per cell)}
-		\label{fig:4GIMPM_tc}
-	\end{subfigure} \\
-	\begin{subfigure}[b]{0.95\textwidth}
-		\centering
-		\includegraphics[width=0.95\textwidth]{16GIMPM_tc}
-		\caption{GIMP method (16 material points per cell)}
-		\label{fig:16GIMPM_tc}
-	\end{subfigure} \\
-	\begin{subfigure}[b]{0.95\textwidth}
-		\centering
-		\includegraphics[width=0.95\textwidth]{16MPM_tc}
-		\caption{Conventional MPM (16 material points per cell)}
-		\label{fig:16MPM_tc}
-	\end{subfigure}
-	\caption{Evolution of granular column collapse at $t = \tau_c$.}
-	\label{fig:MPM_GIMP_TC}
-\end{figure}
+To overcome the problem of cell crossing 
+noise, \citet{bardenhagen2004} proposed an alternate method called the 
+Generalized Interpolation Material Point Method that uses smoother shape 
+functions and a larger influence region for each grid node. This approach 
+minimizes the cell crossing noise. A piecewise-linear grid basis functions are 
+written as
+%
+\begin{align}
+\phi{x} = \begin{cases}
+1-\left|x\right|/h \qquad &: \qquad \left|x\right| < h \\
+0 \qquad &: \qquad otherwise \,,
+\end{cases}
+\end{align}
+where \textit{h} is the grid spacing. The basis function associated with grid 
+node \textit{i} at position $x_i$ is then $\phi_i=\phi(x - x_i)$. The basis 
+functions in 3-D are separable functions constructed as $\phi_i(x) = \phi_i^x(x)
+\phi_i^y(y)\phi_i^z(z)$. GIMP is often implemented using the standard 
+piecewise-linear grid basis functions and piecewise-constant particle 
+characteristic functions:
+\begin{align}
+\chi_p = \begin{cases}
+1 \qquad &: \qquad \left|x\right| < \frac{1}{2}l_p \\
+0 \qquad &: \qquad otherwise \,,
+\end{cases}
+\end{align}
+%
+in which case the 1-D MPM and GIMP weighting functions can be grouped together 
+in the general form
+%
+\begin{align}
+\phi = \begin{cases}
+1 - (4x^2+l_p^2)/(4hl_p)\qquad &: \qquad \left|x\right| < \frac{l_p}{2} \\
+1 - \left|x\right|/h \qquad &: \qquad \frac{l_p}{2} \le \left|x\right| < h - 
+\frac{l_p}{2} \\
+\left(h +\frac{l_p}{2} - \left|x\right| \right)^2/(2hl_p) \qquad &: \qquad h - 
+\frac{l_p}{2} \le \left|x\right| < h +
+\frac{l_p}{2} \\
+0 \qquad &: \qquad otherwise \,,
+\end{cases}
+\end{align}
+%
+where $l_p$ is the width of the particle characteristic function 
+$\chi_p$.~\cref{fig:gimp} shows a 1-D GIMP weighting function $\bar{\phi}_{ip}$ 
+and gradient weighting function $\bar{\nabla\phi}_{ip}$ for a 
+piecewise-constant $\chi_p$ with a characteristic length of \textit{l}. The 
+GIMP weighting function is smooth, however a discontinuity is observed in the 
+gradient weighting function. 
+
+
+In traditional MPM, boundary conditions only need be applied on those nodes 
+which coincide with the extents of the computational domain. As  illustrated 
+in~\cref{fig:MPM_Linear} nodes beyond those boundaries are not influenced by 
+particles within the domain. This can be considered a result of the zero
+width of the Dirac delta characteristic functions. However, special attention 
+is required to simulate the boundaries in the Generalized Interpolation 
+Material Point Method (GIMP). Namely, because of their increased extents, it is 
+possible for particles to influence, and be influenced by, nodes that lie 
+outside of the simulation domain (\cref{fig:GIMP_function}). These extra nodes 
+are referred to as the ``ghost'' nodes. Boundary condition treatment of these 
+nodes for Dirichlet conditions is the same as for the regular boundary
+nodes, namely, their computed values are replaced by prescribed 
+values~\citep{Steffen2008}.
 
 \begin{figure}[tbhp]
 	\centering
-	\begin{subfigure}[b]{0.95\textwidth}
+	\begin{subfigure}[b]{0.7\textwidth}
+	\centering
+	\includegraphics[width=0.9\textwidth]{gimp}
+	\caption{Example GIMP weighting function $\bar{\phi}_{ip}$ ,
+	and gradient weighting function $\bar{\nabla\phi}_{ip}$ centered at 0 using 
+	piecewise linear grid basis functions and piecewise constant particle 
+	characteristic functions $\chi_p$. Dotted lines denote breaks in the 
+	continuity
+	of the functions.}
+	\label{fig:gimp}
+	\end{subfigure}\\
+	\begin{subfigure}[b]{0.9\textwidth}
 		\centering
-		\includegraphics[width=0.95\textwidth]{4GIMPM_6tc}
+		\includegraphics[width=0.9\textwidth]{GIMP_function}
+		\caption{GIMP}
+		\label{fig:GIMP_function}
+	\end{subfigure}\\
+	\begin{subfigure}[b]{0.9\textwidth}
+		\centering
+		\includegraphics[width=0.9\textwidth]{MPM_Linear}
+		\caption{Piecewise-Linear}
+		\label{fig:MPM_Linear}
+	\end{subfigure} 
+	\caption{1-D basis functions used in MPM~\citep{Steffen2008}.}
+	\label{fig:MPM_GIMP_func}
+\end{figure}
+
+In the present study, the influence of GIMP method on the run-out behaviour of 
+a granular column collapse experiment is investigated. A granular column of 
+height $H_0$ and length $L_0$ is allowed to collapse and flow on a horizontal 
+plane (\cref{fig:exp}). The run-out distance observed is proportional to the 
+initial aspect ratio of the column ($H_0/L_0$). Further details about the 
+granular collapse experiment and the material properties used in the 
+simulations are presented in~\cref{sec:dry_granular_column}. A 
+granular column with an initial aspect ratio of 0.4 is considered for the 
+comparison. The granular column is represented by 32,000 material points 
+arranged uniformly on a regular lattice with a particle spacing of 
+0.25~\si{\mm}. A grid size of 1~\si{mm} is adopted with 16 material points per 
+cell. In order to understand the influence of the number of material points on 
+the accuracy of the solution, simulation using 4 material points per cell with 
+GIMP is also performed. The granular collapse experiment is performed for a 
+column with an initial aspect ration of 0.4 using both GIMP method and MPM with 
+16 material points per cell. 
+
+The evolution of run-out at time $t=\tau_c$ and $t=6\tau_c$, where $\tau_c$ is 
+the critical time when the potential energy is fully mobilised, are presented 
+in~\cref{fig:MPM_GIMP_TC}. At the initial stage of collapse $t=\tau_c$, both 
+MPM and GIMP give almost the same behaviour. The run-out observed in the case 
+of 4 material points per cell is similar to the run-out behaviour for 16 
+material points per cell. At the end of the flow, GIMP with 4 material points 
+show oscillations at the flow front due to fewer material points in a cell. 
+However, both MPM and GIMP show a more smoother response at the flow front. The 
+evolution of run-out and height with time for both MPM and GIMP are presented 
+in~\cref{fig:MPM_GIMP}. For a time up to $t=1.5\tau_c$ all approaches yield the 
+exact same behaviour. However, as the flow progresses, the number of material 
+points per cell at the flow front decreases and this results in oscillations. 
+The oscillations with decrease in the number of material points can be seen in 
+the 4 material points per cell. Hence, it is essential to have a larger number 
+of material points, especially at the flow front. The difference in the 
+normalised run-out between MPM and GIMP method is about 2.5\%. This is due to 
+the difference in the interpolation scheme adopted in both approaches. GIMP 
+method offers a better approximation of the run-out behaviour as a result of 
+the continuous basis function. This also results in a more smooth stress and 
+velocity distribution in GIMP than MPM. With increase in the number of material 
+points and the use of finer mesh size decrease the difference between both 
+approaches. The computational effort using GIMP method is almost twice that of 
+MPM, since GIMP method considers the particles at neighbouring cells due to the 
+larger spread of the basis functions. In the present study, a very fine mesh 
+and 16 material points per cell are used to simulate large deformation 
+problems. 
+
+\begin{figure}
+	\centering
+	\begin{subfigure}[b]{\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{4GIMPM_tc}
+		\caption{GIMP method (4 material points per cell)}
+		\label{fig:4GIMPM_tc}
+	\end{subfigure} \\
+	\begin{subfigure}[b]{\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{16GIMPM_tc}
+		\caption{GIMP method (16 material points per cell)}
+		\label{fig:16GIMPM_tc}
+	\end{subfigure} \\
+	\begin{subfigure}[b]{\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{16MPM_tc}
+		\caption{Conventional MPM (16 material points per cell)}
+		\label{fig:16MPM_tc}
+	\end{subfigure}
+	\caption*{Evolution of granular column collapse at $t = \tau_c$.}
+\end{figure}
+
+\begin{figure}
+\ContinuedFloat
+	\centering
+	\begin{subfigure}[b]{\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{4GIMPM_6tc}
 		\caption{GIMP method (4 material points per cell)}
 		\label{fig:4GIMPM_6tc}
 	\end{subfigure} \\
-	\begin{subfigure}[b]{0.95\textwidth}
+	\begin{subfigure}[b]{\textwidth}
 		\centering
-		\includegraphics[width=0.95\textwidth]{16GIMPM_6tc}
+		\includegraphics[width=\textwidth]{16GIMPM_6tc}
 		\caption{GIMP method (16 material points per cell)}
 		\label{fig:16GIMPM_6tc}
 	\end{subfigure} \\
-	\begin{subfigure}[b]{0.95\textwidth}
+	\begin{subfigure}[b]{\textwidth}
 		\centering
-		\includegraphics[width=0.95\textwidth]{16MPM_6tc}
+		\includegraphics[width=\textwidth]{16MPM_6tc}
 		\caption{Conventional MPM (16 material points per cell)}
 		\label{fig:16MPM_6tc}
 	\end{subfigure}
-	\caption{Evolution of granular column collapse at $t = 6\tau_c$.}
-	\label{fig:MPM_GIMP_6TC}
+	\caption*{$t = 6\tau_c$}
+	\caption{Evolution of granular column collapse.}
+	\label{fig:MPM_GIMP_TC}
 \end{figure} 
 
 \begin{figure}[tbhp]
@@ -1032,6 +1164,7 @@ non-homogeneous soil. The application of continuum models to describe granular
 flow poses subtle problems for statistical analysis~\citep{mehta1994}. The 
 grain level description of the granular material enriches the macro-scale 
 variables which poorly account for the local rheology of the materials. 
+
 Numerical models based on the Discrete Element approach proposed 
 by~\citet{Cundall1979} are capable of simulating the granular material as a 
 discontinuous system. Although, modern measurement techniques can probe into 
