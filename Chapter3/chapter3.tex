@@ -250,7 +250,7 @@ simulated, additional parameters, like pressure, temperature, pore-water
 pressure, etc., are specified at the material points. The material points are 
 assumed to be within the computational grid, which for the ease of computation, 
 is assumed to be a Cartesian lattice (see~\cref{fig:MPM}). At 
-every time step $\mathit{t}_{k}$, the MPM computation cycle involves projecting 
+every time step $\mathit{t}_{k}$, MPM computation cycle involves projecting 
 the data, such as position, mass, and velocity from the material points to the 
 computational grid using the standard nodal basis functions, called the 
 \textit{shape functions}, derived based on the position of particle with 
@@ -442,7 +442,7 @@ mesh.
 \subsection{Integration scheme}
 
 \citet{Love2006} investigated the energy consistency of MPM and observed that 
-the MPM algorithm is more suited to flow calculations than Lagrangian finite 
+MPM algorithm is more suited to flow calculations than Lagrangian finite 
 element methods. In dynamic MPM, the explicit time integration scheme is 
 adopted to advance the solution.~\citet{Bardenhagen2002} studied the energy 
 consistency of MPM using two 
@@ -633,73 +633,95 @@ solution and the computational grid is re-initialised for the next step.
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=0.975\textwidth]{MPMsteps}
-\caption[Illustration of the MPM algorithm]{Illustration of the MPM algorithm (1) A representation of material points overlaid on a computational grid. Arrows represent material point state vector (mass, volume, velocity, etc.) being projected to the nodes of the computational grid. (2) The equations of motion is solved on the nodes, resulting in updated nodal velocities and positions. (3) The updated nodal kinematics are interpolated back to the material points. (4)  The state of the material points are updated and the computational grid is reset.} 
+\caption[Illustration of MPM algorithm]{Illustration of MPM algorithm (1) A 
+representation of material points overlaid on a computational grid. Arrows 
+represent material point state vector (mass, volume, velocity, etc.) being 
+projected to the nodes of the computational grid. (2) The equations of motion 
+is solved on the nodes, resulting in updated nodal velocities and positions. 
+(3) The updated nodal kinematics are interpolated back to the material points. 
+(4)  The state of the material points are updated and the computational grid is 
+reset.} 
 \label{fig:MPMsteps}
 \end{figure}
 
 \subsubsection{Post processing}
 
-The final step in any analysis is post-processing. It involves visualization 
+The post-processing stage, as in any analysis, involves visualization 
 and extraction of the data from the analysis. In mesh-less methods, like the 
 Material Point Method, structures are generally represented as points which 
-represent a discrete region of the body. The MPM facilitates representation of 
-arbitrarily complex geometries and is robust in computing large deformation 
-problems. It has advantages over strictly grid based methods in simulations 
-involving contact between multiple objects~\citep{Bardenhagen2000}. The MPM 
-poses a whole new set of visualization problem, it is essential to visualize 
-the general configuration of the body as well as to observe the finer details 
-like development of cracks or separation of chunk of material from the body. 
-The body is discretised into conceptual material points, which carry all the 
-relevant information of the corresponding segment. The unique qualities of the 
-MPM necessitate the need to visualize the particle data in a way that is 
-informative and appropriate. In the MPM, the particle data represents the 
-finite portion of a larger continuum, and the ability to see and interpret the 
+represent a discrete region of the body. MPM facilitates representation of 
+arbitrarily complex geometries and has advantages over strictly grid based 
+methods especially in simulations involving contact between multiple 
+objects~\citep{Bardenhagen2000}. MPM poses a whole new set of visualization 
+problem, it is essential to visualize the general configuration of the body as 
+well as to observe the finer details like development of cracks or separation 
+of chunk of material from the body. The body is discretised into conceptual 
+material points, which carry all the relevant information of the corresponding 
+segment. The unique qualities of MPM necessitate the need to visualize the 
+particle data in a way that is informative and appropriate.
+
+In MPM, the particle data represents the finite portion of a larger 
+continuum, and the ability to see and interpret the 
 macroscopic structure created by these particles is vital~\citep{bigler2006}. 
-There are two vital aspects in visualizing the MPM data: (1) visualization of 
+There are two vital aspects in visualizing MPM data: (1) visualization of 
 the structure represented by material points, and (2) understanding the 
 qualitative trend associated with the material points like mass, velocity or 
-stress. The MPM output data contains both the material point and the grid data, 
-one approach in visualizing the MPM data is by rendering the interpolated 
+stress. 
+
+The MPM output data contains both the material point and the grid data, 
+one approach in visualizing MPM data is by rendering the interpolated 
 particle values on grid nodes using \textit{iso-surfacing}~\citep{lorensen1987} 
 or \textit{volume rendering}~\citep{levoy1988} technique. In regions where the 
 material points are sparse, it is necessary that the grid resolution to be 
 sufficiently fine to compensate for the missing features. This results in 
 storing large amount of unnecessary data in regions where sufficient material 
-points are present. Thus, it is advantageous to visualize the MPM data of the 
+points are present. Thus, it is advantageous to visualize MPM data of the 
 material points as particles~\citep{bigler2006}. Particle visualization 
 involves rendering the particles as a sphere or an ellipsoid representing the 
 size and location of the fraction of the 
-continuum~\citep{kuester2001,krogh1997,gumhold2003}. Colour mapping of scalar 
-quantities such as mass, velocity, or stress of a material point provide 
-additional qualitative understanding of data. 
+continuum~\citep{kuester2001,krogh1997,gumhold2003}. In the present study, MPM 
+data points are represented as spheres.  Colour mapping of scalar 
+quantities such as mass, velocity, or stress of a material point are applied to 
+provide additional qualitative understanding of data.
 
-The accuracy of the MPM simulations largely depends on the number of material 
-points representing the continuum. The MPM utilizes a grid to compute the 
-deformation of the continuum, hence the size of the cells affects the accuracy 
-of the results. Generally in the MPM, the number of particles per cell controls 
-the accuracy of the simulation. \citet{Guilkey2003} recommends higher particle 
-density, such as 4 particles per cell, for large deformation problems. Very low 
-particle density will result in non-physical opening of cracks in large 
-deformation simulations and can be a source for the cell crossing noise. 
-However, higher value of particle density affects the computation time. 
+
 
 \subsection{Effect of mesh size and number of material points per cell}
 \label{sec:MPM_points_per_cell}
 
+The accuracy of MPM simulations largely depends on the number of material 
+points representing the continuum. The MPM utilizes a grid to compute the 
+deformation of the continuum, hence the size of the cells affects the accuracy 
+of the results. Generally in MPM, the number of particles per cell controls 
+the accuracy of the simulation. \citet{Guilkey2003} recommends higher particle 
+density, such as 4 particles per cell, for large deformation problems. Very low 
+particle density will result in non-physical opening of cracks in large 
+deformation simulations. However, a higher value of particle density affects 
+the computation time. 
+
 \citet{Abe2013} observed that for a coarse mesh, the numerical error 
 decreases with increase in the number of material points per cell. In contrast, 
-they observed an opposite trend for the fine meshes (0.01 \si{\m}). The 
+they observed an opposite trend for the fine meshes (0.01~\si{\m}). The 
 influence of numerical noise due to particles crossing the background mesh was 
-not observed when the mesh size is greater than 0.05 
-\si{\m}.~\citet{Coetzee2005} also found that the numerical error decreases with 
+not observed when the mesh size is greater than 
+0.05~\si{\m}.~\citet{Coetzee2005} also found that the numerical error decreases 
+with 
 increase in mesh refinement.
 
 In the present study, the effect of mesh size and the number of material points 
-per cell on the run-out behaviour is investigated. For a mesh size of 0.0125 
-\si{\m}, the number of material points per cell (PPC) is varied as 4, 16, 25, 
-36, 64, 81 and 100. The effect of number of material points on the run-out 
+per cell on the run-out behaviour is investigated. The run-out behaviour of  a 
+granular slope of length 0.8~\si{\m} and height 0.2~\si{\m} is subjected to a 
+gradient impact velocity is studied. The initial 
+static slope is set into motion by applying a horizontal
+gradient velocity $v_{0x}(y) = k (y_{max} - y)$ with 
+$k>0$.~\cref{fig:MPM_Velocity_Slope} shows the initial configuration and 
+distribution of initial horizontal impact velocity of 50J in the granular mass. 
+A mesh size of 0.0125~\si{\m} is adopted. The number of material points per 
+cell (PPC) is varied as 4, 16, 25, 36, 64, 81 and 100.
+
+The effect of number of material points on the run-out 
 behaviour is presented in~\cref{fig:Runout_MPM}. At a low input energy of 
-50~\si{\J}, 4 and 16 material points per cell result in longer run-out 
+50~\si{\J}, 4 and 16 material points per cell result in a longer run-out 
 distance, where as the 
 run-out distance converges when the number of PPC is more 
 than 25. While at a high input energy of 500~\si{J}, both 4 and 16 PPC predict 
@@ -835,7 +857,7 @@ necessary.
 The shape functions used in the 
 MPM are continuous, and hence penetration between bodies are handled 
 automatically without the need for any supplemental contact 
-algorithm~\citep{Chen2002}. In the MPM, the continuum body deforms and moves in 
+algorithm~\citep{Chen2002}. In MPM, the continuum body deforms and moves in 
 an arbitrary computation grid and all the boundary conditions are carried by 
 the boundary particles. If a boundary particle is present in a cell, then the 
 cell boundary becomes a part of the continuum body, and the cell size 
@@ -845,7 +867,7 @@ case the cell is still treated as a boundary cell, and the interior particle
 temporarily acts as a boundary particle. To avoid numerical errors, it is 
 essential to consider smaller cell size along the boundary~\citep{Chen2002}. 
 
-In the MPM simulations, numerical noises are observed when the material points 
+In MPM simulations, numerical noises are observed when the material points 
 crosses the cell boundaries as the body deforms, this is termed 
 as \textit{cell crossing noise}. If a material point is located very close to 
 the cell boundary, it results in discontinuous gradient of the weighing 
@@ -969,11 +991,11 @@ avalanches.
 
 ~\citet{Guilkey2007} developed a coupled numerical scheme for fluid-structure 
 interaction. The solid field is modelled in a Lagrangian frame, while an 
-Eulerian frame, compressible CFD, is used for the fluid. As the MPM computation 
+Eulerian frame, compressible CFD, is used for the fluid. As MPM computation 
 grid is reset at every stage, the same Eulerian grid is adopted for both the 
 solid and the fluid. Similar approach was adopted by~\cite{Zhang2008} to model 
 multiphase flows, where the interactions between the solid and gas are modelled 
-using the MPM background mesh as an Eulerian 
+using MPM background mesh as an Eulerian 
 grid.~\citet{Mackenzie-Helnwein2010} investigated various techniques to model 
 multiphase drag forces. Both solid and the fluid are modelled as Lagrangian 
 particles using the mixture theory.~\citet{Abe2013} developed a soil–pore fluid 
@@ -1066,171 +1088,128 @@ scales~\citep{Jean1999, Radjai2009}.
 \section{Discrete Element Method}
 
 Discrete Element Method computes the equilibrium and the trajectories of a 
-classical 
-multi-body system. The Discrete Element Method is a simple and flexible 
-discrete-element 
-approach, which involves applying Newton's second law of motion to each grain 
-to describe the 
-deformation of the granular assembly.  
+classical multi-body system. The Discrete Element Method is a simple and 
+flexible discrete-element approach, which involves applying Newton's second law 
+of motion to each grain to describe the deformation of the granular assembly. 
+% 
 \begin{equation} 
-  {m}_{i}\frac{{{d}^{2}}{{x}_{i}}}{d{{t}^{2}}} = {{\mathbf{F}}_{i}}, 
-(i=1,...,N 
-  )
- \label{eq:fma}
+{m}_{i}\frac{{{d}^{2}}{{x}_{i}}}{d{{t}^{2}}} = {{\mathbf{F}}_{i}}, 
+(i=1,...,N )
+\label{eq:fma}
 \end{equation}
 %
 where \textit{N} is the number of grains in the simulation, $m_{\mathit{i}}$ 
-is 
-the mass of grain 
-\textit{i}, $x_{\mathit{i}}$ is its position, and $\mathbf{F}_{\mathit{i}}$ is 
-the force exerted 
-on 
-grain. The method consists of calculating the forces $\mathbf{F}_{\mathit{i}}$ 
-and then solving 
-the 
-ordinary differential in~\cref{eq:fma}. In general the system of coupled 
-non-linear 
-differential equations cannot be solved analytically. The approximate 
-numerical 
-solution of these 
-equations, which describes the trajectories of all the grains of the system 
-is called as 
-Discrete Element Method. The idea of Discrete Element Method goes back to 
-Alder 
-and Wainwright who 
-in 1957 
-investigated the physics of hard sphere gases. The name implies that it was 
-first applied to 
-molecular scale problems before being applied to granular materials by 
-\citet{Cundall1979}. 
-Discrete Element Method simulations are identical to the real experiments, 
-this 
-involve generation 
-of 
-samples (initial conditions) with \textit{N} grains and solving the 
-Newton's 
-equation of motion 
-for the system until the properties of the system no longer change with time 
-(equilibration of the 
-system). After equilibration, the actual analysis is performed.
+is the mass of a grain \textit{i}, $x_{\mathit{i}}$ is its position, and 
+$\mathbf{F}_{\mathit{i}}$ is the force exerted on grain. The method consists of 
+calculating the forces $\mathbf{F}_{\mathit{i}}$ and then solving 
+the ordinary differential in~\cref{eq:fma}. In general the system of coupled 
+non-linear differential equations cannot be solved analytically. The 
+approximate numerical solution of these equations, which describes the 
+trajectories of all the grains of the system is called as Discrete Element 
+Method. The idea of Discrete Element Method goes back to Alder and Wainwright 
+who in 1957 investigated the physics of hard sphere gases. The name implies 
+that it was first applied to molecular scale problems before being applied to 
+granular materials by \citet{Cundall1979}. Discrete Element Method simulations 
+are identical to the real experiments, this involve generation of samples 
+(initial conditions) with \textit{N} grains and solving the Newton's equation 
+of motion for the system until the properties of the system no longer change 
+with time (equilibration of the system). After equilibration, the actual 
+analysis is performed.
 
 The computation of the forces and torques is the central part of the Discrete 
-Element Method 
-simulation. 
-The dynamics of the granular material is governed by Newton's equation of 
-motion which depends on 
-the centre-of-mass coordinates and the Euler angles of the grains 
-\textit{i} 
-(\textit{i}=1,\dots,\textit{N}):
+Element Method simulation. The dynamics of the granular material is governed by 
+Newton's equation of motion which depends on the centre-of-mass coordinates and 
+the Euler angles of the grains \textit{i} (\textit{i}=1,\dots,\textit{N}):
+%
 \begin{align} 
 \frac{{{\partial}^2}{\overrightarrow{r_i}}}{\partial{t^2}} 
 &=\frac{1}{m_i}\overrightarrow{{\mathbf{F}}_{i}}(\overrightarrow{r_j},\overrightarrow{v_j},
  \overrightarrow{\varphi_j},\overrightarrow{\omega_j})
  \nonumber \\ 
-\frac{{\partial^2}{\overrightarrow{\varphi_i}}}{\partial{t^2}}&=\frac{1}{{\hat{J}}_i}\overrightarrow{\mathbf{M}_i}(\overrightarrow{r_j},\overrightarrow{v_j},\overrightarrow{\varphi_j},
+\frac{{\partial^2}{\overrightarrow{\varphi_i}}}{\partial{t^2}}&
+=\frac{1}{{\hat{J}}_i}\overrightarrow{\mathbf{M}_i}
+(\overrightarrow{r_j},\overrightarrow{v_j},\overrightarrow{\varphi_j},
    \overrightarrow{\omega_j}), (j=1,...,N) \nonumber
 \end{align}
+%
 The force $\overrightarrow{\mathbf{F}_{i}}$ and the torque 
-$\overrightarrow{\mathbf{M}_{i}}$, 
-which 
-act on grain \textit{i} of mass $\mathit{m}_{\mathit{i}}$ and the tensorial 
-moment of inertia 
+$\overrightarrow{\mathbf{M}_{i}}$, which act on grain \textit{i} of mass 
+$\mathit{m}_{\mathit{i}}$ and the tensorial moment of inertia 
 ${\hat{J}_i}$ are (sometimes complicated) functions of the grain 
-positions 
-$\overrightarrow{\mathit{r}_{\mathit{j}}}$, their angular orientations 
-$\overrightarrow{\varphi}_{\mathit{j}}$, and their corresponding velocities 
-$\overrightarrow{\mathit{v}_{\mathit{j}}}$ and 
+positions $\overrightarrow{\mathit{r}_{\mathit{j}}}$, their angular 
+orientations $\overrightarrow{\varphi}_{\mathit{j}}$, and their corresponding 
+velocities $\overrightarrow{\mathit{v}_{\mathit{j}}}$ and 
 $\overrightarrow{\omega}_{\mathit{j}}$. In a two-dimensional system, the 
-angular 
-orientation of a grain is described by a single (scalar) quantity 
-$\varphi_{i}$ and the moment 
-of inertia reduces to a scalar value $\mathit{J}_{i}$. The Newton's equation 
-of motion can be written as:
-
+angular orientation of a grain is described by a single (scalar) quantity 
+$\varphi_{i}$ and the moment of inertia reduces to a scalar value 
+$\mathit{J}_{i}$. The Newton's equation of motion can be written as
+%
 \begin{align} 
 	\frac{{{\partial}^2}{\overrightarrow{r_i}}}{\partial{t^2}} 
 	&=\frac{1}{m_i}\overrightarrow{{\mathbf{F}}_{i}}(\overrightarrow{r_j},\overrightarrow{v_j},
 	\overrightarrow{\varphi_j},\overrightarrow{\omega_j})
 	\nonumber \\ 
 	\frac{{\partial^2}{\overrightarrow{\varphi_i}}}{\partial{t^2}}&=\frac{1}{{\hat{J}}_i}\overrightarrow{\mathbf{M}_i}(\overrightarrow{r_j},\overrightarrow{v_j},\overrightarrow{\varphi_j},
-	\overrightarrow{\omega_j}), (j=1,...,N) \nonumber
+	\overrightarrow{\omega_j}), (j=1,...,N) \,. \nonumber
 \end{align}
 
- For granular grains in the absence of long range fields, the force 
- $\overrightarrow{\mathbf{F}_{i}}$ and the torque 
- $\overrightarrow{\mathbf{M}_{i}}$ acting upon 
-the 
- grain \textit{i} are given as sum of the pairwise interaction of grain 
- `\textit{i}' with 
-all 
- other grains of the system:
-
+For granular grains in the absence of long range fields, the force  
+$\overrightarrow{\mathbf{F}_{i}}$ and the torque  
+$\overrightarrow{\mathbf{M}_{i}}$ acting upon the grain \textit{i} are given as 
+sum of the pairwise interaction of grain \textit{i} with 
+all other grains of the system
+%
 \begin{align}
    \overrightarrow{{\mathbf{F}}_i}=\sum\limits_{j=1,j\ne 
    i}^{N}{\overrightarrow{\mathbf{F}_{ij}}}, \qquad 
    &\overrightarrow{\mathbf{M}_{i}}=\sum\limits_{j=1,j\ne 
    i}^{N}{\overrightarrow{\mathbf{M}_{ij}}}
 \end{align}
-
+%
 The limitation to pairwise interaction is an abstraction, which is justified 
-if 
-the grains 
-deformation at the contact is trivial. To describe the deformation of granular 
-assemblies one has 
-to take into account the effect of multi-grain interactions. This method is 
-general and can be 
-applied to a wide range of systems. The Discrete Element Method can be used to 
-study the 
+if the grains deformation at the contact is trivial. To describe the 
+deformation of granular assemblies one has to take into account the effect of 
+multi-grain interactions. This method is general and can be applied to a wide 
+range of systems. The Discrete Element Method can be used to study the 
 behaviour of grains in rapid flows to static assemblies. The method treats 
-both 
-the conditions in 
-exactly the same way, it is not necessary to divide the system and then treat 
-each condition 
-differently. The simplest model for granular grain is a sphere. In a 
-two-dimensions case, the 
-sphere is reduced to a circular disk. Simulations using spherical grains 
-are 
-numerically very 
+both the conditions in exactly the same way, it is not necessary to divide the 
+system and then treat each condition differently. The simplest model for 
+granular grain is a sphere. In a two-dimensions case, the sphere is reduced to 
+a circular disk. Simulations using spherical grains are numerically very 
 effective since grain collisions can be easily identified and described in 
-a 
-simple 
-way~\citep{Posch2005}.
+a simple way~\citep{Posch2005}.
 
 % 
-%%****************************************************************************************************************************************************
-% %
+%%******************************************************************************
 
 \subsection{The Forces}
 
 The force $\mathbf{F}_{\mathit{i}}$ in~\cref{eq:fma} represents both the grain 
-to grain 
-interaction force, and other external forces acting on the system. Therefore, 
-the force 
-$\mathbf{F}_{\mathit{i}}$ is expressed as:
-\begin{align} \label{eq:f}
- \mathbf{{F}}_{i}=\sum\limits_{j\ne 1}{\mathbf{{F}}_{ij}+\mathbf{{F}}_{ext, i}}
-\end{align}
+to grain interaction force, and other external forces acting on the system. 
+Therefore, the force $\mathbf{F}_{\mathit{i}}$ is expressed as
+%
+\begin{equation} \label{eq:f}
+ \mathbf{{F}}_{i}=\sum\limits_{j\ne 1}{\mathbf{{F}}_{ij}+\mathbf{{F}}_{ext, 
+ i}}\,,
+\end{equation}
+%
 where $\mathbf{F}_{\mathit{i}}$ is the force exerted by grain \textit{j} on 
-\textit{i}. The 
-external force $\mathbf{F}_{\mathit{ext,i}}$ is most often the force of 
-gravity, 
-$\mathbf{F}_{\mathit{ext,i}} = m_{\mathit{i}} \mbox{ }\mathbf{g}_{\mathit{i}}$. 
-The methodology to 
-incorporate any other external forces in the simulation is the same. However, 
-the computation of 
-the interaction forces depends on the numerical method adopted in the study. 
-The methodology used 
-in the present study is described below. 
+\textit{i}. The external force $\mathbf{F}_{\mathit{ext,i}}$ is most often the 
+force of gravity, $\mathbf{F}_{\mathit{ext,i}} = m_{\mathit{i}} \mbox{ 
+}\mathbf{g}_{\mathit{i}}$. The methodology to incorporate any other external 
+forces in the simulation is the same. However, the computation of the 
+interaction forces depends on the numerical method adopted in the study. 
+The methodology used in the present study is described below. 
 
 Let us consider two grains \textit{i} and \textit{j}, in contact 
-(see~\cref{fig:DEM}). The 
-contact force can be decomposed into two components, as the normal 
-($\mathit{F}_{n}$) and the 
-tangential ($\mathit{F}_{t}$) components:
-\begin{align}
- \mathbf{F}_{ij}=F_{n}\mathbf{n}+F_{t}\mathbf{t}
+(see~\cref{fig:DEM}). The contact force can be decomposed into two components, 
+as the normal ($\mathit{F}_{n}$) and the tangential ($\mathit{F}_{t}$) 
+components
+%
+\begin{equation}
+ \mathbf{F}_{ij}=F_{n}\mathbf{n}+F_{t}\mathbf{t} \,.
 \label{eq:fnt}
-\end{align}
+\end{equation}
 
 \begin{figure}[htbp]
 	\centering
@@ -1240,53 +1219,42 @@ tangential ($\mathit{F}_{t}$) components:
 	separation $\delta_{n}$ is used to calculate the normal force} 
 	\label{fig:DEM}
 \end{figure}
+
 where \textbf{n} and \textbf{t} are unit vectors, pointing in the normal and 
-the tangential 
-directions. The procedure adopted to calculate the normal and tangential forces 
-are discussed.
+the tangential directions. The procedure adopted to calculate the normal and 
+tangential forces are discussed.
 
 %****************************************** %
 \subsubsection*{Normal force}
 When granular grains collide, part of the kinetic energy is dissipated as 
-heat and the other 
-part causes deformation of the grain. These deformations generate 
-interaction forces. The 
-grains 
-are considered to be rigid while their contact is assumed to be soft. Thus, the 
-grains do not 
-change their shape, instead they overlap. The shapes of the grains are 
-conserved on an average, 
+heat and the other part causes deformation of the grain. These deformations 
+generate interaction forces. The grains are considered to be rigid while their 
+contact is assumed to be soft. Thus, the grains do not change their shape, 
+instead they overlap. The shapes of the grains are conserved on an average, 
 after many collisions. The overlap at the contact is limited to very small 
-deformations, which are 
-achieved by defining a repulsive normal force that opposes the overlap. The 
-mutual compression 
-($\delta_{n}$) of the grains \textit{i} and \textit{j} is defined as:
-\begin{align}
+deformations, which are achieved by defining a repulsive normal force that 
+opposes the overlap. The mutual compression ($\delta_{n}$) of the grains 
+\textit{i} and \textit{j} is defined as
+%
+\begin{equation}
  \delta_{n}=\left|x_{\mathbf{i}}-x_{\mathit{j}}\right|-r_{i}-r_{j}
 \label{eq:delta}
-\end{align}
+\end{equation}
+%
 where $x_{\mathit{i}}$ and $x_{\mathit{j}}$ are the centres of the grains and  
-$r_{\mathit{i}}$ 
-and 
-$r_{\mathit{j}}$ are their radii (see Figure \ref{fig:DEM}). When 
-$\delta_{n}>0$, the two grains 
-are not in contact, and there is no interaction. When $\delta_{n}<0$, the two 
-grains overlap, and 
-there 
-is a repulsive normal force that pushes the two grains apart. The simplest 
-model is to consider 
-the 
-contact as a linear spring with damping. The repulsive force depends linearly 
-on $\delta_{n}$, and 
-is controlled by the stiffness of the grain. The energy dissipation due to the 
-interaction between 
+$r_{\mathit{i}}$ and $r_{\mathit{j}}$ are their radii (see Figure 
+\ref{fig:DEM}). When $\delta_{n}>0$, the two grains are not in contact, and 
+there is no interaction. When $\delta_{n}<0$, the two grains overlap, and 
+there is a repulsive normal force that pushes the two grains apart. The 
+simplest model is to consider the contact as a linear spring with damping. The 
+repulsive force depends linearly on $\delta_{n}$, and is controlled by the 
+stiffness of the grain. The energy dissipation due to the interaction between 
 grains is an intrinsic characteristic of the granular material and is 
-incorporated by adding a 
-damping force that opposes the relative velocity for the duration of the 
-contact. The interaction 
-force at the contact is idealized as a simple spring-dashpot system, with 
-elastic and dissipative 
+incorporated by adding a damping force that opposes the relative velocity for 
+the duration of the contact. The interaction force at the contact is idealized 
+as a simple spring-dashpot system, with elastic and dissipative 
 constants~\citep{Luding1994}. 
+%
 \begin{align}
  {{F}_{n}}=
 \begin{cases}
@@ -1295,18 +1263,16 @@ constants~\citep{Luding1994}.
 {{\delta}_{n}}<0 \\
 \end{cases}
 \end{align} 
+%
 The constant ${k}_{n}$ characterises the stiffness of the grain, and must be 
-chosen sufficiently 
-large so that the overlap between the grains remain small. Nevertheless, the 
-solution has an 
-undesirable property of generating an attractive force~\citep{Posch2005}. It 
-arises just before 
-the 
-two grains separate. In this case, we have ${d{\delta_{n}}}$$/{dt} > 0$  
-while $\delta_{n}$ 
+chosen sufficiently large so that the overlap between the grains remain small. 
+Nevertheless, the solution has an undesirable property of generating an 
+attractive force~\citep{Posch2005}. It arises just before the two grains 
+separate. In this case, we have ${d{\delta_{n}}}$$/{dt} > 0$ while $\delta_{n}$ 
 approaches zero. To avoid the attractive force, the force is computed in two 
-stages: a candidate 
-force $\hat{F}_{n}$ is calculated, and verified whether it is non-negative:
+stages: a candidate force $\hat{F}_{n}$ is calculated, and verified whether it 
+is non-negative
+%
 \begin{align}
  {\hat{F}_{n}}=-{{k}_{n}}{{\delta}_{n}}-{{\gamma}_{n}}\frac{d{{\delta}_{n}}}{dt},
   \quad F_{n}=
@@ -1315,36 +1281,33 @@ force $\hat{F}_{n}$ is calculated, and verified whether it is non-negative:
 {\hat{F}}_{n}, & {\hat{F}} > 0 \\
 \end{cases} \label{eq:nf}
 \end{align} 
+%
 For pairwise collisions, the normal force $(F_{n})$ represented as 
 ${{k}_{n}}{{\delta}_{n}}+{{\gamma}_{n}}$ causes a decrease in the relative 
-normal velocity of the 
-grains by a factor $\epsilon$. This factor is the \textit{coefficient of 
-restitution}, and is 
-defined as $\epsilon\approx g'/g$, where \textit{g} is the absolute normal 
-relative velocity 
-before 
+normal velocity of the grains by a factor $\epsilon$. This factor is the 
+\textit{coefficient of restitution}, and is defined as $\epsilon\approx g'/g$, 
+where \textit{g} is the absolute normal relative velocity before 
 the collision and \textit{g'} corresponds to the post-collision value. The 
-relative velocity, 
-${d{\delta_{n}}}$$/{dt} > 0$, can be obtained by 
-differentiating~\cref{eq:delta}. Thus we obtain:
+relative velocity, ${d{\delta_{n}}}$$/{dt} > 0$, can be obtained by 
+differentiating~\cref{eq:delta}. Thus we obtain
+%
 \begin{equation}
 \label{eq:vn}
-\frac{d{\delta_{n}}}{dt}=(\mathbf{v}_{\mathit{i}}-\mathbf{v}_{\mathit{i}}).{\mathbf{n}}
+\frac{d{\delta_{n}}}{dt}=(\mathbf{v}_{\mathit{i}}-\mathbf{v}_{\mathit{i}}).{\mathbf{n}}\,,
 \end{equation}
+%
 where $\mathbf{v}_{\mathit{i}}=dx_{\mathit{i}}/dt$ is the velocity of grain 
-\textit{i} and 
-$\mathbf{v}_{\mathit{j}}=dx_{\mathit{i}}/dt$ is the velocity of grain 
-\textit{j}. The numerical 
-integration of~\cref{eq:vn} yields the separation $\delta_{n}$ and permits us 
-to generalise the 
-model and treat the tangential forces as well, as explained in the next 
-section. By integrating 
+\textit{i} and $\mathbf{v}_{\mathit{j}}=dx_{\mathit{i}}/dt$ is the velocity of 
+grain \textit{j}. The numerical integration of~\cref{eq:vn} yields the 
+separation $\delta_{n}$ and permits us to generalise the model and treat the 
+tangential forces as well, as explained in the next section. By integrating 
 Newton's equation of motion it is found that the linear force corresponds to 
-the co-efficient of 
-restitution, which is defined as:
-\begin{align}
-\epsilon=exp(-\frac{\pi\gamma_{n}}{2m^{eff}}/\sqrt{\frac{Y}{m^{eff}}-{\frac{\gamma^{n}}{2m^{eff}}}^{2}})
-\end{align}
+the co-efficient of restitution, which is defined as
+%
+\begin{equation}
+\epsilon=exp(-\frac{\pi\gamma_{n}}{2m^{eff}}/\sqrt{\frac{Y}{m^{eff}}
+-{\frac{\gamma^{n}}{2m^{eff}}}^{2}})\,.
+\end{equation}
 % 
 %%*************************************************************************************************************************************************
 % %
@@ -2033,84 +1996,49 @@ border of the simulation cell, returns to the cell by crossing another border.
 %% %
 \subsection{Particle Assembling Methods}
 In order to simulate a granular assembly, it is essential to assign an initial 
-position and 
-velocity to all the grains in the system. Particle positions should be 
-chosen to be compatible 
-to the structure (granular fabric) we are trying to simulate. In any event, the 
-grains should 
-not be positioned such that there is an appreciable overlap between grains. 
-In order to achieve 
-the initial position of the grains, various grain-assembling methods can 
-be adopted. The 
+position and velocity to all the grains in the system. Particle positions 
+should be chosen to be compatible to the structure (granular fabric) we are 
+trying to simulate. In any event, the grains should not be positioned such that 
+there is an appreciable overlap between grains. In order to achieve the initial 
+position of the grains, various grain-assembling methods can be adopted. The 
 grain assembling methods can be classified into two broad categories: 
-dynamic methods and 
-geometrical approaches. The dynamic approach involves packing of grains using 
-laws of mechanics 
-and 
-contacts, while in the geometrical method the grains are packed considering 
-their geometry, 
-i.e. 
-grain size, shape and its position. In general, the packing of grains can be 
-categorized into 
-two types: crystal/lattice packing, like hexagonal or square pattern of 
-mono-disperse grains, 
-and random packing with varying density employing mono-disperse or 
-poly-disperse grains. The 
-crystalline packing arrangements, such as hexagon and square lattices, are 
-easier to generate, 
+dynamic methods and geometrical approaches. The dynamic approach involves 
+packing of grains using laws of mechanics and contacts, while in the 
+geometrical method the grains are packed considering their geometry, 
+i.e. grain size, shape and its position. In general, the packing of grains can 
+be categorized into two types: crystal/lattice packing, like hexagonal or 
+square pattern of mono-disperse grains, and random packing with varying density 
+employing mono-disperse or poly-disperse grains. The crystalline packing 
+arrangements, such as hexagon and square lattices, are easier to generate, 
 however they have non-trivial effects on the response of the granular 
-system~\citep{Staron2005}. 
-Hexagonal packing is the densest possible arrangement for mono-dispersed 
-spherical grains. In 2D, 
-the packing of mono-dispersed circles on a hexagonal lattice yields a packing 
-density of 
+system~\citep{Staron2005}. Hexagonal packing is the densest possible 
+arrangement for mono-dispersed spherical grains. In 2D, the packing of 
+mono-dispersed circles on a hexagonal lattice yields a packing density of 
 $\eta_{\mathit{h}}=\frac{1}{6}\pi\sqrt{3}\approx 0.9068$
-%.~\cref{fig:sqhex} shows a typical hexagonal lattice arrangements of grains in 
-%a 2D granular 
-%column.
-%\begin{figure}[htbp]
-%\centering
-%\includegraphics[scale=0.25]{Hexagon}
-%\caption{Hexagonal lattice arrangement of grains}
-%\label{fig:sqhex}
-%\end{figure}
+
+
 
 The rheology of a granular material is controlled by the geometry of the 
-assembly, which includes 
-the grain shape, size distribution, and their arrangement. This prevailing 
-role of geometry 
-sometimes permits to simplify the dynamics in favour of a better description of 
-the geometry 
-and/or 
-higher numerical efficiency~\citep{Radjai2011}. For example, dense granular 
-packing may be 
-efficiently constructed by replacing the equations of dynamics by simple 
-displacement rules 
-satisfying the geometrical constraints. Purely geometrical procedures can be 
-much simpler and 
-numerically faster than dynamic or quasi-static methods. Contrary to dynamic 
-simulation methods, 
+assembly, which includes the grain shape, size distribution, and their 
+arrangement. This prevailing role of geometry sometimes permits to simplify the 
+dynamics in favour of a better description of the geometry 
+and/or higher numerical efficiency~\citep{Radjai2011}. For example, dense 
+granular packing may be efficiently constructed by replacing the equations of 
+dynamics by simple displacement rules satisfying the geometrical constraints. 
+Purely geometrical procedures can be much simpler and numerically faster than 
+dynamic or quasi-static methods. Contrary to dynamic simulation methods, 
 the geometrical methods allow for quick assembling of a large number of 
-grains. Such packing 
-may 
-then be used as the initial state for dynamic simulations. The issue of the 
-assembling methods is 
-to construct configurations of grains as close as possible to a state of 
-mechanical equilibrium 
-with built-in packing properties. This can be a target packing density for a 
-given grain size 
-distribution. In the same way, the average connectivity of the grains 
-(coordination number) and 
-the anisotropy of the contact network are basic geometrical properties. The 
-coordination number 
-represents the mechanical response of packing. The homogeneity of the grain 
-assembly in terms 
-of 
+grains. Such packing may then be used as the initial state for dynamic 
+simulations. The issue of the assembling methods is to construct configurations 
+of grains as close as possible to a state of mechanical equilibrium with 
+built-in packing properties. This can be a target packing density for a 
+given grain size distribution. In the same way, the average connectivity of the 
+grains (coordination number) and the anisotropy of the contact network are 
+basic geometrical properties. The coordination number represents the mechanical 
+response of packing. The homogeneity of the grain assembly in terms of 
 packing fraction and connectivity is another important property, which depends 
-on the assembling 
-rules. In the present study, the initial grain packing is obtained using 
-ballistic deposition 
-technique.
+on the assembling rules. In the present study, the initial grain packing is 
+obtained using the ballistic deposition technique.
 
 \subsubsection{Ballistic deposition}
 Initially a random arrangement of grains which do not touch each other is 
@@ -2217,70 +2145,10 @@ the random deposited and relaxed sample is presented in~\cref{fig:sample}
 \centering
 \includegraphics[scale=0.1]{ballistic}
 \caption{(a)\textit{Ballistic deposition}: first contact followed by steepest 
-descent; (b) 
-small-scale periodic sample~\citep{Radjai2011}}
+descent; (b) small-scale periodic sample~\citep{Radjai2011}}
 \label{fig:ballistic}
 \end{figure} 
 
-\subsubsection{Statistical analysis of prepared sample}
-In order to ensure the homogeneity of the sample prepared using the above 
-technique, a statistical 
-analysis of the sample is performed. Various parameters such as grain size, 
-coordination 
-number, 
-contact normal direction, contact normal force, etc., can be used in the 
-statistical analysis to 
-verify the homogeneity of the prepared sample. Of the various parameters 
-available, the 
-coordination number, i.e. the average number of contacts per grain is chosen 
-to study the 
-homogeneity of the sample, because of its simplicity and its physical 
-significance in representing 
-the density of the sample. With increase in the coordination number, the 
-density of the granular 
-assembly increases. The mechanically stable sample prepared by ballistic 
-deposition technique 
-presented in~\cref{fig:sample} is used for the statistical analysis. 
-Representative elements 
-of size 0.02 m $\times$ 0.01 m (highlighted segments in~\cref{fig:sample}) were 
-considered. 
-Each representative element has approximately 40 grains. A histogram is 
-plotted showing the 
-number of grains having a particular coordination number for all the 
-representative elements 
-(~\cref{fig:Hist}). A normal distribution of the number of grains and the 
-coordination 
-number can be observed from~\cref{fig:Hist}. Most grains are found to have 2 
-or 3 contacts 
-with its neighbours. The number of grains with higher coordination number, 
-i.e. coordination 
-number greater than 3, is found to increase as we go down the sample. This is 
-attributed to the 
-effect of gravity, which increases linearly as we go down. Representative 
-elements at the top are 
-found to have a shift in their peak towards lower coordination number, as they 
-are less restrained 
-in comparison to their counterparts at the bottom of the sample. Overall, the 
-sample is found to 
-be 
-homogeneous, with representative elements having similar normal distribution of 
-the coordination 
-number. Thus, the prepared sample is a good representation of the actual 
-granular assembly and the 
-simulations based on these samples are found to be more realistic in comparison 
-to 
-crystalline/lattice packing of granular grains. 
-%\begin{figure}[htbp]
-%\centering
-%\includegraphics[scale=0.6]{Hist}
-%\caption[Statistical analysis of the sample prepared by ballistic deposition 
-%technique]{Histogram 
-%showing the variation in the number of grains with the coordination number 
-%for 9 
-%representative 
-%elements from the sample in~\cref{fig:sample}}
-%\label{fig:Hist}
-%\end{figure} 
 
 \subsection{Voronoi Tesselation}
 \begin{figure}[tbhp]
