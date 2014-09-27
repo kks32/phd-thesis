@@ -1982,152 +1982,147 @@ grains must be stiff enough so that violent collisions do not lead to large
 overlaps between 
 grains. 
 %%*************************************************************************************************************************************************************************
-%% %
+\subsection{Validation of DEM}
+
+\begin{figure}[tbhp]
+\centering
+\begin{subfigure}[b]{0.95\textwidth}
+\centering
+\includegraphics[width=\textwidth]{rolling}
+\caption{Layout}
+\label{fig:rolling}
+\end{subfigure}
+\\
+\begin{subfigure}[b]{0.95\textwidth}
+\centering
+\includegraphics[width=\textwidth]{DEM_Validation}
+\caption{Accumulated disc rotation at t = 0.2~\si{\s} versus friction angle 
+($\beta$=45\si{\degree}).}
+\label{fig:DEM_Validation}
+\end{subfigure}
+\caption{Example of a disk on an inclined plane}
+\label{fig:Validation_DEM}
+\end{figure}
+
+\begin{table}[tbhp]
+\caption{Comparison of theoretical and DEM result for a disk on an inclined 
+plane of 45\si{\degree}}
+\label{table:dem_validation}
+\centering
+\begin{tabular}{lcccc}
+\toprule
+\multicolumn{5}{c}{$\phi$ = 0\si{\degree} (sliding)} \\ \midrule
+ & $N=N/(Mg\cos\beta)$ & $S=S/(Mg)$ & $\ddot{a}/g$ & $\ddot{\theta}/g$\\
+Theoretical~\citep{Ke1995} & 1.000 & 0.000 & 0.7071 & 0.000 \\
+DEM & 1.000 & 0.000 & 0.7071 & 0.000 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
 \subsection{Boundary conditions}
 In many cases, the dynamic and static properties of a granular system are 
-substantially affected 
-by 
-the interaction of the granular material with the system boundaries, i.e. by 
-the properties of the 
-container or the surface on which the material is present. The effect of 
-boundary conditions on 
-the 
-response of the granular assembly can be noticed in the convective motion of 
-granular material in 
-vibrating containers, the formation of density waves in pipes, the motion of 
-granular material on 
-conveyors, and the clogging of hoppers. In these and many other cases, careful 
-definition of the 
-interaction between the granular material and the contact surface is essential. 
-Of particular 
-importance is the realistic modelling of the wall surface roughness. 
-Unfortunately the mechanical 
-interaction of a granular materials with a rough wall is poorly 
-understood~\citep{Posch2005}. A 
-simple way to define the wall property is to build up the wall from grains, 
-which obey the same 
-rules of interaction as the grains of granular material. By varying the size 
-and position of 
-the 
-wall grains, system boundaries of adjustable roughness can be described. 
-However, the surface 
-roughness that characterizes the frictional properties of the wall has to be 
-arrived iteratively, 
-and may not represent the real conditions. In the present case, a solid wall 
-with corresponding 
+substantially affected by the interaction of the granular material with the 
+system boundaries, i.e. by the properties of the container or the surface on 
+which the material is present. The effect of boundary conditions on 
+the response of the granular assembly can be noticed in the convective motion 
+of granular material in vibrating containers, the formation of density waves in 
+pipes, the motion of granular material on conveyors, and the clogging of 
+hoppers. In these and many other cases, careful definition of the interaction 
+between the granular material and the contact surface is essential. Of 
+particular importance is the realistic modelling of the wall surface roughness. 
+Unfortunately the mechanical interaction of a granular materials with a rough 
+wall is poorly understood~\citep{Posch2005}. A simple way to define the wall 
+property is to build up the wall from grains, which obey the same rules of 
+interaction as the grains of granular material. By varying the size and 
+position of the wall grains, system boundaries of adjustable roughness can be 
+described. However, the surface roughness that characterizes the frictional 
+properties of the wall has to be arrived iteratively, and may not represent the 
+real conditions. In the present case, a solid wall with corresponding 
 stiffness, damping and frictional characteristics is introduced to model the 
-interaction between 
-grains and the wall. The interaction force is computed in a similar fashion 
-to that of a pair 
-of 
-grains in contact and is divided into the normal and tangential components. 
-The compression of 
-the grain upon collision with the wall is calculated along the normal 
-direction to the wall and 
-the grain contact.   
+interaction between grains and the wall. The interaction force is computed in a 
+similar fashion to that of a pair of grains in contact and is divided into the 
+normal and tangential components. The compression of the grain upon collision 
+with the wall is calculated along the normal direction to the wall and 
+the grain contact.
 
 \subsubsection{Periodic boundary} \label{periodic}
 The effect of a wall on the response of grains is very critical, especially 
-in numerical 
-simulation where the number of grains is relatively fewer in comparison to 
-the experiments. The 
-undesired effect of a wall can be eliminated using periodic boundary 
-conditions, i.e. a periodic 
-extension of the simulation area in one or more dimensions. Any grain 
-leaving the system at one 
-side is reintroduced at the opposite side, and correspondingly the interaction 
-forces between 
-grains at opposite sides of the simulation area are taken into account. In 
-this framework, the 
-simulation domain becomes a unit area containing grains with periodic copies 
-paving the whole 
-system. The periodic boundary conditions extend the system boundaries to 
-infinity, so that the 
+in numerical simulation where the number of grains is relatively fewer in 
+comparison to the experiments. The undesired effect of a wall can be eliminated 
+using periodic boundary conditions, i.e. a periodic extension of the simulation 
+area in one or more dimensions. Any grain leaving the system at one side is 
+reintroduced at the opposite side, and correspondingly the interaction 
+forces between grains at opposite sides of the simulation area are taken into 
+account. In this framework, the simulation domain becomes a unit area 
+containing grains with periodic copies paving the whole system. The periodic 
+boundary conditions extend the system boundaries to infinity, so that the 
 simulation cell simply plays the role of a coordinate system to locate grain 
 positions~\ref{fig:periodic}. 
 
 The external stresses or displacements are applied on the simulation box by 
-constraining the 
-degrees of freedom of the wall, which are alternatively kept free or fixed 
-depending on whether a 
-stress or a displacement is monitored in a system. With periodic boundary 
-conditions, this role is 
-played by the collective degrees of freedom carried by the coordinate system, 
-whose basis vectors 
-become dynamic variables, and their conjugate stresses are expressed as a state 
-function of the 
-granular configuration~\citep{Par1980}. In the case of granular systems, there 
-is dissipation of 
-energy during grain interactions. The kinematics, equation of dynamics, and 
-the time-stepping 
-schemes for Discrete Element Method are discussed in detail 
-in~\citet{Voiv2011}. The periodicity 
-in 
-position implemented in the present study is discussed below. 
+constraining the degrees of freedom of the wall, which are alternatively kept 
+free or fixed depending on whether a stress or a displacement is monitored in a 
+system. With periodic boundary conditions, this role is played by the 
+collective degrees of freedom carried by the coordinate system, whose basis 
+vectors become dynamic variables, and their conjugate stresses are expressed as 
+a state function of the granular configuration~\citep{Par1980}. In the case of 
+granular systems, there is dissipation of energy during grain interactions. The 
+kinematics, equation of dynamics, and the time-stepping schemes for Discrete 
+Element Method are discussed in detail in~\citet{Voiv2011}. The periodicity 
+in position implemented in the present study is discussed below. 
+%
 \begin{figure}[htbp]
 \centering
 \includegraphics[scale=0.65]{periodic}
 \caption[A 2D simulation cell $\omega$ with its basis vectors in an absolute 
-frame]{A 2D 
-simulation 
-cell $\omega$ with its basis vectors in an absolute frame. A grain located 
-at the right 
-boundary 
-interacts with the image of another grain located at the left boundary.}
+frame]{A 2D simulation cell $\omega$ with its basis vectors in an absolute 
+frame. A grain located at the right boundary interacts with the image of 
+another grain located at the left boundary.}
 \label{fig:periodic}
 \end{figure}
 
 Let us consider a collection of $N_{p}$ grains with their centres contained 
-in a cell of volume 
-V . The cell can have any shape allowing for a periodic tessellation of space. 
-The simplest shape 
-is a parallelepiped i.e. parallelogram in 2D. The cell and its replicas define 
-a regular lattice 
+in a cell of volume \textit{V} . The cell can have any shape allowing for a 
+periodic tessellation of space. The simplest shape is a parallelepiped i.e. 
+parallelogram in 2D. The cell and its replicas define a regular lattice 
 characterized by its basis vectors 
 $(\overrightarrow{\mathbf{a}_{1}},\overrightarrow{\mathbf{a}_{2}})$. In the 
-case of a 
-parallelogram, the basis vectors may simply be the two sides of the 
-parallelogram; 
-~\cref{fig:periodic}. The origin \textit{O} of the simulation cell is a vertex 
-of the cell of 
-coordinates (0, 0) and its replicas are defined by two indices $(i_{1}, i_{2})$ 
-corresponding to a 
-translation of the origin by the vector 
+case of a parallelogram, the basis vectors may simply be the two sides of the 
+parallelogram;~\cref{fig:periodic}. The origin \textit{O} of the simulation 
+cell is a vertex of the cell of coordinates (0, 0) and its replicas are defined 
+by two indices $(i_{1}, i_{2})$ corresponding to a translation of the origin by 
+the vector 
 $i_{1}\overrightarrow{\mathbf{a}_{1}}+i_{1}\overrightarrow{\mathbf{a}_{2}}$. 
-Then, the coordinates 
-$\overrightarrow{r}(\mathit{i})$ of the image $\mathit{i}^{\prime}$ of a 
-grain $\mathit{i} \in 
-\Omega$ of coordinates  $\overrightarrow{r}(\mathit{i}^{\prime})$ are given by:
-\begin{align}
-\overrightarrow{r}(i^{\prime})=\overrightarrow{r}(i)+\sum\limits_{k=1}^{2}{\mathit{i}_{\mathit{k}}\overrightarrow{\mathbf{\mathit{a}}}_{\mathit{k}}}
-\end{align}
+Then, the coordinates $\overrightarrow{r}(\mathit{i})$ of the image 
+$\mathit{i}^{\prime}$ of a grain $\mathit{i} \in \Omega$ of coordinates  
+$\overrightarrow{r}(\mathit{i}^{\prime})$ are given by:
+%
+\begin{equation}
+\overrightarrow{r}(i^{\prime})=\overrightarrow{r}(i)+\sum\limits_{k=1}^{2}
+{\mathit{i}_{\mathit{k}}\overrightarrow{\mathbf{\mathit{a}}}_{\mathit{k}}} \,.
+\end{equation}
+%
 The grains belonging to the cell $\Omega$, characterized by $\mathit{i}_{1} 
-= \mathit{i}_{2} = 
-0$, can interact with the grains of the same cell but also with image 
-grains in the 
-neighbouring cells characterized by $\mathit{i}_{k}\in {1, 1}$. There are  
-$3^{D} - 1$ cells 
-surrounding the simulation cell and they are involved in the search of contact 
-partners for each 
-grain. The distance between two grains \textit{i} and \textit{j} $\in 
-\Omega$ is the 
-shortest 
+= \mathit{i}_{2} = 0$, can interact with the grains of the same cell but also 
+with image grains in the neighbouring cells characterized by $\mathit{i}_{k}\in 
+{1, 1}$. There are $3^{D} - 1$ cells surrounding the simulation cell and they 
+are involved in the search of contact partners for each grain. The distance 
+between two grains \textit{i} and \textit{j} $\in \Omega$ is the shortest 
 distance separating \textit{i} from \textit{j} or from one of its images 
-$\mathit{j}^{\prime}$. As 
-the system evolves in time, a grain \textit{i} may leave but one of its 
-images 
-$\mathit{i}^{\prime}$ enters at the same moment. In order to keep all original 
-grains in the 
-cell, the status ``original'' should be reserved to the grains whose centres 
-belongs to 
-$\Omega$. Hence, whenever a grain \textit{i} leaves the simulation cell, it 
-becomes an image of 
+$\mathit{j}^{\prime}$. As the system evolves in time, a grain \textit{i} may 
+leave but one of its images $\mathit{i}^{\prime}$ enters at the same moment. In 
+order to keep all original grains in the cell, the status ``original'' should 
+be reserved to the grains whose centres belongs to $\Omega$. Hence, whenever a 
+grain \textit{i} leaves the simulation cell, it becomes an image of 
 $\mathit{i}^{\prime}$, which then becomes the original. This means that a 
-grain crossing a 
-border of the simulation cell, returns to the cell by crossing another border.
-%%***********************************************************************************************************************************************
-%% %
-\subsection{Particle Assembling Methods}
+grain crossing a border of the simulation cell, returns to the cell by crossing 
+another border.
+
+%%*******************************************************************************
+
+\subsection[Cumulative beta distribution]{Cumulative $\beta$ distribution}
+
+\subsection{Particle assembling methods}
 In order to simulate a granular assembly, it is essential to assign an initial 
 position and velocity to all the grains in the system. Particle positions 
 should be chosen to be compatible to the structure (granular fabric) we are 
@@ -2175,115 +2170,89 @@ obtained using the ballistic deposition technique.
 
 \subsubsection{Ballistic deposition}
 Initially a random arrangement of grains which do not touch each other is 
-generated 
-(~\cref{fig:ini}). The radii of the grains are chosen from the interval of 
-$(\mathit{R}_{\mathit{min}},\mathit{R}_{\mathit{max}})$ in such a way that the 
-total mass of all 
-grains from a certain size interval is the same for all sizes, thus ensuring 
-that neither 
-larger 
-nor smaller grains dominate the system. This distribution can be obtained, 
-if the radii are 
-chosen according to the probability distribution:
-\begin{align}
+generated (\cref{fig:ini}). The radii of the grains are chosen from the 
+interval of $(\mathit{R}_{\mathit{min}},\mathit{R}_{\mathit{max}})$ in such a 
+way that the total mass of all grains from a certain size interval is the same 
+for all sizes, thus ensuring that neither larger nor smaller grains dominate 
+the system. This distribution can be obtained, if the radii are 
+chosen according to the probability distribution
+%
+\begin{equation}
 \mathit{p}(\mathit{R})=\frac{\mathit{R}_{\mathit{min}}\mathit{R}_{\mathit{max}}}{\mathit{R}_{\mathit{max}}
- - \mathit{R}_{\mathit{min}}} \frac{1}{\mathit{R}^{2}}
-\end{align}
+ - \mathit{R}_{\mathit{min}}} \frac{1}{\mathit{R}^{2}} \,.
+\end{equation}
+%
 Random numbers according to the above distribution can be generated from 
-equi-distributed random 
-numbers $\mathit{z}\in [0,1]$ via the transformation
-\begin{align}
+equi-distributed random numbers $\mathit{z}\in [0,1]$ via the transformation
+%
+\begin{equation}
 \mathit{R}=\frac{\mathit{R}_{\mathit{min}}\mathit{R}_{\mathit{max}}}{\mathit{R}_{\mathit{max}}
- - 
-z(\mathit{R}_{\mathit{max}} - \mathit{R}_{\mathit{min}})}
-\end{align}
+ - z(\mathit{R}_{\mathit{max}} - \mathit{R}_{\mathit{min}})}  \,.
+\end{equation}
+%
 This transformation is applied to initialise the grain radii and the 
-grains are arranged 
-randomly on a regular lattice. The configuration of grains obtained after 
-this step is 
-presented 
-in~\cref{fig:ini}.
-%\begin{figure}[htbp]
-%\centering
-%\includegraphics[scale=0.23]{ini}
-%\caption{Radom polydisperse grains arranged in a regular lattice, showing 
-%the variation in the 
-%grain size}
-%\label{fig:ini}
-%\end{figure}
-In the second step, the grains arranged in a regular lattice are allowed to 
-fall down and are 
+grains are arranged randomly on a regular lattice. In the second step, the 
+grains arranged in a regular lattice are allowed to fall down and are 
 packed using the \textit{random deposition with relaxation method}, a ballistic 
-deposition 
-technique. The geometrical methods help in this way to improve numerical 
-efficiency in the 
-preparation phase. For example, gravitational deposition of grains located 
-initially on a 
-regular grid can require hours of computation whereas a nearly similar result 
-may be obtained by 
-means of a geometrical method in only a few minutes. The drawback is that the 
-resulting sample 
-will 
-not be in mechanical equilibrium and no information is available on the contact 
-forces. 
-Nevertheless, depending on the relaxation rule, the sample may still be 
-sufficiently close to 
-equilibrium to be considered as a good starting point for mechanical 
-simulations. Hence, a 
-combined 
-approach of ballistic deposition and Discrete Element Method is adopted in the 
-present study 
-to generate mechanically stable samples. The random deposition and relaxation 
-method, first 
-proposed by~\citet{vold1959a,vold1959b} and developed by~\citet{jullien1992} 
-and 
-\citet{meakin1985}, is adopted in the present study. The general principle of 
-this method is quite 
-simple (see~\cref{fig:ballistic}); it consists of placing the grains 
-consecutively on a 
-substrate or a layer of already deposited grains. Each grain first 
-touches the substrate or 
-a 
-deposited grain, then undergoes a relaxation process (single-grain 
-restructuring) along the 
-steepest descent (steepest-descent model) until a more stable position 
-according to a stability 
-criterion is reached. The construction of the packing proceeds layer by layer 
-from the substrate, 
-hence this deposition model is also known as bottom-to-top restructuring model. 
-The first step is 
-to release a grain from a random position above the substrate. Upon contact 
-with the first 
-deposited grain, the grain rolls following the steepest descent until a 
-new contact is 
-formed 
-with a second grain. In 2D, two contacts are sufficient to balance a 
-grain if its centre of 
-gravity lies between the two contacts. This corresponds to a position of local 
-stable equilibrium. 
-If this criterion is not met, the grain continues to roll and the procedure 
-is iterated until a 
-local stable position is reached. The wall effects are eliminated by adopting 
-periodic boundaries 
+deposition technique. The geometrical methods help in this way to improve 
+numerical efficiency in the preparation phase. For example, gravitational 
+deposition of grains located initially on a regular grid can require hours of 
+computation whereas a nearly similar result may be obtained by means of a 
+geometrical method in only a few minutes. The drawback is that the resulting 
+sample will not be in mechanical equilibrium and no information is available on 
+the contact forces. Nevertheless, depending on the relaxation rule, the sample 
+may still be sufficiently close to equilibrium to be considered as a good 
+starting point for mechanical simulations. Hence, a combined approach of 
+ballistic deposition and Discrete Element Method is adopted in the present 
+study to generate mechanically stable samples. The random deposition and 
+relaxation method, first proposed by~\citet{vold1959a,vold1959b} and developed 
+by~\citet{jullien1992} and \citet{meakin1985}, is adopted in the present study. 
+The general principle of this method is quite simple 
+(see~\cref{fig:ballistic}); it consists of placing the grains consecutively on 
+a substrate or a layer of already deposited grains. Each grain first 
+touches the substrate or a deposited grain, then undergoes a relaxation process 
+(single-grain restructuring) along the steepest descent (steepest-descent 
+model) until a more stable position according to a stability criterion is 
+reached. The construction of the packing proceeds layer by layer from the 
+substrate, hence this deposition model is also known as bottom-to-top 
+restructuring model. The first step is to release a grain from a random 
+position above the substrate. Upon contact with the first deposited grain, the 
+grain rolls following the steepest descent until a new contact is formed with a 
+second grain. In 2D, two contacts are sufficient to balance a grain if its 
+centre of gravity lies between the two contacts. This corresponds to a position 
+of local stable equilibrium. If this criterion is not met, the grain continues 
+to roll and the procedure is iterated until a local stable position is reached. 
+The wall effects are eliminated by adopting periodic boundaries 
 (Sec~\ref{periodic})in the horizontal direction (perpendicular to that of 
-deposition). 
-~\cref{fig:ballistic} shows a small sample prepared by this method (the grey 
-grains are 
-periodic images of the black ones). In this method, the order of deposited 
-grains is generally 
-random and independent of their sizes. The mechanically stable sample obtained 
-from equilibrating 
-the random deposited and relaxed sample is presented in~\cref{fig:sample} 
+deposition).~\cref{fig:ballistic} shows a small sample prepared by this method 
+(the grey grains are periodic images of the black ones). In this method, the 
+order of deposited grains is generally random and independent of their sizes. 
+The mechanically stable sample obtained from equilibrating the random deposited 
+and relaxed sample is presented 
+in~\cref{fig:DEM_Sample_r6} 
+
 \begin{figure}[htbp]
 \centering
-\includegraphics[scale=0.1]{ballistic}
-\caption{(a)\textit{Ballistic deposition}: first contact followed by steepest 
-descent; (b) small-scale periodic sample~\citep{Radjai2011}}
-\label{fig:ballistic}
-\end{figure} 
+	\begin{subfigure}[b]{0.95\textwidth}
+	\centering
+	\includegraphics[width=0.975\textwidth]{ballistic}
+	\caption{\textit{Ballistic deposition}: first contact followed by 
+	steepest descent and small-scale periodic sample~\citep{Radjai2011}}
+	\label{fig:ballistic}
+	\end{subfigure} \\
+	\begin{subfigure}[b]{0.95\textwidth}
+	\centering
+	\includegraphics[width=0.975\textwidth]{DEM_Sample_r6}
+	\caption{A poly-dispersed DEM sample generated using ballistic deposition 
+	technique}
+	\label{fig:DEM_Sample_r6}
+	\end{subfigure} \\
+\caption{Ballistic deposition}
+\label{fig:ballistic_sample}
+\end{figure}
 
 
-\subsection{Voronoi Tesselation}
+\subsection{Voronoi tesselation}
 \begin{figure}[tbhp]
 \centering
 \begin{subfigure}[b]{0.95\textwidth}
@@ -2302,3 +2271,4 @@ descent; (b) small-scale periodic sample~\citep{Radjai2011}}
 \caption{Voronoi tessellation to average bulk properties}
 \label{fig:voro}
 \end{figure}
+
