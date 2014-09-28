@@ -25,10 +25,10 @@ coast of central Norway, transporting materials over 500~\si{\km}
 Granular avalanches, debris flow and submarine landslides cause significant 
 damage to life and property. Globally, landslides cause billions of pounds in 
 damage, and thousands of deaths and injuries each year. On 2 May 2014, a pair 
-of mudslides killed at least 2000 people, 3000 houses were buried and over 
-14,000 affected after a landslide hit the north-east Afghan province of 
+of mudslides killed at least 2000 people, burying 3000 houses and displacing 
+over 14,000 people after a landslide hit the north-east Afghan province of 
 Badakhshan. Rescuers responding to the initial mudslide were struck by a second 
-mudslide which trapped or killed a large proportion of potential rescuers, 
+mudslide which trapped or killed a large proportion of potential rescuers 
 (Source: BBC, 2014). The consecutive slides levelled the village, and left the 
 area under 10 to 30 metres of mud. A week of torrential rain might be a 
 plausible reason for the mudflows. Understanding the triggering mechanism and 
@@ -59,12 +59,12 @@ landslide (Source: School of geoscience, University of Sydney)}
 The dynamics of a homogeneous granular flow involve at least three distinct 
 scales: the \textit{microscopic scale} which is characterized by the contact 
 between grains, the \textit{meso-scale} which represents micro-structural 
-effects such as grain rearrangement, and the \textit{macroscopic scale}. In a 
-submarine landslides, which is of 100,000 \si{\km\cubed} in volume is 
-influenced by the grain-scale dynamics happening at the scale of 
-a few $\mu$ meters to millimetres. This poses a question of how to 
-appropriately model the various scales of behaviour observed in a granular 
-flow. 
+effects such as grain rearrangement, and the \textit{macroscopic scale}. The 
+flow of submarine landslides, which is of 100,000 \si{\km\cubed} in volume, is 
+influenced by the grain-grain interactions and dynamics happening at the scale 
+of a few $\mu$ meters to millimetres. This poses a question of how to 
+effectively model the various scales of behaviour observed in a granular 
+flow?
 
 Typically, continuum laws are only used when there is a strong separation of 
 scales between the micro-scale and the macro-scale sizes of the flow geometry. 
@@ -80,22 +80,23 @@ Difference (FD) methods, involve complex re-meshing and remapping of variables,
 which cause additional errors in simulating large deformation problems. 
 Mesh-free methods, such as the Material Point Method (MPM) and Smooth Particle 
 Hydrodynamics (SPH), are not constrained by the mesh size and its distortion, 
-and hence are effective in simulating large deformation problems such as debris 
+and are effective in simulating large deformation problems such as debris 
 flow and submarine landslides. The analytical and finite-element-like 
 techniques which consider granular materials as a continuum cannot take into 
 account the local geometrical processes that govern the mechanical behaviour of 
-non-homogeneous soils, and pose subtle problems for statistical analysis. 
+non-homogeneous soils, and pose subtle problems for statistical 
+analysis~\citep{Mehta1994}. 
 
 The grain level description of the granular material enriches the 
 macro-scale variables that happen to poorly account for the local rheology of 
-the materials. Numerical models based on the Discrete Element Method (DEM) 
+the materials. Numerical tools such as the Discrete Element Method (DEM) 
 allow us to evaluate quantities which are not accessible experimentally, thus 
 providing useful insight into the flow dynamics. Grain-fluid interactions can 
-be simulated by interfacing discrete-element methods with a Lattice 
-Boltzmann solver or a Computational Fluid Dynamics solver, however these 
+be simulated by interfacing discrete-element methods with a lattice 
+Boltzmann solver or a computational fluid dynamics solver, however these 
 methods have their inherent limitations. Even though millions of grains can be 
-simulated, the possible length of such a grain system is generally too small to 
-regard it as `\textit{macroscopic}'. Therefore, methods to perform a 
+simulated, the possible size of such a grain system is generally too small 
+to regard it as `\textit{macroscopic}'. Therefore, methods to perform a 
 micro-macro transition are important and these `\textit{microscopic}' 
 simulations of a small sample, i.e. the `\textit{representative volume 
 element}', can be used to derive a macroscopic theories which describes the 
@@ -107,18 +108,19 @@ simulations~\citep{Jaeger1996,Iverson1997a,Denlinger2001,Tang2013,Andersen2010}.
 In most cases, granular flows exhibit three distinct regimes: the slow 
 quasi-static regime, a dilute collisional regime and an intermediate regime. 
 Many theories and phenomenological models have been developed to model the 
-behaviour the different flow regimes. One approach is to use the Kinetic 
+behaviour of different flow regimes. One approach is to use the Kinetic 
 theory,~\citep{Jenkins1983, Savage1981} which assumes binary collision between 
 particles. Kinetic theory is able to capture the rapid-collisional regime, 
-however is incapable of predicting the dense quasi-static behaviour. Granular 
-flows exhibit fluid like behaviour, using a simple analogy from fluid 
+however is incapable of predicting the dense quasi-static behaviour. Under 
+certain conditions, granular 
+flows exhibit some fluid-like behaviour, using a simple analogy from fluid 
 dynamics one can model granular flows as non-Newtonian fluids using a variant 
 of the Navier-Stokes equation; one such approach is the depth-averaged shallow 
 water equation~\citep{Savage1991}. This approach has been applied to solve 
 granular flow dynamics with a reasonable amount of success. However, the basic 
 assumption of neglecting the effect of vertical acceleration restricts the 
 approach from describing the triggering mechanism, in which the vertical 
-acceleration plays a significant role such as collapse of a vertical cliff.
+acceleration plays a significant role such as the collapse of a vertical cliff.
 
 In certain cases, classical theories are incapable of describing the flow 
 kinematics. Hence, rheologies have been used to describe the mechanical 
@@ -189,3 +191,49 @@ submerged conditions, using a multi-scale approach, so as to describe the
 behaviour of geophysical hazards such as avalanches, debris flows and 
 sub-marine landslides.
 
+\section{Overview of this work}
+
+This PhD makes advances in the field of numerical modelling of granular flows. 
+Granular materials exhibit complex flow behaviour that often involves 
+multiphase interactions. Development of sophisticated numerical tools that are 
+capable of modelling the different scales of description in a granular flow and 
+the multiphase interaction between the soil grains and the fluid is thereby the 
+focus of this PhD. This study addresses the following areas of granular flow 
+modelling and behaviour:
+%
+\begin{description}
+\item[Development of numerical tools for modelling dry granular flows (Chapter 
+3)]{The Material Point Method, a continuum based Eulerian - Lagrangian 
+approach, is developed to describe the dynamics of the various granular flow 
+behaviours (described in Chapter 2). The grain-scale response of the granular 
+flow kinematics is captured using Discrete Element Method (DEM). The 
+implementation of DEM and development of tessellations tools for extracting 
+macro-scale properties are also discussed.}
+
+\item[Dry granular flows (Chapter 4)] {Multi-scale analyses using MPM and DEM 
+are performed to understand the suitability of MPM as a continuum approach in 
+modelling collapse of a granular column. Energy evolution studies are carried 
+out to study the difference in the dissipation mechanism between both 
+approaches. The influence of various initial material properties on the run-out 
+behaviour is investigated. The run-out behaviour of a granular slope subjected 
+to an impact loading is analysed using MPM and DEM. The effect of distribution 
+of kinetic energy on the run-out behaviour of granular slopes is also 
+discussed.}
+
+\item[Numerical modelling of fluid - grain coupling (Chapter 5)]{A coupled 
+lattice Boltzmann - DEM approach is implemented in this work to understand the 
+micro-scale interactions between the soil grains and the ambient fluid. Due to 
+the computational demand of this approach, the LBM - DEM technique is 
+implemented in GPUs. A turbulent model is incorporated to capture the
+interaction of vortices with the granular surface. The validation of 
+the developed LBM-DEM model under different flow conditions is also discussed.}
+
+\item[Granular flows in fluid (Chapter 6)]{The fundamental question of the 
+difference in the mechanism of collapse and flow between the dry and the 
+submerged granular columns is addressed. The role of initial granular 
+properties such as packing density, permeability and slope angle on the run-out 
+behaviour of the dry and the submerged granular flows is investigated. This 
+chapter provides an insight into the flow dynamics of submerged granular flows 
+under different initial conditions.
+}
+\end{description}
