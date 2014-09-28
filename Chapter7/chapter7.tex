@@ -1,4 +1,4 @@
-\chapter{Conclusions and future work}
+\chapter{Conclusions and recommendations for future work}
 
 \ifpdf
     \graphicspath{{Chapter7/figs/raster/}{Chapter7/figs/pdf/}{Chapter7/figs/}}
@@ -6,22 +6,119 @@
     \graphicspath{{Chapter7/figs/vector/}{Chapter7/figs/}}
 \fi
 \section{Introduction}
-The Multi-scale modelling of granular flows involves simulating the granular 
-materials in discrete and continuum scales. In the present study, a C++ code 
-has been developed to model the granular materials as discrete-elements using 
-the Discrete Element Method technique. The Material Point Method code, 
-developed in the University of Cambridge, has been adopted to 
-study the flow of granular materials as a continuum. Multi-scale analyses 
-of the collapse of the granular columns with different aspect ratios were 
-performed using continuum and particle-scale approaches. In the present study, 
-the solid-fluid interactions in the Discrete Element approach is modelled by 
-coupling the Lattice Boltzmann Method, a Newtonian fluid solver, with the 
-Discrete Element Method technique. This chapter presents an overview of the 
-future research along with the proposed research schedule. This chapter also 
-presents an outline of the final thesis and the proposed 
-papers based on this research 
-work. 
 
+This PhD has made advances in several aspects of multi-scale modelling of 
+granular flows and understanding the complex rheology of dry and submerged 
+granular flows. The significant contributions of this PhD are summarised in 
+this chapter.
+
+\subsection{Multi-scale modelling of dry granular flows}
+
+The granular flow problem is modelled using material point method, a continuum 
+approach, and at the grain-scale level using discrete element technique. In the 
+present study, a two-dimensional DEM code is developed in C++ to study the 
+micro-scale rheology of dry granular flows. A Verlet-list algorithm is adopted 
+for neighbourhood detection to improve the computational efficiency. A 
+linear-elastic contact model with a frictional contact is used to model rapid 
+granular flows. A sweep-line Voronoi tesselation algorithm is implemented in 
+the present study to extract continuum properties such as packing density from 
+the local grain-scale simulations.
+
+In order to capture the macro-scale response, a template-based 
+three-dimensional C++ Material Point Method code, an Eulerian-Lagrangian 
+approach, developed at the University of Cambridge is modified and extended to 
+study granular flows as a continuum. In the present study, the Generalised 
+Interpolation Material Point GIMP method is implemented to reduce the 
+cell-crossing noise and oscillations observed during large-deformation problem, 
+when using the standard MPM. The three-dimensional MPM code is parallelised to 
+run on multi-core systems, thus improving the computational efficiency. The 
+algorithm of the MPM code is improved to handle multi-body dynamics and 
+interactions. In the present study, constitutive models, such as NorSand and 
+Bingham fluid were implemented in MPM. Various smoothing/averaging techniques, 
+such as BBar approach were implemented. This dissertation includes only those 
+results from two-dimensional plane-strain granular flow problems. The 
+multi-scale tools developed in the present study is used to understand the 
+capability and limitations of continuum approach in modelling dry granular 
+flows.
+
+\subsubsection*{Granular column collapse}
+
+Multi-scale simulation of dry granular flows are performed to capture the 
+local rheology, and to understand the capability and limitations of continuum 
+models in realistic simulation of granular flow dynamics. For short columns, 
+the run-out distance is found to be proportional to the granular mass above the 
+failure surface. The spreading results from a Coulomb-like failure of the 
+edges. The continuum approach, using a simple frictional dissipation model, is 
+able to capture the flow dynamics of short columns. However, the collapse of 
+tall columns is characterised by an initial collisional regime and a power-law 
+dependence between the run-out and the initial aspect ratio of the granular 
+column is observed. The energy evolution study reveals that the lack of 
+collisional dissipation mechanism in the MPM simulations results in a 
+substantially longer run-out distance for large aspect ratio columns. This 
+shows that continuum approach using frictional laws are able to capture the 
+flow kinematics at small aspect ratios, which is characterised by an inertial 
+number \textit{I} less than 0.2 indicating a dense granular flow. However, 
+continuum approach like MPM are unable to precisely describe the flow dynamics 
+of tall columns, which is characterised by an initial collisional regime 
+(\textit{I} > 0.2). DEM studies on the role of initial material properties 
+reveal that the initial packing fraction and the distribution of kinetic energy 
+in the system have a significant influence on the flow kinematics and the 
+run-out behaviour. For the same material, a dense granular packing results in a 
+longer run-out distance in comparison to the initially loose granular column. 
+Hence it is important to consider macroscopic parameters like packing fraction, 
+which are due to meso-scale grain arrangements, when modelling the granular 
+system as a continuum.
+
+\subsubsection*{Granular slopes subjected to impact loading}
+
+The ability of MPM in modelling transient flows that does not involve collision 
+is further investigated. The distribution of kinetic energy in the granular 
+mass is found to have a significant effect on the flow kinematics. In the 
+present study, a multi-scale analyses of a granular slope subjected to 
+impact velocities reveals a power-law dependence of the run-out distance and 
+time as a function of the input energy with non-trivial exponents. The 
+power-law behaviour is found to be a generic feature of granular dynamics. Two 
+different regimes are observed depending on the input energy. The low energy 
+regime reflects mainly the destabilisation of the pile, with a run-out time 
+independent of the input energy. The high energy regime involves spreading 
+dynamics, which is characterised by a decay time that is defined as the time 
+required for the input energy to  decline by a factor $1/2$. MPM is 
+successfully able to simulate the transient evolution with a single 
+input parameter, the macroscopic friction angle. This study exemplifies the 
+suitability of MPM, as a continuum approach, in modelling large-deformation 
+granular flow dynamics and opens the possibility of realistic simulation of 
+geological-scale flows on complex topographies.
+
+
+The distribution of the kinetic energy in the system is found to have a 
+significant influence in the low energy regime, where a large 
+fraction of the input energy is consumed in the destabilisation process. 
+However at higher input energy, where most of the energy is dissipated during 
+the spreading phase, the run-out distance has a weak dependence on 
+the distribution of velocity in the granular mass. The material characteristics 
+of the granular slope affect the constant of proportionality and not the 
+exponent in the power-law relation between the run-out and the input energy. 
+
+\subsection{Granular flows in fluid}
+
+A two-dimensional coupled lattice Boltzmann - DEM technique is developed in C++ 
+to understand the local rheology of granular flows in fluid. A multi-relaxation 
+time LBM approach is implemented in the present study to ensure numerical 
+stability. The coupled LBM--DEM technique offers the possibility to capture the 
+intricate micro-scale effects such as the hydrodynamic instabilities. Coupled 
+LBM-DEM involves modelling interactions of a few thousand soil grains with a 
+few million fluid nodes. Hence, in the present study the LBM-DEM approach is 
+implemented in the General Purpose Graphical Processing Units. The GPGPU 
+implementation of the coupled LBM -- DEM technique offers the capability to 
+model large scale fluid -- grain systems, which are otherwise impossible to 
+simulate using conventional computational techniques. In the present study, 
+simulations involving up to 5000 soil grains interacting with 9 million LBM 
+fluid nodes are modelled. Efficient data transfer mechanisms that achieves 
+coalesced global memory ensures that the GPGPU implementation scales linearly 
+with the domain size. Granular flows in fluid involves soil grains interacting 
+with fluid resulting in formation of turbulent vortices. In order to model the 
+turbulent nature of granular flows, the LBM-MRT technique is coupled with the 
+Smagorinsky turbulent model. 
 
 \section{Recommendations for future research}
 This research work involves the following stages: (1) understanding the limits 
@@ -204,7 +301,7 @@ into a macroscopic model through the conservation of internal work. The local
 constitutive law gives the value of contact forces and the average over the 
 sample provides the value of the stress tensor. 
 
-\subsection{Slope subjected to impact}
+\subsection{Slopes subjected to impact}
 This work may be pursued along two directions: 1) experimental realization of a 
 similar setup with different modes of energy injection and 2) investigating the 
 effect of various particle shapes or the presence of an ambient fluid. Although 
