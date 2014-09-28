@@ -2164,14 +2164,13 @@ obtained using the ballistic deposition technique.
 
 \subsubsection{Ballistic deposition}
 Initially a random arrangement of grains which do not touch each other is 
-generated (\cref{fig:ini}). The radii of the grains are chosen from the 
+generated (\cref{fig:ini_sample}). The radii of the grains are chosen from the 
 interval of $(\mathit{R}_{\mathit{min}},\mathit{R}_{\mathit{max}})$ in such a 
 way that the total mass of all grains from a certain size interval is the same 
 for all sizes, thus ensuring that neither larger nor smaller grains dominate 
 the system. This distribution can be obtained, if the radii are 
 chosen according to the probability distribution
 %
-%TODO: Initial arrangement for ballistic deposition
 \begin{equation}
 \mathit{p}(\mathit{R})=\frac{\mathit{R}_{\mathit{min}}\mathit{R}_{\mathit{max}}}{\mathit{R}_{\mathit{max}}
  - \mathit{R}_{\mathit{min}}} \frac{1}{\mathit{R}^{2}} \,.
@@ -2200,6 +2199,14 @@ may still be sufficiently close to equilibrium to be considered as a good
 starting point for mechanical simulations. Hence, a combined approach of 
 ballistic deposition and Discrete Element Method is adopted in the present 
 study to generate mechanically stable samples. 
+
+\begin{figure}
+	\centering
+	\includegraphics[width=0.75\textwidth]{ini_sample}
+	\caption{Generation of a poly-disperse sample using ballistic deposition 
+	technique}
+	\label{fig:ini_sample}
+\end{figure}
 
 The random deposition and 
 relaxation method, first proposed by~\citet{vold1959a} and developed 
