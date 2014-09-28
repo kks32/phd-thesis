@@ -2348,6 +2348,24 @@ in the flow front (due to hydroplaning) in granular flows.
 \label{fig:local_density}
 \end{subfigure}
 \caption{Voronoi tessellation to average bulk properties}
-\label{fig:voro}
+\label{fig:voronoi_tesselation}
 \end{figure}
 
+\section{Summary}
+
+A plane-strain Material Point Method is implemented in the present study to 
+describe the continuum response of granular flows. The Generalised 
+Interpolation Material Point GIMP method is implemented to minimize 
+oscillations in large-deformation problems due to cell-crossing noise. The 
+effect of mesh size and the number of material points per cell on the run-out 
+behaviour is also investigated. The grain-scale response is captured using a 
+two-dimensional DEM code. The discrete grains are generated using a cumulative 
+$\beta$ distribution, which mimics the particle size distribution curves. The 
+sample is generated using the ballistic deposition technique and the 
+homogeneity of the generated sample is verified by investigating the variance 
+in the void-ratio at different layers. A sweep-line Voronoi tessellation 
+approach is adopted to extract macroscopic parameters such as stresses and 
+packing density from micro-scale properties such as local packing fraction. 
+These multi-scale tools are used to understand the rheophysics of
+dry granular flows and to evaluate the suitability of MPM as a continuum 
+approach in modelling granular flow behaviour.
