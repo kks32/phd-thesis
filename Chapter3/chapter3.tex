@@ -2046,7 +2046,73 @@ DEM & 1.000 & 0.000 & 0.7071 & 0.000 \\
 %%*******************************************************************************
 \subsection[Cumulative beta distribution]{Cumulative $\beta$ distribution}
 
+During a granular-metric analysis, the sample mush be representative of the 
+grain properties including the particle size distribution (PSD) both in volume 
+(mainly for the smallest particles) and in number (for the largest particles). 
+This representativeness of PSD is a condition for a sample to be a 
+representative volume element. However, this condition cannot be satisfied in 
+DEM for a polydisperse sample, due to the upper limit on the computation 
+capacity. It is important to extract a discrete ensemble of grain sizes such 
+that a statistical representation of the size classes is 
+obtained~\citep{Radjai2011}.
 
+The $\beta$ distribution in its cumulative form is able to satisfactorily model 
+the size span (ratio of the largest to the smallest grain) and the shape 
+descriptor (relative weights of the maximum and the minimum grain sizes). The 
+cumulative $\beta$ distribution ~\citep{Voivret2007} is defined as
+%
+\begin{equation}
+\beta(x,a,b) = \frac{1}{\beta (a,b)}\int\limits_{0}^{x}t^{a-1}(1-t)^{b-1}dt \,,
+\end{equation}
+%
+where a > 0 and b > 0 are the two parameters of the distribution. The 
+\textit{B(a,b)} function is given by
+%
+\begin{equation}
+B(a,b) = \frac{\Gamma(a)\Gamma(b)}{\Gamma(a+b)} \,,
+\end{equation}
+%
+where $\Gamma$ is the gamma function defined by
+%
+\begin{equation}
+\Gamma(x) = \int\limits_{0}^{\infty}t^{x-1}e^{-t}dt \,.
+\end{equation}
+
+The cumulative $\beta$ (CB) distribution is defined and normalised in the 
+interval [0,1] with $\beta(0) = 0$ and  $\beta(1) = 1$. To represent the 
+grading curve of grain size range $[d_{min},d_{max}]$ with CB, the argument 
+\textit{x} is replaced by the reduced diameter $d_r$
+%
+\begin{equation}
+d_r(d) = \frac{d - d_{min}}{d_{max} - d_{min}} \,,
+\end{equation}
+%
+which varies in the range of [0,1]. The model grading curve $h(d)$ is given by 
+the CD distribution in terms of the reduced diameters as
+%
+\begin{equation}
+h(d,a,b) = \beta(d_r(d);a,b) \,.
+\end{equation}
+
+The parameters \textit{a} and \textit{b} of the CB model allows the shape 
+descriptor $h(d)$ to vary easily. The size span is characterised by the ratio $ 
+r = d_{max}/d_{min}$. The size span can also be defined as
+%
+\begin{equation}
+s = \frac{d_{max}-d_{min}}{d_{max}+d_{min}} \,.
+\end{equation}
+
+A value of \textit{s} = 0 indicates a strictly mono-disperse grain size and a 
+value of \textit{s} = 1 indicates an infinitely poly-disperse grain size 
+distribution.~\citet{Voivret2007} observed a well graded particle size 
+distribution for \textit{a} > 1 and \textit{b} > 1. 
+
+In the present study, a value of \textit{a} = 4 and \textit{b} = 4 is adopted 
+to get a well graded curve. In the present study, samples with different 
+poly-dispersity \textit{r} = 1.5, 1.8, 2 and 6 are used.~\Cref{fig:DEM_Sample} 
+shows a poly-disperse sample $r = 1.5$ generated using the CB method, with a 
+value of \textit{a} = 4 and \textit{b} = 4. The PSD curve for the generated 
+sample is also presented.
 
 %%*******************************************************************************
 
@@ -2132,7 +2198,9 @@ the contact forces. Nevertheless, depending on the relaxation rule, the sample
 may still be sufficiently close to equilibrium to be considered as a good 
 starting point for mechanical simulations. Hence, a combined approach of 
 ballistic deposition and Discrete Element Method is adopted in the present 
-study to generate mechanically stable samples. The random deposition and 
+study to generate mechanically stable samples. 
+
+The random deposition and 
 relaxation method, first proposed by~\citet{vold1959a} and developed 
 by~\citet{jullien1992} and \citet{meakin1985}, is adopted in the present study. 
 The general principle of this method is quite simple 
@@ -2150,14 +2218,15 @@ second grain. In 2D, two contacts are sufficient to balance a grain if its
 centre of gravity lies between the two contacts. This corresponds to a position 
 of local stable equilibrium. If this criterion is not met, the grain continues 
 to roll and the procedure is iterated until a local stable position is reached. 
-The wall effects are eliminated by adopting periodic boundaries 
-(~\cref{sec:periodic})in the horizontal direction (perpendicular to that of 
-deposition).~\Cref{fig:ballistic} shows a small sample prepared by this method 
-(the grey grains are periodic images of the black ones). In this method, the 
-order of deposited grains is generally random and independent of their sizes. 
-The mechanically stable sample obtained from equilibrating the random deposited 
-and relaxed sample is presented 
-in~\cref{fig:DEM_Sample_r6} 
+~\Cref{fig:ballistic} shows a schematic view of the ballistic deposition 
+technique  (the grey grains are periodic images of the black ones). In this 
+method, the order of deposited grains is generally random and independent of 
+their sizes.The mechanically stable sample obtained from equilibrating the 
+random deposited and relaxed sample is presented in~\cref{fig:DEM_Sample_r6}. 
+Dense granular samples are prepared with zero initial friction angle. Zero 
+frictional resistance ensures the densest possible packing. The friction angle 
+is turned on during the analysis. To generate a dense sample, the sample is 
+subjected to vibration at varying frequencies. 
 
 \begin{figure}[htbp]
 \centering
@@ -2193,14 +2262,72 @@ S=\frac{1}{N_{layer}-1}\sum\limits_{i=1}^{N_{layer}}(e - e_i)^2 \,,
 where $N_{layer}$ is the number of layers and \textit{e} is the overall void 
 ratio. A variance \textit{S} of 2.74\% is observed, which is less than 
 5\%~\citet{Jiang2003}, indicating a homogeneous sample.
-\subsection{Voronoi tesselation}
+
+
+\subsection{Voronoi tessellation}
+
+In order to extract bulk properties, such as packing density, stresses and 
+strains, from a DEM simulation, it is important to quantify the granular 
+texture. A useful geometrical representation of granular texture consists of 
+dividing the space occupied by the particles into contiguous cells. This 
+procedure is called `tessellation'. Voronoi tessellation is one of the mostly 
+commonly used technique. For a finite set of points $p_1, \dots, p_n$ in the 
+Euclidean space, the domain/plane is discretised into convex polygons such that 
+each polygon contains exactly one point $p_i$ and every point in a given 
+polygon is closer to its generating point $p_i$ than to any other. The inverse 
+of the Voronoi tessellation is Delaunay triangulation.
+
+In the present study~\citet{Fortune1992} sweep line algorithm is implemented to 
+tessellate the region surrounding each grain in the geometry. Once each grain 
+has a corresponding area, macroscopic properties such as bulk density and 
+stresses can be extracted from micro-mechanical properties such as local 
+packing density and force chains.
+
+Fortune sweep line algorithm involves a sweep line and a beach line, both of 
+which move through the plane from left to right as the algorithm progresses. 
+The sweep line is a straight line which moves from left to right across the 
+plane. At any time during the algorithm, the points (grains) to the left of the 
+sweep line will be incorporated into a Voronoi cell. While the points on the 
+right of the sweep line are yet to be considered. The beach line is a complex 
+curve, composed of pieces of parabolas that divides the plane within which the 
+Voronoi diagram is known. As the sweep line crosses a point, a parabola 
+evolves from the generating point. As the sweep line progresses, the 
+vertices of the beach line, at which two parabolas cross, trace out the edges 
+of the Voronoi diagram. The beach line progresses by keeping each parabola base 
+exactly half way between the points initially swept over with the sweep line, 
+and the new position of the sweep line.~\Cref{fig:sweep_voro} shows the Fortune 
+sweep line algorithm in progress. In the present study, a modified version of 
+the sweepline algorithm is used to construct an additively weighted Voronoi 
+diagram, in which the distance to each site (grain) is offset by the weight of 
+the site, i.e., the radius of the grain.
+
+\begin{figure}[tbhp]
+\centering
+\includegraphics[width=0.9\textwidth]{sweep_voro}
+\caption{Fortune sweep line algorithm for generating Voronoi Tesselation. 
+Generated from \url{http://www.diku.dk/hjemmesider/studerende/duff/Fortune/}.}
+\label{fig:sweep_voro}
+\end{figure}
+
+The Voronoi tessellation is used to study the evolution of packing fraction 
+during the collapse of a granular column.~\Cref{fig:tesselation} shows the 
+Voronoi tessellation of the run-out for a granular column with an initial 
+aspect ratio of 6 at time $t = 3 \tau_c$. The distribution of local packing 
+density for the run-out is shown in~\cref{fig:local_density}. Dark regions 
+represent dense packing, while loose regions are shown in white. The run-out at 
+this stage has a bulk packing density of 81.23\%. It is difficult to tessellate 
+the free surface and the Voronoi cells on the free surface do not represent the 
+actual packing density. Hence, during the evaluation of the macroscopic 
+density, the packing density of surface grains that are larger than a threshold 
+value are ignored.
+
 \begin{figure}[tbhp]
 \centering
 \begin{subfigure}[b]{0.95\textwidth}
 \centering
-\includegraphics[width=\textwidth]{tesselation}
-\caption{Voronoi Tesselation}
-\label{fig:tesselation}
+\includegraphics[width=\textwidth]{tessellation}
+\caption{Voronoi Tessellation}
+\label{fig:tessellation}
 \end{subfigure}
 \\
 \begin{subfigure}[b]{0.95\textwidth}
