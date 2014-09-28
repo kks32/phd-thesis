@@ -2171,6 +2171,7 @@ for all sizes, thus ensuring that neither larger nor smaller grains dominate
 the system. This distribution can be obtained, if the radii are 
 chosen according to the probability distribution
 %
+%TODO: Initial arrangement for ballistic deposition
 \begin{equation}
 \mathit{p}(\mathit{R})=\frac{\mathit{R}_{\mathit{min}}\mathit{R}_{\mathit{max}}}{\mathit{R}_{\mathit{max}}
  - \mathit{R}_{\mathit{min}}} \frac{1}{\mathit{R}^{2}} \,.
@@ -2310,7 +2311,7 @@ Generated from \url{http://www.diku.dk/hjemmesider/studerende/duff/Fortune/}.}
 \end{figure}
 
 The Voronoi tessellation is used to study the evolution of packing fraction 
-during the collapse of a granular column.~\Cref{fig:tesselation} shows the 
+during the collapse of a granular column.~\Cref{fig:tessellation} shows the 
 Voronoi tessellation of the run-out for a granular column with an initial 
 aspect ratio of 6 at time $t = 3 \tau_c$. The distribution of local packing 
 density for the run-out is shown in~\cref{fig:local_density}. Dark regions 
@@ -2319,7 +2320,10 @@ this stage has a bulk packing density of 81.23\%. It is difficult to tessellate
 the free surface and the Voronoi cells on the free surface do not represent the 
 actual packing density. Hence, during the evaluation of the macroscopic 
 density, the packing density of surface grains that are larger than a threshold 
-value are ignored.
+value are ignored. Voronoi Tessellation is a useful tool to extract continuum 
+properties from DEM simulations. In the present study, the Voronoi tessellation 
+is used to understand the evolution of packing density and entrainment of water 
+in the flow front (due to hydroplaning) in granular flows.
 
 \begin{figure}[tbhp]
 \centering
