@@ -34,7 +34,8 @@ expensive.
 \begin{figure}[tbhp]
 \centering
 \includegraphics[width=0.95\textwidth]{multiscale}
-\caption{Multi-scale modelling of granular materials}
+\caption{Schematic representation of different scales of description involved 
+in the multi-scale modelling of granular materials}
 \label{fig:multiscale}
 \end{figure}
 
@@ -193,14 +194,14 @@ particles and the computational mesh is constructed by connecting these points.
 The mesh is then used to solve the governing equations in Lagrangian fashion. 
 In PFEM, large deformation requires frequent re-meshing~\citep{Kafaji2013}.
 
-Smooth Particle Hydrodynamics is the oldest meshfree technique, in the domain 
-is discretised into particles that have a spatial distance, called the 
+Smooth Particle Hydrodynamics is the oldest meshfree technique, in which the 
+domain is discretised into particles that have a spatial distance, called the 
 \textit{smoothing length} over which the material properties are ``smoothed'' 
 by a kernel function. SPH was developed to solve astrophysical 
 problem~\citep{Monaghan2005}. SPH has been widely applied 
 in geomechanics for solving large deformation 
-problem~\citep{Augarde2009,Maeda2010,Mori2008}. Although, SPH has been widely 
-adopted it has a few drawbacks: SPH exhibits 
+problem~\citep{Augarde2009,Maeda2010,Mori2008}. Although SPH has been widely 
+adopted, it has a few drawbacks: SPH exhibits 
 spatial instabilities, as a consequence of the point-wise 
 integration~\citep{Bonet2000}, insufficient neighbouring particles causes 
 inconsistencies and is computationally expensive as a result of search for the 
@@ -289,7 +290,7 @@ are mapped on to the nodes of the computational grid, where the discrete form
 of~\cref{eq:mom} is described. The weak form of~\cref{eq:mom} is 
 obtained 
 by multiplying~\cref{eq:mom} with a test function 
-$\mathbf{\mathit{w}}(\mathbf{x},t)$.
+$\mathbf{\mathit{w}}(\mathbf{x},t)$:
 \begin{equation}
 \int_{\Omega}\rho \mathit{\mathbf{w}} \cdot \mathbf{\mathit{a}} 
 \mathit{d}\Omega = - \int_{\Omega} \rho {\sigma}^{s} : \Delta 
@@ -306,7 +307,7 @@ Element Methods \citep{Sulsky1994,Sulsky1995, Chen2002}. The differential
 volume and the surface elements are denoted by d$\Omega$ and \textit{dS}, 
 respectively. \\
 As the whole continuum is discretised into a finite set of material points, the 
-mass density can be written as:
+mass density can be written as
 \begin{equation}
 \rho(\mathbf{x},t)=\sum\limits_{\mathit{p}=1}^{\mathit{N}_{p}}
 {\mathit{M}_{p}\delta(\mathbf{\mathit{x}}-\mathbf{\mathit{x}}_{p}^{t})} \,,
@@ -314,7 +315,7 @@ mass density can be written as:
 \end{equation}
 where $\delta$ is the Dirac delta function. Substituting~\cref{eq:massd} in 
 ~\cref{eq:weak}, the sum of quantities of material points can be evaluated 
-as:
+as
 \begin{align}
 \nonumber
 \sum\limits_{\mathit{p}=1}^{\mathit{N}_{p}} 
@@ -396,7 +397,7 @@ nodal external force, $\mathbf{f}_{\mathit{i}}^{ext,\mathit{t}}$ are defined as
 \mathit{N}_{\mathit{i}}(\mathbf{x}_{p}^{\mathit{t}}) 
 \tau_{p}^{\mathit{s,t}}\mathit{h}^{-1}
 \end{align}
-where $\mathbf{G}_{\mathit{ip}}^{\mathit{k}} = \Delta \mathit{N}_{\mathit{i}} 
+where $\mathbf{G}_{\mathit{ip}}^{\mathit{t}} = \Delta \mathit{N}_{\mathit{i}} 
 (\mathbf{\mathit{x}})|_{\mathbf{\mathit{x}}=\mathbf{\mathit{X}}_{p}^{\mathit{t}}}$.
 The nodal accelerations are obtained by explicit time integration of 
 ~\cref{eq:fmaMPM}. To obtain stable solutions, the time step used in the 
@@ -429,7 +430,7 @@ layer.~\citet{Bandara2013} proposed a friction interaction for the planar
 boundary condition, using Coulomb's friction criterion. The friction boundary 
 conditions are applied on the mesh nodes by controlling the nodal acceleration 
 tangential to the boundary. The nodal accelerations 
-were considered to include the frictional effects instead of the forces, as the 
+are considered to include the frictional effects instead of the forces, as the 
 forces are proportional to the corresponding accelerations. Both static and 
 kinetic friction are considered, and are applied only when the particles 
 are in contact with the boundary. The static and kinematic frictions are 
@@ -633,7 +634,7 @@ solution and the computational grid is re-initialised for the next step.
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=0.975\textwidth]{MPMsteps}
-\caption[Illustration of MPM algorithm]{Illustration of MPM algorithm (1) A 
+\caption[Illustration of the MPM algorithm]{Illustration of MPM algorithm (1) A 
 representation of material points overlaid on a computational grid. Arrows 
 represent material point state vector (mass, volume, velocity, etc.) being 
 projected to the nodes of the computational grid. (2) The equations of motion 
@@ -702,7 +703,7 @@ the computational time.
 \citet{Abe2013} observed that for a coarse mesh, the numerical error 
 decreases with increase in the number of material points per cell. In contrast, 
 they observed an opposite trend for the fine meshes. The influence of numerical 
-noise due to particles crossing the background mesh was not observed in coarse 
+noise due to particles crossing the background mesh is not observed in coarse 
 meshes.~\citet{Coetzee2005} also found that the numerical error decreases 
 with increase in mesh refinement.
 
@@ -742,7 +743,8 @@ with more than 25 material points per cell.
 \caption{$E_0=152mgd$}
 \label{fig:Runout_500}
 \end{subfigure}
-\caption{Evolution of run-out with time for varying material points per cell.}
+\caption{Evolution of run-out with time for varying material points per cell 
+for a slope subjected to an impact velocity.}
 \label{fig:Runout_MPM}
 \end{figure}
 
@@ -794,7 +796,7 @@ the spreading process. This means that only a small fraction of energy is
 available in the vertical component resulting in almost similar behaviour for 
 all cases. Four material points per cell predicts a higher peak vertical 
 kinetic energy in comparison with other cases, unlike the low energy case, no 
-oscillations were observed for the high input energy.
+oscillations are observed for the high input energy.
 
 \begin{figure}[tbhp]
 \centering
@@ -810,7 +812,8 @@ oscillations were observed for the high input energy.
 \caption{$E_0=152mgd$}
 \label{fig:KE_500}
 \end{subfigure}
-\caption{Evolution of kinetic with time for varying material points per cell}
+\caption{Evolution of kinetic with time for varying material points per cell 
+for a slope subjected to an impact velocity.}
 \label{fig:KE_MPM}
 \end{figure}
 
@@ -818,7 +821,7 @@ The effect of mesh size on the flow kinematics is studied by comparing two mesh
 sizes: 0.01~\si{\m} and 0.0125~\si{\m} (\cref{fig:MPM_Size_Effect}). It can 
 be observed that the run-out distance converges with an increase in the number 
 of material points per cell in both cases. Less than ~1\% difference in the 
-run-out distance was observed between a mesh size of 0.0125~\si{\m} and 
+run-out distance is observed between a mesh size of 0.0125~\si{\m} and 
 0.01~\si{\m}. The final run-out duration is almost unaffected by the increase 
 in the number of material points per cell. 
  
@@ -838,7 +841,7 @@ in the number of material points per cell.
 \label{fig:500}
 \end{subfigure}
 \caption{Evolution of run-out and duration of flow  for varying material points 
-per cell.}
+per cell for a slope subjected to an impact velocity.}
 \label{fig:MPM_Size_Effect}
 \end{figure}
 
@@ -848,7 +851,7 @@ number of material points per cell. The computation time increases with
 increase in the number of material points per cell and decrease in the mesh 
 size. However, the run-out distance converges with increase in number of 
 material points per cell. Hence, an optimum number of 25 material points per 
-cell was adopted in this case. In summary, for conducting a successful MPM 
+cell is adopted in this case. In summary, for conducting a successful MPM 
 analysis, a careful selection of the mesh size and the number of particles is 
 necessary.
 
@@ -883,7 +886,7 @@ as proposed by \citet{Sulsky1995}.
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=0.7\textwidth]{cellnoise}
-\caption{Cell crossing noise}
+\caption{Schematic description of occurrence of cell crossing noise in MPM}
 \label{fig:cellnoise}
 \end{figure}
 
@@ -975,7 +978,8 @@ values~\citep{Steffen2008}.
 		\caption{Piecewise-Linear}
 		\label{fig:MPM_Linear}
 	\end{subfigure} 
-	\caption{1-D basis functions used in MPM~\citep{Steffen2008}.}
+	\caption{Schematic view of 1-D basis functions used in 
+	MPM~\citep{Steffen2008}.}
 	\label{fig:MPM_GIMP_func}
 \end{figure}
 
@@ -1068,7 +1072,8 @@ problems.
 		\label{fig:16MPM_6tc}
 	\end{subfigure}
 	\caption*{$t = 6\tau_c$}
-	\caption{Evolution of granular column collapse.}
+	\caption{Comparison between GIMP method and conventional MPM on the flow 
+	morphology of a granular column collapse (a = 0.4).}
 	\label{fig:MPM_GIMP_TC}
 \end{figure} 
 
@@ -1086,8 +1091,9 @@ problems.
 		\caption{Evolution of height (GIMP method vs MPM)}
 		\label{fig:Height_MPM_GIMP}
 	\end{subfigure} \\
-	\caption{Evolution of run-out and height with time. Difference between 
-	conventional MPM and GIMP method.}
+	\caption{Comparison between GIMP method and conventional MPM on the 
+	evolution of run-out and height with time for a granular column collapse (a 
+	= 0.4).}
 	\label{fig:MPM_GIMP}
 \end{figure}
 
@@ -1372,7 +1378,8 @@ components
 \begin{figure}[htbp]
 	\centering
 	\includegraphics{DEM}
-	\caption[Calculation of normal force]{Grains \textit{i} and \textit{j} in 
+	\caption[Calculation of normal force in DEM]{Grains \textit{i} and 
+	\textit{j} in 
 	contact, and the 
 	separation $\delta_{n}$ is used to calculate the normal force} 
 	\label{fig:DEM}
@@ -1651,7 +1658,8 @@ the distance of their surface is smaller than a predefined distance
 \begin{figure}[tbhp]	
 \centering
 \includegraphics[width=0.5\textwidth]{Verletb}
-\caption[Verlet list]{The Verlet list: a grain \textit{i} interacts with 
+\caption[Verlet list algorithm for neighbourhood search]{The Verlet list: a 
+grain \textit{i} interacts with 
 those grains with 
 the cut-off radius $r_{c}$, the Verlet list contains all the grains within 
 a sphere with radius 
@@ -1715,7 +1723,8 @@ Verlet distance $r_{\mathit{v}}$~\citep{Poschel2005}.
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=0.975\textwidth]{Verlet}
-\caption[Checking the validity of Verlet list]{Checking the validity of Verlet 
+\caption[Checking the validity of Verlet list in DEM simulations]{Checking the 
+validity of Verlet 
 lists. \textit{Left}: the grains \textit{i} and \textit{j} are not recognized 
 as neighbours since the distance of their surface is larger than the Verlet 
 distance. The radius of the dashed circle is 
@@ -1769,7 +1778,7 @@ devastating to the whole idea of Discrete Element Method simulation, but we
 have good reasons to assume that even this problem need not be 
 serious~\citep{Frenkel1996}. First of all, one should realize that 
 the aim of DEM is not to predict precisely what will happen to a system, but 
-to predict the average behaviour of the system that was prepared in an initial 
+to predict the average behaviour of the system that is prepared in an initial 
 state about which we know something (initial position, velocity and energy), 
 but not everything. Hence, DEM differs from other methods, which are used to 
 predict the trajectories. However, considerable numerical evidence suggest that 
@@ -1781,7 +1790,7 @@ develop~\citep{Frenkel1996}.
 Newton's equations of motion are time reversible, and so should be the 
 integration algorithm. The ``leapfrog'' algorithm or the Verlet integration 
 algorithm is a numerical scheme used to integrate the Newton's equation of 
-motion to calculate the trajectories of grains and was implemented in 
+motion to calculate the trajectories of grains and is implemented in 
 DEM by~\citet{Verlet1967}. Verlet algorithm is 
 fast and requires less storage memory, it is not particularly accurate for long 
 time steps, and hence, we should expect to compute the forces on all grains 
@@ -1938,8 +1947,9 @@ study is discussed below.
 \begin{figure}[htbp]
 \centering
 \includegraphics[scale=0.65]{periodic}
-\caption[A 2D simulation cell $\omega$ with its basis vectors in an absolute 
-frame]{A 2D simulation cell $\omega$ with its basis vectors in an absolute 
+\caption[A 2D periodic simulation cell $\omega$ with its basis vectors in an 
+absolute frame]{A 2D simulation cell $\omega$ with its basis vectors in an 
+absolute 
 frame. A grain located at the right boundary interacts with the image of 
 another grain located at the left boundary.}
 \label{fig:periodic}
@@ -2025,7 +2035,7 @@ by~\citet{Zenit2005}.
 ($\beta$=45\si{\degree}).}
 \label{fig:DEM_Validation}
 \end{subfigure}
-\caption{Example of a disk on an inclined plane}
+\caption{Validation of DEM using a disk rollind down an inclined plane}
 \label{fig:Validation_DEM}
 \end{figure}
 
@@ -2369,7 +2379,8 @@ in the flow front (due to hydroplaning) in granular flows.
 \caption{Local packing density (dark - dense and light - loose)}
 \label{fig:local_density}
 \end{subfigure}
-\caption{Voronoi tessellation to average bulk properties}
+\caption{Voronoi tessellation of a run-out profile showing the local packing 
+density}
 \label{fig:voronoi_tesselation}
 \end{figure}
 
