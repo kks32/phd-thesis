@@ -14,10 +14,10 @@ this chapter.
 
 \subsection{Multi-scale modelling of dry granular flows}
 
-A mult-scale approach is adopted to study the granular flow behaviour. The 
+A multi-scale approach is adopted to study the granular flow behaviour. The 
 material point method, a 
 continuum approach, is used to model the macro-scale response, while the 
-grain-scale behaviour is captured using discrete element 
+grain-scale behaviour is captured using a discrete element 
 technique. In the 
 present study, a two-dimensional DEM code is developed in C++ to study the 
 micro-scale rheology of dry granular flows. A Verlet-list algorithm is 
@@ -29,7 +29,7 @@ packing density from the local grain-scale simulations.
 
 In order to capture the macro-scale response, a template-based 
 three-dimensional C++ Material Point Method code, an Eulerian-Lagrangian 
-approach, developed at the University of Cambridge is modified and extended to 
+approach, developed at the University of Cambridge, is modified and extended to 
 study granular flows as a continuum. In the present study, the Generalised 
 Interpolation Material Point GIMP method is implemented to reduce the 
 cell-crossing noise and oscillations observed during large-deformation 
@@ -44,7 +44,7 @@ only those results from two-dimensional plane-strain granular flow problems.
 
 \subsubsection*{Granular column collapse}
 
-Multi-scale simulation of dry granular flows are performed to capture the 
+Multi-scale simulations of dry granular flows are performed to capture the 
 local rheology, and to understand the capability and limitations of continuum 
 models in realistic simulation of granular flow dynamics. For short columns, 
 the run-out distance is found to be proportional to the granular mass 
@@ -57,7 +57,7 @@ and the initial aspect ratio of the granular column is observed. The energy
 evolution study reveals that the lack of collisional dissipation mechanism in 
 the MPM simulations results in a substantially longer run-out distance for 
 large aspect ratio columns. This 
-shows that continuum approach using frictional laws are able to capture the 
+shows that continuum approaches using frictional laws are able to capture the 
 flow kinematics at small aspect ratios, which is characterised by an inertial 
 number \textit{I} less than 0.2 indicating a dense granular regime. However, 
 a continuum approach like MPM is unable to precisely describe the flow 
@@ -74,7 +74,7 @@ granular system as a continuum.
 
 \subsubsection*{Granular slopes subjected to impact loading}
 
-The ability of MPM in modelling transient flows that does not involve collision 
+The ability of MPM in modelling transient flows that do not involve collision 
 is further investigated. The distribution of kinetic energy in the granular 
 mass is found to have a significant effect on the flow kinematics. In the 
 present study, a multi-scale analyses of a granular slope subjected to 
@@ -116,9 +116,9 @@ implementation of the coupled LBM -- DEM technique offers the capability to
 model large scale fluid -- grain systems, which are otherwise impossible to 
 simulate using conventional computational techniques. In the present study, 
 simulations involving up to 5000 soil grains interacting with 9 million LBM 
-fluid nodes are modelled. Efficient data transfer mechanisms that achieves 
-coalesced global memory ensures that the GPGPU implementation scales linearly 
-with the domain size. Granular flows in fluid involves soil grains interacting 
+fluid nodes are modelled. Efficient data transfer mechanisms that achieve 
+coalesced global memory ensure that the GPGPU implementation scales linearly 
+with the domain size. Granular flows in fluid involve soil grains interacting 
 with fluid resulting in formation of turbulent vortices. In order to model the 
 turbulent nature of granular flows, the LBM-MRT technique is coupled with the 
 Smagorinsky turbulent model. The LBM-DEM code offers the possibility to 
@@ -152,7 +152,8 @@ permeability, the duration required for the flow to initiate takes longer due
 to the development of large negative pore-pressures. However, the low 
 permeability of the granular mass results in entrainment of water at the flow 
 front causing 
-hydroplaning. For the same thickness and velocity of the flow, the potential of 
+hydroplaning. For the same thickness and velocity of the flow, the potential 
+for 
 hydroplaning is influenced by the density of the flowing mass. Loose columns 
 are more likely to hydroplane than the dense granular masses resulting in 
 a longer run-out distance. This is in contrast to the behaviour observed in the 
@@ -194,14 +195,14 @@ inclined planes at high permeabilities, the viscous drag forces predominate
 resulting in almost the same run-out distance for both dense and loose initial 
 conditions. However, at low permeability the entrainment of water at the flow 
 front and the reduction in the effective stress of the flowing mass result in a 
-longer run-out distance in the loose condition than the dense case with 
+longer run-out distance in the loose condition than the dense case with an 
 increase in the slope angle.
 
 In tall columns, the run-out behaviour is found to be influenced by the 
 formation of vortices during the collapse. The interaction of the surface 
 grains with the surround fluid results in formation of vortices uniquely during 
 the horizontal acceleration stage. The vortices result in redistribution of 
-granular mass and thus affecting the run-out behaviour. This effect is 
+granular mass and thus affect the run-out behaviour. This effect is 
 predominant with increases in the slope angle. 
 
 \section{Recommendations for future research}
@@ -217,12 +218,13 @@ granular flows using experimental and numerical tools.
 
 The two-dimensional discrete element method, developed in the present study, 
 can be extended to three-dimensions to model realistic soil flow 
-problems. Although, linear-elastic contact model is found to be sufficient to 
+problems. Although the linear-elastic contact model is found to be sufficient 
+to 
 describe rapid granular flows, further research using Hertz-Mindlin or other 
 advanced contact model shall be performed. DEM is limited by the number of 
 grains that can be simulated. Hence, it is important to be able to run DEM 
 simulations on multi-core systems or on GPUs to model large-scale geometries. 
-The initial gain properties are found to have a 
+The initial grain properties are found to have a 
 significant influence on the run-out behaviour, hence, it is vital to model 
 grains of different shapes to understand their influence on the run-out 
 distance. Agglomerates can also be used to study the effect of grain-crushing 
@@ -270,13 +272,13 @@ submarine mass movements on the free surface, such as tsunami generation.
 DEM simulations of granular flow problems reveal that the initial material 
 properties play a crucial role on the run-out evolution. The granular materials 
 experience change in the packing fraction as the flow progresses. Hence, it is 
-important to consider advanced models such as NorSand, a critical state based 
+important to consider advanced models such as Nor-Sand, a critical state based 
 model, and $\mu(I)$  to model the dense granular flows. The behaviour of the 
 soil under large deformations can be better expressed with a critical state 
-model. Modified Nor-Sand constitutive model~\citep{Robert2010} implemented in 
-the present study can be used in large-deformation flow problems. The $\mu(I)$ 
-rheology, which is capable of capturing the complex rheology of dense granular 
-flow, can be extended to include the effect of fluid 
+model. The modified Nor-Sand constitutive model~\citep{Robert2010} implemented 
+in the present study can be used in large-deformation flow problems. The 
+$\mu(I)$ rheology, which is capable of capturing the complex rheology of dense 
+granular flow, can be extended to include the effect of fluid 
 viscosity~\citep{Pouliquen2005} to model granular flows in fluids. 
 
 
