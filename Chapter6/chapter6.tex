@@ -59,11 +59,42 @@ the advantage of cheaper computational effort than a 3D case, making it
 feasible to simulate very large systems. The configuration and parameters 
 studied in this chapter are presented in~\cref{table:lbm-dem-setup}.
 
-\begin{landscape}[tbph]
+
+
+\section{LBM-DEM permeability}
+
+In a 3D granular assembly, the pore spaces between the grains are 
+interconnected, whereas in a 2-D assembly, a non-interconnected pore-fluid 
+space is formed as the grains are in contact with each 
+other. This means that the fluid enclosed between the grains cannot flow 
+to the neighbouring pore-spaces.  This results in an unnatural no flow 
+condition in 
+a 2-D case (\cref{fig:reduction}). In order to overcome this effect, a 
+reduction in radius is assumed only during the LBM computation (fluid and fluid 
+– solid interaction) steps. The reduced radius of the soil grain, i.e., the 
+\textit{hydrodynamic radius r}, allows for interconnected pore space through 
+which the pore-fluid can flow similar to the 3D behaviour. The reduction in 
+the radius is assumed only during LBM computations, hence this technique has no 
+effect on the grain – grain interactions computed using DEM. 
+
+Realistically, the hydrodynamic radius can be varied from $ r = 0.7 R$ to 
+$0.95R$, where \textit{R} is the grain radius. Different permeabilities can be 
+obtained for any given initial packing by varying the hydrodynamic radius of 
+the grains, without having to change the actual granular packing. This 
+introduces a new parameter into the system. In a physical sense, a 
+hydrodynamic radius represents the three-dimensional permeability of a 
+granular assembly simulated as a two-dimensional geometry. The hydrodynamic 
+radius can also be assumed to represent the irregularities on the granular 
+surface. The hydrodynamic radius represents asperities on 
+the grain surface, which represents a channel for the fluid to flow between the 
+grains. 
+
+
+\begin{landscape}
 \centering
-\begin{table}[tbph]
+\begin{table}
 \centering
-\caption{Configurations for LBM-DEM simulations}
+\caption{Configurations for LBM-DEM simulations of granular collapse in fluid}
 \label{table:lbm-dem-setup}
 \begin{tabular}{lcccc}
 \toprule
@@ -86,42 +117,13 @@ Tall columns & 6 & r = 0.85 R & 79 \& 83 & 0, 2.5, 5 \& 7.5 \\
 \end{table}
 \end{landscape}
 
-
-\section{LBM-DEM permeability}
-
-In a 3D granular assembly, the pore spaces between the grains are 
-interconnected, whereas in a 2-D assembly, a non-interconnected pore-fluid 
-space is formed as the grains are in contact with each 
-other. This means that the fluid enclosed between the grains cannot flow 
-to the neighbouring pore-spaces.  This results in an unnatural no flow 
-condition in 
-a 2-D case (\cref{fig:reduction}). In order to overcome this effect, a 
-reduction in radius is assumed only during the LBM computation (fluid and fluid 
-– solid interaction) steps. The reduced radius of the soil grain, i.e., the 
-\textit{hydrodynamic radius r}, allows for interconnected pore space through 
-which the pore-fluid can flow similar to the 3D behaviour. The reduction in 
-the radius is assumed only during LBM computations, hence this technique has no 
-effect on the grain – grain interactions computed using DEM. 
-
-\begin{figure}[htpb]
+\begin{figure}[tbhp]
 \centering
 \includegraphics[width=0.45\textwidth]{reduction}
 \caption{Schematic representation of the hydrodynamic radius in LBM-DEM 
-computation}
+computation.}
 \label{fig:reduction}
 \end{figure}
-
-Realistically, the hydrodynamic radius can be varied from $ r = 0.7 R$ to 
-$0.95R$, where \textit{R} is the grain radius. Different permeabilities can be 
-obtained for any given initial packing by varying the hydrodynamic radius of 
-the grains, without having to change the actual granular packing. This 
-introduces a new parameter into the system. In a physical sense, a 
-hydrodynamic radius represents the three-dimensional permeability of a 
-granular assembly simulated as a two-dimensional geometry. The hydrodynamic 
-radius can also be assumed to represent the irregularities on the granular 
-surface. The hydrodynamic radius represents asperities on 
-the grain surface, which represents a channel for the fluid to flow between the 
-grains. 
 
 In order to understand the relation between the hydrodynamic radius and the 
 permeability of the granular assembly, horizontal permeability tests are 
@@ -283,16 +285,16 @@ surface. The initial aspect ratio of the column is varied as 0.2, 0.4, 0.6,
 
 \begin{figure}[htpb]
 \centering
-\begin{subfigure}[b]{0.95\textwidth}
+\begin{subfigure}[b]{0.975\textwidth}
 \centering
-\includegraphics[width=0.97\columnwidth]{geometry}
+\includegraphics[width=\columnwidth]{geometry}
 \caption{Schematic view of underwater granular collapse set-up.}
 \label{fig:geometry}
 \end{subfigure} \\
 
-\begin{subfigure}[b]{0.95\textwidth}
+\begin{subfigure}[b]{0.975\textwidth}
 \centering
-\includegraphics[width=0.97\columnwidth]{a6/ini_a6_geom}
+\includegraphics[width=\columnwidth]{a6/ini_a6_geom}
 \caption{LBM-DEM simulation of underwater granular collapse set-up (\textit{a} 
 = 6).}
 \label{fig:LBMgeometry}
@@ -408,7 +410,8 @@ mass resulting in an increase in the shear strength.
     \label{fig:a04_8tc}
 \end{subfigure}
 
-\caption{Flow evolution of a granular column collapse in fluid (a = 0.4). Shows 
+\caption[Flow evolution of a granular column collapse in fluid (a = 0.4)]{Flow 
+evolution of a granular column collapse in fluid (a = 0.4). Shows 
 the velocity profile of fluid due to interaction with the grains (red - higher 
 velocity).}
 \label{fig:a04_snapshots}
@@ -458,7 +461,7 @@ conditions.
 \label{fig:Height_a04f}
 \end{subfigure}
 \caption{Evolution of height and run-out with time for a column collapse in 
-fluid (a = 0.4)}
+fluid (a = 0.4).}
 \label{fig:a04_run_height}
 \end{figure}
 
@@ -480,14 +483,14 @@ columns.
 \begin{subfigure}[t]{0.8\textwidth}
 	\centering
     \includegraphics[width=\textwidth]{KE_a04f}
-    \caption{Evolution of the total kinetic energy}
+    \caption{Evolution of the total kinetic energy.}
     \label{fig:KE_a04f}
 \end{subfigure}
 \\
 \begin{subfigure}[t]{0.95\textwidth}
 	\centering
     \includegraphics[width=\textwidth]{KExy_a04f}
-    \caption{Evolution of horizontal and vertical kinetic energies}
+    \caption{Evolution of horizontal and vertical kinetic energies.}
     \label{fig:KExy_a04f}
 \end{subfigure}
 \caption{Evolution of kinetic energies with time for a granular column collapse 
@@ -563,7 +566,8 @@ granular mass is consolidating resulting in an increase in the shear strength.
     \label{fig:a4_8tc}
 \end{subfigure}
 
-\caption{Flow evolution of a granular column collapse in fluid (a = 4). Shows 
+\caption[Flow evolution of a granular column collapse in fluid (a = 4)]{Flow 
+evolution of a granular column collapse in fluid (a = 4). Shows 
 the velocity profile of fluid due to interaction with the grains (red - higher 
 velocity).}
 \label{fig:a4_snapshots}
@@ -683,7 +687,9 @@ fluid.
 	collapse.}
 	\label{fig:heightf}
 \end{subfigure}
-	\caption{Normalised final collapse run-out and height for columns with 
+	\caption[Comparison of run-out and height between dry and submerged 
+	collapse for columns with different initial aspect ratios]{Normalised final 
+	collapse run-out and height for columns with 
 	different initial aspect ratios.}
 	\label{fig:height_runout_fluid}
 \end{figure}
@@ -936,7 +942,9 @@ permeability the run-out distance increases for the same peak kinetic energy.
 \begin{figure}
 	\centering
 	\includegraphics[height=0.9\textheight]{runout_fluid_dry_energy}
-	\caption{Normalised final run-out distance for columns as a function of 
+	\caption[Normalised final run-out distance for columns as a function of 
+		peak kinetic energy in dry and submerged conditions]{Normalised final 
+		run-out distance for columns as a function of 
 	peak kinetic energy. Comparison of dry and submerged granular column 
 	collapse for different hydrodynamic radius (0.7R, 0.8R and 0.9R).}
 	\label{fig:runout_fluid_dry_energy}
@@ -1229,7 +1237,9 @@ of the material.
     \label{fig:PT_Loose_R095}
 \end{subfigure}
 }
-\caption{Effect of initial density on the deposit morphology
+\caption[Effect of initial density on the deposit morphology
+for a granular column collapse in fluid (a = 0.8).]{Effect of initial density 
+on the deposit morphology
 for a granular column collapse in fluid (a = 0.8). Dense vs loose initial 
 packing fraction (r = 0.95R). Darker means dense packing, white indicates loose 
 packing density.}
@@ -1429,7 +1439,9 @@ granular material in comparison with the dense condition
 \caption{Evolution of kinetic energy with time (loose)}
 \label{fig:KE_loose}
 \end{subfigure}
-\caption{Evolution of run-out and kinetic energy with time (loose)}
+\caption[Evolution of run-out and kinetic energy with time (loose) for 
+different slope angles]{Evolution of run-out and kinetic energy with time 
+(loose)}
 \label{fig:KE_run_loose}
 \end{figure}
 
@@ -1492,7 +1504,7 @@ packing fraction observed between $2\tau_c$ and $5 \tau_c$.
 \begin{figure}
 \centering
 \includegraphics[width=0.97\columnwidth]{Voronoi_Slope_Dense_Loose}
-\caption{Evolution of packing density with time}
+\caption{Evolution of packing density with time for different slope angles}
 \label{fig:voro}
 \end{figure}
 
@@ -1533,8 +1545,8 @@ run-out distance.
     \caption{Loose}
     \label{fig:slope_runout_loose}
 \end{subfigure}
-\caption{Effect of slope angle on the run-out distance (Dense and Loose). 
-	Comparison between dry and submerged granular column.}
+\caption{Comparison between dry and submerged granular column on the effect of 
+slope angle on the run-out distance (Dense and Loose).}
 \label{fig:slope_loose_dense}
 \end{figure}
 
@@ -1684,23 +1696,24 @@ same run-out distance for both dense and loose conditions. However at a low
 permeability (r = 0.9 R), hydroplaning is observed in the case of loose 
 granular column resulting in a substantially longer run-out distance than the 
 dense granular column in submerged condition. 
-\begin{figure}
+%
+\begin{figure}[!h]
 	\centering
-\begin{subfigure}[b]{0.95\textwidth}
+\begin{subfigure}[b]{0.85\textwidth}
 	\centering
-    \includegraphics[width=0.95\textwidth]{Perm_Runout_a08_dense}
+    \includegraphics[width=\textwidth]{Perm_Runout_a08_dense}
     \caption{Dense}
     \label{fig:Perm_Runout_a08_dense}
 \end{subfigure}\\
-\begin{subfigure}[b]{0.95\textwidth}
+\begin{subfigure}[b]{0.85\textwidth}
 	\centering
-    \includegraphics[width=0.95\textwidth]{Perm_Runout_a08_loose}
+    \includegraphics[width=\textwidth]{Perm_Runout_a08_loose}
     \caption{Loose}
     \label{fig:Perm_Runout_a08_loose}
 \end{subfigure}
-\caption{Effect of permeability on the run-out distance (Dense and Loose). 
-	Comparison between dry and submerged granular column for a slope angle of 
-    0\si{\degree} and 5\si{\degree}.}
+\caption{Comparison between dry and submerged granular column for a slope angle 
+of 0\si{\degree} and 5\si{\degree} on the effect of permeability on the run-out 
+distance (Dense and Loose).}
 \label{fig:Perm_Runout_loose_dense}
 \end{figure}
 
@@ -1822,10 +1835,10 @@ observed in the case of short columns.
     \label{fig:a6slope5t_8tc}
 \end{subfigure}
 }
-\caption{Flow evolution of a granular column collapse in fluid (a = 6) on a 
-slope of 5\si{\degree}. Shows the velocity profile of fluid due to interaction 
-with the grains (red - higher 
-velocity).}
+\caption[Flow evolution of a granular column collapse in fluid (a = 6) on a 
+slope of 5\si{\degree}]{Flow evolution of a granular column collapse in fluid 
+(a = 6) on a slope of 5\si{\degree}. Shows the velocity profile of fluid due to 
+interaction with the grains (red - higher velocity).}
 \label{fig:a6_slope_snapshots}
 \end{figure}
 
