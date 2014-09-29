@@ -682,7 +682,8 @@ iteration steps were carried out until the solution converged.
 \begin{figure}[htbp]
 	\centering
 	\includegraphics[width=0.85\textwidth]{LBM_Poiseuille}
-	\caption{Velocity profile: LBM Simulation of a laminar flow through a 
+	\caption{Velocity profile obtained from a LBM Simulation of a laminar flow 
+	through a 
 		channel.}
 	\label{fig:LBMcontour}
 \end{figure}
@@ -699,7 +700,9 @@ iteration steps were carried out until the solution converged.
 \begin{figure}[htbp]
 	\centering
 	\includegraphics[width=0.85\textwidth]{CFD_Poiseuille}
-	\caption{Velocity profile: CFD analysis of laminar flow through a channel.}
+	\caption{Velocity profile obtained from a CFD analysis of laminar flow 
+	through a 
+	channel.}
 	\label{fig:CFDcontour}
 \end{figure}
 
@@ -713,10 +716,10 @@ flow evolution.
 \begin{figure}[tbhp]
 	\centering
 	\includegraphics[width=0.95\textwidth]{Poiseuille}
-	\caption{Development of the Poiseuille velocity profile in time: comparison 
-		between LBM simulation, CFD simulation and the analytical solution. 
-		Time is 
-		made dimensionless by $H/U_0$.}
+	\caption[Comparison between LBM and CFD on the development of the 
+	Poiseuille velocity profile in time]{Development of the Poiseuille velocity 
+	profile in time: comparison between LBM simulation, CFD simulation and the 
+	analytical solution. Time is made dimensionless by $H/U_0$.}
 	\label{fig:Pois}
 \end{figure}
 
@@ -764,7 +767,8 @@ with an obstacle at L/4.}
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=0.95\textwidth]{Obstacle}
-\caption{LBM and CFD simulation of a flow around an obstacle.}
+\caption{LBM and CFD simulation of the velocity contour at L/2 for a flow 
+around an obstacle at L/4.}
 \label{fig:Obstacle}
 \end{figure}
 
@@ -869,7 +873,8 @@ ability of the LBM turbulence model to capture instabilities in fluid flow.
 \begin{figure}[htbp]
 	\centering
 	\includegraphics[width=0.95\textwidth]{karman}
-	\caption{K\'{a}rm\'{a}n vortex street}
+	\caption{Development of K\'{a}rm\'{a}n vortex street around a circular 
+	obstacle, for different Reynolds number.}
 	\label{fig:karman}
 \end{figure}
 
@@ -1087,7 +1092,7 @@ $\mathbf{x}_{\mathit{n}}$ represents the coordinate of the lattice node
 \begin{figure}[htbp]
 \centering
 \includegraphics[height=0.9\textheight]{bouncemod}
-\caption{Bounce back boundaries for different values of $\delta$}
+\caption{LBM bounce back boundaries for different values of $\delta$}
 \label{fig:bouncemod}
 \end{figure}
 
@@ -1220,7 +1225,8 @@ empirical Schiller and Nauman formula~\citep{Komiwes2005}.
 \begin{figure}[tbhp]
 \centering
 \includegraphics[height=0.9\textheight]{kissing}
-\caption{Time series of draft, kiss and tumble of two grains during 
+\caption{Time series of draft, kiss and tumble of two grains 
+during 
 sedimentation in a viscous fluid.}
 \label{fig:kissing}
 \end{figure}
@@ -1242,7 +1248,7 @@ sedimentation in a viscous fluid.}
 		\caption{distance between grains}
 		\label{fig:kissdelta}
 	\end{subfigure}
-	\caption{Time history of two circular grains during sedimentation.}
+	\caption{Time history of sedimentation of two circular grains.}
 	\label{fig:kiss}
 \end{figure}
 
@@ -1352,7 +1358,32 @@ and i+1), which refer to contiguous array elements (fhf[i] and fhf[i+1]), are
 mapped to adjacent CUDA threads in the same thread block, to optimize for 
 coalesced memory accesses. 
 
+Memory transaction optimisation is more important than computation
+optimisation. Registers do not give rise to any specific problem apart from 
+their limited amount. Global memory, being the only one accessible by both the 
+CPU and the GPU, is the critical path as it suffers from high latency. However, 
+this latency is mostly hidden by the scheduler which stalls inactive warps 
+until data are available. For data intensive LBM, this aspect is generally the 
+limiting factor~\citep{Obrecht2011}. To optimise the global memory 
+transactions, the memory access is coalesced and aligned, as explained above. 
+The memory transactions between the host and the target through a PCI bus are 
+kept to a minimum.
 
+A two-dimensional fluid -- grain system, which consists of 7.2 million LBM 
+nodes and 2500 DEM grains is used to demonstrate the ability of the GPGPU LBM 
+-- DEM code. The wall time required to compute 100 iterations of the given LBM 
+-- DEM  problem is compared for executions running on a single CPU thread, 
+multi-threaded CPU (using OpenMP) and the GPGPU implementations 
+(see~\cref{table:GPU}). The speed-up of parallel implementations are measured 
+against the single CPU thread execution time. OpenMP parallelised 
+multi-threaded CPU execution running on 12 cores achieved a speed-up of 13.5x 
+in comparison to a serial implementation. GPGPU implementation using OpenACC 
+delivered an impressive 126x speed-up in comparison to a single thread CPU 
+execution and about 10 times quicker than a CPU parallel code. In other words, 
+a simulation that would have ordinarily taken 126 days to compute, could now be 
+finished in a day using a GPU.
+
+\clearpage
 
 \begin{lstlisting}[label=lst:GPU,caption= OpenACC GPU implementation of the 
 hydrodynamic force computation.,style=customcpp]
@@ -1392,30 +1423,9 @@ for (i=0; i<nbgrains;i++) {
 }
 \end{lstlisting}
 
-Memory transaction optimisation is more important than computation
-optimisation. Registers do not give rise to any specific problem apart from 
-their limited amount. Global memory, being the only one accessible by both the 
-CPU and the GPU, is the critical path as it suffers from high latency. However, 
-this latency is mostly hidden by the scheduler which stalls inactive warps 
-until data are available. For data intensive LBM, this aspect is generally the 
-limiting factor~\citep{Obrecht2011}. To optimise the global memory 
-transactions, the memory access is coalesced and aligned, as explained above. 
-The memory transactions between the host and the target through a PCI bus are 
-kept to a minimum.
 
-A two-dimensional fluid -- grain system, which consists of 7.2 million LBM 
-nodes and 2500 DEM grains is used to demonstrate the ability of the GPGPU LBM 
--- DEM code. The wall time required to compute 100 iterations of the given LBM 
--- DEM  problem is compared for executions running on a single CPU thread, 
-multi-threaded CPU (using OpenMP) and the GPGPU implementations 
-(see~\cref{table:GPU}). The speed-up of parallel implementations are measured 
-against the single CPU thread execution time. OpenMP parallelised 
-multi-threaded CPU execution running on 12 cores achieved a speed-up of 13.5x 
-in comparison to a serial implementation. GPGPU implementation using OpenACC 
-delivered an impressive 126x speed-up in comparison to a single thread CPU 
-execution and about 10 times quicker than a CPU parallel code. In other words, 
-a simulation that would have ordinarily taken 126 days to compute, could now be 
-finished in a day using a GPU.
+
+
 
 \begin{table}[tbhp]
 	\caption{GPU vs CPU parallelisation}
