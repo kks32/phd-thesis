@@ -108,7 +108,8 @@ a rectangular channel~\citep{Lajeunesse2004}}
 In the present study, multi-scale numerical modelling, i.e. grain-scale 
 modelling and continuum analyses, of quasi-two-dimensional collapse of 
 granular columns are performed using two-dimensional Discrete Element Method 
-(DEM) and Generalised Interpolation Material Point Method (GIMPM). GIMPM, a 
+(DEM) and Generalised Interpolation Material Point Method (GIMP method). GIMP 
+method, a 
 hybrid Eulerian--Lagrangian approach, with a Mohr-Coloumb failure criterion is 
 used to describe the continuum behaviour of the granular column collapse. 
 Whereas, the micro-mechanics of the flow is captured using DEM simulations. 
@@ -163,7 +164,7 @@ in~\cref{sec:beta_dist}) is used to generate a graded sample with a mean grain
 diameter of 1.15\si{\mm} (\cref{fig:PSD}). 
 The DEM sample is composed of $\sim3000$ disks with a uniform distribution of 
 diameters by volume fractions in the range $[d_{min}, d_{max}] = 0.92 - 1.38$ 
-\si{\mm} with polydispersity $r = \frac{d_{max} }{d_{min}} = 1.5$. The 
+\si{\mm} with poly-dispersity $r = \frac{d_{max} }{d_{min}} = 1.5$. The 
 granular column is prepared by allowing randomly placed grains to undergo 
 ballistic deposition with a constant potential head between layers of soil 
 grains. A snapshot of the sample generated is shown in~\cref{fig:a4b4r18}. A 
@@ -285,15 +286,17 @@ Coefficient of restitution, $\varepsilon$ & 0.75 \\ \bottomrule
 \end{tabular}
 \end{table}
 
-GIMPM with a Mohr-Coloumb constitutive model is used to simulate plane strain 
-collapse of granular columns.~\citet{Crosta2009} observed that the Mohr-Coloumb 
+GIMP method with a Mohr-Coloumb constitutive model is used to simulate plane 
+strain 
+collapse of granular columns.~\citet{Crosta2009a} observed that the 
+Mohr-Coloumb 
 model with non-associate flow rule is able to capture granular collapse 
 dynamics and models the strong vertical motion. This method does not suffer 
 the limitations of typical shallow water equation techniques. In order to 
 understand the ability and limitations of continuum approaches in capturing the 
 local rheology, it is important to scale the grain-scale material properties, 
 such as the inter-particle friction and stiffness, to the continuum scale 
-(macroscopic friction and Young's modulus).~\citet{Crosta2009} observed that 
+(macroscopic friction and Young's modulus).~\citet{Crosta2009a} observed that 
 the friction angle plays a significant role on the run-out behaviour. 
 
 In MPM simulations, the granular flow is assumed to be in the critical state 
@@ -334,9 +337,9 @@ compression of a granular column using DEM.
 \citet{Guilkey2003} suggests using at least four material points per cell for 
 large deformation problems. In the present study, 16 material points 
 per cell is adopted. If the mesh is too fine and the number of particles is too 
-large, the particle size $2lp$ decreases, and the GIMPM interpolation 
+large, the particle size $2lp$ decreases, and the GIMP interpolation 
 function tends to approach the original MPM function, as shown 
-by~\citet{Bardenhagen2004}. Hence, GIMPM loses the merit that it reduces the 
+by~\citet{Bardenhagen2004}. Hence, GIMP loses the merit that it reduces the 
 numerical noise due to material points crossing the background mesh. In 
 addition, the probability of particles crossing the background mesh increases 
 with decrease in the mesh size, hence, more noise may be 
@@ -761,9 +764,10 @@ dissipated by the work of frictional forces $W_{\mu}$ over the total run-out
 distance by the center of mass \textit{G} of the spreading 
 material. The collapse involves two regions of dissipation: the amount of mass 
 destabilised $\frac{1}{4}(L_f - 
-L_0) H_0$ over two thirds of the runout distance $2(L_f - L_0) / 3$ (considering
+L_0) H_0$ over two thirds of the run-out distance $2(L_f - L_0) / 3$ 
+(considering
 the triangular shape of the final deposit and the initial and the final 
-positions of the center of mass). The effective coefficient of friction $\mu_e$ 
+positions of the centre of mass). The effective coefficient of friction $\mu_e$ 
 characterizes the mean dissipation in the flow. The work of friction forces is 
 
 \begin{equation}
@@ -1250,7 +1254,7 @@ are
 presented in this section. A detailed description of the Contact Dynamics 
 method can be found in \cite{Moreau1993,Jean1999,Radjai2009,Radjai2011}. 
 The CD method is based on implicit time integration of the equations of motion 
-and a nonsmooth formulation of mutual exclusion and dry friction between 
+and a non-smooth formulation of mutual exclusion and dry friction between 
 particles. The CD method requires no elastic repulsive potential and no 
 smoothing of the Coulomb friction law for the determination of forces. 
 For this reason, the simulations can be performed with large time steps 

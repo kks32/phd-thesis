@@ -360,7 +360,7 @@ evolutionary equation of LBM--MRT is written as
 (\mathbf{x},t)-\hat{\mathbf{f}}^{eq}(\mathbf{x},t))\,,
 \end{equation}
 %
-\noindent where \textbf{M} is the tranformation matrix mapping a vector 
+\noindent where \textbf{M} is the transformation matrix mapping a vector 
 \textbf{f} in the discrete velocity space $\mathds{V}=\mathds{R}^b$ to a vector 
 $\hat{\mathbf{f}}$ in the moment space $\mathds{V}=\mathds{R}^b$. 
 %
@@ -377,7 +377,7 @@ a diagonal matrix:
 \end{equation*} 
 %
 The transformation matrix \textbf{M} can be constructed via Gram-Schmidt 
-orthgonalisation procedure. The general form of the transformation matrix 
+orthogonalisation procedure. The general form of the transformation matrix 
 \textbf{M} can be written as
 %
 \begin{equation}
@@ -445,7 +445,7 @@ p_{xy}^{eq} & = \frac{3}{2}\gamma_3(u_xu_y) \,.
 \end{align}
 \end{subequations}
 %
-To get the correct hydrodynamic equation, the values of the co-efficients are 
+To get the correct hydrodynamic equation, the values of the coefficients are 
 chosen as $\alpha_2=24$,  $\alpha_3=-36$, $c_1=c_2=-2$, 
 $\gamma_1=\gamma_3=2/3$, $\gamma_2=18$ and $\gamma_4=-18$. The values of the 
 elements in the collision matrix are: $s_8 = s_9 = \tau$ 
@@ -527,7 +527,7 @@ bounce-back~\citep{Succi2001}.
 
 \subsubsection*{Pressure and velocity boundary condition}
 
-The pressure (Drichlet) boundary condition can be imposed in 
+The pressure (Dirichlet) boundary condition can be imposed in 
 lattice Boltzmann by specifying a fluid density at the pressure 
 boundary~\citep{Zou1997}. To impose a pressure boundary along 
 the y-direction (for example, consider the left hand side inlet boundary 
@@ -608,7 +608,7 @@ width `H' (= 0.4 \si{\meter}) and simulation length `L' (2.5H) under constant
 body force. Periodic boundary conditions are applied at either end of the 
 channel and the pressure gradient is set to zero, which simulates the condition 
 of a continuous flow of fluid in a closed circular pipe. The length `L' has no 
-effect on the simulation as no streamwise variation is detected in the 
+effect on the simulation as no stream-wise variation is detected in the 
 solution. The parameters adopted in LBM simulation are presented 
 in~\cref{table:lbm}. Sufficient time is allowed for the flow to travel beyond 
 the required development length so that the flow is laminar~\citep{Durst2005}. 
@@ -622,7 +622,7 @@ X_{D}/H=[(0.619)^{1.6}+(0.0567 R_{e})^{1.6}]^{1/1.6} \,,
 \noindent where $R_{e}$ is the Reynolds number. The velocity profile at steady 
 state is presented in~\cref{fig:LBMcontour}. A maximum 
 horizontal velocity of 0.037863~\si{\meter\per\second} is observed along the 
-center-line of the channel. The maximum horizontal velocity is compared with 
+centre-line of the channel. The maximum horizontal velocity is compared with 
 the closed-form based on the Haygen-Poiseuille flow equation for no-slip 
 boundary condition~\citep{Willis2008}
 %
@@ -814,7 +814,7 @@ S_{ij} & = \frac{1}{2}(\partial_i u_j + \partial_j u_i) \\
 \sqrt{\sum\limits_{\mathit{i,j}}{\tilde{S}_{\mathit{i,j}}\tilde{S}_{\mathit{i,j}}}}\,,
 \end{align}
 %
-\noindent where $\mathit{S}_{c}$ is the Smagorinski constant, which is close 
+\noindent where $\mathit{S}_{c}$ is the Smargonisky constant, which is close 
 to 0.03~\citep{yu2005}. 
 %
 The effect of the unresolved scale motion is taken into account by introducing 
@@ -841,7 +841,7 @@ The new viscosity $\nu_{*}$ corresponding to $\tau_{*}$ is defined as
 \textit{t} \,.
 \end{align} 
 
-The Smagorinski model is easy to implement and the lattice Boltzmann 
+The Smargonisky model is easy to implement and the lattice Boltzmann 
 formulation remains unchanged, except for the use of a new turbulence-related 
 viscosity $\tau_{*}$. The component $s_1$ of the collision matrix becomes $s_1 
 = \frac{1}{\tau+\tau_t}$.
@@ -866,7 +866,7 @@ flows with different mean velocities. Numerical simulations of vortex
 shedding behind a circular obstacle are carried out for three different fluid 
 flow regimes (Reynolds number of 55, 75, and 112). The fully developed fluid 
 flows for different Reynolds numbers are shown in~\cref{fig:karman}. It can be 
-observed from~\cref{fig:karman} that the von K\'{a}rm\'{a}n vortex street can 
+observed from~\cref{fig:karman} that the Von K\'{a}rm\'{a}n vortex street can 
 only be observed at high a Reynolds number of 112 (Re > 90), which shows the 
 ability of the LBM turbulence model to capture instabilities in fluid flow.
 %
@@ -1259,7 +1259,7 @@ is widely used for graphical and now non-graphical computations. Today's GPUs
 are general purpose processors with support for an accessible programming 
 interface. The main advantage of GPUs is their ability to perform significantly 
 more floating point operations (FLOPs) per unit time than a CPU. General 
-Purpose computations on GPUs (GPGPUs) often achieve speedups of orders of 
+Purpose computations on GPUs (GPGPUs) often achieve speed-ups of orders of 
 magnitude in comparison with optimised CPU implementations. 
 
 A GPU consists of several \emph{Streaming Multiprocessors} (SMs). Each SM 
@@ -1343,7 +1343,7 @@ becomes a single target parallel operation, aka a single CUDA kernel. Both
 constructs allow for automatic vectorization within the loops~\citep{Wolfe2012}.
 
 An excerpt from the LBM-DEM code showing the OpenACC GPU implementation of the 
-hydrodynamic force compuration is presented in Listing~\ref{lst:GPU}. The 
+hydrodynamic force computation is presented in Listing~\ref{lst:GPU}. The 
 kernels loop construct tells the compiler to map the body of the following loop 
 into an accelerator kernel. The GPU implementation uses a two-dimensional grid 
 splitting the iterations across both the vector and gang modes. The kernel is 
@@ -1457,7 +1457,7 @@ the warp scheduler has at least one warp eligible to issue instructions. In
 general, sufficient warps on each SM should be available to hide instruction 
 and memory latency and to provide a variety of instruction types to 
 fill the execution pipeline.~\Cref{fig:GPUSpeed} shows the scalability of 
-GP-GPU implementation as the LBM domain size is increased from 500,000 to 9 
+GPGPU implementation as the LBM domain size is increased from 500,000 to 9 
 million nodes. With increase in LBM nodes the computation time increases 
 linearly with a slope of about 2, which shows that the LBM--DEM implementation 
 algorithm scales with the domain size.
@@ -1471,8 +1471,8 @@ algorithm scales with the domain size.
 
 A two-dimensional coupled LBM--DEM technique is developed to understand the 
 local rheology of granular flows in fluid. The coupled LBM--DEM technique 
-offers the possibility to capture the intricate microscale effects such as the 
-hydrodynamic instabilities. The Smagorinsky turbulence model is implement in 
+offers the possibility to capture the intricate micro-scale effects such as the 
+hydrodynamic instabilities. The Smargonisky turbulence model is implement in 
 LBM to capture the unsteady flow dynamics in underwater granular avalanches. 
 The GPGPU implementation of the coupled LBM -- DEM technique offers the 
 capability to model large scale fluid -- grain systems, which are otherwise 

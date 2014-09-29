@@ -64,7 +64,7 @@ in the granular materials. Most constitutive models, even in the simple case
 of dry granular flows, cannot describe the entire range of flow from solid to 
 fluid. In certain cases, the granular flow is modelled as a fluid behaviour. 
 Continuum models that are based on averaging techniques applied to a 
-representative volume elements are not successful even in quas-static 
+representative volume elements are not successful even in quasi-static 
 conditions. The fundamental question is how to model granular materials which 
 exhibit complex phenomenon, meaningfully. 
 
@@ -99,7 +99,7 @@ jumps in the velocity and stress fields~\citep{Rycroft2006}.
 Advanced elasto-plastic models based on the \textit{critical state} theory
 provide a better representation of granular flows in quasi-static regime, but 
 they fail to capture the mechanism of rapid granular flows which involves rate 
-dependent behaviour. Another continuum based model is the partial fluidization 
+dependent behaviour. Another continuum based model is the partial fluidisation 
 model, which uses a set of equations that describes the flow velocity and the 
 shear stresses along with a auxiliary order parameter to predict the granular 
 flow behaviour. The order parameter of the granular media controls the size of 
@@ -176,7 +176,7 @@ large deformation flow.}
 \label{fig:NumericalMethods}
 \end{figure}
 
-An alternative to the mesh-based approach is using meshless Lagrangian methods 
+An alternative to the mesh-based approach is using mesh-less Lagrangian methods 
 (\cref{fig:NumericalMethods}) where the nodes representing the solid transforms 
 as the continuum deforms, avoiding the problem of mesh distortion, i.e., the 
 nodes representing the solid can move freely within the domain. Mesh free 
@@ -185,16 +185,16 @@ constrained by the mesh size and mesh distortion effects, and hence can be
 effectively used in simulating large deformation problems, such as debris flow 
 and submarine landslides.
 
-The element-free Galerkin (EFG) method is a relatively new meshless 
+The element-free Galerkin (EFG) method is a relatively new mesh-less 
 method, in which the trial functions for the weak form are constructed using 
 moving least squares interpolation~\citep{Belytschko1994}. The particle finite 
-element method (PFEM) is another meshless method that involves the meshless 
+element method (PFEM) is another mesh-less method that involves the mesh-less 
 finite element interpolation. In PFEM, the nodal points represent the 
 particles and the computational mesh is constructed by connecting these points. 
 The mesh is then used to solve the governing equations in Lagrangian fashion. 
 In PFEM, large deformation requires frequent re-meshing~\citep{Kafaji2013}.
 
-Smooth Particle Hydrodynamics is the oldest meshfree technique, in which the 
+Smooth Particle Hydrodynamics is the oldest mesh-free technique, in which the 
 domain is discretised into particles that have a spatial distance, called the 
 \textit{smoothing length} over which the material properties are ``smoothed'' 
 by a kernel function. SPH was developed to solve astrophysical 
@@ -790,7 +790,7 @@ process. This results in material points falling behind the spreading mass to
 the fill the cavity. Fewer material points per cell results in cell 
 crossing noise as the material points filling the cavity experience free-fall 
 due to gravity. The effect of cell-crossing noise can be seen in the 
-osciallation of vertical kinetic energy for fewer material points per cell. 
+oscillation of vertical kinetic energy for fewer material points per cell. 
 However, at high input energy, most of the input velocity is dissipated during 
 the spreading process. This means that only a small fraction of energy is 
 available in the vertical component resulting in almost similar behaviour for 
@@ -855,7 +855,7 @@ cell is adopted in this case. In summary, for conducting a successful MPM
 analysis, a careful selection of the mesh size and the number of particles is 
 necessary.
 
-\subsection{GIMPM}
+\subsection{GIMP method}
 
 The shape functions used in MPM are continuous, and hence penetration between 
 bodies are handled 
@@ -1233,8 +1233,8 @@ transportation and deposition of the 2009 Hsiaolin landslide. The authors
 estimated the friction coefficient of landslide-mass to have reached a critical 
 value of 0.1, at which the mass begins to slide and reach a maximum velocity of 
 40 - 50~\si{\m\per\s}. Two-dimensional DEM simulations have been used to 
-analyze the temporal and spatial evolution of slope failure and landslides from 
-the intact, pre-failure slope to the restabilized, post-failure slope composed 
+analyse the temporal and spatial evolution of slope failure and landslides from 
+the intact, pre-failure slope to the restabilised, post-failure slope composed 
 of bonded material~\citep{Katz2014}. The pre-failure slope material 
 disintegration is found to be the fundamental element in determining the size 
 and geometry of the resultant landslides.~\citet{Liu2013} studied the 
@@ -1773,7 +1773,7 @@ all grains for both short and long durations, however no such algorithm exists.
 In certain cases, two trajectories that are initially very close may diverge 
 exponentially as time progresses. Any integration error, however small it may 
 be, would always diverge the predicted trajectory exponentially from the true 
-trajectory. This phenomenon is called the Lyanpunov instability, and it is 
+trajectory. This phenomenon is called the Lyapunov instability, and it is 
 devastating to the whole idea of Discrete Element Method simulation, but we 
 have good reasons to assume that even this problem need not be 
 serious~\citep{Frenkel1996}. First of all, one should realize that 
@@ -2035,7 +2035,7 @@ by~\citet{Zenit2005}.
 ($\beta$=45\si{\degree}).}
 \label{fig:DEM_Validation}
 \end{subfigure}
-\caption{Validation of DEM using a disk rollind down an inclined plane}
+\caption{Validation of DEM using a disk rolling down an inclined plane}
 \label{fig:Validation_DEM}
 \end{figure}
 
@@ -2056,13 +2056,13 @@ DEM & 1.000 & 0.000 & 0.7071 & 0.000 \\
 
 %%*******************************************************************************
 \subsection[Cumulative beta distribution]{Cumulative $\beta$ distribution}
-
+\label{sec:beta_dist}
 During a granular-metric analysis, the sample mush be representative of the 
 grain properties including the particle size distribution (PSD) both in volume 
 (mainly for the smallest particles) and in number (for the largest particles). 
 This representativeness of PSD is a condition for a sample to be a 
 representative volume element. However, this condition cannot be satisfied in 
-DEM for a polydisperse sample, due to the upper limit on the computation 
+DEM for a poly-disperse sample, due to the upper limit on the computation 
 capacity. It is important to extract a discrete ensemble of grain sizes such 
 that a statistical representation of the size classes is 
 obtained~\citep{Radjai2011}.
@@ -2336,7 +2336,7 @@ of the Voronoi diagram. The beach line progresses by keeping each parabola base
 exactly half way between the points initially swept over with the sweep line, 
 and the new position of the sweep line.~\Cref{fig:sweep_voro} shows the Fortune 
 sweep line algorithm in progress. In the present study, a modified version of 
-the sweepline algorithm is used to construct an additively weighted Voronoi 
+the sweep-line algorithm is used to construct an additively weighted Voronoi 
 diagram, in which the distance to each site (grain) is offset by the weight of 
 the site, i.e., the radius of the grain.
 
@@ -2344,7 +2344,7 @@ the site, i.e., the radius of the grain.
 \centering
 \includegraphics[width=0.9\textwidth]{sweep_voro}
 \caption[Fortune sweep line algorithm for generating Voronoi 
-Tesselation]{Fortune sweep line algorithm for generating Voronoi Tesselation. 
+Tessellation]{Fortune sweep line algorithm for generating Voronoi Tessellation. 
 Generated from \url{http://www.diku.dk/hjemmesider/studerende/duff/Fortune/}.}
 \label{fig:sweep_voro}
 \end{figure}

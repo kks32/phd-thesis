@@ -960,7 +960,8 @@ wish to left align your text}
 
 
 
-% ****************************** Acknowledgements ********************************
+% ****************************** Acknowledgements 
+%********************************
 % The acknowledgements environment puts a large, bold, centered
 % "Acknowledgements" label at the top of the page.
 

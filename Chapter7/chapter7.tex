@@ -23,7 +23,8 @@ present study, a two-dimensional DEM code is developed in C++ to study the
 micro-scale rheology of dry granular flows. A Verlet-list algorithm is 
 implemented for neighbourhood detection to improve the computational 
 efficiency. A linear-elastic model with a frictional contact behaviour is used 
-to model dense rapid granular flows. A sweep-line Voronoi tesselation algorithm 
+to model dense rapid granular flows. A sweep-line Voronoi tessellation 
+algorithm 
 is implemented, in the present study, to extract continuum properties such as 
 packing density from the local grain-scale simulations.
 
@@ -37,7 +38,7 @@ problems,
 when using the standard MPM. The three-dimensional MPM code is parallelised to 
 run on multi-core systems, thus improving the computational efficiency. The 
 algorithm of the MPM code is improved to handle multi-body dynamics and 
-interactions. Advanced constitutive models such as NorSand and 
+interactions. Advanced constitutive models such as Nor-Sand and 
 modified Bingham fluid are also implemented. This dissertation includes 
 only those results from two-dimensional plane-strain granular flow problems. 
 
@@ -121,7 +122,7 @@ coalesced global memory ensure that the GPGPU implementation scales linearly
 with the domain size. Granular flows in fluid involve soil grains interacting 
 with fluid resulting in formation of turbulent vortices. In order to model the 
 turbulent nature of granular flows, the LBM-MRT technique is coupled with the 
-Smagorinsky turbulent model. The LBM-DEM code offers the possibility to 
+Smargonisky turbulent model. The LBM-DEM code offers the possibility to 
 simulate large-scale turbulent systems and probe micro-scale properties, which 
 are otherwise impossible to capture in complex fluid - grain systems.
 
@@ -261,7 +262,7 @@ The GPGPU parallelised 2D LBM-DEM coupled code, developed in the present study,
 shall be extended to 
 three-dimensions. This would require a very high computational cost and hence 
 it is important to parallelise the LBM-DEM code across multiple GPUs through a 
-Message Passing Interface (MPI) similar to a large cluser parallelisation. A 
+Message Passing Interface (MPI) similar to a large cluster parallelisation. A 
 three-phase system of granular solids, water and air can be developed to 
 realistically capture debris flow behaviour. The LB code can be extended to 
 include a free surface, which can be used to investigate the influence of 
@@ -297,7 +298,7 @@ to model the granular flow behaviour in a continuum scale.
 
 \subsubsection*{Slopes subjected to impact}
 This work may be pursued along two directions: \textit{a}. experimental 
-realization of a similar setup with different modes of energy injection and 
+realization of a similar set-up with different modes of energy injection and 
 \textit{b}. investigating the effect of various particle shapes or the presence 
 of an ambient fluid. Although numerical simulations are generally reliable with 
 realistic results found in the past studies of steady flows, the transient 
