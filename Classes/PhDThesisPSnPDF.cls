@@ -969,7 +969,7 @@ wish to left align your text}
 \cleardoublepage
 \setsinglecolumn
 \chapter*{\centering \Large Acknowledgements}
-\thispagestyle{empty}
+\pagestyle{empty}
 }
 
 
@@ -1058,7 +1058,7 @@ wish to left align your text}
 \newenvironment{abstract} {
 \ifPHD@abstract
 % Separate abstract as per Student Registry guidelines
-	\thispagestyle{empty}
+	\pagestyle{empty}
 	\setsinglecolumn
 	\begin{center}
 		{ \Large {\bfseries {\@title}} \par}
