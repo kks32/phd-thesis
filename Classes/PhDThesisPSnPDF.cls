@@ -4,7 +4,7 @@
 %%                                                                            %%
 %% A PhD thesis LaTeX template for Cambridge University Engineering Department%%
 %%                                                                            %%
-%% Version: v1.4.1                                                            %%
+%% Version: v1.4.2                                                            %%
 %% Authors: Krishna Kumar                                                     %%
 %% Date: 2013/11/16 (inception)                                               %%
 %% License: MIT License (c) 2013 Krishna Kumar                                %%
@@ -12,8 +12,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % ************************** Class Identification ******************************
-\newcommand\fileversion{1.4.1}
-\newcommand\filedate{2014/08/11}
+\newcommand\fileversion{1.4.2}
+\newcommand\filedate{2014/10/08}
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{PhDThesisPSnPDF}[\filedate\space A PhD thesis class file
  by Krishna Kumar (v\fileversion)]
@@ -28,7 +28,9 @@
 \newif\if@print\@printfalse
 \DeclareOption{print}{\@printtrue}
 
-\newif\ifPHD@draft\PHD@draftfalse
+% ****************************** Draft Option **********************************
+\newif\ifsetDraft\setDraftfalse
+\newif\ifsetDraftClassic\setDraftClassicfalse
 
 % ****************************** Define index **********************************
 \newif\ifPHD@index\PHD@indexfalse
@@ -209,13 +211,30 @@ footnotes.}
 \DeclareOption{twoside}{\PassOptionsToClass{\CurrentOption}{book}}%
 
 % Draft Mode
-\DeclareOption{draft}{\PassOptionsToClass{\CurrentOption}{book} 
-\ClassWarning{PhDThesisPSnPDF}{Draft is ON. You can use `draftmode' instead,
-  which adds watermark with timestamp and line numbering. Don't forget to turn 
-  `draft' off for your final version.}}%
-\DeclareOption{draftmode}{\PassOptionsToClass{draft}{book}\PHD@drafttrue 
-\ClassWarning{PhDThesisPSnPDF}{Draft Mode is ON.
-  Don't forget to turn it off for your final version.}}% 
+
+\DeclareOption{draftclassic}{\PassOptionsToClass{draft}{book}
+  \setDraftClassictrue
+  \ClassWarning{PhDThesisPSnPDF}{Draft is ON. Don't forget to turn it
+    off in your final version. This is the classic version of draft.
+    Use `draft' for enhanced mode, which adds watermark with timestamp, 
+    line numbering, and version number.}}%
+
+\DeclareOption{draft}{\PassOptionsToClass{\CurrentOption}{book}
+  \setDrafttrue 
+  \ClassWarning{PhDThesisPSnPDF}{Draft is ON. Don't forget to turn it
+    off in your final version. This enhanced `draft' mode adds watermark 
+    with timestamp, line numbering, and version number. Use `draftclassic'
+    if you prefer the \cite{} lassic draft mode. To tweak options see
+    `preamble.tex'}}%
+
+
+% Deprecated option - use draft instead
+\DeclareOption{draftmode}{
+\ClassError{PhDThesisPSnPDF}{This option is deprecated. Use `draft' 
+  instead this option replaces `draftmode'. To use the classic version
+  of draft use `draftclassic`}
+\stop}% 
+
 
 % Line Numbers
 \newif\ifPHD@lineno\PHD@linenotrue
@@ -269,7 +288,7 @@ supported!}
 
 % *********************** Table of Contents & Appendices ***********************
 % add Bibliography, List of figures and tables to contents
-\RequirePackage{tocbibind}
+\RequirePackage[nottoc]{tocbibind}
 % Add appendices
 \RequirePackage[title,titletoc]{appendix}
 
@@ -277,6 +296,13 @@ supported!}
 \renewcommand{\listfigurename}{List of figures}
 \renewcommand{\listtablename}{List of tables}
 
+% Hides Contents appearing from TOC, but adds it to bookmarks
+\let\temptableofcontents\tableofcontents
+\renewcommand{\tableofcontents}{
+  \cleardoublepage
+  \pdfbookmark[0]{\contentsname}{Contents}
+  \temptableofcontents
+}
 
 % *************************** Graphics and Figures *****************************
 \RequirePackage[usenames, dvipsnames]{color}
@@ -324,9 +350,16 @@ supported!}
 % Initializing Draft Gray Scale
 \newcommand\SetDraftGrayScale[1]{}
 
+% Classic Draft Mode
+\ifsetDraftClassic
+% Disable figures in `draftmode'\
+\setkeys{Gin}{draft=true}
+\fi
 
 % If Draft Mode is active
-\ifPHD@draft
+\ifsetDraft
+% Disable figures in `draftmode'\
+\setkeys{Gin}{draft=false}
 
 % Line numbering (can be switched off)
 \ifPHD@lineno
@@ -359,10 +392,6 @@ supported!}
 }
 
 \fi % End \ifPDH@lineno
-
-% Todo notes functionality
-\usepackage[colorinlistoftodos]{todonotes}
-\newcommand{\mynote}[1]{\todo[author={\@author},size=\small,inline,color=green!40]{#1}}
 
 % Creates a Watermark Draft at the specified location.
 % The settings can be tweaked in the preamble
@@ -421,10 +450,6 @@ supported!}
 % If NOT Draft Mode
 \else 
 
-% Todo notes are not displayed in production mode
-\newcommand{\mynote}[1]{}
-\newcommand{\listoftodos}{}
-
 \renewcommand\SetDraftText[1]{\ClassWarning{PhDThesisPSnPDF}{DraftMode is
     inactive, to use SetDraftText include `draftmode' in the document 
     class options.}}
@@ -469,7 +494,7 @@ supported!}
           \@ifpackageloaded{natbib}{}{
             \@ifpackageloaded{biblatex}{}{
               \ClassWarning{PhDThesisPSnPDF}{%
-                Custom bibliography is chosen, but no corresponding package 
+                You chose custom bibliography, but no corresponding package 
                 (biblatex/natbib) has been loaded. Please load the
                 appropriate bibliography package in the preamble.}
             }
@@ -547,13 +572,14 @@ supported!}
 \widowpenalty=10000
 
 % If building with PDFLaTeX, use microtype spacing adjustments
-\RequirePackage{microtype}
+\RequirePackage[final]{microtype}
 
 %******************************* Print / Online ********************************
 % Defines a print / online version to define page-layout and hyperrefering
 
 % Moved below other usepackage definitions to fix PDFLaTeX footnote warning
 % Based on the suggestion by John Plaice
+
 \ifsetDVI
 \special{papersize=\the\paperwidth,\the\paperheight}
 \RequirePackage[dvips,unicode=true]{hyperref}
@@ -960,8 +986,7 @@ wish to left align your text}
 
 
 
-% ****************************** Acknowledgements 
-%********************************
+% ****************************** Acknowledgements ********************************
 % The acknowledgements environment puts a large, bold, centered
 % "Acknowledgements" label at the top of the page.
 
@@ -969,7 +994,7 @@ wish to left align your text}
 \cleardoublepage
 \setsinglecolumn
 \chapter*{\centering \Large Acknowledgements}
-\pagestyle{empty}
+\thispagestyle{empty}
 }
 
 
@@ -1047,6 +1072,7 @@ wish to left align your text}
     \renewcommand{\listoffigures}{}
     \renewcommand{\listoftables}{}
     \renewcommand{\printnomencl}{}
+    \renewcommand{\printnomencl}[1][2]{}
     \renewcommand{\printthesisindex}{}
     \renewcommand{\bibname}{}
     \renewcommand{\bibliography}[1]{\thispagestyle{empty}}
@@ -1058,7 +1084,7 @@ wish to left align your text}
 \newenvironment{abstract} {
 \ifPHD@abstract
 % Separate abstract as per Student Registry guidelines
-	\pagestyle{empty}
+	\thispagestyle{empty}
 	\setsinglecolumn
 	\begin{center}
 		{ \Large {\bfseries {\@title}} \par}
