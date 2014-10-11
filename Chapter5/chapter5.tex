@@ -1369,20 +1369,6 @@ transactions, the memory access is coalesced and aligned, as explained above.
 The memory transactions between the host and the target through a PCI bus are 
 kept to a minimum.
 
-A two-dimensional fluid -- grain system, which consists of 7.2 million LBM 
-nodes and 2500 DEM grains is used to demonstrate the ability of the GPGPU LBM 
--- DEM code. The wall time required to compute 100 iterations of the given LBM 
--- DEM  problem is compared for executions running on a single CPU thread, 
-multi-threaded CPU (using OpenMP) and the GPGPU implementations 
-(see~\cref{table:GPU}). The speed-up of parallel implementations are measured 
-against the single CPU thread execution time. OpenMP parallelised 
-multi-threaded CPU execution running on 12 cores achieved a speed-up of 13.5x 
-in comparison to a serial implementation. GPGPU implementation using OpenACC 
-delivered an impressive 126x speed-up in comparison to a single thread CPU 
-execution and about 10 times quicker than a CPU parallel code. In other words, 
-a simulation that would have ordinarily taken 126 days to compute, could now be 
-finished in a day using a GPU.
-
 \clearpage
 
 \begin{lstlisting}[label=lst:GPU,caption= OpenACC GPU implementation of the 
@@ -1422,6 +1408,21 @@ for (i=0; i<nbgrains;i++) {
   }
 }
 \end{lstlisting}
+
+A two-dimensional fluid -- grain system, which consists of 7.2 million LBM 
+nodes and 2500 DEM grains is used to demonstrate the ability of the GPGPU LBM 
+-- DEM code. The wall time required to compute 100 iterations of the given LBM 
+-- DEM  problem is compared for executions running on a single CPU thread, 
+multi-threaded CPU (using OpenMP) and the GPGPU implementations 
+(see~\cref{table:GPU}). The speed-up of parallel implementations are measured 
+against the single CPU thread execution time. OpenMP parallelised 
+multi-threaded CPU execution running on 12 cores achieved a speed-up of 13.5x 
+in comparison to a serial implementation. GPGPU implementation using OpenACC 
+delivered an impressive 126x speed-up in comparison to a single thread CPU 
+execution and about 10 times quicker than a CPU parallel code. In other words, 
+a simulation that would have ordinarily taken 126 days to compute, could now be 
+finished in a day using a GPU.
+
 
 
 
