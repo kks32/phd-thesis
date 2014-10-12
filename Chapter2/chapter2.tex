@@ -216,22 +216,33 @@ where the particles interact many times with their neighbours and a strong
 correlation between their velocities is inevitable.
 
 \subsection{Shallow-water approximation}
-The Navier-Stokes equation in fluid mechanics is capable of describing the 
-dynamics of fluid flow under different conditions. However, the proposed models 
-for granular flows tend to be specialized for a particular situation. By 
-drawing a simple analogy from fluid dynamics one can model granular flows as 
-non-Newtonian fluids using a variant of the Navier-Stokes equation; one such 
-approach is the depth-averaged shallow-water equation, which has been applied 
-to solve granular flow dynamics with a reasonable amount of success. The 
-Savage-Hutter model~\citep{Savage1991}, is a depth-average continuum-mechanics 
-based approach which consists of hyperbolic partial differential equations to 
+
+Developing constitutive laws valid from the quasi-static to
+dilute regimes remains a serious challenge. Simple 
+elasto-plastic approach fails to model the collisional regimes in a granular 
+flow. On the other hand, the original kinetic theory based 
+on binary collisions does not capture the correct behaviour in the dense regime.
+In configurations where the flowing layer is thin, a different theoretical 
+framework is adopted.
+%
+%The Navier-Stokes equation in fluid mechanics is capable of describing the 
+%dynamics of fluid flow under different conditions. However, the proposed 
+%models 
+%for granular flows tend to be specialized for a particular situation. By 
+%drawing a simple analogy from fluid dynamics one can model granular flows as 
+%non-Newtonian fluids using a variant of the Navier-Stokes equation;
+One such approach is the depth-averaged shallow-water equation, which has been 
+applied to solve granular flow dynamics with a reasonable amount of success. 
+The Savage-Hutter model~\citep{Savage1991}, is a depth-average 
+continuum-mechanics based approach which consists of hyperbolic partial 
+differential equations to 
 describe the distribution of the depth and the topography of an avalanching 
 mass of cohesion-less granular media~\citep{Hutter2005}. This approach is based 
 on the assumption that the horizontal length scale is very large in comparison 
 with the vertical length scale, which allows us to neglect the horizontal 
 partial derivatives relative to the vertical partial derivatives. Field 
-observations indicate an aspect ratio of $10^{-3} \mbox{ to } 10^{-4}$ for 
-natural avalanches~\citep{Cawthor2006a}. By neglecting the vertical length 
+observations of natural avalanches indicate an aspect ratio of $10^{-3} \mbox{ 
+to } 10^{-4}$~\citep{Cawthor2006a}. By neglecting the vertical length 
 scale, the continuum equation for conservation of mass and momentum can be 
 written as
 %
@@ -284,8 +295,9 @@ Comparison of the model with the post-calculation of Madlein avalanche in
 Austria indicates that the Coulomb basal friction is insufficient and requires 
 an additional viscous component. The SH model's predictions were not 
 satisfactory for granular flows down gentle slopes of inclination angle $\le 
-30^{o}$, where granular materials exhibit a different 
-behaviour~\citep{Hutter2005}.
+30^{o}$, where granular materials exhibit premature stop~\citep{Hutter2005}. 
+The SH model has not yet been tested in cases where the granular flow interacts 
+with obstacles.
 
 \subsection{Rheology}
 \label{sec:muI}
@@ -340,12 +352,26 @@ results of flow down an inclined plane,~\citet{Jop2006} observed that the
 frictional coefficient increases from a minimal value of $\mu_{\textit{s}}$ to 
 an asymptotic value of $\mu_{2}$, when the value of \textit{I} increases. The 
 variation of friction coefficient with \textit{I} is shown in~\cref{fig:mu}. 
-To formulate a complete constitutive model, it is 
-essential to describe the volumetric behaviour. Based on the dimensional 
-analysis, it can be argued that the volume change is also a function of 
-dimensionless parameter \textit{I} and that it also depends on the maximum and 
-the minimum possible void ratios and the time for microscopic rearrangement of 
-grains. 
+The friction coefficient can be related to the inertial number \textit{I} as
+%
+\begin{equation}
+\mu(I) = \mu_s + \frac{\mu_2 - \mu_s}{I_0/I+1}
+\end{equation}
+%
+where $I_0$ is constant, typically in the range of 0.25 - 0.3. To formulate a 
+complete constitutive model, it is essential to describe the volumetric 
+behaviour. Based on the dimensional analysis, it can be argued that the volume 
+change is also a function of dimensionless parameter \textit{I} and that it 
+also depends on the maximum and the minimum possible void ratios and the time 
+for microscopic rearrangement of grains. Consider two rows of mono-dispersed 
+grains. When a grain is located on the gap formed by two adjacent grains, it is 
+assumed to have a maximum packing fraction. As the grain is sheared along the 
+bottom row of grains, it moves out of the gap resulting in 
+a minimum packing fraction. The duration required for this rearrangement is 
+directly proportional to the volume fraction. The dimensionless shear rate, 
+expressed as the ratio between the duration of re-arrangement to the mean 
+duration (see~\cref{fig:tmicro}), has a linear relationship with the volume 
+fraction.
 
 \begin{figure}[tbhp]
 \centering
@@ -365,16 +391,23 @@ dimensionless shear rate $\textit{I}$, reproduced after ~\citet{Pouliquen2006}}
 \end{figure}
 
 In general, the flow regimes can be classified based on the dimensionless 
-number \textit{I}~\citep{DaCruz2005}. Dilute or ``collisional'' flow occurs for 
-\textit{I} $>10^{-1}$ and the grain collision is chiefly binary, 
-accompanied  by additional ``bounce-back'' akin to gases~\citep{Kamrin2008}. In 
-the dilute flow regime, the grains are rarely in long-duration contacts and 
-can be described by dissipative Boltzmann kinetics. The ``quasi-static'' regime 
-occurs at the other extreme of the spectrum, \textit{I} $<10^{-3}$, where the 
-intermittent motion is prevalent. The inertial time is always small enough for 
-the grains to align to a dense compaction, without significant collisional 
-dissipation. The frictional sliding and stick-slip dynamics dominate the 
-dissipation mechanism. The moderate-flow regime is observed for \textit{I} 
+number \textit{I}~\citep{DaCruz2005}.~\Cref{fig:Regime} shows the variation of 
+frictional coefficient $\mu$ and packing fraction $\phi$ with dimensionless 
+number \textit{I} for different flow regimes under simple shearing. Dilute or 
+``collisional'' flow occurs for \textit{I} $>10^{-1}$ and the grain collision 
+is chiefly binary, accompanied  by additional ``bounce-back'' akin to 
+gases~\citep{Kamrin2008}. In the dilute flow regime, the grains are rarely in 
+long-duration contacts and can be described by dissipative Boltzmann kinetics. 
+The ``quasi-static'' regime occurs at the other extreme of the spectrum, 
+\textit{I} $<10^{-3}$, where the intermittent motion is prevalent. The inertial 
+time is always small enough for the grains to align to a dense compaction, 
+without significant collisional dissipation. The frictional sliding and 
+stick-slip dynamics dominate the dissipation mechanism. The stress/strain-rate 
+relationship becomes singular; driving the system with a range of quasi-static 
+normalized shear rates all give the same time-average value for $\mu$. In this 
+regime the dissipation is primarily frictional and rate-independent. Packing 
+fraction appears independent of \textit{I}, and grain-level specifics are more 
+important to flow dynamics. The moderate-flow regime is observed for \textit{I} 
 between $10^{-3} \mbox{and }10^{-1}$, characterized by faster flows, with a 
 high rate of contact formation and more energy dissipation per impact. In this 
 regime, \textit{I} has a one-one relationship with $\mu$ and is large enough 
@@ -385,16 +418,23 @@ to decrease, which is different from \textit{shear dilation}, which refers to a
 decrease in the packing density as a function of total shear. Flows which are 
 too slow to be moderate still undergo shear dilation due to geometric packing 
 constraints, but shearing dilation occurs only in faster flows due to rate 
-effects~\citep{Kamrin2008}.~\Cref{fig:Regime} shows the variation of 
-frictional coefficient $\mu$ and packing fraction $\phi$ with dimensionless 
-number \textit{I} for various flow regimes. 
+effects~\citep{Kamrin2008}. In moderate flows, the dissipation is primarily 
+rate-sensitive due to energy loss during contact formation, yet packing remains 
+dense
 
 \begin{figure}[tbhp]
 \centering
 \includegraphics[width=0.95\textwidth]{Regime}
-\caption[Variation of dimensionless parameter \textit{I} for various flow 
-regimes]{Variation of dimensionless parameter \textit{I} through the various 
-flow regimes under simple shearing, reproduced after~\citep{Kamrin2008}}
+\caption[Variation of dimensionless parameter \textit{I} for different flow 
+regimes]{Variation of dimensionless parameter \textit{I} for different 
+flow regimes under simple shearing. (a) \textit{Quasi-static} ($I < 10^{-3}$): 
+Dissipation is primarily frictional and rate-independent. Packing fraction 
+appears independent of \textit{I}, and grain-level specifics are more important 
+to flow dynamics; (b) \textit{Moderate} ($10^{-3} < I < 
+10^{-1}$): the dissipation is primarily rate-sensitive due to energy loss 
+during contact formation, yet packing remains dense; (c) \textit{Collisional} 
+($I > 10^{-1}$): Flow becomes dilute and gas-like. Dynamics modelled best by 
+dissipative Boltzmann kinetics. Redrawn after~\citep{Kamrin2008}}
 \label{fig:Regime}
 \end{figure}
 
