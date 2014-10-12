@@ -581,10 +581,12 @@ both drew the striking conclusion that the flow duration, the spreading
 velocity, the final extent of the deposit, and the fraction of energy 
 dissipated during the flow can be scaled in a quantitative way independent of 
 substrate properties, bead size, density, and shape of the granular material 
-and released mass, \textit{m}~\citep{Lajeunesse2005}. The normalised final 
-run-out distance as a function of the initial aspect ratios of the granular 
-column under plane-strain and axi-symmetric conditions is 
-shown in~\cref{fig:Runout_Exp}.~\citet{Lube2005} scaled the run-out distance as
+and released mass, \textit{m}~\citep{Lajeunesse2005}.
+
+The normalised final run-out distance as a function of the initial aspect 
+ratios of the granular column under plane-strain and axi-symmetric conditions 
+is shown in~\cref{fig:Runout_Exp}.~\citet{Lube2005} scaled the run-out distance 
+as
 \begin{align}
 & \frac{\textit{L}_{\textit{f}}- 
 \textit{L}_{\textit{0}}}{\textit{L}_{\textit{0}}} \approx
@@ -593,7 +595,7 @@ shown in~\cref{fig:Runout_Exp}.~\citet{Lube2005} scaled the run-out distance as
 1.6\textit{a}^{1.2}, \qquad &\textit{a} \gtrsim 1.7
 \end{cases}
 \end{align}
-while~\citet{Lajeunesse2004} scaled run-out as
+while~\citet{Lajeunesse2005} scaled run-out as
 \begin{align}
 & \frac{\textit{L}_{\textit{f}}- 
 \textit{L}_{\textit{0}}}{\textit{L}_{\textit{0}}} \approx
@@ -603,14 +605,49 @@ while~\citet{Lajeunesse2004} scaled run-out as
 \end{cases}
 \end{align} 
 
+The normalised final height as a function of the initial aspect ratios of 
+the granular column under plane-strain and axi-symmetric conditions is 
+shown in~\cref{fig:Height_Exp}. The evolution of the scaled deposit height 
+$\textit{H}_{\textit{f}}/\textit{L}_{\textit{0}}$ with the aspect ratio 
+\textit{a} for axis-symmetric collapse~\citep{Lajeunesse2005} is given as 
+\begin{align}
+\textit{H}_{\textit{f}}/\textit{L}_{\textit{0}} \approx 
+\begin{cases}
+\textit{a}, \qquad &\textit{a}\lesssim 0.74 \\
+0.74, \qquad &\textit{a}\gtrsim 0.74
+\end{cases}
+\end{align}
+and for two-dimensional collapse
+\begin{align}
+\textit{H}_{\textit{f}}/\textit{L}_{\textit{0}} \approx 
+\begin{cases}
+\textit{a}, \qquad &\textit{a}\lesssim 0.7 \\
+\textit{a}^{1/3}, \qquad &\textit{a}\gtrsim 0.7
+\end{cases}
+\end{align}
+
 \begin{figure}[tbhp]
 \centering
-\includegraphics[width=0.85\textwidth]{Runout_Exp}
-\caption{The normalised final run-out distance as a function of the initial 
-aspect ratios of the granular column under plane-strain and axi-symmetric 
-conditions~\citep{Lajeunesse2004}.}
-\label{fig:Runout_Exp}
+	\begin{subfigure}[b]{0.85\textwidth}
+	\centering
+	\includegraphics[width=\textwidth]{Runout_Exp}
+	\caption{Normalised final run-out distance vs aspect ratio}
+	\label{fig:Runout_Exp}
+	\end{subfigure} \\
+
+	\begin{subfigure}[b]{0.85\textwidth}
+	\centering
+	\includegraphics[width=\textwidth]{Height_Exp}
+	\caption{Normalised height vs aspect ratio}
+	\label{fig:Height_Exp}
+	\end{subfigure}
+	\label{fig:Run_Height_Exp}
+	\caption[Normalised final run-out and height as a function of initial aspect ratio for 
+	plane-strain and axi-symmetric collapse]{The normalised final run-out distance and final height 
+	as a function of the initial aspect ratios of the granular column under plane-strain 
+	and axi-symmetric conditions~\citep{Lajeunesse2004}.}
 \end{figure}
+
 
 Quasi-two-dimensional collapse of a granular column on a horizontal 
 surface~\citep{Lajeunesse2005} reveals that the geometric configuration 
@@ -680,28 +717,7 @@ dynamics~\citet{Staron2005}, thus resulting in overestimation of run-out. Tall
 columns showed significantly longer run-out distances when continuum approaches 
 like material point method is used~\citep{Bandara2013,Mast2014}.
 
-The evolution of the scaled deposit height 
-$\textit{H}_{\textit{f}}/\textit{L}_{\textit{0}}$ with the aspect ratio 
-\textit{a} for axis-symmetric collapse~\citep{Lajeunesse2005} is given as 
-\begin{align}
-\textit{H}_{\textit{f}}/\textit{L}_{\textit{0}} \approx 
-\begin{cases}
-\textit{a}, \qquad &\textit{a}\lesssim 0.74 \\
-0.74, \qquad &\textit{a}\gtrsim 0.74
-\end{cases}
-\end{align}
-and for two-dimensional collapse
-\begin{align}
-\textit{H}_{\textit{f}}/\textit{L}_{\textit{0}} \approx 
-\begin{cases}
-\textit{a}, \qquad &\textit{a}\lesssim 0.7 \\
-\textit{a}^{1/3}, \qquad &\textit{a}\gtrsim 0.7
-\end{cases}
-\end{align}
-
-The normalised final height as a function of the initial aspect ratios of 
-the granular column under plane-strain and axi-symmetric conditions is 
-shown in~\cref{fig:Height_Exp}. The scaling of the final collapse height is 
+The scaling of the final collapse height is 
 found to be similar with the 
 experimental results of~\citet{Lube2005} and~\citet{Balmforth2005}, and the 
 numerical simulation of~\citet{Staron2005}. Numerical simulation of granular 
@@ -721,14 +737,7 @@ spreading. Even a more sophisticated basal drag law will not be sufficient to
 model the mechanism of granular column collapse realistically using the 
 shallow-water approximation~\citep{Kerswell2005}.
 
-\begin{figure}[tbhp]
-\centering
-\includegraphics[width=0.85\textwidth]{Height_Exp}
-\caption{The normalised final height as a function of the initial aspect ratios 
-of the granular column under plane-strain and axi-symmetric 
-conditions~\citep{Lajeunesse2004}.}
-\label{fig:Height_Exp}
-\end{figure}
+
 
 
 \subsubsection{Flow dynamics}
