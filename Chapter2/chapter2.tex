@@ -863,11 +863,8 @@ findings. Contrary to the suggestion of~\citet{Lajeunesse2004}, the fracture
 angle was found to have no direct effect on the transition between truncated 
 cone and conical deposit occurring at aspect ratio \textit{a} of 
 0.7~\citep{Lajeunesse2005}.~\citet{Schaeffer1990} observed the onset of 
-instability, when the neutrally stable plane makes an angle of 
-$\phi_{\textit{I}}$ with the major principle stress axis. The onset of 
-instability triggers instability in a narrow wedge of 56\si{\degree} to 
-65\si{\degree}, which corresponds to the angle of shear bands; this observation 
-matches well with the failure angle observed in the granular flow. A 
+instability in a narrow wedge of 56\si{\degree} to 
+65\si{\degree}, which corresponds to the angle of shear bands. A 
 rate-dependent constitutive relationship~\citep{Jop2006} for dense granular 
 flows indicates the angle of shear-band orientation depends on the inertial 
 number \textit{I}. For small to moderate values of \textit{I}, the orientation 
@@ -968,21 +965,26 @@ Subsequent chapters discuss the methodology and modelling of granular column by
 continuum- and discrete-element approaches.
 
 \subsection{Flow down an inclined plane}
+
+Most contemporary research on granular materials deals
+with the steady-state flows. Transients and inhomogeneous boundary conditions 
+are much less amenable to observation and analysis, and have thus been less 
+extensively studied despite their primary importance in engineering practice. 
 Studies on the flow of granular materials down inclined planes are important to 
 understand the mechanism of geophysical hazards, such as granular avalanches, 
 debris flows and submarine landslides. Large scale field tests on dry and 
 saturated granular materials were carried out to capture the mechanism of 
 granular flows down an inclined plane~\citep{Okada2008,Denlinger2001}. The 
 granular material stored in a reservoir at the top of the inclined plane is 
-released by opening a gate; the material flows down and develops into a dense 
-granular flow. 
+released by opening a gate. The flow rate is controlled by the opening of a 
+gate.  the material flows down and develops into a dense granular flow. 
 
-A variant of the above experiment is the experiment on fluidised beds 
-which involves an initial bed of granular material of thickness `\textit{h}' 
-which is inclined gradually until the granular material flows. When the plane 
-inclination reaches a critical angle, $\theta_{\textit{start}}$, the material 
-starts to flow and reaches a sustained flow until the inclination is decreased 
-down to a second critical angle, $\theta_{\textit{stop}}$~\citep{Midi2004}. The 
+An initially static granular layer of uniform thickness `\textit{h}' 
+(\cref{fig:Incline}) starts to 
+flow when the plane inclination reaches a critical angle, 
+$\theta_{\textit{start}}$, the material reaches a sustained flow until the 
+inclination is decreased down to a second critical angle, 
+$\theta_{\textit{stop}}$~\citep{Midi2004}. The 
 occurrence of two critical angles indicates the hysteretic nature of granular 
 materials. Reciprocally, the critical angle thresholds can be interpreted in 
 terms of critical layer thickness $\textit{h}_{\textit{stop}}(\theta)$ and 
@@ -995,12 +997,13 @@ of the deposit remaining on the plane once the flow has ceased.
 \includegraphics[width=0.85\textwidth]{Incline}
 \caption{Rough inclined plane: (a) Set-up, and (b) $h_{stop}(\theta)$ (black 
 symbols) and $h_{start}(\theta)$ (white symbols). Reproduced 
-after~\citet{Midi2004}.}
+after~\citep{Midi2004}.}
 \label{fig:Incline}
 \end{figure}
 
 
-Three regions can be observed: a region where no flow occurs, 
+The two curve $h_{stop}(\theta)$ and $h_{start}(\theta)$ divides the phase 
+diagram $(h,\theta)$ into three regions: a region where no flow occurs, 
 $(\textit{h}<\textit{h}_{\textit{stop}}(\theta))$, a sub-critical region where 
 both static and flowing layers can exist $(\textit{h}_{\textit{stop}}(\theta) < 
 \textit{h} < \textit{h}_{\textit{start}}(\theta)$ and a region where flow 
@@ -1011,7 +1014,16 @@ for large inclinations~\citep{Midi2004}. The critical angle controlling the
 flow behaviour tends to increase when the thickness of the bed 
 decreases~\citep{Pouliquen2002a,Daerr1999}, which can be attributed to the 
 non-trivial finite-size effects and/or boundary effects that are not well 
-understood~\citep{Forterre2008}. 
+understood~\citep{Forterre2008}. There exists a value of roughness for which a 
+maximum thickness of deposit is observed, which might correspond to a maximum
+of effective friction at the bottom~\citep{Midi2004}.
+
+For thick enough piles flowing on a rough inclined plane, say $h \ge 20 \times 
+d$, the velocity profiles and rheology follow Bagnold scaling. As the height of 
+the flowing pile reduces, a continuous transition from Bagnold rheology to
+linear velocity profiles through to avalanche-like dynamics occurs, until 
+finally, one reaches the angle of repose $\theta_r$, and the
+flow ceases. This transition behaviour is difficult to model. 
 
 Fast moving granular flows can undergo a motion-induced self-fluidisation 
 process under the combined effects of front instabilities setting on at large 
@@ -1038,64 +1050,121 @@ exhibit macroscopic friction.
 Constitutive laws based on Plasticity-theories relate the micro-structure to 
 the macroscopic behaviour~\citep{Roux2002}, which provide useful insight into 
 the mechanism of granular flow. However, at present they are limited to 
-initiation of deformation and do not predict the quasi-static flow. Material 
-Point Method simulation of granular flow down an inclined 
-plane~\citep{Abe2006,Bandara2013} captures the flow behaviour in the initial 
-stages, however it exhibits inconsistent behaviour when the granular material 
-ceases to flow. This may be due to the application of small deformation theory 
-to a large deformation problem and to the use of zero dilation. In the case of 
-flow down an inclined plane, the only control parameter is the flow rate, 
-\textit{Q}, and uniform, steady flows are possible if the system is confined 
-between walls. The additional friction induced by the lateral walls has a 
-significant effect on the flow and causes localization at the free surface. The 
-$\mu(\textit{I})$ friction law captures the velocity profile and the 
-localization at the free surface. However, the model fails to capture the 
-transition from a continuous flow to an avalanching regime as the flow rate is 
-decreased~\citep{Pouliquen2006}. The flow can cause strong Coulomb shear 
-stresses to develop on a plane normal to the basal flow boundary. The stresses 
-dissipate energy as the flow encounters obstructions: models that lack 
-multi-dimensional momentum transport or Coulomb friction cannot represent this 
-energy dissipation and lodging. 
+initiation of deformation and do not predict the quasi-static flow. Continuum 
+approach such as Material Point Method simulation of granular flow down an 
+inclined plane~\citep{Abe2006,Bandara2013} captures the flow behaviour in the 
+initial stages, however it exhibits inconsistent behaviour when the granular 
+material ceases to flow. This may be due to the application of small 
+deformation theory to a large deformation problem and the use of zero dilation. 
+Alternatively by using the $\mu(\textit{I})$ rheology we can capture the 
+velocity profile and the localization at the free surface. However, it fails to 
+model the transition from a continuous flow to an avalanching regime as the 
+flow rate is decreased~\citep{Pouliquen2006}. The rheology predicts no-flow 
+below a critical angle $\theta_s = \arctan(\mu_s)$ independent of the 
+thickness. In experiments, it is observed that the critical angle increases 
+when the thickness of the flow decreases~\citep{Pouliquen1999}. The granular 
+flow down rough inclined planes exhibit strong Coulomb shear stresses on a 
+plane normal to the basal flow boundary. The stresses dissipate the energy 
+along the rough surface; models that lack multi-dimensional momentum transport 
+or Coulomb friction cannot represent this energy dissipation and lodging.
+
+
+Granular flow down inclined planes exhibit a transient behaviour. Various 
+velocity profiles and flow behaviours can be obtained not only through changing 
+the height of the flowing granular mass, but also by varying the inclination of 
+the chute, such that there is an overlap region where one can obtain similar 
+flow properties through either procedure. These features can be used to better 
+predict the evolution of an avalanche surface. Models that are based on Coulomb 
+friction are able to predict the energy dissipation along the rough surface, 
+however, they fail to capture the transient from static to a flowing 
+behaviour and again when it ceases to flow.
 
 \subsection{Saturated and submerged granular flows}
-Geophysical hazards, such as debris flows and submarine landslides, usually 
-involve flow of granular solids and water as a single-phase system. The 
-momentum transfer between the discrete and the continuous phases significantly 
-affects the dynamics of the flow as a whole~\citep{Topin2011}. Although certain 
-macroscopic models are able to capture simple mechanical 
-behaviours~\citep{Peker2007}, the complex physical mechanisms occurring at the 
+Submarine mass movements pose a significant threat to the off-shore structures, 
+especially oil and gas platforms. Geophysical hazards, such as debris flows and 
+submarine landslides, usually involve flow of granular solids and water as a 
+single-phase system. Modelling the multi-phase interaction poses a serious 
+challenge. The momentum transfer between the discrete and the continuous phases 
+significantly affects the dynamics of the flow as a whole~\citep{Topin2011}. 
+The complex interactions between the soil and the ambient fluid is shown 
+in~\cref{fig:Submarine_landslide}. For a given granular mass, the energy 
+balance can be written as
+%
+\begin{equation}
+E_p + E_s = E_k + E_f + E_D + E_v + E_r
+\end{equation}
+Where $E_s$ is the seismic energy resulting from an earthquake, $E_f$ is the 
+friction loss, $E_D$ the friction loss due to drag effects on the upper surface 
+of the flow, $E_v$ the loss due to viscous effects and $E_r$ the energy used to 
+remold or transform the intact material. During the course of a submarine slide 
+event (or also a sub-aerial slide), there appears to be a process by which 
+there are some changes in solid to water ratio which provides a sufficiently 
+low strength to allow flow to take place~\citep{Locat2002}. Whatever the exact 
+nature of the phenomenon, it is embedded in the remoulding energy (Er). In both 
+sub-aerial and submarine landslides the triggering energy is the same (initial 
+potential energy). It appears as though the submarine landslides experience 
+more dissipation $E_D$ and $E_v$ than sub-aerial landslides, but one shouldn't 
+prematurely conclude that the run-out in submarine landslide will be shorter 
+due to more dissipation. The effect of hydroplaning and fluidisation of the 
+flowing mass result in complex interactions, which makes it difficult to 
+predict the exact mechanism of run-out and the length of run-out in 
+submarine conditions for a given initial state. 
+
+Although certain macroscopic models are able to capture simple mechanical 
+behaviours, the complex physical mechanisms occurring at the 
 grain scale, such as hydrodynamic instabilities, formation of clusters, 
-collapse, and transport~\citep{Topin2011}, have largely been ignored. In 
-particular, when the solid phase reaches a high volume fraction, the strong 
+collapse, and transport~\citep{Peker2007,Topin2011}, have largely been ignored. 
+In particular, when the solid phase reaches a high volume fraction, the strong 
 heterogeneity arising from the contact forces between the grains, and the 
 hydrodynamic forces, are difficult to integrate into the homogenization process 
 involving global averages~\citep{Topin2011}. 
 
+\begin{figure}[tbhp]
+\centering
+\includegraphics[width=0.85\textwidth]{Submarine_landslide}
+\caption[Complex interactions in a submarine landslide]{Schematic diagram 
+showing the generation of a turbidity current (suspension flow) for drag forces 
+on the surface, potential lifting of frontal lobe leading to the process of 
+hydroplaning, the basal shear stress causing erosion and 
+deposition~\citep{Locat2002}.}
+\label{fig:Submarine_landslide}
+\end{figure}
+
 In two-phase models~\citep{Pitman2005}, the momentum transfer between the 
 grains and the suspension fluid depends on the momentum equations of both 
 the phases. In case of mixture theory based models~\citep{Meruane2010}, the 
-shear-induced migration 
-and grains collisions are considered in an average sense. In order to 
-describe the mechanism of saturated and/or immersed granular flows, it is 
-important to consider both the dynamics of the solid phase and the role of the 
-ambient fluid~\citep{Denlinger2001,Iverson1997}. The dynamics of the solid 
-phase alone are insufficient to describe the mechanism of granular flow in a 
-fluid; it is important to consider the effect of hydrodynamic forces that 
-reduce the weight of the solids inducing a transition from dense-compacted to 
-dense-suspended flows, and the drag interactions which counteract the movement 
-of the solids~\citep{Meruane2010}.
+shear-induced migration and grains collisions are considered in an average 
+sense. In order to describe the mechanism of saturated and/or immersed granular 
+flows, it is important to consider both the dynamics of the solid phase and the 
+role of the ambient fluid~\citep{Denlinger2001,Iverson1997}. The dynamics of 
+the solid phase alone are insufficient to describe the mechanism of granular 
+flow in a fluid; it is important to consider the effect of hydrodynamic forces 
+that reduce the weight of the solids inducing a transition from dense-compacted 
+to dense-suspended flows, and the drag interactions which counteract the 
+movement of the solids~\citep{Meruane2010}.
 
 
 \citet{Iverson2000} observed in the 
 large-scale field tests that the soil prepared in a loose state on a slope and 
 subjected to a rainfall flows rapidly like a liquid when it breaks, whereas a 
-dense soil only slowly creeps. The underlying mechanism is related
-to the dilation or contraction character of the granular material, which the 
-authors described as the ``pore pressure feedback''. The compaction or dilation 
-of grains can cause additional stress in the grains which can stabilise or 
-destabilise the soil. The flow is controlled by the coupling between the 
-dilatancy of the granular layer and the development of pore pressure in the 
+dense soil only slowly creeps (\cref{fig:iverson_pwp}). The underlying 
+mechanism is related to the dilation or contraction character of the granular 
+material, which the authors described as the ``pore pressure feedback''. The 
+compaction or dilation of grains can cause additional stress in the grains 
+which can stabilise or destabilise the soil. The loose sediment experience high 
+positive pore-pressure and low shear stresses resulting in a quicker flow, 
+while the large negative pore-pressure in the dense case delays the run-out. 
+The flow is controlled by the coupling between the dilatancy of the granular 
+layer and the development of pore pressure in the 
 fluid phase~\citep{Pailha2008}.
+%
+\begin{figure}[tbhp]
+	\centering
+	\includegraphics[width=0.975\textwidth]{iverson_pwp}
+	\caption{Pore pressure feedback mechanism: effect of 
+	density~\citep{Iverson2000}.}
+	\label{fig:iverson_pwp}
+\end{figure}
 
 The collapse of a granular column, which mimics the collapse of a cliff, has 
 been extensively studied in the case of dry granular material, when the 
@@ -1125,7 +1194,13 @@ column needs to dilate in order to flow. When it starts to fall, liquid
 is then sucked into the column, which is then stabilized by the additional 
 viscous drag~\citep{Rondon2011,Topin2012}. By opposition the loose column when 
 it starts flowing expands and ejects liquid, leading to a partial fluidisation 
-of the material (\cref{fig:Runout_PWP_Fluid_Exp}). 
+of the material.~\cref{fig:Runout_PWP_Fluid_Exp} shows the evolution of run-out 
+and pore-pressure at the bottom of the granular flow. The large 
+negative-pore pressure developed in the dense condition shows slower flow 
+evolution in the initial stages of collapse (slope of the run-out in the loose 
+case is steeper than the dense condition). The large positive pore-pressure 
+developed at the bottom of the flow in loose condition indicates water 
+entrainment and hydroplaning resulting in longer run-out distance. 
 
 \begin{figure}[htbp]
 \centering
@@ -1136,19 +1211,27 @@ conditions~\citep{Rondon2011}.}
 \label{fig:Runout_PWP_Fluid_Exp}
 \end{figure}
 
-In the dry case, inertia is 
-responsible for the enhance of mobility at high aspect ratio. In the viscous 
-regime, the inertial effects 
-remain negligible, which could explain why the important parameter controlling 
-the dynamics is the initial volume fraction and not the initial aspect 
-ratio.~\citet{Topin2011} observed that the run-out exhibit a power-law relation 
-with the peak kinetic energy and the largest value of run-out in fluid inertial 
-regime, and the lowest in grain-inertial and intermediate value for the 
-viscous-regime. The viscous regime is where the grain reaches the viscous 
-limit velocity, the Stoke's number $S_t << 1$ and the density ratio $r >> 
-S_t$~\citep{CourrechDuPont2003}. However, the role of the volume fraction on 
+In the dry case, inertia is responsible for the enhance of mobility at high 
+aspect ratio. In the viscous regime, the inertial effects remain negligible, 
+which could explain why the important parameter controlling the dynamics is the 
+initial volume fraction and not the initial aspect ratio.~\citet{Topin2011} 
+observed that the run-out exhibit a power-law relation with the peak kinetic 
+energy and the largest value of run-out in fluid inertial regime, and the 
+lowest in grain-inertial and intermediate value for the viscous-regime 
+(\cref{fig:Ekx_Run}). The viscous regime is where the grain reaches the 
+viscous limit velocity, the Stoke's number $S_t << 1$ and the density ratio $r 
+>> S_t$~\citep{CourrechDuPont2003}. However, the role of the volume fraction on 
 dry granular collapse has not been precisely studied and the preparation of the 
 pile may also play a role~\citet{Daerr1999a}.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.85\textwidth]{Ekx_Run}
+\caption{Normalised run-out distance as a function of
+the peak value of the horizontal kinetic energy per grain.~\citep{Topin2011}.}
+\label{fig:Ekx_Run}
+\end{figure}
+
 
 \citet{Cassar2005} carried out experimental 
 investigation on the flow of dense granular material down an inclined plane 
@@ -1170,7 +1253,11 @@ velocity is low enough for the contact interaction between grains to be
 significant, the time taken by the grain to fall into a hole, 
 $\textit{t}_{\textit{micro}}$, is  then controlled by the viscosity of the 
 ambient fluid. Thus, the dimensionless parameter can be modified to incorporate 
-the viscous time to describe granular flow in a fluid~\citep{Pouliquen2005}. 
+the viscous time to describe granular flow in a fluid~\citep{Pouliquen2005}. In 
+short time scales, the grain initially accelerates but because of the drag 
+force, the grain eventually reaches a limit viscous velocity $v_{\infty v}$. 
+The time required to travel a diameter \textit{d} is given as $t_fall = d / 
+v_{\infty v}$. This new viscous time is used to define the dimensionless number.
 
 \begin{figure}[htbp]
 \centering
