@@ -14,16 +14,15 @@ frictional contacts and inelastic collisions. A schematic representation of the
 size range of the granular materials is presented in~\cref{fig:granular}. 
 Granular materials, characterized by interaction between individual grains, 
 lie between two extremes scales: the molecular-scale range predominated by 
-electrostatic force, i.e. Van der Waals forces, and the continuum scale which 
-is described by the bulk property of the material. In various soil 
-classification systems adopted in soil mechanics, sand is classified as a 
-granular material having grain sizes greater than $75\mu m$. A grain size 
-of $75\mu m$ is an important transition point, where the frictional effect 
-starts to dominate the material behaviour and the effect of the electrostatic 
-Van der Waals forces diminishes. The extent of the grain size range of the 
-granular materials from the molecular size to a continuum scale indicates that 
-they have a complex behaviour, demonstrating a mix of grain-like and 
-continuum-like behaviour.
+the electrostatic force, i.e. Van der Waals forces, and the continuum scale 
+which is described by the bulk property of the material. In various soil 
+classification systems, sand is classified as a granular material having grain 
+sizes greater than $75\mu m$. A grain size of $75\mu m$ is an important 
+transition point, where the frictional effect starts to dominate the material 
+behaviour and the effect of the electrostatic Van der Waals forces diminishes. 
+The extent of the grain size range of the granular materials from the molecular 
+size to a continuum scale indicates that they have a complex behaviour, 
+demonstrating a mix of grain-like and continuum-like behaviour.
 
 The physics of non-cohesive granular assemblies is 
 intriguing. Despite being ubiquitous in nature, granular materials are the most 
@@ -93,11 +92,11 @@ granular medium occurs during these collisions~\citep{Popken1999}.
 
 Different approaches have been used to model the granular flows at different 
 scales of description. The dynamics of a homogeneous granular flow involve at 
-least three distinct scales: (1) the \textit{Microscopic scale} characterized 
+least three distinct scales: (1) the \textit{microscopic scale} characterized 
 by small time and length scales representing contact/grain interactions, (2) 
-the \textit{Mesoscopic scale}, where grain rearrangements, development of 
+the \textit{mesoscopic scale}, where grain rearrangements, development of 
 micro-structures and shear rates have a dominant influence on the granular flow 
-behaviour, and (3) the \textit{Macroscopic scale} which involves large length 
+behaviour, and (3) the \textit{macroscopic scale} which involves large length 
 scales that are related to geometric correlations at even larger scales. The 
 interesting issue is whether one should consider or neglect a particular scale 
 while modelling the granular dynamics~\citep{Radjai2009}. However, the 
@@ -110,7 +109,7 @@ flow~\citep{Goldhirsch2003}.
 Granular flow modelling began as early as 1776 with Coulomb's paper describing 
 the yielding of granular material as a frictional process. 
 Although it was not about granular flows, \textit{per se}, the prediction of 
-soil failure for Civil engineering applications describes the onset of 
+soil failure for civil engineering applications describes the onset of 
 structural collapse leading to catastrophe~\citep{Campbell2006}. Mohr-Coulomb's 
 yield criterion along with a flow rule from metal plasticity is sufficient to 
 describe the behaviour of granular flow as a continuum process, without 
@@ -149,8 +148,8 @@ the first to try and model granular materials as individual grains.
 Bagnold's theory of motion of individual grains in a shear flow and 
 inter-grain friction inducing random velocities is reminiscent of the 
 thermal motion of molecules in the kinetic theory of gases. The two common 
-approaches in modelling the granular flow: the kinetic theory and the shallow 
-water theory, are discussed below.
+approaches in modelling the granular flow: the kinetic theory, the shallow 
+water theory and $\mu(I) $ rheology are discussed below.
 
 \subsection{Kinetic theory}
 The gas kinetic theory assumes that the particles interact by instantaneous 
@@ -172,7 +171,7 @@ density and size~\citep{Iddir2005}, however real systems are composed of
 particles that vary in size, and segregation of particles can occur. 
 
 The kinetic theory is valid for dispersed granular flows~\citep{Ng2008}, 
-however~\citet{VanWachem2001} observed that the numerical simulations of dense 
+~\citet{VanWachem2001} observed that the numerical simulations of dense 
 granular flow based on kinetic theory were poor in comparison with the 
 experimental data on fluidised bed expansion. Confined granular flows are 
 usually dense, because of their mechanism of energy dissipation and their 
@@ -358,7 +357,9 @@ The friction coefficient can be related to the inertial number \textit{I} as
 \mu(I) = \mu_s + \frac{\mu_2 - \mu_s}{I_0/I+1}
 \end{equation}
 %
-where $I_0$ is constant, typically in the range of 0.25 - 0.3. To formulate a 
+where $I_0$ is constant, typically in the range of 0.25 - 0.3. 
+
+To formulate a 
 complete constitutive model, it is essential to describe the volumetric 
 behaviour. Based on the dimensional analysis, it can be argued that the volume 
 change is also a function of dimensionless parameter \textit{I} and that it 
@@ -392,7 +393,7 @@ dimensionless shear rate $\textit{I}$, reproduced after ~\citet{Pouliquen2006}}
 
 In general, the flow regimes can be classified based on the dimensionless 
 number \textit{I}~\citep{DaCruz2005}.~\Cref{fig:Regime} shows the variation of 
-frictional coefficient $\mu$ and packing fraction $\phi$ with dimensionless 
+frictional coefficient $\mu$ and packing fraction with dimensionless 
 number \textit{I} for different flow regimes under simple shearing. Dilute or 
 ``collisional'' flow occurs for \textit{I} $>10^{-1}$ and the grain collision 
 is chiefly binary, accompanied  by additional ``bounce-back'' akin to 
@@ -542,7 +543,7 @@ various researchers to understand the flow behaviour.
 
 \subsection{Granular column collapse}
 \citet{Lube2005} and ~\citet{Lajeunesse2004} have carried out experimental 
-investigation on the collapse behaviour of granular columns on a horizontal 
+investigations on the collapse behaviour of granular columns on a horizontal 
 plane. Both the experiments involved filling a cylinder of height 
 $\textit{H}_{\textit{0}}$ and radius $\textit{L}_{\textit{0}}$ with 
 granular 
@@ -585,7 +586,7 @@ substrate properties, bead size, density, and shape of the granular material
 and released mass, \textit{m}~\citep{Lajeunesse2005}.
 
 The normalised final run-out distance as a function of the initial aspect 
-ratios of the granular column under plane-strain and axi-symmetric conditions 
+ratios of the granular column under plane-strain and axisymmetric conditions 
 is shown in~\cref{fig:Runout_Exp}.~\citet{Lube2005} scaled the run-out distance 
 as
 \begin{align}
@@ -606,11 +607,15 @@ while~\citet{Lajeunesse2005} scaled run-out as
 \end{cases}
 \end{align} 
 
+The final run-out distance is found to have a linear relation ship for short 
+columns and exhibit a power-law relation with the initial aspect ratio of tall 
+columns. 
+
 The normalised final height as a function of the initial aspect ratios of 
-the granular column under plane-strain and axi-symmetric conditions is 
+the granular column under plane-strain and axisymmetric conditions is 
 shown in~\cref{fig:Height_Exp}. The evolution of the final scaled deposit 
 height $\textit{H}_{\textit{f}}/\textit{L}_{\textit{0}}$ with the initial 
-aspect ratio \textit{a} for the axis-symmetric collapse~\citep{Lajeunesse2005} 
+aspect ratio \textit{a} for the axisymmetric collapse~\citep{Lajeunesse2005} 
 is given as 
 \begin{align}
 \textit{H}_{\textit{f}}/\textit{L}_{\textit{0}} \approx 
@@ -627,6 +632,11 @@ and for two-dimensional collapse
 \textit{a}^{1/3}, \qquad &\textit{a}\gtrsim 0.7
 \end{cases}
 \end{align}
+
+The final height of collapse is unaffected in both 2D collapse and 
+axisymmetric collapse for short columns. In the case of tall columns, 
+axisymmetric collapse show a constant final height where as a power-law 
+relation with the initial aspect ratio is observed in 2D collapse.
 
 \begin{figure}[tbhp]
 \centering
@@ -645,9 +655,10 @@ and for two-dimensional collapse
 	\end{subfigure}
 	\label{fig:Run_Height_Exp}
 	\caption[Normalised final run-out and height as a function of initial aspect ratio for 
-	plane-strain and axi-symmetric collapse]{The normalised final run-out distance and final height 
+	plane-strain and axisymmetric collapse]{The normalised final run-out 
+	distance and final height 
 	as a function of the initial aspect ratios of the granular column under plane-strain 
-	and axi-symmetric conditions~\citep{Lajeunesse2004}.}
+	and axisymmetric conditions~\citep{Lajeunesse2004}.}
 \end{figure}
 
 
@@ -668,12 +679,12 @@ scales as
 \citet{Balmforth2005} studied the collapse of granular columns in rectangular 
 channels with a narrow (width \textit{W} of the slot = 10 * diameter 
 \textit{d}) and a wide slot (\textit{W} = 200 * d), and focused on the deposit 
-shape.~\citet{Lacaze2008} observed that slots width $W \ge1.2 \times d$ avoids 
-crystallisation and wider slots $W \ge 2 \times d$ overcomes the effect of 
-jamming. As in the 
-axi-symmetric case, \citet{Balmforth2005} observed that the run-out is well 
-represented at large \textit{a} by a 
-simple power-law dependence, and depends on the width of the channel. The 
+shape.~\citet{Lacaze2008} observed that slots whose width $W \ge1.2 \times d$ 
+avoids crystallisation and wider slots $W \ge 2 \times d$ overcomes the effect 
+of jamming. As in the
+axisymmetric case, \citet{Balmforth2005} observed that the run-out is well 
+represented at large aspect ratios by a 
+simple power-law dependence, which depends on the width of the channel. The 
 run-out distance can be scaled as: $\Delta \textit{L}/\textit{L}_{\textit{0}} 
 \approx \lambda 
 \textit{a}^{0.65}$ for 
@@ -727,16 +738,16 @@ power-law dependence of the run-out distance on \textit{a}.
 Taking advantage 
 of the similarity between granular slumping and the classical ``\textit{dam 
 break}'' problem in fluid mechanics,~\citet{Kerswell2005} solved both the 
-axis-symmetric and two-dimensional granular-collapse problem using the 
+axisymmetric and two-dimensional granular-collapse problem using the 
 shallow-water approximation. Although the results of the shallow-water 
 approximation have good agreement with experimental results, the shallow-water 
 approximation overestimates the run-out distance for columns with aspect ratio 
 \textit{a} greater than unity. The shallow-water equation does not take into 
 account the effect of vertical acceleration~\citep{Lajeunesse2005}, which has 
 been found to play a significant role in controlling the collapse 
-dynamics~\citet{Staron2007a}, thus resulting in overestimation of run-out. The 
-evolution of run-out predicted using shallow-water approximation and DEM are 
-shown in~\cref{fig:DEM_Shallow}. Tall 
+dynamics~\citep{Staron2007a}, thus resulting in overestimation of the run-out 
+distance. The evolution of run-out predicted using shallow-water approximation 
+and DEM are shown in~\cref{fig:DEM_Shallow}. Tall 
 columns showed significantly longer run-out distances when using continuum 
 approaches like material point method~\citep{Bandara2013,Mast2014}. It was 
 observed that a simple friction model cannot effectively describe the collapse 
@@ -753,8 +764,8 @@ DEM~\citep{Staron2007a} and Shallow-water approximation~\citep{Kerswell2005}.}
 \end{figure}
 
 The final collapse height observed in the numerical simulations of granular 
-collapse is found to be similar to the experimental results of~\citet{Lube2005} 
-and~\citet{Balmforth2005}. Numerical simulation of granular 
+collapse is found to be similar to the experimental 
+results~\citep{Lube2005,Balmforth2005}. Numerical simulation of granular 
 column collapse~\citep{Lacaze2008,Staron2007a} showed a transition in the flow 
 behaviour at \textit{a}$\ge 10$, which was not observed in granular collapse 
 experiments~\citep{Balmforth2005,Lube2005,Lajeunesse2004}. In the 
@@ -784,7 +795,7 @@ scaled profile, and hence the entire flow process should be
 analysed.~\citet{Lajeunesse2005} observed the flow regime and deposit 
 morphology for a quasi-two-dimensional granular collapse in a rectangular 
 channel. The flow phenomenology of a granular column collapse in a rectangular 
-channel was surprisingly similar to that observed in the axis-symmetric 
+channel was surprisingly similar to that observed in the axisymmetric 
 collapse~\citep{Lube2005,Lajeunesse2004}, depending mainly on the initial 
 aspect ratio \textit{a} (\cref{fig:Run_Height_Exp}). 
 
@@ -802,7 +813,7 @@ shear along the direction transverse to the flow. Systematic measurements
 indicate that the ratio of the maximum surface velocity to the surface velocity 
 at the wall is between 1.2 and 1.4.~\citet{Lajeunesse2005} observed that the 
 difference between the evolution of $\textit{H}_{\textit{f}}$ in the 
-axis-symmetric geometry and in the rectangular channel is not an experimental 
+axisymmetric geometry and in the rectangular channel is not an experimental 
 artefact due to the side wall friction, but is a \textit{geometrical effect}. 
 
 \begin{figure}
@@ -823,14 +834,15 @@ well-defined fracture surface above which material slides down and below which
 the grains remain static. The grains located above the fracture move 
 ``\textit{en masse}'' and most of the shear is concentrated along this surface 
 forming a ``\textit{truncated-cone-like}'' deposit with a central motionless 
-plateau. For columns with larger aspect ratios, the flow is still initiated by 
+plateau~\cref{fig:Deposit}. For columns with larger aspect ratios, the flow is 
+still initiated by 
 failure along a well-defined surface, an inclined plane in two-dimensional 
-geometry or a cone in the axis-symmetric case. However, the initial height of 
+geometry or a cone in the axisymmetric case. However, the initial height of 
 the column is much higher than the top of the failure surface, causing a 
 vertical fall of grains until they reach the summit where they diverge along 
 the horizontal direction, dissipating a lot of kinetic energy, resulting in a 
 final conical deposit. Interestingly, the final deposit 
-height coincides with the summit of the failure surface in the axis-symmetric 
+height coincides with the summit of the failure surface in the axisymmetric 
 geometry, whereas in the rectangular channel, the deposit summit always lies 
 above the top of the failure surface~\citep{Lajeunesse2005}. Shallow-water 
 approximations shows a truncated cone-like deposit, while DEM simulations show 
@@ -974,12 +986,13 @@ Studies on the flow of granular materials down inclined planes are important to
 understand the mechanism of geophysical hazards, such as granular avalanches, 
 debris flows and submarine landslides. Large scale field tests on dry and 
 saturated granular materials were carried out to capture the mechanism of 
-granular flows down an inclined plane~\citep{Okada2008,Denlinger2001}. The 
+granular flows down an inclined plane~\citep{Okada2008,Denlinger2001}. 
+
+The 
 granular material stored in a reservoir at the top of the inclined plane is 
 released by opening a gate. The flow rate is controlled by the opening of a 
-gate.  the material flows down and develops into a dense granular flow. 
-
-An initially static granular layer of uniform thickness `\textit{h}' 
+gate. The material flows down and develops into a dense granular flow. An 
+initially static granular layer of uniform thickness `\textit{h}' 
 (\cref{fig:Incline}) starts to 
 flow when the plane inclination reaches a critical angle, 
 $\theta_{\textit{start}}$, the material reaches a sustained flow until the 
@@ -1056,6 +1069,7 @@ inclined plane~\citep{Abe2006,Bandara2013} captures the flow behaviour in the
 initial stages, however it exhibits inconsistent behaviour when the granular 
 material ceases to flow. This may be due to the application of small 
 deformation theory to a large deformation problem and the use of zero dilation. 
+
 Alternatively by using the $\mu(\textit{I})$ rheology we can capture the 
 velocity profile and the localization at the free surface. However, it fails to 
 model the transition from a continuous flow to an avalanching regime as the 
@@ -1074,10 +1088,10 @@ velocity profiles and flow behaviours can be obtained not only through changing
 the height of the flowing granular mass, but also by varying the inclination of 
 the chute, such that there is an overlap region where one can obtain similar 
 flow properties through either procedure. These features can be used to better 
-predict the evolution of an avalanche surface. Models that are based on Coulomb 
-friction are able to predict the energy dissipation along the rough surface, 
-however, they fail to capture the transient from static to a flowing 
-behaviour and again when it ceases to flow.
+predict the evolution of an avalanche surface. The $\mu(I)$ rheology and models 
+that are based on Coulomb friction are able to predict the energy dissipation 
+along the rough surface, however, they fail to capture the transient from 
+static to a flowing behaviour and again when it ceases to flow.
 
 \subsection{Saturated and submerged granular flows}
 Submarine mass movements pose a significant threat to the off-shore structures, 
@@ -1100,13 +1114,13 @@ remold or transform the intact material. During the course of a submarine slide
 event (or also a sub-aerial slide), there appears to be a process by which 
 there are some changes in solid to water ratio which provides a sufficiently 
 low strength to allow flow to take place~\citep{Locat2002}. Whatever the exact 
-nature of the phenomenon, it is embedded in the remoulding energy (Er). In both 
-sub-aerial and submarine landslides the triggering energy is the same (initial 
-potential energy). It appears as though the submarine landslides experience 
-more dissipation $E_D$ and $E_v$ than sub-aerial landslides, but one shouldn't 
-prematurely conclude that the run-out in submarine landslide will be shorter 
-due to more dissipation. The effect of hydroplaning and fluidisation of the 
-flowing mass result in complex interactions, which makes it difficult to 
+nature of the phenomenon, it is embedded in the remoulding energy ($E_r$). In 
+both sub-aerial and submarine landslides the triggering energy is the same 
+(initial potential energy). It appears as though the submarine landslides 
+experience more dissipation $E_D$ and $E_v$ than sub-aerial landslides, but one 
+shouldn't prematurely conclude that the run-out in submarine landslide will be 
+shorter due to more dissipation. The effect of hydroplaning and fluidisation of 
+the flowing mass result in complex interactions, which makes it difficult to 
 predict the exact mechanism of run-out and the length of run-out in 
 submarine conditions for a given initial state. 
 
@@ -1184,7 +1198,9 @@ in~\cref{fig:Fluid_Collapse}.
 
 They observed that, contrary to 
 the dense case, the whole loose column is mobilised immediately. The loose 
-column in fluid spreads almost twice than the dense case. The 
+column in fluid spreads almost twice than the dense 
+case.~\Cref{fig:Runout_PWP_Fluid_Exp} shows the evolution of run-out 
+and pore-pressure at the bottom of the granular flow. The 
 collapse of a granular column in a viscous fluid is found to be mainly 
 controlled by the initial volume fraction and not by the aspect ratio of the 
 column. The role of the initial volume fraction observed in the viscous 
@@ -1192,15 +1208,18 @@ collapse can be understood by the pore pressure feedback mechanism proposed
 by~\citep{Schaeffer2008,Iverson2000} in the context of landslides. The dense 
 column needs to dilate in order to flow. When it starts to fall, liquid
 is then sucked into the column, which is then stabilized by the additional 
-viscous drag~\citep{Rondon2011,Topin2012}. By opposition the loose column when 
-it starts flowing expands and ejects liquid, leading to a partial fluidisation 
-of the material.~\cref{fig:Runout_PWP_Fluid_Exp} shows the evolution of run-out 
-and pore-pressure at the bottom of the granular flow. The large 
-negative-pore pressure developed in the dense condition shows slower flow 
-evolution in the initial stages of collapse (slope of the run-out in the loose 
-case is steeper than the dense condition). The large positive pore-pressure 
+viscous drag~\citep{Rondon2011,Topin2012}. In the dense condition, large 
+negative-pore pressures are developed in the initial stages of collapse, they 
+collapse has to overcome the large negative pore-pressure before it starts to 
+flow. This results in a slow flow evolution as seen by the flatness of the 
+initial run-out curve in dense condition in comparison to the steep slope in 
+the loose case (\cref{fig:Runout_PWP_Fluid_Exp}). By opposition the loose 
+column when it starts flowing expands and ejects liquid, leading to a partial 
+fluidisation of the material. The large positive pore-pressure 
 developed at the bottom of the flow in loose condition indicates water 
-entrainment and hydroplaning resulting in longer run-out distance. 
+entrainment and hydroplaning. The entrainment of water at the basal flow front 
+lubricates the frictional effect and along with hydroplaning it results in 
+longer run-out distance. 
 
 \begin{figure}[htbp]
 \centering
@@ -1256,7 +1275,7 @@ ambient fluid. Thus, the dimensionless parameter can be modified to incorporate
 the viscous time to describe granular flow in a fluid~\citep{Pouliquen2005}. In 
 short time scales, the grain initially accelerates but because of the drag 
 force, the grain eventually reaches a limit viscous velocity $v_{\infty v}$. 
-The time required to travel a diameter \textit{d} is given as $t_fall = d / 
+The time required to travel a diameter \textit{d} is given as $t_{fall} = d / 
 v_{\infty v}$. This new viscous time is used to define the dimensionless number.
 
 \begin{figure}[htbp]
