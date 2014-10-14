@@ -54,8 +54,21 @@ geometry. Continuum mechanics relies on the fundamental notion of a
 representative volume element, in which, properties averaged over discrete 
 grains exhibit deterministic relationships. Recent works on granular 
 materials suggest that a continuum law may be incapable of revealing 
-in-homogeneities at the grain-scale level, such as force 
-chains, fabric tensor, etc~\citep{Rycroft2009b}. 
+in-homogeneities at the grain-scale level~\citep{Rycroft2009b}. Microscopic 
+features of dense granular materials, which seem to defy a simple continuum
+description include (i) complex, fractal networks of force chains, which 
+are inhomogeneous down to the grain level~\citep{Goldhirsch2003}, (ii) 
+anomalous, non-collisional particle dynamics with very slow cage 
+breaking~\citep{Rycroft2006}, (iii) proximity to the jamming transition, where 
+geometrical packing constraints suppress any dynamics, (iv) a lack of thermal 
+equilibrium in the conventional sense, since grains only move in response to 
+external forces, motivating new definitions of temperature, and (v) wide range 
+of dynamical response, from liquid-like to solid-like 
+behaviour~\citep{Jaeger1996,Aranson2001,Aranson2002}. The first four
+points cast serious doubt on the prospects of a continuum law. The fifth means 
+that the full stress tensor must be described, and it may depend on strain, 
+deformation rate, and material variables that can evolve during the 
+process~\citep{Rycroft2009b}.
 
 Granular materials exhibit many collective phenomenon \citep{Jaeger1996}. 
 However, no continuum model is still capable of describing the parabolic flow, 
@@ -64,9 +77,9 @@ in the granular materials. Most constitutive models, even in the simple case
 of dry granular flows, cannot describe the entire range of flow from solid to 
 fluid. In certain cases, the granular flow is modelled as a fluid behaviour. 
 Continuum models that are based on averaging techniques applied to a 
-representative volume elements are not successful even in quasi-static 
-conditions. The fundamental question is how to model granular materials which 
-exhibit complex phenomenon, meaningfully. 
+representative volume elements have been applied mostly to problems involving 
+quasi-static conditions. The fundamental question is how to model granular 
+materials which exhibit complex phenomenon, meaningfully. 
 
 The oldest approach involves modelling the granular material as a rigid solid, 
 which behaves as an ideal Coulomb material and undergoes failure if the ratio 
@@ -74,9 +87,12 @@ of the shear stress to the normal stress in any plane reaches a critical value
 of the Coulomb internal friction coefficient $\mu$. The stress is determined 
 based on the mechanical equilibrium of the system along with the hypothesis of 
 \textit{incipient yield}, i.e. the yield criterion is attained everywhere at 
-all times. In limit-state Mohr-Coulomb plasticity, these conditions are 
-assumed to hold even if the wall allows for a plastic yielding, due to the 
-assumption of coaxiality~\citep{Rycroft2009b}. The fundamental assumption of a 
+all times (in a ``\textit{limit-state}''). In limit-state Mohr–Coulomb 
+plasticity, these conditions are assumed to hold
+even if boundary conditions allow for plastic yielding. In that case, the 
+velocity follows from the assumption of coaxiality, which asserts that the 
+stress and deformation rate have the same eigen 
+directions~\citep{Rycroft2009b}. The fundamental assumption of a 
 limit-state stress field at incipient yield everywhere is questionable.
 
 Granular flows can contain regions lying within the yield surface. For 
