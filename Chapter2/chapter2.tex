@@ -106,8 +106,47 @@ highly-dissipative interactions, and a lack of separation between the
 microscopic grain scale and the macroscopic scale of the 
 flow~\citep{Goldhirsch2003}. 
 
-Granular flow modelling began as early as 1776 with Coulomb's paper describing 
-the yielding of granular material as a frictional process. 
+Granular flows display a large span of grain concentration and therefore 
+exhibit different behaviour at different concentrations (\cref{fig:kinetic}). 
+In general the behaviour can be classified into three mechanisms: \textit{a}. 
+in the \textit{dilute part of the flow}, grains randomly fluctuate and 
+translate, this form of viscous dissipation and stress is named kinetic, 
+\textit{b}. at higher concentration, in addition to the previous dissipation 
+form, grains can collide shortly, this gives rise to further dissipation and 
+stress, named \textit{collisional} and \textit{c} at very high concentration 
+(more than 50\% in volume), grains start to endure long, sliding and rubbing 
+contacts, which gives rise to a totally different from of dissipation and 
+stress, named \textit{frictional}. The momentum and energy transfer will be 
+different according to the granular regimes. For the granular phase, it is 
+clear that any mathematical model attempting to model the granular flow must 
+account for the above mechanisms, at any time and anywhere within the flow. The 
+mathematical models require a comprehensive unified stress tensor able to 
+adequately describe stress within the flow for any of these regimes, and this 
+without imposing what regime will dominate over the others. Several theoretical 
+frameworks have been used to describe the granular flow behaviour. Frictional 
+behaviour predominates in most granular flows. Hence, continuum models based 
+frictional properties of the granular mass have been widely adopted to discuss 
+the granular flow behaviour. Alternatively, dilute granular flow behaviour is 
+conventionally modelled using the kinetic theory, while the dense granular 
+flows are described using the $\mu(I)$ rheology. In certain conditions, where 
+the lateral extent of the flow is significantly larger than the vertical 
+component, hallow water approximation is used. The capability and limitation of 
+the various frameworks are discussed below. 
+%
+\begin{figure}[tbhp]
+\centering
+\includegraphics[width=0.95\textwidth]{kinetic}
+\caption{The modes of viscous dissipation in a granular flow}
+\label{fig:kinetic}
+\end{figure}
+%
+
+\subsection{Continuum models}
+
+Grains experience long and permanent contacts in rubbing, rolling on each 
+other. Hence a stress tensor based on the mechanical law of friction must be 
+developed. Granular flow modelling began as early as 1776 with Coulomb's paper 
+describing the yielding of granular material as a frictional process. 
 Although it was not about granular flows, \textit{per se}, the prediction of 
 soil failure for civil engineering applications describes the onset of 
 structural collapse leading to catastrophe~\citep{Campbell2006}. Mohr-Coulomb's 
@@ -147,9 +186,7 @@ important to look at the grain-level interactions.~\citet{Bagnold1954} was
 the first to try and model granular materials as individual grains. 
 Bagnold's theory of motion of individual grains in a shear flow and 
 inter-grain friction inducing random velocities is reminiscent of the 
-thermal motion of molecules in the kinetic theory of gases. The two common 
-approaches in modelling the granular flow: the kinetic theory, the shallow 
-water theory and $\mu(I) $ rheology are discussed below.
+thermal motion of molecules in the kinetic theory of gases. 
 
 \subsection{Kinetic theory}
 The gas kinetic theory assumes that the particles interact by instantaneous 
@@ -161,14 +198,44 @@ tangential to the point of contact are
 ignored~\citep{Campbell1990}.~\citet{Jenkins1983} extended the kinetic theory 
 for thermal fluids to idealized granular mixtures to predict the rapid 
 deformation of granular material by including energy dissipation during 
-collision for nearly inelastic particles. The different modes of viscous 
-dissipation observed in a granular flow is shown 
-in~\cref{fig:kinetic}.~\citet{Savage1981} extended the 
+collision for nearly inelastic particles.~\citet{Savage1981} extended the 
 kinetic theory to predict simple shear flow behaviour for a wide range of 
 coefficients of restitution. The kinetic theory is capable of predicting the 
 shear flow behaviour only for mixtures composed of particles with identical 
 density and size~\citep{Iddir2005}, however real systems are composed of 
 particles that vary in size, and segregation of particles can occur. 
+
+The formalisms of gas kinetic theory can be used to derive a
+set of equations for granular flow if the particles are assumed to
+be rigid. In turn, the rigid particle assumption implies that all contacts 
+occur instantaneously. Thus, there is vanishing probability of multiple 
+simultaneous contacts and only binary contacts are considered. From there, 
+kinetic theory formalisms yield a set of Navier – Stokes like equations. 
+Conservation of mass is written as
+\begin{equation}
+\frac{d \rho v}{dt} + \rho v \triangledown \cdot \mathrm{u} = 0 \,.
+\end{equation}
+\noindent Conservation of momentum
+\begin{equation}
+\label{eq:momentum_kinetic}
+\rho v \frac{d \mathrm{u}}{dt} = \triangledown p(\rho,v,T,\epsilon) + 
+\triangledown \cdot ( \eta (p,\rho,v,T,\epsilon)  \triangledown \mathrm{u}) \,.
+\end{equation}
+\noindent Conservation of granular energy (granular temperature)
+\begin{equation}
+\rho v \frac{d T}{dt} = \triangledown \cdot ( \alpha (p,\rho,v,T,\epsilon)  
+\triangledown T) + \tau : \triangledown \mathrm{u} - \Gamma 
+(p,\rho,v,T,\epsilon)  \,.
+\end{equation}
+where $\alpha$ is the conductivity, $\tau : \triangledown \mathrm{u}$ is the 
+temperature production by shear work, $p$ is the pressure, concentration is 
+$v$, $\rho$ is the density, $\epsilon$ is the coefficient of restitution, $T$ 
+is the granular temperature and $\Gamma$ is the dissipation through inelastic 
+collisions. There are several problems that should be immediately
+apparent with this formulation. The most obvious is that the
+range of applicability of rapid flow theory is limited. The solid phase 
+stresses are viscous in nature (~\cref{eq:momentum_kinetic}), which results in 
+no-force condition when the granular mass is static~\citep{Campbell2006}.
 
 The kinetic theory is valid for dispersed granular flows~\citep{Ng2008}, 
 ~\citet{VanWachem2001} observed that the numerical simulations of dense 
@@ -181,14 +248,6 @@ influence on the flow behaviour~\citep{Pouliquen2002}. Thus, a part of the
 force is transmitted through the force network, which contradicts the two basic 
 assumptions in the kinetic theory, i.e. binary collision and the molecular 
 chaos. 
-%
-\begin{figure}[htbp]
-\centering
-\includegraphics[width=0.95\textwidth]{kinetic}
-\caption{The modes of viscous dissipation in a granular flow}
-\label{fig:kinetic}
-\end{figure}
-%
 
 For dense granular flow conditions, the total stress transmission in the flow 
 regime is the sum of the rate-dependent (collision-transition) and the 
@@ -205,98 +264,16 @@ force exerted by the granular materials on the walls, as observed in
 experiments. The addition of a frictional component to the kinetic theory 
 improves its prediction of granular flows. However, the frictional component 
 that is based on long-duration contact is added to the instantaneous collision 
-contact term. Also, the rapid-flow models based on gas kinetic theory assume 
-that the molecular collisions are elastic, which means that they do not 
-dissipate energy~\citep{Campbell2006}, which is in contrast to the reality. 
-Finally, the important assumption of gas kinetic theory is molecular chaos, 
-which assumes no correlation between the velocities or positions of the 
-colliding particles, which is not true especially in a dense granular flow 
-where the particles interact many times with their neighbours and a strong 
-correlation between their velocities is inevitable.
-
-\subsection{Shallow-water approximation}
-
-Developing constitutive laws valid from the quasi-static to
-dilute regimes remains a serious challenge. Simple 
-elasto-plastic approach fails to model the collisional regimes in a granular 
-flow. On the other hand, the original kinetic theory based 
-on binary collisions does not capture the correct behaviour in the dense regime.
-In configurations where the flowing layer is thin, a different theoretical 
-framework is adopted.
-%
-%The Navier-Stokes equation in fluid mechanics is capable of describing the 
-%dynamics of fluid flow under different conditions. However, the proposed 
-%models 
-%for granular flows tend to be specialized for a particular situation. By 
-%drawing a simple analogy from fluid dynamics one can model granular flows as 
-%non-Newtonian fluids using a variant of the Navier-Stokes equation;
-One such approach is the depth-averaged shallow-water equation, which has been 
-applied to solve granular flow dynamics with a reasonable amount of success. 
-The Savage-Hutter model~\citep{Savage1991}, is a depth-average 
-continuum-mechanics based approach which consists of hyperbolic partial 
-differential equations to 
-describe the distribution of the depth and the topography of an avalanching 
-mass of cohesion-less granular media~\citep{Hutter2005}. This approach is based 
-on the assumption that the horizontal length scale is very large in comparison 
-with the vertical length scale, which allows us to neglect the horizontal 
-partial derivatives relative to the vertical partial derivatives. Field 
-observations of natural avalanches indicate an aspect ratio of $10^{-3} \mbox{ 
-to } 10^{-4}$~\citep{Cawthor2006a}. By neglecting the vertical length 
-scale, the continuum equation for conservation of mass and momentum can be 
-written as
-%
-\begin{align}
- \partial_{\textit{x}}\textit{u}+\partial_{\textit{y}}\textit{v}& =0 \,,\\
- \partial_{\textit{t}}\textit{u}+\textit{u}\partial_{\textit{x}}\textit{u} + 
-\textit{v}\partial_{\textit{y}}\textit{u} & =\left(\triangledown \cdot \sigma 
-\right)_{\textit{x}} +\textit{\textbf{F}}_{\textit{x}} \,.
-\end{align}
-%
-The continuum equation requires determining the components of the stress tensor 
-and a suitable constitutive law. \textit{Savage-Hutter (SH) model} uses the 
-Mohr-Coulomb law to describe the constitutive relation. The conservation of 
-mass and momentum in the SH model is based on the assumption of granular flow 
-as an incompressible fluid flow, which means that throughout the avalanche, the 
-density of the avalanching material remains constant. 
-Although~\citet{Hutter1995} observed the density of the granular flow to remain 
-almost constant in a flow down a curved chute, the destructive nature of 
-landslides and avalanches restricts us from inferring a conclusive result. The 
-SH model involves the following assumptions: (1) Coulomb-type sliding takes 
-place with a bed friction angle $\delta$, (2) Mohr-Coulomb frictional behaviour 
-occurs inside the material with internal angle of friction, $\phi \ge \delta$, 
-and (3) the velocity profile is assumed to be uniform throughout the avalanche 
-depth. The granular flow over a rigid plane inclined at an angle, $\theta$ is 
-shown in~\cref{fig:SH}. The mass and momentum balance in the SH model is 
-written as
-%
-\begin{figure}[htbp]
-\centering
-\includegraphics[width=0.95\textwidth]{SH}
-\caption{Illustration of the Savage-Hutter model}
-\label{fig:SH}
-\end{figure}
-%
-\begin{align}
-&\frac{\partial \textit{H}}{\partial \textit{T}} + \frac{\partial}{\partial 
-\textit{X}} (\textit{HU})  =  0 \,, \\
-&\frac{\partial \textit{U}}{\partial \textit{T}} + \textit{U} \frac{\partial 
-\textit{U}}{\partial \textit{X}}  = (\sin \theta - \tan \delta 
-\textit{sgn}(\textit{U}) \cos \theta) -\beta \frac{\partial 
-\textit{H}}{\partial \textit{X}} \,,
-\end{align}
-%
-where capital letters denote non-dimensional quantities with respect to the 
-typical horizontal and vertical length scales $(\textit{L}^{*},\textit{H}^{*})$ 
-and the time scale $\sqrt{\textit{L}^{*}/\textit{g}}$. The key feature in the 
-shallow water approximation is the Mohr-Coulomb constitutive law, which is 
-applied at the free surface and at the base, to describe the granular flow. 
-Comparison of the model with the post-calculation of Madlein avalanche in 
-Austria indicates that the Coulomb basal friction is insufficient and requires 
-an additional viscous component. The SH model's predictions were not 
-satisfactory for granular flows down gentle slopes of inclination angle $\le 
-30^{o}$, where granular materials exhibit premature stop~\citep{Hutter2005}. 
-The SH model has not yet been tested in cases where the granular flow interacts 
-with obstacles.
+contact term. Which is self-contradictory as they are formed by simply adding a 
+rapid-flow model, based on instantaneous collisions, to a frictional model, 
+based on long duration contacts. Also, the rapid-flow models based on gas 
+kinetic theory assume that the molecular collisions are elastic, which means 
+that they do not dissipate energy~\citep{Campbell2006}, which is in contrast to 
+the reality. Finally, the important assumption of gas kinetic theory is 
+molecular chaos, which assumes no correlation between the velocities or 
+positions of the colliding particles, which is not true especially in a dense 
+granular flow where the particles interact many times with their neighbours and 
+a strong correlation between their velocities is inevitable.
 
 \subsection{Rheology}
 \label{sec:muI}
@@ -317,19 +294,19 @@ flow, i.e. to study the effect of the strain rate, $\dot{\gamma}$, and
 pressure, \textit{P} on the volume and shear stress, $\tau$. 
 
 Even though the granular materials have been extensively researched at 
-microscopic level, the 
-continuum representation of granular materials in terms of conservation of mass 
-and momentum is still an area of concern~\citep{Midi2004,Daniel2007}. The 
-prediction of rheology of granular materials even in the simplest case is 
-complicated as they exhibit rate-dependent behaviour and no single constitutive 
-equation is able to describe the behaviour over a range of shear stress 
-rates.~\citet{DaCruz2005} developed a very famous rheology for granular flows, 
-that is based on the simple two-dimensional shear in the absence of gravity and 
-establishes that the flow regime and rheological parameters scale with a 
-dimensionless number that represents the relative strength of inertia forces 
-with respect to the confining pressure~\citep{Daniel2007}, along the lines 
-of~\citet{Savage1991}. The shear stress, $\tau$, is proportional to the 
-confining pressure, \textit{P}, and is written as
+microscopic level, the continuum representation of granular materials in terms 
+of conservation of mass and momentum is still an area of 
+concern~\citep{Midi2004,Daniel2007}. The prediction of rheology of granular 
+materials even in the simplest case is complicated as they exhibit 
+rate-dependent behaviour and no single constitutive equation is able to 
+describe the behaviour over a range of shear stress rates.~\citet{DaCruz2005} 
+developed a very famous rheology for granular flows, that is based on the 
+simple two-dimensional shear in the absence of gravity and establishes that the 
+flow regime and rheological parameters scale with a dimensionless number that 
+represents the relative strength of inertia forces with respect to the 
+confining pressure~\citep{Daniel2007}, along the lines of~\citet{Savage1991}. 
+The shear stress, $\tau$, is proportional to the confining pressure, 
+\textit{P}, and is written as
 %
 \begin{equation}
 \tau = \textit{P} \mu (\textit{I}) \,.
@@ -512,6 +489,90 @@ specifies a fixed functional relationship between shear resistances and shear
 rate. Although rate-dependent shear resistance is observed in debris flows, its 
 magnitude and origin indicate that it is ancillary rather than 
 essential~\citep{Iverson2003}.
+
+\subsection{Shallow-water approximation}
+
+Developing constitutive laws valid from the quasi-static to
+dilute regimes remains a serious challenge. Simple 
+elasto-plastic approach fails to model the collisional regimes in a granular 
+flow. On the other hand, the original kinetic theory based 
+on binary collisions does not capture the correct behaviour in the dense regime.
+In configurations where the flowing layer is thin, a different theoretical 
+framework is adopted.
+%
+%The Navier-Stokes equation in fluid mechanics is capable of describing the 
+%dynamics of fluid flow under different conditions. However, the proposed 
+%models 
+%for granular flows tend to be specialized for a particular situation. By 
+%drawing a simple analogy from fluid dynamics one can model granular flows as 
+%non-Newtonian fluids using a variant of the Navier-Stokes equation;
+One such approach is the depth-averaged shallow-water equation, which has been 
+applied to solve granular flow dynamics with a reasonable amount of success. 
+The Savage-Hutter model~\citep{Savage1991}, is a depth-average 
+continuum-mechanics based approach which consists of hyperbolic partial 
+differential equations to 
+describe the distribution of the depth and the topography of an avalanching 
+mass of cohesion-less granular media~\citep{Hutter2005}. This approach is based 
+on the assumption that the horizontal length scale is very large in comparison 
+with the vertical length scale, which allows us to neglect the horizontal 
+partial derivatives relative to the vertical partial derivatives. Field 
+observations of natural avalanches indicate an aspect ratio of $10^{-3} \mbox{ 
+to } 10^{-4}$~\citep{Cawthor2006a}. By neglecting the vertical length 
+scale, the continuum equation for conservation of mass and momentum can be 
+written as
+%
+\begin{align}
+ \partial_{\textit{x}}\textit{u}+\partial_{\textit{y}}\textit{v}& =0 \,,\\
+ \partial_{\textit{t}}\textit{u}+\textit{u}\partial_{\textit{x}}\textit{u} + 
+\textit{v}\partial_{\textit{y}}\textit{u} & =\left(\triangledown \cdot \sigma 
+\right)_{\textit{x}} +\textit{\textbf{F}}_{\textit{x}} \,.
+\end{align}
+%
+The continuum equation requires determining the components of the stress tensor 
+and a suitable constitutive law. \textit{Savage-Hutter (SH) model} uses the 
+Mohr-Coulomb law to describe the constitutive relation. The conservation of 
+mass and momentum in the SH model is based on the assumption of granular flow 
+as an incompressible fluid flow, which means that throughout the avalanche, the 
+density of the avalanching material remains constant. 
+Although~\citet{Hutter1995} observed the density of the granular flow to remain 
+almost constant in a flow down a curved chute, the destructive nature of 
+landslides and avalanches restricts us from inferring a conclusive result. The 
+SH model involves the following assumptions: (1) Coulomb-type sliding takes 
+place with a bed friction angle $\delta$, (2) Mohr-Coulomb frictional behaviour 
+occurs inside the material with internal angle of friction, $\phi \ge \delta$, 
+and (3) the velocity profile is assumed to be uniform throughout the avalanche 
+depth. The granular flow over a rigid plane inclined at an angle, $\theta$ is 
+shown in~\cref{fig:SH}. The mass and momentum balance in the SH model is 
+written as
+%
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.95\textwidth]{SH}
+\caption{Illustration of the Savage-Hutter model}
+\label{fig:SH}
+\end{figure}
+%
+\begin{align}
+&\frac{\partial \textit{H}}{\partial \textit{T}} + \frac{\partial}{\partial 
+\textit{X}} (\textit{HU})  =  0 \,, \\
+&\frac{\partial \textit{U}}{\partial \textit{T}} + \textit{U} \frac{\partial 
+\textit{U}}{\partial \textit{X}}  = (\sin \theta - \tan \delta 
+\textit{sgn}(\textit{U}) \cos \theta) -\beta \frac{\partial 
+\textit{H}}{\partial \textit{X}} \,,
+\end{align}
+%
+where capital letters denote non-dimensional quantities with respect to the 
+typical horizontal and vertical length scales $(\textit{L}^{*},\textit{H}^{*})$ 
+and the time scale $\sqrt{\textit{L}^{*}/\textit{g}}$. The key feature in the 
+shallow water approximation is the Mohr-Coulomb constitutive law, which is 
+applied at the free surface and at the base, to describe the granular flow. 
+Comparison of the model with the post-calculation of Madlein avalanche in 
+Austria indicates that the Coulomb basal friction is insufficient and requires 
+an additional viscous component. The SH model's predictions were not 
+satisfactory for granular flows down gentle slopes of inclination angle $\le 
+30^{o}$, where granular materials exhibit premature stop~\citep{Hutter2005}. 
+The SH model has not yet been tested in cases where the granular flow interacts 
+with obstacles.
 
 The two main modelling techniques that are commonly employed to describe the 
 granular flow are the continuum approach and the discrete element approach. The 
