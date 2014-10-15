@@ -456,6 +456,30 @@ and acceleration on the boundary plane is zero. Displacement boundary
 conditions are applied as velocity constrains on the nodes in the background 
 mesh.
 
+\begin{algorithm}[tbhp]
+\label{alg:friction}
+\caption{Friction boundary algorithm for solid phase in MPM~\citep{Bandara2013}}
+\begin{algorithmic}
+\If {$a_{sI,t}^{k+1} < 0.0$}
+    \State $v_{sI,t}^{k+1,tmp}=v_{sI}^k+\Delta a_{sI,t}^{k+1}$
+    \If {$v_{sI,t}^{k+1,tmp}= 0$} \Comment{static fricion condition}
+        \If {$a_{sI,t}^{k+1} \leq \mu_s \left| a_{sI,n}^{k+1} \right|$}
+            \State $a_{sI,t}^{k+1}= 0.$
+        \Else \Comment{friction acts in the direction opposite to the tangential force}
+            \State $a_{sI,t}^{k+1} = a_{sI,t}^{k+1} - \mu_s  \left| a_{sI,n}^{k+1} \right| \frac{a_{sI,t}^{k+1}}{ \left| a_{sI,n}^{k+1} \right|}$
+
+        \EndIf
+    \Else  \Comment{Kinetic fricion condition}
+        \If {$v_{sI,t}^{k+1} \leq \mu_k \left| a_{sI,n}^{k+1} \right| \Delta t$}
+            \State $a_{sI,t}^{k+1} = - \frac{v_{sI,t}^{k}}{\Delta t}$
+        \Else \Comment{friction acts in the direction opposite to the movement}
+            \State $a_{sI,t}^{k+1} = a_{sI,t}^{k+1} - \mu_k  \left| a_{sI,n}^{k+1} \right| \frac{v_{sI,t}^{k+1}}{ \left| v_{sI,n}^{k+1} \right|}$
+        \EndIf
+    \EndIf
+\EndIf
+\end{algorithmic}
+\end{algorithm}
+
 \subsection{Integration scheme}
 
 \citet{Love2006} investigated the energy consistency of MPM and observed that 
