@@ -65,9 +65,9 @@ equilibrium in the conventional sense, since grains only move in response to
 external forces, motivating new definitions of temperature, and (v) wide range 
 of dynamical response, from liquid-like to solid-like 
 behaviour~\citep{Jaeger1996,Aranson2001,Aranson2002}. The first four
-points cast serious doubt on the prospects of a continuum law. The fifth means 
-that the full stress tensor must be described, and it may depend on strain, 
-deformation rate, and material variables that can evolve during the 
+points cast serious doubt on the prospects of a continuum law. The fifth point 
+means that the full stress tensor must be described, and it may depend on 
+strain, deformation rate, and material variables that can evolve during the 
 process~\citep{Rycroft2009b}.
 
 Granular materials exhibit many collective phenomenon \citep{Jaeger1996}. 
@@ -93,45 +93,79 @@ even if boundary conditions allow for plastic yielding. In that case, the
 velocity follows from the assumption of coaxiality, which asserts that the 
 stress and deformation rate have the same eigen 
 directions~\citep{Rycroft2009b}. The fundamental assumption of a 
-limit-state stress field at incipient yield everywhere is questionable.
-
-Granular flows can contain regions lying within the yield surface. For 
-example, in the case of a granular column collapse the central cone remains 
+limit-state stress field at incipient yield everywhere is questionable. 
+Granular flows can contain regions of stresses lying within the yield surface. 
+For example, in the case of a granular column collapse the central cone remains 
 stagnant, and thus cannot be considered as yielded. In fact, discrete-element 
 simulations show that the grains in this region essentially remain 
-static~\citep{Staron2005}. The coaxiality feature of Mohr-Coulomb plasticity 
-is useful in describing the debris flow. Granular material deforms solely based 
+static~\citep{Staron2005}. Mohr–Coulomb plasticity have been used extensively 
+in engineering applications~\citep{Nedderman1992}, but the general solution 
+requires sophisticated numerical techniques to capture shock-like 
+discontinuities in stress and velocity, which arise even in relatively simple 
+geometries. 
+
+The coaxiality feature of Mohr-Coulomb plasticity 
+is useful in describing the debris flow. The principle of coaxiality
+claims that material should flow by extending along the
+minor principal stress direction and contracting along the major principal 
+stress direction; the principal planes of stress are aligned with the principal 
+planes of strain-rate. Granular material deforms solely based 
 on the alignment of the principle plane. In general, the major principle plane 
 is usually vertical due to gravity, and the coaxiality rule requires the 
 material to expand horizontally, which is the case for granular column 
 collapse. However, the coaxiality can be troubling depending on the 
-circumstances, for example, in a slow dense granular flow through a silo, the 
-principle plane remains vertical and the coaxiality requires the granular 
-material to expand horizontally, thus making it geometrically impossible for 
-the granular material to converge and exit through the orifice. Depending on 
-the boundary conditions, Mohr-Coulomb plasticity can result in discontinuity or 
-jumps in the velocity and stress fields~\citep{Rycroft2006}. 
+circumstances. Suppose we have a flat-bottomed quasi-2D silo with smooth 
+side-walls. Under standard filling procedures, the walls provide only enough 
+pressure to keep the grains from sliding farther out.  For example, in a slow 
+dense granular flow through a silo, the principle plane remains vertical and 
+the coaxiality requires the granular material to expand horizontally, thus 
+making it geometrically impossible for the granular material to converge and 
+exit through the orifice. Depending 
+on the boundary conditions, Mohr-Coulomb plasticity can result in discontinuity 
+or jumps in the velocity and stress fields~\citep{Rycroft2006}. Coaxiality can 
+also violate principles of thermodynamics. Coaxiality only ensures there is no 
+shear strain-rate in the principal stress reference frame and actually does not 
+directly enforce that of the two principal strain-rate axes, the axis of
+maximal compression (i.e. the major principal strain-rate direction) must align 
+with the major principal stress direction.
+
+\citet{Roscoe1970} showed that the principal axes of strain rate and of 
+stress are generally not coincident during simple shear tests of sand. Despite 
+the plastic character of the flow, the flow rules obtained by employing the 
+rheological concept of perfect plasticity to granular materials (perfect soil 
+plasticity) are definitely inadequate for a description of fully developed 
+shear flow. The non-coaxiality of the tensors of stress and strain increment is 
+able to explain the shear flow behaviour. The rotations of the principal stress 
+and the principal plastic strain rate are found to be non-coaxial particularly 
+at the early stage of loading. However, the axes tend 
+to become coincident at large shear strains~\citep{Yu2006}, which is common in 
+geophysical flows.
 
 Advanced elasto-plastic models based on the \textit{critical state} theory
 provide a better representation of granular flows in quasi-static regime, but 
-they fail to capture the mechanism of rapid granular flows which involves rate 
-dependent behaviour. Another continuum based model is the partial fluidisation 
-model, which uses a set of equations that describes the flow velocity and the 
-shear stresses along with a auxiliary order parameter to predict the granular 
-flow behaviour. The order parameter of the granular media controls the size of 
-the viscous-like contribution to the stress tensor, and describes the 
-transition between the flowing and the static components of the granular 
-system~\citep{Aranson2001}. A constitutive model, which considers the solid 
-fraction as the main microscopic parameter for describing dense granular flow 
-was proposed by~\citet{Josserand2004}. The stress in the granular material is 
-divided into rate-dependent part representing the rebound-less impact between 
-grains, and a rate-independent part associated with longer contacts, i.e. 
-quasi-static regime. Although, the model captures shear localization behaviour, 
-it fails to describe the granular flow behaviour at rough boundaries.
+do not have any rate-dependent effects that are associated with rapid granular 
+flows. At large shear strains, such as geophysical flows, the granular mass is 
+considered to be in critical state. Another continuum based model is the 
+partial fluidisation model, which uses a set of equations that describes the 
+flow velocity and the shear stresses along with a auxiliary order parameter to 
+predict the granular flow behaviour. The order parameter of the granular media 
+controls the size of the viscous-like contribution to the stress tensor, and 
+describes the transition between the flowing and the static components of the 
+granular system~\citep{Aranson2001}. A constitutive model, which considers the 
+solid fraction as the main microscopic parameter for describing dense granular 
+flow was proposed by~\citet{Josserand2004}. The stress in the granular material 
+is divided into rate-dependent part representing the rebound-less impact 
+between grains, and a rate-independent part associated with longer contacts, 
+i.e. quasi-static regime. Although, the model captures shear localization 
+behaviour, it fails to describe the granular flow behaviour at rough 
+boundaries. In the basal or frictional layer, the grain rotation plays an 
+important role. This causes the grain stress tensor to be non-symmetric and 
+results in a perturbed profile in the solid fraction, these phenomena would 
+require specific modelling~\citep{Josserand2004}.
 
-In the case of saturated/submerged soil conditions, most of these techniques 
-do not consider the fully coupled behaviour. Instead, they consider the 
-soil-fluid mixture as a single phase material. However, modelling of pore 
+In the case of saturated/submerged soil conditions, most of the continuum 
+techniques do not consider the fully coupled behaviour. Instead, they consider 
+the soil-fluid mixture as a single phase material. However, modelling of pore 
 pressure dissipation is important to capture accurate flow behaviour, 
 especially in submarine conditions, where they play a crucial role in the flow 
 dynamics. Presence of ambient fluid may retard the flow due to viscous drag or 
@@ -444,6 +478,8 @@ is formulated in the weak form. Implementation of traction boundary conditions
 requires a set of material points to represent the boundary 
 layer.~\citet{Bandara2013} proposed a friction interaction for the planar 
 boundary condition, using Coulomb's friction criterion. The friction boundary 
+algorithm for solid phase adopted in the present study is shown 
+in~\cref{alg:friction}. The friction boundary 
 conditions are applied on the mesh nodes by controlling the nodal acceleration 
 tangential to the boundary. The nodal accelerations 
 are considered to include the frictional effects instead of the forces, as the 
@@ -484,7 +520,9 @@ mesh.
 
 \citet{Love2006} investigated the energy consistency of MPM and observed that 
 MPM algorithm is more suited to flow calculations than Lagrangian finite 
-element methods. In dynamic MPM, the explicit time integration scheme is 
+element methods. Since, energy consistent MPM formulation is effective in 
+simulating materials that exhibit localised dissipative mechanisms. In dynamic 
+MPM, the explicit time integration scheme is 
 adopted to advance the solution.~\citet{Bardenhagen2002} studied the energy 
 consistency of MPM using two 
 different explicit integration schemes. The \textit{update stress first} USF
@@ -509,7 +547,9 @@ governing equations, using the Newmark integration scheme.~\citet{Love2006}
 showed that the implicit time integration in MPM to be unconditionally stable. 
 Although, MPM did not suffer from the limitations of FEM in simulating large 
 deformations, more research is required for applying implicit time integration 
-for large deformation problems. 
+for large deformation problems. The present study focuses on large deformation 
+problems, hence an explicit time integration scheme with the USL approach is 
+adopted.
 
 \subsection{Solution scheme}
 A step-by-step solution scheme for Material Point Method is described below:
