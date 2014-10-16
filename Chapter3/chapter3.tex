@@ -938,8 +938,7 @@ necessary.
 \subsection{GIMP method}
 
 The shape functions used in MPM are continuous, and hence penetration between 
-bodies are handled 
-automatically without the need for any supplemental contact 
+bodies are handled automatically without the need for any supplemental contact 
 algorithm~\citep{Chen2002}. In MPM, the continuum body deforms and moves in 
 an arbitrary computation grid and all the boundary conditions are carried by 
 the boundary particles. If a boundary particle is present in a cell, then the 
@@ -1073,7 +1072,13 @@ simulations are presented in~\cref{sec:dry_granular_column}. A
 granular column with an initial aspect ratio of 0.4 is considered for the 
 comparison. The granular column is represented by 32,000 material points 
 arranged uniformly on a regular lattice with a particle spacing of 
-0.25~\si{\mm}. A grid size of 1~\si{mm} is adopted with 16 material points per 
+0.25~\si{\mm}. Since, the scale of the problem being modelled is small and it 
+is important to precisely define the flow surface, a larger number 
+of material points are used to represent the geometry. However when modelling 
+geophysical problems, where the tolerance in defining the flow surface is in 
+the order of few millimetres, each material point 
+shall represent individual grains or orders of magnitude larger than the grain 
+size. A grid size of 1~\si{mm} is adopted with 16 material points per 
 cell. In order to understand the influence of the number of material points on 
 the accuracy of the solution, simulation using 4 material points per cell with 
 GIMP is also performed. The granular collapse experiment is performed for a 
@@ -1093,8 +1098,8 @@ in~\cref{fig:MPM_GIMP}. For a time up to $t=1.5\tau_c$ all approaches yield the
 exact same behaviour. However, as the flow progresses, the number of material 
 points per cell at the flow front decreases and this results in oscillations. 
 The oscillations with decrease in the number of material points can be seen in 
-the 4 material points per cell. Hence, it is essential to have a larger number 
-of material points, especially at the flow front. The difference in the 
+the case of 4 material points per cell. Hence, it is essential to have a larger 
+number of material points, especially at the flow front. The difference in the 
 normalised run-out between MPM and GIMP method is about 2.5\%. This is due to 
 the difference in the interpolation scheme adopted in both approaches. GIMP 
 method offers a better approximation of the run-out behaviour as a result of 
@@ -1668,8 +1673,11 @@ its lever arm. It is assumed that the lever arms have lengths equal to
 $r_{\mathit{i}}$ and $r_{\mathit{j}}$, which is true only when the grains do 
 not overlap, hence in this case they produce an error of order 
 $\mathbf{\mathit{O}}(\delta_{n}/r)$. It is nevertheless desirable to damp this 
-type of motion~\citep{Radjai2011}. 
-
+type of motion~\citep{Radjai2011}. A rolling resistance is adopted in order to 
+model the shape effect of non-spherical grains, which accounts for moments 
+arising from the fact that the line of action of the normal contact force in 
+the case of non-spherical particles no longer passes through the centre of mass
+of the particles and hence generates rotational moments.
 
 The interaction between two solid bodies is much more complex than that is 
 described by the simple linear model. Nevertheless, the linear force law has 
@@ -1853,15 +1861,15 @@ all grains for both short and long durations, however no such algorithm exists.
 In certain cases, two trajectories that are initially very close may diverge 
 exponentially as time progresses. Any integration error, however small it may 
 be, would always diverge the predicted trajectory exponentially from the true 
-trajectory. This phenomenon is called the Lyapunov instability, and it is 
-devastating to the whole idea of Discrete Element Method simulation, but we 
-have good reasons to assume that even this problem need not be 
-serious~\citep{Frenkel1996}. First of all, one should realize that 
-the aim of DEM is not to predict precisely what will happen to a system, but 
-to predict the average behaviour of the system that is prepared in an initial 
-state about which we know something (initial position, velocity and energy), 
-but not everything. Hence, DEM differs from other methods, which are used to 
-predict the trajectories. However, considerable numerical evidence suggest that 
+trajectory. This phenomenon is called the Lyapunov instability, and it poses a 
+serious threat to the whole idea of Discrete Element Method simulation. 
+However, this problem might not be serious~\citep{Frenkel1996}. The aim of DEM 
+is not to predict precisely what will happen to a system, but to predict the 
+average behaviour of the system that is prepared in an initial state about 
+which we 
+know something (initial position, velocity and energy), but not everything. 
+Hence, DEM differs from other methods, which are used to predict the 
+trajectories. However, considerable numerical evidence suggest that 
 the shadow orbits exists, which is a true trajectory of a multi-body system 
 that closely follows the numerical trajectory for a time that is longer in 
 comparison with the time that is required for the Lyapunov instability to 
@@ -2467,20 +2475,21 @@ density}
 \section{Summary}
 
 A plane-strain Material Point Method is implemented in the present study to 
-describe the continuum response of granular flows. The Generalised 
-Interpolation Material Point GIMP method is implemented to minimize 
-oscillations in large-deformation problems due to cell-crossing noise. The 
-effect of mesh size and the number of material points per cell on the run-out 
-behaviour is also investigated. The accuracy of the continuum approach improves 
-with increase in the number of material points per cell and a decrease in the 
-mesh size. The grain-scale response is captured using a 
-two-dimensional DEM code. The discrete grains are generated using a cumulative 
-$\beta$ distribution, which mimics the particle size distribution curves. The 
-sample is generated using the ballistic deposition technique and the 
-homogeneity of the generated sample is verified by investigating the variance 
-in the void-ratio at different layers. A sweep-line Voronoi tessellation 
-approach is adopted to extract macroscopic parameters such as stresses and 
-packing density from micro-scale properties such as the local packing fraction. 
-These multi-scale tools are used to understand the rheophysics of
-dry granular flows and to evaluate the suitability of MPM as a continuum 
-approach in modelling granular flow behaviour.
+describe the continuum response of granular flows. When the material points 
+move from one cell to another, it results in numerical oscillations called as 
+the cell-crossing noise. The Generalised Interpolation Material Point GIMP 
+method is adopted to minimize these oscillations in large-deformation problems. 
+The effect of mesh size and the number of material points per cell on the 
+run-out behaviour is also investigated. The accuracy of the continuum approach 
+improves with increase in the number of material points per cell and decrease 
+in the mesh size. The grain-scale response is captured using a two-dimensional 
+DEM code. The discrete grains are generated using a cumulative $\beta$ 
+distribution, which mimics the particle size distribution curves. The sample is 
+generated using the ballistic deposition technique and the homogeneity of the 
+generated sample is verified by investigating the variance in the void-ratio at 
+different layers. A sweep-line Voronoi tessellation approach is adopted to 
+extract macroscopic parameters such as stresses and packing density from 
+micro-scale properties such as the local packing fraction. These multi-scale 
+tools are used to understand the rheophysics of dry granular flows and to 
+evaluate the suitability of MPM as a continuum approach in modelling granular 
+flow behaviour.
