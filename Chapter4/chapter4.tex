@@ -308,7 +308,7 @@ A critical state friction angle of $22.2$\si{\degree} is obtained. The
 macroscopic friction angle is in the range observed by~\citet{Estrada2008} 
 and~\citet{Mitchell2005}. The Young's modulus of the granular assembly is 
 obtained as the initial slope of the stress-strain plot of a uni-axial 
-compression of a granular column using DEM.
+compression of a laterally confined granular column using DEM.
 
 \begin{figure}
 \centering
@@ -436,9 +436,17 @@ comparison to the randomly packed sample. This difference in the run-out
 behaviour might be due to the crystallisation and jamming effects in hexagonal 
 packing. The small difference in the final run-out between the DEM and the 
 experimental results can be attributed to the variation in the packing of 
-grains. Also, the experimental data corresponds to granular column collapse in 
-a rectangular channel, where the collapse is not a pure two-dimensional 
-collapse as in the case of numerical simulations. 
+grains and the three-dimensional grain shape. Also, the experimental data 
+corresponds to granular column collapse in a rectangular channel, where the 
+collapse is not a pure two-dimensional collapse as in the case of numerical 
+simulations. Most, aerial and sub-marine landslides have large lateral extent, 
+i.e., plane-strain condition, hence in the present study two-dimensional 
+simulations were performed. Although two-dimensional simulations don't capture 
+movements perpendicular to the plane of the experiment, it simplifies the 
+configuration so as to compare DEM simulations with MPM. 
+Also,~\citep{Balmforth2005} observed that the side-walls 
+in quasi-two-dimensional collapse does not influence the power-law behaviour 
+but affects the numerical constant, which depends on the material properties. 
 
 A significant difference in the final run-out between MPM, which is based on a 
 simple frictional model for dissipation of potential energy, and DEM 
@@ -448,7 +456,11 @@ dissipation for columns with large aspect ratios (\textit{a} >
 a change in the flow kinematics. Similar behaviour in the run-out distance was 
 observed by~\citet{Bandara2013} for columns with large aspect ratios ($a \ge 
 2$).~\citet{Mast2014} observed 40\% increase in the final run-out distances, 
-for large aspect ratios, than reported in the literature.
+for large aspect ratios, than reported in the literature. Previous studies have 
+failed to describe the mechanism of energy dissipation in continuum approaches 
+and the reason for longer run-out distance.~\Cref{sec:energy} discusses the 
+reason behind the difference in the run-out behaviour between continuum and 
+experimental findings.
 
 The longer run-out distance in MPM simulations at large aspect ratios might be 
 influenced by the amount of material mobilised during the collapse. In tall 
@@ -612,24 +624,26 @@ summit of the failure surface.
 
 An initial failure surface starting from the toe end 
 of the column at an angle of about 55$\si{\degree}$ can be observed at the 
-critical time $\tau_{c}$. As the collapse of the granular collapse progresses, 
+critical time $\tau_{c}$. As the collapse of the granular column progresses, 
 successive failure planes parallel to the initial failure surface are formed 
 and shear failure occurs along these planes. The presence of several shear 
 bands in the final profile of the collapsed granular column confirms this 
-behaviour. Crystallisation in hexagonal packing has a significant effect on 
-the run-out distance by forming a series of parallel shear bands, resulting in 
-unnatural flow kinematics. This observation throws light on 
-the mechanics of propagation of shear bands in massive landslides such as the 
-Storegga submarine landslide. The flow behaviour becomes similar to that of 
+behaviour. This observation throws light on the mechanics of propagation of 
+shear bands in massive landslides such as the 
+Storegga submarine landslide, where the propagation of shear band is found to 
+have caused long run-out distances~\citep{Dey2012}. The flow behaviour becomes 
+similar to that 
+of 
 columns with lower initial aspect ratios as the flow starts descending along 
-the failure 
-plane. The final profile of the collapsed granular column with an initial 
-aspect ratio of 6 is presented in~\cref{fig:a6f}. For tall columns, the 
-dissipation process is more complex due to the free-fall dynamics. The vertical 
-acceleration of the grains induces a non-trivial mass distribution in the flow 
-during spreading.~\citet{Staron2007a} observed that the mass distribution plays 
-a dominant role in the power-law 
-scaling observed in the run-out.
+the failure plane. Hexagonal packing results in crystallisation, which has a 
+significant effect on the run-out distance by forming a series of parallel 
+shear bands, resulting in an unnatural flow kinematics. The final profile of 
+the collapsed granular column with an initial aspect ratio of 6 is presented 
+in~\cref{fig:a6f}. For tall columns, the dissipation process is more complex 
+due to the free-fall dynamics. The vertical acceleration of the grains induces 
+a non-trivial mass distribution in the flow during 
+spreading.~\citet{Staron2007a} observed that the mass distribution plays 
+a dominant role in the power-law scaling observed in the run-out.
 
 Regardless of the experimental configuration and the initial aspect ratio of 
 the columns, the flow is initiated by a well-defined rupture surface, above 
@@ -684,10 +698,12 @@ The critical time is evaluated as the time at which the potential energy
 available for the flow has been converted to the kinetic energy. In short 
 columns, the critical time observed in both hexagonal and random packing of 
 grains matches the experimental observations. However, the material point 
-method overestimates the critical time by a factor of 0.75, which means that it 
-takes longer for the flow to be fully mobilized. However, the actual run-out 
-duration of the flow is short and the granular mass comes to rest at about 
-$\textit{t}=3\tau_{c}$.
+method takes longer for the flow to be fully mobilized, this can be attributed 
+to the continuum nature of MPM which takes $~20\%$ longer to destabilise the 
+initial stress conditions. However, the actual run-out duration of the flow is 
+similar to DEM and the granular mass comes to rest at about 
+$\textit{t}=3\tau_{c}$, this is due to steeper decline in the potential energy 
+in MPM compared to DEM simulations.
  
 For columns with larger aspect ratios, the continuum and particulate approaches 
 simulate similar flow evolution up to 3$\tau_{c}$, beyond 
@@ -769,14 +785,14 @@ positions of the centre of mass). The effective coefficient of friction $\mu_e$
 characterizes the mean dissipation in the flow. The work of friction forces is 
 
 \begin{equation}
-W_{\mu} = \frac{1}{6} \mu_e g \rho (L_f - L_0) H_0^2 \,.
+W_{\mu} = \frac{1}{6} \mu_e g \rho (L_f - L_0)^2 H_0 \,.
 \end{equation}
 
 Equating $\delta_E$ and $W_{\mu}$ gives $\mu_e (L_f - L_0) = H_0$. The scaling
-of the runout leads directly to the relation $\mu_e = \lambda^{-1}$, which is 
-the numerical constant, which depends on the 
-material properties, in the power-law relation between the run-out and the 
-initial aspect ratio. 
+of the runout leads directly to the relation $\mu_e = \lambda^{-1}$, where 
+$\lambda$ is the numerical constant in the power-law relation between the 
+run-out and the initial aspect ratio, which depends on the 
+material properties. 
 The amount of energy $\delta E$ dissipated 
 during the spreading is compared with $W = N_p g m_p r_p$, where $N_p$ is the 
 total number of grains, $m_p$ is their mass, and $r_p$ is the total horizontal 
