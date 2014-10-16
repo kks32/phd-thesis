@@ -749,7 +749,7 @@ the structure represented by the material points, and (2) understanding the
 qualitative trend associated with the material points like mass, velocity or 
 stress. 
 
-The MPM output data contains both the material point and the grid data, 
+The MPM output data contains both the material point and the grid data, and
 one approach in visualizing MPM data is by rendering the interpolated 
 particle values on grid nodes using \textit{iso-surfacing}~\citep{lorensen1987} 
 or \textit{volume rendering}~\citep{levoy1988} technique. In regions where the 
@@ -1082,7 +1082,7 @@ size. A grid size of 1~\si{mm} is adopted with 16 material points per
 cell. In order to understand the influence of the number of material points on 
 the accuracy of the solution, simulation using 4 material points per cell with 
 GIMP is also performed. The granular collapse experiment is performed for a 
-column with an initial aspect ration of 0.4 using both GIMP method and MPM with 
+column with an initial aspect ratio of 0.4 using both GIMP method and MPM with 
 16 material points per cell. 
 
 The evolution of run-out at time $t=\tau_c$ and $t=6\tau_c$, where $\tau_c$ is 
@@ -2374,7 +2374,7 @@ subjected to vibrations at varying frequencies.
 %\label{fig:ballistic_sample}
 \end{figure}
 
-Although, there is no optimum specimen generation 
+Although there is no optimum specimen generation 
 technique~\citep{OSullivan2011}, there is a need to assess the homogeneity of 
 the packing density generated~\citep{Jiang2003}. The homogeneity of the sample 
 is assessed by measuring the void-ratio within sub-volumes. The generated 
@@ -2455,14 +2455,14 @@ in the flow front (due to hydroplaning) in granular flows.
 \begin{figure}[tbhp]
 \centering
 \begin{subfigure}[b]{0.95\textwidth}
-\centering
+
 \includegraphics[width=\textwidth]{tessellation}
 \caption{Voronoi Tessellation}
 \label{fig:tessellation}
 \end{subfigure}
 \\
-\begin{subfigure}[b]{0.95\textwidth}
-\centering
+\begin{subfigure}[b]{0.85\textwidth}
+
 \includegraphics[width=\textwidth]{local_density}
 \caption{Local packing density (dark - dense and light - loose)}
 \label{fig:local_density}
