@@ -234,11 +234,12 @@ $\varepsilon$:
 \end{align}
 %
 The micro-mechanical parameters used in this study are presented 
-in~\cref{table:DEM_data}. Due to the unsteady nature of the flow, the 
-grains get dispersed on the horizontal plane as discrete bodies start to 
-separate from the main mass, hence the run-out distance is calculated as the 
-position of the farthest grain which has at least one contact with the main 
-mass.
+in~\cref{table:DEM_data}. A rolling resistance is adopted in order to 
+model the shape effect of non-spherical grains. Due to the unsteady nature of 
+the flow, the grains get dispersed on the horizontal plane as discrete bodies 
+start to separate from the main mass, hence the run-out distance is calculated 
+as the position of the farthest grain which has at least one contact with the 
+main mass.
 %
 
 The configuration of the granular column collapse using DEM is show 
@@ -344,9 +345,11 @@ in~\cref{fig:MPM_Sample}. For all MPM simulations, a cell size of
 $2\times10^{-3}\si{\m}$ with 16 material points per cell is adopted 
 (\cref{fig:ini_mesh_mpm_column}). The granular columns are
 discretised into 40,000 to 160,000 material points. Each material point 
-represents one-eigth of a DEM soil grain. The initial vertical effective stress 
-simulated 
-in MPM, before the collapse stage, is shown 
+represents one-eigth of a DEM soil grain. Since, the scale of the problem being 
+modelled is small and it is important to precisely define the flow surface, a 
+larger number of material points are used to represent the geometry. The 
+initial vertical effective stress 
+simulated in MPM, before the collapse stage, is shown 
 in~\cref{fig:ini_stress_mpm_column}. The extent of the 
 background mesh in MPM is much larger than the initial column. In MPM, the 
 material points move inside the grid, so it is important to have a sufficiently 
@@ -559,7 +562,8 @@ direct effect on the transition between the truncated cone and the conical
 deposit occurring at an aspect ratio of 0.7.
 
 The final profile of the granular column with an initial aspect ratio 
-of 0.4 is shown in \cref{fig:a04f}. Both MPM and DEM show similar run-out 
+of 0.4 obtained from DEM and MPM simulations are shown in \cref{fig:a04f}. Both 
+MPM and DEM show similar run-out 
 behaviour. The continuum approach is able to capture the flow dynamics of short 
 columns, where the failure mechanism is active Coulomb failure. In dense 
 hexagonal packing, the failure surface is steep due to crystallisation effects. 
@@ -587,9 +591,10 @@ $t=3\times\tau_c$). Velocity is shown in m/s}
 \end{figure}
 
 
-For tall columns (\textit{a} > 2.7), the flow is still initiated by a well 
-defined 
-failure surface as can be seen in~\cref{fig:a6tc}. However, in this case the 
+MPM and DEM simulations of the velocity profile of a granular column with an 
+initial aspect ratio of 6 at critical time~\cref{fig:a6tc}. For tall columns 
+(\textit{a} > 2.7), the flow is still initiated by a well defined failure 
+surface as can be seen in~\cref{fig:a6tc}. However, in this case the 
 initial granular column is much higher than the top of the failure surface. Due 
 to gravity most of the grains in the column experience free-fall 
 consuming the column along their way. When they reach the vicinity of the 
@@ -690,8 +695,8 @@ which particulate simulation decelerates and comes to rest, while the flow
 continues to evolve in MPM simulation resulting in longer run-out distance. 
 The flow comes to rest at time $\textit{t}=6\tau_{c}$. The 
 three phases in a granular flow can be distinctly observed in the flow 
-evolution plot for a column with an initial aspect ratio of 6 (see 
-~\cref{fig:flowa6}). The flow evolution 
+evolution plot for a column with an initial aspect ratio of 6 
+(~\cref{fig:flowa6}). The flow evolution 
 behaviour observed in the case of DEM simulation matches the experimental 
 observation by~\citet{Lajeunesse2004}. Hexagonal packing predicts longer time 
 for the flow to evolve, which can be attributed to jamming of grains. 
@@ -846,8 +851,7 @@ At the initial stage of collapse, characterised by free fall of grains under
 gravity, DEM simulation, due to its particulate nature shows a rapid reduction 
 in the potential energy in comparison with MPM, where the failure begins from 
 the toe of the column. The continuum nature of MPM simulations results in 
-slower 
-initiation of collapse (\cref{fig:flowa6}). It can be also observed 
+slower initiation of collapse (\cref{fig:flowa6}). It can be also observed 
 from~\cref{fig:a6_energy} that dissipation energy in MPM is 25\% less than DEM 
 simulations. In order to understand the mechanism of energy dissipation, it is 
 important to separate the contribution from the cumulative frictional and 
@@ -1067,11 +1071,17 @@ behaviour is observed in DEM simulations.
 In order to remove the effect of crystallisation on the run-out behaviour, a 
 highly poly-disperse sample ($r = d_{max}/d_{min} = 6)$ is used. 
 The flow kinematics of a dense (relative density $D_r = 74\%$) and a loose 
-($D_r = 22\%$) granular column with aspect ratio of 0.8 is studied. Similar to 
+($D_r = 22\%$) granular column with aspect ratio of 0.8 is 
+studied.~\cref{fig:runout_height_dense_r6} shows the evolution of the 
+normalised run-out with time for dense and loose granular columns with an 
+initial aspect ratio of 0.4. Similar to 
 the previous case, the dense granular column exhibits longer run-out distance 
-(\cref{fig:runout_height_dense_r6}. Due to compaction of grains in loose 
-condition, almost 20\% of the initial potential energy available for collapse 
-is lost in densification due to grain rearrangements in comparison to the dense 
+(\cref{fig:runout_height_dense_r6}).~\cref{fig:Energy_dense_r6} show the 
+evolution of energy with time for dense and loose condition. The peak kinetic 
+energy in the dense condition is $\approx 20\%$ higher than the loose 
+condition. Due to compaction of grains in loose condition, almost 20\% of the 
+normalised initial potential energy available for collapse is lost in 
+densification due to grain rearrangements in comparison to the dense 
 condition (\cref{fig:Energy_voro_r6}). The compaction of grains in loose 
 column and the dilation in dense column results in significantly different flow 
 structure, especially at the flow front (\cref{fig:density_r6}). As the loose 
@@ -1082,7 +1092,7 @@ triangular deposit at the front.
 
 \begin{figure}[tbhp]
 \centering
-\includegraphics[width=0.9\textwidth]{runout_height_dense_r6}
+\includegraphics[width=0.8\textwidth]{runout_height_dense_r6}
 \caption{Effect of density on run-out evolution $a = 0.8$ (poly-dispersity 
 \textit{r} = 6)}
 \label{fig:runout_height_dense_r6}
@@ -1172,7 +1182,7 @@ behaviour. The next section will discuss the influence of triggering mechanism
 and the distribution of the kinetic energy in the granular system on the 
 run-out behaviour.  
 
-
+\clearpage
 
 \section{Slopes subjected to impact loading}
 \label{sec:slope}
@@ -1207,20 +1217,17 @@ simulations.
 \label{sec:num}
 
 The DEM sample is composed of $\sim13000$ disks with a uniform distribution of 
-diameters by 
-volume fractions ($d_{max} = 1.5 d_{min}$). The mean grain diameter and mass 
-are $d\simeq 2.455 $~\si{\mm} and $m\simeq 0.0123$~\si{\kg}, respectively. The 
-grains are first poured uniformly into a rectangular box of given width and 
-then the right-hand side wall is shifted further to the right to allow the 
-grain to spread. A stable granular slope is obtained when all grains come to 
-rest; see~\cref{fig:slope_configuration}. This procedure leads to a mean 
-packing 
-fraction $\simeq 0.82$. Soil grains with mean density of 2600 
+diameters by volume fractions ($d_{max} = 1.5 d_{min}$). The mean grain 
+diameter and mass are $d\simeq 2.455 $~\si{\mm} and $m\simeq 0.0123$~\si{\kg}, 
+respectively. The grains are first poured uniformly into a rectangular box of 
+given width and then the right-hand side wall is shifted further to the right 
+to allow the grain to spread. A stable granular slope is obtained when all 
+grains come to rest; see~\cref{fig:slope_configuration}. This procedure leads 
+to a mean packing fraction $\simeq 0.82$. Soil grains with mean density of 2600 
 \si{\kg\per\m\cubed} and internal friction coefficient of 0.4 between 
-grains 
-is adopted.
+grains is adopted.
 
-\begin{figure}[tbph]
+\begin{figure}[tbhp]
 \includegraphics[width=0.95\textwidth]{slope_configuration}
 \caption{Initial geometry and dimensions of the pile subjected to an impact 
 velocity}
@@ -1230,15 +1237,15 @@ velocity}
 
 The initial static pile is set into motion by applying a horizontal
 gradient velocity $v_{0x}(y) = k (y_{max} - y)$ with $k>0$. Such a 
-configuration 
-mimics the energy transfer mechanism of a horizontal quake along the bottom of 
-the pile. The evolution of pile geometry and the total kinetic energy as a 
-function of the initial input energy $E_0$ is studied. The run-out distance 
-$L_f$ is the distance of the rightmost grain, which is still in contact with 
-the main mass when the pile comes to rest.  The run-out will be normalized by 
-the initial length $L_0$ of the pile, as in the experiments of collapsing 
-columns. The total run-out duration $t_f$ is the time taken by the pile to 
-reach its final run-out distance $L_f$.
+configuration mimics the energy transfer mechanism of a horizontal quake along 
+the bottom of the pile. The evolution of pile geometry and the total kinetic 
+energy as a function of 
+the initial input energy $E_0$ is studied. The run-out distance $L_f$ is the 
+distance of the rightmost grain, which is still in contact with the main mass 
+when the pile comes to rest. The run-out will be normalized by the initial 
+length $L_0$ of the pile, 
+as in the experiments of collapsing columns. The total run-out duration $t_f$ 
+is the time taken by the pile to reach its final run-out distance $L_f$.
 
 For grain-scale simulations, classical DEM and Contact Dynamics approaches are 
 used. This research is done in collaboration with Patrick Mutabaruka, 
@@ -1269,14 +1276,13 @@ configuration of the slope in MPM is shown in~\cref{fig:MPM_Initial_PIC_Slope}.
 Frictional boundary condition is applied on the left and the bottom boundaries 
 by applying constraints to the nodal acceleration. The initial vertical stress 
 of the granular pile in equilibrium, before the impact, in the MPM simulation 
-is shown in~\cref{fig:MPM_Stress_Slope}. The Mohr-Coulomb model 
+is shown in~\cref{fig:MPM_Stress_Slope}. The distribution of the initial 
+gradient impact energy of 50~\si{J} on the granular pile is shown 
+in~\cref{fig:MPM_Velocity_Slope}. The Mohr-Coulomb model 
 with no dilation is used to simulate the continuum behaviour of the granular 
-pile. Periodic shear tests using CD, see~\cref{fig:Sxy_vs_Syy_Slope}, reveals a 
+pile. Periodic shear tests using CD (\cref{fig:Sxy_vs_Syy_Slope}), reveals a 
 macroscopic friction coefficient of 0.22. The evolution of inertial number with 
-friction is presented in~\cref{fig:mu_vs_I}. The distribution of the initial 
-impact energy of 50~\si{J} on the granular pile is shown 
-in~\cref{fig:MPM_Velocity_Slope}.
-
+friction is presented in~\cref{fig:mu_vs_I}. 
 
 \begin{figure}[tbhp]
 \centering
@@ -1648,8 +1654,9 @@ are controlled by the input energy and collective dynamics of the whole pile.
 However, the run-out behaviour is also expected to depend on the base friction. 
 A series of simulations with different values of base friction was performed 
 using MPM to analyse the influence of friction on the run-out behaviour. The 
-influence of friction on the run-out behaviour is shown 
-in~\cref{fig:runout_fric_slope}. The exponent of the 
+influence of friction on the run-out behaviour for different input energies is 
+shown in~\cref{fig:runout_fric_slope}. The run-out distance decreases with 
+increase in the basal friction. The exponent of the 
 power-law relation between the run-out and input energy has a weak dependence 
 on the base friction, however, the proportionality constant is affected by the 
 change in the base friction. This behaviour is similar to that observed in 
@@ -1716,21 +1723,6 @@ simulations. As each grain experiences the same velocity, grains located at the
 top of the slope are pushed farther away and unlike the gradient input 
 velocity, the cavity left behind the granular mass is not filled by the soil 
 grains at the top. 
-\begin{figure}[tbph]
-\centering
-\includegraphics[width=\textwidth]{Uniform_Slope_Profile_200J}
-\caption{Snapshots of MPM simulations of the evolution of granular pile 
-subjected to a gradient impact energy $E_0 = 61 \ mgd$.}
-\label{fig:Uniform_Slope_Profile_200J}
-\end{figure}
-
-\begin{figure}[tbph]
-\centering
-\includegraphics[width=\textwidth]{Uniform_Slope_DEM_200J}
-\caption{Snapshots of DEM simulations of the evolution of granular pile 
-subjected to a gradient impact energy $E_0 = 61 \ mgd$.}
-\label{fig:Uniform_Slope_DEM_200J}
-\end{figure}
 
 \Cref{fig:Runout_Eo_GU} shows the influence of velocity distribution on the 
 run-out behaviour. At low input energy, the gradient velocity distribution 
@@ -1749,6 +1741,24 @@ gradient velocity distribution provides more input energy at the initial stage
 to overcome the frictional resistance at the base. This shows that the material 
 property and the distribution of kinetic energy in the system has a non-trivial 
 influence on the flow kinematics and the internal flow structure.
+
+\clearpage
+
+\begin{figure}[tbph]
+\centering
+\includegraphics[width=\textwidth]{Uniform_Slope_Profile_200J}
+\caption{Snapshots of MPM simulations of the evolution of granular pile 
+subjected to a gradient impact energy $E_0 = 61 \ mgd$.}
+\label{fig:Uniform_Slope_Profile_200J}
+\end{figure}
+
+\begin{figure}[tbph]
+\centering
+\includegraphics[width=\textwidth]{Uniform_Slope_DEM_200J}
+\caption{Snapshots of DEM simulations of the evolution of granular pile 
+subjected to a gradient impact energy $E_0 = 61 \ mgd$.}
+\label{fig:Uniform_Slope_DEM_200J}
+\end{figure}
 
 \begin{figure}[tbph]
 \centering
