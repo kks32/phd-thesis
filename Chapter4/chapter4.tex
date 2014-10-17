@@ -75,8 +75,8 @@ measurement of the internal flow
 structure~\citep{Lo2009,Staron2005,Staron2007a,Utili2014}.
 Power laws relating the final run-out and height to the initial aspect ratio 
 ($a = H_0 / L_0$) of the column were observed. These findings immediately pose 
-a question: are these simple scalings fortuitous, an oversimplification, or in 
-fact indicative of a simple dynamical balance? 
+a question: are these simple scaling laws fortuitous, an oversimplification, or 
+in fact indicative of a simple dynamical balance? 
 
 
 Granular flows are conventionally modelled as a frictional dissipation process 
@@ -107,7 +107,7 @@ hybrid Eulerian--Lagrangian approach, with a Mohr-Coloumb failure criterion is
 used to describe the continuum behaviour of the granular column collapse. 
 Whereas, the micro-mechanics of the flow is captured using DEM simulations. 
 In this section, the run-out behaviour of quasi-two-dimensional collapse using 
-both MPM and DEM will be studied for initial aspect ratio varying from 0.2 to 
+both MPM and DEM will be studied for initial aspect ratios varying from 0.2 to 
 10. The flow kinematics and the run-out behaviour between the grain-scale and 
 the continuum simulations highlights the limitations of the continuum approach 
 in modelling dense granular flows and their ability in capturing the complex 
@@ -119,15 +119,15 @@ In this study, the numerical set-up of granular column collapse is analogous to
 the  experimental investigation performed by~\citet{Lajeunesse2004}. The 
 experimental configuration of~\citet{Lajeunesse2004} is shown in 
 \cref{fig:exp}. Granular material of mass \textit{m} is poured into a 
-container to form a rectangular heap of length ${L}_{\textit{0}}$ and height 
-${H}_{\textit{0}}$. The internal friction angle 
+container to form a rectangular heap of length ${L}_{0}$ and height 
+${H}_{0}$. The internal friction angle 
 and the wall friction between the wall and the glass beads measured by 
 ~\citet{Lajeunesse2004} are listed in~\cref{table:mat_prop}. The gate is then 
 quickly removed to release the granular mass that spreads in the horizontal 
-channel until it comes to rest. The final run-out distance ${L}_{\textit{f}}$ 
-and the collapsed height $H_{\textit{f}}$ are measured. The run-out distance 
+channel until it comes to rest. The final run-out distance ${L}_{{f}}$ 
+and the collapsed height $H_{{f}}$ are measured. The run-out distance 
 and collapse height exhibit a power law relation with the initial aspect ratio 
-`\textit{a}' $(=H_{\textit{0}}/L_{\textit{0}})$ of the column. 
+`\textit{a}' $(=H_{0}/L_{0})$ of the column. 
 
 \begin{table}[tbhp]
 \caption{Material properties of glass ballotini used in granular column 
@@ -162,7 +162,7 @@ granular column is prepared by allowing randomly placed grains to undergo
 ballistic deposition with a constant potential head between layers of soil 
 grains. A snapshot of the sample generated is shown in~\cref{fig:a4b4r18}. A 
 DEM sample with soil grains arranged in a regular hexagonal lattice is also 
-used to study the influence of crystallisation and jamming on the run-out 
+used to understand the influence of crystallisation and jamming on the run-out 
 behaviour.
 
 \begin{figure}[tbhp]
@@ -187,12 +187,12 @@ distribution curve}
 
 
 The overlap between grains is determined by the stiffness 
-$\textit{k}_{\textit{n}}$ of the spring in the normal direction. Typically, 
+$\textit{k}_{{n}}$ of the spring in the normal direction. Typically, 
 an average overlap in the range 0.1 to 1.0\% is desirable~\citep{Zenit2005} and 
 the spring constant is chosen to produce grain overlaps in this range. The 
 stiffness is determined as
 \begin{align}
-& \textit{k}_{\textit{n}}=\frac{2 \pi 
+& \textit{k}_{{n}}=\frac{2 \pi 
 G}{(1-\nu)\left[2\ln(\frac{2r}{A})-1\right]} \\ 
 & A = \left[\frac{2r(1-\nu)f_{n}}{\pi G}\right]^{\frac{1	}{2}}\,,
 \end{align}
@@ -200,7 +200,7 @@ where $f_{n}$ is the normal contact force; G is the shear modulus; $\nu$ is the
 Poisson's ratio and r is the radius of the grain. A simpler form of stiffness 
 for a spherical grain is defined as
 \begin{equation}
-\textit{k}_{\textit{n}}=4ER\,,
+\textit{k}_{{n}}=4ER\,,
 \end{equation}
 where E is the Young's modulus of the material and R is the radius of the 
 grain.~\citet{Cambou2009} observed that the contact model has negligible 
@@ -222,15 +222,15 @@ becomes
 negligible. In the present study, a value of 0.75 is adopted as the coefficient 
 of restitution, similar values of restitution coefficient was adopted 
 by~\citet{Girolami} and~\citet{Zenit2005}. The normal damping coefficient 
-$C_{\textit{n}}$ 
+$C_{{n}}$ 
 is appropriately chosen to achieve the required coefficient of restitution 
 $\varepsilon$:
 \begin{align}
-& C_{\textit{n}}=2\gamma \sqrt{m_{\textit{ij}}k_{\textit{n}}} \,,\\ 
+& C_{{n}}=2\gamma \sqrt{m_{{ij}}k_{{n}}} \,,\\ 
 & \mbox{where} \quad \gamma = -\frac{\ln(\varepsilon)}{\sqrt{\pi^{2}+\ln^2 
 (\varepsilon)}},\quad \mbox{and} \quad 
-\textit{m}_{\textit{ij}}=\frac{\textit{m}_{\textit{i}}\textit{m}_{\textit{j}}}{\textit{m}_{\textit{i}}
- + \textit{m}_{\textit{j}}} \,.
+\textit{m}_{{ij}}=\frac{\textit{m}_{{i}}\textit{m}_{{j}}}{\textit{m}_{{i}}
+ + \textit{m}_{{j}}} \,.
 \end{align}
 %
 The micro-mechanical parameters used in this study are presented 
@@ -409,7 +409,7 @@ collapse are performed by varying the initial aspect ratio of the column from
 0.2 to 10. The evolution of run-out and the flow kinematics observed in both 
 approaches are compared to understand the ability and limitations of theses 
 approaches. The normalized final run-out distance, $\Delta L = 
-(L_{\textit{f}}-L_{\textit{0}})/L_{\textit{0}}$, as a function of the initial 
+(L_{{f}}-L_{0})/L_{0}$, as a function of the initial 
 aspect ratio \textit{a} of the column is presented in~\cref{fig:run-out}. 
 Similar to the experimental behaviour a power law relation between the run-out 
 and the initial aspect ratio of the column is observed. Two distinct flow 
@@ -419,7 +419,7 @@ power-law relationship exists. In the present study, the following scaling law
 for the run-out (using DEM) is observed:
 %
 \begin{equation}
-\frac{L_{\textit{f}}-L_{\textit{0}}}{L_{\textit{0}}} \approx  
+\frac{L_{{f}}-L_{0}}{L_{0}} \approx  
 \begin{cases}
 1.67 a, &\qquad \textit{a}\lesssim 2.7 \\
 2.7 a^{2/3}, &\qquad \textit{a} \gtrsim 2.7 \\
@@ -441,10 +441,10 @@ corresponds to granular column collapse in a rectangular channel, where the
 collapse is not a pure two-dimensional collapse as in the case of numerical 
 simulations. Most, aerial and sub-marine landslides have large lateral extent, 
 i.e., plane-strain condition, hence in the present study two-dimensional 
-simulations were performed. Although two-dimensional simulations don't capture 
-movements perpendicular to the plane of the experiment, it simplifies the 
-configuration so as to compare DEM simulations with MPM. 
-Also,~\citep{Balmforth2005} observed that the side-walls 
+simulations are performed. Although two-dimensional simulations don't capture 
+movement of the grains perpendicular to the plane of the experiment, it 
+simplifies the configuration so as to compare DEM simulations with MPM. 
+Also,~\citet{Balmforth2005} observed that the side-walls 
 in quasi-two-dimensional collapse does not influence the power-law behaviour 
 but affects the numerical constant, which depends on the material properties. 
 
@@ -473,7 +473,7 @@ column. Similar to the run-out behaviour, the normalised-height also shows two
 distinct regimes. The scaling of final height of the column with the initial 
 aspect ratio of the column can be written as
 \begin{align}
-\frac{H_{\textit{f}}}{L_{\textit{i}}} \propto  
+\frac{H_{{f}}}{L_{{i}}} \propto  
 \begin{cases}
 \textit{a}, \qquad & \textit{a}\lesssim0.7 \\
 \textit{a}^{2/3}, \qquad & \textit{a}\gtrsim0.7 \\
@@ -522,15 +522,9 @@ power law relationship is observed between the run-out distance and the initial
 aspect ratio of the column. A transition in the run-out behaviour at an aspect 
 ratio of 2.7 indicates a change in the flow dynamics. 
 
-For short columns (\textit{a} < 2.7), the flow is initiated 
-by a failure at the edge of the pile along a well-defined fracture surface.
-The granular mass fails through avalanching of flanks producing a 
-truncated cone-like deposit (`\textit{a}' < 0.7) or conical deposit 
-(`\textit{a}' > 0.7). The grains located above the failure surface move 
-``\textit{en masse}'' leaving a static region underneath the failure surface. 
 
 Dimensional analysis of granular column collapse reveals an intrinsic time 
-defined as $\sqrt{H_{\textit{0}}/g}$. This intrinsic time is a transient time 
+defined as $\sqrt{H_{0}/g}$. This intrinsic time is a transient time 
 of order $\tau_{c}$, at which the flow is fully developed, i.e., the potential 
 energy available at the initial stage of collapse is now fully converted to 
 kinetic energy. Numerical simulation of the velocity profile of a granular 
@@ -548,26 +542,35 @@ results in a slightly different geometry of the material destabilised above the
 failure surface in comparison to DEM simulations. The velocity profile is 
 similar to a steady granular surface flow observed by~\citet{Lajeunesse2004}. 
 
+
+For short columns (\textit{a} < 2.7), the flow is initiated 
+by a failure at the edge of the pile along a well-defined fracture surface.
+The granular mass fails through avalanching of flanks producing a 
+truncated cone-like deposit (`\textit{a}' < 0.7) or conical deposit 
+(`\textit{a}' > 0.7). The grains located above the failure surface move 
+``\textit{en masse}'' leaving a static region underneath the failure surface. 
 For columns with lower initial aspect ratios, the run-out distance is 
 proportional to the mass flowing above the failure surface. The spreading 
 results from a Coulomb-like failure of the edges and implies no free fall of 
 the column. In this case, the effective friction 
 properties of the flow can be simply predicted from the shape of the final 
 deposit. The amount of mass mobilized during the collapse is significantly 
-affected by the angle of the failure surface.~\Cref{fig:a04tc} shows that both 
+affected by the angle of the failure surface.
+
+\Cref{fig:a04tc} shows that both 
 numerical techniques predict a distinct failure surface when the flow is fully 
-developed at critical time $\tau_{\textit{c}}$. The angle of the failure 
+developed at critical time $\tau_{{c}}$. The angle of the failure 
 surface is found to be about $55\si{\degree}$. The failure surface begins from 
 the toe of the column and propagates inwards at an angle of $50$ to 
 $55\si{\degree}$. The formation of the ``truncated conical deposit'' or 
-``conical deposit'' depends only on the initial length of the column, as the 
+``conical deposit'' depends on the initial length of the column, as the 
 angle of the failure surface is found to be independent of the aspect ratio. 
 The failure angle is consistent with the interpretation in terms of 
 \textit{active Coulomb failure}, which leads to a 
-predicted failure angle $\theta_{\textit{y}}=45\si{\degree}+\delta / 2$, where 
+predicted failure angle $\theta_{{y}}=45\si{\degree}+\delta / 2$, where 
 $\delta$ is the friction angle of the granular material. In the 
 present study, the macroscopic friction angle is $22\si{\degree}$, which 
-leads to $\theta_{\textit{y}}=45\si{\degree}+22\si{\degree}/ 2=56\si{\degree}$, 
+leads to $\theta_{{y}}=45\si{\degree}+22\si{\degree}/ 2=56\si{\degree}$, 
 which is in good agreement with the numerical simulations and the experimental 
 observations by~\citet{Lajeunesse2004}. The fracture angle has a 
 direct effect on the transition between the truncated cone and the conical 
@@ -604,7 +607,8 @@ $t=3\times\tau_c$). Velocity is shown in m/s}
 
 
 MPM and DEM simulations of the velocity profile of a granular column with an 
-initial aspect ratio of 6 at critical time~\cref{fig:a6tc}. For tall columns 
+initial aspect ratio of 6 at critical time $\tau_c$ is shown 
+in~\cref{fig:a6tc}. For tall columns 
 (\textit{a} > 2.7), the flow is still initiated by a well defined failure 
 surface as can be seen in~\cref{fig:a6tc}. However, in this case the 
 initial granular column is much higher than the top of the failure surface. Due 
@@ -613,7 +617,7 @@ consuming the column along their way. When they reach the vicinity of the
 failure surface, the flow gets deviated along the horizontal direction 
 releasing a huge amount of kinetic energy gained during the free fall. For 
 larger aspect ratio (\textit{a} > 0.7), the resulting static region is a cone, 
-the final height of the cone $\textit{H}_{\textit{f}}$ lies above the 
+the final height of the cone $\textit{H}_{{f}}$ lies above the 
 summit of the failure surface. 
 %Hence, a different evolution is observed from 
 %that of the axis-symmetric geometry~\citep{Lube2005}, where the final height 
@@ -631,10 +635,9 @@ bands in the final profile of the collapsed granular column confirms this
 behaviour. This observation throws light on the mechanics of propagation of 
 shear bands in massive landslides such as the 
 Storegga submarine landslide, where the propagation of shear band is found to 
-have caused long run-out distances~\citep{Dey2012}. The flow behaviour becomes 
-similar to that 
-of 
-columns with lower initial aspect ratios as the flow starts descending along 
+have caused long run-out distances~\citep{Dey2012}. After the initial stage of 
+collapse in tall columns, the flow behaviour becomes similar to that of columns 
+with lower initial aspect ratios as the flow starts descending along 
 the failure plane. Hexagonal packing results in crystallisation, which has a 
 significant effect on the run-out distance by forming a series of parallel 
 shear bands, resulting in an unnatural flow kinematics. The final profile of 
@@ -673,8 +676,8 @@ $t=3\times\tau_c$). Velocity is shown in m/s}
 To study the influence of aspect ratio on the flow dynamics of granular 
 columns, the flow front \textit{L}(\textit{t}) and the maximum height of column 
 \textit{H}(\textit{t}) are tracked. The evolution of scaled height 
-$(H_{\textit{f}}/L_{\textit{0}})$ and the run-out distance 
-$(L_{\textit{f}}-L_{\textit{0}})/L_{\textit{0}}$ with time for granular columns 
+$(H_{{f}}/L_{0})$ and the run-out distance 
+$(L_{{f}}-L_{0})/L_{0}$ with time for granular columns 
 with initial aspect ratios of 0.4 and 6 are presented 
 in~\cref{fig:flow_column}. Three distinct regions can be observed in the flow 
 evolution of a granular column collapse regardless of the initial aspect ratio 
@@ -802,11 +805,12 @@ proportionality gives a measure of the effective friction and
 observed a power law dependence between $\mu_e$ and internal friction angle 
 $\mu$: $\mu_e=0.425\mu^{0.2}$. In this study, an effective friction angle 
 $\mu_e$ of 21\si{\degree} is observed, which is very close to the critical 
-state friction angle of 22\si{\degree} used in MPM simulations. This proves 
-that the energy 
-dissipation mechanism modelled in a continuum sense as a frictional dissipation 
-process captures the flow kinematics observed in DEM and experiments for short 
-columns.
+state friction angle of 22\si{\degree} used in MPM simulations. The global 
+effective friction angle obtained from the simple macroscopic 
+energy-dissipation analysis matches the critical state friction used in MPM 
+simulations. This proves that the energy dissipation mechanism modelled in a 
+continuum sense as a frictional dissipation process captures the flow 
+kinematics observed in DEM and experiments for short columns.
 
 ~\Cref{fig:a04_energy} shows the time evolution of the normalised potential 
 energy $(E_{p}/E_0)$ and kinetic energy $(E_{k}/E_0)$ for granular columns with 
@@ -840,7 +844,7 @@ collapse (\textit{a} = 6) are shown in~\cref{fig:a6_energy}. It can be
 observed that the initial potential energy stored in the 
 grains is converted to kinetic energy which is dissipated as the granular 
 material flows down. Three successive stages can be identified in the granular 
-column collapse. In first stage, similar to short columns, the flow is 
+column collapse. In the first stage, similar to short columns, the flow is 
 initiated by a well defined failure surface. However, the centre of gravity of 
 the granular column is much 
 higher than the top of the failure surface, which results in free fall of 
