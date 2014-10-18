@@ -15,69 +15,74 @@ this chapter.
 \subsection{Multi-scale modelling of dry granular flows}
 
 A multi-scale approach is adopted to study the granular flow behaviour. The 
-material point method, a 
-continuum approach, is used to model the macro-scale response, while the 
-grain-scale behaviour is captured using a discrete element 
-technique. In the 
-present study, a two-dimensional DEM code is developed in C++ to study the 
-micro-scale rheology of dry granular flows. A Verlet-list algorithm is 
-implemented for neighbourhood detection to improve the computational 
-efficiency. A linear-elastic model with a frictional contact behaviour is used 
-to model dense rapid granular flows. A sweep-line Voronoi tessellation 
-algorithm 
-is implemented, in the present study, to extract continuum properties such as 
-packing density from the local grain-scale simulations.
+material point method, a continuum approach, is used to model the macro-scale 
+response, while the grain-scale behaviour is captured using a discrete element 
+technique. In the present study, a two-dimensional DEM code is developed in C++ 
+to study the micro-scale rheology of dry granular flows. The Verlet-list 
+algorithm is implemented for neighbourhood detection to improve the 
+computational efficiency. A linear-elastic model with a frictional contact 
+behaviour is used to model dense rapid granular flows. A sweep-line Voronoi 
+tessellation algorithm is implemented, in the present study, to extract 
+continuum properties such as bulk density from the local grain-scale 
+simulations.
 
 In order to capture the macro-scale response, a template-based 
-three-dimensional C++ Material Point Method code, an Eulerian-Lagrangian 
+three-dimensional C++11 Material Point Method code, an Eulerian-Lagrangian 
 approach, developed at the University of Cambridge, is modified and extended to 
 study granular flows as a continuum. In the present study, the Generalised 
 Interpolation Material Point GIMP method is implemented to reduce the 
 cell-crossing noise and oscillations observed during large-deformation 
-problems, 
-when using the standard MPM. The three-dimensional MPM code is parallelised to 
-run on multi-core systems, thus improving the computational efficiency. The 
-algorithm of the MPM code is improved to handle multi-body dynamics and 
-interactions. Advanced constitutive models such as Nor-Sand and 
+problems, when using the standard MPM. The three-dimensional MPM code is 
+parallelised to run on multi-core systems, thus improving the computational 
+efficiency. The algorithm of the MPM code is improved to handle multi-body 
+dynamics and interactions. Advanced constitutive models such as Nor-Sand and 
 modified Bingham fluid are also implemented. This dissertation includes 
 only those results from two-dimensional plane-strain granular flow problems. 
 
 
 \subsubsection*{Granular column collapse}
 
+Previous studies on granular collapse have shown a power-law dependence between 
+the run-out and the initial aspect ratio of the column. However, the origin of 
+power-law behaviour and the change in the run-out behaviour for tall columns 
+have remained unexplained. Also, the reason for longer run-out distance for 
+tall column using continuum approach was still lacking. Most studies
+were focused on mono-disperse grain sizes. 
+
 Multi-scale simulations of dry granular flows are performed to capture the 
 local rheology, and to understand the capability and limitations of continuum 
 models in realistic simulation of granular flow dynamics. For short columns, 
 the run-out distance is found to be proportional to the granular mass 
 destabilised above the failure surface. The spreading results from a 
-Coulomb-like failure of the edges. The continuum approach, using a simple 
-frictional dissipation model, is able to capture the flow dynamics of short 
-columns. Unlike short columns, the collapse of tall columns is characterised by 
-an initial collisional regime and a power-law dependence between the run-out 
-and the initial aspect ratio of the granular column is observed. The energy 
-evolution study reveals that the lack of collisional dissipation mechanism in 
-the MPM simulations results in a substantially longer run-out distance for 
-large aspect ratio columns. This 
-shows that continuum approaches using frictional laws are able to capture the 
-flow kinematics at small aspect ratios, which is characterised by an inertial 
-number \textit{I} less than 0.2 indicating a dense granular regime. However, 
-a continuum approach like MPM is unable to precisely describe the flow 
+Coulomb-like failure of the edges and is a frictional dissipation process. The 
+continuum approach, using a simple frictional dissipation model, is able to 
+capture the flow dynamics of short columns. Unlike short columns, the collapse 
+of tall columns is characterised by an initial collisional regime and a 
+power-law dependence between the run-out and the initial aspect ratio of the 
+granular column is observed. MPM simulations show longer run-out behaviour in 
+the case of tall columns. MPM simulation assumes that the total initial 
+potential energy stored in the system is completely dissipated through friction 
+over the entire run-out distance. The energy evolution study reveals that the 
+lack of collisional dissipation mechanism in MPM results in a substantially 
+longer run-out distance for large aspect ratio columns. The continuum 
+approaches using frictional laws are able to capture the flow kinematics at 
+small aspect ratios, which is characterised by an inertial 
+number \textit{I} less than 0.2 indicating a dense granular flow regime. 
+However, a continuum approach like MPM is unable to precisely describe the flow 
 dynamics of tall columns, which is characterised by an initial collisional 
 regime (\textit{I} > 0.2). DEM studies on the role of initial material 
-properties 
-reveal that the initial packing fraction and the distribution of the kinetic 
-energy in the system have a significant influence on the flow kinematics and 
-the run-out behaviour. For the same material, a dense granular packing results 
-in a longer run-out distance in comparison to the initially loose granular 
-column. Hence, it is important to consider macroscopic parameters like packing 
-fraction, which are due to meso-scale grain arrangements, when modelling the 
-granular system as a continuum.
+properties reveal that the initial packing fraction and the distribution of the 
+kinetic energy in the system have a significant influence on the flow 
+kinematics and the run-out behaviour. For the same material, a dense granular 
+packing results in a longer run-out distance in comparison to the initially 
+loose granular column. Hence it is important to consider macroscopic parameters 
+like packing fraction and dilatancy behaviour, which are due to meso-scale 
+grain arrangements, when modelling the granular system as a continuum.
 
 \subsubsection*{Granular slopes subjected to impact loading}
 
 The ability of MPM in modelling transient flows that do not involve collision 
-is further investigated. The distribution of kinetic energy in the granular 
-mass is found to have a significant effect on the flow kinematics. In the 
+is further investigated. In the 
 present study, a multi-scale analyses of a granular slope subjected to 
 impact velocities reveals a power-law dependence of the run-out distance and 
 time as a function of the input energy with non-trivial exponents. The 
@@ -86,12 +91,7 @@ different regimes are observed depending on the input energy. The low energy
 regime reflects mainly the destabilisation of the pile, with a run-out time 
 independent of the input energy. Whereas, the high energy regime involves 
 spreading dynamics, which is characterised by a decay time that is defined as 
-the time required for the input energy to  decline by a factor $1/2$. MPM is 
-successfully able to simulate the transient evolution with a single 
-input parameter, the macroscopic friction angle. This study exemplifies the 
-suitability of MPM, as a continuum approach, in modelling large-deformation 
-granular flow dynamics and opens the possibility of realistic simulations of 
-geological-scale flows on complex topographies.
+the time required for the input energy to  decline by a factor $1/2$.
 
 
 The distribution of the kinetic energy in the system is found to have a 
@@ -99,9 +99,20 @@ significant influence in the low energy regime, where a large
 fraction of the input energy is consumed in the destabilisation process. 
 However at higher input energy, where most of the energy is dissipated during 
 the spreading phase, the run-out distance has a weak dependence on 
-the distribution of velocity in the granular mass. The material characteristics 
-of the granular slope affect the constant of proportionality and not the 
-exponent in the power-law relation between the run-out and the input energy. 
+the distribution of velocity in the granular mass. The duration of the flow 
+shows similar behaviour to the run-out, however, a slope subjected to a 
+gradient velocity flows quicker than a slope subjected to a uniform
+impact velocity. The material characteristics of the granular slope affect the 
+constant of proportionality and not the exponent in the power-law relation 
+between the run-out and the input energy. The run-out distance and the decay 
+time decrease as the friction increases. This effect is much more pronounced at 
+low values of friction. 
+
+MPM is successfully able to simulate the transient evolution of granular flow 
+with a single input parameter, the macroscopic friction angle. This study 
+exemplifies the suitability of MPM, as a continuum approach, in modelling 
+large-deformation granular flow dynamics and opens the possibility of realistic 
+simulations of geological-scale flows on complex topographies.
 
 \subsection{Granular flows in fluid}
 
@@ -148,18 +159,17 @@ further in comparison to dry granular columns. This is due to entrainment of
 water at the flow front leading to hydroplaning. 
 
 In both dense and loose initial packing conditions, the run-out distance is 
-found to increase with decrease in the permeability. With decrease in 
-permeability, the duration required for the flow to initiate takes longer due 
-to the development of large negative pore-pressures. However, the low 
-permeability of the granular mass results in entrainment of water at the flow 
-front causing 
-hydroplaning. For the same thickness and velocity of the flow, the potential 
-for 
-hydroplaning is influenced by the density of the flowing mass. Loose columns 
-are more likely to hydroplane than the dense granular masses resulting in 
-a longer run-out distance. This is in contrast to the behaviour observed in the 
-dry collapse, where dense granular columns flow longer in comparison to loose 
-columns.
+found to increase with decrease in the permeability. An increase in the 
+hydrodynamic radius from 0.7 to 0.95 R increases the
+normalised run-out by 25\%. With decrease in permeability, the duration 
+required for the flow to initiate takes longer due to the development of large 
+negative pore-pressures. However, the low permeability of the granular mass 
+results in entrainment of water at the flow front causing hydroplaning. For the 
+same thickness and velocity of the flow, the potential for hydroplaning is 
+influenced by the density of the flowing mass. Loose columns are more likely to 
+hydroplane than the dense granular masses resulting in a longer run-out 
+distance. This is in contrast to the behaviour observed in the dry collapse, 
+where dense granular columns flow longer in comparison to loose columns.
 
 Similar to the dry condition, a power-law relation is observed between the 
 initial aspect ratio and the run-out distance in fluid. For a given 
@@ -172,6 +182,12 @@ energy, the run-out distance is found to increase with decrease in the
 permeability. The permeability, a material property, affects the constant of 
 proportionality and not the exponent of the power-law relation between the 
 run-out and the peak kinetic energy.
+
+The number of vortices formed during a collapse in fluid is found to be 
+proportional to the amount of material destabilised. The vortices are formed 
+only during the spreading stage of collapse. The formation of eddies during the 
+collapse of tall columns indicates that most of the potential energy gained 
+during the free-fall is dissipated through viscous drag and turbulence
 
 
 \subsubsection*{Granular collapse down inclined planes}
@@ -196,15 +212,15 @@ inclined planes at high permeabilities, the viscous drag forces predominate
 resulting in almost the same run-out distance for both dense and loose initial 
 conditions. However, at low permeability the entrainment of water at the flow 
 front and the reduction in the effective stress of the flowing mass result in a 
-longer run-out distance in the loose condition than the dense case with an 
-increase in the slope angle.
+longer run-out distance in the loose condition than the dense case as the slope 
+angle increases.
 
 In tall columns, the run-out behaviour is found to be influenced by the 
 formation of vortices during the collapse. The interaction of the surface 
 grains with the surround fluid results in formation of vortices uniquely during 
 the horizontal acceleration stage. The vortices result in redistribution of 
 granular mass and thus affect the run-out behaviour. This effect is 
-predominant with increases in the slope angle. 
+predominant on steeper slopes. 
 
 \section{Recommendations for future research}
 
