@@ -4,7 +4,7 @@
 %%                                                                            %%
 %% A PhD thesis LaTeX template for Cambridge University Engineering Department%%
 %%                                                                            %%
-%% Version: v1.4.2                                                            %%
+%% Version: v1.4.5                                                            %%
 %% Authors: Krishna Kumar                                                     %%
 %% Date: 2013/11/16 (inception)                                               %%
 %% License: MIT License (c) 2013 Krishna Kumar                                %%
@@ -12,8 +12,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % ************************** Class Identification ******************************
-\newcommand\fileversion{1.4.2}
-\newcommand\filedate{2014/10/08}
+\newcommand\fileversion{1.4.5}
+\newcommand\filedate{2014/12/02}
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{PhDThesisPSnPDF}[\filedate\space A PhD thesis class file
  by Krishna Kumar (v\fileversion)]
@@ -207,7 +207,8 @@ footnotes.}
 \PassOptionsToClass{\PHD@papersize}{book}%
 
 % Column layout
-\DeclareOption{oneside}{\PassOptionsToClass{\CurrentOption}{book}}%
+\newif\if@oneside\@onesidefalse
+\DeclareOption{oneside}{\PassOptionsToClass{\CurrentOption}{book}\@onesidetrue}%
 \DeclareOption{twoside}{\PassOptionsToClass{\CurrentOption}{book}}%
 
 % Draft Mode
@@ -838,8 +839,8 @@ wish to left align your text}
 \newcommand{\degreedate}[1]{\renewcommand{\@degreedate}{#1}}
 
 % The full (unabbreviated) name of the degree
-\newcommand{\@degree}{}
-\newcommand{\degree}[1]{\renewcommand{\@degree}{#1}}
+\newcommand{\@degreetitle}{}
+\newcommand{\degreetitle}[1]{\renewcommand{\@degreetitle}{#1}}
 
 % The name of your department(eg. Engineering, Maths, Physics)
 \newcommand{\@dept}{}
@@ -892,11 +893,43 @@ wish to left align your text}
 % *************************** Front Matter Layout ******************************
 % ******************************************************************************
 
+% ******************************** titlepage  **********************************
+
+% Fix issue of title page having same number as the next page in oneside option
+% Issue #24 https://github.com/kks32/phd-thesis-template/issues/24
+\if@oneside
+\renewenvironment{titlepage} % changed from "newenvironment"
+{%
+\begingroup
+\if@twocolumn
+    \@restonecoltrue\onecolumn
+\else
+    \@restonecolfalse\newpage
+\fi
+\thispagestyle{empty}
+\setcounter{page}\z@ 
+}%
+{
+
+\if@restonecol
+    \twocolumn
+\else 
+    \newpage 
+\fi 
+\endgroup
+\clearpage
+\addtocounter{page}{1}
+}
+\fi
+
 % ******************************** Title Page **********************************
 \renewcommand{\maketitle}{
 
 % To compute the free vertical space in Title page
 \computeTitlePageSpacing
+
+% Fix for issue #24 https://github.com/kks32/phd-thesis-template/issues/24
+\renewcommand*{\thepage}{i}
 
 \begin{singlespace}
 \begin{center}
@@ -928,27 +961,27 @@ wish to left align your text}
 % Submission Text
 {\large \submissiontext \par}
 \vspace*{1ex}
-{\large \textit {\@degree} \par}
-
+{\large \textit {\@degreetitle} \par}
 
 \end{center}
+
+% College and degree date
 \vfill
 \large
-\begin{minipage}[c]{\textwidth}
+
 \ifthenelse{\equal{\@college}{}}{
 % college is not defined
 \centering
 \@degreedate
 }{
-% college is defined
-\begin{minipage}{0.45\textwidth}
+  % college is defined
+\begin{minipage}[b]{0.45\textwidth}
 \flushleft\@college
 \end{minipage}
-\begin{minipage}{0.45\textwidth}
-\flushright \@degreedate
+\begin{minipage}[b]{0.45\textwidth}
+\flushright\@degreedate
 \end{minipage}
-} % college is defined
-\end{minipage}
+} % end-if- college is defined
 \end{singlespace}
 }
 
@@ -1000,7 +1033,7 @@ wish to left align your text}
 
 
 % ******************************* Nomenclature *********************************
-\RequirePackage{nomencl}
+\RequirePackage[intoc]{nomencl}
 \makenomenclature
 \renewcommand{\nomgroup}[1]{%
 \ifthenelse{\equal{#1}{A}}{\item[\textbf{Roman Symbols}]}{%
@@ -1025,7 +1058,7 @@ wish to left align your text}
 \ifthenelse{\equal {#1}{}}
 {\printnomenclature}
 {\printnomenclature[#1]}
-\addcontentsline{toc}{chapter}{\nomname}
+%\addcontentsline{toc}{chapter}{\nomname}
 }
 
 
@@ -1153,7 +1186,7 @@ wish to left align your text}
 \begin{center}
 \large \submissiontext \par
 \vspace*{1ex}
-\large \textit {\@degree} \par
+\large \textit {\@degreetitle} \par
 \end{center}
 \end{minipage}
 \end{lrbox}
@@ -1168,10 +1201,10 @@ wish to left align your text}
 \@degreedate
 }{
 % college is defined
-\begin{minipage}{0.45\textwidth}
+\begin{minipage}{0.49\textwidth}
 \flushleft\@college
 \end{minipage}
-\begin{minipage}{0.45\textwidth}
+\begin{minipage}{0.49\textwidth}
 \flushright \@degreedate
 \end{minipage}
 } % college is defined
