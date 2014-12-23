@@ -399,7 +399,7 @@ a_1(\mathit{Q}e_{\alpha}^4-b_6)+a_2(\mathit{Q}e_{\alpha}^4-b_6)\\
 |u_y\rangle_{\alpha} & = e_{\alpha,y}\\
 |q_y\rangle_{\alpha} & = (\mathit{b}_1e_{\alpha}^2-b_3)e_{\alpha,y}\\
 |p_{xx}\rangle_{\alpha} & = \mathit{d}e_{\alpha,x}^2-e_{\alpha}^2\\
-|p_{xx}\rangle_{\alpha}  & = e_{\alpha,x}e_{\alpha,y} \,,
+|p_{xy}\rangle_{\alpha}  & = e_{\alpha,x}e_{\alpha,y} \,,
 \end{align}
 \end{subequations}
 
@@ -482,15 +482,15 @@ found in~\citet{Aidun1998}.
 
 \subsubsection*{No-slip boundary condition} \label{bounce}
 
-The most commonly adopted BC in the lattice Boltzmann approach is the no-slip 
-BC, especially the simple bounce-back rule, which is quite elegant and 
-surprisingly accurate. The basic idea is that the incoming distribution 
-functions at a wall node are reflected back to the original fluid nodes, but 
-with the direction rotated by $\pi$ radians. The bounce-back boundary 
-condition is one of the benefits of LBM, as it is trivial to implement and it 
-allows one to effortlessly introduce obstacles into the fluid domain. However, 
-the boundary conditions have been proven to be only first-order accurate in 
-time and space~\citep{Pan2006}. A straightforward improvement is to 
+The most commonly adopted BC for fluid-solid interface in the lattice Boltzmann 
+approach is the no-slip BC, especially the simple bounce-back rule, which is 
+quite elegant and surprisingly accurate. The basic idea is that the incoming 
+distribution functions at a wall node are reflected back to the original fluid 
+nodes, but with the direction rotated by $\pi$ radians. The bounce-back 
+boundary condition is one of the benefits of LBM, as it is trivial to implement 
+and it allows one to effortlessly introduce obstacles into the fluid domain. 
+However, the boundary conditions have been proven to be only first-order 
+accurate in time and space~\citep{Pan2006}. A straightforward improvement is to 
 consider the wall-fluid interface to be situated halfway between the wall and 
 the fluid lattice nodes~\citep{Ziegler1993}. It involves defining the 
 \textit{solid} nodes as those lying within the stationary wall regions, and the 
