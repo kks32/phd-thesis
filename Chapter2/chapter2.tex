@@ -1061,7 +1061,7 @@ continuum and discrete approaches are presented in~\cref{chapter:multiscale}.
 \subsection{Flow down an inclined plane}
 
 Most contemporary research on granular materials deals
-with the steady-state flows. Transients and inhomogeneous boundary conditions 
+with steady-state flow. Transients and inhomogeneous boundary conditions 
 are much less amenable to observation and analysis, and have thus been less 
 extensively studied despite their primary importance in engineering practice. 
 Studies on the flow of granular materials down inclined planes are important to 
@@ -1098,7 +1098,7 @@ after~\citep{Midi2004}.}
 \end{figure}
 
 
-The two curve $h_{stop}(\theta)$ and $h_{start}(\theta)$ divides the phase 
+The two curves $h_{stop}(\theta)$ and $h_{start}(\theta)$ divide the phase 
 diagram $(h,\theta)$ into three regions: a region where no flow occurs, 
 $(\textit{h}<\textit{h}_{\textit{stop}}(\theta))$, a sub-critical region where 
 both static and flowing layers can exist $(\textit{h}_{\textit{stop}}(\theta) < 
@@ -1108,7 +1108,7 @@ regime, i.e. $(\textit{h}>\textit{h}_{\textit{start}}(\theta))$, the flow is
 steady and uniform for moderate inclination, but accelerates along the plane 
 for large inclinations~\citep{Midi2004}. The critical angle controlling the 
 flow behaviour tends to increase when the thickness of the bed 
-decreases~\citep{Pouliquen2002a,Daerr1999}, which can be attributed to the 
+decreases~\citep{Pouliquen2002a,Daerr1999}, which can be attributed to 
 non-trivial finite-size effects and/or boundary effects that are not well 
 understood~\citep{Forterre2008}. There exists a value of roughness for which a 
 maximum thickness of deposit is observed, which might correspond to a maximum
@@ -1124,35 +1124,32 @@ flow ceases. This transition behaviour is difficult to model.
 \subsubsection{Numerical modelling}
 
 Fast moving granular flows can undergo a motion-induced self-fluidisation 
-process under the combined effects of front instabilities setting on at large 
-values of the Froude number which are responsible for extensive air 
-entrainment, and small deflation rates associated with small incipient 
-fluidisation velocities and longer collapse time of the bed solids. 
+process under the combined effects of flow front instabilities setting on at 
+large values of the Froude number which are responsible for extensive 
+entrainment, and longer time between collisions of soil grains. 
 Self-fluidisation results in enhanced mobility of the solids, causing an 
-inviscid flow to an extent that may largely exceed the establishment of a 
-``\textit{granular liquid}'' state in purely granular 
-flow~\citep{Bareschino2008}. It is understood that, for a granular material to 
-flow, it has to exceed a certain critical threshold, i.e. the friction 
-criterion: the ratio of shear stress to normal stress. As there is no internal 
-stress scale for a granular material, granular materials exhibit solid-fluid 
-transition behaviour based on the friction criterion~\citep{Forterre2008}. The 
-stress ratio in the flowing regime above the static bed indicates the 
-solid-to-fluid transition is a yielding phenomenon and can be described by 
-Mohr-Coulomb-like failure criterion~\citep{Zhang1992}. This is in contrast to 
-the mechanism of behaviour of other complex fluids, where there is an internal 
-stress scale linked to the breakage of microscopic structure. From a 
-microscopic point of view, the strength of the granular materials is due to the 
-internal friction between grains, but packed frictionless materials still 
-exhibit macroscopic friction.
+inviscid flow~\citep{Bareschino2008}. It is understood that, for a granular 
+material to flow, it has to exceed a certain critical threshold, i.e. the 
+friction criterion: the ratio of shear stress to normal stress. As there is no 
+internal stress scale for a granular material, granular materials exhibit 
+solid-fluid transition behaviour based on the friction 
+criterion~\citep{Forterre2008}. The stress ratio in the flowing regime above 
+the static bed indicates that the solid-to-fluid transition is a yielding 
+phenomenon and can be described by Mohr-Coulomb-like failure 
+criterion~\citep{Zhang1992}. This is in contrast to the mechanism of behaviour 
+of other complex fluids, where there is an internal stress scale linked to the 
+breakage of microscopic structure. From a microscopic point of view, the 
+strength of granular materials is due to the internal friction between 
+grains, but packed frictionless materials still exhibit macroscopic friction.
 
-Constitutive laws based on Plasticity-theories relate the micro-structure to 
+Constitutive laws based on plasticity theories relate the micro-structure to 
 the macroscopic behaviour~\citep{Roux2002}, which provide useful insight into 
 the mechanism of granular flow. However, at present they are limited to 
-initiation of deformation and do not predict the quasi-static flow. Continuum 
-approach such as Material Point Method simulation of granular flow down an 
-inclined plane~\citep{Abe2006,Bandara2013} captures the flow behaviour in the 
-initial stages, however it exhibits inconsistent behaviour when the granular 
-material ceases to flow. This may be due to the application of small 
+initiation of deformation and do not predict quasi-static flow. Continuum 
+approaches such as the Material Point Method simulation of granular flow down 
+an inclined plane~\citep{Abe2006,Bandara2013} capture the flow behaviour in 
+the initial stages, however the model exhibits inconsistent behaviour when the 
+granular material ceases to flow. This may be due to the application of small 
 deformation theory to a large deformation problem and the use of zero dilation. 
 
 Alternatively by using the $\mu(\textit{I})$ rheology we can capture the 
@@ -1161,39 +1158,39 @@ model the transition from a continuous flow to an avalanching regime as the
 flow rate is decreased~\citep{Pouliquen2006}. The rheology predicts no-flow 
 below a critical angle $\theta_s = \arctan(\mu_s)$ independent of the 
 thickness. In experiments, it is observed that the critical angle increases 
-when the thickness of the flow decreases~\citep{Pouliquen1999}. The granular 
-flow down rough inclined planes exhibit strong Coulomb shear stresses on a 
+when the thickness of the flow decreases~\citep{Pouliquen1999}. Granular 
+flow down rough inclined planes exhibits strong Coulomb shear stresses on a 
 plane normal to the basal flow boundary. The stresses dissipate the energy 
 along the rough surface; models that lack multi-dimensional momentum transport 
-or Coulomb friction cannot represent this energy dissipation and lodging.
+or Coulomb friction cannot represent this energy dissipation.
 
 \subsubsection{Comments on modelling}
 
-Granular flow down inclined planes exhibit a transient behaviour. Various 
+Granular flow down inclined planes exhibits a transient behaviour. Various 
 velocity profiles and flow behaviours can be obtained not only through changing 
 the height of the flowing granular mass, but also by varying the inclination of 
 the chute, such that there is an overlap region where one can obtain similar 
 flow properties through either procedure. These features can be used to better 
 predict the evolution of an avalanche surface. The experimental configuration 
 is ideal to study the effectiveness of various theoretical frameworks in 
-modelling the granular flows especially the transition from solid-like to 
+modelling granular flows, especially the transition from solid-like to 
 fluid-like behaviour. The $\mu(I)$ rheology and models 
 that are based on Coulomb friction are able to predict the energy dissipation 
 along the rough surface. However, they fail to capture the transient from 
-static to a flowing behaviour and again when it ceases to flow. 
+static to a flowing behaviour, and again when it ceases to flow. 
 In large scale granular flow down slopes, only those grains that are
-located on the surface of will have higher \textit{I} values, due to lower 
+located on the flow surface will have higher \textit{I} values, due to lower 
 mean pressures. However, grains located within the main flowing mass would 
-experience higher mean pressure and thus resulting in smaller \textit{I} 
+experience higher mean pressure thus resulting in smaller \textit{I} 
 values. Hence, $\mu(I)$ rheology is less effective in large scale problems and 
-a simple Mohr-Coulomb model will be yield a similar response. It can be 
+a simple Mohr-Coulomb model will yield a similar response. It can be 
 suggested that the flow is governed by its momentum. It is 
 important to carry out DEM simulations to understand the mechanics of the flow 
 transition behaviour. This will enable us to describe the continuum response of 
 phase transition more efficiently.
 
 \subsection{Saturated and submerged granular flows}
-Submarine mass movements pose a significant threat to the off-shore structures, 
+Submarine mass movements pose a significant threat to off-shore structures, 
 especially oil and gas platforms. Geophysical hazards, such as debris flows and 
 submarine landslides, usually involve flow of granular solids and water as a 
 single-phase system. Modelling the multi-phase interaction poses a serious 
