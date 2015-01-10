@@ -484,28 +484,27 @@ discarded, and a new mesh is defined for the next time step.
 The Material Point Method uses standard shape functions, similar to those used 
 in the Finite Element Methods, hence the essential and the natural boundary 
 conditions can be applied to the background grid nodes in the same way as in 
-the traditional FEM. The free surface boundary conditions are satisfied, as MPM 
-is formulated in the weak form. Implementation of traction boundary conditions 
-requires a set of material points to represent the boundary 
+the traditional FEM. The free surface boundary conditions are satisfied, as the 
+MPM is formulated in the weak form. Implementation of traction boundary 
+conditions requires a set of material points to represent the boundary 
 layer.~\citet{Bandara2013} proposed a friction interaction for the planar 
 boundary condition, using Coulomb's friction criterion. The friction boundary 
-algorithm for solid phase adopted in the present study is shown 
-in~\cref{alg:friction}. The friction boundary 
-conditions are applied on the mesh nodes by controlling the nodal acceleration 
-tangential to the boundary. The nodal accelerations 
-are considered to include the frictional effects instead of the forces, as the 
-forces are proportional to the corresponding accelerations. Both static and 
-kinetic friction are considered, and are applied only when the particles 
-are in contact with the boundary. The static and kinematic frictions are 
-applied in the direction tangential to the nodal boundary. Friction 
-forces are applied, only if the particles are in contact. The normal velocity 
-and acceleration on the boundary plane is zero. Displacement boundary 
-conditions are applied as velocity constrains on the nodes in the background 
-mesh.
+algorithm for the solid phase adopted in the present study is shown 
+in~\cref{alg:friction}. The friction boundary conditions are applied on the 
+mesh nodes by controlling the nodal acceleration tangential to the boundary. 
+The nodal accelerations are considered to include the frictional effects 
+instead of the forces, as the forces are proportional to the corresponding 
+accelerations. Both static and kinetic friction are considered, and are applied 
+only when the particles are in contact with the boundary. The static and 
+kinematic frictions are applied in the direction tangential to the nodal 
+boundary. Friction forces are applied only if the particles are in contact. 
+The normal velocity and acceleration on the boundary plane is zero. 
+Displacement boundary conditions are applied as velocity constraints on the 
+nodes in the background mesh.
 
 \begin{algorithm}[tbhp]
-\label{alg:friction}
 \caption{Friction boundary algorithm for solid phase in MPM~\citep{Bandara2013}}
+\label{alg:friction}
 \begin{algorithmic}
 \If {$a_{sI,t}^{k+1} < 0.0$}
     \State $v_{sI,t}^{k+1,tmp}=v_{sI}^k+\Delta a_{sI,t}^{k+1}$
