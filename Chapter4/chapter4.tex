@@ -1359,6 +1359,176 @@ mass $m$ and acceleration due to gravity $g$. For this reason, the length
 scales are normalised by $d$, time by $(d/g)^{1/2}$, velocities by $(gd)^{1/2}$ 
 and energies by $mgd$. 
 
+
+\subsection{Effect of mesh size and number of material points per cell}
+\label{sec:MPM_points_per_cell}
+
+The accuracy of MPM simulations largely depends on the number of material 
+points representing the continuum. MPM utilizes a grid to compute the 
+deformation of a continuum, hence the size of the cells affects the accuracy 
+of the results. Generally in MPM, the number of particles per cell controls 
+the accuracy of the simulation.~\citet{Guilkey2003} recommends higher particle 
+density, such as 4 particles per cell, for large deformation problems. Very low 
+particle density will result in non-physical opening of cracks in large 
+deformation simulations. However, a higher value of particle density affects 
+the computational time. 
+
+\citet{Abe2013} observed that for a coarse mesh, the numerical error 
+decreases with an increase in the number of material points per cell. In 
+contrast, they observed an opposite trend for fine meshes. The influence of 
+numerical noise due to particles crossing the background mesh is not observed 
+in coarse meshes.~\citet{Coetzee2005} also found that the numerical error 
+decreases with increase in mesh refinement.
+
+In the present study, the effect of mesh size and the number of material points 
+per cell on the run-out behaviour is investigated. The run-out behaviour of  a 
+granular slope of length 0.8~\si{\m} and height 0.2~\si{\m} subjected to a 
+gradient impact velocity is studied. The initial 
+static slope is set into motion by applying a horizontal
+gradient velocity $v_{0x}(y) = k (y_{max} - y)$ with 
+$k>0$.~\Cref{fig:MPM_Velocity_Slope} shows the initial configuration and 
+distribution of initial horizontal impact velocity of 50J in the granular mass. 
+A detailed description of this problem and the material properties used in the 
+simulations are found in~\cref{sec:slope}.
+A mesh size of 0.0125~\si{\m} is adopted. The number of material points per 
+cell (PPC) is varied as 4, 16, 25, 36, 64, 81 and 100.
+
+The effect of the number of material points on the run-out 
+behaviour is presented in~\cref{fig:Runout_MPM}. At a low input energy of 
+50~\si{\J}, 4 and 16 material points per cell result in a longer run-out 
+distance, whereas the 
+run-out distance converges when the number of PPC is more 
+than 25. However, at a high input energy of 500~\si{J}, both 4 and 16 PPC 
+predict almost the same run-out distance, but the run-out is higher than the 
+run-out predicted with more than 25 material points per cell. 
+
+\begin{figure}[tbhp]
+\centering
+\begin{subfigure}[b]{0.95\textwidth}
+\includegraphics[width=\textwidth]{Runout_50}
+\caption{$E_0=12.7mgd$}
+\label{fig:Runout_50}
+\end{subfigure}
+\\
+\begin{subfigure}[b]{0.95\textwidth}
+\centering
+\includegraphics[width=\textwidth]{Runout_500}
+\caption{$E_0=152mgd$}
+\label{fig:Runout_500}
+\end{subfigure}
+\caption{Evolution of run-out with time for varying material points per cell 
+for a slope subjected to an impact velocity.}
+\label{fig:Runout_MPM}
+\end{figure}
+
+The evolution of the granular pile during the initial stage of flow is shown 
+in~\cref{fig:MPM_50ppc} for different numbers of material points per cell. At 
+low input energy, fewer material points per cell results in a larger separation 
+of the spreading mass from the left wall. Distinct shear bands can be observed 
+for more than 16 PPC. The flow structure remains unchanged with increase in PPC 
+of more than 25. At a higher input energy
+(\cref{fig:MPM_500ppc}), almost all cases predict similar flow structure, 
+except in the case of 4 PPC.
+
+\begin{figure}[tbhp]
+\centering
+\includegraphics[height=\textheight]{MPM_50ppc}
+\caption{Effect of number of material points on cell on the run-out behaviour 
+$E_0=12.7mgd$. 
+Velocity profile (\si{\m/\s}) of granular pile subjected to gradient impact 
+loading.}
+\label{fig:MPM_50ppc}
+\end{figure}
+
+
+\begin{figure}[tbhp]
+\centering
+\includegraphics[height=\textheight]{MPM_500ppc}
+\caption{Effect of number of material points on cell on the run-out behaviour 
+$E_0=152mgd$. 
+Velocity profile (\si{\m/\s}) of granular pile subjected to gradient impact 
+loading.}
+\label{fig:MPM_500ppc}
+\end{figure}
+
+\Cref{fig:KE_MPM} shows the evolution of kinetic energy with time for varying 
+number of material points per cell. At low input energy, the horizontal kinetic 
+energy evolution is identical for all cases. A slightly quicker run-out 
+evolution during the spreading phase can be observed for the case of 4 PPC.  
+However, increase in the number of material points per cell significantly 
+affects the evolution of the vertical kinetic energy $E_{ky}$. At low energy, a 
+large proportion of the input energy is dissipated in the destabilisation 
+process. This results in material points falling behind the spreading mass to 
+the fill the cavity. Fewer material points per cell results in cell-crossing 
+noise as the material points filling the cavity experience free-fall due to 
+gravity. The effect of cell-crossing noise can be seen in the oscillation of 
+vertical kinetic energy for fewer material points per cell. However, at high 
+input energy, most of the input velocity is dissipated during the spreading 
+process. This means that only a small fraction of energy is available in the 
+vertical component resulting in almost identical behaviour for all cases. Four 
+material points per cell predicts a higher peak vertical kinetic energy in 
+comparison with other case and unlike the low energy case, no oscillations are 
+observed for high input energy.
+
+\begin{figure}[tbhp]
+\centering
+\begin{subfigure}[b]{0.95\textwidth}
+\includegraphics[width=\textwidth]{KE_50}
+\caption{$E_0=12.7mgd$.}
+\label{fig:KE_50}
+\end{subfigure}
+\\
+\begin{subfigure}[b]{0.95\textwidth}
+\centering
+\includegraphics[width=\textwidth]{KE_500}
+\caption{$E_0=152mgd$}
+\label{fig:KE_500}
+\end{subfigure}
+\caption{Evolution of kinetic with time for varying material points per cell 
+for a slope subjected to an impact velocity.}
+\label{fig:KE_MPM}
+\end{figure}
+
+The effect of mesh size on the flow kinematics is studied by comparing two mesh 
+sizes: 0.01~\si{\m} and 0.0125~\si{\m} (\cref{fig:MPM_Size_Effect}). It can 
+be observed that the run-out distance converges with an increase in the number 
+of material points per cell in both cases. Less than ~1\% difference in the 
+run-out distance is observed between a mesh size of 0.0125~\si{\m} and 
+0.01~\si{\m}. The final run-out duration is almost unaffected by the increase 
+in the number of material points per cell. 
+ 
+
+\begin{figure}[tbhp]
+\centering
+\begin{subfigure}[b]{0.95\textwidth}
+\includegraphics[width=\textwidth]{50}
+\caption{$E_0=12.7mgd$.}
+\label{fig:50}
+\end{subfigure}
+\\
+\begin{subfigure}[b]{0.95\textwidth}
+\centering
+\includegraphics[width=\textwidth]{500}
+\caption{$E_0=152mgd$.}
+\label{fig:500}
+\end{subfigure}
+\caption{Evolution of run-out and duration of flow  for varying material points 
+per cell for a slope subjected to an impact velocity.}
+\label{fig:MPM_Size_Effect}
+\end{figure}
+
+This shows that the run-out distance is affected by the number of material 
+points per cell. However, the duration of the run-out is independent of the 
+number of material points per cell. The computation time increases with 
+increase in the number of material points per cell and decrease in the mesh 
+size. However, the run-out distance converges with increase in number of 
+material points per cell. Hence, an optimum number of 25 material points per 
+cell is adopted in this case. In summary, for conducting a successful MPM 
+analysis, a careful selection of the mesh size and the number of particles is 
+necessary.
+
+
+
 %-------------------------------------------------------------------------------
 \subsection{Evolution of pile geometry and run-out}
 \label{sec:evolution}

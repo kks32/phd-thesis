@@ -529,40 +529,47 @@ nodes in the background mesh.
 \subsection{Integration scheme}
 
 \citet{Love2006} investigated the energy consistency of MPM and observed that 
-MPM algorithm is more suited to flow calculations than Lagrangian finite 
-element methods. Since, energy consistent MPM formulation is effective in 
-simulating materials that exhibit localised dissipative mechanisms. In dynamic 
-MPM, the explicit time integration scheme is 
+the MPM algorithm is more suited to flow calculations than the Lagrangian 
+finite element method. Since, energy consistent MPM formulation is effective 
+in simulating materials that exhibit localised dissipative mechanisms. In 
+dynamic MPM, an explicit time integration scheme is 
 adopted to advance the solution.~\citet{Bardenhagen2002} studied the energy 
-consistency of MPM using two 
-different explicit integration schemes. The \textit{update stress first} USF
-involves updating the strain and the stress at the beginning of the time step 
-from the velocities of the previous time step. In the \textit{update stress 
-last} USL approach the updated particle momentums are used to calculate the 
-nodal velocities, which are then used to update the particle strain and 
-stress.~\citet{Bardenhagen2002} observed that the USL approach performed better 
+consistency of MPM using two different explicit integration schemes. The 
+\textit{update stress first} (USF) scheme involves updating the strain and the 
+stress at the beginning of the time step from the velocities of the previous 
+time step. In the \textit{update stress last} (USL) approach the updated 
+particle momentums are used to calculate the nodal velocities, which are then 
+used to update the particle strain and stress.~\citet{Bardenhagen2002} observed 
+that the USL approach performed better 
 than the USF. The USL approach dissipates the energy slowly, while the USF 
 approach is found to gain energy~\citep{Kafaji2013}. The USL approach yields 
 almost the same result as using the central difference scheme that is second 
 order in time~\citep{Wallstedt2008}. The \textit{update stress last} approach 
-is used in the present study, due to its dissipative nature, which in certain 
-conditions simulate artificial damping, and the numerical stability.
+is used in the present study due to its dissipative nature, which is useful in 
+modelling granular flow problems, and numerical stability.
 
-In problems involving slow rate of loading, i.e., quasi-static problems, the 
+In problems involving a slow rate of loading, i.e., quasi-static problems, the 
 flow of the material is much slower than the speed of wave propagation in the 
 material. Hence, employing an implicit time integration scheme reduces the 
 computational time considerably~\citep{Kafaji2013}.~\citet{Guilkey2003a} 
 proposed an implicit time integration method for MPM using quasi-static 
-governing equations, using the Newmark integration scheme.~\citet{Love2006} 
-showed that the implicit time integration in MPM to be unconditionally stable. 
-Although, MPM did not suffer from the limitations of FEM in simulating large 
+governing equations, and the Newmark integration scheme.~\citet{Love2006} 
+showed implicit time integration in MPM is unconditionally stable. 
+Although, MPM does not suffer from the limitations of FEM in simulating large 
 deformations, more research is required for applying implicit time integration 
 for large deformation problems. The present study focuses on large deformation 
 problems, hence an explicit time integration scheme with the USL approach is 
 adopted.
 
 \subsection{Solution scheme}
-A step-by-step solution scheme for Material Point Method is described below:
+
+In the present study a template-based three-dimensional C++11 Material Point 
+Method code, developed at the University of Cambridge, is modified and extended 
+to study granular flow problems. The three-dimensional MPM code is parallelised 
+to run on multi-core systems, thus improving the computational efficiency. The 
+algorithm of the MPM code is improved to handle multi-body dynamics and 
+interactions. A step-by-step solution scheme for Material Point Method 
+implemented in the present study is described below:
 
 \begin{itemize}
 
@@ -661,7 +668,8 @@ The particle position and its velocity are updated according to:
 
 
 \item
-Strain increment $\Delta \epsilon_{p}^{t+1}$ for particle is then computed as
+The strain increment $\Delta \epsilon_{p}^{t+1}$ for particle is then computed 
+as
 %
 \begin{equation}
 \Delta \epsilon_{p}^{t+1} = \frac{\Delta t}{2} 
@@ -743,10 +751,10 @@ material point method, structures are generally represented as points which
 describe a discrete region of the body. MPM facilitates representation of 
 arbitrarily complex geometries and has advantages over strictly grid based 
 methods especially in simulations involving large 
-deformations~\citep{Bardenhagen2000}. MPM poses a whole new set of 
-visualization problem, it is essential to visualize the general configuration 
-of the body as well as observe the finer details like development of cracks or 
-separation of chunks of material from the body. The body is discretised into 
+deformations~\citep{Bardenhagen2000}. However, MPM poses a whole new set of 
+visualization problem. It is essential to visualize the general configuration 
+of the body as well as observe the finer details like the development of cracks 
+or separation of chunks of material from the body. The body is discretised into 
 conceptual material points, which carry all the relevant information of the 
 corresponding segment. The unique qualities of MPM necessitate the need to 
 visualize the particle data in a way that is informative and appropriate.
@@ -757,15 +765,16 @@ macroscopic structure created by these particles is vital~\citep{bigler2006}.
 There are two main aspects in visualizing MPM data: (1) visualization of 
 the structure represented by the material points, and (2) understanding the 
 qualitative trend associated with the material points like mass, velocity or 
-stress. 
+stress.
 
 The MPM output data contains both the material point and the grid data, and
 one approach in visualizing MPM data is by rendering the interpolated 
-particle values on grid nodes using \textit{iso-surfacing}~\citep{lorensen1987} 
+particle values on grid nodes using the 
+\textit{iso-surfacing}~\citep{lorensen1987} 
 or \textit{volume rendering}~\citep{levoy1988} technique. In regions where the 
-material points are sparse, it is necessary that the grid resolution to be 
+material points are sparse, it is necessary that the grid resolution is 
 sufficiently fine to compensate for the missing features. This results in 
-storing large amount of unnecessary data in regions where sufficient material 
+storing a large amount of unnecessary data in regions where sufficient material 
 points are present. Thus, it is advantageous to visualize MPM data of the 
 material points as particles~\citep{bigler2006}. Particle visualization 
 involves rendering the particles as a sphere or an ellipsoid representing the 
@@ -775,175 +784,6 @@ data points are represented as spheres.  Colour mapping of scalar
 quantities such as mass, velocity, or stress of a material point are applied to 
 provide additional qualitative understanding of the data.
 
-
-
-\subsection{Effect of mesh size and number of material points per cell}
-\label{sec:MPM_points_per_cell}
-
-The accuracy of MPM simulations largely depends on the number of material 
-points representing the continuum. MPM utilizes a grid to compute the 
-deformation of a continuum, hence the size of the cells affects the accuracy 
-of the results. Generally in MPM, the number of particles per cell controls 
-the accuracy of the simulation. \citet{Guilkey2003} recommends higher particle 
-density, such as 4 particles per cell, for large deformation problems. Very low 
-particle density will result in non-physical opening of cracks in large 
-deformation simulations. However, a higher value of particle density affects 
-the computational time. 
-
-\citet{Abe2013} observed that for a coarse mesh, the numerical error 
-decreases with increase in the number of material points per cell. In contrast, 
-they observed an opposite trend for the fine meshes. The influence of numerical 
-noise due to particles crossing the background mesh is not observed in coarse 
-meshes.~\citet{Coetzee2005} also found that the numerical error decreases 
-with increase in mesh refinement.
-
-In the present study, the effect of mesh size and the number of material points 
-per cell on the run-out behaviour is investigated. The run-out behaviour of  a 
-granular slope of length 0.8~\si{\m} and height 0.2~\si{\m} is subjected to a 
-gradient impact velocity is studied. The initial 
-static slope is set into motion by applying a horizontal
-gradient velocity $v_{0x}(y) = k (y_{max} - y)$ with 
-$k>0$.~\Cref{fig:MPM_Velocity_Slope} shows the initial configuration and 
-distribution of initial horizontal impact velocity of 50J in the granular mass. 
-Detailed description of this problem and the material properties used in the 
-simulations are found in~\cref{sec:slope}.
-A mesh size of 0.0125~\si{\m} is adopted. The number of material points per 
-cell (PPC) is varied as 4, 16, 25, 36, 64, 81 and 100.
-
-The effect of number of material points on the run-out 
-behaviour is presented in~\cref{fig:Runout_MPM}. At a low input energy of 
-50~\si{\J}, 4 and 16 material points per cell result in a longer run-out 
-distance, where as the 
-run-out distance converges when the number of PPC is more 
-than 25. While at a high input energy of 500~\si{J}, both 4 and 16 PPC predict 
-almost the same run-out distance, but is higher than the run-out predicted 
-with more than 25 material points per cell. 
-
-\begin{figure}[tbhp]
-\centering
-\begin{subfigure}[b]{0.95\textwidth}
-\includegraphics[width=\textwidth]{Runout_50}
-\caption{$E_0=12.7mgd$}
-\label{fig:Runout_50}
-\end{subfigure}
-\\
-\begin{subfigure}[b]{0.95\textwidth}
-\centering
-\includegraphics[width=\textwidth]{Runout_500}
-\caption{$E_0=152mgd$}
-\label{fig:Runout_500}
-\end{subfigure}
-\caption{Evolution of run-out with time for varying material points per cell 
-for a slope subjected to an impact velocity.}
-\label{fig:Runout_MPM}
-\end{figure}
-
-The evolution of the granular pile during the initial stage of flow is show 
-in~\cref{fig:MPM_50ppc} for different number of material points per cell. At 
-low input energy, fewer material points per cell results in larger separation 
-of the spreading mass from the left wall. Distinct shear bands can be observed 
-for more than 16 PPC. 
-The flow structure remains unchanged with increase in PPC of more than 25. At 
-a higher input energy
-(\cref{fig:MPM_500ppc}), almost all cases predict similar flow structure, 
-except in the case of 4 PPC.
-
-\begin{figure}[tbhp]
-\centering
-\includegraphics[height=\textheight]{MPM_50ppc}
-\caption{Effect of number of material points on cell on the run-out behaviour 
-$E_0=12.7mgd$. 
-Velocity profile (\si{\m/\s}) of granular pile subjected to gradient impact 
-loading.}
-\label{fig:MPM_50ppc}
-\end{figure}
-
-
-\begin{figure}[tbhp]
-\centering
-\includegraphics[height=\textheight]{MPM_500ppc}
-\caption{Effect of number of material points on cell on the run-out behaviour 
-$E_0=152mgd$. 
-Velocity profile (\si{\m/\s}) of granular pile subjected to gradient impact 
-loading.}
-\label{fig:MPM_500ppc}
-\end{figure}
-
-\Cref{fig:KE_MPM} shows the evolution of kinetic energy with time for varying 
-number of material points per cell. At low input energy, the horizontal kinetic 
-energy evolution is identical for all cases. A slightly quicker run-out 
-evolution during the spreading phase can be observed for the case of 4 PPC.  
-However, increase in the number of material points per cell significantly 
-affects the evolution of the vertical kinetic energy $E_{ky}$. At low energy, a 
-large proportion of the input energy is dissipated in the destabilisation 
-process. This results in material points falling behind the spreading mass to 
-the fill the cavity. Fewer material points per cell results in cell 
-crossing noise as the material points filling the cavity experience free-fall 
-due to gravity. The effect of cell-crossing noise can be seen in the 
-oscillation of vertical kinetic energy for fewer material points per cell. 
-However, at high input energy, most of the input velocity is dissipated during 
-the spreading process. This means that only a small fraction of energy is 
-available in the vertical component resulting in almost similar behaviour for 
-all cases. Four material points per cell predicts a higher peak vertical 
-kinetic energy in comparison with other cases, unlike the low energy case, no 
-oscillations are observed for the high input energy.
-
-\begin{figure}[tbhp]
-\centering
-\begin{subfigure}[b]{0.95\textwidth}
-\includegraphics[width=\textwidth]{KE_50}
-\caption{$E_0=12.7mgd$.}
-\label{fig:KE_50}
-\end{subfigure}
-\\
-\begin{subfigure}[b]{0.95\textwidth}
-\centering
-\includegraphics[width=\textwidth]{KE_500}
-\caption{$E_0=152mgd$}
-\label{fig:KE_500}
-\end{subfigure}
-\caption{Evolution of kinetic with time for varying material points per cell 
-for a slope subjected to an impact velocity.}
-\label{fig:KE_MPM}
-\end{figure}
-
-The effect of mesh size on the flow kinematics is studied by comparing two mesh 
-sizes: 0.01~\si{\m} and 0.0125~\si{\m} (\cref{fig:MPM_Size_Effect}). It can 
-be observed that the run-out distance converges with an increase in the number 
-of material points per cell in both cases. Less than ~1\% difference in the 
-run-out distance is observed between a mesh size of 0.0125~\si{\m} and 
-0.01~\si{\m}. The final run-out duration is almost unaffected by the increase 
-in the number of material points per cell. 
- 
-
-\begin{figure}[tbhp]
-\centering
-\begin{subfigure}[b]{0.95\textwidth}
-\includegraphics[width=\textwidth]{50}
-\caption{$E_0=12.7mgd$.}
-\label{fig:50}
-\end{subfigure}
-\\
-\begin{subfigure}[b]{0.95\textwidth}
-\centering
-\includegraphics[width=\textwidth]{500}
-\caption{$E_0=152mgd$.}
-\label{fig:500}
-\end{subfigure}
-\caption{Evolution of run-out and duration of flow  for varying material points 
-per cell for a slope subjected to an impact velocity.}
-\label{fig:MPM_Size_Effect}
-\end{figure}
-
-This shows that the run-out distance is affected by the number of material 
-points per cell. However, the duration of the run-out is independent of the 
-number of material points per cell. The computation time increases with 
-increase in the number of material points per cell and decrease in the mesh 
-size. However, the run-out distance converges with increase in number of 
-material points per cell. Hence, an optimum number of 25 material points per 
-cell is adopted in this case. In summary, for conducting a successful MPM 
-analysis, a careful selection of the mesh size and the number of particles is 
-necessary.
 
 \subsection{GIMP method}
 
