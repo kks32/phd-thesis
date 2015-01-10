@@ -255,24 +255,23 @@ inconsistencies, and it is computationally expensive as a result of the search
 for the neighbouring particles~\citep{Bandara2013}.
 
 \section{Material Point Method (MPM)}
-Material Point Method (MPM)~\citep{Sulsky1994,Sulsky1995} is a particle based 
-method that represents the material as a collection of \textit{material 
+The Material Point Method (MPM)~\citep{Sulsky1994,Sulsky1995} is a particle 
+based method that represents the material as a collection of \textit{material 
 points}, and their deformations are determined by \textit{Newton's laws of 
 motion}. \citet{Sulsky1994} extended the Particle-in-Cell (PIC) 
 method~\citep{Harlow1964} to computational solid mechanics by taking advantage 
-of the combined Eulerian-Lagrangian approach. Material Point Method is a hybrid 
-Eulerian-Lagrangian approach, which uses moving material points, and 
+of the combined Eulerian-Lagrangian approach. The Material Point Method is a 
+hybrid Eulerian-Lagrangian approach, which uses moving material points, and 
 computational nodes on a background mesh. This approach is very effective 
 particularly in the context of large 
 deformations~\citep{Mackenzie-Helnwein2010,Shin2010a,Mast2014,Andersen2010,Zhang2009,Bandara2013}.
 Although, not derived directly from what is classically considered as mesh-free 
 or mesh-less methods, MPM is still considered as a mesh-free approach, 
 primarily because the initial discretisation of the material does not involve a 
-polygonal tessellation, as in Finite Element Method. However, MPM utilizes a 
-background mesh to perform differentiation, integration, and to solve equations 
-of motions~\citep{Steffen2008}. The background mesh can be of any form, however 
-for computational efficiency a Cartesian lattice is adopted. A typical 2D 
-discretisation of a solid body is shown in~\cref{fig:MPM}. 
+polygonal tessellation, as in the Finite Element Method. However, MPM utilizes 
+a background mesh to perform differentiation, integration, and to solve 
+equations of motion~\citep{Steffen2008}. The background mesh can be of any 
+form, however for computational efficiency a Cartesian lattice is adopted.
 
 \begin{figure}[tbhp]
 \centering
@@ -286,8 +285,10 @@ grid cells.}
 \label{fig:MPM}
 \end{figure}
 
-The grey circles are the material points $x_{p}$, where `p' represents 
-a material point, and the computational nodes are the points of intersection of 
+A typical 2D discretisation of a solid body is shown in~\cref{fig:MPM}. The 
+grey circles in~\cref{fig:MPM} are the material points $x_{p}$, where `p' 
+represents a material point, and the computational nodes are the points of 
+intersection of 
 the grid (denoted as $X_{i}$, where \textit{i} represents a computational 
 node). MPM involves discretising the domain $\Omega$ with 
 a set of material points. The material points are assigned an initial value of 
@@ -296,13 +297,13 @@ position, velocity, mass, volume, and stress denoted as $\mathbf{x}_{p},\mbox{
 }\mathbf{V}_{p}\mbox{ and }\sigma_{p} $. Depending on the material being 
 simulated, additional parameters, like pressure, temperature, pore-water 
 pressure, etc., are specified at the material points. The material points are 
-assumed to be within the computational grid, which for the ease of computation, 
+assumed to be within the computational grid which for, ease of computation, 
 is assumed to be a Cartesian lattice (\cref{fig:MPM}). At 
-every time step $\mathit{t}_{k}$, MPM computation cycle involves projecting 
+every time step $\mathit{t}_{k}$, the MPM computation cycle involves projecting 
 the data, such as position, mass, and velocity from the material points to the 
 computational grid using the standard nodal basis functions, called the 
 \textit{shape functions}, derived based on the position of particle with 
-respect to the grid. Gradient terms are calculated in the computational grid 
+respect to the grid. Gradient terms are calculated on the computational grid 
 and the governing equation, i.e. the equation of motion, is solved and the 
 updated position and velocity values are mapped back to the material points. 
 The mesh is reinitialized to its original state and the computational cycle is 
@@ -323,7 +324,7 @@ acceleration,  $\sigma (\mathbf{x},t)$ is the Cauchy's stress tensor, and
 $\mathit{\mathbf{b}} (\mathbf{x},t)$ is the body force. The vector 
 \textbf{\textit{x}} represents the current position of any material point in 
 the continuum, at time \textit{t}. In MPM, the continuum body is discretised 
-into finite number of material points $\mathit{N}_{p}$. Let 
+into a finite number of material points $\mathit{N}_{p}$. Let 
 $\mathit{\mathbf{x}}_{p}^{t}$ $(\mathit{p}=1,2,\dots,\mathit{N}_{p})$ denote 
 the current position of material point \textit{p} at time t.
 Each material point, at any given time \textit{t}, has an associated mass 
@@ -331,7 +332,7 @@ $\mathit{m}_{p}^{t}$, density $\rho_{p}^{t}$, velocity
 $\mathbf{\mathit{v}}_{p}^{t}$, Cauchy stress tensor $\sigma_{p}^{t}$, strain 
 $\epsilon_{p}^{t}$, and other necessary internal state variables based on the 
 adopted constitutive model. These material points provide a Lagrangian 
-description of the continuum body, since material points have a fixed mass at 
+description of the continuum body; since material points have a fixed mass at 
 all times,~\cref{eq:mass} is satisfied. The data from the material points 
 are mapped on to the nodes of the computational grid, where the discrete form 
 of~\cref{eq:mom} is described. The weak form of~\cref{eq:mom} is 
@@ -348,8 +349,9 @@ $\mathbf{\mathit{w}}(\mathbf{x},t)$:
 \end{equation}
 where $\sigma^{s}$ is the specific stress (i.e. stress divided by mass density, 
 $\sigma^{s} = \sigma / \rho$), $\Omega$ is the current configuration of the 
-continuum, $\tau$ is the traction.~\cref{eq:weak} is obtained by applying 
-the divergence theorem, similar to the standard procedure adopted in Finite 
+continuum, $\tau$ is the surface traction. Eq~\ref{eq:weak} is obtained by 
+applying the divergence theorem, similar to the standard procedure adopted in 
+Finite 
 Element Methods \citep{Sulsky1994,Sulsky1995, Chen2002}. The differential 
 volume and the surface elements are denoted by d$\Omega$ and \textit{dS}, 
 respectively. \\
@@ -357,7 +359,7 @@ As the whole continuum is discretised into a finite set of material points, the
 mass density can be written as
 \begin{equation}
 \rho(\mathbf{x},t)=\sum\limits_{\mathit{p}=1}^{\mathit{N}_{p}}
-{\mathit{M}_{p}\delta(\mathbf{\mathit{x}}-\mathbf{\mathit{x}}_{p}^{t})} \,,
+{\mathit{m}_{p}\delta(\mathbf{\mathit{x}}-\mathbf{\mathit{x}}_{p}^{t})} \,,
 \label{eq:massd}
 \end{equation}
 where $\delta$ is the Dirac delta function. Substituting~\cref{eq:massd} in 
@@ -366,9 +368,9 @@ as
 \begin{align}
 \nonumber
 \sum\limits_{\mathit{p}=1}^{\mathit{N}_{p}} 
-\mathit{M}_{p}[\mathbf{\mathit{w}}(\mathit{x}_{p}^{t},t) \cdot 
+\mathit{m}_{p}[\mathbf{\mathit{w}}(\mathit{x}_{p}^{t},t) \cdot 
 \mathbf{a}(\mathit{x}_{p}^{t},t)] = & 
-\sum\limits_{\mathit{p}=1}^{\mathit{N}_{p}} \mathit{M}_{p} 
+\sum\limits_{\mathit{p}=1}^{\mathit{N}_{p}} \mathit{m}_{p} 
 [-\sigma^{s}(\mathit{x}_{p}^{t},t): \Delta 
 \mathbf{\mathit{w}}|_{\mathit{x}_{p}^{t}} \\ 
 & + \mathbf{\mathit{w}}(\mathit{x}_{p}^{t},t) \cdot 
@@ -377,18 +379,30 @@ as
 \mathbf{\mathit{b}}(\mathit{x}_{p}^{t},t)] \,,
 \label{eq:MPM}
 \end{align}
-where \textit{h} is the thickness of the boundary layer. It can be noted from 
-~\cref{eq:MPM} that the interactions between different material points are 
-reflected only through the gradient terms. In MPM, a background computational 
-mesh is used to calculate the gradient terms. The computational mesh is 
-constructed using 2-node cells for 1-D, 4-node cells for 2-D, and 8-node cells 
-for 3-D problems. These elements are used to define the standard nodal basis 
-functions, $\mathit{N}_{i}(\mathbf{x})$, associated with the spatial nodes 
-$\mathbf{\mathit{x}}_{i}(t), \mathit{i}=1,2,\dots,\mathit{N}_{n}$, where 
-$\mathit{N}_{n}$ represents the total number of mesh nodes. The nodal basis 
-functions are assembled by using the conventional finite-element shape 
-functions~\citep{Chen2002}. The co-ordinates of any material point in a cell 
-can be represented by
+where \textit{h} is the thickness of the boundary layer upon which the traction 
+boundary conditions are enforced. Since the continuum body is moving in an 
+arbitrary computational mesh, all the boundary conditions are carried by the 
+boundary particles. If only one boundary particle is located in a cell, the 
+cell boundary becomes a part of the continuum boundary, and the cell size 
+represents the thickness of boundary layer. If both boundary and interior
+particles of the continuum are located in a cell, this cell becomes a mixed 
+one. However, the mixed cell is still treated as a boundary cell. In other 
+words, the interior particles temporarily become boundary ones. To avoid
+numerical errors, therefore, small cells must be used to contain only boundary 
+particles if possible, and the boundary conditions is enforced in each 
+time step.
+
+It can be noted from~\cref{eq:MPM} that the interactions between different 
+material points are reflected only through the gradient terms. In MPM, a 
+background computational mesh is used to calculate the gradient terms. The 
+computational mesh is constructed using 2-node cells for 1-D, 4-node cells for 
+2-D, and 8-node cells for 3-D problems. These elements are used to define the 
+standard nodal basis functions, $\mathit{N}_{i}(\mathbf{x})$, associated with 
+the spatial nodes $\mathbf{\mathit{x}}_{i}(t), 
+\mathit{i}=1,2,\dots,\mathit{N}_{n}$, where $\mathit{N}_{n}$ represents the 
+total number of mesh nodes. The nodal basis functions are assembled by using 
+the conventional finite-element shape functions~\citep{Chen2002}. The 
+co-ordinates of any material point in a cell can be represented by
 %
 \begin{equation}
 \mathbf{\mathit{x}}_{p}^{t} = \sum\limits_{\mathit{i}=1}^{\mathit{N}_{n}} 
@@ -408,11 +422,11 @@ function has to be of the form
 \label{eq:wtest}
 \end{equation}
 %
-The ~\cref{eq:x,eq:wtest} ensures that the associated vectors are 
+The~\cref{eq:x,eq:wtest} ensure that the associated vectors are 
 continuous across the cell boundary. However, the gradient of these functions 
-are not continuous, due to the use of linear shape functions. Substituting, 
-~\cref{eq:x} and \cref{eq:wtest} into~\cref{eq:MPM}, the weak form of the 
-equation of motion reduces to
+is not continuous, due to the use of linear shape functions. 
+Substituting,~\cref{eq:x} and~\cref{eq:wtest} into~\cref{eq:MPM}, the weak form 
+of the equation of motion reduces to
 %
 \begin{equation}
 \sum\limits_{\mathit{j}=1}^{\mathit{N}_{n}} m_{\mathit{ij}}^{\mathit{t}} 
@@ -425,7 +439,7 @@ where the nodal mass, $m_{\mathit{ij}}^{\mathit{t}}$ is represented as
 %
 \begin{equation}
 m_{\mathit{ij}}^{\mathit{t}} = \sum\limits_{\mathit{p=1}}^{N_{p}} 
-\mathit{M}_{p} \mathit{N}_{\mathit{i}} (\mathbf{\mathit{x}}^{\mathit{t}}) 
+\mathit{m}_{p} \mathit{N}_{\mathit{i}} (\mathbf{\mathit{x}}^{\mathit{t}}) 
 \mathit{N}_{\mathit{j}} (\mathbf{\mathit{x}}^{\mathit{t}}) \,.
 \end{equation}
 %
@@ -435,19 +449,19 @@ nodal external force, $\mathbf{f}_{\mathit{i}}^{ext,\mathit{t}}$ are defined as
 \begin{align}
 \nonumber
  \mathbf{f}_{\mathit{i}}^{int,\mathit{t}} & = - 
-\sum\limits_{\mathit{p}=1}^{\mathit{N}_{p}}\mathit{M}_{p} \mathbf{G}_{ip}^{t} 
+\sum\limits_{\mathit{p}=1}^{\mathit{N}_{p}}\mathit{m}_{p} \mathbf{G}_{ip}^{t} 
 \cdot \sigma_{p}^{\mathit{s,t}} \\ 
-\mathbf{f}_{\mathit{i}}^{int,\mathit{t}} & = - 
-\sum\limits_{\mathit{p}=1}^{\mathit{N}_{p}}\mathit{M}_{p}  
+\mathbf{f}_{\mathit{i}}^{ext,\mathit{t}} & = - 
+\sum\limits_{\mathit{p}=1}^{\mathit{N}_{p}}\mathit{m}_{p}  
 \mathbf{b}_{p}^{\mathit{t}}\mathit{N}_{\mathit{i}}(\mathbf{x}_{p}^{\mathit{t}}) 
-+ \sum\limits_{\mathit{p}=1}^{\mathit{N}_{p}}\mathit{M}_{p} 
++ \sum\limits_{\mathit{p}=1}^{\mathit{N}_{p}}\mathit{m}_{p} 
 \mathit{N}_{\mathit{i}}(\mathbf{x}_{p}^{\mathit{t}}) 
 \tau_{p}^{\mathit{s,t}}\mathit{h}^{-1}
 \end{align}
 where $\mathbf{G}_{\mathit{ip}}^{\mathit{t}} = \Delta \mathit{N}_{\mathit{i}} 
 (\mathbf{\mathit{x}})|_{\mathbf{\mathit{x}}=\mathbf{\mathit{X}}_{p}^{\mathit{t}}}$.
-The nodal accelerations are obtained by explicit time integration of 
-~\cref{eq:fmaMPM}. To obtain stable solutions, the time step used in the 
+The nodal accelerations are obtained by explicit time integration 
+of~\cref{eq:fmaMPM}. To obtain stable solutions, the time step used in the 
 analysis should be less than the critical time step, which is defined as the 
 ratio of the smallest cell size to the wave speed~\citep{Chen2002}. The 
 critical time increment is obtained as
