@@ -187,7 +187,7 @@ solve engineering problems associated with granular materials and flows.
 
 In continuum mechanics, there are two different view points describing the 
 deformation of a continuum, namely Lagrangian and Eulerian 
-description. In the Lagrangian description  the movement of the continuum is 
+descriptions. In the Lagrangian description  the movement of the continuum is 
 specified as a function of the material coordinates and time. This is a 
 particle description that is often applied in solid mechanics. On the other 
 hand, the Eulerian description focuses on the current configuration, giving 
@@ -196,10 +196,10 @@ instead of giving attention to individual particles as they move through space
 and time. The Eulerian description is commonly used for describing fluid flows 
 where kinematic properties are of great interest. 
 
-Conventional mesh based Lagragian approaches, such as Finite Element Method or 
-Finite Difference Method are capable of modelling history dependant material 
-behaviour and have well-defined free surface. However, they require complex 
-re-meshing and remapping of variables, which cause additional errors in 
+Conventional mesh based Lagragian approaches, such as the Finite Element Method 
+or the Finite Difference Method are capable of modelling history-dependent 
+material behaviour and have well-defined free surfaces. However, they require 
+complex re-meshing and remapping of variables, which cause additional errors in 
 simulating large deformation problems~\citep{Li2002}. Unlike Lagrangian FEM, 
 in Eulerian FEM the computational mesh is kept spatially fixed while the 
 material is deforming in time. This allows the capability of handling large 
@@ -207,14 +207,14 @@ deformation without the problem of mesh distortion. As the computational mesh
 is completely decoupled from the material, convective terms appear in Eulerian 
 FEM, introducing numerical difficulties because of their non-symmetrical 
 properties~\citep{Donea1982}. Additionally, Eulerian FEM is difficult to use
-with history dependent constitutive models. Coupled Eulerian–Lagrangian (CEL) 
-method is an arbitrary Lagrangian-Eulerian that attempts to capture the 
-advantages of both the Lagrangian and the Eulerian method in modelling large 
-deformation problems in geomechanics~\citep{Qiu2011}. This approach involves 
-solving the governing equation in the Lagrangian step and thus obtaining the 
-material displacement followed by the Eulerian step where a new mesh is 
-generated and and the variables are transferred to the the new mesh. Thus 
-requiring higher computational time. 
+with history-dependent constitutive models. The Coupled Eulerian–Lagrangian 
+(CEL) method is an arbitrary Lagrangian-Eulerian method that attempts to 
+capture the advantages of both the Lagrangian and the Eulerian method in 
+modelling large deformation problems in geomechanics~\citep{Qiu2011}. This 
+approach involves solving the governing equations in a Lagrangian step, thus 
+obtaining the material displacement, followed by the Eulerian step where a 
+new mesh is generated and and the variables are transferred to the the new 
+mesh. This requires more computation time. 
 
 \begin{figure}[tbhp]
 \centering
@@ -225,9 +225,9 @@ large deformation flow.}
 \end{figure}
 
 An alternative to the mesh-based approach is using mesh-less Lagrangian methods 
-(\cref{fig:NumericalMethods}) where the nodes representing the solid transforms 
+(\cref{fig:NumericalMethods}) where the nodes representing the solids transform 
 as the continuum deforms, avoiding the problem of mesh distortion, i.e., the 
-nodes representing the solid can move freely within the domain. Mesh free 
+nodes representing the solids can move freely within the domain. Mesh free 
 methods such as Smooth Particle Hydrodynamics and Material Point Method are not 
 constrained by the mesh size and mesh distortion effects, and hence can be 
 effectively used in simulating large deformation problems, such as debris flow 
@@ -236,24 +236,23 @@ and submarine landslides.
 The element-free Galerkin (EFG) method is a relatively new mesh-less 
 method, in which the trial functions for the weak form are constructed using 
 moving least squares interpolation~\citep{Belytschko1994}. The particle finite 
-element method (PFEM) is another mesh-less method that involves the mesh-less 
+element method (PFEM) is another mesh-less method that involves mesh-less 
 finite element interpolation. In PFEM, the nodal points represent the 
 particles and the computational mesh is constructed by connecting these points. 
-The mesh is then used to solve the governing equations in Lagrangian fashion. 
+The mesh is then used to solve the governing equations in a Lagrangian fashion. 
 In PFEM, large deformation requires frequent re-meshing~\citep{Kafaji2013}.
 
 Smooth Particle Hydrodynamics is the oldest mesh-free technique, in which the 
 domain is discretised into particles that have a spatial distance, called the 
 \textit{smoothing length} over which the material properties are ``smoothed'' 
 by a kernel function. SPH was developed to solve astrophysical 
-problem~\citep{Monaghan2005}. SPH has been widely applied 
-in geomechanics for solving large deformation 
-problem~\citep{Augarde2009,Maeda2010,Mori2008}. Although SPH has been widely 
-adopted, it has a few drawbacks: SPH exhibits 
-spatial instabilities, as a consequence of the point-wise 
+problems~\citep{Monaghan2005}. SPH has been applied in geomechanics for solving 
+large deformation problems~\citep{Augarde2009,Maeda2010,Mori2008}. Although SPH 
+has been successfully used, it has a few drawbacks: SPH exhibits spatial 
+instabilities, as a consequence of the point-wise 
 integration~\citep{Bonet2000}, insufficient neighbouring particles causes 
-inconsistencies and is computationally expensive as a result of search for the 
-neighbouring particles~\citep{Bandara2013}.
+inconsistencies, and it is computationally expensive as a result of the search 
+for the neighbouring particles~\citep{Bandara2013}.
 
 \section{Material Point Method (MPM)}
 Material Point Method (MPM)~\citep{Sulsky1994,Sulsky1995} is a particle based 
