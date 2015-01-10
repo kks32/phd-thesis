@@ -1033,22 +1033,23 @@ simulate large deformation problems.
 \subsection{Application of MPM in geomechanics}
 
 The studies on using the material point method in modelling
-geotechnical problems are limited. The potential of Material Point Method in 
-modelling granular flows, discharge of silos, was first recognised 
-by~\citet{Wieckowski1999}.~\citet{Bardenhagen2001} developed a frictional 
-contact algorithm to model granular materials. The Mohr-Coloumb is used to 
-describe the kinematics of the grains. In this model, a contact is defined when 
-the nodal velocity interpolated from all material points in the cell differs 
-from the nodal velocity interpolated from a single material 
-point.~\citet{Coetzee2005} applied this contact algorithm to understand the 
-pull-out behaviour of anchors.~\citet{Ma2014} developed a new contact algorithm 
-with a penalty contact function and a limited maximum shear stress for 
-soil-structure interaction, i.e, interaction of pipe-line with debris flow or 
-submarine landslide. The penalty contact function behaves similar to numerical 
-damping and thus reduces the oscillations during the impact. 
+geotechnical problems are limited. The potential of the Material Point Method 
+in modelling granular flows, due to the discharge of silos, was first 
+recognised by~\citet{Wieckowski1999}.~\citet{Bardenhagen2001} developed a 
+frictional contact algorithm to model granular materials. The Mohr-Coloumb 
+model criterion is used to describe the kinematics of the grains. In this 
+model, a contact is defined when the nodal velocity interpolated from all 
+material points in the cell differs from the nodal velocity interpolated from a 
+single material point.~\citet{Coetzee2005} applied this contact algorithm to 
+understand the pull-out behaviour of anchors.~\citet{Ma2014} developed a new 
+contact algorithm with a penalty contact function and a limited maximum shear 
+stress for soil-structure interaction, i.e, interaction of pipe-line with 
+debris flow or submarine landslide. The penalty contact function behaves 
+similar to numerical damping and thus reduces the oscillations during the 
+impact. 
 
 \citet{Beuth2010} applied Gaussian integration in quasi-static MPM to model 
-large strain problems. However in this approach, the conservation mass is not 
+large strain problems. However in this approach, conservation of mass is not 
 valid as a larger filled volume of material is considered.~\citet{Andersen2010} 
 used GIMP method with an elasto-plastic model to simulate slope failures. The 
 solution is found to be dependant on the number of material points used to 
@@ -1056,18 +1057,18 @@ describe the slope geometry.~\citet{Mast2014} studied the behaviour of granular
 column collapse using a non-associative flow rule. They observed a 
 significant increase in the run-out distance for large aspect ratio 
 columns.~\citet{Mast2014a} investigated the suitability of Material Point 
-Method is realistic prediction of large deformation problems such as snow 
+Method in the prediction of large deformation problems such as snow 
 avalanches. 
 
 ~\citet{Guilkey2007} developed a coupled numerical scheme for fluid-structure 
 interaction. The solid field is modelled in a Lagrangian frame, while an 
-Eulerian frame, compressible CFD, is used for the fluid. As MPM computation 
+Eulerian frame, compressible CFD, is used for the fluid. As the MPM computation 
 grid is reset at every stage, the same Eulerian grid is adopted for both the 
-solid and the fluid. Similar approach was adopted by~\cite{Zhang2008} to model 
-multiphase flows, where the interactions between the solid and gas are modelled 
-using MPM background mesh as an Eulerian 
+solid and the fluid. A similar approach was adopted by~\cite{Zhang2008} to 
+model multiphase flows, where the interactions between the solid and gas are 
+modelled using the MPM background mesh as an Eulerian 
 grid.~\citet{Mackenzie-Helnwein2010} investigated various techniques to model 
-multiphase drag forces. Both solid and the fluid are modelled as Lagrangian 
+multiphase drag forces. Both solid and fluid are modelled as Lagrangian 
 particles using the mixture theory.~\citet{Abe2013} developed a soil–pore fluid 
 coupled MPM algorithm based on Biot’s mixture theory for solving 
 hydro-mechanical interaction problems.~\citet{Bandara2013} developed a unique 
@@ -1078,7 +1079,7 @@ deformation problems such as slope failure due to seepage.
 
 In the present study, the Material Point Method is used to model large 
 deformation problems, such as collapse of dry columns and soil slopes subjected 
-to impact loading. The suitability of continuum approach (MPM) in modelling 
+to impact loading. The suitability of the continuum approach (MPM) in modelling 
 large deformation problems is also investigated.
 
 \section{Particulate modelling of granular flows}
