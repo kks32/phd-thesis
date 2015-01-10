@@ -1189,8 +1189,8 @@ approaches if rheologic or friction parameters can be measured or calibrated.
 
 \section{Discrete Element Method}
 
-Discrete Element Method computes the equilibrium and the trajectories of a 
-classical multi-body system. The Discrete Element Method is a simple and 
+The Discrete Element Method (DEM) computes the equilibrium and the trajectories 
+of a classical multi-body system. The Discrete Element Method is a simple and 
 flexible discrete-element approach, which involves applying Newton's second law 
 of motion to each grain to describe the deformation of the granular assembly. 
 % 
@@ -1207,18 +1207,16 @@ calculating the forces $\mathbf{F}_{\mathit{i}}$ and then solving
 the ordinary differential in~\cref{eq:fma}. In general the system of coupled 
 non-linear differential equations cannot be solved analytically. The 
 approximate numerical solution of these equations, which describes the 
-trajectories of all the grains of the system is called as Discrete Element 
+trajectories of all the grains of the system is called as the Discrete Element 
 Method.
 
-DEM simulations are identical to the real experiments, this involve generation 
+DEM simulates similar to the real experiments, involving the generation 
 of samples (initial conditions) with \textit{N} grains and solving the Newton's 
 equation of motion for the system until the properties of the system no longer 
-change with time (equilibration of the system). After equilibration, the actual 
-analysis is performed.
-
-The computation of the forces and torques is the central part of the Discrete 
-Element Method simulation. The dynamics of the granular material is governed by 
-Newton's equation of motion which depends on the centre-of-mass coordinates and 
+change with time (equilibration of the system). The computation of the forces 
+and torques is the central part of the Discrete Element Method simulation. The 
+dynamics of the granular material is governed by Newton's equation of motion 
+which depends on the centre-of-mass coordinates and 
 the Euler angles of the grains \textit{i} ($i = 1, 2 \cdots , N$):
 %
 \begin{align} 
@@ -1255,7 +1253,7 @@ $\mathit{J}_{i}$.
 %	\overrightarrow{\omega_j}), (j=1,...,N) \,. \nonumber
 %\end{align}
 
-For granular grains in the absence of long range fields, the force  
+For grains in the absence of long range fields, the force  
 $\overrightarrow{\mathbf{F}_{i}}$ and the torque  
 $\overrightarrow{\mathbf{M}_{i}}$ acting upon the grain \textit{i} are given as 
 sum of the pairwise interaction of grain \textit{i} with 
@@ -1269,17 +1267,25 @@ all other grains in the system:
 \end{align}
 %
 The limitation to pairwise interaction is an abstraction, which is justified 
-if the grains deformation at the contact is trivial. To describe the 
+if the grain deformation at the contact is trivial. To describe the 
 deformation of granular assemblies one has to take into account the effect of 
 multi-grain interactions. This method is general and can be applied to a wide 
 range of systems. The Discrete Element Method can be used to study the 
-behaviour of grains in rapid flows to static assemblies. The method treats 
-both the conditions in exactly the same way, it is not necessary to divide the 
+behaviour of grains in rapid flows and in static assemblies. The method treats 
+both conditions in exactly the same way, it is not necessary to divide the 
 system and then treat each condition differently. The simplest model for 
-granular grain is a sphere. In a two-dimensions case, the sphere is reduced to 
+a grain is a sphere. In a two-dimensional case, the sphere is reduced to 
 a circular disk. Simulations using spherical grains are numerically very 
 effective since grain collisions can be easily identified and described in 
 a simple way~\citep{Poschel2005}.
+
+In the present study, a two-dimensional DEM code is developed in C++ 
+to study the micro-scale rheology of dry granular flows. Existing DEM codes do 
+not yet fully support micro-scale fluid solid coupling using Lattice Boltzmann 
+approach, which will be used to study the mechanism of submarine landslides. 
+A new C++ based high performance DEM code is developed in the present study. 
+The features implemented in the present study and the general overview of DEM 
+are discussed below.
 
 % 
 %%******************************************************************************
@@ -1315,7 +1321,7 @@ components
 
 \begin{figure}[htbp]
 	\centering
-	\includegraphics{DEM}
+	\includegraphics[width=0.7\linewidth]{DEM}
 	\caption[Calculation of normal force in DEM]{Grains \textit{i} and 
 	\textit{j} in 
 	contact, and the 
@@ -1331,8 +1337,9 @@ tangential forces are discussed.
 \subsubsection*{Normal force}
 When grains collide, part of the kinetic energy is dissipated as 
 heat and the other part causes deformation of the grain. These deformations 
-generate interaction forces. The grains are considered to be rigid while their 
-contact is assumed to be soft. Thus, the grains do not change their shape, 
+generate interaction forces. In DEM, the grains are considered to be rigid 
+while their contact is assumed to be soft. Thus, the grains do not change their 
+shape, 
 instead they overlap. The shapes of the grains are conserved on an average, 
 after many collisions. The overlap at the contact is limited to very small 
 deformations, which are achieved by defining a repulsive normal force that 
@@ -1344,7 +1351,8 @@ opposes the overlap. The mutual compression ($\delta_{n}$) of the grains
 \label{eq:delta}
 \end{equation}
 %
-where $x_{\mathit{i}}$ and $x_{\mathit{j}}$ are the centres of the grains and  
+where $x_{\mathit{i}}$ and $x_{\mathit{j}}$ are vectors fixing the centres of 
+the grains and 
 $r_{\mathit{i}}$ and $r_{\mathit{j}}$ are their radii (\cref{fig:DEM}). When 
 $\delta_{n}>0$, the two grains are not in contact, and 
 there is no interaction. When $\delta_{n}<0$, the two grains overlap, and 
@@ -1368,8 +1376,8 @@ constants~\citep{Luding1994}.
 \end{align} 
 %
 The constant ${k}_{n}$ characterises the stiffness of the grain, and must be 
-chosen sufficiently large so that the overlap between the grains remain small. 
-Nevertheless, the solution has an undesirable property of generating an 
+chosen to be sufficiently large that the overlap between the grains remain 
+small. Nevertheless, the solution has an undesirable property of generating an 
 attractive force~\citep{Poschel2005}. It arises just before the two grains 
 separate. In this case, we have ${d{\delta_{n}}}$$/{dt} > 0$ while $\delta_{n}$ 
 approaches zero. To avoid the attractive force, the force is computed in two 
@@ -1389,9 +1397,9 @@ For pairwise collisions, the normal force $(F_{n})$ represented as
 ${{k}_{n}}{{\delta}_{n}}+{{\gamma}_{n}}$ causes a decrease in the relative 
 normal velocity of the grains by a factor $\varepsilon$. This factor is the 
 \textit{coefficient of restitution}, and is defined as $\varepsilon\approx 
-g'/g$, 
-where \textit{g} is the absolute normal relative velocity before 
-the collision and \textit{g'} corresponds to the post-collision value. The 
+u^\prime/u$, 
+where $u$ is the absolute normal relative velocity before 
+the collision and $u^\prime$ corresponds to the post-collision value. The 
 relative velocity, ${d{\delta_{n}}}$$/{dt} > 0$, can be obtained by 
 differentiating~\cref{eq:delta}. Thus we obtain
 %
@@ -1418,7 +1426,7 @@ the co-efficient of restitution, which is defined as
 
 \subsubsection*{Tangential force}
 Grains are not perfect spheres, but have a complicated surface 
-texture, therefore at oblique collisions, besides the normal force there is a 
+texture. Therefore, at oblique collisions, besides the normal force there is a 
 tangential force too. Even perfectly smooth spheres exert a tangential force 
 due to their bulk viscosity~\citep{Poschel2005}. To build a heap of 
 spheres on a flat surface, the grains as well as the surface have to be 
@@ -1438,12 +1446,12 @@ similar to the normal force (\cref{eq:vn}) as
 %
 \begin{equation}
 \label{eq:vt}
-\frac{d{\delta_{t}}}{dt}=(\mathbf{v}_{\mathit{i}}-\mathbf{v}_{\mathit{i}}).{\mathbf{t}}
+\frac{d{\delta_{t}}}{dt}=(\mathbf{v}_{\mathit{i}}-\mathbf{v}_{\mathit{i}})\times{\mathbf{t}}
  \,.
 \end{equation}
 %
 This equation must also be numerically integrated, just like~\cref{eq:fma}. The 
-grains are in contact when $\delta_{t}<0$, and when $\delta_{t}=0$, the grains 
+grains are in contact when $\delta_{t}<0$ and when $\delta_{t}=0$, the grains 
 no longer exert a force on each other. With these assumptions, $\delta_{t}$ can 
 be calculated similar to the normal force. The tangential force is assumed to 
 be governed by Coulomb's friction law.
@@ -1520,14 +1528,14 @@ in~\cref{eq:fma}
 \mathit{I}_{j}\frac{d\omega_{i}}{dt}=\sum\limits_{j\ne i}{\tau_{ij}} \,,
 \end{equation}
 %
-where $\mathit{I}_{j}$ is the moment of inertia of grain j. The~\cref{eq:av} is 
+where $\mathit{I}_{j}$ is the moment of inertia of grain j. Eq~\ref{eq:av} is 
 only valid when $\delta_{n}=0$. The torque is a vector product of the force and 
 its lever arm. It is assumed that the lever arms have lengths equal to 
 $r_{\mathit{i}}$ and $r_{\mathit{j}}$, which is true only when the grains do 
 not overlap, hence in this case they produce an error of order 
 $\mathbf{\mathit{O}}(\delta_{n}/r)$. It is nevertheless desirable to damp this 
-type of motion~\citep{Radjai2011}. A rolling resistance is adopted in order to 
-model the shape effect of non-spherical grains, which accounts for moments 
+type of motion~\citep{Radjai2011}. A rolling resistance can be adopted in order 
+to model the shape effect of non-spherical grains, which accounts for moments 
 arising from the fact that the line of action of the normal contact force in 
 the case of non-spherical particles no longer passes through the centre of mass
 of the particles and hence generates rotational moments.
@@ -1582,9 +1590,9 @@ calculated, a list is made (the Verlet list) of all grains within a radius
 $r_{\mathit{v}}$ of the grain \textit{i}. In the subsequent calculations of the 
 interactions, only those grains in this list will be considered. The idea of 
 the Verlet algorithm is based on a simple property of grain dynamics: 
-neighbourhood relation between grains can only change slowly, i.e. two grains 
-which are close to each other at a given time step will remain as neighbours, 
-at least in the following few time steps. During initialization the 
+the neighbourhood relation between grains can only change slowly, i.e. two 
+grains which are close to each other at a given time step will remain as 
+neighbours, at least in the following few time steps. During initialization the 
 neighbourhood relations between the grains, i.e. the distance of all close 
 pairs of grains are computed. Two grains are considered as neighbours if 
 the distance of their surface is smaller than a predefined distance 
@@ -1732,24 +1740,25 @@ Newton's equations of motion are time reversible, and so should be the
 integration algorithm. The ``leapfrog'' algorithm or the Verlet integration 
 algorithm is a numerical scheme used to integrate the Newton's equation of 
 motion to calculate the trajectories of grains and is implemented in 
-DEM by~\citet{Verlet1967}. Verlet algorithm is 
+DEM by~\citet{Verlet1967}. The Verlet algorithm is 
 fast and requires less storage memory, it is not particularly accurate for long 
 time steps, and hence, we should expect to compute the forces on all grains 
 rather frequently. Its short-term energy conservation is fair (in versions that 
 use more accurate expression for velocity), but most importantly it exhibits 
 little long-term energy drifts. This is related to the fact that the Verlet 
 algorithm is time reversible and area preserving, however, it does not conserve 
-the total energy of the system exactly~\citep{Frenkel1996}. Verlet algorithm is 
-simply based on a truncated Taylor expansion of grain co-ordinates. 
+the total energy of the system exactly~\citep{Frenkel1996}. The Verlet 
+algorithm is simply based on a truncated Taylor expansion of grain 
+co-ordinates. 
 %
 \begin{equation}
 t(t+\Delta t)=r{t} +\mathbf{v}(t) \Delta t + \frac{f(t)}{2\mathit{m}} \Delta 
 t^{2}+ \dots
 \end{equation}
 %
-If we truncate this expansion beyond the term $\Delta t^{2}$, we obtain the 
-Euler's algorithm, which looks similar to the Verlet Algorithm, but it does not 
-preserve energy and have significant energy drifts. The simplest among the 
+If we truncate this expansion beyond the term $\Delta t^{2}$, we obtain Euler's 
+algorithm, which looks similar to the Verlet Algorithm, but it does not 
+preserve energy and has significant energy drifts. The simplest among the 
 Verlet schemes is the \textit{Leap frog algorithm}, which evaluates the 
 velocities at half-integer time steps and uses these velocities to compute the 
 new positions. The position of each grain is calculated at time $t=0, \Delta t, 
@@ -1843,13 +1852,13 @@ pipes, the motion of granular material on conveyors, and the clogging of
 hoppers. In these and many other cases, careful definition of the interaction 
 between the granular material and the contact surface is essential. Of 
 particular importance is the realistic modelling of the wall surface roughness. 
-Unfortunately the mechanical interaction of a granular materials with a rough 
+Unfortunately the mechanical interaction of granular materials with a rough 
 wall is poorly understood~\citep{Poschel2005}. A simple way to define the wall 
 property is to build up the wall from grains, which obey the same rules of 
 interaction as the grains of granular material. By varying the size and 
 position of the wall grains, system boundaries of adjustable roughness can be 
 described. However, the surface roughness that characterizes the frictional 
-properties of the wall has to be arrived iteratively, and may not represent the 
+properties of the wall has to be derived iteratively, and may not represent the 
 real conditions. In the present case, a solid wall with corresponding 
 stiffness, damping and frictional characteristics is introduced to model the 
 interaction between grains and the wall. The interaction force is computed in a 
@@ -1870,7 +1879,7 @@ account. In this framework, the simulation domain becomes a unit area
 containing grains with periodic copies paving the whole system. The periodic 
 boundary conditions extend the system boundaries to infinity, so that the 
 simulation cell simply plays the role of a coordinate system to locate grain 
-positions~\ref{fig:periodic}. 
+positions (see~\cref{fig:periodic}). 
 
 The external stresses or displacements are applied on the simulation box by 
 constraining the degrees of freedom of the wall, which are alternatively kept 
@@ -1941,7 +1950,7 @@ It is essential to validate the developed DEM code. In the present study, a
 preliminary validation of the DEM code is performed by studying a ball rolling 
 down an inclined plane.~\citet{O'Sullivan2003} showed that the validation of 
 DEM code using the above problem confirms the appropriate implementation of 
-shear contact model in DEM. Theoretical solution for a ball rolling down an 
+shear contact model in DEM. The theoretical solution for a ball rolling down an 
 inclined plane is derived by~\cite{Ke1995}. A disk is resting on a rigid 
 inclined plane oriented at an angle $\beta = 45\si{\degree}$ to the horizontal 
 plane (\cref{fig:rolling}). The disk has a radius \textit{r} of 1\si{m} and a 
@@ -1988,7 +1997,7 @@ plane of 45\si{\degree}}
 \begin{tabular}{lcccc}
 \toprule
 \multicolumn{5}{c}{$\phi$ = 0\si{\degree} (sliding)} \\ \midrule
- & $N=N/(Mg\cos\beta)$ & $S=S/(Mg)$ & $\ddot{a}/g$ & $\ddot{\theta}/g$\\
+ & $N=N/(mg\cos\beta)$ & $S=S/(mg)$ & $\ddot{a}/g$ & $\ddot{\theta}/g$\\
 Theoretical~\citep{Ke1995} & 1.000 & 0.000 & 0.7071 & 0.000 \\
 DEM & 1.000 & 0.000 & 0.7071 & 0.000 \\
 \bottomrule
@@ -1998,7 +2007,7 @@ DEM & 1.000 & 0.000 & 0.7071 & 0.000 \\
 %%*******************************************************************************
 \subsection[Cumulative beta distribution]{Cumulative $\beta$ distribution}
 \label{sec:beta_dist}
-During a granular-metric analysis, the sample mush be representative of the 
+For a DEM analysis, the sample must be representative of the 
 grain properties including the particle size distribution (PSD) both in volume 
 (mainly for the smallest particles) and in number (for the largest particles). 
 This representativeness of PSD is a condition for a sample to be a 
@@ -2014,7 +2023,7 @@ descriptor (relative weights of the maximum and the minimum grain sizes). The
 cumulative $\beta$ distribution ~\citep{Voivret2007} is defined as
 %
 \begin{equation}
-\beta(x,a,b) = \frac{1}{\beta (a,b)}\int\limits_{0}^{x}t^{a-1}(1-t)^{b-1}dt \,,
+\beta(x,a,b) = \frac{1}{B(a,b)}\int\limits_{0}^{x}t^{a-1}(1-t)^{b-1}dt \,,
 \end{equation}
 %
 where a > 0 and b > 0 are the two parameters of the distribution. The 
@@ -2087,7 +2096,8 @@ arrangements, such as hexagon and square lattices, are easier to generate,
 however they have non-trivial effects on the response of the granular 
 system~\citep{Staron2005}. Hexagonal packing is the densest possible 
 arrangement for mono-dispersed spherical grains. In 2D, the packing of 
-mono-dispersed circles on a hexagonal lattice yields a packing density of 
+mono-dispersed circles on a hexagonal lattice yields a packing density, defined 
+as the ration of volume of solids to the total volume ($V_s / V$), of 
 $\eta_{\mathit{h}}=\frac{1}{6}\pi\sqrt{3}\approx 0.9068$
 
 
@@ -2096,13 +2106,13 @@ The rheology of a granular material is controlled by the geometry of the
 assembly, which includes the grain shape, size distribution, and their 
 arrangement. This prevailing role of geometry sometimes permits to simplify the 
 dynamics in favour of a better description of the geometry 
-and/or higher numerical efficiency~\citep{Radjai2011}. For example, dense 
+and/or higher numerical efficiency~\citep{Radjai2011}. For example, a dense 
 granular packing may be efficiently constructed by replacing the equations of 
 dynamics by simple displacement rules satisfying the geometrical constraints. 
 Purely geometrical procedures can be much simpler and numerically faster than 
 dynamic or quasi-static methods. Contrary to dynamic simulation methods, 
 the geometrical methods allow for quick assembling of a large number of 
-grains. Such packing may then be used as the initial state for dynamic 
+grains. Such a packing may then be used as the initial state for dynamic 
 simulations. The issue of the assembling methods is to construct configurations 
 of grains as close as possible to a state of mechanical equilibrium with 
 built-in packing properties. This can be a target packing density for a 
@@ -2263,8 +2273,8 @@ has a corresponding area, the macroscopic properties such as the bulk density
 and stresses can be extracted from micro-mechanical properties such as the 
 local packing density and force chains.
 
-Fortune sweep line algorithm involves a sweep line and a beach line, both of 
-which move through the plane from left to right as the algorithm progresses. 
+The Fortune sweep line algorithm involves a sweep line and a beach line, both 
+of which move through the plane from left to right as the algorithm progresses. 
 The sweep line is a straight line which moves from left to right across the 
 plane. At any time during the algorithm, the points (grains) to the left of the 
 sweep line will be incorporated into a Voronoi cell. While the points on the 
@@ -2331,10 +2341,7 @@ describe the continuum response of granular flows. When the material points
 move from one cell to another, it results in numerical oscillations called as 
 the cell-crossing noise. The Generalised Interpolation Material Point GIMP 
 method is adopted to minimize these oscillations in large-deformation problems. 
-The effect of mesh size and the number of material points per cell on the 
-run-out behaviour is also investigated. The accuracy of the continuum approach 
-improves with increase in the number of material points per cell and decrease 
-in the mesh size. The grain-scale response is captured using a two-dimensional 
+The grain-scale response is captured using a two-dimensional 
 DEM code. The discrete grains are generated using a cumulative $\beta$ 
 distribution, which mimics the particle size distribution curves. The sample is 
 generated using the ballistic deposition technique and the homogeneity of the 
