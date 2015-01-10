@@ -15,15 +15,15 @@ geophysical and gravity-driven flows such as landslides, avalanches, slope
 failures, and debris flows. Granular flows are complex problems in continuum 
 mechanics for which no closed-form solution exists. Hence it is essential to 
 develop alternative solution schemes, which are capable of simulating failure 
-mechanisms and post-failure dynamics of the granular media. 
+mechanisms and post-failure dynamics of granular media. 
 
-The dynamics of a homogeneous granular flow involve at least three distinct 
+The dynamics of a homogeneous granular flow involves at least three distinct 
 scales: the \textit{microscopic scale}, which is characterised by the contact 
 between grains, the \textit{meso-scale} that represents micro-structural 
 effects such as grain rearrangement, and the \textit{macroscopic scale}, where 
 geometric correlations can be observed (\cref{fig:multiscale}). Conventionally, 
-granular flows are modelled as a continuum because they exhibit many collective 
-phenomena. However, on a grain scale, the granular materials exhibit complex 
+granular flows are modelled as continua because they exhibit many collective 
+phenomena. However, on a grain scale, granular materials exhibit complex 
 solid-like and/or fluid-like behaviour. Recent studies, however, suggest that a 
 continuum law may be unable to capture the effect of inhomogeneities at the 
 grain scale level, such as orientation of force chains, which are 
@@ -43,43 +43,42 @@ in the multi-scale modelling of granular materials}
 \section{Continuum modelling of granular flow}
 
 The most powerful way of modelling the granular assembly is through numerical 
-techniques. It is important to argue, why it is acceptable to model the 
-granular materials as a continuum. At the outset, it may even appear for some 
-reasons why such a treatment is objectionable. Most obvious is the fact that 
-the micro-constituents of granular matter, i.e. the individual grains are not 
-small enough to warrant a continuum description~\citep{Kamrin2007}. Typical 
+techniques. It is important to argue why it is acceptable to model the 
+granular materials as a continuum. Even at the outset, it may appear that 
+such a treatment is objectionable for some reason. The most obvious is the fact 
+that the micro-constituents of granular matter, i.e. the individual grains, are 
+not small enough to warrant a continuum description~\citep{Kamrin2007}. Typical 
 continuum laws are only expected to apply when there is a strong separation of 
 scales, i.e. separation of the micro-scale from the macro-scale, in the flow 
 geometry. Continuum mechanics relies on the fundamental notion of a 
-representative volume element, in which, properties averaged over discrete 
-grains exhibit deterministic relationships. Recent works on granular 
-materials suggest that a continuum law may be incapable of revealing 
-in-homogeneities at the grain-scale level~\citep{Rycroft2009b}. Microscopic 
+representative volume element, in which properties averaged over discrete 
+grains exhibit deterministic relationships. Recent work on granular 
+materials suggests that a continuum law may be incapable of revealing 
+in homogeneities at the grain-scale level~\citep{Rycroft2009b}. Microscopic 
 features of dense granular materials, which seem to defy a simple continuum
 description include (i) complex, fractal networks of force chains, which 
-are inhomogeneous down to the grain level~\citep{Goldhirsch2003}, (ii) 
-anomalous, non-collisional particle dynamics with very slow cage 
-breaking~\citep{Rycroft2006}, (iii) proximity to the jamming transition, where 
-geometrical packing constraints suppress any dynamics, (iv) a lack of thermal 
-equilibrium in the conventional sense, since grains only move in response to 
-external forces, motivating new definitions of temperature, and (v) wide range 
-of dynamical response, from liquid-like to solid-like 
-behaviour~\citep{Jaeger1996,Aranson2001,Aranson2002}. The first four
-points cast serious doubt on the prospects of a continuum law. The fifth point 
+are inhomogeneous down to the grain level~\citep{Goldhirsch2003}, (ii) buckling 
+of force chains and instabilities in shear band, (iii) anomalous, 
+non-collisional particle dynamics and proximity to the jamming 
+transition, where geometrical packing constraints suppress any dynamics, and 
+(iv) wide range of dynamic response, from liquid-like to solid-like 
+behaviour~\citep{Jaeger1996,Aranson2001,Aranson2002}. The first three
+points cast serious doubt on the prospects of a continuum law. The third point 
 means that the full stress tensor must be described, and it may depend on 
 strain, deformation rate, and material variables that can evolve during the 
 process~\citep{Rycroft2009b}.
 
-Granular materials exhibit many collective phenomenon \citep{Jaeger1996}. 
-However, no continuum model is still capable of describing the parabolic flow, 
-the plug flow~\citep{Rycroft2006} and the occurrence of localized shear bands 
-in the granular materials. Most constitutive models, even in the simple case 
+Granular materials exhibit many collective phenomena \citep{Jaeger1996}. 
+However, no continuum model is yet capable of describing behaviours such as 
+granular fingering on rough slopes, plug flow and the 
+occurrence of localized shear bands in the granular materials. Most 
+constitutive models, even in the simple case 
 of dry granular flows, cannot describe the entire range of flow from solid to 
 fluid. In certain cases, the granular flow is modelled as a fluid behaviour. 
-Continuum models that are based on averaging techniques applied to a 
-representative volume elements have been applied mostly to problems involving 
-quasi-static conditions. The fundamental question is how to model granular 
-materials which exhibit complex phenomenon, meaningfully. 
+Continuum models that are based on averaging techniques applied to
+representative volume elements are mostly utilised in problems involving 
+quasi-static conditions. The fundamental question is how to meaningfully model 
+granular materials which exhibit complex phenomena. 
 
 The oldest approach involves modelling the granular material as a rigid solid, 
 which behaves as an ideal Coulomb material and undergoes failure if the ratio 
@@ -87,47 +86,46 @@ of the shear stress to the normal stress in any plane reaches a critical value
 of the Coulomb internal friction coefficient $\mu$. The stress is determined 
 based on the mechanical equilibrium of the system along with the hypothesis of 
 \textit{incipient yield}, i.e. the yield criterion is attained everywhere at 
-all times (in a ``\textit{limit-state}''). In limit-state Mohr–Coulomb 
-plasticity, these conditions are assumed to hold
-even if boundary conditions allow for plastic yielding. In that case, the 
-velocity follows from the assumption of coaxiality, which asserts that the 
-stress and deformation rate have the same eigen 
-directions~\citep{Rycroft2009b}. The fundamental assumption of a 
-limit-state stress field at incipient yield everywhere is questionable. 
-Granular flows can contain regions of stresses lying within the yield surface. 
-For example, in the case of a granular column collapse the central cone remains 
-stagnant, and thus cannot be considered as yielded. In fact, discrete-element 
-simulations show that the grains in this region essentially remain 
-static~\citep{Staron2005}. Mohr–Coulomb plasticity have been used extensively 
-in engineering applications~\citep{Nedderman1992}, but the general solution 
-requires sophisticated numerical techniques to capture shock-like 
+all times (in a ``\textit{limit-state}'')~\citep{Rycroft2009b}. The fundamental 
+assumption of a limit-state stress field at incipient yield everywhere is 
+questionable. Granular flows can contain regions of stress lying within the 
+yield surface. In fact, discrete-element simulations show that the grains in 
+this region essentially remain static~\citep{Staron2005}. Some of the 
+limitations of the Mohr-Coulomb plasticity in modelling granular materials 
+include: linearisation of limit-stress envelope, inability to account for 
+variable volume change characteristics depending on pre-consolidation pressure 
+during shearing, predicting unrealistic negative pore-pressure upon shearing 
+due to constant rate of dilation, and inability to predict compressive plastic 
+strains in soft-soils. Mohr–Coulomb plasticity has been used 
+extensively in engineering applications~\citep{Nedderman1992}, but the general 
+solution requires sophisticated numerical techniques to capture shock-like 
 discontinuities in stress and velocity, which arise even in relatively simple 
 geometries. 
 
 The coaxiality feature of Mohr-Coulomb plasticity 
-is useful in describing the debris flow. The principle of coaxiality
+is useful in describing debris flows. The principle of coaxiality
 claims that material should flow by extending along the
 minor principal stress direction and contracting along the major principal 
 stress direction; the principal planes of stress are aligned with the principal 
-planes of strain-rate. Granular material deforms solely based 
-on the alignment of the principle plane. In general, the major principle plane 
-is usually vertical due to gravity, and the coaxiality rule requires the 
-material to expand horizontally, which is the case for granular column 
-collapse. However, the coaxiality can be troubling depending on the 
+planes of strain-rate. Granular materials deform solely based 
+on the alignment of the principal planes. Under this assumption, the major 
+principal plane is usually vertical due to gravity, and the coaxiality rule 
+requires the material to expand horizontally, which is the case for granular 
+column collapse. However, the coaxiality can be troubling depending on the 
 circumstances. Suppose we have a flat-bottomed quasi-2D silo with smooth 
 side-walls. Under standard filling procedures, the walls provide only enough 
 pressure to keep the grains from sliding farther out.  For example, in a slow 
-dense granular flow through a silo, the principle plane remains vertical and 
-the coaxiality requires the granular material to expand horizontally, thus 
+dense granular flow through a silo, the principal plane remains vertical and 
+coaxiality requires the granular material to expand horizontally, thus 
 making it geometrically impossible for the granular material to converge and 
-exit through the orifice. Depending 
-on the boundary conditions, Mohr-Coulomb plasticity can result in discontinuity 
-or jumps in the velocity and stress fields~\citep{Rycroft2006}. Coaxiality can 
-also violate principles of thermodynamics. Coaxiality only ensures there is no 
-shear strain-rate in the principal stress reference frame and actually does not 
-directly enforce that of the two principal strain-rate axes, the axis of
-maximal compression (i.e. the major principal strain-rate direction) must align 
-with the major principal stress direction.
+exit through the orifice. Depending on the boundary conditions, Mohr-Coulomb 
+plasticity can result in discontinuities or jumps in the velocity and stress 
+fields~\citep{Rycroft2006}. Coaxiality can also violate principles of 
+thermodynamics. Coaxiality only ensures there is no shear strain-rate in the 
+principal stress reference frame and actually does not directly enforce that of 
+the two principal strain-rate axes, the axis ofmaximal compression (i.e. the 
+major principal strain-rate direction) must align with the major principal 
+stress direction.
 
 \citet{Roscoe1970} showed that the principal axes of strain rate and of 
 stress are generally not coincident during simple shear tests of sand. Despite 
@@ -138,38 +136,38 @@ shear flow. The non-coaxiality of the tensors of stress and strain increment is
 able to explain the shear flow behaviour. The rotations of the principal stress 
 and the principal plastic strain rate are found to be non-coaxial particularly 
 at the early stage of loading. However, the axes tend 
-to become coincident at large shear strains~\citep{Yu2006}, which is common in 
+to become coincident at large shear strains~\citep{Yu2006}, which are common in 
 geophysical flows.
 
 Advanced elasto-plastic models based on the \textit{critical state} theory
-provide a better representation of granular flows in quasi-static regime, but 
+provide a better representation of granular flows in a quasi-static regime, but 
 do not have any rate-dependent effects that are associated with rapid granular 
 flows. At large shear strains, such as geophysical flows, the granular mass is 
 considered to be in critical state. Another continuum based model is the 
 partial fluidisation model, which uses a set of equations that describes the 
-flow velocity and the shear stresses along with a auxiliary order parameter to 
-predict the granular flow behaviour. The order parameter of the granular media 
+flow velocity and the shear stresses along with an auxiliary order parameter to 
+predict granular flow behaviour. The order parameter of the granular media 
 controls the size of the viscous-like contribution to the stress tensor, and 
 describes the transition between the flowing and the static components of the 
 granular system~\citep{Aranson2001}. A constitutive model, which considers the 
 solid fraction as the main microscopic parameter for describing dense granular 
 flow was proposed by~\citet{Josserand2004}. The stress in the granular material 
-is divided into rate-dependent part representing the rebound-less impact 
+is divided into a rate-dependent part representing the rebound-less impact 
 between grains, and a rate-independent part associated with longer contacts, 
 i.e. quasi-static regime. Although, the model captures shear localization 
-behaviour, it fails to describe the granular flow behaviour at rough 
-boundaries. In the basal or frictional layer, the grain rotation plays an 
+behaviour, it fails to describe granular flow behaviour at rough 
+boundaries. In the basal or frictional layer, grain rotation plays an 
 important role. This causes the grain stress tensor to be non-symmetric and 
 results in a perturbed profile in the solid fraction, these phenomena would 
 require specific modelling~\citep{Josserand2004}.
 
-In the case of saturated/submerged soil conditions, most of the continuum 
-techniques do not consider the fully coupled behaviour. Instead, they consider 
+In the case of saturated/submerged soil conditions, most continuum 
+techniques do not consider fully coupled behaviour. Instead, they consider 
 the soil-fluid mixture as a single phase material. However, modelling of pore 
 pressure dissipation is important to capture accurate flow behaviour, 
 especially in submarine conditions, where they play a crucial role in the flow 
 dynamics. Presence of ambient fluid may retard the flow due to viscous drag or 
-accelerate the flow through lubrication effect. Fully coupled constitutive 
+accelerate the flow through a lubrication effect. Fully coupled constitutive 
 models are essential to realistically capture the initiation and propagation of 
 rapid granular flows.
 
@@ -177,7 +175,7 @@ Granular materials are composed of distinct grains, which interact only at
 the contact points. It is assumed that the deformations of individual grains 
 are negligible in comparison with the deformation of the granular assembly as 
 a whole. The latter deformation is primarily due to the movement of the grains 
-as a rigid body. Therefore, it can be argued that precise modelling of grain 
+as rigid bodies. Therefore, it can be argued that precise modelling of grain 
 deformation is not necessary to obtain a good approximation of the overall 
 mechanical behaviour. An Eulerian grain-level continuum model describes the 
 response of individual grains to the applied loads. However, continuum 
