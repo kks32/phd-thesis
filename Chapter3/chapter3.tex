@@ -787,7 +787,7 @@ provide additional qualitative understanding of the data.
 
 \subsection{GIMP method}
 
-The shape functions used in MPM are continuous, and hence penetration between 
+The shape functions used in MPM are continuous, and hence penetrations between 
 bodies are handled automatically without the need for any supplemental contact 
 algorithm~\citep{Chen2002}. In MPM, the continuum body deforms and moves in 
 an arbitrary computation grid and all the boundary conditions are carried by 
@@ -797,10 +797,10 @@ represents the thickness of the boundary. However, in certain cases both the
 boundary particle and an interior particle can be found in a cell, in which 
 case the cell is still treated as a boundary cell, and the interior particle 
 temporarily acts as a boundary particle. To avoid numerical errors, it is 
-essential to consider smaller cell size along the boundary~\citep{Chen2002}. 
+essential to use a smaller cell size along the boundary~\citep{Chen2002}. 
 
-In MPM simulations, numerical noises are observed when the material points 
-crosses the cell boundaries as the body deforms, this is termed 
+In MPM simulations, numerical noise is observed when material points 
+cross the cell boundaries as the body deforms, this is termed 
 as \textit{cell crossing noise}. If a material point is located very close to 
 the cell boundary, it results in discontinuous gradient of the weighing 
 function causing a force imbalance on the grid~\citep{Bardenhagen2004}. This 
@@ -823,11 +823,11 @@ To overcome the problem of cell crossing
 noise, \citet{Bardenhagen2004} proposed an alternate method called the 
 Generalized Interpolation Material Point Method that uses smoother shape 
 functions and a larger influence region for each grid node. This approach 
-minimizes the cell crossing noise. A piecewise-linear grid basis functions are 
-written as
+minimizes the cell crossing noise. The piecewise-linear grid basis functions 
+used are written as
 %
 \begin{align}
-\phi{x} = \begin{cases}
+\phi(x) = \begin{cases}
 1-\left|x\right|/h \qquad &: \qquad \left|x\right| < h \\
 0 \qquad &: \qquad otherwise \,,
 \end{cases}
@@ -869,7 +869,7 @@ gradient weighting function.
 
 
 In traditional MPM, boundary conditions only need be applied on those nodes 
-which coincide with the extents of the computational domain. As  illustrated 
+which coincide with the extent of the computational domain. As  illustrated 
 in~\cref{fig:MPM_Linear} nodes beyond those boundaries are not influenced by 
 particles within the domain. This can be considered a result of the zero
 width of the Dirac delta characteristic functions. However, special attention 
@@ -912,55 +912,52 @@ values~\citep{Steffen2008}.
 	\label{fig:MPM_GIMP_func}
 \end{figure}
 
-In the present study, the influence of GIMP method on the run-out behaviour of 
-a granular column collapse experiment is investigated. A granular column of 
-height $H_0$ and length $L_0$ is allowed to collapse and flow on a horizontal 
-plane (\cref{fig:exp}). The run-out distance observed is proportional to the 
-initial aspect ratio of the column ($H_0/L_0$). Further details about the 
-granular collapse experiment and the material properties used in the 
-simulations are presented in~\cref{sec:dry_granular_column}. A 
-granular column with an initial aspect ratio of 0.4 is considered for the 
-comparison. The granular column is represented by 32,000 material points 
-arranged uniformly on a regular lattice with a particle spacing of 
-0.25~\si{\mm}. Since, the scale of the problem being modelled is small and it 
-is important to precisely define the flow surface, a larger number 
-of material points are used to represent the geometry. However when modelling 
-geophysical problems, where the tolerance in defining the flow surface is in 
-the order of few millimetres, each material point 
-shall represent individual grains or orders of magnitude larger than the grain 
-size. A grid size of 1~\si{mm} is adopted with 16 material points per 
+In the present study, the influence of the GIMP method on the run-out behaviour 
+of a granular column collapse experiment is investigated.~\Cref{fig:exp} shows 
+a granular column of height $H_0$ and length $L_0$ is allowed to collapse and 
+flow on a horizontal plane. The run-out distance observed is proportional to 
+the initial aspect ratio of the column ($H_0/L_0$). A granular column with an 
+initial aspect ratio of 0.4 is considered for the comparison. The granular 
+column is represented by 32,000 material points arranged uniformly on a regular 
+lattice with a particle spacing of 0.25~\si{\mm}. Since, the scale of the 
+problem being modelled is small and it is important to precisely define the 
+flow surface, a larger number of material points are used to represent the 
+geometry. However when modelling geophysical problems, where the tolerance in 
+defining the flow surface is in the order of few millimetres, each material 
+point shall represent individual grains or orders of magnitude larger than the 
+grain size. A grid size of 1~\si{mm} is adopted with 16 material points per 
 cell. In order to understand the influence of the number of material points on 
-the accuracy of the solution, simulation using 4 material points per cell with 
-GIMP is also performed. The granular collapse experiment is performed for a 
-column with an initial aspect ratio of 0.4 using both GIMP method and MPM with 
-16 material points per cell. 
+the accuracy of the solution, a simulation using 4 material points per cell 
+with GIMP is also performed. The granular collapse experiment is performed for 
+a column with an initial aspect ratio of 0.4 using both GIMP method and MPM 
+with 16 material points per cell. 
 
 The evolution of run-out at time $t=\tau_c$ and $t=6\tau_c$, where $\tau_c$ is 
 the critical time when the potential energy is fully mobilised, are presented 
 in~\cref{fig:MPM_GIMP_TC}. At the initial stage of collapse $t=\tau_c$, both 
 MPM and GIMP give almost the same behaviour. The run-out observed in the case 
 of 4 material points per cell is similar to the run-out behaviour for 16 
-material points per cell. At the end of the flow, GIMP with 4 material points 
-show oscillations at the flow front due to fewer material points in a cell. 
-However, both MPM and GIMP show a more smoother response at the flow front. The 
-evolution of run-out and height with time for both MPM and GIMP are presented 
-in~\cref{fig:MPM_GIMP}. For a time up to $t=1.5\tau_c$ all approaches yield the 
-exact same behaviour. However, as the flow progresses, the number of material 
-points per cell at the flow front decreases and this results in oscillations. 
-The oscillations with decrease in the number of material points can be seen in 
-the case of 4 material points per cell. Hence, it is essential to have a larger 
-number of material points, especially at the flow front. The difference in the 
-normalised run-out between MPM and GIMP method is about 2.5\%. This is due to 
-the difference in the interpolation scheme adopted in both approaches. GIMP 
-method offers a better approximation of the run-out behaviour as a result of 
-the continuous basis function. This also results in a more smooth stress and 
-velocity distribution in GIMP than MPM. With increase in the number of material 
-points and the use of finer mesh size decrease the difference between both 
-approaches. The computational effort using GIMP method is almost twice that of 
-MPM, since GIMP method considers the particles at neighbouring cells due to the 
-larger spread of the basis functions. In the present study, a very fine mesh 
-and 16 material points per cell are used to simulate large deformation 
-problems. 
+material points per cell. At the end of the flow, the GIMP simulation with 4 
+material points show oscillations at the flow front due to fewer material 
+points in a cell. However, both MPM and GIMP show a more smoother response at 
+the flow front. The evolution of run-out and height with time for both MPM and 
+GIMP are presented in~\cref{fig:MPM_GIMP}. For a time up to $t=1.5\tau_c$ all 
+approaches yield the exact same behaviour. However, as the flow progresses, the 
+number of material points per cell at the flow front decreases and this results 
+in oscillations. The oscillations with decrease in the number of material 
+points can be seen in the case of 4 material points per cell. Hence, it is 
+essential to have a larger number of material points, especially at the flow 
+front. The difference in the normalised run-out between MPM and GIMP method is 
+about 2.5\%. This is due to the difference in the interpolation scheme adopted 
+in both approaches. GIMP method offers a better approximation of the run-out 
+behaviour as a result of the continuous basis function. This also results in a 
+more smooth stress and velocity distribution in GIMP than MPM. With increase in 
+the number of material points and the use of finer mesh size decrease the 
+difference between both approaches. The computational effort using GIMP method 
+is almost twice that of MPM, since GIMP method considers the particles at 
+neighbouring cells due to the larger spread of the basis functions. In the 
+present study, a very fine mesh and 16 material points per cell are used to 
+simulate large deformation problems. 
 
 \begin{figure}
 	\centering
