@@ -10,10 +10,10 @@
 \section{Introduction}
 
 In nature, instabilities of slopes or cliffs can manifest themselves in 
-dramatic events involving 
-sudden release of a large mass of soil. The prediction of these catastrophic 
-events represents several challenges, one difficulty being our incomplete 
-understanding of the granular flow dynamics~\citep{Rondon2011}. Understanding 
+dramatic events involving the sudden release of a large mass of soil. The 
+prediction of these catastrophic 
+events presents several challenges, one difficulty being our incomplete 
+understanding of granular flow dynamics~\citep{Rondon2011}. Understanding 
 the mechanics is of particular importance for risk assessment. Small scale 
 laboratory experiments are usually unable to properly capture the 
 dynamics of geophysical events. However, they can be useful to precisely study 
@@ -23,7 +23,7 @@ flows~\citep{Iverson1997}.
 Conventionally, granular materials such as soils are modelled as a continuum. 
 On a macroscopic scale, granular materials exhibit many collective phenomena 
 and the use of continuum mechanics to describe the macroscopic behaviour can be 
-justified. However on a grain-scale, the granular materials exhibit complex 
+justified. However on a grain-scale, granular materials exhibit complex 
 solid-like and/or fluid-like behaviour depending on how the grains interact 
 with each other. Numerical studies at grain-scale allow a precise 
 understanding of the internal flow structure. However, even in simplified 
@@ -37,8 +37,8 @@ considered.
 
 Classical modelling strategies based on the finite element method (FEM) cannot 
 be used for the simulation of very large deformations due to mesh distortion 
-effects. 
-In various application of FEM, this problem is treated by means of technical 
+effects. In various applications of FEM, this problem is treated by means of 
+technical 
 tools such as re-meshing. These methods are, however, not robust and lead to 
 round-off errors and are sensitive to the mesh characteristics. Recent works on 
 granular materials suggest that a continuum law may be incapable of revealing 
@@ -46,7 +46,7 @@ in-homogeneities at
 the grain-scale level, such as orientation of force chains, collapse of local 
 voids and grain rearrangements, which are purely micro-structural 
 effects~\citep{Rycroft2009a}. Discrete element approaches 
-are capable of simulating the granular material as a discontinuous system 
+are capable of simulating granular materials as discontinuous systems
 allowing one to probe into local variables such as position, velocities, 
 contact forces, etc. The fundamental question is how to model granular 
 materials which exhibit complex phenomena. It is important to understand the 
@@ -69,8 +69,8 @@ dynamics, experimental investigations have shown that the flow evolution, the
 spreading velocity, the final extent of the deposit, and the energy dissipation 
 can be scaled in a quantitative way independent of the substrate properties, 
 grain size, density, the shape of the granular material and the released 
-mass~\citep{Staron2007a,Lajeunesse2005,Lube2005}. The granular collapse has 
-also been studied using discrete element method, which allows precise 
+mass~\citep{Staron2007a,Lajeunesse2005,Lube2005}. Granular collapse has 
+also been studied using DEM, which allows precise 
 measurement of the internal flow 
 structure~\citep{Lo2009,Staron2005,Staron2007a,Utili2014}.
 Power laws relating the final run-out and height to the initial aspect ratio 
@@ -149,21 +149,25 @@ Wall friction angle & 24.8$\pm 0.2$\si{\degree}\\
 Granular materials when released suddenly on a 
 horizontal surface exhibit transient flow. In this study, the mechanism of flow 
 initiation, spreading dynamics and energy dissipation are studied for varying 
-initial aspect ratios of the granular column. The soil grain characteristics of 
-the DEM sample match that of the experiment. The particle size distribution 
+initial aspect ratios of the granular column. The particle size distribution 
 (PSD) is one of the most important factors controlling landslide initiation and 
 soil permeability~\citep{Utili2014}. Cumulative $\beta$ distribution (described 
 in~\cref{sec:beta_dist}) is used to generate a graded sample with a mean grain 
 diameter of 1.15\si{\mm} (\cref{fig:PSD}). 
 The DEM sample is composed of $\sim3000$ disks with a uniform distribution of 
 diameters by volume fractions in the range $[d_{min}, d_{max}] = 0.92 - 1.38$ 
-\si{\mm} with poly-dispersity $r = \frac{d_{max} }{d_{min}} = 1.5$. The 
-granular column is prepared by allowing randomly placed grains to undergo 
-ballistic deposition with a constant potential head between layers of soil 
-grains. A snapshot of the sample generated is shown in~\cref{fig:a4b4r18}. A 
-DEM sample with soil grains arranged in a regular hexagonal lattice is also 
-used to understand the influence of crystallisation and jamming on the run-out 
-behaviour.
+\si{\mm} with poly-dispersity $r = \frac{d_{max} }{d_{min}} = 1.5$. The number 
+of DEM grains used in this study is relatively small due to practicality of 
+simulating coupled fluid - grain interactions at a large-scale. Coupled fluid - 
+grain simulations are computationally very expensive. Nevertheless, this study 
+utilises sophisticated hardware and software technologies, available at this 
+time, to simulate the largest possible REVs that provide reasonable description 
+of granular flow behaviour. The granular column is prepared by allowing 
+randomly placed grains to undergo ballistic deposition with a constant 
+potential head between layers of soil grains. A snapshot of the sample 
+generated is shown in~\cref{fig:a4b4r18}. A DEM sample with soil grains 
+arranged in a regular hexagonal lattice is also used to understand the 
+influence of crystallisation and jamming on the run-out behaviour. 
 
 \begin{figure}[tbhp]
 \centering
