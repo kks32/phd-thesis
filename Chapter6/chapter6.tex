@@ -57,13 +57,12 @@ direction perpendicular to the plane are not considered. However, the movement
 of fluid in the plane normal to the direction of flow is minimal and the choice 
 of 2D geometry is justified. LBM - DEM approach is computationally expensive as 
 it models the fluid - solid interaction at a scale that is orders of 
-magnitude smaller than the grain size. It is important to consider the 
+magnitude smaller than the grain size. It is important to consider a 
 representative volume element that is large enough to capture the granular flow 
-dynamics in fluid. The 2D geometry has the advantage of 
+dynamics in the fluid. The 2D geometry has the advantage of 
 cheaper computational effort than a 3D case, making it feasible to simulate 
 very large systems. The configuration and parameters studied in this chapter 
-are presented 
-in~\cref{table:lbm-dem-setup}.
+are presented in~\cref{table:lbm-dem-setup}.
 
 
 
@@ -95,17 +94,22 @@ technique has no effect on the grain – grain interactions computed using DEM.
 \textbf{Simulations} & \textbf{Aspect ratio} & \textbf{Hydrodynamic radius} & 
 \textbf{Packing density (\%)} & \textbf{Slope angle (\si{\degree})}\\ \midrule
 \multicolumn{5}{c}{\textbf{Collapse on a horizontal surface}} \\
-Effect of initial aspect ratio & 0.2 - 6 & r = 0.7 R &  83 & 0 \\
-Effect of permeability & 0.2 - 6 & r = 0.7, 0.75, 0.8, 0.85, 0.9 \& 0.95 R &  
+Effect of initial aspect ratio & 0.2 - 6 & \textit{r} = 0.7 \textit{R} &  83 & 
+0 \\
+Effect of permeability & 0.2 - 6 & \textit{r} = 0.7, 0.75, 0.8, 0.85, 0.9 \& 
+0.95 \textit{R} &  
 83 & 0 \\
-Effect of initial density & 0.8 & r = 0.7, 0.75, 0.8, 0.85, 0.9 \& 0.95 R 
+Effect of initial density & 0.8 & \textit{r} = 0.7, 0.75, 0.8, 0.85, 0.9 \& 
+0.95 \textit{R} 
 & 79 \& 83 & 0 \\ \midrule
 \multicolumn{5}{c}{\textbf{Collapse on an inclined plane}} \\
-Effect of initial density & 0.8 & r = 0.9 R & 79 \& 83 & 0, 2.5, 5 \& 7.5 
+Effect of initial density & 0.8 & \textit{r} = 0.9 \textit{R} & 79 \& 83 & 0, 
+2.5, 5 \& 7.5 
 \\
-Effect of permeability & 0.8 & r = 0.7, 0.75, 0.8, 0.85 \& 0.9 R &  79 \& 
+Effect of permeability & 0.8 & \textit{r} = 0.7, 0.75, 0.8, 0.85 \& 0.9 
+\textit{R} &  79 \& 
 83 & 0 \& 5 \\ \midrule
-Tall columns & 6 & r = 0.85 R & 79 \& 83 & 0, 2.5, 5 \& 7.5 \\
+Tall columns & 6 & \textit{r} = 0.85 \textit{R} & 79 \& 83 & 0, 2.5, 5 \& 7.5 \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -119,7 +123,7 @@ computation.}
 \label{fig:reduction}
 \end{figure}
 
-Realistically, the hydrodynamic radius can be varied from $ r = 0.7 R$ to 
+Realistically, the hydrodynamic radius can be varied from $r = 0.7 R$ to 
 $0.95 R$, where \textit{R} is the grain radius. Different permeabilities can be 
 obtained for any given initial packing by varying the hydrodynamic radius of 
 the grains, without having to change the actual granular packing. This 
@@ -135,12 +139,14 @@ granular assembly simulated as a two-dimensional geometry.
 
 In order to understand the relation between the hydrodynamic radius and the 
 permeability of the granular assembly, horizontal permeability tests are 
-performed by varying the hydrodynamic radius as 0.7 R, 0.75 R, 0.8 R, 0.85 R, 
-0.9 R and 0.95 R. A square sample of $50~\si{\mm} \times 50~\si{\mm}$ filled 
+performed by varying the hydrodynamic radius as 0.7 \textit{R}, 0.75 
+\textit{R}, 0.8 \textit{R}, 0.85 \textit{R}, 
+0.9 \textit{R} and 0.95 \textit{R}. A square sample of $50~\si{\mm} \times 
+50~\si{\mm}$ filled 
 with poly-disperse ($d_{max}/d_{min} = 1.8$) grains having a mean diameter of 
 1.7~\si{\mm} is used to determine the relation between the hydrodynamic radius 
-and the permeability. Dirichlet boundary condition (discussed 
-in~\cref{sec:lbm_bc}), i.e., density constraint, is applied along the left and 
+and the permeability. Dirichlet boundary conditions (discussed 
+in~\cref{sec:lbm_bc}), i.e., density constraint, are applied along the left and 
 the right boundaries of the sample. The fluid density on the left boundary is 
 increased in small steps ($10^{-4} \Delta P$), while a constant density is 
 maintained on the right boundary. This results in a pressure gradient  
@@ -164,7 +170,7 @@ the interconnected pore-space.
 		\label{fig:velocity}
 	\end{subfigure}
 	\caption{Evaluation of the horizontal permeability for a 
-	hydrodynamic radius of 0.7 R.}
+	hydrodynamic radius of 0.7 \textit{R}.}
 	\label{fig:perm}
 \end{figure}
 
@@ -188,12 +194,13 @@ applied pressure difference \si{\Pa}. It can be observed that with increase in
 the hydrodynamic radius the permeability decreases, i.e., the slope of the mean 
 flow velocity to the pressure gradient decreases. At very low pressure 
 gradients 
-($\Delta P \le 0.1$), both 0.9 R and 0.95 R have no flow. Even at 
+($\Delta P \le 0.1$), both 0.9 \textit{R} and 0.95 \textit{R} have no flow. 
+Even at 
 higher pressure gradients, a hydrodynamic radius of $r = 0.95 R$ shows almost 
 no 
 flow behaviour. A high value of hydrodynamic radius $r > 0.95 R$ 
 results in unnatural flow/no-flow behaviour. Hence in the present study, a 
-hydrodynamic radius in the range of 0.7 to 0.95 R is adopted.
+hydrodynamic radius in the range of 0.7 to 0.95 \textit{R} is adopted.
 
 \begin{figure}[htpb]
 \centering
@@ -204,7 +211,7 @@ different hydrodynamic radius.}
 \end{figure}
 
 
-Increase in the hydrodynamic radius from 0.7 to 0.95 reduces the quasi-porosity 
+Increasing the hydrodynamic radius from 0.7 to 0.95 reduces the quasi-porosity 
 from 0.60 to 0.27. The permeability computed from LB – DEM method is verified 
 by comparing it with the analytical solution. One of the widely used analytical 
 solution for permeability is the Carman – Kozeny equation (CK Model), 
@@ -233,7 +240,8 @@ area. The above value of $a_v$ is for circles (cylinders) - for spheres $a_v =
 the shape factor and the deviation of flow direction from that in a duct. It is 
 approximated for randomly packed beds of spherical grains. The variation of 
 normalized permeability with porosity, obtained by varying the radius from 0.7 R
-to 0.95 R, is presented in~\cref{fig:Carman}. The permeability values obtained 
+to 0.95 \textit{R}, is presented in~\cref{fig:Carman}. The permeability values 
+obtained 
 from LBM - DEM simulations are found to match the qualitative trend of the 
 Carman-Kozeny equation. The LB – DEM permeability curve lies between the 
 permeability curves for spherical and cylindrical grain arrangements implying a 
@@ -314,10 +322,10 @@ surface. The initial aspect ratio of the column is varied as 0.2, 0.4, 0.6,
 \end{figure}
 
 
-The cumulative $\beta$ distribution is adopted to generate grains with 
-$d_{max}$ and $d_{min}$ as 2.2~\si{\mm} and 1.25~\si{\mm}, respectively. The 
-soil column is modelled using $\sim 2000$ discs of density 
-\SI{2650}{\kg\per\cubic\meter} and a contact friction angle of 
+The cumulative $\beta$ distribution is adopted to generate a distribution of 
+grain sizes ($d_{max}$ = \SI{2.2}{\milli\meter}, $d_{min}$ = 
+\SI{1.25}{\milli\meter}). The soil column is modelled using $\sim 2000$ discs 
+of density \SI{2650}{\kg\per\cubic\meter} and a contact friction angle of 
 \SI{26}{\degree}. A linear-elastic contact model is used in the
 DEM simulations. The granular assembly has a packing fraction of $83\%$. The 
 critical time step for DEM is computed based on the local 
@@ -341,7 +349,8 @@ lattice. In the present study, a very fine discretisation of $d_{min}/h = 10$
 is adopted, i.e., the smallest grain with a diameter $d_{min}$ in the system is 
 discretised into 100 lattice nodes ($ 10h \times 10h$). This provides a very 
 accurate representation of the interaction between the solid and the fluid 
-nodes.  A hydrodynamic radius of 0.7 R is adopted during the LBM computations. 
+nodes.  A hydrodynamic radius of 0.7 \textit{R} is adopted during the LBM 
+computations. 
 The fluid pressure on the top and right boundaries are maintained constant. 
 Hence, any pressure wave that is generated during the collapse is absorbed in 
 the boundary. Frictional boundary constraint is applied along the bottom 
@@ -364,23 +373,21 @@ collapse are performed by varying the initial aspect ratio of the column from
 (L_{\textit{f}}-L_{\textit{0}})/L_{\textit{0}}$. Similar to the dry granular 
 collapse, the duration of collapse is normalised with a critical time $\tau_c 
 = \sqrt{H/g}$, where $H$ is the initial height of the granular column and 
-\textit{g} is 
-the acceleration due to gravity.  Dry and buoyant analyses of granular column 
-collapse are also performed to understand the effect of hydrodynamic forces on 
-the run-out distance.
+\textit{g} is the acceleration due to gravity. Dry and buoyant analyses of 
+granular column collapse are also performed to understand the effect of 
+hydrodynamic forces on the run-out distance.
 
 Snapshots of the flow evolution of a granular column collapse with an initial 
 aspect ratio of 0.4 are shown in~\cref{fig:a04_snapshots}. The failure begins 
 at the toe end of the column, and the shear-failure surface propagates into the 
 column at an angle of about $50\si{\degree}$, similar to the dry column 
-collapse. For the 
-short column, the failure is due to collapse of the flank. Once the material 
-is destabilised, the granular mass interacts with the surrounding fluid 
-resulting in formation of turbulent vortices. These vortices interact with the 
-grains at the surface resulting in an irregular free surface. Force 
-chains can be observed in the static region of collapse, which indicates the 
-granular flow in fluid can still be described using continuum theories. As the 
-granular material ceases to flow, force chains develop at the flow front, 
+collapse. For the short column, the failure is due to collapse of the flank. 
+Once the material is destabilised, the granular mass interacts with the 
+surrounding fluid resulting in formation of turbulent vortices. These vortices 
+interact with the grains at the surface resulting in an irregular free surface. 
+Force chains can be observed in the static region of collapse, which indicates 
+the granular flow in fluid can still be described using continuum theories. As 
+the granular material ceases to flow, force chains develop at the flow front, 
 revealing consolidation of the granular mass resulting in an increase in the 
 shear strength. 
 
@@ -529,17 +536,15 @@ Snapshots of the flow evolution of a granular column collapse with an initial
 aspect ratio of 4 is shown in~\cref{fig:a4_snapshots}. For a tall column, the 
 collapse mechanism changes. The entire column is involved in the collapse. The 
 height of the static region, which is below the shear-failure surface, is 
-shorter 
-than the total height of the column. This results in a free-fall of grains 
-above the shear-failure surface. As the grains experience free-fall they 
-interact 
-with the surrounding fluid. However, no vortices are observed during the 
-initial stage of collapse. In the second phase, when the grains reach the base, 
-the vertical acceleration gained during the free-fall is converted into
+shorter than the total height of the column. This results in a free-fall of 
+grains above the shear-failure surface. As the grains experience free-fall they 
+interact with the surrounding fluid. However, no vortices are observed during 
+the initial stage of collapse. In the second phase, when the grains reach the 
+base, the vertical velocity gained during the free-fall is converted into
 horizontal velocity. As the grains are ejected horizontally, the free 
 surface of the granular mass interacts with the fluid resulting in the 
 formation of turbulent vortices. Unlike short columns, these vortices have 
-significant influence on the mass distribution along the run-out. Heaps of 
+a significant influence on the mass distribution along the run-out. Heaps of 
 granular material can be observed in front of each vortex. The number of 
 vortices formed during a collapse is found to be proportional to the amount of 
 material destabilised, i.e., the length of free-surface interacting with the 
@@ -721,15 +726,16 @@ behaviour than the lubrication effect in fluid.
 
 \subsection{Effect of permeability}
 \citet{Topin2011} using Direct Numerical Simulation of underwater granular 
-collapse observed development of large negative 
-pore-pressure during dispersion of grains. The rate of dissipation of the 
-negative pore-pressure is 
+collapse observed development of large negative pore-pressures during 
+dispersion of grains. The rate of dissipation of the negative pore-pressure is 
 directly proportional to the permeability of the granular assembly. In the 
 previous section, the evolution of run-out with the initial aspect ratio is 
-studied using a constant hydrodynamic radius r = 0.7 R. In order to understand 
+studied using a constant hydrodynamic radius \textit{r} = 0.7 \textit{R}. In 
+order to 
+understand 
 the effect of permeability on the run-out behaviour, the hydrodynamic radius 
-\textit{r} 
-is varied from 0.7 R to 0.95 R for all aspect ratios. Increase in 
+\textit{r} is varied from 0.7 \textit{R} to 0.95 \textit{R} for all aspect 
+ratios. Increase in 
 the hydrodynamic radius decreases the permeability of the granular assembly 
 resulting in a longer duration for the dissipation of negative pore-pressure. 
 
@@ -737,9 +743,11 @@ The normalised run-out for different hydrodynamic radii for a granular column
 with an initial aspect ratio of 0.8 are presented 
 in~\cref{fig:Runout_a08_dense}. The run-out increases with decrease in the 
 permeability, which is equivalent to an increase in the hydrodynamic radius. 
-An increase in the hydrodynamic radius from 0.7 to 0.95 R increases the 
+An increase in the hydrodynamic radius from 0.7 to 0.95 \textit{R} increases 
+the 
 normalised run-out by 25\%. However, even under a very low permeability 
-condition (r = 0.95 R), the run-out observed in fluid is shorter than the dry 
+condition (\textit{r} = 0.95 \textit{R}), the run-out observed in fluid is 
+shorter than the dry 
 and the buoyant conditions. 
 
 \begin{figure}[htpb]
@@ -750,7 +758,8 @@ collapse in fluid (a = 0.8)}
 \label{fig:Runout_a08_dense}
 \end{figure}
 
-At a high permeability (r = 0.7 R), the evolution of run-out at the initial 
+At a high permeability (\textit{r} = 0.7 \textit{R}), the evolution of run-out 
+at the initial 
 stage is quicker, which means that the negative pore-pressure that is developed 
 during the shearing along the shear-failure surface is dissipated faster. Even 
 though the negative pore-pressure is dissipated, due to 
@@ -759,13 +768,15 @@ slower than its dry counterpart. The rate of pore-pressure dissipation
 decreases with decrease in the permeability. This can be observed by a flatter 
 slope in the run-out evolution with decrease in the 
 permeability.~\Cref{fig:PWP_ini_dense} shows 
-the distribution of pore-pressure in high and low permeable granular media 
+the distribution of pore-pressure in high and low permeability granular media 
 along the horizontal direction at a height of $10 \times d$ from the base. In 
 LBM, the pore-pressure in fluid is a function of fluid density distribution 
 functions. 
-At time $t = \tau_c$, the highly permeable (r = 0.7 R) granular column 
+At time $t = \tau_c$, the highly permeable (\textit{r} = 0.7 \textit{R}) 
+granular column 
 shows smaller negative pore-pressure in comparison to large negative 
-pore-pressures observed in the shearing zone of a low permeable column (r = 0.9 
+pore-pressures observed in the shearing zone of a low permeable column 
+(\textit{r} = 0.9 
 R). This shows that not only does it take longer for the pore-pressure to 
 dissipate with a decrease in permeability, but also results in almost twice the 
 negative pore-pressure than what is observed in the high permeable case 
@@ -776,13 +787,13 @@ negative pore-pressure than what is observed in the high permeable case
 \begin{subfigure}[t]{0.975\textwidth}
 	\centering
     \includegraphics[width=\textwidth]{a08/r07_PWP_ini_dense}
-    \caption{High permeability (r = 0.7 R)}
+    \caption{High permeability (\textit{r} = 0.7 \textit{R})}
     \label{fig:r07_PWP_ini_dense}
 \end{subfigure} \\
 \begin{subfigure}[t]{0.975\textwidth}
 	\centering
     \includegraphics[width=\textwidth]{a08/r095_PWP_ini_dense}
-    \caption{Low permeability (r = 0.95 R)}
+    \caption{Low permeability (\textit{r} = 0.95 \textit{R})}
     \label{fig:r095_PWP_ini_dense}
 \end{subfigure}
 \caption{Effect of permeability on the excess pore water pressure distribution 
@@ -791,21 +802,21 @@ for a granular column collapse in fluid (a = 0.8 \& dense packing) at $t =
 \label{fig:PWP_ini_dense}
 \end{figure}
 
-Although the low permeable granular columns require a longer duration for the 
-run-out to evolve, the final run-out distance is found to be much longer than 
-the high permeable condition.~\Cref{fig:PE_a08_dense} shows that the potential 
-energy available for the flow of a low permeable column is 20\% smaller than 
-the collapse of a high permeable granular column. The normalised kinetic energy 
-evolution with time (\cref{fig:a08_dense_energy}) shows that the low permeable 
-column has a wider peak kinetic energy distribution in comparison to a sharp 
-peak observed in the high permeable condition. This indicates the influence of 
-lubrication, i.e., hydroplaning of the granular flow in low permeable 
-conditions. The evolution of the horizontal kinetic energy with time reveals 
-that the peak kinetic energy is sustained longer as the permeability of the 
-granular material decreases (\cref{fig:KExy_a08_dense}). Although the peak 
-kinetic energy is smaller 
-in the low permeability case, the hydroplaning of the flowing granular mass 
-results in a longer run-out distance.~\Cref{fig:r095_PWP_flow_dense} shows the 
+Although the low permeability granular columns require a longer duration for 
+the run-out to evolve, the final run-out distance is found to be much longer 
+than in the high permeable condition.~\Cref{fig:PE_a08_dense} shows that the 
+potential energy available for the flow of a low permeability column is 20\% 
+smaller than the collapse of a high permeability granular column. Normalised 
+kinetic energy evolution with time (\cref{fig:a08_dense_energy}) shows that the 
+low permeability column has a wider peak kinetic energy distribution in 
+comparison to a sharp peak observed in the high permeability condition. This 
+indicates the influence of lubrication, i.e., hydroplaning of the granular flow 
+in low permeability conditions. The evolution of the horizontal kinetic energy 
+with time reveals that the peak kinetic energy is sustained longer as the 
+permeability of the granular material decreases (\cref{fig:KExy_a08_dense}). 
+Although the peak kinetic energy is smaller in the low permeability case, the 
+hydroplaning of the flowing granular mass results in a longer run-out 
+distance.~\Cref{fig:r095_PWP_flow_dense} shows the 
 distribution of pore-pressure for a dense granular column collapse in fluid 
 along the bottom plane. A high positive pore-pressure is observed 
 at the base of the granular flow at the flow front in low permeability 
@@ -855,14 +866,14 @@ for a granular column collapse in fluid (a = 0.8)}
 \begin{subfigure}[t]{0.975\textwidth}
 	\centering
     \includegraphics[width=\textwidth]{a08/r07_PWP_flow_dense}
-    \caption{High permeability (r = 0.7 R)}
+    \caption{High permeability (\textit{r} = 0.7 \textit{R})}
     \label{fig:r07_PWP_flow_dense}
 \end{subfigure}
 \\
 \begin{subfigure}[t]{0.975\textwidth}
 	\centering
     \includegraphics[width=\textwidth]{a08/r095_PWP_flow_dense}
-    \caption{Low permeability (r = 0.95 R)}
+    \caption{Low permeability (\textit{r} = 0.95 \textit{R})}
     \label{fig:r095_PWP_flow_dense}
 \end{subfigure}
 \caption{Effect of permeability on the excess pore water pressure distribution 
@@ -879,7 +890,7 @@ dense packing) at $t = 2\tau_c$.}
     \label{fig:Packing_Density_a08_dense}
 \end{figure}
 
-High permeable granular column shows 
+The high permeability granular column shows 
 lower water entrainment (\cref{fig:Packing_Density_a08_dense}), which 
 indicates that for highly permeable flows the 
 drag force acting on the soil grains predominates over the lubrication effect 
@@ -889,12 +900,14 @@ the granular material consolidates at the final stage of the flow
 in the packing density at the final stage due to settlement of grains and 
 expulsion of 
 entrained water. The final deposit profile for both low and high permeability 
-conditions are shown in~\cref{fig:a08_dense_snapshots}. The high permeable 
-collapse show a more parabolic (convex) deposit profile in contrast to the more 
-concave profile observed in the low permeability condition. In high permeable 
+conditions are shown in~\cref{fig:a08_dense_snapshots}. The high permeability 
+collapse shows a more parabolic (convex) deposit profile in contrast to the 
+more concave profile observed in the low permeability condition. In high 
+permeable 
 condition, once the granular mass is mobilised, the drag forces slows down the 
 rate of flow, which allows the grains to densify resulting in a more parabolic 
-profile. This is in contrast to the hydroplaning observed in low permeability 
+profile. This is in contrast to the hydroplaning observed in the low 
+permeability 
 condition, where the granular mass thickness is smaller than the dense 
 condition. The observation of hydroplaning in the low permeable condition may 
 be due to the difference in the distribution of granular mass at the flow 
@@ -910,7 +923,8 @@ the densities of soil and water, respectively, \textit{H} is the thickness of
 the sliding mass, \textit{g} is acceleration due to gravity and $\theta$ 
 represents the slope angle.~\citet{Harbitz2003} observed 
 hydroplaning above a critical value of densimetric Froude's number of 0.4. A 
-Froude's $Fr_d$ value of 0.427 is observed for the low permeable flow (r = 0.95 
+Froude's $Fr_d$ value of 0.427 is observed for the low permeable flow 
+(\textit{r} = 0.95 
 R), which indicates the occurrence of hydroplaning. Whereas, a $Fr_d = 0.273$ 
 is observed for the high permeable granular flow indicating absence of 
 hydroplaning, the low 
@@ -921,7 +935,7 @@ parabolic profile and shorter run-out distance.
 \begin{subfigure}[b]{0.85\textwidth}
 	\centering
     \includegraphics[width=0.95\textwidth]{a08/a08r07_dense}
-    \caption{High permeability (r = 0.7 R)}
+    \caption{High permeability (\textit{r} = 0.7 \textit{R})}
     \label{fig:a08r07_dense}
 \end{subfigure}
 }\\
@@ -929,7 +943,7 @@ parabolic profile and shorter run-out distance.
 \begin{subfigure}[b]{0.85\textwidth}
 	\centering
     \includegraphics[width=0.95\textwidth]{a08/a08r095_dense}
-    \caption{Low permeability (r = 0.95 R)}
+    \caption{Low permeability (\textit{r} = 0.95 \textit{R})}
     \label{fig:a08r095_dense}
 \end{subfigure}
 }
@@ -950,9 +964,11 @@ condition, for the same aspect ratio, the kinetic energy available for
 spreading is lower and the dissipation due to viscous drag is higher, thus 
 leading to a much shorter run-out distance. 
 
-For short columns, with decrease in permeability the run-out distance 
+For short columns, with a decrease in permeability the run-out distance 
 increases, however, the run-out distance is not higher than the dry condition. 
-At higher aspect ratios, decrease in permeability from r = 0.8 R to r = 0.9 R 
+At higher aspect ratios, a decrease in permeability from \textit{r} = 0.8 
+\textit{R} to 
+\textit{r} = 0.9 \textit{R} 
 does not have a significant influence on the run-out behaviour. This can be 
 attributed to the turbulent nature of the granular flows for tall 
 columns. The run-out behaviour is a result of transformation of (part of) the 
@@ -967,14 +983,15 @@ a part of the potential energy, in the presence of the fluid, is dissipated
 during the vertical collapse due to viscous friction. In all regimes, the 
 run-out distance increases as a power law $L_f \propto KE_{max}^\gamma$. For 
 the same value of peak kinetic energy, the run-out distance in fluid is longer 
-than the dry column collapse. Also, with decrease in 
+than the dry column collapse. Also, with a decrease in 
 permeability the run-out distance increases for the same peak kinetic energy. 
 \begin{figure}[tbhp]
 	\centering
 	\includegraphics[width=0.95\textwidth]{runout_fluid_dry}
 	\caption{Normalised final run-out distance for columns with different 
 	initial aspect ratios. Comparison of dry and submerged granular column 
-	collapse for different hydrodynamic radius (0.7 R, 0.8 R and 0.9 R).}
+	collapse for different hydrodynamic radius (0.7 \textit{R}, 0.8 \textit{R} 
+	and 0.9 \textit{R}).}
 	\label{fig:runout_fluid_dry}
 \end{figure} 
 
@@ -986,7 +1003,8 @@ permeability the run-out distance increases for the same peak kinetic energy.
 		peak kinetic energy in dry and submerged conditions]{Normalised final 
 		run-out distance for columns as a function of 
 	peak kinetic energy. Comparison of dry and submerged granular column 
-	collapse for different hydrodynamic radius (0.7 R, 0.8 R and 0.9 R).}
+	collapse for different hydrodynamic radius (0.7 \textit{R}, 0.8 \textit{R} 
+	and 0.9 \textit{R}).}
 	\label{fig:runout_fluid_dry_energy}
 \end{figure}
 \end{landscape}
@@ -1011,19 +1029,20 @@ and the permeability of a 2D granular column, with an aspect ratio of 0.8, are
 varied to understand their influence on the run-out behaviour. The run-out 
 behaviour of the dense case (83\% packing density), discussed in the previous 
 section, is compared with a loose granular column (79\% packing fraction). The 
-permeability is varied by changing the hydrodynamic radius from 0.7 R to 0.95 
+permeability is varied by changing the hydrodynamic radius from 0.7 \textit{R} 
+to 0.95 
 R. 
 
 The normalised run-out evolution with time for a loose initial packing (79\% 
-packing fraction) with different hydrodynamic radii 0.7 R, 0.8 R, 0.9 and 0.95 
-R are presented in~\cref{fig:Runout_a08_loose}. The run-out evolution of dry 
-and a column with grains in suspension with an 
-initial aspect ratio of 0.8 are also presented to understand the influence of 
-hydrodynamic forces on the flow kinematics. Similar to the dense granular 
-column, the run-out distance increases with increase in the hydrodynamic radius 
-(i.e., decrease in permeability). At low permeabilities (r = 0.9 and 0.95 R), 
+packing fraction) with different hydrodynamic radii 0.7 \textit{R}, 0.8 
+\textit{R}, 0.9 and 0.95 R are presented in~\cref{fig:Runout_a08_loose}. The 
+run-out evolution a column of grains in suspension is compared with the dry and 
+submerged granular columns to understand the influence of hydrodynamic forces 
+on the flow kinematics. Similar to the dense granular column, the run-out 
+distance increases with increase in the hydrodynamic radius (i.e., decrease in 
+permeability). At low permeabilities (\textit{r} = 0.9 and 0.95 \textit{R}), 
 the run-out distance is longer than the dry condition. This shows that the 
-lubrication effect in low permeability condition overcomes the influence of 
+lubrication effect in low permeability conditions overcomes the influence of 
 the drag force and the development of large negative pore-pressure resulting in 
 a longer run-out distance. Although the suspended granular masses experience 
 higher drag forces and turbulent effects, the run-out evolves almost at the 
@@ -1040,23 +1059,24 @@ collapse in fluid (a = 0.8 \& loose packing)}
 \end{figure}
 
 \Cref{fig:Loose_PWP_ini} shows the development of negative pore-pressure in low 
-permeability (r = 0.95 R) and dissipation of negative pore-pressure in high 
-permeability (r = 0.7 R) at the same time $ t = \tau_c$. This difference in the 
-quantity and the rate of dissipation of negative pore-pressure results in 
-a difference in the rate of flow evolution. A low permeable column requires a 
-longer duration to evolve.~\Cref{fig:Loose_PWP_flow} shows the distribution of 
-the excess pore-pressure along the bottom for low and high permeability 
-conditions. As the flow progresses, the low permeability of 
-the granular column causes hydroplaning to occur at the base of the column, 
-which can be observed by high positive pore-pressure at the base of the flow 
-front, resulting in a longer run-out distance.
+permeability (\textit{r} = 0.95 \textit{R}) and dissipation of negative 
+pore-pressure in high permeability (\textit{r} = 0.7 \textit{R}) at the same 
+time $ t = \tau_c$. This difference in the quantity and the rate of dissipation 
+of negative pore-pressure results in a difference in the rate of flow 
+evolution. A low permeability column requires a longer duration to 
+evolve.~\Cref{fig:Loose_PWP_flow} shows the distribution of the excess 
+pore-pressure along the bottom for low and high permeability conditions. As the 
+flow progresses, the low permeability of the granular column causes 
+hydroplaning to occur at the base of the column, which can be observed by high 
+positive pore-pressure at the base of the flow front, resulting in a longer 
+run-out distance.
 \begin{figure}
 \centering
 \makebox[\linewidth][c]{
 \begin{subfigure}[t]{0.975\textwidth}
 	\centering
     \includegraphics[width=\textwidth]{a08/Loose_r07_PWP_ini}
-    \caption{High permeability (r = 0.7 R)}
+    \caption{High permeability (\textit{r} = 0.7 \textit{R})}
     \label{fig:Loose_r07_PWP_ini}
 \end{subfigure}
 }\\
@@ -1064,14 +1084,13 @@ front, resulting in a longer run-out distance.
 \begin{subfigure}[t]{0.975\textwidth}
 	\centering
     \includegraphics[width=\textwidth]{a08/Loose_r095_PWP_ini}
-    \caption{Low permeability (r = 0.95 R)}
+    \caption{Low permeability (\textit{r} = 0.95 \textit{R})}
     \label{fig:Loose_r095_PWP_ini}
 \end{subfigure}
 }
 \caption{Effect of permeability on the excess pore water pressure distribution 
 along the base of a granular column collapse in fluid (a = 0.8 \& loose 
-packing) at $t = 
-\tau_c$}
+packing) at $t = \tau_c$}
 \label{fig:Loose_PWP_ini}
 \end{figure}
 
@@ -1081,7 +1100,7 @@ packing) at $t =
 \begin{subfigure}[t]{0.975\textwidth}
 	\centering
     \includegraphics[width=\textwidth]{a08/Loose_r07_PWP_flow}
-    \caption{High permeability (r = 0.7 R)}
+    \caption{High permeability (\textit{r} = 0.7 \textit{R})}
     \label{fig:Loose_r07_PWP_flow}
 \end{subfigure}
 }\\
@@ -1089,7 +1108,7 @@ packing) at $t =
 \begin{subfigure}[t]{0.975\textwidth}
 	\centering
     \includegraphics[width=\textwidth]{a08/Loose_r095_PWP_flow}
-    \caption{Low permeability (r = 0.95 R)}
+    \caption{Low permeability (\textit{r} = 0.95 \textit{R})}
     \label{fig:Loose_r095_PWP_flow}
 \end{subfigure}
 }
@@ -1099,21 +1118,23 @@ for a granular column collapse in fluid (a = 0.8 \& loose packing) at $t =
 \label{fig:Loose_PWP_flow}
 \end{figure}
 
-The evolution of the potential energy with time 
-(\cref{fig:PE_a08_loose}) reveals that at a very low 
-permeability (r = 0.95 R), the initial potential energy mobilised is smaller 
-than at r = 0.9 R. Also with decrease in permeability, the time required to 
+The evolution of the potential energy with time (\cref{fig:PE_a08_loose}) 
+reveals that at a very low permeability (\textit{r} = 0.95 \textit{R}), the 
+initial potential energy mobilised is smaller than at \textit{r} = 0.9 
+\textit{R}. Also with decrease in permeability, the time required to 
 dissipate the negative pore-pressure increases. This results in a shorter 
-run-out distance in the case of r = 0.95 R to that of r = 0.9 R. As the 
-quantity of material destabilised is small, the flow is thinner and thus has a 
-high Froude's number (0.59).~\Cref{fig:KExy_a08_loose} shows that the peak 
-horizontal kinetic velocity observed in the case of r = 0.9 R is higher than r 
-= 0.95 R. A Froude's number of 0.59 for r = 0.9 R is observed in contrast to 
-0.46 for r = 0.95 R. Both values of hydrodynamic radii result in a Froude's 
-number that indicate the occurrence of hydroplaning. However, the difference in 
-the amount of material destabilised for r = 0.95 R and the decreased effect of 
-hydroplaning results in a shorter run-out distance for r = 0.95 R in comparison 
-to r = 0.9 R.
+run-out distance in the case of \textit{r} = 0.95 \textit{R} to that of 
+\textit{r} = 0.9 \textit{R}. As the quantity of material destabilised is small, 
+the flow is thinner and thus has a high Froude's number 
+(0.59).~\Cref{fig:KExy_a08_loose} shows that the peak horizontal kinetic 
+velocity observed in the case of \textit{r} = 0.9 \textit{R} is higher than 
+\textit{r} = 0.95 \textit{R}. A Froude's number of 0.59 for \textit{r} = 0.9 
+\textit{R} is observed in contrast to 0.46 for \textit{r} = 0.95 \textit{R}. 
+Both values of hydrodynamic radii result in a Froude's number that indicate the 
+occurrence of hydroplaning. However, the difference in the amount of material 
+destabilised for \textit{r} = 0.95 \textit{R} and the decreased effect of 
+hydroplaning results in a shorter run-out distance for \textit{r} = 0.95 
+\textit{R} in comparison to \textit{r} = 0.9 \textit{R}.
 
 
 \Cref{fig:Packing_Density_a08_loose} shows the evolution of packing 
@@ -1172,7 +1193,8 @@ for a granular column collapse in fluid (a = 0.8 \& loose packing)}
 
 
 The evolution of grain trajectories with time are presented 
-in~\cref{fig:Loose_a08_permeability} for low (r = 0.95 R) and high (r = 0.9 R)
+in~\cref{fig:Loose_a08_permeability} for low (\textit{r} = 0.95 \textit{R}) and 
+high (\textit{r} = 0.9 \textit{R})
 permeability conditions. It can be observed that a high 
 permeability column shows a parabolic (convex) final profile in contrast to the 
 more concave profile observed in low permeability condition, due to the effect 
@@ -1181,7 +1203,8 @@ in a higher value of Froude's number (0.59) and the occurrence of hydroplaning
 in the low permeability condition. Due to the high permeability, the water 
 entrained at the flow front is dissipated quicker and 
 thus no lubrication effect is observed. A Froude's number of 0.272 (no 
-hydroplaning) is observed for the high permeability condition (r = 0.7 R). The 
+hydroplaning) is observed for the high permeability condition (\textit{r} = 0.7 
+\textit{R}). The 
 thick flow front in dense condition results in higher effective stress, in 
 contrast to the low effective stress in loose condition due to positive 
 pore-pressure at the flow front. The higher effective stress results in more 
@@ -1209,7 +1232,7 @@ conditions.
 \begin{subfigure}[t]{0.975\textwidth}
 	\centering
     \includegraphics[width=\textwidth]{a08/LBM_MD_loose_a08_r07_pt}
-    \caption{High permeability (r = 0.7 R)}
+    \caption{High permeability (\textit{r} = 0.7 \textit{R})}
     \label{fig:LBM_MD_loose_a08_r07_pt}
 \end{subfigure}
 }\\
@@ -1217,7 +1240,7 @@ conditions.
 \begin{subfigure}[t]{0.975\textwidth}
 	\centering
     \includegraphics[width=\textwidth]{a08/LBM_MD_a08_Loose_r09}
-    \caption{Low permeability (r = 0.95 R)}
+    \caption{Low permeability (\textit{r} = 0.95 \textit{R})}
     \label{fig:LBM_MD_a08_Loose_r09}
 \end{subfigure}
 }
@@ -1236,7 +1259,8 @@ initial packing at $t = 2\tau_c$}
 \end{figure}
 
 \Cref{fig:Dense_Loose_PT} shows the grain trajectories of a dense and a loose 
-initial packing for a hydrodynamic radius (r = 0.95 R). It can be observed that 
+initial packing for a hydrodynamic radius (\textit{r} = 0.95 \textit{R}). It 
+can be observed that 
 the dense initial packing results in a lot of turbulent behaviour at the flow 
 surface in contrast to the more uniform flow behaviour in the loose condition. 
 The thickness of the deposit in both dense and loose condition is almost the 
@@ -1296,7 +1320,8 @@ of the material.
 for a granular column collapse in fluid (a = 0.8).]{Effect of initial density 
 on the deposit morphology
 for a granular column collapse in fluid (a = 0.8). Dense vs loose initial 
-packing fraction (r = 0.95 R). Darker means dense packing, white indicates 
+packing fraction (\textit{r} = 0.95 \textit{R}). Darker means dense packing, 
+white indicates 
 loose 
 packing density.}
 \label{fig:Dense_Loose_PT}
@@ -1323,7 +1348,7 @@ packing density.}
 }
 \caption{Evolution of packing fraction at $t = \tau_c$ for dense and loose 
 initial packing fraction. Black means dense packing, while white colour denotes 
-loose packing in the voronoi cell.}
+loose packing in the Voronoi cell.}
 \label{fig:Dense_Loose_voro}
 \end{figure}
 
@@ -1352,13 +1377,15 @@ The soil column is modelled using $\sim 1000$ to $2000$ discs of density
 fluid with a density of \SI{1000}{\kg\per\cubic\meter} and a kinematic 
 viscosity of \SI{1e-6}{\square\meter\per\second}. A granular column with 
 an 
-initial aspect ratio \textit{a} of 0.8 is used. A hydrodynamic radius r = 0.9 R 
+initial aspect ratio \textit{a} of 0.8 is used. A hydrodynamic radius 
+\textit{r} = 0.9 \textit{R} 
 is adopted during the LBM computations. Dry analyses are also performed to 
 study the effect of hydrodynamic forces on the run-out distance. The 
 numerical configuration used in this study is shown in~\cref{fig:geometry}. The 
 slope angle $\theta$ is varied as \SI{0}{\degree}, \SI{2.5}{\degree}, 
 \SI{5}{\degree}, and \SI{7.5}{\degree}. The influence of permeability (with 
-hydrodynamic radius varied as 0.7, 0.75, 0.8, 0.85 and 0.9 R) on the run-out 
+hydrodynamic radius varied as 0.7, 0.75, 0.8, 0.85 and 0.9 \textit{R}) on the 
+run-out 
 behaviour of collapse of granular columns on to an inclined plane with a slope 
 angle of 5\si{\degree} is also analysed. 
 
@@ -1372,7 +1399,9 @@ and flow down slopes of varying inclinations. The run-out behaviour is compared
 with the collapse of a granular column in fluid on a horizontal surface. For 
 all slope angles, the flow kinematics in the submerged condition is compared 
 with its dry counterpart to understand the influence of lubrication and viscous 
-drag. A hydrodynamic radius of r = 0.9 R is adopted in all cases, because low 
+drag. A hydrodynamic radius of \textit{r} = 0.9 \textit{R} is adopted in all 
+cases, 
+because low 
 permeability conditions result in longer run-out distance as observed in the 
 previous section.
 
@@ -1629,18 +1658,25 @@ packing density.}
 In order to understand the effect of permeability at a slope angle of 
 \SI{5}{\degree}, the collapse of a granular column with an initial aspect ratio 
 of 0.8 is simulated with different permeabilities. The hydrodynamic radius of 
-a loosely packed granular column is varied from r = 0.7 R (high permeability), 
-0.75 R, 0.8 R, 0.85 R to 0.9 R (low permeability). The run-out distance is 
+a loosely packed granular column is varied from \textit{r} = 0.7 \textit{R} 
+(high 
+permeability), 
+0.75 \textit{R}, 0.8 \textit{R}, 0.85 \textit{R} to 0.9 \textit{R} (low 
+permeability). The run-out distance is 
 found to increase with decrease in the permeability of the granular assembly 
-(\cref{fig:run5}). The run-out distance for high permeable conditions (r = 
-0.7 R -- 0.8 R) are lower than their dry counterparts. Although, decrease in 
+(\cref{fig:run5}). The run-out distance for high permeable conditions 
+(\textit{r} = 
+0.7 \textit{R} -- 0.8 \textit{R}) are lower than their dry counterparts. 
+Although, decrease in 
 permeability resulted in an increase in the run-out distance, no significant 
 change in the run-out behaviour is observed for a hydrodynamic radii of up to 
-0.8 R.
+0.8 \textit{R}.
 
-With further decrease in permeability (r = 0.85 R and 0.9 R), the run-out 
+With further decrease in permeability (\textit{r} = 0.85 \textit{R} and 0.9 
+\textit{R}), the run-out 
 distance in the fluid is longer than that observed in the dry 
-condition. At a very low permeability (r = 0.9 R), the flowing granular mass
+condition. At a very low permeability (\textit{r} = 0.9 \textit{R}), the 
+flowing granular mass
 entrains more water at the base, which causes a reduction in the effective 
 stress accompanied by a lubrication effect. This can be seen by a significant 
 increase in the peak kinetic energy and the sustained duration of the peak 
@@ -1737,7 +1773,8 @@ Positive pore-pressure generation at the base of the flow is observed for low
 permeable conditions. Inspection of the local packing density showed 
 entrainment of water at the base of the flow, which can also be observed by the 
 steep decrease in the packing density (\cref{fig:voro5}) for the very low 
-permeability condition (r = 0.9 R). At the end of the flow ($t \ge 10 \times 
+permeability condition (\textit{r} = 0.9 \textit{R}). At the end of the flow 
+($t \ge 10 \times 
 \tau_c$), the excess pore-pressure dissipates and the granular flows, 
 irrespective of their permeability, reach almost the same packing density.
 
@@ -1757,7 +1794,8 @@ slope of 5\si{\degree}, the run-out distance is unaffected by the initial
 packing density at high permeability conditions. This shows that at high 
 permeabilities, the viscous drag forces predominate resulting in almost the 
 same run-out distance for both dense and loose conditions. However at a low 
-permeability (r = 0.9 R), hydroplaning is observed in the case of loose 
+permeability (\textit{r} = 0.9 \textit{R}), hydroplaning is observed in the 
+case of loose 
 granular column resulting in a substantially longer run-out distance than the 
 dense granular column in submerged condition. 
 %
@@ -1805,7 +1843,9 @@ granular flow plays a crucial role in the flow kinematics. In order to
 understand the behaviour of tall columns, the run-out behaviour of a dense 
 granular column with an initial aspect ratio of 6 is studied. The collapse of a 
 tall granular column on slopes of 0\si{\degree}, 2.5\si{\degree}, 5\si{\degree} 
-and 7.5\si{\degree} are studied. A hydrodynamic radius of r = 0.85 R is 
+and 7.5\si{\degree} are studied. A hydrodynamic radius of \textit{r} = 0.85 
+\textit{R} 
+is 
 adopted. 
 
 Snapshots of the collapse of an aspect ratio 6 column in fluid on a horizontal 
@@ -2061,7 +2101,7 @@ more water at the flow front, leading to partial fluidisation.
 
 \item In both dense and loose conditions, the run-out distance increases 
 with decrease in the permeability. An increase in the hydrodynamic radius from 
-0.7 to 0.95 R increases the normalised run-out by 25\%. 
+0.7 to 0.95 \textit{R} increases the normalised run-out by 25\%. 
 
 \item For the same value of peak kinetic energy, the run-out distance in fluid 
 is longer than the dry column collapse. Also, with decrease in 
@@ -2095,7 +2135,8 @@ the run-out distance is unaffected by the initial packing density at high
 permeability conditions. 
 
 \item At high permeabilities, the viscous drag forces predominate for both 
-dense and loose conditions. However at a low permeability (r = 0.9 R), 
+dense and loose conditions. However at a low permeability (\textit{r} = 0.9 
+\textit{R}), 
 hydroplaning is observed in the case of loose condition. 
 
 \item The behaviour of tall columns are significantly different from that 
