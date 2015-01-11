@@ -7,16 +7,16 @@
 \fi
 
 
-\section{Fluid simulation using lattice Boltzmann method}
+\section{Fluid simulation using the lattice Boltzmann method}
 
 Grain--fluid systems can be found in many scientific and engineering 
 applications, such as suspensions, fluidised beds, sediment transport, and 
 geo-mechanical problems. In general, the fundamental physical phenomena in 
 these systems are not well understood mainly due to the intricate complexity of 
 grain--fluid interactions and the lack of powerful analysis 
-tools~\citep{Han2007b}. In addition to the interaction among soil grains, the 
-motion of soil grains is mainly driven by gravity and the hydrodynamic force 
-exerted by the fluid. The fluid flow pattern can be significantly 
+tools~\citep{Han2007b}. In addition to the interactions amongst soil grains, 
+the motion of soil grains is mainly driven by gravity and the hydrodynamic 
+force exerted by the fluid. The fluid flow pattern can be significantly 
 affected by the presence of soil grains and this often results in a turbulent 
 flow. Hence, the development of an effective numerical framework for modelling 
 both the fluid flow patterns and the grain--fluid interactions is very 
@@ -25,12 +25,12 @@ challenging.
 Development of a numerical framework depends crucially on the size of the soil 
 grains relative to the domain/mesh size~\citep{Feng2007}. Traditionally, the 
 Navier-Stokes equation is solved by a grid-based Computational Fluid Dynamics 
-(CFD) method, such as the Finite Volume Method, FVM,~\citep{Capecelatro2013} or 
-a mesh-free technique such as Smooth Particle Hydrodynamics
-(SPH)~\citep{Sun2013}. 
-The grid size in FVM or the smooth length in SPH for discretisation of 
-the Navier-Stokes equation is at least an order of magnitude larger than the 
-grain diameter~\citep{Xiong2014}, thus ignoring the micro-scale interactions. 
+(CFD) method~\citep{Tsuji2007}, such as the Finite Volume Method, 
+FVM,~\citep{Capecelatro2013} or a mesh-free technique such as Smooth Particle 
+Hydrodynamics (SPH)~\citep{Sun2013}. The grid size in FVM or the smooth length 
+in SPH for discretisation of the Navier-Stokes equation is at least an order of 
+magnitude larger than the grain diameter~\citep{Xiong2014}, thus ignoring the 
+micro-scale interactions. 
 
 In situations where the average domain concentration phase is far from dilute, 
 the computational effort is mostly devoted to the grain dynamics. The 
@@ -41,10 +41,10 @@ for dense flows. However, most geo-mechanical problems involve complex
 interactions between the solid and the fluid phase. This requires accurate 
 modelling of the fluid flow pattern. Additionally, geophysical problems, such 
 as submarine landslides and debris flow have a relatively large simulation 
-domain, which requires parallel computation. Implementing traditional 
-grid-based CFD methods face great challenges on multi-processor 
+domain, which requires parallel computation. Implementation of traditional 
+grid-based CFD methods faces great challenges on multi-processor 
 systems~\citep{Xiong2014}. Although mesh-free approaches are free from the 
-problem of parallel scalability, its modelling accuracy and speed are 
+problem of parallel scalability, their modelling accuracy and speed are 
 relatively low when compared to grid-based CFD methods. Therefore, an accurate, 
 fast and a highly scalable scheme is required to model fluid - grain systems in 
 geo-mechanics. 
@@ -205,8 +205,8 @@ The right-hand side of~\cref{eq:stream} is often denoted as
 $\mathit{f_i}(\mathbf{x}, \mathit{t}_{+})$ and termed the post collision 
 distribution. LBM ensures conservation of total mass and total momentum of the 
 fluid particles at each lattice node (see~\cref{eq:stream}). The lattice 
-Boltzmann modelling
-consists of two phases: \textit{collision} and \textit{streaming}. The 
+Boltzmann model consists of two phases: \textit{collision} and 
+\textit{streaming}. The 
 collision phase computed in the right-hand side of~\cref{eq:stream} involves 
 only those variables that are associated with each node \textbf{x}, and 
 therefore is a local operation. The streaming phase then explicitly propagates 
@@ -222,7 +222,7 @@ their neighbouring sites according to the respective discrete velocity
 directions, as illustrated in~\cref{fig:stream} in the \textit{D2Q9} model. The 
 collision step, (see~\cref{fig:collision}) consists of re-distribution the 
 local discretised Maxwellian equilibrium functions in such a way that 
-local mass and momentum are invariants. In incompressible flows, the energy 
+local mass and momentum are invariant. In incompressible flows, the energy 
 conservation is equivalent to the momentum conservation~\citep{He1997}.
 
 \begin{figure}[htbp]
@@ -654,7 +654,7 @@ Error in predicting horizontal velocity & 0.009 \% \\ \bottomrule
 
 In order to further validate the accuracy of the lattice Boltzmann code, the 
 transient development of the Poiseuille's flow is compared with the CFD 
-simulation performed using ANSYS Fluent. Finite Volume Method is a 
+simulation performed using ANSYS Fluent. The Finite Volume Method is a 
 common CFD technique, which involves solving the governing partial differential 
 equation (Navier-Stokes) over the discretised control volume. This guarantees 
 the conservation of fluxes over a particular control volume. The finite volume 
@@ -1177,10 +1177,10 @@ force $\mathbf{F}_{f}$ is unchanged during the sub-cycling.
 
 \subsection{Draft, kiss and tumbling: Sedimentation of two grains}
 
-In multiphase flows, fundamental mechanisms of fluid -- grain and grain – grain 
-interactions are very important for accurately predicting the flow behaviours. 
-The sedimentation of two circular grains in a viscous fluid serves as the 
-simplest problem to study these two types of interactions, and many 
+In multiphase flows, the fundamental mechanisms of fluid -- grain and grain – 
+grain interactions are very important for accurately predicting the flow 
+behaviours. The sedimentation of two circular grains in a viscous fluid serves 
+as the simplest problem to study these two types of interactions, and many 
 experimental and numerical studies have been carried out to investigate this 
 behaviour~\citep{Wang2014,Komiwes2005}.~\citet{Fortes1987} observed 
 experimentally that in the sedimentation of two grains under gravity in a 
@@ -1254,9 +1254,9 @@ sedimentation in a viscous fluid.}
 
 \section{GP-GPU Implementation}
 
-Graphics Processing Unit (GPU) is a massively multi-threaded architecture that 
-is widely used for graphical and now non-graphical computations. Today's GPUs 
-are general purpose processors with support for an accessible programming 
+The Graphics Processing Unit (GPU) is a massively multi-threaded architecture 
+that is widely used for graphical and now non-graphical computations. Today's 
+GPUs are general purpose processors with support for an accessible programming 
 interface. The main advantage of GPUs is their ability to perform significantly 
 more floating point operations (FLOPs) per unit time than a CPU. General 
 Purpose computations on GPUs (GPGPUs) often achieve speed-ups of orders of 
