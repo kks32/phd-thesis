@@ -222,8 +222,8 @@ their neighbouring sites according to the respective discrete velocity
 directions, as illustrated in~\cref{fig:stream} in the \textit{D2Q9} model. The 
 collision step, (see~\cref{fig:collision}) consists of re-distribution the 
 local discretised Maxwellian equilibrium functions in such a way that 
-local mass and momentum are invariant. In incompressible flows, the energy 
-conservation is equivalent to the momentum conservation~\citep{He1997}.
+local mass and momentum are invariant. In incompressible flows, energy 
+conservation is equivalent to momentum conservation~\citep{He1997}.
 
 \begin{figure}[htbp]
 	\centering
@@ -784,11 +784,11 @@ remains a challenge, necessitating very small values of \textit{h}, and/or
 $\tau$ very close to 0.5~\citep{He1997}. The standard lattice Boltzmann can 
 deal with laminar flows, while practical problems with small kinematic 
 viscosity are often associated with flows having large Reynolds numbers, i.e. 
-flows which are unsteady or turbulent in nature. The turbulent flows are 
+flows which are unsteady or turbulent in nature. Turbulent flows are 
 characterised by the occurrence of eddies with multiple scales in space, time 
 and energy.
 
-The large eddy simulation (LES) is the most widely adopted approach to 
+The Large Eddy Simulation (LES) is the most widely adopted approach to 
 solve turbulent flow problems. It directly solves the large scale eddies, which 
 carry the predominant portion of the energy, and the smaller eddies are 
 modelled using a sub-grid approach. The separation of scales is achieved by 

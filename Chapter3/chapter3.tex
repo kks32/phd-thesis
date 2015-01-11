@@ -74,7 +74,7 @@ granular fingering on rough slopes, plug flow and the
 occurrence of localized shear bands in the granular materials. Most 
 constitutive models, even in the simple case 
 of dry granular flows, cannot describe the entire range of flow from solid to 
-fluid. In certain cases, the granular flow is modelled as a fluid behaviour. 
+fluid. In certain cases, granular flow is modelled as a fluid behaviour. 
 Continuum models that are based on averaging techniques applied to
 representative volume elements are mostly utilised in problems involving 
 quasi-static conditions. The fundamental question is how to meaningfully model 
@@ -422,7 +422,7 @@ function has to be of the form
 \label{eq:wtest}
 \end{equation}
 %
-The~\cref{eq:x,eq:wtest} ensure that the associated vectors are 
+\Cref{eq:x,eq:wtest} ensure that the associated vectors are 
 continuous across the cell boundary. However, the gradient of these functions 
 is not continuous, due to the use of linear shape functions. 
 Substituting,~\cref{eq:x} and~\cref{eq:wtest} into~\cref{eq:MPM}, the weak form 
@@ -736,7 +736,7 @@ solution and the computational grid is re-initialised for the next step.
 representation of material points overlaid on a computational grid. Arrows 
 represent material point state vector (mass, volume, velocity, etc.) being 
 projected to the nodes of the computational grid. (2) The equations of motion 
-is solved on the nodes, resulting in updated nodal velocities and positions. 
+are solved on the nodes, resulting in updated nodal velocities and positions. 
 (3) The updated nodal kinematics are interpolated back to the material points. 
 (4)  The state of the material points are updated and the computational grid is 
 reset.} 
@@ -764,14 +764,14 @@ continuum, and the ability to see and interpret the
 macroscopic structure created by these particles is vital~\citep{bigler2006}. 
 There are two main aspects in visualizing MPM data: (1) visualization of 
 the structure represented by the material points, and (2) understanding the 
-qualitative trend associated with the material points like mass, velocity or 
+qualitative trends associated with the material points like mass, velocity or 
 stress.
 
 The MPM output data contains both the material point and the grid data, and
 one approach in visualizing MPM data is by rendering the interpolated 
 particle values on grid nodes using the 
 \textit{iso-surfacing}~\citep{lorensen1987} 
-or \textit{volume rendering}~\citep{levoy1988} technique. In regions where the 
+or \textit{volume rendering}~\citep{levoy1988}. In regions where the 
 material points are sparse, it is necessary that the grid resolution is 
 sufficiently fine to compensate for the missing features. This results in 
 storing a large amount of unnecessary data in regions where sufficient material 
@@ -800,8 +800,8 @@ temporarily acts as a boundary particle. To avoid numerical errors, it is
 essential to use a smaller cell size along the boundary~\citep{Chen2002}. 
 
 In MPM simulations, numerical noise is observed when material points 
-cross the cell boundaries as the body deforms, this is termed 
-as \textit{cell crossing noise}. If a material point is located very close to 
+cross the cell boundaries as the body deforms, this is termed \textit{cell 
+crossing noise}. If a material point is located very close to 
 the cell boundary, it results in discontinuous gradient of the weighing 
 function causing a force imbalance on the grid~\citep{Bardenhagen2004}. This 
 results in large non-physical acceleration values resulting in separation of 
@@ -1096,7 +1096,7 @@ A granular material can be
 considered as a continuous material if it is viewed at a macroscopic scale, 
 ignoring the fact that it is composed of grains. On a macroscopic scale, the 
 behaviour of the granular material could be approximately defined using 
-continuum mechanics. However, on a grain level, the granular materials 
+continuum mechanics. However, on a grain level, granular materials 
 exhibit complex solid-like and/or fluid like behaviour depending on the way the 
 grains interact with each other. Analytical and finite element models 
 which consider granular materials as a continuum cannot take into account the 
@@ -1109,7 +1109,7 @@ variables, which poorly account for the local rheology of the materials.
 Numerical models such as the Discrete Element approach proposed 
 by~\citet{Cundall1979a} are capable of simulating the granular material as a 
 discontinuous system. Although, modern measurement techniques can probe into 
-the local granular variables, like grain position, velocities, contact 
+local granular variables, like grain position, velocities, contact 
 forces, etc., they have inherent limitations in acquiring those variables. The 
 \textit{discrete-element} approach is a powerful and a reliable research tool 
 to study the behaviour of granular materials at the grain-scale. This approach 
