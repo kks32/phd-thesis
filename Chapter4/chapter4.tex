@@ -768,7 +768,7 @@ the top of the column remains essentially undisturbed in the central area.
 The amount of energy dissipated during the 
 spreading $\delta E$ can be easily recovered using the simple shape of the 
 final deposit and volume conservation (\cref{fig:volume_conservation}). The 
-difference of potential energy between the initial and the final states gives
+difference in potential energy between the initial and the final states gives
 
 \begin{equation}
 \delta E = \frac{1}{6} g \rho (L_f - L_0) H_0^2 \,,
@@ -843,8 +843,9 @@ energy is computed as
 It can be observed that both MPM and DEM show similar energy dissipation 
 mechanisms. The DEM simulation shows 3\% more potential energy dissipation in 
 comparison with MPM simulations. This small difference in the potential energy 
-is due to grain rearrangements. This shows the ability of continuum approach in 
-capturing the flow kinematics of columns with small aspect ratios ($a \le 
+is due to grain rearrangements. This shows the ability of the continuum 
+approach to capture the flow kinematics of columns with small aspect ratios 
+($a \le 
 2.7$). 
 
 The evolution of normalised kinetic and potential energy of a tall column 
@@ -870,26 +871,27 @@ to predict the exact trajectory of a grain, however, the overall dynamics can
 be explained. 
 
 
-DEM simulations model both collisional and frictional dissipation process 
+DEM simulations model both collisional and frictional dissipation processes 
 during the collapse of tall columns. However, MPM simulations assume that the 
 total initial potential energy stored in the system is completely dissipated 
 through friction over the entire run-out distance, which results in longer 
 run-out distance.~\Cref{fig:a6_energy} shows the evolution of normalised 
 energies with time for MPM and DEM simulations. At the initial stage of 
 collapse, characterised by free fall of grains under 
-gravity, DEM simulation, due to its particulate nature shows a rapid reduction 
-in the potential energy in comparison with MPM, where the failure begins from 
-the toe of the column. The continuum nature of MPM simulations results in 
-slower initiation of collapse (\cref{fig:flowa6}). It can be also observed 
-from~\cref{fig:a6_energy} that dissipation energy in MPM is 25\% less than DEM 
-simulations. In order to understand the mechanism of energy dissipation, it is 
-important to separate the contribution from the cumulative frictional and 
-collisional parts. The frictional dissipation (basal and internal friction) 
-observed in DEM is almost identical to the frictional dissipation observed in 
-MPM (\cref{fig:a6_energy}). The difference in the dissipation energy is due to 
-the collisional regime, which occurs at $0.8\tau_c$. The total dissipation and 
-the frictional dissipation curves diverge around $0.8\tau_c$ where the grains 
-near the vicinity of the failure surface undergo collisions with the bottom 
+gravity, the DEM simulation, due to its particulate nature shows a rapid 
+reduction in the potential energy in comparison with the MPM simulations, where 
+the failure begins from the toe of the column. The continuum nature of the MPM 
+simulations results in slower initiation of the collapse (\cref{fig:flowa6}). 
+It can be also observed from~\cref{fig:a6_energy} that the dissipation of 
+energy in MPM is 25\% less than in the DEM simulations. In order to understand 
+the mechanism of energy dissipation, it is important to separate the 
+contribution from the cumulative frictional and collisional parts. The 
+frictional dissipation (basal and internal friction) observed in DEM is almost 
+identical to the frictional dissipation observed in MPM (\cref{fig:a6_energy}). 
+The difference in the dissipation energy is due to the collisional regime, 
+which occurs at $0.8\tau_c$. The total dissipation and the frictional 
+dissipation curves diverge around $0.8\tau_c$ where the grains near the 
+vicinity of the failure surface undergo collisions with the bottom 
 plane and the neighbouring grains resulting in collisional dissipation of the 
 stored potential energy. DEM simulation show drop in the peak kinetic energy at 
 $\approx0.8\tau_c$, which is at the beginning collisional dissipation stage. 
@@ -917,26 +919,20 @@ distances for columns with large aspect ratios.
 The $\mu(I)$ rheology, discussed in~\cref{sec:muI}, describes the granular 
 behaviour using a dimensionless number, called the \textit{inertial number I}, 
 which is the ratio of inertia to the pressure forces. Small values of 
-\textit{I} 
-correspond to the critical state in soil mechanics and large values of 
-\textit{I} 
-corresponds to the fully collisional regime of kinetic theory. $\mu(I)$ 
-rheology is adopted in MPM simulations to understand the characteristics of the 
-flow regime. Mohr-Coulomb model was used along with $\mu(I)$ rheology. The 
-friction 
-angle is changed according to a friction 
+\textit{I} correspond to the critical state in soil mechanics and large values 
+of \textit{I} corresponds to the fully collisional regime of kinetic theory. 
+$\mu(I)$ rheology is adopted in MPM simulations to understand the 
+characteristics of the flow regime. The Mohr-Coulomb model was used along with 
+$\mu(I)$ rheology. The friction angle is changed according to a friction 
 law~\citep{DaCruz2005} that is dependent on the inertial number \textit{I} as 
-$\mu = \mu_{min} + b 
-\mathit{I}$, where $\mu_{min} = 0.22$ and \textit{b} = 1.~\Cref{fig:flow_muI} 
-shows the 
-flow evolution of granular column collapse for aspect ratio \textit{a} of 0.4 
-and 6 
-using $\mu(I)$ rheology. For short columns, the evolution of flow based on 
-$\mu(I)$ rheology is identical to the MPM simulation using Mohr-Coloumb model. 
-However, for tall columns, $\mu(I)$ rheology evolves at the same rate as the 
-DEM simulations up to $t = 0.8\tau_c$, after which MPM simulation continues to 
-accelerate due to lack of collisional dissipation, while the DEM simulation 
-decelerates with time. 
+$\mu = \mu_{min} + b \mathit{I}$, where $\mu_{min} = 0.22$ and \textit{b} = 
+1.~\Cref{fig:flow_muI} shows the flow evolution of granular column collapse for 
+aspect ratios \textit{a} of 0.4 and 6 using $\mu(I)$ rheology. For short 
+columns, the evolution of flow based on $\mu(I)$ rheology is identical to the 
+MPM simulation using Mohr-Coloumb model. However, for tall columns, $\mu(I)$ 
+rheology evolves at the same rate as the DEM simulations up to $t = 0.8\tau_c$, 
+after which the MPM simulation continues to accelerate due to lack of 
+collisional dissipation, while the DEM simulation decelerates with time. 
 
 \begin{figure}[tbhp]
 \centering
@@ -957,12 +953,12 @@ decelerates with time.
 \label{fig:flow_muI}
 \end{figure}
 
-~\Cref{fig:mu_vs_I} shows that the short column attains a maximum inertial 
+~\Cref{fig:muI} shows that the short column attains a maximum inertial 
 number of 0.012, which is in the dense granular flow regime, inertial number 
-$\approx10^{-3} < I < 0.1$~\citep{DaCruz2005}. However for tall 
+$\approx10^{-3} < I < 0.1$~\citep{DaCruz2005}. However for the tall 
 column, the maximum inertial number $I\approx0.04$ is still within the 
 dense granular flow regime. DEM simulations, however, showed a collisional 
-regime that has inertial number higher than 0.1. This shows that continuum 
+regime that has inertial numbers higher than 0.1. This shows that continuum 
 approach using frictional laws are able to capture the flow kinematics at small 
 aspect ratios, however they are unable to precisely describe the flow dynamics 
 of tall columns, which is characterised by an initial collisional regime. This 
@@ -970,14 +966,14 @@ suggests that triggering mechanisms play a crucial role in the case of
 modelling the natural flows. This stresses the necessity of accounting for 
 initiation mechanisms while modelling the run-out behaviour 
 using continuum approaches to predict realistic granular flow behaviour. The 
-role of initiation mechanism on the run-out behaviour and the ability of MPM in 
-modelling transient flows that does not involve collision are investigated 
-in~\cref{sec:slope}. One of the important parameter is the initial material 
-properties, such as the packing density, on the run-out behaviour. This aspect 
-has attracted less research. In the next section, 2D DEM simulations are 
-performed to understand the influence of initial grain properties on the 
-collapse. This gives us a better understanding of the input parameters required 
-in the continuum modelling. 
+role of the initiation mechanism on the run-out behaviour and the ability of 
+MPM in modelling transient flows that does not involve collision are 
+investigated in~\cref{sec:slope}. The initial material property has a 
+significant influence on the run-out behaviour. This aspect has attracted less 
+research. In the next section, 2D DEM simulations are performed to understand 
+the influence of initial grain properties on the collapse. This gives us a 
+better understanding of the input parameters required in the continuum 
+modelling. 
 
 \begin{figure}[tbhp]
 \centering
