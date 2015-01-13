@@ -286,12 +286,16 @@ grid cells.}
 \end{figure}
 
 \nomenclature[s-p]{\textit{p}}{Property of the material point}
-\nomenclature[s-i]{\textit{i}}{Property of the computational node}
+\nomenclature[s-i]{\textit{i}}{Property of the computational node (MPM) or 
+grain (DEM)}
 \nomenclature[a-x]{\textit{p}}{Position of a material point / node}
-\nomenclature[a-V]{\textit{V}}{Volume}
+\nomenclature[a-V]{\textit{V}}{Volume of a material point}
 \nomenclature[a-w]{\textit{w}}{Weight function / test function}
-\nomenclature[a-N]{\textit{N}}{Shape function}
-\nomenclature[a-B]{\textit{B}}{Gradient of the function}
+\nomenclature[a-N]{\textit{N}}{Shape function or Number of grains/material 
+points}
+\nomenclature[a-G]{\textit{G}}{Gradient of the function (or) Shear modulus}
+\nomenclature[a-G]{\textit{K}}{Bulk modulus}
+\nomenclature[a-b]{\textbf{b}}{Body force}
 \nomenclature[g-Omega]{$\Omega$}{Domain under consideration}
 \nomenclature[g-epsilon]{$\epsilon$}{Strain component}
 
@@ -838,15 +842,18 @@ minimizes the cell crossing noise. The piecewise-linear grid basis functions
 used are written as
 %
 \begin{align}
-\psi(x) = \begin{cases}
+\bar{\phi}(x) = \begin{cases}
 1-\left|x\right|/h \qquad &: \qquad \left|x\right| < h \\
 0 \qquad &: \qquad otherwise \,,
 \end{cases}
 \end{align}
 where \textit{h} is the grid spacing. The basis function associated with grid 
-node \textit{i} at position $x_i$ is then $\psi_i=\psi(x - x_i)$. The basis 
-functions in 3-D are separable functions constructed as $\psi_i(x) = \psi_i^x(x)
-\psi_i^y(y)\psi_i^z(z)$. GIMP is often implemented using the standard 
+node \textit{i} at position $x_i$ is then $\bar{\phi}_i=\bar{\phi}(x - x_i)$. 
+The basis 
+functions in 3-D are separable functions constructed as $\bar{\phi}_i(x) = 
+\bar{\phi}_i^x(x)
+\bar{\phi}_i^y(y)\bar{\phi}_i^z(z)$. GIMP is often implemented using the 
+standard 
 piecewise-linear grid basis functions and piecewise-constant particle 
 characteristic functions:
 \begin{align}
@@ -860,7 +867,7 @@ in which case the 1-D MPM and GIMP weighting functions can be grouped together
 in the general form
 %
 \begin{align}
-\psi = \begin{cases}
+\bar{\phi} = \begin{cases}
 1 - (4x^2+l_p^2)/(4hl_p)\qquad &: \qquad \left|x\right| < \frac{l_p}{2} \\
 1 - \left|x\right|/h \qquad &: \qquad \frac{l_p}{2} \le \left|x\right| < h - 
 \frac{l_p}{2} \\
@@ -872,10 +879,10 @@ in the general form
 \end{align}
 %
 \nomenclature[g-chi]{$\chi$}{Characteristic function}
-\nomenclature[g-psibar]{$\bar{\psi}$}{Weighting function}
+\nomenclature[g-psibar]{$\bar{\phi}$}{Weighting function}
 where $l_p$ is the width of the particle characteristic function 
-$\chi_p$.~\cref{fig:gimp} shows a 1-D GIMP weighting function $\bar{\psi}_{ip}$ 
-and gradient weighting function $\bar{\nabla\psi}_{ip}$ for a 
+$\chi_p$.~\cref{fig:gimp} shows a 1-D GIMP weighting function $\bar{\phi}_{ip}$ 
+and gradient weighting function $\bar{\nabla\phi}_{ip}$ for a 
 piecewise-constant $\chi_p$ with a characteristic length of \textit{l}. The 
 GIMP weighting function is smooth, however a discontinuity is observed in the 
 gradient weighting function. 
@@ -900,7 +907,7 @@ values~\citep{Steffen2008}.
 	\begin{subfigure}[b]{0.7\textwidth}
 	\centering
 	\includegraphics[width=0.9\textwidth]{gimp}
-	\caption{Example GIMP weighting function $\bar{\psi}_{ip}$ ,
+	\caption{Example GIMP weighting function $\bar{\phi}_{ip}$ ,
 	and gradient weighting function $\bar{\nabla\psi}_{ip}$ centered at 0 using 
 	piecewise linear grid basis functions and piecewise constant particle 
 	characteristic functions $\chi_p$. Dotted lines denote breaks in the 
@@ -1253,6 +1260,17 @@ $\overrightarrow{\omega}_{\mathit{j}}$. In a two-dimensional system, the
 angular orientation of a grain is described by a single (scalar) quantity 
 $\varphi_{i}$ and the moment of inertia reduces to a scalar value 
 $\mathit{J}_{i}$. 
+\nomenclature[g-phivar]{$\varphi$}{angular orientation of a grain}
+\nomenclature[g-omega]{$\omega$}{angular velocity of a grain}
+\nomenclature[g-gamma]{$\gamma$}{Viscous damping of a grain}
+\nomenclature[a-r]{\textit{r}}{Radius or hydrodynamic radius of a grain in LBM}
+\nomenclature[a-R]{\textit{R}}{Radius of a grain in DEM}
+\nomenclature[a-e]{\textit{e}}{Void ratio of the sample}
+\nomenclature[s-max]{\textit{max}}{Maximum}
+\nomenclature[s-min]{\textit{min}}{Minimum}
+\nomenclature[g-eta]{$\eta_h$}{Packing density, defined as the ratio of volume 
+of solids to the total volume ($V_s /V$)}
+
 %The Newton's equation of motion can be written as
 %%
 %\begin{align} 
@@ -2110,7 +2128,7 @@ however they have non-trivial effects on the response of the granular
 system~\citep{Staron2005}. Hexagonal packing is the densest possible 
 arrangement for mono-dispersed spherical grains. In 2D, the packing of 
 mono-dispersed circles on a hexagonal lattice yields a packing density, defined 
-as the ration of volume of solids to the total volume ($V_s / V$), of 
+as the ratio of volume of solids to the total volume ($V_s / V$), of 
 $\eta_{\mathit{h}}=\frac{1}{6}\pi\sqrt{3}\approx 0.9068$
 
 

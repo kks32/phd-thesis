@@ -219,7 +219,8 @@ Conservation of mass is written as
 \nomenclature[g-epsilon]{$\epsilon$}{Coefficient of restitution}
 \nomenclature[G-Gamma]{$\Gamma$}{Dissipation through inelastic collision}
 \nomenclature[a-T]{\textit{T}}{Temperature}
-\nomenclature[a-c]{\textit{c}}{Concentration}
+\nomenclature[a-c]{\textit{c}}{Concentration in Kinetic theory (or) Pressure 
+wave velocity}
 \nomenclature[a-u]{\textit{u}}{Velocity component along \textit{x}-direction}
 \nomenclature[a-v]{\textit{v}}{Velocity component along \textit{y}-direction}
 \begin{equation}
@@ -287,11 +288,13 @@ a strong correlation between their velocities is inevitable.
 \label{sec:muI}
 \nomenclature[g-sigma]{$\sigma$}{Stress or confining pressure}
 \nomenclature[g-gammadot]{$\dot{\gamma}$}{Shear rate}
-\nomenclature[g-tau]{$\tau$}{Shear stress}
-\nomenclature[A-I]{\textit{I}}{Inertial number}
+\nomenclature[g-tau]{$\tau$}{Shear stress (or) Surface traction}
+\nomenclature[g-delta]{$\delta$}{Overlap between grains (or) Dirac function}
+\nomenclature[A-I]{\textit{I}}{Inertial number (or) Moment of Inertia}
 \nomenclature[r-prime]{$\prime$}{Effective component of the normal stress}
 \nomenclature[s-n]{$n$}{Normal component}
 \nomenclature[s-t]{$t$}{Tangential component}
+\nomenclature[a-p]{\textit{p}}{Pressure}
 
 Rheology is the science of flow of materials with solid and fluid 
 characteristics. In practice, rheology is principally concerned with describing 
@@ -477,8 +480,10 @@ elastic to inertial effects is governed by a dimensionless parameter
 \textit{k}^{*} = \frac{k_f}{\rho \textit{d}^{3} \dot{\gamma}^{2}} \,,
 \end{equation}
 %
-where ${k_f}/{\rho \textit{d}^{3} \dot{\gamma}^{2}}=({\tau}/{\rho \textit{d}^{2} 
-{\gamma}^{2}})/(\tau\textit{d}/\textit{k_f})$ is the ratio of Bagnold's inertial 
+where ${k_f}/{\rho \textit{d}^{3} \dot{\gamma}^{2}}=({\tau}/{\rho 
+\textit{d}^{2} 
+{\gamma}^{2}})/(\tau\textit{d}/\textit{k_f})$ is the ratio of Bagnold's 
+inertial 
 to the elastic stress scaling. The important dimensionless parameter is 
 $\textit{k}^{*}$, which is a measure of inertially-induced deformation, 
 reflects the relative effects of elastic to inertial forces, i.e. at large 
@@ -493,7 +498,8 @@ inertial forces dominate~\citep{Campbell2006}.
 Constitutive laws, which describe the dilatancy and friction, allow us to 
 deduce the dependency of pressure and shear stress on shear rate and solid 
 fraction. In contrast to the observation of \citet{Campbell2002}, 
-\citet{DaCruz2005} found that the normalised elastic stiffness $\mathit{k_f}$ has 
+\citet{DaCruz2005} found that the normalised elastic stiffness $\mathit{k_f}$ 
+has 
 little effect on the constitutive law, for values greater than $10^{4}$, 
 however, it does affect the coordination number.~\citet{DaCruz2005} also 
 observed that the microscopic friction coefficient, $\mu$, has a significant 
@@ -564,11 +570,13 @@ written as
 \right)_{\textit{x}} +\textit{\textbf{F}}_{\textit{x}} \,.
 \end{align}
 %
-\nomenclature[a-f]{\textit{F}}{Applied force}
+\nomenclature[a-f]{\textbf{f} / \textit{F}}{Applied force}
 \nomenclature[a-g]{\textit{g}}{Acceleration due to gravity}
 \nomenclature[a-t]{\textit{t}}{Time}
-\nomenclature[a-h]{\textit{h}}{Vertical length scale in shallow water approximation}
-\nomenclature[a-l]{\textit{l}}{Horizontal length scale in shallow water approximation (or) particle spacing in the Material Point Method}
+\nomenclature[a-h]{\textit{h}}{Vertical length scale in shallow water 
+approximation}
+\nomenclature[a-l]{\textit{l}}{Horizontal length scale in shallow water 
+approximation (or) particle spacing in the Material Point Method}
 The continuum equation requires determining the components of the stress tensor 
 and a suitable constitutive law. \textit{Savage-Hutter (SH) model} uses the 
 Mohr-Coulomb law to describe the constitutive relation. The conservation of 
@@ -646,11 +654,17 @@ various researchers to understand the flow behaviour are discussed below.
 
 
 \subsection{Granular column collapse}
-\nomenclature[a-L]{\textit{L}}{Length of a granular column}
+\nomenclature[a-L]{\textit{L}}{Length of a granular column (or) background cell 
+size}
 \nomenclature[a-H]{\textit{H}}{Height of a granular column}
-\nomenclature[a-a]{\textit{a}}{Initial aspect ratio of a granular column (or) acceleration}
+\nomenclature[s-int]{\textit{int}}{Internal}
+\nomenclature[s-ext]{\textit{ext}}{External}
+\nomenclature[a-a]{\textit{a}}{Initial aspect ratio of a granular column}
+\nomenclature[a-A]{\textbf{a}}{Acceleration of a grain or a material point}
 \nomenclature[a-m]{\textit{m}}{Mass of a granular column}
 \nomenclature[g-tauc]{$\tau_c$}{Critical time}
+\nomenclature[g-lambda]{$\lambda$}{Constant of proportionality in the power-law 
+relationship}
 
 \citet{Lube2005} and~\citet{Lajeunesse2004} have carried out experimental 
 investigations on the collapse behaviour of granular columns on a horizontal 
@@ -1250,7 +1264,8 @@ balance can be written as
 \nomenclature[a-Ef]{$\mathit{E_f}$}{Energy lost through friction}
 \nomenclature[a-Ev]{$\mathit{E_v}$}{Energy lost through viscous dissipation}
 \nomenclature[a-Ed]{$\mathit{E_D}$}{Energy lost through drag}
-\nomenclature[a-Er]{$\mathit{E_r}$}{Energy lost due to remolding and transformation}
+\nomenclature[a-Er]{$\mathit{E_r}$}{Energy lost due to remolding and 
+transformation}
 \begin{equation}
 E_p + E_s = E_k + E_f + E_D + E_v + E_r\,,
 \end{equation}
