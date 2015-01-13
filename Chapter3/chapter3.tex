@@ -838,16 +838,15 @@ minimizes the cell crossing noise. The piecewise-linear grid basis functions
 used are written as
 %
 \begin{align}
-\phi(x) = \begin{cases}
+\psi(x) = \begin{cases}
 1-\left|x\right|/h \qquad &: \qquad \left|x\right| < h \\
 0 \qquad &: \qquad otherwise \,,
 \end{cases}
 \end{align}
-\nomenclature[g-phi]{$\phi$}{Basis function}
 where \textit{h} is the grid spacing. The basis function associated with grid 
-node \textit{i} at position $x_i$ is then $\phi_i=\phi(x - x_i)$. The basis 
-functions in 3-D are separable functions constructed as $\phi_i(x) = \phi_i^x(x)
-\phi_i^y(y)\phi_i^z(z)$. GIMP is often implemented using the standard 
+node \textit{i} at position $x_i$ is then $\psi_i=\psi(x - x_i)$. The basis 
+functions in 3-D are separable functions constructed as $\psi_i(x) = \psi_i^x(x)
+\psi_i^y(y)\psi_i^z(z)$. GIMP is often implemented using the standard 
 piecewise-linear grid basis functions and piecewise-constant particle 
 characteristic functions:
 \begin{align}
@@ -861,7 +860,7 @@ in which case the 1-D MPM and GIMP weighting functions can be grouped together
 in the general form
 %
 \begin{align}
-\phi = \begin{cases}
+\psi = \begin{cases}
 1 - (4x^2+l_p^2)/(4hl_p)\qquad &: \qquad \left|x\right| < \frac{l_p}{2} \\
 1 - \left|x\right|/h \qquad &: \qquad \frac{l_p}{2} \le \left|x\right| < h - 
 \frac{l_p}{2} \\
@@ -873,10 +872,10 @@ in the general form
 \end{align}
 %
 \nomenclature[g-chi]{$\chi$}{Characteristic function}
-\nomenclature[g-phibar]{$\bar{\phi}$}{Weighting function}
+\nomenclature[g-psibar]{$\bar{\psi}$}{Weighting function}
 where $l_p$ is the width of the particle characteristic function 
-$\chi_p$.~\cref{fig:gimp} shows a 1-D GIMP weighting function $\bar{\phi}_{ip}$ 
-and gradient weighting function $\bar{\nabla\phi}_{ip}$ for a 
+$\chi_p$.~\cref{fig:gimp} shows a 1-D GIMP weighting function $\bar{\psi}_{ip}$ 
+and gradient weighting function $\bar{\nabla\psi}_{ip}$ for a 
 piecewise-constant $\chi_p$ with a characteristic length of \textit{l}. The 
 GIMP weighting function is smooth, however a discontinuity is observed in the 
 gradient weighting function. 
@@ -901,8 +900,8 @@ values~\citep{Steffen2008}.
 	\begin{subfigure}[b]{0.7\textwidth}
 	\centering
 	\includegraphics[width=0.9\textwidth]{gimp}
-	\caption{Example GIMP weighting function $\bar{\phi}_{ip}$ ,
-	and gradient weighting function $\bar{\nabla\phi}_{ip}$ centered at 0 using 
+	\caption{Example GIMP weighting function $\bar{\psi}_{ip}$ ,
+	and gradient weighting function $\bar{\nabla\psi}_{ip}$ centered at 0 using 
 	piecewise linear grid basis functions and piecewise constant particle 
 	characteristic functions $\chi_p$. Dotted lines denote breaks in the 
 	continuity
