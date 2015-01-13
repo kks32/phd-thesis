@@ -1,3 +1,4 @@
+*.fuse*
 *fdb_latexmk*
 .DS_Store*
 *.aux*
