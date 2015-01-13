@@ -348,7 +348,7 @@ shown in~\cref{fig:mu}. The friction coefficient can be related to the inertial
 number \textit{I} as
 %
 \nomenclature[g-mu]{$\mu$}{Coefficient of friction}
-\nomenclature[s-o]{\textit{o}}{Initial state}
+\nomenclature[s-0]{\textit{0}}{Initial state}
 \nomenclature[s-f]{\textit{f}}{Final state}
 \begin{equation}
 \mu(I) = \mu_s + \frac{\mu_2 - \mu_s}{I_o/I+1} \,,
@@ -440,7 +440,7 @@ dissipative Boltzmann kinetics. Redrawn after~\citep{Kamrin2008}}
  of normal stiffness $k_n$ to the applied normal pressure $\sigma_n^\prime$}
 \nomenclature[a-kstar]{$k^*$}{Dimensionless parameter defined as the ratio of 
 elastic to inertial effects}
-\nomenclature[a-k]{$k$}{Stiffness of a grain}
+\nomenclature[a-k]{$k$}{Stiffness of a grain (or) time step}
 \nomenclature[a-d]{\textit{d}}{Grain diameter}
 
 \citet{Campbell2002} described the ``Moderate regime'' as an elastic granular 
@@ -568,7 +568,7 @@ written as
 \nomenclature[a-g]{\textit{g}}{Acceleration due to gravity}
 \nomenclature[a-t]{\textit{t}}{Time}
 \nomenclature[a-h]{\textit{h}}{Vertical length scale in shallow water approximation}
-\nomenclature[a-l]{\textit{l}}{Horizontal length scale in shallow water approximation}
+\nomenclature[a-l]{\textit{l}}{Horizontal length scale in shallow water approximation (or) particle spacing in the Material Point Method}
 The continuum equation requires determining the components of the stress tensor 
 and a suitable constitutive law. \textit{Savage-Hutter (SH) model} uses the 
 Mohr-Coulomb law to describe the constitutive relation. The conservation of 
@@ -643,7 +643,15 @@ the depth-averaged approach. Two simple granular flow studies, granular column
 collapse and granular flow down an inclined plane, carried out by 
 various researchers to understand the flow behaviour are discussed below.
 
+
+
 \subsection{Granular column collapse}
+\nomenclature[a-L]{\textit{L}}{Length of a granular column}
+\nomenclature[a-H]{\textit{H}}{Height of a granular column}
+\nomenclature[a-a]{\textit{a}}{Initial aspect ratio of a granular column (or) acceleration}
+\nomenclature[a-m]{\textit{m}}{Mass of a granular column}
+\nomenclature[g-tauc]{$\tau_c$}{Critical time}
+
 \citet{Lube2005} and~\citet{Lajeunesse2004} have carried out experimental 
 investigations on the collapse behaviour of granular columns on a horizontal 
 plane. Both the experiments involved filling a column of height 
@@ -1121,6 +1129,8 @@ thickness $\textit{h}_{\textit{stop}}(\theta)$ and
 $\textit{h}_{\textit{start}}(\theta)$. The measurement of  
 $\textit{h}_{\textit{stop}}(\phi)$ is easier as it corresponds to the thickness 
 of the deposit remaining on the plane once the flow has ceased. 
+\nomenclature[g-theta]{$\theta$}{Slope angle}
+\nomenclature[a-W]{\textit{W}}{Width of the channel}
 
 \begin{figure}[tbhp]
 \centering
@@ -1234,6 +1244,13 @@ The complex interactions between the soil and the ambient fluid is shown
 in~\cref{fig:Submarine_landslide}. For a given granular mass, the energy 
 balance can be written as
 %
+\nomenclature[a-E]{$\mathit{E}$}{Energy}
+\nomenclature[a-Ep]{$\mathit{E_p}$}{Potential energy}
+\nomenclature[a-Ek]{$\mathit{E_k}$}{Kinetic energy}
+\nomenclature[a-Ef]{$\mathit{E_f}$}{Energy lost through friction}
+\nomenclature[a-Ev]{$\mathit{E_v}$}{Energy lost through viscous dissipation}
+\nomenclature[a-Ed]{$\mathit{E_D}$}{Energy lost through drag}
+\nomenclature[a-Er]{$\mathit{E_r}$}{Energy lost due to remolding and transformation}
 \begin{equation}
 E_p + E_s = E_k + E_f + E_D + E_v + E_r\,,
 \end{equation}

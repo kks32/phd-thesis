@@ -285,6 +285,17 @@ grid cells.}
 \label{fig:MPM}
 \end{figure}
 
+\nomenclature[s-p]{\textit{p}}{Property of the material point}
+\nomenclature[s-i]{\textit{i}}{Property of the computational node}
+\nomenclature[a-x]{\textit{p}}{Position of a material point / node}
+\nomenclature[a-V]{\textit{V}}{Volume}
+\nomenclature[a-w]{\textit{w}}{Weight function / test function}
+\nomenclature[a-N]{\textit{N}}{Shape function}
+\nomenclature[a-B]{\textit{B}}{Gradient of the function}
+\nomenclature[g-Omega]{$\Omega$}{Domain under consideration}
+\nomenclature[g-epsilon]{$\epsilon$}{Strain component}
+
+
 A typical 2D discretisation of a solid body is shown in~\cref{fig:MPM}. The 
 grey circles in~\cref{fig:MPM} are the material points $x_{p}$, where `p' 
 represents a material point, and the computational nodes are the points of 
@@ -832,6 +843,7 @@ used are written as
 0 \qquad &: \qquad otherwise \,,
 \end{cases}
 \end{align}
+\nomenclature[g-phi]{$\phi$}{Basis function}
 where \textit{h} is the grid spacing. The basis function associated with grid 
 node \textit{i} at position $x_i$ is then $\phi_i=\phi(x - x_i)$. The basis 
 functions in 3-D are separable functions constructed as $\phi_i(x) = \phi_i^x(x)
@@ -860,6 +872,8 @@ in the general form
 \end{cases}
 \end{align}
 %
+\nomenclature[g-chi]{$\chi$}{Characteristic function}
+\nomenclature[g-phibar]{$\bar{\phi}$}{Weighting function}
 where $l_p$ is the width of the particle characteristic function 
 $\chi_p$.~\cref{fig:gimp} shows a 1-D GIMP weighting function $\bar{\phi}_{ip}$ 
 and gradient weighting function $\bar{\nabla\phi}_{ip}$ for a 
