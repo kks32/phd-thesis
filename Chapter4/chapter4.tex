@@ -208,15 +208,16 @@ where $f_{n}$ is the normal contact force; G is the shear modulus; $\nu$ is the
 Poisson's ratio and r is the radius of the grain. A simpler form of stiffness 
 for a spherical grain is defined as
 \begin{equation}
-\textit{k}_{{n}}=4ER\,,
+\textit{k}_{{n}}=4Er\,,
 \end{equation}
-where E is the Young's modulus of the material and R is the radius of the 
-grain.~\citet{Cambou2009} observed that the contact model has negligible 
-influence on the run-out behaviour of rapid granular flows. The granular 
-collapse simulations performed using non-linear Hertz-Mindlin contact model and 
-the linear-elastic contact model showed no significant difference in the 
-granular flow behaviour~\citep{Utili2014}. A linear-elastic contact model is 
-used in the present study due to its simplicity and lower computation time 
+\nomenclature[a-E]{\textit{E}}{Young's modulus of the material}
+where \textit{E} is the Young's modulus of the material and \textit{r} is the 
+radius of the grain.~\citet{Cambou2009} observed that the contact model has 
+negligible influence on the run-out behaviour of rapid granular flows. The 
+granular collapse simulations performed using non-linear Hertz-Mindlin contact 
+model and the linear-elastic contact model showed no significant difference in 
+the granular flow behaviour~\citep{Utili2014}. A linear-elastic contact model 
+is used in the present study due to its simplicity and lower computation time 
 requirement. The maximum tangential force is limited by the Mohr-Coloumb 
 criterion. 
 
@@ -288,7 +289,10 @@ Coefficient of rolling damping & $1.0 \times
 10^{-1}$~\si{\newton\meter\second\per\radian} \\ \bottomrule
 \end{tabular}
 \end{table}
-
+\nomenclature[g-nu]{$\nu$}{Poisson's ratio}
+\nomenclature[g-Phi]{$\Phi$}{Dilatancy angle}
+\nomenclature[a-Dr]{$D_r$}{Relative density}
+\nomenclature[s-y]{\textit{y}}{Yield or failure}
 The GIMP method with a Mohr-Coloumb constitutive model was used to simulate 
 plane strain collapse of granular columns.~\citet{Crosta2009a} observed that 
 the Mohr-Coloumb model with non-associate flow rule is able to capture granular 

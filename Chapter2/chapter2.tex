@@ -216,11 +216,11 @@ Conservation of mass is written as
 
 \nomenclature[g-rho]{$\rho$}{Density}
 \nomenclature[g-alpha]{$\alpha$}{Conductivity}
-\nomenclature[g-epsilon]{$\epsilon$}{Coefficient of restitution}
+\nomenclature[g-epsilonvar]{$\varepsilon$}{Coefficient of restitution}
 \nomenclature[G-Gamma]{$\Gamma$}{Dissipation through inelastic collision}
 \nomenclature[a-T]{\textit{T}}{Temperature}
-\nomenclature[a-c]{\textit{c}}{Concentration in Kinetic theory (or) Pressure 
-wave velocity}
+\nomenclature[a-C]{\textit{C}}{Concentration in Kinetic theory}
+\nomenclature[a-c]{\textit{c}}{Pressure wave velocity}
 \nomenclature[a-u]{\textit{u}}{Velocity component along \textit{x}-direction}
 \nomenclature[a-v]{\textit{v}}{Velocity component along \textit{y}-direction}
 \begin{equation}
@@ -229,20 +229,22 @@ wave velocity}
 \noindent Conservation of momentum
 \begin{equation}
 \label{eq:momentum_kinetic}
-\rho c \frac{d \mathrm{u}}{dt} = \triangledown p(\rho,c,T,\epsilon) + 
-\triangledown \cdot ( \eta (p,\rho,c,T,\epsilon)  \triangledown \mathrm{u}) \,.
+\rho c \frac{d \mathrm{u}}{dt} = \triangledown p(\rho,c,T,\varepsilon) + 
+\triangledown \cdot ( \eta (p,\rho,c,T,\varepsilon)  \triangledown \mathrm{u}) 
+\,.
 \end{equation}
 \noindent Conservation of granular energy (granular temperature)
 \begin{equation}
-\rho c \frac{d T}{dt} = \triangledown \cdot ( \alpha (p,\rho, c, T,\epsilon)  
+\rho c \frac{d T}{dt} = \triangledown \cdot ( \alpha (p,\rho, c, 
+T,\varepsilon)  
 \triangledown T) + \tau : \triangledown \mathrm{u} - \Gamma 
-(p,\rho,c,T,\epsilon)  \,.
+(p,\rho,c,T,\varepsilon)  \,.
 \end{equation}
 where $\alpha$ is the conductivity, $\tau : \triangledown \mathrm{u}$ is the 
 temperature production by shear work, $p$ is the pressure, concentration is 
-$c$, $\rho$ is the density, $\epsilon$ is the coefficient of restitution, $T$ 
-is the granular temperature and $\Gamma$ is the dissipation through inelastic 
-collisions. There are several problems that should be immediately
+$c$, $\rho$ is the density, $\varepsilon$ is the coefficient of restitution, 
+$T$ is the granular temperature and $\Gamma$ is the dissipation through 
+inelastic collisions. There are several problems that should be immediately
 apparent with this formulation. The most obvious is that the
 range of applicability of rapid flow theory is limited. The solid phase 
 stresses are viscous in nature (\cref{eq:momentum_kinetic}), which results in 
@@ -661,7 +663,7 @@ size}
 \nomenclature[s-ext]{\textit{ext}}{External}
 \nomenclature[a-a]{\textit{a}}{Initial aspect ratio of a granular column}
 \nomenclature[a-A]{\textbf{a}}{Acceleration of a grain or a material point}
-\nomenclature[a-m]{\textit{m}}{Mass of a granular column}
+\nomenclature[a-m]{\textit{m}}{Mass}
 \nomenclature[g-tauc]{$\tau_c$}{Critical time}
 \nomenclature[g-lambda]{$\lambda$}{Constant of proportionality in the power-law 
 relationship}
