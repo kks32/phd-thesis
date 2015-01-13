@@ -219,26 +219,27 @@ Conservation of mass is written as
 \nomenclature[g-epsilon]{$\epsilon$}{Coefficient of restitution}
 \nomenclature[G-Gamma]{$\Gamma$}{Dissipation through inelastic collision}
 \nomenclature[a-T]{\textit{T}}{Temperature}
+\nomenclature[a-c]{\textit{c}}{Concentration}
 \nomenclature[a-u]{\textit{u}}{Velocity component along \textit{x}-direction}
 \nomenclature[a-v]{\textit{v}}{Velocity component along \textit{y}-direction}
 \begin{equation}
-\frac{d \rho v}{dt} + \rho v \triangledown \cdot \mathrm{u} = 0 \,.
+\frac{d \rho c}{dt} + \rho c \triangledown \cdot \mathrm{u} = 0 \,.
 \end{equation}
 \noindent Conservation of momentum
 \begin{equation}
 \label{eq:momentum_kinetic}
-\rho v \frac{d \mathrm{u}}{dt} = \triangledown p(\rho,v,T,\epsilon) + 
-\triangledown \cdot ( \eta (p,\rho,v,T,\epsilon)  \triangledown \mathrm{u}) \,.
+\rho c \frac{d \mathrm{u}}{dt} = \triangledown p(\rho,c,T,\epsilon) + 
+\triangledown \cdot ( \eta (p,\rho,c,T,\epsilon)  \triangledown \mathrm{u}) \,.
 \end{equation}
 \noindent Conservation of granular energy (granular temperature)
 \begin{equation}
-\rho v \frac{d T}{dt} = \triangledown \cdot ( \alpha (p,\rho,v,T,\epsilon)  
+\rho c \frac{d T}{dt} = \triangledown \cdot ( \alpha (p,\rho, c, T,\epsilon)  
 \triangledown T) + \tau : \triangledown \mathrm{u} - \Gamma 
-(p,\rho,v,T,\epsilon)  \,.
+(p,\rho,c,T,\epsilon)  \,.
 \end{equation}
 where $\alpha$ is the conductivity, $\tau : \triangledown \mathrm{u}$ is the 
 temperature production by shear work, $p$ is the pressure, concentration is 
-$v$, $\rho$ is the density, $\epsilon$ is the coefficient of restitution, $T$ 
+$c$, $\rho$ is the density, $\epsilon$ is the coefficient of restitution, $T$ 
 is the granular temperature and $\Gamma$ is the dissipation through inelastic 
 collisions. There are several problems that should be immediately
 apparent with this formulation. The most obvious is that the
@@ -435,6 +436,13 @@ dissipative Boltzmann kinetics. Redrawn after~\citep{Kamrin2008}}
 \label{fig:Regime}
 \end{figure}
 
+\nomenclature[a-kf]{$\mathit{k_f}$}{Dimensionless parameter defined as the ratio
+ of normal stiffness $k_n$ to the applied normal pressure $\sigma_n^\prime$}
+\nomenclature[a-kstar]{$k^*$}{Dimensionless parameter defined as the ratio of 
+elastic to inertial effects}
+\nomenclature[a-k]{$k$}{Stiffness of a grain}
+\nomenclature[a-d]{\textit{d}}{Grain diameter}
+
 \citet{Campbell2002} described the ``Moderate regime'' as an elastic granular 
 flow regime, where the inter-grain stiffness governs the overall flow 
 behaviour of the granular assembly. At high concentration, the stresses are 
@@ -443,14 +451,14 @@ reflect the momentum carried by the unsteady motions of particles as they
 move through the system, is negligible. When a dense granular assembly is 
 sheared, the force chains that transmit the forces continue to rotate until 
 they become unstable and collapse. As the force-chains rotate, the granular 
-material tends to dilate. However it is 
-restricted due to the constant volume constraint; instead, the rotation 
+material tends to dilate. However it is restricted due to the constant volume
+ constraint; instead, the rotation 
 compresses the chain, generating an elastic 
 response~\citep{Campbell2006}.~\citet{Campbell2002} divided the flow into 
 elastic and inertial regimes. In elastic regime, the force is 
 transmitted principally through the deformation of force chains with a natural 
-stress scaling of $\tau \textit{d}/\textit{k}$. The dimensionless parameter, 
-\textit{k}, is defined as the ratio of normal stiffness $k_n$ to 
+stress scaling of $\tau \mathit{d}/\mathit{k_f}$. The dimensionless parameter, 
+$\mathit{k_f}$, is defined as the ratio of normal stiffness $k_n$ to 
 the applied normal pressure $\sigma_n^\prime$. The force 
 chains form when the grains are sheared at the rate of $\dot{\gamma}$, and 
 hence the rate of chain formation is proportional to the shear rate 
@@ -466,11 +474,11 @@ force chains, the forces generated must reflect the grain inertia. The ratio of
 elastic to inertial effects is governed by a dimensionless parameter
 %
 \begin{equation}
-\textit{k}^{*} = \frac{k}{\rho \textit{d}^{3} \dot{\gamma}^{2}} \,,
+\textit{k}^{*} = \frac{k_f}{\rho \textit{d}^{3} \dot{\gamma}^{2}} \,,
 \end{equation}
 %
-where ${k}/{\rho \textit{d}^{3} \dot{\gamma}^{2}}=({\tau}/{\rho \textit{d}^{2} 
-{\gamma}^{2}})/(\tau\textit{d}/\textit{k})$ is the ratio of Bagnold's inertial 
+where ${k_f}/{\rho \textit{d}^{3} \dot{\gamma}^{2}}=({\tau}/{\rho \textit{d}^{2} 
+{\gamma}^{2}})/(\tau\textit{d}/\textit{k_f})$ is the ratio of Bagnold's inertial 
 to the elastic stress scaling. The important dimensionless parameter is 
 $\textit{k}^{*}$, which is a measure of inertially-induced deformation, 
 reflects the relative effects of elastic to inertial forces, i.e. at large 
@@ -485,9 +493,9 @@ inertial forces dominate~\citep{Campbell2006}.
 Constitutive laws, which describe the dilatancy and friction, allow us to 
 deduce the dependency of pressure and shear stress on shear rate and solid 
 fraction. In contrast to the observation of \citet{Campbell2002}, 
-\citet{DaCruz2005} found that the normalised elastic stiffness \textit{k} has 
+\citet{DaCruz2005} found that the normalised elastic stiffness $\mathit{k_f}$ has 
 little effect on the constitutive law, for values greater than $10^{4}$, 
-however that it does affect the coordination number.~\citet{DaCruz2005} also 
+however, it does affect the coordination number.~\citet{DaCruz2005} also 
 observed that the microscopic friction coefficient, $\mu$, has a significant 
 influence on the dilatancy, and the solid fraction remains a 
 linearly-decreasing function of \textit{I}. The 
@@ -556,6 +564,11 @@ written as
 \right)_{\textit{x}} +\textit{\textbf{F}}_{\textit{x}} \,.
 \end{align}
 %
+\nomenclature[a-f]{\textit{F}}{Applied force}
+\nomenclature[a-g]{\textit{g}}{Acceleration due to gravity}
+\nomenclature[a-t]{\textit{t}}{Time}
+\nomenclature[a-h]{\textit{h}}{Vertical length scale in shallow water approximation}
+\nomenclature[a-l]{\textit{l}}{Horizontal length scale in shallow water approximation}
 The continuum equation requires determining the components of the stress tensor 
 and a suitable constitutive law. \textit{Savage-Hutter (SH) model} uses the 
 Mohr-Coulomb law to describe the constitutive relation. The conservation of 
@@ -581,17 +594,17 @@ written as
 \end{figure}
 %
 \begin{align}
-&\frac{\partial \textit{H}}{\partial \textit{T}} + \frac{\partial}{\partial 
-\textit{X}} (\textit{HU})  =  0 \,, \\
-&\frac{\partial \textit{U}}{\partial \textit{T}} + \textit{U} \frac{\partial 
-\textit{U}}{\partial \textit{X}}  = (\sin \theta - \tan \delta 
-\textit{sgn}(\textit{U}) \cos \theta) -\beta \frac{\partial 
-\textit{H}}{\partial \textit{X}} \,,
+&\frac{\partial \textit{h}}{\partial \textit{t}} + \frac{\partial}{\partial 
+\textit{x}} (\textit{hu})  =  0 \,, \\
+&\frac{\partial \textit{u}}{\partial \textit{t}} + \textit{u} \frac{\partial 
+\textit{u}}{\partial \textit{x}}  = (\sin \theta - \tan \delta 
+\textit{sgn}(\textit{u}) \cos \theta) -\beta \frac{\partial 
+\textit{h}}{\partial \textit{x}} \,,
 \end{align}
 %
 where capital letters denote non-dimensional quantities with respect to the 
-typical horizontal and vertical length scales $(\textit{L}^{*},\textit{H}^{*})$ 
-and the time scale $\sqrt{\textit{L}^{*}/\textit{g}}$. The key feature in the 
+typical horizontal and vertical length scales $(\textit{l}^{*},\textit{h}^{*})$ 
+and the time scale $\sqrt{\textit{l}^{*}/\textit{g}}$. The key feature in the 
 shallow water approximation is the Mohr-Coulomb constitutive law, which is 
 applied at the free surface and at the base, to describe the granular flow. 
 Comparison of the model with the post-calculation of Madlein avalanche in 
