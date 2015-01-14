@@ -1302,9 +1302,9 @@ model where the sequential code runs on a conventional processor and
 computationally intensive parallel pieces of code (kernels) run on an 
 accelerator such as a GPU (see~\cref{fig:GPUConcept}). 
 
-The original GPGPU LBM -- DEM code was implemented in C using OpenACC API v1.0, 
-which was released in November 2011. The current implementation in C++ uses 
-OpenACC API v2.0a~\citep{OpenACCmembers2013} and has two compute 
+Initially, the GPGPU LBM -- DEM code was implemented in C using OpenACC API 
+v1.0, which was released in November 2011. The current implementation in C++ 
+uses OpenACC API v2.0a~\citep{OpenACCmembers2013} and has two compute 
 constructs, the kernels construct and the parallel construct. LBM -- DEM 
 implementation predominantly uses the OpenACC gang and vector parallelism. The 
 LBM -- DEM code runs sequential and computationally less intensive 
