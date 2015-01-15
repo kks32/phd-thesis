@@ -216,11 +216,11 @@ Conservation of mass is written as
 
 \nomenclature[g-rho]{$\rho$}{Density}
 \nomenclature[g-alpha]{$\alpha$}{Conductivity}
-\nomenclature[g-epsilonvar]{$\varepsilon$}{Coefficient of restitution}
+%\nomenclature[g-epsilonvar]{$\varepsilon$}{Coefficient of restitution}
 \nomenclature[G-Gamma]{$\Gamma$}{Dissipation through inelastic collision}
 \nomenclature[a-T]{\textit{T}}{Temperature}
 \nomenclature[a-C]{\textit{C}}{Concentration in Kinetic theory}
-\nomenclature[a-c]{\textit{c}}{Pressure wave velocity}
+\nomenclature[a-c]{\textit{c}}{Pressure wave velocity (or) Lattice speed in LBM}
 \nomenclature[a-u]{\textit{u}}{Velocity component along \textit{x}-direction}
 \nomenclature[a-v]{\textit{v}}{Velocity component along \textit{y}-direction}
 \begin{equation}
@@ -290,7 +290,8 @@ a strong correlation between their velocities is inevitable.
 \label{sec:muI}
 \nomenclature[g-sigma]{$\sigma$}{Stress or confining pressure}
 \nomenclature[g-gammadot]{$\dot{\gamma}$}{Shear rate}
-\nomenclature[g-tau]{$\tau$}{Shear stress (or) Surface traction}
+\nomenclature[g-tau]{$\tau$}{Shear stress (or) Surface traction (or ) 
+Relaxation time in LBM}
 \nomenclature[g-delta]{$\delta$}{Overlap between grains (or) Dirac function}
 \nomenclature[A-I]{\textit{I}}{Inertial number (or) Moment of Inertia}
 \nomenclature[r-prime]{$\prime$}{Effective component of the normal stress}
@@ -352,7 +353,8 @@ $\mu_{\mathit{s}}$ to an asymptotic value of $\mu_{2}$, when the value of
 shown in~\cref{fig:mu}. The friction coefficient can be related to the inertial 
 number \textit{I} as
 %
-\nomenclature[g-mu]{$\mu$}{Coefficient of friction}
+\nomenclature[g-mu]{$\mu$}{Coefficient of friction (or) Dynamic viscosity in 
+fluid}
 \nomenclature[s-0]{\textit{0}}{Initial state}
 \nomenclature[s-f]{\textit{f}}{Final state}
 \begin{equation}
@@ -445,7 +447,7 @@ dissipative Boltzmann kinetics. Redrawn after~\citep{Kamrin2008}}
  of normal stiffness $k_n$ to the applied normal pressure $\sigma_n^\prime$}
 \nomenclature[a-kstar]{$k^*$}{Dimensionless parameter defined as the ratio of 
 elastic to inertial effects}
-\nomenclature[a-k]{$k$}{Stiffness of a grain (or) time step}
+\nomenclature[a-k]{$k$}{Stiffness of a grain (or) time step (or) Permeability}
 \nomenclature[a-d]{\textit{d}}{Grain diameter}
 
 \citet{Campbell2002} described the ``Moderate regime'' as an elastic granular 
@@ -572,11 +574,12 @@ written as
 \right)_{\textit{x}} +\textit{\textbf{F}}_{\textit{x}} \,.
 \end{align}
 %
-\nomenclature[a-f]{\textbf{f} / \textit{F}}{Applied force}
+\nomenclature[a-f]{\textbf{f} / \textit{F}}{Applied force (or) Vector of fluxes 
+in the Navier-Stokes equation}
 \nomenclature[a-g]{\textit{g}}{Acceleration due to gravity}
 \nomenclature[a-t]{\textit{t}}{Time}
 \nomenclature[a-h]{\textit{h}}{Vertical length scale in shallow water 
-approximation}
+approximation (or) Length of a LBM cell}
 \nomenclature[a-l]{\textit{l}}{Horizontal length scale in shallow water 
 approximation (or) particle spacing in the Material Point Method}
 The continuum equation requires determining the components of the stress tensor 
@@ -666,7 +669,7 @@ size}
 \nomenclature[a-m]{\textit{m}}{Mass}
 \nomenclature[g-tauc]{$\tau_c$}{Critical time}
 \nomenclature[g-lambda]{$\lambda$}{Constant of proportionality in the power-law 
-relationship}
+relationship (or) The time step factor in DEM}
 
 \citet{Lube2005} and~\citet{Lajeunesse2004} have carried out experimental 
 investigations on the collapse behaviour of granular columns on a horizontal 
@@ -1260,7 +1263,7 @@ The complex interactions between the soil and the ambient fluid is shown
 in~\cref{fig:Submarine_landslide}. For a given granular mass, the energy 
 balance can be written as
 %
-\nomenclature[a-E]{$\mathit{E}$}{Energy}
+
 \nomenclature[a-Ep]{$\mathit{E_p}$}{Potential energy}
 \nomenclature[a-Ek]{$\mathit{E_k}$}{Kinetic energy}
 \nomenclature[a-Ef]{$\mathit{E_f}$}{Energy lost through friction}

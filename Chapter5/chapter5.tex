@@ -96,7 +96,6 @@ with density $\rho$ and kinematic viscosity \textit{v}, in a rectangular domain
 \textit{\textbf{D}}. The fluid domain is divided into rectangular grids or 
 lattices, with the same grid length \textit{`h'} in both \textit{x-} and 
 \textit{y-}directions (see~\cref{fig:D2Q9}). 
-
 \begin{figure}[htpb]
 	\centering
 	\includegraphics[width=0.95\textwidth]{D2Q9}
@@ -130,15 +129,15 @@ defined as
 \begin{align} 
 	\begin{cases}
 	\mathit{e_0}=(0,0);\\
-	\mathit{e_1}=\mathit{C}(1,0); \mathit{e_2}=\mathit{C}(0,1); 
-	\mathit{e_3}=\mathit{C}(-1,0); \mathit{e_4}=\mathit{C}(0,-1); \\
-	\mathit{e_5}=\mathit{C}(1,1); \mathit{e_6}=\mathit{C}(-1,1);  
-	\mathit{e_7}=\mathit{C}(-1,-1); \mathit{e_8}=\mathit{C}(1,-1)\,, 
+	\mathit{e_1}=\mathit{c}(1,0); \mathit{e_2}=\mathit{c}(0,1); 
+	\mathit{e_3}=\mathit{c}(-1,0); \mathit{e_4}=\mathit{c}(0,-1); \\
+	\mathit{e_5}=\mathit{c}(1,1); \mathit{e_6}=\mathit{c}(-1,1);  
+	\mathit{e_7}=\mathit{c}(-1,-1); \mathit{e_8}=\mathit{c}(1,-1)\,, 
 	\end{cases}
 \end{align}
 %
 \noindent where \textit{C} is the lattice speed that is defined as 
-$\mathit{C}=\mathit{h}/\Delta t \,,$ and $\Delta \mathit{t}$ is the discrete 
+$\mathit{c}=\mathit{h}/\Delta t \,,$ and $\Delta \mathit{t}$ is the discrete 
 time step. The primary variables in LB formulation are called the \textit{fluid 
 density distribution functions}, $\mathit{f_i}$, each representing the probable 
 amount of fluid particles moving with the velocity $\mathit{e_i}$ along the 
@@ -164,6 +163,17 @@ functions, $\mathit{f_i}(\mathit{i}=0,\dots,8)$, associated with each node
 in the \textit{D2Q9} model. The evolution of the density distribution function 
 at each time step for every lattice point is governed by
 %
+\nomenclature[a-f]{\textit{f}}{Fluid density distribution function in LBM}
+\nomenclature[a-Ma]{$M_a$}{Mach number -  a dimensionless quantity representing 
+the ratio of speed of an object moving through a fluid and the local speed of 
+sound}
+\nomenclature[a-Pr]{$P_r$}{Prandtl number - a dimensionless number defined as 
+the ratio of momentum diffusivity to thermal diffusivity}
+\nomenclature[a-St]{$S_t$}{Strouhal number - a dimensionless number describing 
+oscillating unsteady flow dynamics}
+\nomenclature[a-S]{\textit{S}}{Collision matrix in LBM}
+\nomenclature[a-M]{\textit{M}}{Transformation matrix mapping a vector} 
+\nomenclature[a-Q]{\textit{Q}}{Vector of conserved variables in CFD}
 \begin{equation} 
 	\label{eq:stream}
 	\mathit{f_i}(\mathbf{x}+\mathbf{e}_{\mathit{i}} \Delta t, t + \Delta t) = 
@@ -172,8 +182,7 @@ at each time step for every lattice point is governed by
 \end{equation}
 %
 \noindent where for any grid node $\mathbf{x},$ $\mathbf{x}+\mathbf{e_i} \Delta 
-t$ 
-is its nearest node along the direction $\mathit{i}$. $\tau$ is a 
+t$ is its nearest node along the direction $\mathit{i}$. $\tau$ is a 
 non-dimensional relaxation time parameter, which is related to the fluid 
 viscosity; and $\mathit{f_i}^{\mathit{eq}}$ is termed as the equilibrium 
 distribution function that is defined as
@@ -181,13 +190,13 @@ distribution function that is defined as
 \begin{align}
 	\begin{cases}
 	\mathit{f}_{\mathit{0}}^{\mathit{eq}} = \mathit{w}_{\mathit{0}} \rho (1 - 
-	\frac{3}{2\mathit{C}^{\mathit{2}}}\mathbf{v}.\mathbf{v}) \\ 
+	\frac{3}{2\mathit{c}^{\mathit{2}}}\mathbf{v}.\mathbf{v}) \\ 
 	\mbox{and}\\
 	\mathit{f_i}^{\mathit{eq}} = \mathit{w_i} \rho (1 + 
-	\frac{3}{\mathit{C}^{\mathit{2}}}\mathbf{e}_{\mathit{i}}.\mathbf{v} 
-	\frac{9}{2\mathit{C}^{\mathit{2}}} 
+	\frac{3}{\mathit{c}^{\mathit{2}}}\mathbf{e}_{\mathit{i}}.\mathbf{v} 
+	\frac{9}{2\mathit{c}^{\mathit{2}}} 
 	(\mathbf{e}_{\mathit{i}}.\mathbf{v})^{\mathit{2}}-\frac{3}{2 
-	\mathit{C}^{\mathit{2}}}\mathbf{v}.\mathbf{v}) \quad 
+	\mathit{c}^{\mathit{2}}}\mathbf{v}.\mathbf{v}) \quad 
 	(\mathit{i}=0,\dots,8)\,,
 	\end{cases}
 \end{align}
@@ -259,14 +268,14 @@ The fluid pressure field `\textit{p}' is determined by the
 equation of state
 %
 \begin{equation}
-	\mathit{p}=\mathit{C_s}^{2} \rho,
+	\mathit{p}=\mathit{c_s}^{2} \rho,
 \end{equation}
 %
-\noindent where $\mathit{C_s}$ is termed the fluid speed of sound and is 
-related to the lattice speed \textit{C} as
+\noindent where $\mathit{c_s}$ is termed the fluid speed of sound and is 
+related to the lattice speed \textit{c} as
 %
 \begin{equation}
-	\mathit{C_s}=\mathit{C}/\sqrt{3}\,.
+	\mathit{c_s}=\mathit{c}/\sqrt{3}\,.
 \end{equation}
 
 The kinematic viscosity of the fluid \textbf{\textit{v}} is implicitly 
@@ -281,13 +290,13 @@ as
 \noindent which indicates that these three parameters are related to each other 
 and have to be appropriately selected to represent the correct fluid viscosity. 
 An additional constraint to the parameter selection is the lattice speed 
-\textit{C}, which must be sufficiently large in comparison to the maximum 
+\textit{c}, which must be sufficiently large in comparison to the maximum 
 fluid velocity $\mathit{v}_{\mathit{max}}$, to ensure 
 accuracy of the solution. The `computational' Mach number, 
 $\mathit{M}_{\mathit{a}}$, defined as
 %
 \begin{equation}
-	\mathit{M}_{\mathit{a}}=\frac{\mathit{v}_{\mathit{max}}}{\mathit{C}}\,.
+	\mathit{M}_{\mathit{a}}=\frac{\mathit{v}_{\mathit{max}}}{\mathit{c}}\,.
 \end{equation}
 %
 Theoretically, for an accurate solution, the Mach number is required to be $<< 
@@ -804,15 +813,25 @@ convert the kinetic energy into the internal energy of the fluid. At this
 scale, the viscous friction dominates the flow~\citep{Frisch1995}.
 
 In the Smargonisky model, the turbulent viscosity $\nu$ is related to the 
-strain 
-rate $S_{ij}$ and a filtered length scale `h' as follows
+strain rate $\dot{\epsilon}_{ij}$ and a filtered length scale `h' as follows
 %
 \begin{align}
-S_{ij} & = \frac{1}{2}(\partial_i u_j + \partial_j u_i) \\
-\mathit{v}_{\mathit{t}} & = (\mathit{S}_{c}\mathit{h})^{2}\overline{S} \\
-\overline{S} & =  
-\sqrt{\sum\limits_{\mathit{i,j}}{\tilde{S}_{\mathit{i,j}}\tilde{S}_{\mathit{i,j}}}}\,,
+\dot{\epsilon}_{ij} & = \frac{1}{2}(\partial_i u_j + \partial_j u_i) \\
+\mathit{v}_{\mathit{t}} & = (\mathit{S}_{c}\mathit{h})^{2}\overline{\epsilon} 
+\\
+\overline{\epsilon} & =  
+\sqrt{\sum\limits_{\mathit{i,j}}{\tilde{\epsilon}_{\mathit{i,j}}\tilde{\epsilon}_{\mathit{i,j}}}}\,,
 \end{align}
+%%
+\nomenclature[a-D]{\textit{D}}{Diameter of a pipe}
+\nomenclature[a-Sc]{$S_c$}{Smargonisky constant}
+\nomenclature[a-Re]{\textit{Re}}{Reynolds number -  a dimensionless quantity 
+that is used to help predict similar flow patterns in different fluid flow 
+situations}
+\nomenclature[r-dot]{$\cdot$}{Rate of change of a variable}
+\nomenclature[g-taustar]{$\tau_{*}$}{Total relaxation time}
+\nomenclature[g-thetadotdot]{$\ddot{\theta}$}{Angular acceleration}
+\nomenclature[a-ns]{$n_s$}{Number of DEM subcycles in a LBM time step}
 %
 \noindent where $\mathit{S}_{c}$ is the Smargonisky constant, which is close 
 to 0.03~\citep{yu2005}. 
@@ -830,14 +849,14 @@ times
 corresponding to the true fluid viscosity $\nu$ and the turbulence 
 viscosity $\nu_{\mathit{t}}$, defined by a sub-grid turbulence model. 
 The new viscosity $\nu_{*}$ corresponding to $\tau_{*}$ is defined as
-%
+
 \begin{align}
 \nu_{*} & 
 =\nu+\nu_{\mathit{t}} \nonumber \\
 	& =\frac{1}{3}(\tau_{*}-\frac{1}{2})
-\mathit{C}^{2} \Delta \mathit{t} 
-=\frac{1}{3}(\tau+\tau_{t}-\frac{1}{2})\mathit{C}^{2} \Delta \mathit{t}  \\
-\nu_{\mathit{t}} & =\frac{1}{3}\tau_{\mathit{t}}\mathit{C}^{2} \Delta 
+\mathit{c}^{2} \Delta \mathit{t} 
+=\frac{1}{3}(\tau+\tau_{t}-\frac{1}{2})\mathit{c}^{2} \Delta \mathit{t}  \\
+\nu_{\mathit{t}} & =\frac{1}{3}\tau_{\mathit{t}}\mathit{c}^{2} \Delta 
 \textit{t} \,.
 \end{align} 
 
@@ -966,7 +985,7 @@ rule for a given boundary link \textit{i} to be
 \begin{equation}
 \mathit{f_i}(\mathbf{x}, t + \Delta t)=\mathit{f_i}(\mathbf{x}, t_{+}) - 
 \alpha_{\mathit{i}}\mathbf{\mathit{e}_i}.\mathbf{\mathit{v}}_{b} \qquad 
-(\alpha_{i}=6\mathit{w_i}\rho/\mathit{C}_{\mathit{s}}^{2})\,,
+(\alpha_{i}=6\mathit{w_i}\rho/\gamma_{\mathit{s}}^{2})\,,
 \end{equation}
 %
 \noindent where $\mathit{f_i}(\mathbf{x}, t_{+})$ is the post collision 
@@ -1049,7 +1068,7 @@ computed as
 \cdot \mathit{\mathit{f}}_{\alpha}(\mathbf{x}_{\mathit{b}},t + \delta t)  \\
 & + \delta \cdot 
 \mathit{\mathit{f}}_{\overline{\alpha}}(\mathbf{x}_{\mathit{f2}},t + \delta t) 
--2\mathit{w}_{\mathit{a}}\rho_{\mathit{w}}\frac{3}{\mathit{c}^{2}}
+-2\mathit{w}_{\mathit{a}}\rho_{\mathit{w}}\frac{3}{\gamma^{2}}
 	\mathbf{\mathit{e}}_{\mathit{a}}\cdot
  \mathbf{u}_{\mathit{w}}]\,,
 \end{align}
@@ -1080,7 +1099,7 @@ computed as ~\citep{Cook2004, Noble1998}
 \mathbf{F}_{f} & = \mathit{Ch}[\sum\limits_{\mathit{n}}{(\beta_{\mathit{n}} 
 \sum\limits_{\mathit{i}}{\mathit{f_i}^{\mathit{ m}}\mathbf{\mathit{e}_i}}})] \\ 
 \mathbf{T}_{f} & = 
-\mathit{Ch}[\sum\limits_{\mathit{n}}{(\mathbf{x}_{\mathit{n}}-\mathbf{x}_{\mathit{c}})
+\mathit{Ch}[\sum\limits_{\mathit{n}}{(\mathbf{x}_{\mathit{n}}-\mathbf{x}_{\gamma})
  \times (\beta_{\mathit{n}} \sum\limits_{\mathit{i}}{\mathit{f_i}^{\mathit{ 
 m}}\mathbf{\mathit{e}_i}})}]\,.
 \end{align}
@@ -1114,8 +1133,7 @@ integration, such as the central difference scheme.
 
 The interaction between the soil grains, and the soil grains with the walls are 
 modelled using the DEM technique. To solve the coupled DEM--LBM formulation, 
-the 
-hydrodynamic force exerted on soil grains and the static buoyancy force are 
+the hydrodynamic force exerted on soil grains and the static buoyancy force are 
 considered by reducing the gravitational acceleration to $(1- 
 \rho/rho_{s})\mathbf{g}$, where $\rho_{s}$ is the density of the grains. When 
 taking into account all forces acting on an element, the dynamic equations of 
@@ -1123,12 +1141,12 @@ DEM can be expressed as
 %
 \begin{equation}
 \label{eq:mde}
-\mathit{m}\mathbf{a} +\mathit{c}\mathbf{v} = \mathbf{F}_{c} + \mathbf{F}_{f} 
+\mathit{m}\mathbf{a} +\gamma\mathbf{v} = \mathbf{F}_{c} + \mathbf{F}_{f} 
 +\mathit{m}\mathbf{g} \,,
 \end{equation} 
 %
 \noindent where $\mathbf{F}_{c}$ denotes the total contact forces from other 
-elements and/or the walls, and \textit{c} is a damping coefficient. The term 
+elements and/or the walls, and $\gamma$ is a damping coefficient. The term 
 \textit{c\textbf{v}} represents a viscous force that accounts for the effect of 
 all possible dissipation forces in the system including energy lost during the 
 collision between grains. Considering a linear contact model
@@ -1146,7 +1164,7 @@ is determined as~\citep{He1997}
 \end{equation}
 %
 \noindent where $\omega = \sqrt{\mathit{k}_{\mathit{n}}/\mathit{m}}$ is the 
-local contact natural frequency and $\xi = \mathit{c}/2\mathit{m}\omega$ is the 
+local contact natural frequency and $\xi = \gamma/2\mathit{m}\omega$ is the 
 critical damping ratio. The actual time step used for the integration of the 
 Discrete Element equations is
 %
