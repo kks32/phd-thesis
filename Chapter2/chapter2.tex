@@ -151,28 +151,29 @@ below.
 \subsection{Continuum models}
 
 In the frictional regime, grains experience long and permanent contacts when 
-they rub and roll against on each other. Hence a stress tensor based on the 
+they rub and roll against each other. Hence, a stress tensor based on the 
 mechanical law of friction must be developed. Granular flow modelling began as 
-early as 1776 with Coulomb's paper describing the yielding of granular material 
-as a frictional process. Although it was not about granular flows, \textit{per 
-se}, the prediction of 
+early as 1776 with Coulomb's seminal paper describing the yielding of granular 
+material as a frictional process. Although it was not about granular flows 
+\textit{per se}, the prediction of 
 soil failure for civil engineering applications describes the onset of 
 structural collapse leading to catastrophe~\citep{Campbell2006}. Mohr-Coulomb's 
-yield criterion along with a flow rule from metal plasticity is sufficient to 
+yield criterion, along with a flow rule from metal plasticity, is sufficient to 
 describe the behaviour of granular flow as a continuum process, without 
 considering the interaction of individual grains.
 
 Advanced models based on the critical state concept~\citep{Schofield1968} 
 provide further insight into 
 continuum description of granular flows. According to critical state 
-theory, the `under consolidated' or loose soil tends to increase in density 
+theory, the `under consolidated', or loose, soil tends to increase in density 
 upon shearing, while the dense `over consolidated' soil dilates when sheared, 
-until it reaches the critical state. As dense granular flow involves large 
+until reaching the critical state. Since dense granular flow involves large 
 shear stresses, it is reasonable to assume that the shearing occurs at the 
 critical state. Large applied stress can cause the granular solids to deform 
 at the grain scale and squeeze them into the inter-grain pores. Granular flows 
-experience rapid shearing and is therefore reasonable to assume that the flow 
-is incompressible and takes place at the critical state~\citep{Campbell2006}. 
+experience rapid shearing, and therefore, it is also reasonable to assume that 
+the flow is incompressible and occurs at the critical 
+state~\citep{Campbell2006}. 
 
 \nomenclature[g-phi]{$\phi$}{Friction angle in degrees}
 
@@ -187,8 +188,8 @@ bulk friction and the packing density, due to the micro-structural
 rearrangement of grains~\citep{Campbell1986}. As the packing density 
 increases, the grains tend to arrange themselves in a regular order when 
 sheared. In order to understand the development of micro-structure, it is 
-important to look at the grain-level interactions.~\citet{Bagnold1954} was 
-the first to try and model granular materials as individual grains. 
+important to examine the grain-level interactions.~\citet{Bagnold1954} was 
+the first to attempt to model granular materials as individual grains. 
 Bagnold's theory of motion of individual grains in a shear flow and 
 inter-grain friction inducing random velocities is reminiscent of the 
 thermal motion of molecules in the kinetic theory of gases. 
@@ -196,28 +197,27 @@ thermal motion of molecules in the kinetic theory of gases.
 \subsection{Kinetic theory}
 The kinetic theory of gases assumes that the particles interact by 
 instantaneous collisions, which implies only binary (two-particle) collisions. 
-The interactions 
-are modelled using a single coefficient of restitution, to represent the energy 
-dissipated by the impact normal to the point of contact between the 
-interactions, 
-and for the most part, the surface friction or any other particle interactions 
-tangential to the point of contact are 
+The interactions are modelled using a single coefficient of restitution, 
+representing the energy dissipated by the impact normal to the point of contact 
+between the interactions. For the most part, the surface friction or any other 
+particle interactions tangential to the point of contact are 
 ignored~\citep{Campbell1990}.~\citet{Jenkins1983} extended kinetic theory 
-for thermal fluids to idealized granular mixtures to predict the rapid 
+from thermal fluids to idealized granular mixtures to predict the rapid 
 deformation of granular material by including energy dissipation during 
 collision for nearly inelastic particles.~\citet{Savage1981} extended the 
 kinetic theory to predict simple shear flow behaviour for a wide range of 
-coefficients of restitution. Kinetic theory is capable of predicting the 
-shear flow behaviour only for mixtures composed of particles with identical 
-density and size~\citep{Iddir2005}, however real systems are composed of 
-particles that vary in size, and segregation of particles can occur. 
+coefficients of restitution. While, the kinetic theory is capable of predicting 
+the shear flow behaviour of particles with identical density and 
+size~\citep{Iddir2005}, real systems are composed of particles that vary in 
+size, and segregation of particles can occur. 
 
 The formulation of gas kinetic theory can be used to derive a
 set of equations for granular flow if the particles are assumed to
 be rigid. In turn, the rigid particle assumption implies that all contacts 
-occur instantaneously. Thus, there is vanishing probability of multiple 
-simultaneous contacts and only binary contacts are considered. From there, 
-kinetic theory formulation yields a set of Navier – Stokes like equations. 
+occur instantaneously. This assumption creates a vanishing probability of 
+multiple simultaneous contacts and only binary contacts are considered. Kinetic 
+theory formulation yields a set of Navier–Stokes-like 
+equations. 
 Conservation of mass is written as
 
 \nomenclature[g-rho]{$\rho$}{Density}
@@ -247,10 +247,11 @@ T,\varepsilon)
 (p,\rho,c,T,\varepsilon)  \,.
 \end{equation}
 where $\alpha$ is the conductivity, $\tau : \triangledown \mathrm{u}$ is the 
-temperature production by shear work, $p$ is the pressure, concentration is 
-$c$, $\rho$ is the density, $\varepsilon$ is the coefficient of restitution, 
-$T$ is the granular temperature and $\Gamma$ is the dissipation through 
-inelastic collisions. There are several problems that should be immediately
+temperature production by shear work, $p$ is the pressure, $c$ is the 
+concentration, $\rho$ is the density, $\varepsilon$ is the coefficient of 
+restitution, $T$ is the granular temperature and $\Gamma$ is the dissipation 
+through 
+inelastic collisions. There are several problems that are immediately
 apparent with this formulation. The most obvious is that the
 range of applicability of rapid flow theory is limited. The solid phase 
 stresses are viscous in nature (\cref{eq:momentum_kinetic}), which results in 
@@ -259,38 +260,38 @@ a no-force condition when the granular mass is static~\citep{Campbell2006}.
 Kinetic theory is valid for dispersed granular flows~\citep{Ng2008}.
 ~\citet{VanWachem2001} observed that numerical simulations of dense 
 granular flow based on kinetic theory did not accurately capture
-experimental data on fluidised bed expansion. Confined granular flows are 
-usually dense, because of their mechanism of energy dissipation and their 
-tendency to form clusters. Dense granular flows lie in an intermediate 
+experimental data on fluidised bed expansion. Because of their mechanism of 
+energy dissipation and their tendency to form clusters, confined granular flows 
+are usually dense. Dense granular flows lie in an intermediate 
 regime, where both the grain inertia and the contact network have significant 
 influence on the flow behaviour~\citep{Pouliquen2002}. Thus, a part of the 
 force is transmitted through the force network, which contradicts the two basic 
-assumptions in the kinetic theory, i.e. binary collision and the molecular 
+assumptions in the kinetic theory: binary collision and the molecular 
 chaos. 
 
 For dense granular flow conditions, the total stress transmission in the flow 
 regime is the sum of the rate-dependent (collision-transition) and the 
-rate-independent (friction) components~\citep{Ng2008}. Addition of a frictional 
-stress component~\citep{Schaeffer1987} to kinetic theory improves the 
-ability of the model to predict the dense granular flows. The main advantage of 
-kinetic theories is that they can be used to derive deterministic constitutive 
-laws to describe the behaviour of granular flows in a theoretical 
+rate-independent (friction) components~\citep{Ng2008}. The addition of a 
+frictional stress component~\citep{Schaeffer1987} to kinetic theory improves 
+the ability of the model to predict the dense granular flows. The main 
+advantage of kinetic theories is that they can be used to derive deterministic 
+constitutive laws to describe the behaviour of granular flows in a theoretical 
 framework~\citep{Jenkins1983}. Kinetic theories formulated on the assumption 
 that the solid phase stress has a viscous response have limitations when 
 applied to granular flows. A viscous material produces no force unless it is in 
-motion, hence kinetic theory based on viscous solid phase cannot explain the 
+motion; hence, kinetic theory based on viscous solid phase cannot explain the 
 static force exerted by the granular materials on the walls, as observed in 
 experiments. The frictional component that is based on long-duration contact is 
 added to the instantaneous collision contacts term, which is 
 self-contradictory. 
 Also, the rapid-flow models based on gas 
-kinetic theory assume that the molecular collisions are elastic, which means 
-that they do not dissipate energy~\citep{Campbell2006}, which is in contrast to 
-the reality. Finally, the important assumption of gas kinetic theory is 
-molecular chaos, which assumes no correlation between the velocities or 
-positions of the colliding particles, which is not true especially in a dense 
-granular flow where the particles interact many times with their neighbours and 
-a strong correlation between their velocities is inevitable.
+kinetic theory assume that the molecular collisions are elastic, which entails 
+that they do not dissipate energy~\citep{Campbell2006}, an assumption which 
+does not match reality. Finally, the important assumption of gas kinetic theory 
+is molecular chaos, which assumes no correlation between the velocities or 
+positions of the colliding particles. This assumption is in direct contrast to 
+dense granular flow where the particles interact many times with their 
+neighbours and a strong correlation between their velocities is inevitable.
 
 \subsection{Rheology}
 \label{sec:muI}
@@ -308,9 +309,9 @@ Relaxation time in LBM}
 Rheology is the science of flow of materials with solid and fluid 
 characteristics. In practice, rheology is principally concerned with describing 
 the mechanical behaviour of those materials that cannot be described by the 
-classical theories, by establishing an empirical relation between deformation 
-and stresses. Consider a granular assembly of grains having diameter 
-\textit{d} and density $\rho_{\mathit{d}}$ under a confining pressure 
+classical theories. Rheology seeks to establish an empirical relation between 
+deformation and stresses. Consider a granular assembly of grains having 
+diameter \textit{d} and density $\rho_{\mathit{d}}$ under a confining pressure 
 $\sigma_n^\prime$ (see~\cref{fig:rheology}). Assume the material is sheared 
 at a constant shear rate, $\dot{\gamma} = \mathit{v}_{\mathit{w}} / 
 \mathit{L}$, imposed by the relative movement of the top plate with a velocity 
@@ -322,16 +323,16 @@ flow, i.e. to study the effect of strain rate, $\dot{\gamma}$, and
 pressure, $\sigma_n^\prime$ on the volume and shear stress, $\tau$. 
 
 Even though the granular materials have been extensively researched at 
-microscopic level, the continuum representation of granular materials in terms 
-of conservation of mass and momentum is still an area of 
+the microscopic level, the continuum representation of granular materials in 
+terms of conservation of mass and momentum is still an area of 
 concern~\citep{Midi2004,Daniel2007}. The prediction of rheology of granular 
-materials even in the simplest case is complicated as they exhibit 
-rate-dependent behaviour and no single constitutive equation is able to 
+materials, even in the simplest case is complicated, because they exhibit 
+rate-dependent behaviour, and no single constitutive equation is able to 
 describe the behaviour over a range of shear stress rates.~\citet{DaCruz2005} 
-developed a well known rheology for granular flows, that is based on 
-simple two-dimensional shear in the absence of gravity and establishes that the 
-flow regime and rheological parameters scale with a dimensionless number that 
-represents the relative strength of inertia forces with respect to the 
+developed a well known rheology for granular flows that is based on a
+simple two-dimensional shear in the absence of gravity and that establishes 
+the flow regime and rheological parameters scale with a dimensionless 
+number representing the relative strength of inertia forces with respect to the 
 confining pressure~\citep{Daniel2007}, along the lines of~\citet{Savage1991}. 
 The shear stress, $\tau$, is proportional to the confining pressure, 
 $\sigma_n^\prime$, and is written as
@@ -349,12 +350,12 @@ The friction coefficient $\mu$ depends on the single non-dimensional parameter
 The parameter \textit{I} can be interpreted in terms of different time scales 
 controlling the grain flow. If the grains are rigid, i.e. neglecting the 
 elastic properties of the grains, then \textit{I} is the only 
-non-dimensional parameter in the problem. Hence, the shear stress, $\tau$, has 
-to be proportional to the pressure, $\sigma_n^\prime$, times a function of 
-\textit{I}. Comparing the shape of the function $\mu(\mathit{I})$ with the 
+non-dimensional parameter in the problem. Hence, the shear stress, $\tau$, must 
+to be proportional to the pressure, $\sigma_n^\prime$, multiplied by a function 
+of \textit{I}. Comparing the shape of the function $\mu(\mathit{I})$ with the 
 experimental results of flow down an inclined plane,~\citet{Jop2006} observed 
 that the frictional coefficient increases from a minimal value of 
-$\mu_{\mathit{s}}$ to an asymptotic value of $\mu_{2}$, when the value of 
+$\mu_{\mathit{s}}$ to an asymptotic value of $\mu_{2}$, as the value of 
 \textit{I} increases. The variation of friction coefficient with \textit{I} is 
 shown in~\cref{fig:mu}. The friction coefficient can be related to the inertial 
 number \textit{I} as
@@ -373,8 +374,9 @@ To formulate a
 complete constitutive model, it is essential to describe the volumetric 
 behaviour. Based on dimensional analysis, it can be argued that the volume 
 change is also a function of dimensionless parameter \textit{I} and that it 
-also depends on the maximum and the minimum possible void ratios and the time 
-for microscopic rearrangement of grains. Consider two rows of mono-dispersed 
+also depends on the maximum and the minimum possible void ratios as well as the 
+time for microscopic rearrangement of grains. Consider two rows of 
+mono-dispersed 
 grains. When a grain is located in the gap formed by two adjacent grains, it is 
 assumed to have a maximum packing fraction. As the grain is sheared along the 
 bottom row of grains, it moves out of the gap resulting in 
