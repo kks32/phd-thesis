@@ -8,28 +8,27 @@
 \label{chapter:numerical_modelling}
 \section{Introduction}
 
-Most geotechnical analyses involve failure prediction and design of 
+Most geotechnical analyses involve failure prediction and the design of 
 structures that can safely withstand applied loads. However, it is very 
 important to study the post-failure behaviour to mitigate risk posed by 
-geophysical and gravity-driven flows such as landslides, avalanches, slope 
+geophysical and gravity-driven flows, such as landslides, avalanches, slope 
 failures, and debris flows. Granular flows are complex problems in continuum 
-mechanics for which no closed-form solution exists. Hence it is essential to 
-develop alternative solution schemes, which are capable of simulating failure 
+mechanics for which no closed-form solution exists. Hence, it is essential to 
+develop alternative solution schemes which are capable of simulating failure 
 mechanisms and post-failure dynamics of granular media. 
 
-The dynamics of a homogeneous granular flow involves at least three distinct 
+The dynamics of a homogeneous granular flow involve at least three distinct 
 scales: the \textit{microscopic scale}, which is characterised by the contact 
-between grains, the \textit{meso-scale} that represents micro-structural 
-effects such as grain rearrangement, and the \textit{macroscopic scale}, where 
+between grains; the \textit{meso-scale} that represents micro-structural 
+effects such as grain rearrangement; and the \textit{macroscopic scale}, where 
 geometric correlations can be observed (\cref{fig:multiscale}). Conventionally, 
 granular flows are modelled as continua because they exhibit many collective 
 phenomena. However, on a grain scale, granular materials exhibit complex 
-solid-like and/or fluid-like behaviour. Recent studies, however, suggest that a 
-continuum law may be unable to capture the effect of inhomogeneities at the 
-grain scale level, such as orientation of force chains, which are 
-micro-structural effects. Discrete element methods (DEM) are capable of 
-simulating these micro-structural effects, however they are computationally 
-expensive. 
+solid-like and/or fluid-like behaviours. Recent studies, however, suggest that 
+a continuum law may be unable to capture the effect of inhomogeneities at the 
+grain scale level, such as orientation of force chains. Discrete element 
+methods (DEM) are capable of simulating these micro-structural effects; 
+however, they are computationally expensive. 
 
 \begin{figure}[tbhp]
 \centering
@@ -42,29 +41,29 @@ in the multi-scale modelling of granular materials}
 
 \section{Continuum modelling of granular flow}
 
-The most powerful way of modelling the granular assembly is through numerical 
-techniques. It is important to argue why it is acceptable to model the 
+Numerical techniques prove to be the most powerful way for modelling the 
+granular assembly. It is important to argue why it is acceptable to model the 
 granular materials as a continuum. Even at the outset, it may appear that 
-such a treatment is objectionable for some reason. The most obvious is the fact 
+such a treatment is objectionable. The most blatant reason is the fact 
 that the micro-constituents of granular matter, i.e. the individual grains, are 
 not small enough to warrant a continuum description~\citep{Kamrin2007}. Typical 
 continuum laws are only expected to apply when there is a strong separation of 
 scales, i.e. separation of the micro-scale from the macro-scale, in the flow 
-geometry. Continuum mechanics relies on the fundamental notion of a 
+geometry. Continuum mechanics rely on the fundamental notion of a 
 representative volume element, in which properties averaged over discrete 
 grains exhibit deterministic relationships. Recent work on granular 
 materials suggests that a continuum law may be incapable of revealing 
-in homogeneities at the grain-scale level~\citep{Rycroft2009b}. Microscopic 
-features of dense granular materials, which seem to defy a simple continuum
+inhomogeneities at the grain-scale level~\citep{Rycroft2009b}. Microscopic 
+features of dense granular materials which seem to defy a simple continuum
 description include (i) complex, fractal networks of force chains, which 
 are inhomogeneous down to the grain level~\citep{Goldhirsch2003}, (ii) buckling 
 of force chains and instabilities in shear band, (iii) anomalous, 
 non-collisional particle dynamics and proximity to the jamming 
 transition, where geometrical packing constraints suppress any dynamics, and 
-(iv) wide range of dynamic response, from liquid-like to solid-like 
-behaviour~\citep{Jaeger1996,Aranson2001,Aranson2002}. The first three
+(iv) a wide range of dynamic response, from liquid-like to solid-like 
+behaviours~\citep{Jaeger1996,Aranson2001,Aranson2002}. The first three
 points cast serious doubt on the prospects of a continuum law. The third point 
-means that the full stress tensor must be described, and it may depend on 
+entails that the full stress tensor must be described, and it may depend on 
 strain, deformation rate, and material variables that can evolve during the 
 process~\citep{Rycroft2009b}.
 
@@ -92,15 +91,15 @@ questionable. Granular flows can contain regions of stress lying within the
 yield surface. In fact, discrete-element simulations show that the grains in 
 this region essentially remain static~\citep{Staron2005}. Some of the 
 limitations of the Mohr-Coulomb plasticity in modelling granular materials 
-include: linearisation of limit-stress envelope, inability to account for 
-variable volume change characteristics depending on pre-consolidation pressure 
-during shearing, predicting unrealistic negative pore-pressure upon shearing 
-due to constant rate of dilation, and inability to predict compressive plastic 
-strains in soft-soils. Mohr–Coulomb plasticity has been used 
-extensively in engineering applications~\citep{Nedderman1992}, but the general 
-solution requires sophisticated numerical techniques to capture shock-like 
-discontinuities in stress and velocity, which arise even in relatively simple 
-geometries. 
+include linearisation of the limit-stress envelope and the inability to account 
+for variable volume change characteristics depending on pre-consolidation 
+pressure during shearing, predicting unrealistic negative pore-pressure upon 
+shearing due to constant rate of dilation, and the inability to predict 
+compressive plastic strains in soft-soils. Mohr–Coulomb plasticity has been 
+used extensively in engineering applications~\citep{Nedderman1992}, but the 
+general solution requires sophisticated numerical techniques to capture 
+shock-like discontinuities in stress and velocity, which arise even in 
+relatively simplistic geometries. 
 
 The coaxiality feature of Mohr-Coulomb plasticity 
 is useful in describing debris flows. The principle of coaxiality
@@ -110,9 +109,9 @@ stress direction; the principal planes of stress are aligned with the principal
 planes of strain-rate. Granular materials deform solely based 
 on the alignment of the principal planes. Under this assumption, the major 
 principal plane is usually vertical due to gravity, and the coaxiality rule 
-requires the material to expand horizontally, which is the case for granular 
+requires the material to expand horizontally, as is the case for granular 
 column collapse. However, the coaxiality can be troubling depending on the 
-circumstances. Suppose we have a flat-bottomed quasi-2D silo with smooth 
+circumstances. Consider a flat-bottomed quasi-2D silo with smooth 
 side-walls. Under standard filling procedures, the walls provide only enough 
 pressure to keep the grains from sliding farther out.  For example, in a slow 
 dense granular flow through a silo, the principal plane remains vertical and 
@@ -121,48 +120,53 @@ making it geometrically impossible for the granular material to converge and
 exit through the orifice. Depending on the boundary conditions, Mohr-Coulomb 
 plasticity can result in discontinuities or jumps in the velocity and stress 
 fields~\citep{Rycroft2006}. Coaxiality can also violate principles of 
-thermodynamics. Coaxiality only ensures there is no shear strain-rate in the 
-principal stress reference frame and actually does not directly enforce that of 
-the two principal strain-rate axes, the axis ofmaximal compression (i.e. the 
-major principal strain-rate direction) must align with the major principal 
-stress direction.
+thermodynamics. Coaxiality only ensures that there is no shear strain-rate in 
+the principal stress reference frame and actually does not directly enforce 
+that the two principal strain-rate axes and the axis of maximal compression 
+(i.e. the major principal strain-rate direction) must align with the major 
+principal stress direction.
 
 \citet{Roscoe1970} showed that the principal axes of strain rate and of 
-stress are generally not coincident during simple shear tests of sand. Despite 
+stress are generally not coincidental during simple shear tests of sand. 
+Despite 
 the plastic character of the flow, the flow rules obtained by employing the 
 rheological concept of perfect plasticity to granular materials (perfect soil 
-plasticity) are definitely inadequate for a description of fully developed 
-shear flow. The non-coaxiality of the tensors of stress and strain increment is 
-able to explain the shear flow behaviour. The rotations of the principal stress 
-and the principal plastic strain rate are found to be non-coaxial particularly 
+plasticity) are definitely inadequate for a description of fully-developed 
+shear flow. The non-coaxiality of the tensors of stress and strain increment 
+are able to explain the shear flow behaviour. The rotations of the principal 
+stress 
+and the principal plastic strain rate are found to be non-coaxial, particularly 
 at the early stage of loading. However, the axes tend 
-to become coincident at large shear strains~\citep{Yu2006}, which are common in 
-geophysical flows.
+to become coincidental at large shear strains~\citep{Yu2006}, which are common 
+in geophysical flows.
 
 Advanced elasto-plastic models based on the \textit{critical state} theory
 provide a better representation of granular flows in a quasi-static regime, but 
 do not have any rate-dependent effects that are associated with rapid granular 
 flows. At large shear strains, such as geophysical flows, the granular mass is 
-considered to be in critical state. Another continuum based model is the 
+considered to be in a critical state. Another continuum-based model is the 
 partial fluidisation model, which uses a set of equations that describes the 
 flow velocity and the shear stresses along with an auxiliary order parameter to 
 predict granular flow behaviour. The order parameter of the granular media 
-controls the size of the viscous-like contribution to the stress tensor, and 
+controls the size of the viscous-like contribution to the stress tensor and 
 describes the transition between the flowing and the static components of the 
 granular system~\citep{Aranson2001}. A constitutive model, which considers the 
 solid fraction as the main microscopic parameter for describing dense granular 
-flow was proposed by~\citet{Josserand2004}. The stress in the granular material 
-is divided into a rate-dependent part representing the rebound-less impact 
-between grains, and a rate-independent part associated with longer contacts, 
-i.e. quasi-static regime. Although, the model captures shear localization 
+flow, was proposed by~\citet{Josserand2004}. The stress in the granular 
+material 
+is divided into a rate-dependent part representing the reboundless impact 
+between grains and a rate-independent part associated with longer contacts, 
+i.e. quasi-static regime. Although the model captures shear localization 
 behaviour, it fails to describe granular flow behaviour at rough 
 boundaries. In the basal or frictional layer, grain rotation plays an 
-important role. This causes the grain stress tensor to be non-symmetric and 
-results in a perturbed profile in the solid fraction, these phenomena would 
-require specific modelling~\citep{Josserand2004}.
+important role. This rotation causes the grain stress tensor to be 
+non-symmetric and 
+results in a perturbed profile in the solid fraction, phenomena which require 
+specific  
+modelling~\citep{Josserand2004}.
 
 In the case of saturated/submerged soil conditions, most continuum 
-techniques do not consider fully coupled behaviour. Instead, they consider 
+techniques do not consider fully coupled behaviours. Rather, they consider 
 the soil-fluid mixture as a single phase material. However, modelling of pore 
 pressure dissipation is important to capture accurate flow behaviour, 
 especially in submarine conditions, where they play a crucial role in the flow 
@@ -171,7 +175,7 @@ accelerate the flow through a lubrication effect. Fully coupled constitutive
 models are essential to realistically capture the initiation and propagation of 
 rapid granular flows.
 
-Granular materials are composed of distinct grains, which interact only at 
+Granular materials are composed of distinct grains which interact only at 
 the contact points. It is assumed that the deformations of individual grains 
 are negligible in comparison with the deformation of the granular assembly as 
 a whole. The latter deformation is primarily due to the movement of the grains 
@@ -185,26 +189,26 @@ solve engineering problems associated with granular materials and flows.
 
 \subsection{Mesh-based and mesh-free techniques}
 
-In continuum mechanics, there are two different view points describing the 
+In continuum mechanics, there are two different descriptions of the 
 deformation of a continuum, namely Lagrangian and Eulerian 
-descriptions. In the Lagrangian description  the movement of the continuum is 
-specified as a function of the material coordinates and time. This is a 
-particle description that is often applied in solid mechanics. On the other 
-hand, the Eulerian description focuses on the current configuration, giving 
-attention to what is occurring at a fixed point in space as time progresses, 
-instead of giving attention to individual particles as they move through space 
-and time. The Eulerian description is commonly used for describing fluid flows 
-where kinematic properties are of great interest. 
+descriptions. In the Lagrangian description, the movement of the continuum is 
+specified as a function of the material coordinates and time. This particle 
+description is often applied in solid mechanics. The Eulerian description, on 
+the other hand, focuses on the current configuration focusing on a fixed point 
+in space as time progresses, instead of individual particles as they move 
+through space and time. The Eulerian description is commonly used for 
+describing fluid flows where kinematic properties are of particular interest. 
 
-Conventional mesh based Lagragian approaches, such as the Finite Element Method 
-or the Finite Difference Method are capable of modelling history-dependent 
+Conventional mesh-based Lagragian approaches, such as the Finite Element Method 
+or the Finite Difference Method, are capable of modelling history-dependent 
 material behaviour and have well-defined free surfaces. However, they require 
-complex re-meshing and remapping of variables, which cause additional errors in 
-simulating large deformation problems~\citep{Li2002}. Unlike Lagrangian FEM, 
-in Eulerian FEM the computational mesh is kept spatially fixed while the 
-material is deforming in time. This allows the capability of handling large 
-deformation without the problem of mesh distortion. As the computational mesh 
-is completely decoupled from the material, convective terms appear in Eulerian 
+complex re-meshing and remapping of variables, causing additional errors in 
+simulating large deformation problems~\citep{Li2002}. Unlike in  Lagrangian 
+FEM, the computational mesh in the Eulerian FEM is kept spatially fixed while 
+the material is deforming in time. The Eulerian description produces the 
+capability for handling large deformations without the problem of mesh 
+distortion. As the computational mesh is completely decoupled from the 
+material, convective terms appear in the Eulerian 
 FEM, introducing numerical difficulties because of their non-symmetrical 
 properties~\citep{Donea1982}. Additionally, Eulerian FEM is difficult to use
 with history-dependent constitutive models. The Coupled Eulerian–Lagrangian 
@@ -214,7 +218,7 @@ modelling large deformation problems in geomechanics~\citep{Qiu2011}. This
 approach involves solving the governing equations in a Lagrangian step, thus 
 obtaining the material displacement, followed by the Eulerian step where a 
 new mesh is generated and and the variables are transferred to the the new 
-mesh. This requires more computation time. 
+mesh. This requires greater computation time. 
 
 \begin{figure}[tbhp]
 \centering
@@ -224,12 +228,13 @@ large deformation flow.}
 \label{fig:NumericalMethods}
 \end{figure}
 
-An alternative to the mesh-based approach is using mesh-less Lagrangian methods 
+An alternative to the mesh-based approach is the use of mesh-less Lagrangian 
+methods 
 (\cref{fig:NumericalMethods}) where the nodes representing the solids transform 
-as the continuum deforms, avoiding the problem of mesh distortion, i.e., the 
-nodes representing the solids can move freely within the domain. Mesh free 
-methods such as Smooth Particle Hydrodynamics and Material Point Method are not 
-constrained by the mesh size and mesh distortion effects, and hence can be 
+as the continuum deforms, avoiding the problem of mesh distortion, i.e. the 
+nodes representing the solids can move freely within the domain. Mesh-free 
+methods, such as Smooth Particle Hydrodynamics and Material Point Method, are 
+not constrained by the mesh size and mesh distortion effects, and hence can be 
 effectively used in simulating large deformation problems, such as debris flow 
 and submarine landslides.
 
@@ -260,25 +265,25 @@ based method that represents the material as a collection of \textit{material
 points}, and their deformations are determined by \textit{Newton's laws of 
 motion}. \citet{Sulsky1994} extended the Particle-in-Cell (PIC) 
 method~\citep{Harlow1964} to computational solid mechanics by taking advantage 
-of the combined Eulerian-Lagrangian approach. The Material Point Method is a 
-hybrid Eulerian-Lagrangian approach, which uses moving material points, and 
+of the combined Eulerian-Lagrangian approach. The MPM is a 
+hybrid Eulerian-Lagrangian approach, which uses moving material points and 
 computational nodes on a background mesh. This approach is very effective 
 particularly in the context of large 
 deformations~\citep{Mackenzie-Helnwein2010,Shin2010a,Mast2014,Andersen2010,Zhang2009,Bandara2013}.
-Although, not derived directly from what is classically considered as mesh-free 
+Although not derived directly from what are classically considered as mesh-free 
 or mesh-less methods, MPM is still considered as a mesh-free approach, 
 primarily because the initial discretisation of the material does not involve a 
 polygonal tessellation, as in the Finite Element Method. However, MPM utilizes 
 a background mesh to perform differentiation, integration, and to solve 
 equations of motion~\citep{Steffen2008}. The background mesh can be of any 
-form, however for computational efficiency a Cartesian lattice is adopted.
+form, though for computational efficiency a Cartesian lattice is adopted.
 
 \begin{figure}[tbhp]
 \centering
 \includegraphics[width=0.45\textwidth]{MPM}
 \caption[Typical discretisation of a domain in MPM]{Typical discretisation of a 
-domain in MPM. The dotted line represents the boundary of the simulated object 
-$\Omega$ and each closed point represents a material point used to discretise 
+domain in MPM. The dotted line represents the boundary of the simulated object, 
+$\Omega$, and each closed point represents a material point used to discretise 
 $\Omega$. The square mesh represents the background grid. Each square in the 
 background grid is a grid cell, and grid nodes are located at the corners of 
 grid cells.}
@@ -306,22 +311,24 @@ grey circles in~\cref{fig:MPM} are the material points $x_{p}$, where `p'
 represents a material point, and the computational nodes are the points of 
 intersection of 
 the grid (denoted as $X_{i}$, where \textit{i} represents a computational 
-node). MPM involves discretising the domain $\Omega$ with 
+node). MPM involves discretising the domain, $\Omega$, with 
 a set of material points. The material points are assigned an initial value of 
-position, velocity, mass, volume, and stress denoted as $\mathbf{x}_{p},\mbox{  
+position, velocity, mass, volume, and stress, denoted as 
+$\mathbf{x}_{p},\mbox{  
 } \mathbf{\mathit{v}}_{p},\mbox{  } \mathit{m}_{p}, \mbox{  
-}\mathbf{V}_{p}\mbox{ and }\sigma_{p} $. Depending on the material being 
+}\mathbf{V}_{p}\mbox{ and }\sigma_{p} $, respectively. Depending on the 
+material being 
 simulated, additional parameters, like pressure, temperature, pore-water 
 pressure, etc., are specified at the material points. The material points are 
-assumed to be within the computational grid which for, ease of computation, 
+assumed to be within the computational grid which for ease of computation, 
 is assumed to be a Cartesian lattice (\cref{fig:MPM}). At 
 every time step $\mathit{t}_{k}$, the MPM computation cycle involves projecting 
-the data, such as position, mass, and velocity from the material points to the 
+the data, such as position, mass, and velocity, from the material points to the 
 computational grid using the standard nodal basis functions, called the 
-\textit{shape functions}, derived based on the position of particle with 
-respect to the grid. Gradient terms are calculated on the computational grid 
-and the governing equation, i.e. the equation of motion, is solved and the 
-updated position and velocity values are mapped back to the material points. 
+\textit{shape functions}, derived from the position of the particle with 
+respect to the grid. Gradient terms are calculated on the computational grid,
+and the governing equation, i.e. the equation of motion, is solved with the 
+updated position and velocity values mapping back to the material points. 
 The mesh is reinitialized to its original state and the computational cycle is 
 repeated. 
 
@@ -339,8 +346,8 @@ where $\rho (\mathbf{x},t)$ is the mass density, $\mathit{\mathbf{v}}
 acceleration,  $\sigma (\mathbf{x},t)$ is the Cauchy's stress tensor, and  
 $\mathit{\mathbf{b}} (\mathbf{x},t)$ is the body force. The vector 
 \textbf{\textit{x}} represents the current position of any material point in 
-the continuum, at time \textit{t}. In MPM, the continuum body is discretised 
-into a finite number of material points $\mathit{N}_{p}$. Let 
+the continuum at time \textit{t}. In MPM, the continuum body is discretised 
+into a finite number of material points, $\mathit{N}_{p}$. Let 
 $\mathit{\mathbf{x}}_{p}^{t}$ $(\mathit{p}=1,2,\dots,\mathit{N}_{p})$ denote 
 the current position of material point \textit{p} at time t.
 Each material point, at any given time \textit{t}, has an associated mass 
@@ -348,7 +355,7 @@ $\mathit{m}_{p}^{t}$, density $\rho_{p}^{t}$, velocity
 $\mathbf{\mathit{v}}_{p}^{t}$, Cauchy stress tensor $\sigma_{p}^{t}$, strain 
 $\epsilon_{p}^{t}$, and other necessary internal state variables based on the 
 adopted constitutive model. These material points provide a Lagrangian 
-description of the continuum body; since material points have a fixed mass at 
+description of the continuum body. Since material points have a fixed mass at 
 all times,~\cref{eq:mass} is satisfied. The data from the material points 
 are mapped on to the nodes of the computational grid, where the discrete form 
 of~\cref{eq:mom} is described. The weak form of~\cref{eq:mom} is 
@@ -365,12 +372,12 @@ $\mathbf{\mathit{w}}(\mathbf{x},t)$:
 \end{equation}
 where $\sigma^{s}$ is the specific stress (i.e. stress divided by mass density, 
 $\sigma^{s} = \sigma / \rho$), $\Omega$ is the current configuration of the 
-continuum, $\tau$ is the surface traction. Eq~\ref{eq:weak} is obtained by 
+continuum and $\tau$ is the surface traction. Eq~\ref{eq:weak} is obtained by 
 applying the divergence theorem, similar to the standard procedure adopted in 
-Finite 
-Element Methods \citep{Sulsky1994,Sulsky1995, Chen2002}. The differential 
-volume and the surface elements are denoted by d$\Omega$ and \textit{dS}, 
-respectively. \\
+Finite Element Methods \citep{Sulsky1994,Sulsky1995, Chen2002}. The 
+differential volume and the surface elements are denoted by d$\Omega$ and 
+\textit{dS}, respectively. 
+
 As the whole continuum is discretised into a finite set of material points, the 
 mass density can be written as
 \begin{equation}
@@ -378,8 +385,8 @@ mass density can be written as
 {\mathit{m}_{p}\delta(\mathbf{\mathit{x}}-\mathbf{\mathit{x}}_{p}^{t})} \,,
 \label{eq:massd}
 \end{equation}
-where $\delta$ is the Dirac delta function. Substituting~\cref{eq:massd} in 
-~\cref{eq:weak}, the sum of quantities of material points can be evaluated 
+where $\delta$ is the Dirac delta function. Substituting~\cref{eq:massd} 
+in~\cref{eq:weak}, the sum of quantities of material points can be evaluated 
 as
 \begin{align}
 \nonumber
@@ -405,7 +412,7 @@ particles of the continuum are located in a cell, this cell becomes a mixed
 one. However, the mixed cell is still treated as a boundary cell. In other 
 words, the interior particles temporarily become boundary ones. To avoid
 numerical errors, therefore, small cells must be used to contain only boundary 
-particles if possible, and the boundary conditions is enforced in each 
+particles if possible, and the boundary conditions are enforced in each 
 time step.
 
 It can be noted from~\cref{eq:MPM} that the interactions between different 
@@ -418,7 +425,7 @@ the spatial nodes $\mathbf{\mathit{x}}_{i}(t),
 \mathit{i}=1,2,\dots,\mathit{N}_{n}$, where $\mathit{N}_{n}$ represents the 
 total number of mesh nodes. The nodal basis functions are assembled by using 
 the conventional finite-element shape functions~\citep{Chen2002}. The 
-co-ordinates of any material point in a cell can be represented by
+coordinates of any material point in a cell can be represented by
 %
 \begin{equation}
 \mathbf{\mathit{x}}_{p}^{t} = \sum\limits_{\mathit{i}=1}^{\mathit{N}_{n}} 
@@ -429,7 +436,7 @@ co-ordinates of any material point in a cell can be represented by
 %
 Similarly the nodal displacements, velocity and acceleration of any material 
 point in a cell are represented using the basis functions. Thus, the test 
-function has to be of the form
+function must be of the form
 %
 \begin{equation}
 \mathbf{\mathit{w}}_{p}^{t} = \sum\limits_{\mathit{i}=1}^{\mathit{N}_{n}} 
@@ -441,7 +448,7 @@ function has to be of the form
 \Cref{eq:x,eq:wtest} ensure that the associated vectors are 
 continuous across the cell boundary. However, the gradient of these functions 
 is not continuous, due to the use of linear shape functions. 
-Substituting,~\cref{eq:x} and~\cref{eq:wtest} into~\cref{eq:MPM}, the weak form 
+Substituting~\cref{eq:x} and~\cref{eq:wtest} into~\cref{eq:MPM}, the weak form 
 of the equation of motion reduces to
 %
 \begin{equation}
@@ -451,7 +458,7 @@ of the equation of motion reduces to
 \label{eq:fmaMPM}
 \end{equation}
 %
-where the nodal mass, $m_{\mathit{ij}}^{\mathit{t}}$ is represented as
+where the nodal mass, $m_{\mathit{ij}}^{\mathit{t}}$, is represented as
 %
 \begin{equation}
 m_{\mathit{ij}}^{\mathit{t}} = \sum\limits_{\mathit{p=1}}^{N_{p}} 
@@ -466,13 +473,13 @@ nodal external force, $\mathbf{f}_{\mathit{i}}^{ext,\mathit{t}}$ are defined as
 \nonumber
  \mathbf{f}_{\mathit{i}}^{int,\mathit{t}} & = - 
 \sum\limits_{\mathit{p}=1}^{\mathit{N}_{p}}\mathit{m}_{p} \mathbf{G}_{ip}^{t} 
-\cdot \sigma_{p}^{\mathit{s,t}} \\ 
+\cdot \sigma_{p}^{\mathit{s,t}} \,, \\ 
 \mathbf{f}_{\mathit{i}}^{ext,\mathit{t}} & = - 
 \sum\limits_{\mathit{p}=1}^{\mathit{N}_{p}}\mathit{m}_{p}  
 \mathbf{b}_{p}^{\mathit{t}}\mathit{N}_{\mathit{i}}(\mathbf{x}_{p}^{\mathit{t}}) 
 + \sum\limits_{\mathit{p}=1}^{\mathit{N}_{p}}\mathit{m}_{p} 
 \mathit{N}_{\mathit{i}}(\mathbf{x}_{p}^{\mathit{t}}) 
-\tau_{p}^{\mathit{s,t}}\mathit{h}^{-1}
+\tau_{p}^{\mathit{s,t}}\mathit{h}^{-1} \,,
 \end{align}
 where $\mathbf{G}_{\mathit{ip}}^{\mathit{t}} = \Delta \mathit{N}_{\mathit{i}} 
 (\mathbf{\mathit{x}})|_{\mathbf{\mathit{x}}=\mathbf{\mathit{X}}_{p}^{\mathit{t}}}$.
@@ -489,28 +496,28 @@ c = \frac{K+\frac{4}{3}G}{\rho_s} \,,
 where $L$ is the background cell size, \textit{c} is the pressure wave 
 velocity, $K$ and $G$ are the bulk modulus and the shear modulus of the solid 
 and $\rho_s$ is the density of the soil skeleton. The boundary conditions are 
-enforced on the cell nodes and the nodal velocities are obtained by solving the 
-equation of motion at each node. The strain increment for each material point 
-is determined using the gradients of the nodal basis functions. The 
+enforced on the cell nodes, and the nodal velocities are obtained by solving 
+the equation of motion at each node. The strain increment for each material 
+point is determined using the gradients of the nodal basis functions. The 
 corresponding stress increments are computed using the adopted constitutive 
 law. After updating all the material points, the computational mesh is 
 discarded, and a new mesh is defined for the next time step. 
 
 \subsection{Boundary conditions}
 The Material Point Method uses standard shape functions, similar to those used 
-in the Finite Element Methods, hence the essential and the natural boundary 
+in the Finite Element Methods. Therefore the essential and the natural boundary 
 conditions can be applied to the background grid nodes in the same way as in 
 the traditional FEM. The free surface boundary conditions are satisfied, as the 
 MPM is formulated in the weak form. Implementation of traction boundary 
 conditions requires a set of material points to represent the boundary 
 layer.~\citet{Bandara2013} proposed a friction interaction for the planar 
-boundary condition, using Coulomb's friction criterion. The friction boundary 
+boundary condition using Coulomb's friction criterion. The friction boundary 
 algorithm for the solid phase adopted in the present study is shown 
 in~\cref{alg:friction}. The friction boundary conditions are applied on the 
 mesh nodes by controlling the nodal acceleration tangential to the boundary. 
 The nodal accelerations are considered to include the frictional effects 
 instead of the forces, as the forces are proportional to the corresponding 
-accelerations. Both static and kinetic friction are considered, and are applied 
+accelerations. Both static and kinetic friction are considered, and applied 
 only when the particles are in contact with the boundary. The static and 
 kinematic frictions are applied in the direction tangential to the nodal 
 boundary. Friction forces are applied only if the particles are in contact. 
@@ -524,17 +531,17 @@ nodes in the background mesh.
 \begin{algorithmic}
 \If {$a_{sI,t}^{k+1} < 0.0$}
     \State $v_{sI,t}^{k+1,tmp}=v_{sI}^k+\Delta a_{sI,t}^{k+1}$
-    \If {$v_{sI,t}^{k+1,tmp}= 0$} \Comment{static fricion condition}
+    \If {$v_{sI,t}^{k+1,tmp}= 0$} \Comment{static friction condition}
         \If {$a_{sI,t}^{k+1} \leq \mu_s \left| a_{sI,n}^{k+1} \right|$}
             \State $a_{sI,t}^{k+1}= 0.$
         \Else \Comment{friction acts in the direction opposite to the tangential force}
             \State $a_{sI,t}^{k+1} = a_{sI,t}^{k+1} - \mu_s  \left| a_{sI,n}^{k+1} \right| \frac{a_{sI,t}^{k+1}}{ \left| a_{sI,n}^{k+1} \right|}$
 
         \EndIf
-    \Else  \Comment{Kinetic fricion condition}
+    \Else  \Comment{kinetic friction condition}
         \If {$v_{sI,t}^{k+1} \leq \mu_k \left| a_{sI,n}^{k+1} \right| \Delta t$}
             \State $a_{sI,t}^{k+1} = - \frac{v_{sI,t}^{k}}{\Delta t}$
-        \Else \Comment{friction acts in the direction opposite to the movement}
+        \Else \Comment{friction acts in the direction opposite to movement}
             \State $a_{sI,t}^{k+1} = a_{sI,t}^{k+1} - \mu_k  \left| a_{sI,n}^{k+1} \right| \frac{v_{sI,t}^{k+1}}{ \left| v_{sI,n}^{k+1} \right|}$
         \EndIf
     \EndIf
@@ -545,15 +552,15 @@ nodes in the background mesh.
 \subsection{Integration scheme}
 
 \citet{Love2006} investigated the energy consistency of MPM and observed that 
-the MPM algorithm is more suited to flow calculations than the Lagrangian 
-finite element method. Since, energy consistent MPM formulation is effective 
+the MPM algorithm is better suited to flow calculations than the Lagrangian 
+finite element method. The energy-consistent MPM formulation is effective 
 in simulating materials that exhibit localised dissipative mechanisms. In 
 dynamic MPM, an explicit time integration scheme is 
 adopted to advance the solution.~\citet{Bardenhagen2002} studied the energy 
 consistency of MPM using two different explicit integration schemes. The 
 \textit{update stress first} (USF) scheme involves updating the strain and the 
 stress at the beginning of the time step from the velocities of the previous 
-time step. In the \textit{update stress last} (USL) approach the updated 
+time step. In the \textit{update stress last} (USL) approach, the updated 
 particle momentums are used to calculate the nodal velocities, which are then 
 used to update the particle strain and stress.~\citet{Bardenhagen2002} observed 
 that the USL approach performed better 
@@ -562,15 +569,15 @@ approach is found to gain energy~\citep{Kafaji2013}. The USL approach yields
 almost the same result as using the central difference scheme that is second 
 order in time~\citep{Wallstedt2008}. The \textit{update stress last} approach 
 is used in the present study due to its dissipative nature, which is useful in 
-modelling granular flow problems, and numerical stability.
+modelling granular flow problems and numerical stability.
 
-In problems involving a slow rate of loading, i.e., quasi-static problems, the 
+In problems involving a slow rate of loading, i.e. quasi-static problems, the 
 flow of the material is much slower than the speed of wave propagation in the 
 material. Hence, employing an implicit time integration scheme reduces the 
 computational time considerably~\citep{Kafaji2013}.~\citet{Guilkey2003a} 
 proposed an implicit time integration method for MPM using quasi-static 
-governing equations, and the Newmark integration scheme.~\citet{Love2006} 
-showed implicit time integration in MPM is unconditionally stable. 
+governing equations and the Newmark integration scheme.~\citet{Love2006} 
+showed that implicit time integration in MPM is unconditionally stable. 
 Although, MPM does not suffer from the limitations of FEM in simulating large 
 deformations, more research is required for applying implicit time integration 
 for large deformation problems. The present study focuses on large deformation 
@@ -580,21 +587,21 @@ adopted.
 \subsection{Solution scheme}
 
 In the present study a template-based three-dimensional C++11 Material Point 
-Method code, developed at the University of Cambridge, is modified and extended 
-to study granular flow problems. The three-dimensional MPM code is parallelised 
-to run on multi-core systems, thus improving the computational efficiency. The 
-algorithm of the MPM code is improved to handle multi-body dynamics and 
-interactions. A step-by-step solution scheme for Material Point Method 
-implemented in the present study is described below:
+Method code, developed at the University of Cambridge~\citep{Bandara2013}, is 
+modified and extended to study granular flow problems. The three-dimensional 
+MPM code is parallelised to run on multi-core systems, thus improving the 
+computational efficiency. The algorithm of the MPM code is improved to handle 
+multi-body dynamics and interactions. A step-by-step solution scheme for 
+the Material Point Method implemented in the present study is described below:
 
 \begin{itemize}
 
 \item
 A continuum body is discretised into a finite set of material points 
 corresponding to the original configuration of the body. The number of material 
-points corresponds to the resolution of the mesh size adopted in Finite Element 
-Method. The material points are followed throughout the deformation of the 
-material, which gives a Lagrangian description of the motion. 
+points corresponds to the resolution of the mesh size adopted in the Finite 
+Element Method. The material points are followed throughout the deformation of 
+the material, which is a Lagrangian description of the motion. 
 
 \item
 An arbitrary computational grid is initialized to describe the natural 
@@ -603,16 +610,16 @@ grid is usually adopted.
 
 \item
 The state variables (mass/density, velocity, strain, stress, other material 
-parameter corresponding to the adopted constitutive relation) are initialized 
+parameters corresponding to the adopted constitutive relation) are initialized 
 at every material point. 
 
 \item
 The shape function $N_{ip}^t(x_p)$ and the gradient of the shape function 
-$G_{ip}^t$ for each material point is computed.
+$G_{ip}^t$ for each material point are computed.
 
 \item
-The information and properties carried by each material point is projected on 
-to the background mesh using the shape functions computed from the 
+The information and properties carried by each material point are projected 
+onto the background mesh using the shape functions computed from the 
 particle position. 
 
 \item
@@ -625,9 +632,9 @@ The nodal mass matrix is obtained as
 \end{equation}
 %
 where $\mathit{m}_{i}^{t}$ is the mass at node \textit{i} at time \textit{t}, 
-$\mathit{m}_{\mathit{p}}$ the particle mass, $\mathit{N}_{\mathit{i}}$ the 
-shape function associated with node \textit{i}, and 
-$\mathit{x}_{\mathit{p}}^{\mathit{t}}$ the location of the particle at time
+$\mathit{m}_{\mathit{p}}$ is the particle mass, $\mathit{N}_{\mathit{i}}$ is 
+the shape function associated with node \textit{i}, and 
+$\mathit{x}_{\mathit{p}}^{\mathit{t}}$ is the location of the particle at time
 \textit{t}.
 % The numerical solution of the momentum balance equation is obtained 
 %at a discrete set of times $t^k$, where \textit{k} = 1,\dots,\textit{K}. A 
@@ -635,7 +642,7 @@ $\mathit{x}_{\mathit{p}}^{\mathit{t}}$ the location of the particle at time
 %at time $t^k$ is indicated by a superscript \textit{k}.
 
 \item
-The nodal velocity is obtained by mapping the particle velocity to the nodes 
+The nodal velocity is obtained by mapping the particle velocity onto the nodes 
 using the shape functions. If necessary, the boundary conditions
 for the nodal velocities are applied.
 %
@@ -648,7 +655,7 @@ for the nodal velocities are applied.
 \end{equation}
 
 \item
-The momentum balance equation for the solid phase is solved and the nodal 
+The momentum balance equation for the solid phase is solved, and the nodal 
 acceleration is computed as
 \begin{equation}
 \mathbf{\mathit{a}}_i^t = \frac{1}{m_i^t} \left( - \sum\limits_{p = 
@@ -660,7 +667,7 @@ If necessary, the boundary conditions for the nodal accelerations are applied.
 
 \item
 The nodal velocity at the end of the Lagrangian time step (L) is obtained from 
-the computed nodal acceleration as:
+the computed nodal acceleration as
 \begin{equation}
 \mathbf{\mathit{v}}_{\mathit{i}}^{L} = 
 \mathit{\mathbf{v}}_{\mathit{i}}^{\mathit{t}} + 
@@ -669,7 +676,7 @@ the computed nodal acceleration as:
 where $\Delta t = (t+1) - t$.
 
 \item
-The particle position and its velocity are updated according to:
+The particle position and its velocity are updated according to
 \begin{align}
 \nonumber
 \mathbf{x}_{\mathit{p}}^{\mathit{t}+1} &  = 
@@ -684,8 +691,8 @@ The particle position and its velocity are updated according to:
 
 
 \item
-The strain increment $\Delta \epsilon_{p}^{t+1}$ for particle is then computed 
-as
+The strain increment $\Delta \epsilon_{p}^{t+1}$ for the particle is then 
+computed as
 %
 \begin{equation}
 \Delta \epsilon_{p}^{t+1} = \frac{\Delta t}{2} 
@@ -723,9 +730,9 @@ The stress and the strain of the material points are updated based on
 %
 
 \item
-In large deformation the volume of solid material points $\Omega_p$ is updated 
-using the determinant \textit{J} of the deformation gradient 
-$\mathbf{F}_p^{t+1}$:
+In large deformations, the volume of the solid material points $\Omega_p$ is 
+updated using the determinant \textit{J} of the deformation gradient 
+$\mathbf{F}_p^{t+1}$
 \begin{equation}
 \Omega_p^{t+1} = J \Omega_p^{t_0} \,.
 \end{equation}
@@ -741,7 +748,7 @@ The material point density is then updated as
 \item
 At the end of every time step, all the variables on the grid nodes are 
 initialized to zero. The material points carry all the information about the
-solution and the computational grid is re-initialised for the next step.
+solution, and the computational grid is re-initialised for the next step.
 \end{itemize}
 \Cref{fig:MPMsteps} illustrates the steps involved in a MPM analysis. 
 
@@ -750,41 +757,41 @@ solution and the computational grid is re-initialised for the next step.
 \includegraphics[width=0.975\textwidth]{MPMsteps}
 \caption[Illustration of the MPM algorithm]{Illustration of MPM algorithm (1) A 
 representation of material points overlaid on a computational grid. Arrows 
-represent material point state vector (mass, volume, velocity, etc.) being 
+represent material point state vectors (mass, volume, velocity, etc.) being 
 projected to the nodes of the computational grid. (2) The equations of motion 
-are solved on the nodes, resulting in updated nodal velocities and positions. 
+are solved onto the nodes, resulting in updated nodal velocities and positions. 
 (3) The updated nodal kinematics are interpolated back to the material points. 
-(4)  The state of the material points are updated and the computational grid is 
+(4)  The state of the material points is updated, and the computational grid is 
 reset.} 
 \label{fig:MPMsteps}
 \end{figure}
 
-\subsubsection{Post processing}
+\subsubsection{Post-processing}
 
-The post-processing stage, as in any analysis, involves visualization 
-and extraction of the data from the analysis. In mesh-less methods, like the 
-material point method, structures are generally represented as points which 
+The post-processing stage, as in most analysis, involves visualization 
+and extraction of the data from the analysis. In mesh-less methods, like MPM, 
+structures are generally represented as points which 
 describe a discrete region of the body. MPM facilitates representation of 
-arbitrarily complex geometries and has advantages over strictly grid based 
-methods especially in simulations involving large 
+arbitrarily complex geometries and has advantages over strictly grid-based 
+methods, especially in simulations involving large 
 deformations~\citep{Bardenhagen2000}. However, MPM poses a whole new set of 
-visualization problem. It is essential to visualize the general configuration 
+visualization problems. It is essential to visualize the general configuration 
 of the body as well as observe the finer details like the development of cracks 
 or separation of chunks of material from the body. The body is discretised into 
 conceptual material points, which carry all the relevant information of the 
 corresponding segment. The unique qualities of MPM necessitate the need to 
 visualize the particle data in a way that is informative and appropriate.
 
-In MPM, the particle data represents the finite portion of a larger 
+In MPM, the particle data represent the finite portion of a larger 
 continuum, and the ability to see and interpret the 
 macroscopic structure created by these particles is vital~\citep{bigler2006}. 
 There are two main aspects in visualizing MPM data: (1) visualization of 
-the structure represented by the material points, and (2) understanding the 
+the structure represented by the material points and (2) understanding the 
 qualitative trends associated with the material points like mass, velocity or 
 stress.
 
-The MPM output data contains both the material point and the grid data, and
-one approach in visualizing MPM data is by rendering the interpolated 
+The MPM output data contain both the material point and the grid data, and
+one approach in visualizing MPM data is to render the interpolated 
 particle values on grid nodes using the 
 \textit{iso-surfacing}~\citep{lorensen1987} 
 or \textit{volume rendering}~\citep{levoy1988}. In regions where the 
@@ -793,12 +800,12 @@ sufficiently fine to compensate for the missing features. This results in
 storing a large amount of unnecessary data in regions where sufficient material 
 points are present. Thus, it is advantageous to visualize MPM data of the 
 material points as particles~\citep{bigler2006}. Particle visualization 
-involves rendering the particles as a sphere or an ellipsoid representing the 
+involves rendering the particles as a spheres or an ellipsoids representing the 
 size and location of the fraction of the 
 continuum~\citep{kuester2001,krogh1997,gumhold2003}. In the present study, MPM 
 data points are represented as spheres.  Colour mapping of scalar 
-quantities such as mass, velocity, or stress of a material point are applied to 
-provide additional qualitative understanding of the data.
+quantities, such as mass, velocity, or stress, of a material point are applied 
+to provide additional qualitative understanding of the data.
 
 
 \subsection{GIMP method}
@@ -806,32 +813,32 @@ provide additional qualitative understanding of the data.
 The shape functions used in MPM are continuous, and hence penetrations between 
 bodies are handled automatically without the need for any supplemental contact 
 algorithm~\citep{Chen2002}. In MPM, the continuum body deforms and moves in 
-an arbitrary computation grid and all the boundary conditions are carried by 
+an arbitrary computation grid. All boundary conditions are carried by 
 the boundary particles. If a boundary particle is present in a cell, then the 
 cell boundary becomes a part of the continuum body, and the cell size 
-represents the thickness of the boundary. However, in certain cases both the 
-boundary particle and an interior particle can be found in a cell, in which 
-case the cell is still treated as a boundary cell, and the interior particle 
+represents the thickness of the boundary. In certain cases, however, both the 
+boundary particle and an interior particle can be found in a cell. In such 
+cases, the cell is still treated as a boundary cell, and the interior particle 
 temporarily acts as a boundary particle. To avoid numerical errors, it is 
 essential to use a smaller cell size along the boundary~\citep{Chen2002}. 
 
 In MPM simulations, numerical noise is observed when material points 
-cross the cell boundaries as the body deforms, this is termed \textit{cell 
+cross the cell boundaries as the body deforms. The noise is termed \textit{cell 
 crossing noise}. If a material point is located very close to 
-the cell boundary, it results in discontinuous gradient of the weighing 
+the cell boundary. Then the results is a discontinuous gradient of the weighing 
 function causing a force imbalance on the grid~\citep{Bardenhagen2004}. This 
-results in large non-physical acceleration values resulting in separation of 
+results in large, non-physical acceleration values causing separation of 
 material points from the continuum~\citep{Sulsky1995}. 
 ~\Cref{fig:cellnoise} illustrates the problem of cell crossing noise. The 
 main reason for the occurrence of cell crossing noise is the use of piecewise 
 linear shape functions. However, this problem, which is predominant when using 
-fine mesh size, can be overcome by changing the order of arithmetic operation 
+fine mesh size, can be overcome by changing the order of arithmetic operation, 
 as proposed by \citet{Sulsky1995}. 
 
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=0.7\textwidth]{cellnoise}
-\caption{Schematic description of occurrence of cell crossing noise in MPM}
+\caption{Schematic description of the occurrence of cell crossing noise in MPM.}
 \label{fig:cellnoise}
 \end{figure}
 
@@ -882,17 +889,17 @@ in the general form
 \nomenclature[g-chi]{$\chi$}{Characteristic function}
 \nomenclature[g-psibar]{$\bar{\phi}$}{Weighting function}
 where $l_p$ is the width of the particle characteristic function 
-$\chi_p$.~\cref{fig:gimp} shows a 1-D GIMP weighting function $\bar{\phi}_{ip}$ 
+$\chi_p$.~\Cref{fig:gimp} shows a 1-D GIMP weighting function $\bar{\phi}_{ip}$ 
 and gradient weighting function $\bar{\nabla\phi}_{ip}$ for a 
 piecewise-constant $\chi_p$ with a characteristic length of \textit{l}. The 
-GIMP weighting function is smooth, however a discontinuity is observed in the 
+GIMP weighting function is smooth; however, a discontinuity is observed in the 
 gradient weighting function. 
 
 
-In traditional MPM, boundary conditions only need be applied on those nodes 
+In traditional MPM, boundary conditions need only be applied on those nodes 
 which coincide with the extent of the computational domain. As  illustrated 
 in~\cref{fig:MPM_Linear} nodes beyond those boundaries are not influenced by 
-particles within the domain. This can be considered a result of the zero
+particles within the domain, which can be considered a result of the zero
 width of the Dirac delta characteristic functions. However, special attention 
 is required to simulate the boundaries in the Generalized Interpolation 
 Material Point Method (GIMP). Namely, because of their increased extents, it is 
@@ -928,52 +935,54 @@ values~\citep{Steffen2008}.
 		\caption{Piecewise-Linear}
 		\label{fig:MPM_Linear}
 	\end{subfigure} 
-	\caption{Schematic view of 1-D basis functions used in 
+	\caption{Schematic view of the 1-D basis functions used in 
 	MPM~\citep{Steffen2008}.}
 	\label{fig:MPM_GIMP_func}
 \end{figure}
 
 In the present study, the influence of the GIMP method on the run-out behaviour 
 of a granular column collapse experiment is investigated.~\Cref{fig:exp} shows 
-a granular column of height $H_0$ and length $L_0$ is allowed to collapse and 
-flow on a horizontal plane. The run-out distance observed is proportional to 
+a granular column of height $H_0$, and length $L_0$, is allowed to collapse 
+and flow on a horizontal plane. The run-out distance observed is proportional 
+to 
 the initial aspect ratio of the column ($H_0/L_0$). A granular column with an 
 initial aspect ratio of 0.4 is considered for the comparison. The granular 
 column is represented by 32,000 material points arranged uniformly on a regular 
-lattice with a particle spacing of 0.25~\si{\mm}. Since, the scale of the 
+lattice with a particle spacing of 0.25~\si{\mm}. Since the scale of the 
 problem being modelled is small and it is important to precisely define the 
 flow surface, a larger number of material points are used to represent the 
-geometry. However when modelling geophysical problems, where the tolerance in 
-defining the flow surface is in the order of few millimetres, each material 
-point shall represent individual grains or orders of magnitude larger than the 
-grain size. A grid size of 1~\si{mm} is adopted with 16 material points per 
-cell. In order to understand the influence of the number of material points on 
-the accuracy of the solution, a simulation using 4 material points per cell 
-with GIMP is also performed. The granular collapse experiment is performed for 
-a column with an initial aspect ratio of 0.4 using both GIMP method and MPM 
-with 16 material points per cell. 
+geometry. When modelling geophysical problems, where the tolerance in 
+defining the flow surface is in the order of a few millimetres, however, each 
+material point shall represent individual grains or orders of magnitude larger 
+than the grain size. A grid size of 1~\si{mm} is adopted with 16 material 
+points per cell. In order to understand the influence of the number of material 
+points on the accuracy of the solution, a simulation using 4 material points 
+per cell with GIMP is also performed. The granular collapse experiment is 
+performed for a column with an initial aspect ratio of 0.4 using both GIMP 
+method and MPM with 16 material points per cell. 
 
 The evolution of run-out at time $t=\tau_c$ and $t=6\tau_c$, where $\tau_c$ is 
-the critical time when the potential energy is fully mobilised, are presented 
+the critical time when the potential energy is fully mobilised, is presented 
 in~\cref{fig:MPM_GIMP_TC}. At the initial stage of collapse $t=\tau_c$, both 
 MPM and GIMP give almost the same behaviour. The run-out observed in the case 
 of 4 material points per cell is similar to the run-out behaviour for 16 
 material points per cell. At the end of the flow, the GIMP simulation with 4 
-material points show oscillations at the flow front due to fewer material 
-points in a cell. However, both MPM and GIMP show a more smoother response at 
+material points shows oscillations at the flow front due to fewer material 
+points in the cell. However, both MPM and GIMP show a smoother response at 
 the flow front. The evolution of run-out and height with time for both MPM and 
 GIMP are presented in~\cref{fig:MPM_GIMP}. For a time up to $t=1.5\tau_c$ all 
 approaches yield the exact same behaviour. However, as the flow progresses, the 
-number of material points per cell at the flow front decreases and this results 
-in oscillations. The oscillations with decrease in the number of material 
-points can be seen in the case of 4 material points per cell. Hence, it is 
+number of material points per cell at the flow front decreases, resulting in 
+oscillations. The oscillations decrease with increase in the number of 
+material points. Hence, it is 
 essential to have a larger number of material points, especially at the flow 
-front. The difference in the normalised run-out between MPM and GIMP method is 
+front. The difference in the normalised run-out between the MPM and GIMP 
+methods is 
 about 2.5\%. This is due to the difference in the interpolation scheme adopted 
 in both approaches. GIMP method offers a better approximation of the run-out 
 behaviour as a result of the continuous basis function. This also results in a 
-more smooth stress and velocity distribution in GIMP than MPM. With increase in 
-the number of material points and the use of finer mesh size decrease the 
+smoother stress and velocity distribution in GIMP than MPM. With increase in 
+the number of material points and the use of finer mesh size decreases the 
 difference between both approaches. The computational effort using GIMP method 
 is almost twice that of MPM, since GIMP method considers the particles at 
 neighbouring cells due to the larger spread of the basis functions. In the 
@@ -1025,8 +1034,8 @@ simulate large deformation problems.
 		\label{fig:16MPM_6tc}
 	\end{subfigure}
 	\caption*{$t = 6\tau_c$}
-	\caption{Comparison between GIMP method and conventional MPM on the flow 
-	morphology of a granular column collapse (a = 0.4).}
+	\caption{Comparison between the GIMP method and the conventional MPM on the 
+	flow morphology of a granular column collapse (a = 0.4).}
 	\label{fig:MPM_GIMP_TC}
 \end{figure} 
 
@@ -1035,16 +1044,16 @@ simulate large deformation problems.
 	\begin{subfigure}[b]{0.95\textwidth}
 		\centering
 		\includegraphics[width=0.95\textwidth]{Runout_MPM_GIMPM}
-		\caption{Evolution of run-out (GIMP method vs MPM)}
+		\caption{Evolution of run-out (GIMP method vs. MPM)}
 		\label{fig:Runout_MPM_GIMPM}
 	\end{subfigure} \\
 	\begin{subfigure}[b]{0.95\textwidth}
 		\centering 
 		\includegraphics[width=0.95\textwidth]{Height_MPM_GIMP}
-		\caption{Evolution of height (GIMP method vs MPM)}
+		\caption{Evolution of height (GIMP method vs. MPM)}
 		\label{fig:Height_MPM_GIMP}
 	\end{subfigure} \\
-	\caption{Comparison between GIMP method and conventional MPM on the 
+	\caption{Comparison between the GIMP method and the conventional MPM on the 
 	evolution of run-out and height with time for a granular column collapse (a 
 	= 0.4).}
 	\label{fig:MPM_GIMP}
@@ -1053,8 +1062,8 @@ simulate large deformation problems.
 
 \subsection{Application of MPM in geomechanics}
 
-The studies on using the material point method in modelling
-geotechnical problems are limited. The potential of the Material Point Method 
+The studies on using MPM in modelling geotechnical problems are limited. The 
+potential of the Material Point Method 
 in modelling granular flows, due to the discharge of silos, was first 
 recognised by~\citet{Wieckowski1999}.~\citet{Bardenhagen2001} developed a 
 frictional contact algorithm to model granular materials. The Mohr-Coloumb 
@@ -1064,25 +1073,25 @@ material points in the cell differs from the nodal velocity interpolated from a
 single material point.~\citet{Coetzee2005} applied this contact algorithm to 
 understand the pull-out behaviour of anchors.~\citet{Ma2014} developed a new 
 contact algorithm with a penalty contact function and a limited maximum shear 
-stress for soil-structure interaction, i.e, interaction of pipe-line with 
+stress for soil-structure interaction, i.e. interaction of pipe-line with 
 debris flow or submarine landslide. The penalty contact function behaves 
-similar to numerical damping and thus reduces the oscillations during the 
+similarly to numerical damping and thus reduces the oscillations during the 
 impact. 
 
 \citet{Beuth2010} applied Gaussian integration in quasi-static MPM to model 
-large strain problems. However in this approach, conservation of mass is not 
-valid as a larger filled volume of material is considered.~\citet{Andersen2010} 
-used GIMP method with an elasto-plastic model to simulate slope failures. The 
-solution is found to be dependant on the number of material points used to 
+large strain problems. In this approach, however, the conservation of mass is 
+not valid as a larger filled volume of material is 
+considered.~\citet{Andersen2010} used the GIMP method with an elasto-plastic 
+model to simulate slope failures. The solution is found to be dependant on the 
+number of material points used to 
 describe the slope geometry.~\citet{Mast2014} studied the behaviour of granular 
 column collapse using a non-associative flow rule. They observed a 
 significant increase in the run-out distance for large aspect ratio 
-columns.~\citet{Mast2014a} investigated the suitability of Material Point 
-Method in the prediction of large deformation problems such as snow 
-avalanches. 
+columns.~\citet{Mast2014a} investigated the suitability of the MPM in 
+prediction of large deformation problems, such as snow avalanches. 
 
-~\citet{Guilkey2007} developed a coupled numerical scheme for fluid-structure 
-interaction. The solid field is modelled in a Lagrangian frame, while an 
+\citet{Guilkey2007} developed a coupled numerical scheme for fluid-structure 
+interactions. The solid field is modelled in a Lagrangian frame, while an 
 Eulerian frame, compressible CFD, is used for the fluid. As the MPM computation 
 grid is reset at every stage, the same Eulerian grid is adopted for both the 
 solid and the fluid. A similar approach was adopted by~\cite{Zhang2008} to 
