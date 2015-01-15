@@ -2,7 +2,7 @@
 %**************************
 % Please have a look at the README.md file for info on how to use the template
 
-\documentclass[a4paper,11pt,times,print,authoryear]{Classes/PhDThesisPSnPDF}
+\documentclass[a4paper,11pt,times,print,chapter,authoryear]{Classes/PhDThesisPSnPDF}
 
 % ********************************** Preamble **********************************
 % Preamble: Contains packages and user-defined commands and settings
@@ -23,7 +23,7 @@
 
 \ifdefineChapter
  \setcounter{chapter}{5}
- \includeonly{Chapter5/chapter5}
+ \includeonly{Chapter6/chapter6}
 \fi
 
 % ******************************** Front Matter ********************************
@@ -52,7 +52,7 @@
 
 % \printnomenclature[space] space can be set as 2.5cm between symbol and
 % description
-\printnomencl[3cm]
+\printnomenclature[2cm]
 
 % ******************************** Main Matter *********************************
 \mainmatter
@@ -63,7 +63,7 @@
 \include{Chapter4/chapter4}
 \include{Chapter5/chapter5}
 \include{Chapter6/chapter6}
-%\include{Chapter7/chapter7}
+\include{Chapter7/chapter7}
 
 
 
