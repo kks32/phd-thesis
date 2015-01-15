@@ -737,24 +737,20 @@ dispersion of grains. The rate of dissipation of the negative pore-pressure is
 directly proportional to the permeability of the granular assembly. In the 
 previous section, the evolution of run-out with the initial aspect ratio is 
 studied using a constant hydrodynamic radius \textit{r} = 0.7 \textit{R}. In 
-order to 
-understand 
-the effect of permeability on the run-out behaviour, the hydrodynamic radius 
-\textit{r} is varied from 0.7 \textit{R} to 0.95 \textit{R} for all aspect 
-ratios. Increase in 
-the hydrodynamic radius decreases the permeability of the granular assembly 
-resulting in a longer duration for the dissipation of negative pore-pressure. 
+order to understand the effect of permeability on the run-out behaviour, the 
+hydrodynamic radius \textit{r} is varied from 0.7 \textit{R} to 0.95 \textit{R} 
+for all aspect ratios. Increase in the hydrodynamic radius decreases the 
+permeability of the granular assembly resulting in a longer duration for the 
+dissipation of negative pore-pressure. 
 
 The normalised run-out for different hydrodynamic radii for a granular column 
 with an initial aspect ratio of 0.8 are presented 
 in~\cref{fig:Runout_a08_dense}. The run-out increases with decrease in the 
 permeability, which is equivalent to an increase in the hydrodynamic radius. 
 An increase in the hydrodynamic radius from 0.7 to 0.95 \textit{R} increases 
-the 
-normalised run-out by 25\%. However, even under a very low permeability 
+the normalised run-out by 25\%. However, even under a very low permeability 
 condition (\textit{r} = 0.95 \textit{R}), the run-out observed in fluid is 
-shorter than the dry 
-and the buoyant conditions. 
+shorter than the dry and the buoyant conditions. 
 
 \begin{figure}[htpb]
 \centering
@@ -765,43 +761,65 @@ collapse in fluid (a = 0.8)}
 \end{figure}
 
 At a high permeability (\textit{r} = 0.7 \textit{R}), the evolution of run-out 
-at the initial 
-stage is quicker, which means that the negative pore-pressure that is developed 
-during the shearing along the shear-failure surface is dissipated faster. Even 
-though the negative pore-pressure is dissipated, due to 
+at the initial stage is quicker, which means that the negative pore-pressure 
+that is developed during the shearing along the shear-failure surface is 
+dissipated faster. Even though the negative pore-pressure is dissipated, due to 
 the development of negative pore-pressure the evolution of run-out in fluid is 
 slower than its dry counterpart. The rate of pore-pressure dissipation 
 decreases with decrease in the permeability. This can be observed by a flatter 
 slope in the run-out evolution with decrease in the 
-permeability.~\Cref{fig:PWP_ini_dense} shows 
-the distribution of pore-pressure in high and low permeability granular media 
-along the horizontal direction at a height of $10 \times d$ from the base. In 
-LBM, the pore-pressure in fluid is a function of fluid density distribution 
-functions. 
-At time $t = \tau_c$, the highly permeable (\textit{r} = 0.7 \textit{R}) 
-granular column 
+permeability.~\Cref{fig:PWP_ini_dense} shows the distribution of pore-pressure 
+in high and low permeability granular media along the horizontal direction at a 
+height of $10 \times d$ from the base. In LBM, the pore-pressure in fluid is a 
+function of fluid density distribution functions. At time $t = \tau_c$, the 
+highly permeable (\textit{r} = 0.7 \textit{R}) granular column 
 shows smaller negative pore-pressure in comparison to large negative 
 pore-pressures observed in the shearing zone of a low permeable column 
-(\textit{r} = 0.9 
-R). This shows that not only does it take longer for the pore-pressure to 
-dissipate with a decrease in permeability, but also results in almost twice the 
-negative pore-pressure than what is observed in the high permeable case 
-(\cref{fig:r095_PWP_ini_dense}).
+(\textit{r} = 0.9 R). This shows that not only does it take longer for the 
+pore-pressure to dissipate with a decrease in permeability, but also results in 
+almost twice the negative pore-pressure than what is observed in the high 
+permeable case (\cref{fig:r095_PWP_ini_dense,fig:r095_PWPress_ini_dense}). A 
+high value of positive pore-pressure is observed at the face of the column 
+in the low permeable condition. This indicates that the low permeable column 
+fails as a continuous block undergoing a shear failure, which generates a very 
+large negative pore-pressure along the failure surface. However, in the case of 
+the high permeable column the failure is more localised with multiple negative 
+pore-pressure spikes (\cref{fig:r07_PWPress_ini_dense}).
 
 \begin{figure}
 \centering
 \begin{subfigure}[t]{0.975\textwidth}
 	\centering
     \includegraphics[width=\textwidth]{a08/r07_PWP_ini_dense}
-    \caption{High permeability (\textit{r} = 0.7 \textit{R})}
+    \caption{High permeability (\textit{r} = 0.7 \textit{R}) - Pressure at the 
+        bottom of the granular flow}
     \label{fig:r07_PWP_ini_dense}
 \end{subfigure} \\
 \begin{subfigure}[t]{0.975\textwidth}
 	\centering
     \includegraphics[width=\textwidth]{a08/r095_PWP_ini_dense}
-    \caption{Low permeability (\textit{r} = 0.95 \textit{R})}
+    \caption{Low permeability (\textit{r} = 0.95 \textit{R}) - Pressure at the 
+        bottom of the granular flow}
     \label{fig:r095_PWP_ini_dense}
 \end{subfigure}
+\end{figure}
+\begin{figure}
+\ContinuedFloat
+\begin{subfigure}[t]{0.975\textwidth}
+	\centering
+    \includegraphics[width=\textwidth]{a08/r07_PWP_ini_press_dense}
+    \caption{High permeability (\textit{r} = 0.7 \textit{R}) - Pressure contour 
+    (Pa)}
+    \label{fig:r07_PWPress_ini_dense}
+\end{subfigure} \\
+\begin{subfigure}[t]{0.975\textwidth}
+	\centering
+    \includegraphics[width=\textwidth]{a08/r095_PWP_ini_press_dense}
+    \caption{Low permeability (\textit{r} = 0.95 \textit{R}) - Pressure contour 
+    (Pa)}
+    \label{fig:r095_PWPress_ini_dense}
+\end{subfigure}
+
 \caption{Effect of permeability on the excess pore water pressure distribution 
 for a granular column collapse in fluid (a = 0.8 \& dense packing) at $t = 
 \tau_c$ along the horizontal direction at a height of 10d from the base.}
@@ -822,7 +840,7 @@ with time reveals that the peak kinetic energy is sustained longer as the
 permeability of the granular material decreases (\cref{fig:KExy_a08_dense}). 
 Although the peak kinetic energy is smaller in the low permeability case, the 
 hydroplaning of the flowing granular mass results in a longer run-out 
-distance.~\Cref{fig:r095_PWP_flow_dense} shows the 
+distance.~\Cref{fig:r095_PWP_flow_dense,fig:r095_PWPress_flow_dense} shows the 
 distribution of pore-pressure for a dense granular column collapse in fluid 
 along the bottom plane. A high positive pore-pressure is observed 
 at the base of the granular flow at the flow front in low permeability 
@@ -872,15 +890,35 @@ for a granular column collapse in fluid (a = 0.8)}
 \begin{subfigure}[t]{0.975\textwidth}
 	\centering
     \includegraphics[width=\textwidth]{a08/r07_PWP_flow_dense}
-    \caption{High permeability (\textit{r} = 0.7 \textit{R})}
+    \caption{High permeability (\textit{r} = 0.7 \textit{R}) - Pressure at the 
+    bottom of the granular flow}
     \label{fig:r07_PWP_flow_dense}
 \end{subfigure}
 \\
 \begin{subfigure}[t]{0.975\textwidth}
 	\centering
     \includegraphics[width=\textwidth]{a08/r095_PWP_flow_dense}
-    \caption{Low permeability (\textit{r} = 0.95 \textit{R})}
+    \caption{Low permeability (\textit{r} = 0.95 \textit{R}) - Pressure at the 
+        bottom of the granular flow}
     \label{fig:r095_PWP_flow_dense}
+\end{subfigure}
+\end{figure}
+\begin{figure}
+\ContinuedFloat
+\begin{subfigure}[t]{0.975\textwidth}
+	\centering
+    \includegraphics[width=\textwidth]{a08/r07_PWP_flow_press_dense}
+    \caption{High permeability (\textit{r} = 0.7 \textit{R}) - Pressure contour 
+    (Pa)}
+    \label{fig:r07_PWPress_flow_dense}
+\end{subfigure}
+\\
+\begin{subfigure}[t]{0.975\textwidth}
+	\centering
+    \includegraphics[width=\textwidth]{a08/r095_PWP_flow_press_dense}
+    \caption{Low permeability (\textit{r} = 0.95 \textit{R}) - Pressure contour 
+    (Pa)}
+    \label{fig:r095_PWPress_flow_dense}
 \end{subfigure}
 \caption{Effect of permeability on the excess pore water pressure distribution 
 along the bottom plane for a granular column collapse in fluid (a = 0.8 \& 
@@ -889,37 +927,56 @@ dense packing) at $t = 2\tau_c$.}
 \end{figure}
 
 \begin{figure}
+\centering
+\makebox[\linewidth][c]{
+\begin{subfigure}[t]{0.95\textwidth}
 	\centering
     \includegraphics[width=0.8\textwidth]{Packing_Density_a08_dense}
-    \caption{Effect of permeability on the evolution of packing density for a 
-    granular column collapse in fluid (a = 0.8 \& dense initial packing)}
+    \caption{Evolution of packing density}
     \label{fig:Packing_Density_a08_dense}
+\end{subfigure}
+}\\
+
+\makebox[\linewidth][c]{
+\begin{subfigure}[t]{0.95\textwidth}
+	\centering
+    \includegraphics[width=0.8\textwidth]{Fr_a08_dense}
+    \caption{Evolution of Froude's number}
+    \label{fig:Fr_a08_dense}
+\end{subfigure}
+}
+    \caption{Effect of permeability on the evolution of packing density and 
+    Froude's number for a granular column collapse in fluid (a = 0.8 \& dense 
+    initial packing)}
+    \label{fig:Packing_Density_Fr_a08_dense}
 \end{figure}
 
-The high permeability granular column shows 
-lower water entrainment (\cref{fig:Packing_Density_a08_dense}), which 
-indicates that for highly permeable flows the 
-drag force acting on the soil grains predominates over the lubrication effect 
-on the run-out behaviour. In both the low and high permeable granular flows, 
-the granular material consolidates at the final stage of the flow 
-(\cref{fig:Packing_Density_a08_dense}). This can be observed by the increase 
-in the packing density at the final stage due to settlement of grains and 
-expulsion of 
-entrained water. The final deposit profile for both low and high permeability 
-conditions are shown in~\cref{fig:a08_dense_snapshots}. The high permeability 
-collapse shows a more parabolic (convex) deposit profile in contrast to the 
-more concave profile observed in the low permeability condition. In high 
-permeable 
-condition, once the granular mass is mobilised, the drag forces slows down the 
-rate of flow, which allows the grains to densify resulting in a more parabolic 
-profile. This is in contrast to the hydroplaning observed in the low 
-permeability 
-condition, where the granular mass thickness is smaller than the dense 
-condition. The observation of hydroplaning in the low permeable condition may 
-be due to the difference in the distribution of granular mass at the flow 
-front. Instigation of hydroplaning is controlled by the balance of gravity and 
-inertia forces at the debris front and is suitably characterized by the 
-densimetric Froude's number:
+
+The high permeability granular column shows lower water entrainment 
+(\cref{fig:Packing_Density_a08_dense}), which indicates that for highly 
+permeable flows the drag force acting on the soil grains predominates over the 
+lubrication effect on the run-out behaviour.~\Cref{fig:Fr_a08_dense} shows the 
+evolution of Froude's number with time for different permeability conditions. 
+In dense granular columns, the Froude's number increases with decrease in 
+permeability, however the Froude's number is below a critical value of 0.4 even 
+for a low permeable column. Hence, no hydroplaning is observed. In both the low 
+and high permeable granular flows, the granular material consolidates at the 
+final stage of the flow (\cref{fig:Packing_Density_a08_dense}). This can be 
+observed by the increase in the packing density at the final stage due to 
+settlement of grains and expulsion of entrained water. The final deposit 
+profile for both low and high permeability conditions are shown 
+in~\cref{fig:a08_dense_snapshots}. The high permeability collapse shows a more 
+parabolic (convex) deposit profile in contrast to the more concave profile 
+observed in the low permeability condition. In high permeable condition, once 
+the granular mass is mobilised, the drag forces slows down the rate of flow, 
+which allows the grains to densify resulting in a more parabolic profile. This 
+is in contrast to the hydroplaning observed in the low permeability condition, 
+where the granular mass thickness is smaller than the dense condition. The 
+observation of hydroplaning in the low permeable condition may be due to the 
+difference in the distribution of granular mass at the flow front. Instigation 
+of hydroplaning is controlled by the balance of gravity and inertia forces at 
+the debris front and is suitably characterized by the densimetric Froude's 
+number:
 %
 \begin{equation}
 Fr_d = \frac{U}{\sqrt{(\frac{\rho_d}{\rho_w}-1)gH\cos\theta}} \,,
@@ -1074,15 +1131,17 @@ evolve.~\Cref{fig:Loose_PWP_flow} shows the distribution of the excess
 pore-pressure along the bottom for low and high permeability conditions. As the 
 flow progresses, the low permeability of the granular column causes 
 hydroplaning to occur at the base of the column, which can be observed by high 
-positive pore-pressure at the base of the flow front, resulting in a longer 
-run-out distance.
+positive pore-pressure at the base of the flow front 
+(\cref{fig:Loose_r095_PWP_flow,fig:Loose_r095_PWPress_flow}), resulting in a 
+longer run-out distance.
 \begin{figure}
 \centering
 \makebox[\linewidth][c]{
 \begin{subfigure}[t]{0.975\textwidth}
 	\centering
     \includegraphics[width=\textwidth]{a08/Loose_r07_PWP_ini}
-    \caption{High permeability (\textit{r} = 0.7 \textit{R})}
+    \caption{High permeability (\textit{r} = 0.7 \textit{R}) - Pressure at the 
+        bottom of the granular flow}
     \label{fig:Loose_r07_PWP_ini}
 \end{subfigure}
 }\\
@@ -1090,8 +1149,30 @@ run-out distance.
 \begin{subfigure}[t]{0.975\textwidth}
 	\centering
     \includegraphics[width=\textwidth]{a08/Loose_r095_PWP_ini}
-    \caption{Low permeability (\textit{r} = 0.95 \textit{R})}
+    \caption{Low permeability (\textit{r} = 0.95 \textit{R}) - Pressure at the 
+    bottom of the granular flow}
     \label{fig:Loose_r095_PWP_ini}
+\end{subfigure}
+}
+\end{figure}
+\begin{figure}
+\ContinuedFloat
+\makebox[\linewidth][c]{
+\begin{subfigure}[t]{0.975\textwidth}
+	\centering
+    \includegraphics[width=\textwidth]{a08/r07_PWP_ini_press_loose}
+    \caption{High permeability (\textit{r} = 0.7 \textit{R}) - Pressure contour 
+    (Pa)}
+    \label{fig:Loose_r07_PWPress_ini}
+\end{subfigure}
+}\\
+\makebox[\linewidth][c]{
+\begin{subfigure}[t]{0.975\textwidth}
+	\centering
+    \includegraphics[width=\textwidth]{a08/r095_PWP_ini_press_loose}
+    \caption{Low permeability (\textit{r} = 0.95 \textit{R}) - Pressure contour 
+    (Pa)}
+    \label{fig:Loose_r095_PWPress_ini}
 \end{subfigure}
 }
 \caption{Effect of permeability on the excess pore water pressure distribution 
@@ -1106,7 +1187,8 @@ packing) at $t = \tau_c$}
 \begin{subfigure}[t]{0.975\textwidth}
 	\centering
     \includegraphics[width=\textwidth]{a08/Loose_r07_PWP_flow}
-    \caption{High permeability (\textit{r} = 0.7 \textit{R})}
+    \caption{High permeability (\textit{r} = 0.7 \textit{R}) - Pressure at the 
+        bottom of the granular flow}
     \label{fig:Loose_r07_PWP_flow}
 \end{subfigure}
 }\\
@@ -1114,8 +1196,30 @@ packing) at $t = \tau_c$}
 \begin{subfigure}[t]{0.975\textwidth}
 	\centering
     \includegraphics[width=\textwidth]{a08/Loose_r095_PWP_flow}
-    \caption{Low permeability (\textit{r} = 0.95 \textit{R})}
+    \caption{Low permeability (\textit{r} = 0.95 \textit{R}) - Pressure at the 
+        bottom of the granular flow}
     \label{fig:Loose_r095_PWP_flow}
+\end{subfigure}
+}
+\end{figure}
+\begin{figure}
+\ContinuedFloat
+\makebox[\linewidth][c]{
+\begin{subfigure}[t]{0.975\textwidth}
+	\centering
+    \includegraphics[width=\textwidth]{a08/r07_PWP_flow_press_loose}
+    \caption{High permeability (\textit{r} = 0.7 \textit{R}) - Pressure contour 
+    (Pa)}
+    \label{fig:Loose_r07_PWPress_flow}
+\end{subfigure}
+}\\
+\makebox[\linewidth][c]{
+\begin{subfigure}[t]{0.975\textwidth}
+	\centering
+    \includegraphics[width=\textwidth]{a08/r095_PWP_flow_press_loose}
+    \caption{Low permeability (\textit{r} = 0.95 \textit{R}) - Pressure contour 
+    (Pa)}
+    \label{fig:Loose_r095_PWPress_flow}
 \end{subfigure}
 }
 \caption{Effect of permeability on the excess pore water pressure distribution 
@@ -1151,10 +1255,11 @@ observed by the decrease in the packing fraction during $t = \tau_c$ and $t =
 grains consolidate to reach a critical packing density at the end of the flow. 
 The permeability (i.e., hydrodynamic radius) plays a crucial role in the rate 
 of dissipation of the entrained water. As the permeability decreases, the water 
-entrained at the flow 
-front takes longer time to be dissipated resulting in lubrication of the flow 
-at low permeabilities. This lubrication effect results in an increase in the 
-run-out distance for columns with low permeabilities.
+entrained at the flow front takes longer time to be dissipated resulting in 
+lubrication of the flow at low permeabilities.~\Cref{fig:Fr_a08_loose} shows 
+that the low permeable columns exhibit higher Froude's numbers, greater than 
+0.4, that indicates occurrence of hydroplaning. This lubrication effect results 
+in an increase in the run-out distance for columns with low permeabilities.
 
 \begin{figure}
 	\centering
@@ -1190,11 +1295,27 @@ for a granular column collapse in fluid (a = 0.8 \& loose packing)}
 \end{figure}
 
 \begin{figure}
+\centering
+\makebox[\linewidth][c]{
+\begin{subfigure}[t]{0.95\textwidth}
 	\centering
     \includegraphics[width=0.8\textwidth]{Packing_Density_a08_loose}
-    \caption{Effect of permeability on the evolution of packing density for a 
-    granular column collapse in fluid (a = 0.8 \& loose initial packing)}
+    \caption{Evolution of packing density}
     \label{fig:Packing_Density_a08_loose}
+\end{subfigure}
+}\\
+\makebox[\linewidth][c]{
+\begin{subfigure}[t]{0.95\textwidth}
+	\centering
+    \includegraphics[width=0.8\textwidth]{Fr_a08_loose}
+    \caption{Evolution of Froude's number}
+    \label{fig:Fr_a08_loose}
+\end{subfigure}
+}
+    \caption{Effect of permeability on the evolution of packing density and 
+    Froude's number for a granular column collapse in fluid (a = 0.8 \& loose 
+    initial packing)}
+    \label{fig:Packing_Density_Fr_a08_loose}
 \end{figure}
 
 
@@ -1585,16 +1706,39 @@ to flow. Whereas in the loose condition, a positive pore-pressure is observed
 at the base of the flow, indicating entrainment of 
 water at the base, i.e. lubrication and drop in the effective stress resulting 
 in a longer run-out distance. The amount of water entrained in the loose 
-granular 
-column is higher than the dense condition, this can be observed by the low 
-packing fraction observed between $2\tau_c$ and $5 \tau_c$. 
+granular column is higher than the dense condition, this can be observed by the 
+low packing fraction observed between $2\tau_c$ and $5 \tau_c$. The evolution 
+of Froude's number with time for dense and loose conditions are shown 
+in~\cref{fig:Fr_a08_dense}. Loose granular columns have Froude's number greater 
+than 0.4, which indicates occurrence of hydroplaning. For a given slope angle 
+and aspect ratio the Froude's number observed in loose granular columns is 
+significantly higher than that observed in dense granular columns. This shows 
+that the flow behaviour in a loose column is controlled by lubrication / 
+hydroplaning, while the dense granular column experience higher drag forces.
 
 \begin{figure}
 \centering
-\includegraphics[width=0.97\columnwidth]{Voronoi_Slope_Dense_Loose}
-\caption{Evolution of packing density with time for different slope angles}
-\label{fig:voro}
+\makebox[\linewidth][c]{
+\begin{subfigure}[t]{0.95\textwidth}
+	\centering
+	\includegraphics[width=0.97\columnwidth]{Voronoi_Slope_Dense_Loose}
+    \caption{Evolution of packing density}
+    \label{fig:voro}
+\end{subfigure}
+}\\
+\makebox[\linewidth][c]{
+\begin{subfigure}[t]{0.95\textwidth}
+	\centering
+    \includegraphics[width=0.97\textwidth]{Fr_slope}
+    \caption{Evolution of Froude's number}
+    \label{fig:Fr_a08_slope}
+\end{subfigure}
+}
+    \caption{Evolution of packing density and Froude's number with time for 
+    different slope angles}
+    \label{fig:voro_fr_slope}
 \end{figure}
+
 
 \Cref{fig:slope_runout_dense} shows the evolution of run-out with slope angle 
 for an initially dense granular column. As the slope angle increases, the 
