@@ -10,70 +10,73 @@
 
 A granular material is a conglomeration of a large number of discrete solid 
 grains of sizes greater than $1\mu m$ whose behaviour is governed by 
-frictional contacts and inelastic collisions. A schematic representation of the 
-size range of the granular materials is presented in~\cref{fig:granular}. 
-Granular materials, characterized by the interaction between individual grains, 
-lie between two extremes scales: the molecular-scale range predominated by 
+frictional contacts and inelastic collisions.~\Cref{fig:granular} provides a 
+schematic representation of the size range of granular materials. Characterized 
+by the interaction between individual grains, granular materials lie between 
+two extremes scales: the molecular-scale range predominated by 
 the electrostatic force, i.e. Van der Waals forces, and the continuum scale 
 which is described by the bulk property of the material. In various soil 
-classification systems, sand is classified as a granular material having grain 
-sizes greater than $75\mu m$. A grain size of $75\mu m$ is an important 
-transition point, where the frictional effect starts to dominate the material 
-behaviour and the effect of the electrostatic Van der Waals forces diminishes. 
-The extent of the grain size range of the granular materials from the molecular 
-size to a continuum scale indicates that they have a complex behaviour, 
-demonstrating a mix of grain-like and continuum-like behaviour.
+classification systems, sand is classified as a granular material with grain 
+sizes greater than $75\mu m$. A grain size of $75\mu m$ demarcates an important 
+transition: the point at which the frictional effect begins to dominate the 
+material behaviour and the effect of the electrostatic Van de Waals forces 
+diminishes. The wide range of grain size for granular materials, from the 
+molecular size to the continuum scale, indicates the complexity of granular 
+material behaviour. Such complexity encompasses both grain-like and 
+continuum-like behaviour.
 
 The physics of non-cohesive granular assemblies is 
 intriguing. Despite being ubiquitous in nature and having a wide range of 
-applications including geo-hazard predictions, granular materials are the 
+applications, including geo-hazard predictions, granular materials are the 
 most poorly understood materials from a theoretical standpoint. For years, 
 granular materials have resisted theoretical development, demonstrating 
 non-trivial behaviour that resembles solid and/or fluid-like behaviour under 
-different circumstances. Even in the simplest of situations, granular materials 
-can exhibit surprisingly complex behaviour. Macroscopically, the complex mix of 
-solid and fluid-like behaviour can be illustrated by a simple example; while 
-one walks on the beach, the solid-like behaviour of soil becomes evident as it 
-supports one's weight, but if we scoop a handful of soil and allow it to run 
-through the fingers, the fluid-like nature becomes obvious.
+different circumstances. Even in very simplistic situations, granular materials 
+exhibit surprisingly complex behaviour at the macroscopic level. For instance, 
+walking along the beach and bending over to scoop up a handful of sand 
+demonstrates both its solid-like behaviour, from the firm support of one's 
+weight as one walks, and its fluid-like behaviour, from the handful of sand 
+running through one's fingers.
 
-Microscopically this complex behaviour has various reasons. The range of the 
-grain size gives rise to complex interactions between grains constituting the 
-granular media. Unlike other micro-scale particles, soil grains are insensitive 
-to thermal energy dissipation~\citep{Mehta2011}, because the thermal energy 
+The range of grain size gives rise to complex interactions between grains 
+which constitute the particular granular media. Unlike other micro-scale 
+particles, soil grains are insensitive to thermal energy 
+dissipation~\citep{Mehta2011}, because the thermal energy 
 dissipation in a granular material is several orders of magnitude smaller in 
-comparison with the energy dissipation due to interaction between the grains. 
-The thermal energy scales are small when compared to the energy required to 
-move the grains. The granular material reaches the static equilibrium quickly 
-due to its dissipative nature, unless an external source of energy is 
+comparison to the energy dissipation due to the interaction between the grains. 
+Consequently, the thermal energy scales are small when compared to the energy 
+required to move the grains. The granular material reaches the static 
+equilibrium quickly due to its dissipative nature, unless an external source of 
+energy is 
 constantly applied~\citep{Choi2005}. 
 
-Our knowledge of the behaviour of granular assemblies 
+Knowledge of the behaviour of granular assemblies 
 is restricted to two extremes: the solid-like behaviour of dense granular 
-assemblies that resist the shearing force by undergoing plastic deformations, 
+assemblies that resist the shearing force by undergoing plastic deformations 
 and the fluid-like flow behaviour characterized by high shear rates. Granular 
 media are \textit{a priori} simple systems made of solid grains interacting 
 through their contacts. However, they still resist our understanding and no 
 theoretical framework is available to describe their 
-behaviour~\citep{Pouliquen2006}. The strong dependency of the behaviour of 
-granular material on its surrounding environment makes it difficult to have a 
-unified theoretical framework. When strongly agitated, the granular material 
-behaves like a dissipative gas, and kinetic theories have been developed to 
-describe this regime \citep{Xu2003,Popken1999}. On the other hand, during slow 
-deformations, the quasi-static regime is dominated by steric hindrance and 
-friction forces are often described using plasticity theories. In between the 
-two regimes, the material flows like a fluid, and the grains experience 
-enduring contacts, which is incompatible with the assumptions of the kinetic 
-theory~\citep{Pouliquen2006} that describes the dilute regime of a granular 
-flow. Typical granular flows are dense and hence a fundamental statistical 
-theory is not appropriate to describe their properties. Moreover, during the 
-process of granular flow, the material can exist in all the above-mentioned 
-states, which further complicates our understanding of granular flows.
+behaviour~\citep{Pouliquen2006}. Because the behaviour of the granular material 
+is highly dependent on its surrounding environment, it is difficult to 
+establish a unified theoretical framework. When strongly agitated, the granular 
+material behaves like a dissipative gas, and kinetic theories have been 
+developed to describe this regime \citep{Xu2003,Popken1999}. During slow 
+deformations, on the other hand, the quasi-static regime is dominated by steric 
+hindrance, and friction forces are often described using plasticity theories. 
+In between the two regimes, the material flows like a fluid, and the grains 
+experience enduring contacts, a behaviour which is incompatible with the 
+assumptions of the kinetic theory~\citep{Pouliquen2006} that describes the 
+dilute regime of a granular flow. Typical granular flows are dense and hence a 
+fundamental statistical theory is not appropriate to describe their properties. 
+Moreover, during the process of granular flow, the material can exist in all 
+the above-mentioned states, further complicating our understanding of 
+granular flows.
 
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=0.95\textwidth]{Granular}
-\caption{Particle size range and their predominant characteristics}
+\caption{Particle size range and characteristics}
 \label{fig:granular}
 \end{figure}
 
@@ -83,56 +86,59 @@ Different approaches have been used to model granular flows at different
 scales of description. The dynamics of a homogeneous granular flow involve at 
 least three distinct scales: (1) the \textit{microscopic scale} characterized 
 by small time and length scales representing contact/grain interactions, (2) 
-the \textit{mesoscopic scale}, where grain rearrangements, development of 
+the \textit{mesoscopic scale}, where grain rearrangements, developments of 
 micro-structures and shear rates have a dominant influence on the granular flow 
 behaviour, and (3) the \textit{macroscopic scale} which involves large length 
-scales that are related to geometric correlations at even larger scales. The 
-interesting issue is whether one should consider or neglect a particular scale 
-while modelling the granular dynamics~\citep{Radjai2009}. However, the 
-difficulty in modelling the granular flows originates from the fundamental 
-characteristics of the granular matter such as negligible thermal fluctuations, 
-highly-dissipative interactions, and a lack of separation between the 
-microscopic grain scale and the macroscopic scale of the 
+scales that are related to geometric correlations at even larger scales. With 
+such distinct scales, an immediate issue arises with modelling granular flow 
+dynamics: whether one should consider or neglect a particular 
+scale~\citep{Radjai2009}. The difficulty in modelling the granular flows 
+originates from the fundamental characteristics of the granular matter such as 
+negligible thermal fluctuations, highly-dissipative interactions, and a lack of 
+separation between the microscopic grain scale and the macroscopic scale of the 
 flow~\citep{Goldhirsch2003}. 
 
 
-Granular flows display a large span of grain concentrations and therefore 
+Granular flows display a large span of grain concentrations, and therefore 
 exhibit different behaviour at different concentrations (\cref{fig:kinetic}). 
 Granular flows can be classified into three different 
-regimes~\citep{Jaeger1996}: \textit{(a)} in the dilute part of the flow, grains 
-randomly fluctuate and translate, this form of viscous dissipation and stress 
-is named as the \textit{kinetic regime}. This regime is characterized by grains 
-moving freely between successive collisions~\citep{Goldhirsch2003}. 
-\textit{(b)} at higher concentration, in addition to the previous dissipation 
-form, grains can collide shortly, this gives rise to further dissipation and 
-stress, called as the \textit{collisional regime}. This intermediate fluid-like 
-regime is dense but still flows like a fluid and the grains interact both by 
-collision and through friction~\citep{Midi2004,Pouliquen2002}. Transfer of 
+regimes~\citep{Jaeger1996}: \textit{(a)} kinetic regime, \textit{(b)} 
+collisional regime, and \textit{(c)} frictional regime. In the dilute part of 
+the flow, grains randomly fluctuate and translate, this form of viscous 
+dissipation and stress is named the \textit{kinetic regime}. This regime is 
+characterized by grains moving freely between successive 
+collisions~\citep{Goldhirsch2003}. At higher concentrations, in addition to the 
+previous dissipation form, grains can collide quickly, this gives rise to 
+further dissipation and stress, called the \textit{collisional regime}. This 
+intermediate fluid-like regime is dense but still flows like a fluid, and the 
+grains interact interact through both collision and 
+friction~\citep{Midi2004,Pouliquen2002}. Transfer of 
 grain kinetic energy and momentum within a rapidly flowing granular medium 
-occurs during these collisions~\citep{Popken1999}.~\textit{(c)} at very high 
-concentration (more than 50\% in volume), grains start to endure long, sliding 
-and rubbing contacts, which gives rise to a totally different from of 
+occurs during these collisions~\citep{Popken1999}. At very high 
+concentrations (more than 50\% in volume), grains start to endure long, sliding 
+and rubbing contacts, giving rise to a different from of 
 dissipation and stress, \textit{frictional regime}. This dense slow 
 quasi-static regime is characterized by long duration between contacts and 
 grain interaction via frictional contact~\citep{Roux2002}. 
 
 
-The momentum and energy transfer will be 
-different according to the granular regimes. For the granular phase, it is 
-clear that any mathematical model attempting to model the granular flow must 
-account for the above mechanisms, at any time and anywhere within the flow. The 
-mathematical models require a comprehensive unified stress tensor able to 
-adequately describe stress within the flow for any of these regimes, and this 
-without imposing what regime will dominate over the others. Several theoretical 
-frameworks have been used to describe the granular flow behaviour. Frictional 
-behaviour predominates in most granular flows. Hence, continuum models based 
-frictional properties of the granular mass have been widely adopted to discuss 
-the granular flow behaviour. Alternatively, dilute granular flow behaviour is 
-conventionally modelled using the kinetic theory, while the dense granular 
-flows are described using the $\mu(I)$ rheology. In certain conditions, where 
-the lateral extent of the flow is significantly larger than the vertical 
-component, shallow-water approximation is used. The capability and limitation 
-of the various frameworks are discussed below. 
+The momentum and energy transfer are different in accordance with differing 
+granular regimes. For the granular phase, it is 
+imperative that any mathematical model attempting to model the granular flow 
+must account for the above mechanisms, at any time and anywhere within the 
+flow. The mathematical models require a comprehensive unified stress tensor 
+able to adequately describe stress within the flow for any of these regimes, 
+and this must be achieved without imposing which regime will dominate over the 
+others. Several theoretical frameworks have been used to describe the granular 
+flow behaviour. The predominant behaviour in most granular flows is friction. 
+Hence, continuum models based on frictional properties of the granular mass 
+have been widely adopted to discuss granular flow behaviour. Alternatively, 
+dilute granular flow behaviour is conventionally modelled using the kinetic 
+theory, while the dense granular flows are described using the $\mu(I)$ 
+rheology. In certain conditions, where the lateral extent of the flow is 
+significantly larger than the vertical component, shallow-water approximation 
+is used. The capability and limitation of the various frameworks are discussed 
+below. 
 %
 \begin{figure}[tbhp]
 \centering

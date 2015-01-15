@@ -13,7 +13,7 @@
    height="744.09448"
    id="svg2"
    version="1.1"
-   inkscape:version="0.48.2 r9819"
+   inkscape:version="0.48.5 r10040"
    sodipodi:docname="Granular.svg">
   <sodipodi:namedview
      id="base"
@@ -31,7 +31,7 @@
      showguides="true"
      inkscape:snap-global="true"
      inkscape:window-width="2560"
-     inkscape:window-height="1297"
+     inkscape:window-height="1306"
      inkscape:window-x="0"
      inkscape:window-y="0"
      inkscape:window-maximized="1"
@@ -374,7 +374,7 @@
          sodipodi:role="line"
          x="558.39343"
          y="342.54764"
-         id="tspan3235">Van der Waals froces</tspan><tspan
+         id="tspan3235">Van der Waals forces</tspan><tspan
          sodipodi:role="line"
          x="558.39343"
          y="372.54764"
