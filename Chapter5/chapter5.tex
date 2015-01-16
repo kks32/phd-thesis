@@ -99,10 +99,12 @@ lattices, with the same grid length \textit{`h'} in both \textit{x-} and
 \begin{figure}[htpb]
 	\centering
 	\includegraphics[width=0.95\textwidth]{D2Q9}
-	\caption[The lattice Boltzmann discretisation and D2Q9 scheme.]{The Lattice 
-	Boltzmann discretisation and D2Q9 scheme: (a) a standard LB lattice and 
+	\caption[The lattice Boltzmann discretisation and \textit{D2Q9} 
+	scheme.]{The Lattice 
+	Boltzmann discretisation and \textit{D2Q9} scheme: (a) a standard LB 
+	lattice and 
 	histogram views of the discrete single particle distribution 
-	function/direction-specific densities $f_i$; (b) D2Q9 model.}
+	function/direction-specific densities $f_i$; (b) \textit{D2Q9} model.}
 	\label{fig:D2Q9}
 \end{figure}
 
@@ -1348,7 +1350,7 @@ concrete hardware parallelism. In OpenACC terms, gang parallelism maps to
 grid-level parallelism (equivalent to a CUDA blockIdx), and vector parallelism 
 maps to thread-level parallelism (equivalent to a CUDA threadIdx). The compiler 
 normally maps a single loop across multiple levels of parallelism using 
-strip-mining. Finally, in step three the compiler generates and optimizes the 
+strip-mining. Finally, in step three the compiler generates and optimises the 
 actual code to implement the selected parallelism mapping.
 
 An OpenACC parallel construct creates a number of parallel threads that 
@@ -1374,7 +1376,7 @@ chunks of 256 iterations, mapping the 256 iterations of a chunk in vector mode
 across the threads of a CUDA thread block, and maps the n/256 chunks in gang 
 mode across the thread blocks of the CUDA grid. The consecutive iterations (i 
 and i+1), which refer to contiguous array elements (fhf[i] and fhf[i+1]), are 
-mapped to adjacent CUDA threads in the same thread block, to optimize for 
+mapped to adjacent CUDA threads in the same thread block, to optimise for 
 coalesced memory accesses. 
 
 Memory transaction optimisation is more important than computation
@@ -1448,7 +1450,7 @@ finished in a day using a GPU.
 
 
 \begin{table}[tbhp]
-	\caption{GPU vs CPU parallelisation.}
+	\caption{GPU vs. CPU parallelisation.}
 	\label{table:GPU}
 	\centering
 	\begin{tabular}{l l l}

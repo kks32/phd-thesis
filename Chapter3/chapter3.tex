@@ -70,7 +70,7 @@ process~\citep{Rycroft2009b}.
 Granular materials exhibit many collective phenomena \citep{Jaeger1996}. 
 However, no continuum model is yet capable of describing behaviours such as 
 granular fingering on rough slopes, plug flow and the 
-occurrence of localized shear bands in the granular materials. Most 
+occurrence of localised shear bands in the granular materials. Most 
 constitutive models, even in the simple case 
 of dry granular flows, cannot describe the entire range of flow from solid to 
 fluid. In certain cases, granular flow is modelled as a fluid behaviour. 
@@ -273,7 +273,7 @@ deformations~\citep{Mackenzie-Helnwein2010,Shin2010a,Mast2014,Andersen2010,Zhang
 Although not derived directly from what are classically considered as mesh-free 
 or mesh-less methods, MPM is still considered as a mesh-free approach, 
 primarily because the initial discretisation of the material does not involve a 
-polygonal tessellation, as in the Finite Element Method. However, MPM utilizes 
+polygonal tessellation, as in the Finite Element Method. However, MPM utilises 
 a background mesh to perform differentiation, integration, and to solve 
 equations of motion~\citep{Steffen2008}. The background mesh can be of any 
 form, though for computational efficiency a Cartesian lattice is adopted.
@@ -329,7 +329,7 @@ computational grid using the standard nodal basis functions, called the
 respect to the grid. Gradient terms are calculated on the computational grid,
 and the governing equation, i.e. the equation of motion, is solved with the 
 updated position and velocity values mapping back to the material points. 
-The mesh is reinitialized to its original state and the computational cycle is 
+The mesh is reinitialised to its original state and the computational cycle is 
 repeated. 
 
 \subsection{Discrete formulation of the governing equations}
@@ -604,13 +604,13 @@ Element Method. The material points are followed throughout the deformation of
 the material, which is a Lagrangian description of the motion. 
 
 \item
-An arbitrary computational grid is initialized to describe the natural 
+An arbitrary computational grid is initialised to describe the natural 
 coordinates of the material points. For the purpose of simplicity, a Cartesian 
 grid is usually adopted. 
 
 \item
 The state variables (mass/density, velocity, strain, stress, other material 
-parameters corresponding to the adopted constitutive relation) are initialized 
+parameters corresponding to the adopted constitutive relation) are initialised 
 at every material point. 
 
 \item
@@ -747,7 +747,7 @@ The material point density is then updated as
 
 \item
 At the end of every time step, all the variables on the grid nodes are 
-initialized to zero. The material points carry all the information about the
+initialised to zero. The material points carry all the information about the
 solution, and the computational grid is re-initialised for the next step.
 \end{itemize}
 \Cref{fig:MPMsteps} illustrates the steps involved in a MPM analysis. 
@@ -775,12 +775,12 @@ describe a discrete region of the body. MPM facilitates representation of
 arbitrarily complex geometries and has advantages over strictly grid-based 
 methods, especially in simulations involving large 
 deformations~\citep{Bardenhagen2000}. However, MPM poses a whole new set of 
-visualization problems. It is essential to visualize the general configuration 
+visualization problems. It is essential to visualise the general configuration 
 of the body as well as observe the finer details like the development of cracks 
 or separation of chunks of material from the body. The body is discretised into 
 conceptual material points, which carry all the relevant information of the 
 corresponding segment. The unique qualities of MPM necessitate the need to 
-visualize the particle data in a way that is informative and appropriate.
+visualise the particle data in a way that is informative and appropriate.
 
 In MPM, the particle data represent the finite portion of a larger 
 continuum, and the ability to see and interpret the 
@@ -798,7 +798,7 @@ or \textit{volume rendering}~\citep{levoy1988}. In regions where the
 material points are sparse, it is necessary that the grid resolution is 
 sufficiently fine to compensate for the missing features. This results in 
 storing a large amount of unnecessary data in regions where sufficient material 
-points are present. Thus, it is advantageous to visualize MPM data of the 
+points are present. Thus, it is advantageous to visualise MPM data of the 
 material points as particles~\citep{bigler2006}. Particle visualization 
 involves rendering the particles as a spheres or an ellipsoids representing the 
 size and location of the fraction of the 
@@ -844,9 +844,9 @@ as proposed by \citet{Sulsky1995}.
 
 To overcome the problem of cell crossing 
 noise, \citet{Bardenhagen2004} proposed an alternate method called the 
-Generalized Interpolation Material Point Method that uses smoother shape 
+Generalised Interpolation Material Point Method that uses smoother shape 
 functions and a larger influence region for each grid node. This approach 
-minimizes the cell crossing noise. The piecewise-linear grid basis functions 
+minimises the cell crossing noise. The piecewise-linear grid basis functions 
 used are written as
 %
 \begin{align}
@@ -901,7 +901,7 @@ which coincide with the extent of the computational domain. As  illustrated
 in~\cref{fig:MPM_Linear} nodes beyond those boundaries are not influenced by 
 particles within the domain, which can be considered a result of the zero
 width of the Dirac delta characteristic functions. However, special attention 
-is required to simulate the boundaries in the Generalized Interpolation 
+is required to simulate the boundaries in the Generalised Interpolation 
 Material Point Method (GIMP). Namely, because of their increased extents, it is 
 possible for particles to influence, and be influenced by, nodes that lie 
 outside of the simulation domain (\cref{fig:GIMP_function}). These extra nodes 
@@ -1115,7 +1115,7 @@ modelling large deformation problems is also investigated.
 \section{Particulate modelling of granular flows}
 
 Granular materials often exhibit different behaviours under different 
-circumstances. Fluidized granular material often resembles a liquid and 
+circumstances. Fluidised granular material often resembles a liquid and 
 reveals surface waves. In certain situations, granular materials behave more 
 like solids exhibiting plastic deformations. Despite the wide variation in 
 the physical and the chemical properties of the grains, the discrete granular 
@@ -1405,7 +1405,7 @@ repulsive force depends linearly on $\delta_{n}$ and is controlled by the
 stiffness of the grain. The energy dissipation due to the interaction between 
 grains is an intrinsic characteristic of the granular material and is 
 incorporated by adding a damping force that opposes the relative velocity for 
-the duration of the contact. The interaction force at the contact is idealized 
+the duration of the contact. The interaction force at the contact is idealised 
 as a simple spring-dashpot system, with elastic and dissipative 
 constants~\citep{Luding1994}. 
 %
@@ -1619,7 +1619,7 @@ thereby reducing the number of force computations required to $3\mathit{N}
 \approx 
 3000$. In the preliminary force computation scheme, at least 166 times more 
 pair interactions are considered than necessary. Therefore, the numerical 
-methods employed in the DEM should try to minimize the computation of 
+methods employed in the DEM should try to minimise the computation of 
 interaction forces~\citep{Poschel2005}. There are three different methods for 
 the efficient computation of the forces the \textit{Verlet} algorithm, the 
 \textit{link-cell} algorithm, and a \textit{lattice} algorithm. The 
@@ -1708,7 +1708,7 @@ distance $\left| \overrightarrow{r_{\mathit{i}}} -
 \mbox{Verlet distance}$, i.e. they are not classified as neighbours. If the 
 Verlet lists are updated before one of these grains has travelled the distance 
 $\mathit{verlet distance}/2$ since the lists were constructed then they can 
-never collide without being recognized as neighbours first. This is explained 
+never collide without being recognised as neighbours first. This is explained 
 in~\cref{fig:Verlet}. The impact of optimisation of the Verlet list 
 algorithm has negligible effect on the computation time, as the algorithm is 
 quite efficient already and only consumes a small percentage of the total 
@@ -1724,7 +1724,7 @@ Verlet distance $r_{\mathit{v}}$~\citep{Poschel2005}.
 \includegraphics[width=0.975\textwidth]{Verlet}
 \caption[Checking the validity of Verlet list in DEM simulations.]{Checking the 
 validity of Verlet 
-lists. \textit{Left}: the grains \textit{i} and \textit{j} are not recognized 
+lists. \textit{Left}: the grains \textit{i} and \textit{j} are not recognised 
 as neighbours since the distance of their surfaces is larger than the Verlet 
 distance. The radius of the dashed circle is 
 $\mathit{R}_{\mathit{i}}+\mathit{R}_{\mathit{max}}+\mbox{\textit{Verlet 
@@ -1732,7 +1732,7 @@ distance}}$. \textit{Right:} in the most critical case the grains approach
 each other directly, travelling at the same velocity. As soon as one of the 
 grains has travelled the distance $\mbox{\textit{Verlet distance}}/2$ 
 (\textit{arrows}), the Verlet lists have to be rebuilt. The grains \textit{i} 
-and \textit{j} are now recognized as neighbours. Redrawn 
+and \textit{j} are now recognised as neighbours. Redrawn 
 from~\citet{Poschel2005}.}
 \label{fig:Verlet}
 \end{figure}
@@ -1850,7 +1850,7 @@ $\mathbf{O}(\Delta t^{4})$ in the position. However, this problem does not
 exist in energy conservation systems, because the computed forces do not depend 
 on the velocities of the grains. The heaviest computational task is the 
 evaluation of forces, not the integration of equations. The Verlet 
-integration scheme is summarized in~\cref{eq:vers} and~\cref{fig:verlet}. To 
+integration scheme is summarised in~\cref{eq:vers} and~\cref{fig:verlet}. To 
 calculate the forces and acceleration, it requires the positions and velocities 
 at time \textit{t}:
 %
@@ -1907,7 +1907,7 @@ wall is poorly understood~\citep{Poschel2005}. A simple way to define the wall
 property is to build up the wall from grains which obey the same rules of 
 interaction as the grains of granular material. By varying the size and 
 position of the wall grains, system boundaries of adjustable roughness can be 
-described. However, the surface roughness that characterizes the frictional 
+described. However, the surface roughness that characterises the frictional 
 properties of the wall has to be derived iteratively and may not represent the 
 real conditions. In the present case, a solid wall with corresponding 
 stiffness, damping and frictional characteristics is introduced to model the 
@@ -1959,7 +1959,7 @@ Consider a collection of $N_{p}$ grains with their centres contained
 in a cell of volume \textit{V} . The cell can have any shape allowing for a 
 periodic tessellation of space. The simplest shape is a parallelepiped, i.e. 
 parallelogram in 2D. The cell and its replicas define a regular lattice 
-characterized by its basis vectors 
+characterised by its basis vectors 
 $(\overrightarrow{\mathbf{a}_{1}},\overrightarrow{\mathbf{a}_{2}})$. In the 
 case of a parallelogram, the basis vectors may simply be the two sides of the 
 parallelogram:~\cref{fig:periodic}. The origin \textit{O} of the simulation 
@@ -1976,9 +1976,9 @@ $\overrightarrow{r}(\mathit{i}^{\prime})$ are given by:
 {\mathit{i}_{\mathit{k}}\overrightarrow{\mathbf{\mathit{a}}}_{\mathit{k}}} \,.
 \end{equation}
 %
-The grains belonging to the cell $\Omega$, characterized by $\mathit{i}_{1} 
+The grains belonging to the cell $\Omega$, characterised by $\mathit{i}_{1} 
 = \mathit{i}_{2} = 0$, can interact with the grains of the same cell but also 
-with image grains in the neighbouring cells characterized by $\mathit{i}_{k}\in 
+with image grains in the neighbouring cells characterised by $\mathit{i}_{k}\in 
 {1, 1}$. There are $3^{D} - 1$ cells surrounding the simulation cell, and they 
 are involved in the search of contact partners for each grain. The distance 
 between two grains \textit{i} and \textit{j} $\in \Omega$ is the shortest 
@@ -2141,7 +2141,7 @@ dynamic methods and geometrical approaches. The dynamic approach involves
 the packing of grains using laws of mechanics and contacts, while the 
 geometrical method involves the packing of grains in accordance with grain 
 size, shape and position. In general, the packing of grains can 
-be categorized into two types: crystal/lattice packing, like hexagonal or 
+be categorised into two types: crystal/lattice packing, like hexagonal or 
 square patterns of mono-disperse grains, and random packing with varying 
 density employing mono-disperse or poly-disperse grains. The crystalline 
 packing 
@@ -2393,7 +2393,7 @@ A plane-strain Material Point Method is implemented in the present study to
 describe the continuum response of granular flows. When a material points 
 moves from one cell to another, it results in numerical oscillations called 
 the cell-crossing noise. The Generalised Interpolation Material Point (GIMP) 
-method is adopted to minimize these oscillations in large-deformation problems. 
+method is adopted to minimise these oscillations in large-deformation problems. 
 The grain-scale response is captured using a two-dimensional 
 DEM code. The discrete grains are generated using a cumulative $\beta$ 
 distribution, which mimics the particle size distribution curves. The sample is 
