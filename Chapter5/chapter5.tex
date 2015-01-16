@@ -99,7 +99,7 @@ lattices, with the same grid length \textit{`h'} in both \textit{x-} and
 \begin{figure}[htpb]
 	\centering
 	\includegraphics[width=0.95\textwidth]{D2Q9}
-	\caption[The lattice Boltzmann discretisation and D2Q9 scheme]{The Lattice 
+	\caption[The lattice Boltzmann discretisation and D2Q9 scheme.]{The Lattice 
 	Boltzmann discretisation and D2Q9 scheme: (a) a standard LB lattice and 
 	histogram views of the discrete single particle distribution 
 	function/direction-specific densities $f_i$; (b) D2Q9 model.}
@@ -238,7 +238,7 @@ conservation is equivalent to momentum conservation~\citep{He1997}.
 	\centering
 	\includegraphics[width=0.95\textwidth]{stream}
 	\caption[Illustration of the streaming process on a \textit{D2Q9} 
-	lattice]{Illustration of the streaming process on a \textit{D2Q9} lattice. 
+	lattice.]{Illustration of the streaming process on a \textit{D2Q9} lattice. 
 	The magnitude of the distribution functions remains unchanged, but they 
 	move to a neighbouring node according to their direction.}
 	\label{fig:stream}
@@ -248,7 +248,7 @@ conservation is equivalent to momentum conservation~\citep{He1997}.
 	\centering
 	\includegraphics[width=0.95\textwidth]{collision}
 	\caption[Illustration of the collision process on a \textit{D2Q9} 
-	lattice]{Illustration of the collision process on a \textit{D2Q9} lattice. 
+	lattice.]{Illustration of the collision process on a \textit{D2Q9} lattice. 
 	The local density $\rho$ and velocity $\mathbf{v}$ are conserved, but the 
 	distribution functions change according to the relaxation to local 
 	Maxwellian rule.}
@@ -527,8 +527,8 @@ bounce-back~\citep{Succi2001}.
 \begin{figure}[htbp]
 	\centering
 	\includegraphics[width=0.5\textwidth]{bounce}
-	\caption[Half-way bounce back algorithm for the \textit{D2Q9} model 
-	]{Half-way 
+	\caption[Half-way bounce back algorithm for the \textit{D2Q9} 
+	model.]{Half-way 
 	bounce back algorithm for the \textit{D2Q9} model adopted after 
 	\citet{Sukop2006}.}
 	\label{fig:bounce}
@@ -726,7 +726,8 @@ flow evolution.
 	\centering
 	\includegraphics[width=0.95\textwidth]{Poiseuille}
 	\caption[Comparison between LBM and CFD on the development of the 
-	Poiseuille velocity profile in time]{Development of the Poiseuille velocity 
+	Poiseuille velocity profile in time.]{Development of the Poiseuille 
+	velocity 
 	profile in time: comparison between LBM simulation, CFD simulation and the 
 	analytical solution. Time is made dimensionless by $H/U_0$.}
 	\label{fig:Pois}
@@ -917,7 +918,7 @@ flow dynamics.
 
 \begin{table}[tbhp]
 	\caption{Computed Strouhal number for fluid flows with different Reynolds 
-	number}
+	number.}
 	\label{table:strouhal}
 	\centering
 	\begin{tabular}{l c c}
@@ -1111,7 +1112,7 @@ $\mathbf{x}_{\mathit{n}}$ represents the coordinate of the lattice node
 \begin{figure}[htbp]
 \centering
 \includegraphics[height=0.9\textheight]{bouncemod}
-\caption{LBM bounce back boundaries for different values of $\delta$}
+\caption{LBM bounce back boundaries for different values of $\delta$.}
 \label{fig:bouncemod}
 \end{figure}
 
@@ -1447,7 +1448,7 @@ finished in a day using a GPU.
 
 
 \begin{table}[tbhp]
-	\caption{GPU vs CPU parallelisation}
+	\caption{GPU vs CPU parallelisation.}
 	\label{table:GPU}
 	\centering
 	\begin{tabular}{l l l}
@@ -1484,7 +1485,8 @@ algorithm scales with the domain size.
 \begin{figure}[tbhp]
 	\centering
 	\includegraphics[width=0.87\textwidth]{GPU_Speedup}
-	\caption{GPU scalability with increase in LBM nodes}
+	\caption{Test of scalability of the GPU parallelised code with increase in 
+	the number of LBM nodes.}
 	\label{fig:GPUSpeed}
 \end{figure}
 

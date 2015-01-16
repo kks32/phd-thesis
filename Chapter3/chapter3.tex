@@ -34,7 +34,7 @@ however, they are computationally expensive.
 \centering
 \includegraphics[width=0.95\textwidth]{multiscale}
 \caption{Schematic representation of different scales of description involved 
-in the multi-scale modelling of granular materials}
+in the multi-scale modelling of granular materials.}
 \label{fig:multiscale}
 \end{figure}
 
@@ -281,7 +281,7 @@ form, though for computational efficiency a Cartesian lattice is adopted.
 \begin{figure}[tbhp]
 \centering
 \includegraphics[width=0.45\textwidth]{MPM}
-\caption[Typical discretisation of a domain in MPM]{Typical discretisation of a 
+\caption[Typical discretisation of a domain in MPM.]{Typical discretisation of a 
 domain in MPM. The dotted line represents the boundary of the simulated object, 
 $\Omega$, and each closed point represents a material point used to discretise 
 $\Omega$. The square mesh represents the background grid. Each square in the 
@@ -526,7 +526,7 @@ Displacement boundary conditions are applied as velocity constraints on the
 nodes in the background mesh.
 
 \begin{algorithm}[tbhp]
-\caption{Friction boundary algorithm for solid phase in MPM~\citep{Bandara2013}}
+\caption{Friction boundary algorithm for solid phase in MPM~\citep{Bandara2013}.}
 \label{alg:friction}
 \begin{algorithmic}
 \If {$a_{sI,t}^{k+1} < 0.0$}
@@ -755,7 +755,7 @@ solution, and the computational grid is re-initialised for the next step.
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=0.975\textwidth]{MPMsteps}
-\caption[Illustration of the MPM algorithm]{Illustration of MPM algorithm (1) A 
+\caption[Illustration of the MPM algorithm.]{Illustration of the MPM algorithm (1) A 
 representation of material points overlaid on a computational grid. Arrows 
 represent material point state vectors (mass, volume, velocity, etc.) being 
 projected to the nodes of the computational grid. (2) The equations of motion 
@@ -1044,13 +1044,13 @@ simulate large deformation problems.
 	\begin{subfigure}[b]{0.95\textwidth}
 		\centering
 		\includegraphics[width=0.95\textwidth]{Runout_MPM_GIMPM}
-		\caption{Evolution of run-out (GIMP method vs. MPM)}
+		\caption{Evolution of run-out (GIMP method vs. MPM).}
 		\label{fig:Runout_MPM_GIMPM}
 	\end{subfigure} \\
 	\begin{subfigure}[b]{0.95\textwidth}
 		\centering 
 		\includegraphics[width=0.95\textwidth]{Height_MPM_GIMP}
-		\caption{Evolution of height (GIMP method vs. MPM)}
+		\caption{Evolution of height (GIMP method vs. MPM).}
 		\label{fig:Height_MPM_GIMP}
 	\end{subfigure} \\
 	\caption{Comparison between the GIMP method and the conventional MPM on the 
@@ -1366,10 +1366,10 @@ components
 \begin{figure}[htbp]
 	\centering
 	\includegraphics[width=0.7\linewidth]{DEM}
-	\caption[Calculation of normal force in DEM]{Grains \textit{i} and 
+	\caption[Calculation of normal force in DEM.]{Grains \textit{i} and 
 	\textit{j} in 
 	contact, and the 
-	separation $\delta_{n}$ is used to calculate the normal force} 
+	separation $\delta_{n}$ is used to calculate the normal force.} 
 	\label{fig:DEM}
 \end{figure}
 
@@ -1656,12 +1656,12 @@ the distance of their surfaces is smaller than a predefined distance, termed the
 \begin{figure}[tbhp]	
 \centering
 \includegraphics[width=0.5\textwidth]{Verletb}
-\caption[Verlet list algorithm for neighbourhood search]{The Verlet list: a 
+\caption[Verlet list algorithm for neighbourhood search.]{The Verlet list: a 
 grain \textit{i} interacts with 
 those grains with 
 the cut-off radius $r_{c}$. The Verlet list contains all the grains within 
 a sphere with radius 
-$r_{\mathit{v}>r_{c}}$}
+$r_{\mathit{v}>r_{c}}$.}
 \label{fig:Verletb}
 \end{figure}
 
@@ -1722,7 +1722,7 @@ Verlet distance $r_{\mathit{v}}$~\citep{Poschel2005}.
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=0.975\textwidth]{Verlet}
-\caption[Checking the validity of Verlet list in DEM simulations]{Checking the 
+\caption[Checking the validity of Verlet list in DEM simulations.]{Checking the 
 validity of Verlet 
 lists. \textit{Left}: the grains \textit{i} and \textit{j} are not recognized 
 as neighbours since the distance of their surfaces is larger than the Verlet 
@@ -1866,7 +1866,7 @@ x(t+\Delta t) & = x(t)+\mathbf{v}(t+\Delta /2) \Delta t  \,, \nonumber \\
 \begin{figure}[tbhp]
 \centering
 \includegraphics{Leap}
-\caption{Verlet integration scheme}
+\caption{Illustration of the \textit{Verlet} integration scheme.}
 \label{fig:verlet}
 \end{figure}
 
@@ -1948,7 +1948,7 @@ position implemented in the present study is discussed below.
 \centering
 \includegraphics[scale=0.65]{periodic}
 \caption[A 2D periodic simulation cell $\omega$ with its basis vectors in an 
-absolute frame]{A 2D simulation cell $\omega$ with its basis vectors in an 
+absolute frame.]{A 2D simulation cell $\omega$ with its basis vectors in an 
 absolute 
 frame. A grain located at the right boundary interacts with the image of 
 another grain located at the left boundary.}
@@ -2036,13 +2036,13 @@ by~\citet{Zenit2005} and using PFC2D~\citep{ItascaPFC2D1998}.
 ($\beta$=45\si{\degree}).}
 \label{fig:DEM_Validation}
 \end{subfigure}
-\caption{Validation of DEM using a disk rolling down an inclined plane}
+\caption{Validation of DEM using a disk rolling down an inclined plane.}
 \label{fig:Validation_DEM}
 \end{figure}
 
 \begin{table}[tbhp]
 \caption{Comparison of theoretical and DEM results for a disk on an inclined 
-plane of 45\si{\degree}}
+plane of 45\si{\degree}.}
 \label{table:dem_validation}
 \centering
 \begin{tabular}{lcccc}
@@ -2229,7 +2229,7 @@ constant potential head between layers of grains (\cref{fig:ini_sample}).
 	\centering
 	\includegraphics[width=0.75\textwidth]{ini_sample}
 	\caption{Generation of a poly-disperse sample using ballistic deposition 
-	technique}
+	technique.}
 	\label{fig:ini_sample}
 \end{figure}
 %
@@ -2284,7 +2284,7 @@ subjected to vibrations at varying frequencies.
 %	\centering
 	\includegraphics[width=0.975\textwidth]{DEM_Sample_r6}
 	\caption{A poly-disperse DEM sample generated using ballistic deposition 
-	technique}
+	technique.}
 	\label{fig:DEM_Sample_r6}
 %	\end{subfigure} \\
 %\caption{Ballistic deposition}
@@ -2348,7 +2348,7 @@ the site, i.e. the radius of the grain.
 \centering
 \includegraphics[width=0.9\textwidth]{sweep_voro}
 \caption[Fortune sweep line algorithm for generating Voronoi 
-Tessellation]{Fortune sweep line algorithm for generating Voronoi Tessellation. 
+Tessellation.]{Fortune sweep line algorithm for generating Voronoi Tessellation. 
 Generated from \url{http://www.diku.dk/hjemmesider/studerende/duff/Fortune/}.}
 \label{fig:sweep_voro}
 \end{figure}
@@ -2372,18 +2372,18 @@ in the flow front (due to hydroplaning) in granular flows.
 
 \begin{subfigure}[b]{0.95\textwidth}
 \includegraphics[width=\textwidth]{tessellation}
-\caption{Voronoi Tessellation}
+\caption{Illustration of Voronoi Tessellation.}
 \label{fig:tessellation}
 \end{subfigure}
 \\
 \begin{subfigure}[b]{0.87\textwidth}
 
 \includegraphics[width=\textwidth]{local_density}
-\caption{Local packing density (dark - dense and light - loose)}
+\caption{Local packing density (dark - dense and light - loose).}
 \label{fig:local_density}
 \end{subfigure}
 \caption{Voronoi tessellation of a run-out profile showing the local packing 
-density}
+density.}
 \label{fig:voronoi_tesselation}
 \end{figure}
 

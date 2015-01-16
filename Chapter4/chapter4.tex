@@ -128,7 +128,7 @@ with the initial aspect ratio `\textit{a}' $(=H_{0}/L_{0})$ of the column.
 
 \begin{table}[tbhp]
 \caption{Material properties of glass ballotini used in granular column 
-collapse~\citep{Lajeunesse2004}}
+collapse~\citep{Lajeunesse2004}.}
 \label{table:mat_prop}
 \centering
 \begin{tabular}{ll}
@@ -148,10 +148,12 @@ horizontal surface exhibit transient flow. In this study, the mechanism of flow
 initiation, spreading dynamics and energy dissipation are studied for varying 
 initial aspect ratios of the granular column. The particle size distribution 
 (PSD) is one of the most important factors controlling landslide initiation and 
-soil permeability~\citep{Utili2014}. A cumulative $\beta$ distribution 
+soil permeability~\citep{Utili2014}. Due to the non-availability of the PSD 
+used in the experiment, a PSD curve was generated that matches the range of 
+grain size used in the experiment. A cumulative $\beta$ distribution 
 (described in~\cref{sec:beta_dist}) was used to generate a graded sample with a 
-mean grain diameter of 1.15\si{\mm} (\cref{fig:PSD}). The DEM sample was 
-composed of $\sim3000$ disks with a uniform distribution of 
+mean grain diameter of 1.15\si{\mm} (\cref{fig:PSD}). 
+The DEM sample was composed of $\sim3000$ disks with a uniform distribution of 
 diameters by volume fractions in the range $[d_{min}, d_{max}] = 0.92 - 1.38$ 
 \si{\mm} with poly-dispersity $r = \frac{d_{max} }{d_{min}} = 1.5$. The number 
 of DEM grains used in this study is relatively small due to the practicality of 
@@ -178,18 +180,20 @@ behaviour.
 \begin{subfigure}[b]{0.95\textwidth}
 \centering
 \includegraphics[width=0.5\textwidth]{a4b4r18}
-\caption{DEM sample prepared using ballistic deposition}
+\caption{A snapshot of a DEM sample prepared using ballistic deposition 
+technique.}
 \label{fig:a4b4r18}
 \end{subfigure}
 \\
 \begin{subfigure}[b]{0.95\textwidth}
 \centering
 \includegraphics[width=\textwidth]{PSD}
-\caption{DEM grains generated using the cumulative $\beta$ distribution}
+\caption{Particle size distribution of the DEM sample generated using the 
+cumulative $\beta$ distribution approach.}
 \label{fig:PSD}
 \end{subfigure}
-\caption{DEM sample used for the granular column collapse and its grain size 
-distribution curve}
+\caption{The DEM sample used for the granular column collapse simulation and 
+its grain size distribution curve.}
 \label{fig:DEM_Sample}
 \end{figure}
 
@@ -259,7 +263,7 @@ the bottom boundaries.
 \begin{figure}
 \centering
 \includegraphics[width=0.95\textwidth]{DEM_Column_Sample}
-\caption[DEM set-up of a granular collapse simulation (\textit{a} = 0.8)]{DEM 
+\caption[DEM set-up of a granular collapse simulation (\textit{a} = 0.8).]{DEM 
 set-up for a granular collapse simulation (\textit{a} = 0.8). 
 Shows the grains in a stable state under the influence of gravity.}
 \label{fig:DEM_Column_Sample}
@@ -267,7 +271,7 @@ Shows the grains in a stable state under the influence of gravity.}
 
 \begin{table}
 \caption{Micro-mechanical parameters used in DEM simulations of granular column 
-collapse}
+collapse.}
 \label{table:DEM_data}
 \centering
 \begin{tabular}{ll}
@@ -336,7 +340,7 @@ of a uni-axial compression of a laterally confined granular column using DEM.
 \caption{Critical state friction angle from periodic shear test}
 \label{fig:Sxy_vs_Syy}
 \end{subfigure} 
-\caption{Periodic shear test using DEM to obtain macroscopic friction angle}
+\caption{Periodic shear test using DEM to obtain macroscopic friction angle.}
 \label{fig:shear_test}
 \end{figure}
 
@@ -370,7 +374,7 @@ parameters used for the continuum analyses are presented
 in~\cref{table:MPMData}. 
 
 \begin{table}
-\caption{Parameters used in continuum simulations of granular column collapse}
+\caption{Parameters used in continuum simulations of granular column collapse.}
 \label{table:MPMData}
 \centering
 \begin{tabular}{ll}
@@ -408,7 +412,7 @@ ratio of 1.}
 \label{fig:ini_stress_mpm_column}
 \end{subfigure}
 \caption{MPM initial mesh and vertical stress for a granular column collapse 
-simulation (\textit{a}=1)}
+simulation (\textit{a}=1).}
 \label{fig:MPM_Sample}
 \end{figure}
 
@@ -601,8 +605,8 @@ final deposit of the granular column.
 \centering
 \includegraphics[width=\textwidth]{a04tc}
 \caption[Velocity profile of a granular column collapse ($a = 0.4$, 
-$t=\tau_c$)]{Velocity profile of a granular column collapse ($a = 0.4$, 
-$t=\tau_c$). Velocity is shown in m/s}
+$t=\tau_c$).]{Velocity profile of a granular column collapse ($a = 0.4$, 
+$t=\tau_c$). Velocity is shown in m/s.}
 \label{fig:a04tc}
 \end{figure}
 
@@ -610,8 +614,8 @@ $t=\tau_c$). Velocity is shown in m/s}
 \centering
 \includegraphics[width=\textwidth]{a04f}
 \caption[Velocity profile of a granular column collapse ($a = 0.4$, 
-$t=\tau_c$)]{Velocity profile of a granular column collapse ($a = 0.4$,  
-$t=3\times\tau_c$). Velocity is shown in m/s}
+$t=\tau_c$).]{Velocity profile of a granular column collapse ($a = 0.4$,  
+$t=3\times\tau_c$). Velocity is shown in m/s.}
 \label{fig:a04f}
 \end{figure}
 
@@ -670,7 +674,7 @@ where as the large aspect ratio columns are influenced by the pressure gradient.
 \includegraphics[width=\textwidth]{a6tc}
 \caption[Velocity profile of a granular column collapse ($a = 6$,  
 $t=\tau_c$).]{Velocity profile of a granular column collapse ($a = 6$,  
-$t=\tau_c$). Velocity is shown in m/s}
+$t=\tau_c$). Velocity is shown in m/s.}
 \label{fig:a6tc}
 \end{figure}
 
@@ -678,8 +682,8 @@ $t=\tau_c$). Velocity is shown in m/s}
 \centering
 \includegraphics[width=\textwidth]{a6f}
 \caption[Velocity profile of a granular column collapse ($a = 6$, 
-$t=3\times\tau_c$)]{Velocity profile of a granular column collapse ($a = 6$, 
-$t=3\times\tau_c$). Velocity is shown in m/s}
+$t=3\times\tau_c$).]{Velocity profile of a granular column collapse ($a = 6$, 
+$t=3\times\tau_c$). Velocity is shown in m/s.}
 \label{fig:a6f}
 \end{figure}
 
@@ -755,7 +759,7 @@ method, it is important to study the mechanism of energy dissipation.
 \caption{Flow evolution of a column with $a=6$}
 \label{fig:flowa6}
 \end{subfigure}
-\caption{Flow evolution of granular column collapse (\textit{a} = 0.4 and 6)}
+\caption{Flow evolution of granular column collapse (\textit{a} = 0.4 and 6).}
 \label{fig:flow_column}
 \end{figure}
 
@@ -903,17 +907,17 @@ distances for columns with large aspect ratios.
 \centering
 \begin{subfigure}[b]{0.975\textwidth}
 \includegraphics[width=\textwidth]{a04_energy}
-\caption{Energy evolution of a column with $a=0.4$}
+\caption{Energy evolution of a column with $a=0.4$.}
 \label{fig:a04_energy}
 \end{subfigure}
 \\
 \begin{subfigure}[b]{0.975\textwidth}
 \centering
 \includegraphics[width=\textwidth]{a6_energy}
-\caption{Energy evolution of a column with $a=6$}
+\caption{Energy evolution of a column with $a=6$.}
 \label{fig:a6_energy}
 \end{subfigure}
-\caption{Energy evolution of granular column collapse (\textit{a}=0.4 and 6)}
+\caption{Energy evolution of granular column collapse (\textit{a}=0.4 and 6).}
 \label{fig:column_energy}
 \end{figure}
 
@@ -939,18 +943,18 @@ collisional dissipation, while the DEM simulation decelerates with time.
 \centering
 \begin{subfigure}[b]{0.975\textwidth}
 \includegraphics[width=\textwidth]{flowa04muI}
-\caption{Flow evolution of a column with $a=0.4$ using $\mu(I)$ rheology}
+\caption{Flow evolution of a column with $a=0.4$ using $\mu(I)$ rheology.}
 \label{fig:flowa04muI}
 \end{subfigure}
 \\
 \begin{subfigure}[b]{0.975\textwidth}
 \centering
 \includegraphics[width=\textwidth]{flowa6muI}
-\caption{Flow evolution of a column with $a=6$ using $\mu(I)$ rheology}
+\caption{Flow evolution of a column with $a=6$ using $\mu(I)$ rheology.}
 \label{fig:flowa6muI}
 \end{subfigure}
 \caption{Flow evolution of granular column collapse using $\mu(I)$ rheology 
-(\textit{a}=0.4 and 6)}
+(\textit{a}=0.4 and 6).}
 \label{fig:flow_muI}
 \end{figure}
 
@@ -981,7 +985,7 @@ modelling.
 \includegraphics[width=\textwidth]{muI}
 \caption{MPM simulation of evolution of inertial number with time for columns 
 with $a=0.4$ and 
-$a=6$}
+$a=6$.}
 \label{fig:muI}
 \end{figure}
 
@@ -1040,14 +1044,14 @@ that only a part of the column is destabilised during the collapse.
 \begin{figure}[h]
 \centering
 \includegraphics[width=0.9\textwidth]{runout_height_dense_r18}
-\caption{Effect of density on the run-out evolution $a = 0.8$}
+\caption{Effect of density on the run-out evolution $a = 0.8$.}
 \label{fig:runout_height_dense_r18}
 \end{figure}
 
 \begin{figure}[h]
 \centering
 \includegraphics[width=0.9\textwidth]{voro_r18}
-\caption{Evolution of local packing density with time $a = 0.8$}
+\caption{Evolution of local packing density with time $a = 0.8$.}
 \label{fig:voro_r18}
 \end{figure}
 
@@ -1090,7 +1094,7 @@ behaviour is observed in DEM simulations.
 \caption{Effect of kinetic energy}
 \label{fig:KExy_dense_r18}
 \end{subfigure}
-\caption{Effect of density on the energy evolution $a = 0.8$}
+\caption{Effect of density on the energy evolution $a = 0.8$.}
 \label{fig:Energy_density_r18}
 \end{figure}
 
@@ -1119,8 +1123,8 @@ triangular deposit at the front.
 \begin{figure}[tbhp]
 \centering
 \includegraphics[width=0.8\textwidth]{runout_height_dense_r6}
-\caption{Effect of density on run-out evolution $a = 0.8$ (poly-dispersity 
-\textit{r} = 6)}
+\caption{Effect of density on the run-out evolution $a = 0.8$ (poly-dispersity 
+\textit{r} = 6).}
 \label{fig:runout_height_dense_r6}
 \end{figure}
 
@@ -1141,7 +1145,7 @@ triangular deposit at the front.
 \label{fig:loose_a08_r6_final}
 \end{subfigure}
 \caption{Snapshots of granular column collapse at $t = 6 \tau_c$ (\textit{a} = 
-0.8)}
+0.8).}
 \label{fig:density_r6}
 \end{figure}
 
@@ -1162,7 +1166,7 @@ triangular deposit at the front.
 \label{fig:voro_r6}
 \end{subfigure}
 \caption{Effect of density on the evolution of energy and packing fraction $a = 
-0.8$ (poly-dispersity `r' = 6)}
+0.8$ (poly-dispersity `r' = 6).}
 \label{fig:Energy_voro_r6}
 \end{figure}
 
@@ -1188,18 +1192,18 @@ to an initially loose granular column.
 \centering
 \begin{subfigure}[b]{0.95\textwidth}
 \includegraphics[width=\textwidth]{runout_height_dense_a6}
-\caption{Effect of density on run-out evolution}
+\caption{Effect of density on run-out evolution.}
 \label{fig:runout_height_dense_a6}
 \end{subfigure}
 \\
 \begin{subfigure}[b]{0.95\textwidth}
 \centering
 \includegraphics[width=\textwidth]{Energy_dense_a6}
-\caption{Effect of density on energy evolution}
+\caption{Effect of density on energy evolution.}
 \label{fig:Energy_dense_a6}
 \end{subfigure}
 \caption{Effect of density on the run-out behaviour and energy evolution $a = 
-0.6$}
+0.6$.}
 \label{fig:Density_a6}
 \end{figure}
 
@@ -1257,7 +1261,7 @@ mean density of 2600~\si{\kg\per\m\cubed} and internal friction coefficient of
 \begin{figure}[tbhp]
 \includegraphics[width=0.95\textwidth]{slope_configuration}
 \caption{Initial geometry and dimensions of the pile subjected to a horizontal 
-excitation}
+excitation.}
 \label{fig:slope_configuration}
 \end{figure}
 
@@ -1342,13 +1346,13 @@ horizontal velocities.}
 \centering
 \begin{subfigure}[t]{0.475\textwidth}
 \includegraphics[width=0.95\textwidth]{Sxy_vs_Syy_Slope}
-\caption{Evaluation of the critical state friction angle}
+\caption{Evaluation of the critical state friction angle.}
 \label{fig:Sxy_vs_Syy_Slope}
 \end{subfigure}
 %
 \begin{subfigure}[t]{0.475\textwidth}
 \includegraphics[width=0.95\textwidth]{mu_vs_I}
-\caption{Evolution of Inertial number with friction $\mu$}
+\caption{Evolution of Inertial number with friction $\mu$.}
 \label{fig:mu_vs_I}
 \end{subfigure}
 \caption{Periodic shear test using CD~\citep{Mutabaruka2013}.}
@@ -1468,7 +1472,7 @@ observed for high input energy.
 \centering
 \begin{subfigure}[b]{0.95\textwidth}
 \includegraphics[width=\textwidth]{KE_50}
-\caption{$E_0=12.7mgd$.}
+\caption{$E_0=12.7mgd$}
 \label{fig:KE_50}
 \end{subfigure}
 \\
@@ -1496,14 +1500,14 @@ in the number of material points per cell.
 \centering
 \begin{subfigure}[b]{0.95\textwidth}
 \includegraphics[width=\textwidth]{50}
-\caption{$E_0=12.7mgd$.}
+\caption{$E_0=12.7mgd$}
 \label{fig:50}
 \end{subfigure}
 \\
 \begin{subfigure}[b]{0.95\textwidth}
 \centering
 \includegraphics[width=\textwidth]{500}
-\caption{$E_0=152mgd$.}
+\caption{$E_0=152mgd$}
 \label{fig:500}
 \end{subfigure}
 \caption{Evolution of run-out and duration of flow  for varying material points 
@@ -1592,18 +1596,18 @@ declines when the input energy is increased.
 \begin{subfigure}[b]{0.975\textwidth}
 \centering
 \includegraphics[width=\textwidth]{Runout_Eo_MPM_CD_DEM}
-\caption{Run-out distance as a function of normalised input kinetic energy}
+\caption{Run-out distance as a function of normalised input kinetic energy.}
 \label{fig:Runout_Eo_MPM_CD_DEM}
 \end{subfigure}
 \\
 \begin{subfigure}[b]{0.975\textwidth}
 \centering
 \includegraphics[width=\textwidth]{Tf_vs_Eo_Slope}
-\caption{Duration of run-out as a function of normalised input kinetic energy}
+\caption{Duration of run-out as a function of normalised input kinetic energy.}
 \label{fig:Tf_vs_Eo_Slope}
 \end{subfigure}
 \caption{Evolution of run-out and time as a function of the normalised input 
-energy for a pile subjected a gradient horizontal energy}
+energy for a pile subjected a gradient horizontal energy.}
 \label{fig:Slope}
 \end{figure}
 
@@ -1672,18 +1676,18 @@ densifies as the flow progresses, after the initial dilation phase for $t =
 \centering
 \begin{subfigure}[b]{0.975\textwidth}
 \includegraphics[width=\textwidth]{Energy_Slope}
-\caption{Evolution of total kinetic energy with time}
+\caption{Evolution of total kinetic energy with time.}
 \label{fig:energy_slope}
 \end{subfigure}
 \\
 \begin{subfigure}[b]{0.975\textwidth}
 \centering
 \includegraphics[width=\textwidth]{Normalised_Energy_Time_Slope}
-\caption{Evolution of normalised kinetic energy with normalised time}
+\caption{Evolution of normalised kinetic energy with normalised time.}
 \label{fig:Normalised_Energy_Time_Slope}
 \end{subfigure}
 \caption{Evolution of kinetic energy with time (MPM) for a pile subjected to 
-gradient input velocities}
+gradient input velocities.}
 \label{fig:Energy_Time_Slope}
 \end{figure}
 
@@ -1691,14 +1695,14 @@ gradient input velocities}
 \centering
 \includegraphics[width=0.9\textwidth]{Normalised_Energy_Time_Slope_DEM}
 \caption{Evolution of normalised kinetic energy with normalised time for a pile 
-subjected to gradient input velocities}
+subjected to gradient input velocities.}
 \label{fig:Normalised_Energy_Time_Slope_DEM}
 \end{figure}
 
 \begin{figure}[tbhp]
 \centering
 \includegraphics[width=0.9\textwidth]{voro_500}
-\caption{Evolution of packing density with time $E_0 = 152 mgd$ (DEM)}
+\caption{Evolution of packing density with time $E_0 = 152 mgd$ (DEM).}
 \label{fig:voro_500}
 \end{figure}
 
@@ -1726,18 +1730,18 @@ spreading stage is negligible.
 \centering
 \begin{subfigure}[b]{0.975\textwidth}
 \includegraphics[width=\textwidth]{Normalised_KEx_Slope}
-\caption{Evolution of normalised horizontal kinetic energy with time}
+\caption{Evolution of normalised horizontal kinetic energy with time.}
 \label{fig:Normalised_KEx_Slope}
 \end{subfigure}
 \\
 \begin{subfigure}[b]{0.975\textwidth}
 \centering
 \includegraphics[width=\textwidth]{Normalised_KEy_Slope}
-\caption{Evolution of normalised vertical kinetic energy with time}
+\caption{Evolution of normalised vertical kinetic energy with time.}
 \label{fig:Normalised_KEy_Slope}
 \end{subfigure}
 \caption{Evolution of vertical and horizontal kinetic energy with time (MPM) 
-for a pile subjected to gradient input velocities}
+for a pile subjected to gradient input velocities.}
 \label{fig:Normalised_KEx_KEy_Slope}
 \end{figure}
 
@@ -1762,7 +1766,7 @@ agreement with the fact that the energy fades away in a finite time $t'_f$.
 \centering
 \includegraphics[width=\textwidth]{Normalised_KExExop_Slope}
 \caption[Evolution of the normalised horizontal kinetic energy as function of 
-time since the transient phase]{Evolution of kinetic energy in the $x$ 
+time since the transient phase.]{Evolution of kinetic energy in the $x$ 
 component of the velocity field normalized by the available kinetic energy at 
 the
 end of the transient phase as a function of time elapsed since the
@@ -1774,7 +1778,7 @@ same instant (MPM).}
 \centering
 \includegraphics[width=\textwidth]{EkxKoTTau_Slope}
 \caption[Evolution of the normalised horizontal kinetic energy as function of 
-the normalised time since the transient phase]{Evolution of kinetic energy in 
+the normalised time since the transient phase.]{Evolution of kinetic energy in 
 the $x$ component of 
 the velocity field  normalized by the available kinetic energy at the end of 
 the transient as a function of normalized time (MPM).}
@@ -1948,14 +1952,14 @@ subjected to a gradient horizontal energy $E_0 = 61 \ mgd$.}
 \begin{subfigure}[b]{0.95\textwidth}
 \centering
 \includegraphics[width=\textwidth]{Runout_Eo_GU}
-\caption{Run-out distance as a function of normalised input kinetic energy}
+\caption{Run-out distance as a function of normalised input kinetic energy.}
 \label{fig:Runout_Eo_GU}
 \end{subfigure}
 \\
 \begin{subfigure}[b]{0.95\textwidth}
 \centering
 \includegraphics[width=\textwidth]{time_Eo_GU}
-\caption{Duration of run-out as a function of normalised input kinetic energy}
+\caption{Duration of run-out as a function of normalised input kinetic energy.}
 \label{fig:time_Eo_GU}
 \end{subfigure}
 \caption{Effect of input velocity distribution on the run-out behaviour of 
