@@ -1114,80 +1114,80 @@ modelling large deformation problems is also investigated.
 
 \section{Particulate modelling of granular flows}
 
-Granular materials often exhibit different behaviour under different 
-circumstances. Fluidized granular material often resembles a liquid, and 
+Granular materials often exhibit different behaviours under different 
+circumstances. Fluidized granular material often resembles a liquid and 
 reveals surface waves. In certain situations, granular materials behave more 
-like a solid exhibiting plastic deformations. Despite the wide variations in 
+like solids exhibiting plastic deformations. Despite the wide variation in 
 the physical and the chemical properties of the grains, the discrete granular 
-structure has a rich generic phenomenology, which motivates us to understand 
-the fundamental behaviour of these materials. 
+structure has a rich generic phenomenology, motivating researchers to 
+understand the fundamental behaviour of these materials. 
 
 A granular material can be 
 considered as a continuous material if it is viewed at a macroscopic scale, 
 ignoring the fact that it is composed of grains. On a macroscopic scale, the 
-behaviour of the granular material could be approximately defined using 
+behaviour of the granular material can be approximately defined using 
 continuum mechanics. However, on a grain level, granular materials 
-exhibit complex solid-like and/or fluid like behaviour depending on the way the 
-grains interact with each other. Analytical and finite element models 
-which consider granular materials as a continuum cannot take into account the 
+exhibit complex solid-like and/or fluid-like behaviours depending on the way 
+the grains interact with each other. Analytical and finite element models, 
+which consider granular materials as a continuum, cannot take into account the 
 local geometrical processes that govern the mechanical behaviour of a 
 non-homogeneous soil. The application of continuum models to describe granular 
 flow poses subtle problems for statistical analysis~\citep{Mehta1994}. 
-The grain level description of the granular material enriches the macro-scale 
+The grain-level description of the granular material enriches the macro-scale 
 variables, which poorly account for the local rheology of the materials. 
 
-Numerical models such as the Discrete Element approach proposed 
-by~\citet{Cundall1979a} are capable of simulating the granular material as a 
-discontinuous system. Although, modern measurement techniques can probe into 
-local granular variables, like grain position, velocities, contact 
-forces, etc., they have inherent limitations in acquiring those variables. The 
-\textit{discrete-element} approach is a powerful and a reliable research tool 
+Numerical models, such as the Discrete Element approach proposed 
+by~\citet{Cundall1979a}, are capable of simulating the granular material as a 
+discontinuous system. Although modern measurement techniques can probe local 
+granular variables, like grain position, velocities, contact 
+forces, they have inherent limitations in acquiring those variables. The 
+\textit{discrete-element} approach is a powerful and reliable research tool 
 to study the behaviour of granular materials at the grain-scale. This approach 
 involves applying Newton's equation of motion simultaneously to all grains 
 described as rigid solid bodies by considering the contact forces and the 
 external forces acting on the grains. For a given boundary condition, the 
 collective mechanical response of grains to the external force leads to 
-relative motion between grains constrained in a dense state and/or by 
+relative motion between grains constrained in a dense state, and by 
 inelastic collisions in the loose state.~\citet{Cundall1979a} applied this 
-method to granular geomaterials, and called it the \textit{Distinct Element 
-Method}, to differentiate from the existing \textit{Finite Element Method} used 
-in geomechanics. The attribute ``distinct'' refers to the degrees of freedom of 
-individual grains, but it was later replaced by ``discrete'' to underline 
-the discrete nature of the system. 
+method to granular geomaterials, and terming it the \textit{Distinct Element 
+Method}, to differentiate it from the existing \textit{Finite Element Method} 
+used in geomechanics. The attribute ``distinct'' refers to the degrees of 
+freedom of individual grains, but it was later replaced by ``discrete'' to 
+underline the discrete nature of the system. 
 
 The interactions between the individual grains are governed by unilateral 
 contact laws, and the mechanism of energy dissipation is through friction and 
 inelastic collisions. Moreover, granular materials have a wide variation in 
 their grain shape and size distribution that require appropriate numerical 
 treatments. In DEM, the normal reaction force, 
-which prevents the interpenetration of two grains is proportional to the depth 
+which prevents the interpenetration of two grains, is proportional to the depth 
 of penetration. Thus, frictional contact between grains can be expressed 
 as a function of the configuration variables, which describe the positions and 
 velocities of the grains~\citep{Radjai2011}.
 
 Discrete-Element methods, which describe interactions between grains based on 
-the explicit overlap between the grains are termed as \textit{smooth methods}. 
+the explicit overlap between the grains, are termed as \textit{smooth methods}. 
 Another approach is the \textit{non-smooth approach}~\citep{Jean1999}, which 
 describes the behaviour of discrete elements using the main features of 
-uni-laterality and Coulomb friction, and by neglecting the finer details such 
+uni-laterality and Coulomb friction, and neglect the finer details such 
 as interpenetration and overlap between grains. The fundamental difference 
 between the non-smooth method and the common discrete element method 
 lies in the treatment of small length and time scales involved 
 in the dynamics of granular media. In DEM, the grains are treated 
-as rigid bodies but the contacts between grains are assumed to obey the 
+as rigid bodies, but the contacts between grains are assumed to obey the 
 visco-elastic constitutive law. The time-stepping schemes used for the 
-numerical integration of the equations of motion in DEM, 
-imply that the contact interactions involve smaller time and length scales. In 
+numerical integration of the equations of motion in DEM imply that the contact 
+interactions involve smaller time and length scales. In 
 the non-smooth Contact Dynamics (CD) method, these small scales are neglected 
 and their effects are absorbed into the contact laws. In non-smooth 
-formulation, the grain dynamics is described at a larger scale than the elastic 
-response time and displacement scales~\citep{Jean1999, Radjai2009}. 
+formulation, the grain dynamics are described at a larger scale than the 
+elastic response time and displacement scales~\citep{Jean1999, Radjai2009}. 
 
-DEM simulations can easily capture the complex flow mechanics of 
+DEM simulations can more easily capture the complex flow mechanics of 
 large-deformation problems than the continuum approach.~\cite{Tang2009} used 2D 
 discrete element modelling to understand the mechanism of the Tsaoling 
-landslide triggered by the Chi-Chi earthquake. The authors were able to 
-establish the landslide characteristics to have a low-friction coefficient 
+landslide triggered by the Chi-Chi earthquake. The researchers were able to 
+establish the landslide has a low-friction coefficient 
 (about 0.15) and a medium strength. They were also able to back-calculate a 
 maximum velocity of sliding reached 50~\si{\m\per\s}. 
 Similarly,~\cite{Tang2013} performed 3D discrete-element simulations to 
@@ -1202,17 +1202,17 @@ of bonded material~\citep{Katz2014}. The pre-failure slope material
 disintegration is found to be the fundamental element in determining the size 
 and geometry of the resultant landslides.~\citet{Liu2013} studied the 
 kinematics and internal deformation of granular slopes which experience 
-flow-like behaviour. They observed dilatant grain-shearing flow is 
+flow-like behaviour. They observed that dilatant grain-shearing flow is 
 the dominating mechanism in the movement of granular slopes. DEM is capable of 
 probing the material response in a detailed scale, where conventional 
 experiments or field tests are not feasible. Hence, in the present study, 2D 
 discrete element simulations are performed to understand the behaviour of 
 granular flows.~\citet{Rickenmann2006} applied 2D debris-flow simulation models 
 to two well-documented field events. Two-dimensional simulations provided 
-reasonable results for the extent of deposits and the relative 
+reasonable results for the extent of the deposits and the relative 
 spatial distribution of deposit thicknesses. Nevertheless, some general 
 characteristics of debris flow deposits, which are necessary for hazard 
-assessment, may be reasonably well simulated with these simple modelling 
+assessment, may be reasonably well-simulated with these simple modelling 
 approaches if rheologic or friction parameters can be measured or calibrated.
  
 %*******************************************************************************
@@ -1220,9 +1220,9 @@ approaches if rheologic or friction parameters can be measured or calibrated.
 \section{Discrete Element Method}
 
 The Discrete Element Method (DEM) computes the equilibrium and the trajectories 
-of a classical multi-body system. The Discrete Element Method is a simple and 
+of a classical multi-body system. DEM is a simple and 
 flexible discrete-element approach, which involves applying Newton's second law 
-of motion to each grain to describe the deformation of the granular assembly. 
+of motion to each grain to describe the deformation of the granular assembly 
 % 
 \begin{equation} 
 {m}_{i}\frac{{{d}^{2}}{{x}_{i}}}{d{{t}^{2}}} = {{\mathbf{F}}_{i}}, 
@@ -1232,15 +1232,16 @@ of motion to each grain to describe the deformation of the granular assembly.
 %
 where \textit{N} is the number of grains in the simulation, $m_{\mathit{i}}$ 
 is the mass of a grain \textit{i}, $x_{\mathit{i}}$ is its position, and 
-$\mathbf{F}_{\mathit{i}}$ is the force exerted on grain. The method consists of 
+$\mathbf{F}_{\mathit{i}}$ is the force exerted on a grain. The method consists 
+of 
 calculating the forces $\mathbf{F}_{\mathit{i}}$ and then solving 
-the ordinary differential in~\cref{eq:fma}. In general the system of coupled 
+the ordinary differential in~\cref{eq:fma}. In general, the system of coupled 
 non-linear differential equations cannot be solved analytically. The 
 approximate numerical solution of these equations, which describes the 
-trajectories of all the grains of the system is called as the Discrete Element 
+trajectories of all the grains of the system is called the Discrete Element 
 Method.
 
-DEM simulates similar to the real experiments, involving the generation 
+DEM simulations are similar to the real experiments, involving the generation 
 of samples (initial conditions) with \textit{N} grains and solving the Newton's 
 equation of motion for the system until the properties of the system no longer 
 change with time (equilibration of the system). The computation of the forces 
@@ -1260,9 +1261,9 @@ the Euler angles of the grains \textit{i} ($i = 1, 2 \cdots , N$):
 \end{align}
 %
 The force $\overrightarrow{\mathbf{F}_{i}}$ and the torque 
-$\overrightarrow{\mathbf{M}_{i}}$, which act on grain \textit{i} of mass 
+$\overrightarrow{\mathbf{M}_{i}}$, which act on a grain \textit{i} of mass 
 $\mathit{m}_{\mathit{i}}$ and the tensorial moment of inertia 
-${\hat{J}_i}$ are (sometimes complicated) functions of the grain 
+${\hat{J}_i}$ are functions of the grain 
 positions $\overrightarrow{\mathit{r}_{\mathit{j}}}$, their angular 
 orientations $\overrightarrow{\varphi}_{\mathit{j}}$, and their corresponding 
 velocities $\overrightarrow{\mathit{v}_{\mathit{j}}}$ and 
@@ -1299,7 +1300,7 @@ of solids to the total volume ($V_s /V$)}
 For grains in the absence of long range fields, the force  
 $\overrightarrow{\mathbf{F}_{i}}$ and the torque  
 $\overrightarrow{\mathbf{M}_{i}}$ acting upon the grain \textit{i} are given as 
-sum of the pairwise interaction of grain \textit{i} with 
+a sum of the pairwise interaction of a grain \textit{i} with 
 all other grains in the system:
 %
 \begin{align}
@@ -1312,23 +1313,23 @@ all other grains in the system:
 The limitation to pairwise interaction is an abstraction, which is justified 
 if the grain deformation at the contact is trivial. To describe the 
 deformation of granular assemblies one has to take into account the effect of 
-multi-grain interactions. This method is general and can be applied to a wide 
+multi-grain interactions. This generalised method can be applied to a wide 
 range of systems. The Discrete Element Method can be used to study the 
 behaviour of grains in rapid flows and in static assemblies. The method treats 
-both conditions in exactly the same way, it is not necessary to divide the 
+both conditions in exactly the same way; it is not necessary to divide the 
 system and then treat each condition differently. The simplest model for 
 a grain is a sphere. In a two-dimensional case, the sphere is reduced to 
 a circular disk. Simulations using spherical grains are numerically very 
-effective since grain collisions can be easily identified and described in 
-a simple way~\citep{Poschel2005}.
+effective, since grain collisions can be easily identified and described in 
+a simplistic way~\citep{Poschel2005}.
 
 In the present study, a two-dimensional DEM code is developed in C++ 
 to study the micro-scale rheology of dry granular flows. Existing DEM codes do 
-not yet fully support micro-scale fluid solid coupling using Lattice Boltzmann 
-approach, which will be used to study the mechanism of submarine landslides. 
-A new C++ based high performance DEM code is developed in the present study. 
-The features implemented in the present study and the general overview of DEM 
-are discussed below.
+not yet fully support micro-scale fluid solid coupling using the Lattice 
+Boltzmann approach, which will be used to study the mechanism of submarine 
+landslides. A new C++ based high performance DEM code is developed in the 
+present study. The features implemented in the present study, and the general 
+overview of DEM are discussed below.
 
 % 
 %%******************************************************************************
@@ -1336,7 +1337,7 @@ are discussed below.
 \subsection{The Forces}
 
 The force $\mathbf{F}_{\mathit{i}}$ in~\cref{eq:fma} represents both the grain 
-to grain interaction force, and other external forces acting on the system. 
+to grain interaction force and other external forces acting on the system. 
 Therefore, the force $\mathbf{F}_{\mathit{i}}$ is expressed as
 %
 \begin{equation} \label{eq:f}
@@ -1344,7 +1345,7 @@ Therefore, the force $\mathbf{F}_{\mathit{i}}$ is expressed as
  i}}\,,
 \end{equation}
 %
-where $\mathbf{F}_{\mathit{i}}$ is the force exerted by grain \textit{j} on 
+where $\mathbf{F}_{\mathit{i}}$ is the force exerted by a grain \textit{j} on 
 \textit{i}. The external force $\mathbf{F}_{\mathit{ext,i}}$ is most often the 
 force of gravity, $\mathbf{F}_{\mathit{ext,i}} = m_{\mathit{i}} \mbox{ 
 }\mathbf{g}_{\mathit{i}}$. The methodology to incorporate any other external 
@@ -1352,7 +1353,7 @@ forces in the simulation is the same. However, the computation of the
 interaction forces depends on the numerical method adopted in the study. 
 The methodology used in the present study is described below. 
 
-Let us consider two grains \textit{i} and \textit{j}, in contact 
+Consider two grains \textit{i} and \textit{j} in contact 
 (\cref{fig:DEM}). The contact force can be decomposed into two components, 
 as the normal ($\mathit{F}_{n}$) and the tangential ($\mathit{F}_{t}$) 
 components
@@ -1374,7 +1375,7 @@ components
 
 where \textbf{n} and \textbf{t} are unit vectors, pointing in the normal and 
 the tangential directions. The procedure adopted to calculate the normal and 
-tangential forces are discussed.
+tangential forces is discussed.
 
 %****************************************** %
 \subsubsection*{Normal force}
@@ -1382,8 +1383,7 @@ When grains collide, part of the kinetic energy is dissipated as
 heat and the other part causes deformation of the grain. These deformations 
 generate interaction forces. In DEM, the grains are considered to be rigid 
 while their contact is assumed to be soft. Thus, the grains do not change their 
-shape, 
-instead they overlap. The shapes of the grains are conserved on an average, 
+shape; instead they overlap. The shapes of the grains are conserved on average, 
 after many collisions. The overlap at the contact is limited to very small 
 deformations, which are achieved by defining a repulsive normal force that 
 opposes the overlap. The mutual compression ($\delta_{n}$) of the grains 
@@ -1395,13 +1395,13 @@ opposes the overlap. The mutual compression ($\delta_{n}$) of the grains
 \end{equation}
 %
 where $x_{\mathit{i}}$ and $x_{\mathit{j}}$ are vectors fixing the centres of 
-the grains and 
+the grains, and 
 $r_{\mathit{i}}$ and $r_{\mathit{j}}$ are their radii (\cref{fig:DEM}). When 
 $\delta_{n}>0$, the two grains are not in contact, and 
 there is no interaction. When $\delta_{n}<0$, the two grains overlap, and 
-there is a repulsive normal force that pushes the two grains apart. The 
-simplest model is to consider the contact as a linear spring with damping. The 
-repulsive force depends linearly on $\delta_{n}$, and is controlled by the 
+there is a repulsive normal force that pushes the two grains apart. As a 
+simple model, consider the contact as a linear spring with damping. The 
+repulsive force depends linearly on $\delta_{n}$ and is controlled by the 
 stiffness of the grain. The energy dissipation due to the interaction between 
 grains is an intrinsic characteristic of the granular material and is 
 incorporated by adding a damping force that opposes the relative velocity for 
@@ -1418,14 +1418,14 @@ constants~\citep{Luding1994}.
 \end{cases}
 \end{align} 
 %
-The constant ${k}_{n}$ characterises the stiffness of the grain, and must be 
-chosen to be sufficiently large that the overlap between the grains remain 
+The constant ${k}_{n}$ characterises the stiffness of the grain and must be 
+chosen to be sufficiently large so that the overlap between the grains remains 
 small. Nevertheless, the solution has an undesirable property of generating an 
 attractive force~\citep{Poschel2005}. It arises just before the two grains 
 separate. In this case, we have ${d{\delta_{n}}}$$/{dt} > 0$ while $\delta_{n}$ 
 approaches zero. To avoid the attractive force, the force is computed in two 
-stages: a candidate force $\hat{F}_{n}$ is calculated, and verified whether it 
-is non-negative
+stages: a candidate force $\hat{F}_{n}$ is calculated and verified as to 
+whether it is non-negative
 %
 \begin{align}
  {\hat{F}_{n}}=-{{k}_{n}}{{\delta}_{n}}-{{\gamma}_{n}}\frac{d{{\delta}_{n}}}{dt},
@@ -1436,27 +1436,27 @@ is non-negative
 \end{cases} \label{eq:nf}
 \end{align} 
 %
-For pairwise collisions, the normal force $(F_{n})$ represented as 
+For pairwise collisions, the normal force $(F_{n})$, represented as, 
 ${{k}_{n}}{{\delta}_{n}}+{{\gamma}_{n}}$ causes a decrease in the relative 
 normal velocity of the grains by a factor $\varepsilon$. This factor is the 
-\textit{coefficient of restitution}, and is defined as $\varepsilon\approx 
+\textit{coefficient of restitution} and is defined as $\varepsilon\approx 
 u^\prime/u$, 
 where $u$ is the absolute normal relative velocity before 
 the collision and $u^\prime$ corresponds to the post-collision value. The 
 relative velocity, ${d{\delta_{n}}}$$/{dt} > 0$, can be obtained by 
-differentiating~\cref{eq:delta}. Thus we obtain
+differentiating~\cref{eq:delta}. Thus, we obtain
 %
 \begin{equation}
 \label{eq:vn}
 \frac{d{\delta_{n}}}{dt}=(\mathbf{v}_{\mathit{i}}-\mathbf{v}_{\mathit{i}}).{\mathbf{n}}\,,
 \end{equation}
 %
-where $\mathbf{v}_{\mathit{i}}=dx_{\mathit{i}}/dt$ is the velocity of grain 
+where $\mathbf{v}_{\mathit{i}}=dx_{\mathit{i}}/dt$ is the velocity of the grain 
 \textit{i} and $\mathbf{v}_{\mathit{j}}=dx_{\mathit{i}}/dt$ is the velocity of 
-grain \textit{j}. The numerical integration of~\cref{eq:vn} yields the 
-separation $\delta_{n}$ and permits us to generalise the model and treat the 
-tangential forces as well, as explained in the next section. By integrating 
-Newton's equation of motion it is found that the linear force corresponds to 
+the grain \textit{j}. The numerical integration of~\cref{eq:vn} yields the 
+separation $\delta_{n}$ and permits us to generalise the model so as to 
+incorporate the tangential forces. By integrating 
+Newton's equation of motion, it is found that the linear force corresponds to 
 the co-efficient of restitution, which is defined as
 %
 \begin{equation}
@@ -1468,22 +1468,24 @@ the co-efficient of restitution, which is defined as
 % %
 
 \subsubsection*{Tangential force}
-Grains are not perfect spheres, but have a complicated surface 
-texture. Therefore, at oblique collisions, besides the normal force there is a 
-tangential force too. Even perfectly smooth spheres exert a tangential force 
+Grains are not perfect spheres, they have a complicated surface 
+texture. Therefore, at oblique collisions, there is a 
+tangential force in addition to a normal force. Even perfectly smooth spheres 
+exert a tangential force 
 due to their bulk viscosity~\citep{Poschel2005}. To build a heap of 
 spheres on a flat surface, the grains as well as the surface have to be 
-sufficiently rough, indicating the dependence of the tangential force on the 
-surface properties of the granular materials. For realistic simulation of 
+sufficiently rough, indicating the dependency of the tangential force on the 
+surface properties of the granular materials. For realistic simulations of 
 granular materials, it is important to consider the tangential force in 
 DEM. The tangential force is considered in a similar 
-fashion as the normal force, arising from a spring stretched by the relative 
+fashion to the normal force, arising from a spring stretched by the relative 
 motion of the grain. Tangential forces are modelled by considering the relevant 
 relative tangential velocity of the grain surfaces at the point of contact. The 
 point of contact is an approximation, as the description of the normal force 
 assumes a compression $\delta_{n}$, which implies a contact surface in 3-D or a 
-contact line in 2-D. Assuming a tangential spring of length $\delta_{t}$ exerts 
-an opposing force to the relative tangential displacements (ignoring the effect 
+contact line in 2-D. Assuming a tangential spring of length $\delta_{t}$ that 
+exerts an opposing force to the relative tangential displacements (ignoring the 
+effect 
 of relative rolling between the grains), the tangential force can be postulated 
 similar to the normal force (\cref{eq:vn}) as
 %
@@ -1493,11 +1495,11 @@ similar to the normal force (\cref{eq:vn}) as
  \,.
 \end{equation}
 %
-This equation must also be numerically integrated, just like~\cref{eq:fma}. The 
-grains are in contact when $\delta_{t}<0$ and when $\delta_{t}=0$, the grains 
-no longer exert a force on each other. With these assumptions, $\delta_{t}$ can 
-be calculated similar to the normal force. The tangential force is assumed to 
-be governed by Coulomb's friction law.
+As with~\cref{eq:fma}, this equation must also be numerically integrated. The 
+grains are in contact when $\delta_{t}<0$, whereas when $\delta_{t}=0$, the 
+grains no longer exert a force on each other. With these assumptions, 
+$\delta_{t}$ can be calculated similar to the normal force. The tangential 
+force is assumed to be governed by Coulomb's friction law:
 %
 \begin{equation}
 \left|F_{\mathit{t}}\right|\le\mu F_{\mathit{n}} \,, \label{eq:fric}
@@ -1506,9 +1508,9 @@ be governed by Coulomb's friction law.
 where $F_{\mathit{t}}$ is the tangential force and $\mu$ is the friction 
 coefficient. It is therefore necessary to constrain the tangential force to 
 remain less than or equal to $\mu F_{N}$. To impose the condition 
-in~\cref{eq:fric}, two-stages similar to the normal force computation is 
-adopted. The first step is to evaluate the candidate force, and is then 
-accepted if it obeys the condition in~\cref{eq:fric}.
+in~\cref{eq:fric}, two stages similar to the normal force computation are
+adopted. The first step is to evaluate the candidate force, and the force is 
+then accepted if it obeys the condition in~\cref{eq:fric}.
 %
 \begin{align}
  {\hat{F}_{t}}=-{{k}_{t}}{{\delta}_{t}}-{{\gamma}_{t}}\frac{d{{\delta}_{t}}}{dt},
@@ -1521,17 +1523,18 @@ sgn(F_{t}), & {\left|\hat{F}\right|} \ge \mu F_{n} \\
 \end{align} 
 %
 where $k_{t}$ is the stiffness of the tangential spring and $\gamma_{t}$ is the 
-damping constant. If $|F_{t}|=\mu F_{n}$, the contact is sliding, otherwise, it 
-is non-sliding. It can noted that the normal force (\cref{eq:nf}) and the 
+damping constant. If $|F_{t}|=\mu F_{n}$, the contact is sliding; otherwise, it 
+is non-sliding. It can be noted that the normal force (\cref{eq:nf}) and the 
 tangential force (\cref{eq:tf}) are handled in the same way in DEM. When the 
 grains slide against each other, they do not retain any memory 
-of their initial position, and hence do not return to its original position. In 
-order to model this behaviour, a limiting value of $\delta_{t}$ is imposed. 
-When the contact slides $\delta_{t}=\pm\mu F_{n}/k_{t}$ is imposed.
+of their initial position, and hence do not return to their original position. 
+In order to model this behaviour, a limiting value of $\delta_{t}$ is imposed. 
+When the contact slides, $\delta_{t}=\pm\mu F_{n}/k_{t}$ is imposed.
 
-In addition to sliding, the grains can roll relative to one another about their 
-centre of mass due to the tangential force acting at their contact surface. In 
-this case, $d\delta_{t}/dt=0$. It is important to assume that the grains touch 
+In addition to sliding, the grains can roll relative to one another around 
+their centre of mass due to the tangential force acting at their contact 
+surfaces. In which case, $d\delta_{t}/dt=0$. It is important to assume that the 
+grains touch 
 at a single point instead of overlapping, i.e. $\delta_{n}=0$. This point is 
 located at 
 ${x}_{\mathit{i}}-r_{\mathit{i}}\mathbf{n}={x}_{\mathit{j}}+r_{\mathit{j}}\mathbf{n}$.
@@ -1549,13 +1552,13 @@ The relative velocity is the difference between these two velocities.
 \label{eq:rf}
 \end{equation}
 %
-It should be noted that the~\cref{eq:rf} is only an approximation, as the 
+It should be noted that~\cref{eq:rf} is only an approximation, as the 
 grains in DEM do not touch at points, but overlap. It is therefore an 
 approximation that produces an error of order 
 $\mathbf{\mathit{O}}(\delta_{n}/r)$~\citep{Radjai2011}. It is 
-assumed that the contact forces are exerted at the point of contact. It implies 
-that the tangential force is accompanied by torque acting on two grains. If the 
-overlap is zero, these torques are
+assumed that the contact forces are exerted at the point of contact, which 
+implies that the tangential force is accompanied by torque acting on two 
+grains. If the overlap is zero, these torques are
 %
 \begin{align}
 \tau_{\mathit{ij}} & = -(a_{\mathit{i}}\mathbf{n})\times(F_{t}\mathbf{t}) \,,\\
@@ -1575,7 +1578,7 @@ where $\mathit{I}_{j}$ is the moment of inertia of grain j. Eq~\ref{eq:av} is
 only valid when $\delta_{n}=0$. The torque is a vector product of the force and 
 its lever arm. It is assumed that the lever arms have lengths equal to 
 $r_{\mathit{i}}$ and $r_{\mathit{j}}$, which is true only when the grains do 
-not overlap, hence in this case they produce an error of order 
+not overlap. Hence in this case they produce an error of order 
 $\mathbf{\mathit{O}}(\delta_{n}/r)$. It is nevertheless desirable to damp this 
 type of motion~\citep{Radjai2011}. A rolling resistance can be adopted in order 
 to model the shape effect of non-spherical grains, which accounts for moments 
@@ -1583,14 +1586,14 @@ arising from the fact that the line of action of the normal contact force in
 the case of non-spherical particles no longer passes through the centre of mass
 of the particles and hence generates rotational moments.
 
-The interaction between two solid bodies is much more complex than that is 
+The interaction between two solid bodies is much more complex than that 
 described by the simple linear model. Nevertheless, the linear force law has 
 several advantages. It is simple to implement, and its harmonic behaviour is 
-well understood, which makes it easier to interpret the results. The 
+well-understood, which makes it easier to interpret the results. The 
 most common non-linear interaction law is the Hertz law~\citep{Hertz1882}. In 
 certain situations, such as a quasi-static packing, a non-linear law can have 
-significant influence on the acoustic properties, and on the global 
-stiffness~\citep{Agnolin2007}. However, in case of rapid granular flows, 
+significant influence on the acoustic properties and on the global 
+stiffness~\citep{Agnolin2007}. However, in the case of rapid granular flows, 
 the interaction force between the grains has almost no effect on the 
 phenomenon, and a linear law can be used to describe this kind of 
 behaviour~\citep{Radjai2011}. 
@@ -1599,35 +1602,38 @@ behaviour~\citep{Radjai2011}.
 
 \subsection{Numerical algorithm and integration scheme}
 The efficiency of a DEM algorithm is mainly determined by 
-its efficiency to compute the interaction forces between grains. If we 
-consider a model system with pairwise interactions, we have to consider the 
-contribution of the force on grain \textit{i} due to all its neighbours. If we 
-consider only the interaction between a grain and the nearest image of another 
-grain, then for a system of \textit{N} grains, we must evaluate $N \times 
-(N-1)/2$ pair distances. Consider a system of 1000 grains, at every time step 
-all possible pairs of grains have to be considered to compute the interaction 
-forces, hence, $\mathit{N}(\mathit{N}-1)/2 \approx 500,000$ force computations 
-are required. For short-range grain interactions, the majority of these force 
-evaluations is unnecessary as the corresponding grains are located far apart 
-and do not necessarily touch each other. For a dense system of equally sized 
-grains, the grains can have contacts with not more than 6 grains, this reduces 
-the number of force computation required to $3\mathit{N} \approx 3000$. In the 
-preliminary force computation scheme, at least 166 times more pair interactions 
-are considered than necessary. Therefore, the numerical methods employed in the 
-DEM should try to minimize the computation of 
+its efficiency for computing the interaction forces between grains. If we 
+consider a model system with pairwise interactions, then we have to consider 
+the contribution of the force on grain \textit{i} due to all of its neighbours. 
+If we consider only the interaction between a grain and the nearest image of 
+another grain, then for a system of \textit{N} grains, we must evaluate $N 
+\times (N-1)/2$ pair distances. Consider a system of 1000 grains. At every time 
+step, all possible pairs of grains have to be considered to compute the 
+interaction forces, and hence, $\mathit{N}(\mathit{N}-1)/2 \approx 500,000$ 
+force 
+computations are required. For short-range grain interactions, the majority of 
+these force evaluations is unnecessary as the corresponding grains are located 
+far apart and do not necessarily touch each other. For a dense system of 
+equally sized grains, the grains can have contacts with not more than 6 grains, 
+thereby reducing the number of force computations required to $3\mathit{N} 
+\approx 
+3000$. In the preliminary force computation scheme, at least 166 times more 
+pair interactions are considered than necessary. Therefore, the numerical 
+methods employed in the DEM should try to minimize the computation of 
 interaction forces~\citep{Poschel2005}. There are three different methods for 
-the efficient computation of the forces, the \textit{Verlet} algorithm, the 
+the efficient computation of the forces the \textit{Verlet} algorithm, the 
 \textit{link-cell} algorithm, and a \textit{lattice} algorithm. The 
 \textit{Verlet} algorithm described in~\citet{Grubmuller1991} 
 is implemented in the present study.
 
 \subsubsection{Verlet list algorithm}
 The Verlet list algorithm assumes a cut-off value, so that only neighbouring 
-grains that contribute to the energy of a grain \textit{i} are considered. It 
-is advantageous to exclude the grains that do not interact in the memory 
-expensive energy computation.~\citet{Verlet1967} developed a book-keeping 
+grains that contribute to the energy of grain \textit{i} are considered. It 
+is advantageous to exclude the grains that do not interact in the 
+memory-expensive energy computation.~\citet{Verlet1967} developed a 
+book-keeping 
 technique, commonly referred to as the Verlet list or neighbour list, which is 
-illustrated in~\ref{fig:Verletb}. In this method a second cut-off radius 
+illustrated in~\cref{fig:Verletb}. In this method, a second cut-off radius 
 $r_{\mathit{v}}>r_{c}$ is introduced, and before the interactions are 
 calculated, a list is made (the Verlet list) of all grains within a radius 
 $r_{\mathit{v}}$ of the grain \textit{i}. In the subsequent calculations of the 
@@ -1635,10 +1641,10 @@ interactions, only those grains in this list will be considered. The idea of
 the Verlet algorithm is based on a simple property of grain dynamics: 
 the neighbourhood relation between grains can only change slowly, i.e. two 
 grains which are close to each other at a given time step will remain as 
-neighbours, at least in the following few time steps. During initialization the 
-neighbourhood relations between the grains, i.e. the distance of all close 
-pairs of grains are computed. Two grains are considered as neighbours if 
-the distance of their surface is smaller than a predefined distance 
+neighbours, at least in the following few time steps. During initialization, 
+the neighbourhood relations between the grains, i.e. the distance of all close 
+pairs of grains, are computed. Two grains are considered to be neighbours if 
+the distance of their surfaces is smaller than a predefined distance, termed the
 \textit{Verlet distance}
 %
 \begin{equation}
@@ -1653,37 +1659,38 @@ the distance of their surface is smaller than a predefined distance
 \caption[Verlet list algorithm for neighbourhood search]{The Verlet list: a 
 grain \textit{i} interacts with 
 those grains with 
-the cut-off radius $r_{c}$, the Verlet list contains all the grains within 
+the cut-off radius $r_{c}$. The Verlet list contains all the grains within 
 a sphere with radius 
 $r_{\mathit{v}>r_{c}}$}
 \label{fig:Verletb}
 \end{figure}
 
-For each grain there is a \textit{Verlet list} in which the close 
+For each grain, there is a \textit{Verlet list} in which the close 
 neighbours are saved. To initialise the Verlet lists efficiently, a grid that 
 covers the simulation area is defined. Its mesh size is larger than the largest 
-grain. For construction of the lists only pairs whose grains reside in the same 
-or adjacent grids are considered. This procedure guarantees the detection of 
-all close pairs of grains~\citep{Poschel2005}. Redundancy in Verlet lists, i.e. 
+grain. For construction of the lists, only pairs whose grains reside in the 
+same or adjacent grids are considered. This procedure guarantees the detection 
+of all close pairs of grains~\citep{Poschel2005}. Redundancy in Verlet lists, 
+i.e. 
 if grain \textit{i} is a neighbour of \textit{j}, then grain \textit{j} is 
-a neighbour of \textit{i}, are avoided by imposing a restriction on the list of 
-grain \textit{i} contains, such that it contains only neighbours with index 
+a neighbour of \textit{i}, is avoided by imposing a restriction on the list of 
+grain \textit{i}, such that it contains only neighbours with index 
 $\mathit{j}<\mathit{i}$. For the computation of interaction forces, the Verlet 
-list of grain \textit{i} is scanned and only pairs which are recorded in one of 
-the Verlet lists are considered. Hence, the Verlet list of each grain 
-\textit{i} is scanned and the interaction force of \textit{i} with each entry 
+list of grain \textit{i} is scanned, and only pairs which are recorded in one 
+of the Verlet lists are considered. Hence, the Verlet list of each grain 
+\textit{i} is scanned, and the interaction force of \textit{i} with each entry 
 \textit{j} in its list is computed. 
 
-Initially to build the Verlet list, the grains are sorted into a grid of mesh 
-size $\mathit{dx}\times\mathit{dy}$. For each grid there is a list of grains 
+Initially, to build the Verlet list, the grains are sorted into a grid of mesh 
+size $\mathit{dx}\times\mathit{dy}$. For each grid, there is a list of grains 
 residing in the cell. During the simulation, the neighbourhood relation among 
-the grains change, therefore, the Verlet lists have to be updated. The decision 
+the grains change; therefore, the Verlet lists have to be updated. The decision 
 to update a Verlet list depends on how far the grains have travelled since the 
 time when the present list was built. The Verlet list of a grain \textit{i} 
 must contain at any time all neighbours \textit{j} with 
 $\mathit{j}<\mathit{i}$. This assures that two grains \textit{i} and 
 \textit{j} never touch and are not considered as neighbours, i.e. \textit{j} is 
-not in the list of \textit{i} and \textit{i} is not in the list of \textit{j}. 
+not in the list of \textit{i}, and \textit{i} is not in the list of \textit{j}. 
 Hence,
 %
 \begin{equation}
@@ -1694,17 +1701,17 @@ Hence,
 The above condition is required for all pairs $(\mathit{i},\mathit{j})$ of 
 grains which are \textit{not} known as neighbours. This condition is a 
 criterion to update the Verlet lists~\citep{Poschel2005}. Assume at the instant 
-when the Verlet lists are constructed, the surfaces of the grains have the 
+when the Verlet lists are constructed that the surfaces of the grains have the 
 distance $\left| \overrightarrow{r_{\mathit{i}}} - 
 \overrightarrow{r_{\mathit{i}}}\right| - 
 \mathit{R}_{\mathit{i}}-\mathit{R}_{\mathit{j}} > 
 \mbox{Verlet distance}$, i.e. they are not classified as neighbours. If the 
 Verlet lists are updated before one of these grains has travelled the distance 
-$\mathit{verlet distance}/2$ since the lists were constructed, they can never 
-collide without being recognized as neighbours first. This is explained 
+$\mathit{verlet distance}/2$ since the lists were constructed then they can 
+never collide without being recognized as neighbours first. This is explained 
 in~\cref{fig:Verlet}. The impact of optimisation of the Verlet list 
 algorithm has negligible effect on the computation time, as the algorithm is 
-quite efficient already and only consumes a few percent of the total 
+quite efficient already and only consumes a small percentage of the total 
 computation time in construction of the Verlet lists. The implementation of the 
 Verlet list algorithm in force computation drastically reduces the computation 
 time in comparison to the linear algorithm. The performance of the Verlet list 
@@ -1718,81 +1725,81 @@ Verlet distance $r_{\mathit{v}}$~\citep{Poschel2005}.
 \caption[Checking the validity of Verlet list in DEM simulations]{Checking the 
 validity of Verlet 
 lists. \textit{Left}: the grains \textit{i} and \textit{j} are not recognized 
-as neighbours since the distance of their surface is larger than the Verlet 
+as neighbours since the distance of their surfaces is larger than the Verlet 
 distance. The radius of the dashed circle is 
 $\mathit{R}_{\mathit{i}}+\mathit{R}_{\mathit{max}}+\mbox{\textit{Verlet 
-distance}}$. \textit{Right:} in the most unfortunate case the grains approach 
+distance}}$. \textit{Right:} in the most critical case the grains approach 
 each other directly, travelling at the same velocity. As soon as one of the 
 grains has travelled the distance $\mbox{\textit{Verlet distance}}/2$ 
 (\textit{arrows}), the Verlet lists have to be rebuilt. The grains \textit{i} 
 and \textit{j} are now recognized as neighbours. Redrawn 
-after~\citet{Poschel2005}.}
+from~\citet{Poschel2005}.}
 \label{fig:Verlet}
 \end{figure}
 
-\subsubsection{Leap frog or Verlet integration algorithm}
+\subsubsection{Leap frog, or Verlet integration algorithm}
 
-Discrete Element Method involves numerically solving Newton's equation of 
+The Discrete Element Method involves numerically solving Newton's equation of 
 motion~\cref{eq:fma}, which is an ordinary differential equation. Choosing an 
 integration algorithm is important, as the forces are not always differentiable 
 in time, and the temporary derivative of the force is discontinuous when the 
-contact splits. It is also very essential to numerically integrate~\cref{eq:rf} 
+contact splits. It is also essential to numerically integrate~\cref{eq:rf} 
 with the same precision as~\cref{eq:fma}. At first, computational speed seems 
-important. It is usually not very relevant because the fraction of time spent 
-on integrating the equation of motions (as opposed to computing the 
-interactions) is small. Accuracy for large time steps is more important, 
-because the larger the time step that we can use, the fewer evaluation of the 
-forces are needed per unit of simulation time. Hence, this would suggest that 
-it is advantageous to use a sophisticated algorithm that allows use of larger 
-time step. 
+important. However, it is usually not very relevant because the fraction of 
+time spent on integrating the equation of motions (as opposed to computing the 
+interactions) is negligible. Accuracy for large time steps is more important 
+because the larger the time step used, the fewer evaluations of the forces 
+needed per unit of simulation time. Hence, it is advantageous to use a 
+sophisticated algorithm that allows use of larger time step. 
 
-Algorithms that allow the use of large time steps, achieve this by storing 
+Algorithms that allow the use of large time steps achieve efficiency by storing 
 information on increasingly higher-order derivatives of the 
 grain coordinates. Consequently, they tend to require more memory storage. 
 However, the most important aspect to consider is the energy conservation. It 
-is important to distinguish between two kinds of energy conservation: the short 
-time and long time. The sophisticated higher-order algorithms tend to have very 
-good energy conservation at short times. However, they often have undesirable 
-feature that results in drifting of the overall energy for longer times. In 
-contrast, the Verlet style algorithms tend to have only moderate short term 
-energy conservation, but little long-term drift~\citep{Frenkel1996}. In this 
-case, such algorithms are not useful. They are more complicated to program, and 
-do not yield a more precise solution~\citep{Radjai2011}. It might seem 
-important to have an algorithm that accurately predicts the trajectories of 
-all grains for both short and long durations, however no such algorithm exists.
+is important to distinguish between two kinds of energy conservation: the short-
+term and the long-term. The sophisticated higher-order algorithms tend to have 
+very good energy conservation for short times. However, they often have 
+undesirable features that result in drifting of the overall energy for longer 
+times. In contrast, the Verlet-style algorithms tend to have only moderate 
+short-term energy conservation, but little long-term drift~\citep{Frenkel1996}. 
+In this case, such algorithms are not useful. They are more complicated to 
+program, and they do not yield a more precise solution~\citep{Radjai2011}. It 
+might be important to have an algorithm that accurately predicts the 
+trajectories of all grains for both short and long durations, however no such 
+algorithm exists.
 
 
 In certain cases, two trajectories that are initially very close may diverge 
 exponentially as time progresses. Any integration error, however small it may 
-be, would always diverge the predicted trajectory exponentially from the true 
+be, will always diverge the predicted trajectory exponentially from the true 
 trajectory. This phenomenon is called the Lyapunov instability, and it poses a 
-serious threat to the whole idea of Discrete Element Method simulation. 
+serious threat to the fundamental basis of DEM simulations. 
 However, this problem might not be serious~\citep{Frenkel1996}. The aim of DEM 
 is not to predict precisely what will happen to a system, but to predict the 
 average behaviour of the system that is prepared in an initial state about 
 which we 
 know something (initial position, velocity and energy), but not everything. 
 Hence, DEM differs from other methods, which are used to predict the 
-trajectories. However, considerable numerical evidence suggest that 
+trajectories. However, considerable numerical evidence suggests that 
 the shadow orbits exists, which is a true trajectory of a multi-body system 
 that closely follows the numerical trajectory for a time that is longer in 
 comparison with the time that is required for the Lyapunov instability to 
 develop~\citep{Frenkel1996}.
 
-Newton's equations of motion are time reversible, and so should be the 
-integration algorithm. The ``leapfrog'' algorithm or the Verlet integration 
-algorithm is a numerical scheme used to integrate the Newton's equation of 
-motion to calculate the trajectories of grains and is implemented in 
-DEM by~\citet{Verlet1967}. The Verlet algorithm is 
-fast and requires less storage memory, it is not particularly accurate for long 
+Because Newtons's equations of motions are time-reversible, so too should the 
+integration algorithms be time-reversible. The ``leapfrog'' algorithm, or the 
+Verlet integration algorithm, is a numerical scheme used to integrate the 
+Newton's equation of motion to calculate the trajectories of grains and is 
+implemented in DEM by~\citet{Verlet1967}. The Verlet algorithm is 
+fast and requires less storage memory. It is not particularly accurate for long 
 time steps, and hence, we should expect to compute the forces on all grains 
-rather frequently. Its short-term energy conservation is fair (in versions that 
-use more accurate expression for velocity), but most importantly it exhibits 
-little long-term energy drifts. This is related to the fact that the Verlet 
-algorithm is time reversible and area preserving, however, it does not conserve 
-the total energy of the system exactly~\citep{Frenkel1996}. The Verlet 
+rather frequently. Its short-term energy conservation is satisfied (in versions 
+that use more accurate expression for velocity), but most importantly, it 
+exhibits little long-term energy drifts. This is related to the fact that the 
+Verlet algorithm is time-reversible and area preserving. However, it does not 
+conserve the total energy of the system exactly~\citep{Frenkel1996}. The Verlet 
 algorithm is simply based on a truncated Taylor expansion of grain 
-co-ordinates. 
+coordinates. 
 %
 \begin{equation}
 t(t+\Delta t)=r{t} +\mathbf{v}(t) \Delta t + \frac{f(t)}{2\mathit{m}} \Delta 
@@ -1801,7 +1808,7 @@ t^{2}+ \dots
 %
 If we truncate this expansion beyond the term $\Delta t^{2}$, we obtain Euler's 
 algorithm, which looks similar to the Verlet Algorithm, but it does not 
-preserve energy and has significant energy drifts. The simplest among the 
+preserve energy and it has significant energy drifts. The simplest among the 
 Verlet schemes is the \textit{Leap frog algorithm}, which evaluates the 
 velocities at half-integer time steps and uses these velocities to compute the 
 new positions. The position of each grain is calculated at time $t=0, \Delta t, 
@@ -1822,10 +1829,10 @@ x_{\mathit{k}+1} & =x_{\mathit{k}}+\mathbf{v}_{\mathit{k}+1/2} \Delta t
 %
 This algorithm determines the new grain position with an error of order 
 $\mathit{O}( \Delta t^{4})$. But~\cref{eq:verlet} hides a difficulty in the 
-application of this algorithm to granular materials~\citep{Radjai2011}. The 
-problem is that the acceleration must be calculated at time $t=k\Delta t$. But 
-the velocities are known at $t=(k - 1/2) \Delta t$, and not at $t=k \Delta 
-t$. One way to get around this problem is to write
+application of this algorithm to granular materials~\citep{Radjai2011}. This 
+difficulty is the calculation of acceleration at time $t=k\Delta t$. The 
+velocities are known at $t=(k - 1/2) \Delta t$, but not at $t=k \Delta 
+t$. One option for resolving this problem is to write
 %
 \begin{equation} 
 \mathbf{v}_{\mathit{k}}={\mathbf{v}_{\mathit{k}-1/2}+{\mathbf{a}_{\mathit{k}-1}\Delta
@@ -1835,14 +1842,14 @@ t$. One way to get around this problem is to write
 %
 The equation uses the acceleration of the preceding time step to estimate the 
 velocity. This approximation does not diminish the order of the 
-algorithm.~\cref{eq:ver} estimates $\mathbf{v}_{k}$ with an error of order 
-$\mathbf{O}(\Delta t^{2})$, which produces an error of the same order in the 
+algorithm. Eq~\ref{eq:ver} estimates $\mathbf{v}_{k}$ with an error of order 
+$\mathbf{O}(\Delta t^{2})$, producing an error of the same order in the 
 calculation of the force in~\cref{eq:verlet}. But this causes only an error of 
 order $\mathbf{O}(\Delta t^{3})$ in the velocity and an error of order 
 $\mathbf{O}(\Delta t^{4})$ in the position. However, this problem does not 
 exist in energy conservation systems, because the computed forces do not depend 
 on the velocities of the grains. The heaviest computational task is the 
-evaluation of forces and not the integration of equations. The Verlet 
+evaluation of forces, not the integration of equations. The Verlet 
 integration scheme is summarized in~\cref{eq:vers} and~\cref{fig:verlet}. To 
 calculate the forces and acceleration, it requires the positions and velocities 
 at time \textit{t}:
@@ -1863,12 +1870,12 @@ x(t+\Delta t) & = x(t)+\mathbf{v}(t+\Delta /2) \Delta t  \,, \nonumber \\
 \label{fig:verlet}
 \end{figure}
 
-The analysis of the Discrete Element Method formulation reveals that the linear 
+The analysis of the DEM formulation reveals that the linear 
 force law gives the model a harmonic character, showing that it is very closely 
-related to simple models widely used in physics and mechanics. The shortest 
+related to simple models widely applied in physics and mechanics. The shortest 
 time scales often arise from the oscillations of one or two grains. The 
 integration algorithm must resolve these movements with sufficient precision. 
-Thus, the time steps used must be smaller than these time scales, the most 
+Thus, the time steps used must be smaller than these time scales; the most 
 rapid frequency is usually ${\omega}_{\mathit{N}}$, the characteristic 
 oscillation frequency of very short waves. This frequency is proportional to 
 $\omega _{o}$, which is easier to estimate. Therefore, it is essential 
