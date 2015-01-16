@@ -1893,7 +1893,7 @@ lead to large overlaps between grains.
 \subsection{Boundary conditions}
 
 In many cases, the dynamic and static properties of a granular system are 
-substantially affected by the interaction of the granular material with the 
+substantially affected by the interaction of the granular material within the 
 system boundaries, i.e. by the properties of the container or the surface on 
 which the material is present. The effect of boundary conditions on 
 the response of the granular assembly can be noticed in the convective motion 
@@ -1902,13 +1902,13 @@ pipes, the motion of granular material on conveyors, and the clogging of
 hoppers. In these and many other cases, careful definition of the interaction 
 between the granular material and the contact surface is essential. Of 
 particular importance is the realistic modelling of the wall surface roughness. 
-Unfortunately the mechanical interaction of granular materials with a rough 
+Unfortunately, the mechanical interaction of granular materials with a rough 
 wall is poorly understood~\citep{Poschel2005}. A simple way to define the wall 
-property is to build up the wall from grains, which obey the same rules of 
+property is to build up the wall from grains which obey the same rules of 
 interaction as the grains of granular material. By varying the size and 
 position of the wall grains, system boundaries of adjustable roughness can be 
 described. However, the surface roughness that characterizes the frictional 
-properties of the wall has to be derived iteratively, and may not represent the 
+properties of the wall has to be derived iteratively and may not represent the 
 real conditions. In the present case, a solid wall with corresponding 
 stiffness, damping and frictional characteristics is introduced to model the 
 interaction between grains and the wall. The interaction force is computed in a 
@@ -1919,16 +1919,17 @@ the grain contact.
 
 \subsubsection{Periodic boundary} \label{sec:periodic}
 The effect of a wall on the response of grains is very critical, especially 
-in numerical simulation where the number of grains is relatively fewer in 
-comparison to the experiments. The undesired effect of a wall can be eliminated 
-using periodic boundary conditions, i.e. a periodic extension of the simulation 
+in numerical simulations where the number of grains is relatively fewer in 
+comparison to the number of grains in experimental conditions. The undesired 
+effect of a wall can be eliminated using periodic boundary conditions, i.e. a 
+periodic extension of the simulation 
 area in one or more dimensions. Any grain leaving the system at one side is 
-reintroduced at the opposite side, and correspondingly the interaction 
+reintroduced at the opposite side, and correspondingly, the interaction 
 forces between grains at opposite sides of the simulation area are taken into 
 account. In this framework, the simulation domain becomes a unit area 
 containing grains with periodic copies paving the whole system. The periodic 
 boundary conditions extend the system boundaries to infinity, so that the 
-simulation cell simply plays the role of a coordinate system to locate grain 
+simulation cell simply plays the role of a coordinate system for locating grain 
 positions (see~\cref{fig:periodic}). 
 
 The external stresses or displacements are applied on the simulation box by 
@@ -1936,13 +1937,12 @@ constraining the degrees of freedom of the wall, which are alternatively kept
 free or fixed depending on whether a stress or a displacement is monitored in a 
 system. With periodic boundary conditions, this role is played by the 
 collective degrees of freedom carried by the coordinate system, whose basis 
-vectors become dynamic variables, and their conjugate stresses are expressed as 
+vectors become dynamic variables. Their conjugate stresses are expressed as 
 a state function of the granular configuration~\citep{Parrinello1980}. In the 
 case of granular systems, there is dissipation of energy during grain 
 interactions. The kinematics, equation of dynamics, and the time-stepping 
-schemes for DEM are discussed in detail 
-in~\citet{Voiv2011}. The periodicity in position implemented in the present 
-study is discussed below. 
+schemes for DEM are discussed in detail by~\citet{Voiv2011}. The periodicity in 
+position implemented in the present study is discussed below. 
 %
 \begin{figure}[htbp]
 \centering
@@ -1955,14 +1955,14 @@ another grain located at the left boundary.}
 \label{fig:periodic}
 \end{figure}
 
-Let us consider a collection of $N_{p}$ grains with their centres contained 
+Consider a collection of $N_{p}$ grains with their centres contained 
 in a cell of volume \textit{V} . The cell can have any shape allowing for a 
-periodic tessellation of space. The simplest shape is a parallelepiped i.e. 
+periodic tessellation of space. The simplest shape is a parallelepiped, i.e. 
 parallelogram in 2D. The cell and its replicas define a regular lattice 
 characterized by its basis vectors 
 $(\overrightarrow{\mathbf{a}_{1}},\overrightarrow{\mathbf{a}_{2}})$. In the 
 case of a parallelogram, the basis vectors may simply be the two sides of the 
-parallelogram;~\cref{fig:periodic}. The origin \textit{O} of the simulation 
+parallelogram:~\cref{fig:periodic}. The origin \textit{O} of the simulation 
 cell is a vertex of the cell of coordinates (0, 0) and its replicas are defined 
 by two indices $(i_{1}, i_{2})$ corresponding to a translation of the origin by 
 the vector 
@@ -1979,17 +1979,17 @@ $\overrightarrow{r}(\mathit{i}^{\prime})$ are given by:
 The grains belonging to the cell $\Omega$, characterized by $\mathit{i}_{1} 
 = \mathit{i}_{2} = 0$, can interact with the grains of the same cell but also 
 with image grains in the neighbouring cells characterized by $\mathit{i}_{k}\in 
-{1, 1}$. There are $3^{D} - 1$ cells surrounding the simulation cell and they 
+{1, 1}$. There are $3^{D} - 1$ cells surrounding the simulation cell, and they 
 are involved in the search of contact partners for each grain. The distance 
 between two grains \textit{i} and \textit{j} $\in \Omega$ is the shortest 
 distance separating \textit{i} from \textit{j} or from one of its images 
 $\mathit{j}^{\prime}$. As the system evolves in time, a grain \textit{i} may 
-leave but one of its images $\mathit{i}^{\prime}$ enters at the same moment. In 
-order to keep all original grains in the cell, the status ``original'' should 
-be reserved to the grains whose centres belongs to $\Omega$. Hence, whenever a 
-grain \textit{i} leaves the simulation cell, it becomes an image of 
+leave, but one of its images $\mathit{i}^{\prime}$ enters at the same moment. 
+In order to keep all original grains in the cell, the status ``original'' 
+should be reserved to the grains whose centres belong to $\Omega$. Hence, 
+whenever a grain \textit{i} leaves the simulation cell, it becomes an image of 
 $\mathit{i}^{\prime}$, which then becomes the original. This means that a 
-grain crossing a border of the simulation cell, returns to the cell by crossing 
+grain crossing a border of the simulation cell returns to the cell by crossing 
 another border.
 
 %%*******************************************************************************
@@ -2000,10 +2000,11 @@ It is essential to validate the developed DEM code. In the present study, a
 preliminary validation of the DEM code is performed by studying a ball rolling 
 down an inclined plane.~\citet{O'Sullivan2003} showed that the validation of 
 DEM code using the above problem confirms the appropriate implementation of 
-shear contact model in DEM. The theoretical solution for a ball rolling down an 
-inclined plane is derived by~\cite{Ke1995}. A disk is resting on a rigid 
-inclined plane oriented at an angle $\beta = 45\si{\degree}$ to the horizontal 
-plane (\cref{fig:rolling}). The disk has a radius \textit{r} of 1\si{m} and a 
+the shear contact model in DEM. The theoretical solution for a ball rolling 
+down an inclined plane is derived by~\cite{Ke1995}. A disk is resting on a 
+rigid inclined plane oriented at an angle $\beta = 45\si{\degree}$ to the 
+horizontal plane (\cref{fig:rolling}). The disk has a radius \textit{r} of 
+1\si{m} and a 
 density of 2650~\si{\kg\per\m\cubed}. The friction angle $\phi$ between the 
 disk and the rigid plane is varied. The disk rolls/slides down the plane due to 
 gravity. The DEM solution for the sliding case ($\phi=0\si{\degree}$) is 
@@ -2013,7 +2014,7 @@ acceleration $\ddot{\theta}$ are compared with the theoretical solution
 (\cref{table:dem_validation}). The accumulation of disk rotation at time 
 \textit{t} = 0.2~\si{\s} versus the friction angle is presented 
 in~\cref{fig:DEM_Validation}. The angular rotation observed in the DEM matches 
-the theoretical solution, which validates the shear contact model used in DEM. 
+the theoretical solution, which validates the shear contact model. 
 The DEM model implemented in the present study is further validated by 
 comparing it with the granular column collapse simulations performed 
 by~\citet{Zenit2005} and using PFC2D~\citep{ItascaPFC2D1998}.
@@ -2040,7 +2041,7 @@ by~\citet{Zenit2005} and using PFC2D~\citep{ItascaPFC2D1998}.
 \end{figure}
 
 \begin{table}[tbhp]
-\caption{Comparison of theoretical and DEM result for a disk on an inclined 
+\caption{Comparison of theoretical and DEM results for a disk on an inclined 
 plane of 45\si{\degree}}
 \label{table:dem_validation}
 \centering
@@ -2058,11 +2059,11 @@ DEM & 1.000 & 0.000 & 0.7071 & 0.000 \\
 \subsection[Cumulative beta distribution]{Cumulative $\beta$ distribution}
 \label{sec:beta_dist}
 For a DEM analysis, the sample must be representative of the 
-grain properties including the particle size distribution (PSD) both in volume 
+grain properties, including the particle size distribution (PSD) both in volume 
 (mainly for the smallest particles) and in number (for the largest particles). 
 This representativeness of PSD is a condition for a sample to be a 
 representative volume element. However, this condition cannot be satisfied in 
-DEM for a poly-disperse sample, due to the upper limit on the computation 
+the DEM for a poly-disperse sample, due to the upper limit on the computation 
 capacity. It is important to extract a discrete ensemble of grain sizes such 
 that a statistical representation of the size classes is 
 obtained~\citep{Radjai2011}.
@@ -2105,7 +2106,7 @@ the CD distribution in terms of the reduced diameters as
 h(d,a,b) = \beta(d_r(d);a,b) \,.
 \end{equation}
 
-The parameters \textit{a} and \textit{b} of the CB model allows the shape 
+The parameters \textit{a} and \textit{b} of the CB model allow the shape 
 descriptor $h(d)$ to vary easily. The size span is characterised by the ratio $ 
 r = d_{max}/d_{min}$. The size span can also be defined as
 %
@@ -2113,15 +2114,15 @@ r = d_{max}/d_{min}$. The size span can also be defined as
 s = \frac{d_{max}-d_{min}}{d_{max}+d_{min}} \,.
 \end{equation}
 
-A value of \textit{s} = 0 indicates a strictly mono-disperse grain size and a 
+A value of \textit{s} = 0 indicates a strictly mono-disperse grain size, and a 
 value of \textit{s} = 1 indicates an infinitely poly-disperse grain size 
-distribution.~\citet{Voivret2007} observed a well graded particle size 
+distribution.~\citet{Voivret2007} observed a well-graded particle size 
 distribution for \textit{a} > 1 and \textit{b} > 1. 
 
 In the present study, a value of \textit{a} = 4 and \textit{b} = 4 is adopted 
-to get a well graded curve. In the present study, samples with different 
+to obtain a well graded curve. In the present study, samples with different 
 poly-dispersity \textit{r} = 1.5, 1.8, 2 and 6 are used.~\Cref{fig:DEM_Sample} 
-shows a poly-disperse sample $r = 1.5$ generated using the CB method, for 
+shows a poly-disperse sample $r = 1.5$ generated by the CB method, for 
 \textit{a} = 4 and \textit{b} = 4. The PSD curve of the generated 
 sample is also presented.
 
@@ -2130,20 +2131,22 @@ sample is also presented.
 \subsection{Particle assembling methods}
 In order to simulate a granular assembly, it is essential to assign an initial 
 position and velocity to all the grains in the system. Particle positions 
-should be chosen to be compatible to the structure (granular fabric) we are 
-trying to simulate. In any event, the grains should not be positioned such that 
-there is an appreciable overlap between grains. In order to achieve the initial 
+should be chosen to be compatible with the structure (granular fabric) one is 
+attempting to simulate. In any event, the grains should not be positioned such 
+that there is an appreciable overlap between grains. In order to achieve the 
+initial 
 position of the grains, various grain-assembling methods can be adopted. The 
-grain assembling methods can be classified into two broad categories: 
+grain-assembling methods can be classified into two broad categories: 
 dynamic methods and geometrical approaches. The dynamic approach involves 
-packing of grains using laws of mechanics and contacts, while in the 
-geometrical method the grains are packed considering their geometry, 
-i.e. grain size, shape and its position. In general, the packing of grains can 
+the packing of grains using laws of mechanics and contacts, while the 
+geometrical method involves the packing of grains in accordance with grain 
+size, shape and position. In general, the packing of grains can 
 be categorized into two types: crystal/lattice packing, like hexagonal or 
-square pattern of mono-disperse grains, and random packing with varying density 
-employing mono-disperse or poly-disperse grains. The crystalline packing 
+square patterns of mono-disperse grains, and random packing with varying 
+density employing mono-disperse or poly-disperse grains. The crystalline 
+packing 
 arrangements, such as hexagon and square lattices, are easier to generate, 
-however they have non-trivial effects on the response of the granular 
+but they have non-trivial effects on the response of the granular 
 system~\citep{Staron2005}. Hexagonal packing is the densest possible 
 arrangement for mono-dispersed spherical grains. In 2D, the packing of 
 mono-dispersed circles on a hexagonal lattice yields a packing density, defined 
@@ -2153,20 +2156,21 @@ $\eta_{\mathit{h}}=\frac{1}{6}\pi\sqrt{3}\approx 0.9068$
 
 
 The rheology of a granular material is controlled by the geometry of the 
-assembly, which includes the grain shape, size distribution, and their 
-arrangement. This prevailing role of geometry sometimes permits to simplify the 
+assembly, which includes the grain shape, size distribution, and arrangement. 
+This prevailing role of geometry sometimes permits the simplification of the 
 dynamics in favour of a better description of the geometry 
-and/or higher numerical efficiency~\citep{Radjai2011}. For example, a dense 
+and/or higher numerical efficiency~\citep{Radjai2011}. For example, dense 
 granular packing may be efficiently constructed by replacing the equations of 
 dynamics by simple displacement rules satisfying the geometrical constraints. 
 Purely geometrical procedures can be much simpler and numerically faster than 
 dynamic or quasi-static methods. Contrary to dynamic simulation methods, 
-the geometrical methods allow for quick assembling of a large number of 
-grains. Such a packing may then be used as the initial state for dynamic 
-simulations. The issue of the assembling methods is to construct configurations 
-of grains as close as possible to a state of mechanical equilibrium with 
-built-in packing properties. This can be a target packing density for a 
-given grain size distribution. In the same way, the average connectivity of the 
+the geometrical methods allow for quicker assembling of a large number of 
+grains. Such packing may then be used as the initial state for dynamic 
+simulations. The issue of concern with assembling methods is to construct 
+configurations of grains as close as possible to a state of mechanical 
+equilibrium with built-in packing properties. This state can be a target 
+packing density for a given grain size distribution. In the same way, the 
+average connectivity of the 
 grains (coordination number) and the anisotropy of the contact network are 
 basic geometrical properties. The coordination number represents the mechanical 
 response of packing. The homogeneity of the grain assembly in terms of 
@@ -2175,7 +2179,7 @@ on the assembling rules. In the present study, the initial grain packing is
 obtained using the ballistic deposition technique.
 
 \subsubsection{Ballistic deposition}
-Initially a random arrangement of grains which do not touch each other is 
+Initially, a random arrangement of grains which do not touch each other is 
 generated. The radii of the grains are chosen from the 
 interval of $(\mathit{R}_{\mathit{min}},\mathit{R}_{\mathit{max}})$ in such a 
 way that the total mass of all grains from a certain size interval is the same 
@@ -2199,7 +2203,7 @@ the system.
 %%
 The 
 grains are arranged randomly on a regular lattice. In the second step, the 
-grains arranged in a regular lattice are allowed to fall down maintaining a 
+grains arranged in a regular lattice are allowed to fall down, maintaining a 
 constant potential head between layers of grains (\cref{fig:ini_sample}). 
 %
 %and are 
@@ -2243,7 +2247,7 @@ constant potential head between layers of grains (\cref{fig:ini_sample}).
 %reached. 
 
 The construction of the packing proceeds layer by layer from the 
-substrate, hence this deposition model is also known as bottom-to-top 
+substrate. For this reason, the deposition model is also known as bottom-to-top 
 restructuring model. 
 %
 %The first step is to release a grain from a random 
@@ -2252,8 +2256,8 @@ restructuring model.
 %a second grain.
 %
 In 2D, two contacts are sufficient to balance a grain if its 
-centre of gravity lies between the two contacts. This corresponds to a position 
-of local stable equilibrium. 
+centre of gravity lies between the two contacts. This configuration corresponds 
+to a position of local stable equilibrium. 
 %If this criterion is not met, the grain continues 
 %to roll and the procedure is iterated until a local stable position is 
 %reached. 
@@ -2262,9 +2266,9 @@ of local stable equilibrium.
 In this method, the order of deposited grains is generally random and 
 independent of their sizes. The mechanically stable sample obtained from this 
 method is presented in~\cref{fig:DEM_Sample_r6}. 
-Dense granular samples are prepared with zero initial friction angle. Zero 
+Dense granular samples are prepared an initial friction angle of zero. Zero 
 frictional resistance ensures the densest possible packing. The friction angle 
-is turned on during the analysis. To generate a dense sample, the sample is 
+is used during the analysis. To generate a dense sample, the sample is 
 subjected to vibrations at varying frequencies. 
 
 \begin{figure}[htbp]
@@ -2300,7 +2304,7 @@ S=\frac{1}{N_{layer}-1}\sum\limits_{i=1}^{N_{layer}}(e - e_i)^2 \,,
 %
 where $N_{layer}$ is the number of layers and \textit{e} is the overall void 
 ratio. A variance \textit{S} of 2.74\% is observed, which is less than 
-5\%~\citet{Jiang2003}, indicating a homogeneous sample.
+5\%, indicating a homogeneous sample~\citep{Jiang2003}.
 
 
 \subsection{Voronoi tessellation}
@@ -2310,36 +2314,35 @@ strains, from a DEM simulation, it is important to quantify the granular
 texture. A useful geometrical representation of granular texture consists of 
 dividing the space occupied by the particles into contiguous cells. This 
 procedure is called `tessellation'. Voronoi tessellation is one of the mostly 
-commonly used technique. For a finite set of points $p_1, \dots, p_n$ in the 
+commonly used techniques. For a finite set of points $p_1, \dots, p_n$ in the 
 Euclidean space, the domain/plane is discretised into convex polygons such that 
-each polygon contains exactly one point $p_i$ and every point in a given 
+each polygon contains exactly one point, $p_i$ and every point in a given 
 polygon is closer to its generating point $p_i$ than to any other. The inverse 
 of the Voronoi tessellation is the Delaunay triangulation.
 
 In the present study, the~\citet{Fortune1992} sweep line algorithm is 
-implemented to 
-tessellate the region surrounding each grain in the geometry. Once each grain 
-has a corresponding area, the macroscopic properties such as the bulk density 
-and stresses can be extracted from micro-mechanical properties such as the 
-local packing density and force chains.
+implemented to tessellate the region surrounding each grain in the geometry. 
+Once each grain has a corresponding area, the macroscopic properties, such as 
+the bulk density and stresses, can be extracted from micro-mechanical 
+properties, such as the local packing density and force chains.
 
 The Fortune sweep line algorithm involves a sweep line and a beach line, both 
 of which move through the plane from left to right as the algorithm progresses. 
 The sweep line is a straight line which moves from left to right across the 
 plane. At any time during the algorithm, the points (grains) to the left of the 
-sweep line will be incorporated into a Voronoi cell. While the points on the 
+sweep line will be incorporated into a Voronoi cell. The points on the 
 right of the sweep line are yet to be considered. The beach line is a complex 
-curve, composed of pieces of parabolas that divides the plane within which the 
+curve, composed of pieces of parabolas that divide the plane within which the 
 Voronoi diagram is known. As the sweep line crosses a point, a parabola 
 evolves from the generating point. As the sweep line progresses, the 
 vertices of the beach line, at which two parabolas cross, trace out the edges 
 of the Voronoi diagram. The beach line progresses by keeping each parabola base 
-exactly half way between the points initially swept over with the sweep line, 
+exactly halfway between the points initially swept over with the sweep line 
 and the new position of the sweep line.~\Cref{fig:sweep_voro} shows the Fortune 
-sweep line algorithm in progress. In the present study, a modified version of 
+sweep line algorithm in progress. A modified version of 
 the sweep-line algorithm is used to construct an additively weighted Voronoi 
 diagram, in which the distance to each site (grain) is offset by the weight of 
-the site, i.e., the radius of the grain.
+the site, i.e. the radius of the grain.
 
 \begin{figure}[tbhp]
 \centering
@@ -2357,8 +2360,8 @@ aspect ratio of 6 at time $t = 3 \tau_c$. The distribution of local packing
 density for the run-out is shown in~\cref{fig:local_density}. Dark regions 
 represent dense packing, while loose regions are shown in white. The run-out at 
 this stage has a bulk packing density of 81.23\%. It is difficult to tessellate 
-the free surface and the Voronoi cells on the free surface do not represent the 
-actual packing density. Hence, during the evaluation of the macroscopic 
+the free surface, and the Voronoi cells on the free surface do not represent 
+the actual packing density. Hence, during the evaluation of the macroscopic 
 density, the packing density of surface grains that are larger than a threshold 
 value are ignored. Voronoi Tessellation is a useful tool to extract continuum 
 properties from DEM simulations. In the present study, the Voronoi tessellation 
@@ -2387,18 +2390,18 @@ density}
 \section{Summary}
 
 A plane-strain Material Point Method is implemented in the present study to 
-describe the continuum response of granular flows. When the material points 
-move from one cell to another, it results in numerical oscillations called as 
-the cell-crossing noise. The Generalised Interpolation Material Point GIMP 
+describe the continuum response of granular flows. When a material points 
+moves from one cell to another, it results in numerical oscillations called 
+the cell-crossing noise. The Generalised Interpolation Material Point (GIMP) 
 method is adopted to minimize these oscillations in large-deformation problems. 
 The grain-scale response is captured using a two-dimensional 
 DEM code. The discrete grains are generated using a cumulative $\beta$ 
 distribution, which mimics the particle size distribution curves. The sample is 
-generated using the ballistic deposition technique and the homogeneity of the 
+generated using the ballistic deposition technique, and the homogeneity of the 
 generated sample is verified by investigating the variance in the void-ratio at 
 different layers. A sweep-line Voronoi tessellation approach is adopted to 
-extract macroscopic parameters such as stresses and packing density from 
-micro-scale properties such as the local packing fraction. These multi-scale 
+extract macroscopic parameters, such as stresses and packing density, from 
+micro-scale properties, such as the local packing fraction. These multi-scale 
 tools are used to understand the rheophysics of dry granular flows and to 
 evaluate the suitability of MPM as a continuum approach in modelling granular 
 flow behaviour.
