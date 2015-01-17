@@ -27,8 +27,8 @@ continuum properties such as bulk density from the local grain-scale
 simulations.
 
 In order to capture the macro-scale response, a template-based 
-three-dimensional C++11 Material Point Method code, an Eulerian-Lagrangian 
-approach, developed at the University of Cambridge, was modified and extended 
+three-dimensional C++11 Material Point Method code (an Eulerian-Lagrangian 
+approach), developed at the University of Cambridge, was modified and extended 
 to study granular flows as a continuum. In the present study, the Generalised 
 Interpolation Material Point GIMP method was implemented to reduce the 
 cell-crossing noise and oscillations observed during large-deformation 
@@ -61,7 +61,7 @@ granular column is observed. MPM simulations show longer run-out behaviour in
 the case of tall columns. In MPM simulations, the total initial 
 potential energy stored in the system is completely dissipated through friction 
 over the entire run-out distance. The energy evolution study reveals that the 
-lack of collisional dissipation mechanism in MPM results in a substantially 
+lack of a collisional dissipation mechanism in MPM results in a substantially 
 longer run-out distance for large aspect ratio columns. Continuum 
 approaches using frictional laws are able to capture the flow kinematics at 
 small aspect ratios, which is characterised by an inertial 
@@ -152,7 +152,7 @@ were performed to understand the behaviour of submarine granular flows and the
 influence of various parameters on the flow dynamics.
 
 Two-dimensional LB-DEM simulations pose a problem of non-interconnected 
-pore-space between the soil grains, which are in contact with each other. In 
+pore-space between the soil grains which are in contact with each other. In 
 the present study, a hydrodynamic radius, a reduction in the radius of the 
 grains, was adopted during the LBM computation stage to ensure continuous 
 pore-space for the fluid flow. A relation between the hydrodynamic radius and 
@@ -199,13 +199,13 @@ The number of vortices formed during a collapse in fluid is found to be
 proportional to the amount of material destabilised. The vortices are formed 
 only during the spreading stage of collapse. The formation of eddies during the 
 collapse of tall columns indicates that most of the potential energy gained 
-during the free-fall is dissipated through viscous drag and turbulence
+during the free-fall is dissipated through viscous drag and turbulence.
 
 
 \subsubsection*{Granular collapse down inclined planes}
 
 The influence of slope angle on the effect of permeability and the initial 
-packing density on the run-out behaviour are studied. For increase in slope 
+packing density on the run-out behaviour are studied. For increasing slope 
 angle, the viscous drag on the dense column tends to predominate over the 
 influence of hydroplaning on the run-out behaviour. The difference in the 
 run-out between the dry and the submerged conditions, for a dense granular 
@@ -215,7 +215,7 @@ columns show a longer run-out distance in immersed conditions. The run-out
 distance increases with increase in the slope angle in comparison to the dry 
 cases. The low permeable loose granular column retains the water entrained at 
 the base of the flow front resulting in sustained lubrication effect. In 
-contrast to the dry granular collapse, for all slope inclinations, the loose 
+contrast to the dry granular collapse, for all slope inclinations the loose 
 granular column in fluid flows further than the dense column. 
 
 For granular collapse on inclined planes, the run-out distance is unaffected by 
@@ -250,10 +250,10 @@ can be extended to three-dimensions to model realistic soil flow
 problems. Although the linear-elastic contact model is found to be sufficient 
 to 
 describe rapid granular flows, further research using Hertz-Mindlin or other 
-advanced contact model should be performed. DEM is limited by the number of 
-grains that can be simulated. Hence, it is important to be able to run DEM 
-simulations on multi-core systems or on GPUs to model large-scale geometries. 
-The initial grain properties are found to have a 
+advanced contact model should be performed. Computationally, the DEM is limited 
+by the number of grains that can be realistically simulated. Hence, it is 
+important to be able to run DEM simulations on multi-core systems or on GPUs to 
+model large-scale geometries. The initial grain properties are found to have a 
 significant influence on the run-out behaviour, hence, it is vital to model 
 grains of different shapes to understand their influence on the run-out 
 distance. Agglomerates can also be used to study the effect of grain-crushing 
@@ -276,9 +276,8 @@ The approach involves searching for cells that only contain material points,
 thereby avoiding unnecessary storage and computation. 
 
 The current MPM code is capable of handling fluid-solid interactions in 
-two-dimensions. Further research should be pursued to implement fully coupled 
-3D 
-material point method. The MPM code can also be extended to include the 
+two-dimensions. Further research should be pursued to implement a fully-coupled 
+3D MPM code. The MPM code can also be extended to include the 
 phase-transition behaviour in a continuum domain for partially fluidised 
 granular flows~\citep{Aranson2002, Aranson2001, Volfson2003}. Fluid - solid 
 interactions result in pressure oscillations. Further research is essential to 
@@ -315,7 +314,7 @@ viscosity~\citep{Pouliquen2005} to model granular flows in fluids.
 \subsection{Understanding the rheology of granular flows}
 
 \subsubsection*{Granular column collapse}
-Although, two-dimensional simulations provide a good understanding of the 
+Although two-dimensional simulations provide a good understanding of the 
 physics of granular flows, it is important to perform three-dimensional 
 analysis to understand the realistic granular flow behaviour. Multi-scale 
 simulations of three dimensional granular collapse experiments can be performed 
@@ -323,18 +322,18 @@ in dry and submerged conditions to understand the flow kinematics. Further
 research is essential to quantify the influence of initial packing density, 
 shape and size of grains on the run-out behaviour for different initial aspect 
 ratios. This would provide a basis for macro-scale parameters that are required 
-to model the granular flow behaviour in a continuum scale.
+to model the granular flow behaviour on a continuum scale.
 
 \subsubsection*{Slopes subjected to horizontal excitation}
 This work may be pursued along two directions: \textit{a}. experimental 
 realization of a similar set-up with different modes of energy injection and 
 \textit{b}. investigating the effect of various particle shapes or the presence 
-of an ambient fluid. Although numerical simulations are generally reliable with 
-realistic results found in the past studies of steady flows, the transient 
+of an ambient fluid. Although numerical simulations are generally reliable, 
+with realistic results found in the past studies of steady flows, the transient 
 phases are more sensitive than steady flows and hence experimental 
-investigation are necessary for validation. This configuration is also 
-interesting for the investigation of the behaviour of a submerged slope 
-subjected to an earthquake loading.
+investigations are necessary for validation. This configuration is also 
+interesting for investigating the behaviour of a submerged slope subjected 
+earthquake loadings.
 
 \subsubsection*{Granular flow down inclined planes}
 
