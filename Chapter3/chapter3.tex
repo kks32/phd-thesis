@@ -307,21 +307,18 @@ restitution}
 
 
 A typical 2D discretisation of a solid body is shown in~\cref{fig:MPM}. The 
-grey circles in~\cref{fig:MPM} are the material points $x_{p}$, where `p' 
-represents a material point, and the computational nodes are the points of 
-intersection of 
-the grid (denoted as $X_{i}$, where \textit{i} represents a computational 
-node). MPM involves discretising the domain, $\Omega$, with 
-a set of material points. The material points are assigned an initial value of 
-position, velocity, mass, volume, and stress, denoted as 
-$\mathbf{x}_{p},\mbox{  
-} \mathbf{\mathit{v}}_{p},\mbox{  } \mathit{m}_{p}, \mbox{  
-}\mathbf{V}_{p}\mbox{ and }\sigma_{p} $, respectively. Depending on the 
-material being 
-simulated, additional parameters, like pressure, temperature, pore-water 
-pressure, etc., are specified at the material points. The material points are 
-assumed to be within the computational grid which for ease of computation, 
-is assumed to be a Cartesian lattice (\cref{fig:MPM}). At 
+grey circles in~\cref{fig:MPM} are the material points $x_{p}$, where 
+`\textit{p}' represents a material point, and the computational nodes are the 
+points of intersection of the grid (denoted as $X_{i}$, where \textit{i} 
+represents a computational node). MPM involves discretising the domain, 
+$\Omega$, with a set of material points. The material points are assigned an 
+initial value of position, velocity, mass, volume, and stress, denoted as 
+$\mathbf{x}_{p},\mbox{  } \mathbf{\mathit{v}}_{p},\mbox{  } \mathit{m}_{p}, 
+\mbox{  }\mathbf{V}_{p}\mbox{ and }\sigma_{p} $, respectively. Depending on the 
+material being simulated, additional parameters, like pressure, temperature, 
+pore-water pressure, etc., are specified at the material points. The material 
+points are assumed to be within the computational grid which for ease of 
+computation, is assumed to be a Cartesian lattice (\cref{fig:MPM}). At 
 every time step $\mathit{t}_{k}$, the MPM computation cycle involves projecting 
 the data, such as position, mass, and velocity, from the material points to the 
 computational grid using the standard nodal basis functions, called the 
@@ -1956,7 +1953,7 @@ another grain located at the left boundary.}
 \end{figure}
 
 Consider a collection of $N_{p}$ grains with their centres contained 
-in a cell of volume \textit{V} . The cell can have any shape allowing for a 
+in a cell of volume \textit{V}. The cell can have any shape allowing for a 
 periodic tessellation of space. The simplest shape is a parallelepiped, i.e. 
 parallelogram in 2D. The cell and its replicas define a regular lattice 
 characterised by its basis vectors 
