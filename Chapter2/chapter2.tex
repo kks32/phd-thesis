@@ -194,6 +194,8 @@ Bagnold's theory of motion of individual grains in a shear flow and
 inter-grain friction inducing random velocities is reminiscent of the 
 thermal motion of molecules in the kinetic theory of gases. 
 
+\clearpage
+
 \subsection{Kinetic theory}
 The kinetic theory of gases assumes that the particles interact by 
 instantaneous collisions, which implies only binary (two-particle) collisions. 
@@ -591,6 +593,14 @@ in the Navier-Stokes equation}
 approximation (or) Length of a LBM cell}
 \nomenclature[a-l]{\textit{l}}{Horizontal length scale in shallow water 
 approximation (or) particle spacing in the Material Point Method}
+%
+\begin{figure}[tbhp]
+\centering
+\includegraphics[width=0.75\textwidth]{SH}
+\caption{Illustration of the Savage-Hutter model.}
+\label{fig:SH}
+\end{figure}
+
 The continuum equation requires determining the components of the stress tensor 
 and a suitable constitutive law. The \textit{Savage-Hutter (SH) model} uses the 
 Mohr-Coulomb law to describe the constitutive relation. The conservation of 
@@ -607,13 +617,6 @@ and (3) the velocity profile is assumed to be uniform throughout the avalanche
 depth. The granular flow over a rigid plane inclined at an angle, $\theta$, is 
 shown in~\cref{fig:SH}. The mass and momentum balance in the SH model is 
 written as
-%
-\begin{figure}[htbp]
-\centering
-\includegraphics[width=0.95\textwidth]{SH}
-\caption{Illustration of the Savage-Hutter model.}
-\label{fig:SH}
-\end{figure}
 %
 \begin{align}
 &\frac{\partial \textit{h}}{\partial \textit{t}} + \frac{\partial}{\partial 
@@ -636,6 +639,8 @@ satisfactory for granular flows down gentle slopes of inclination angle $\le
 30^{o}$, where granular materials exhibit premature stops~\citep{Hutter2005}. 
 The SH model has not yet been tested in cases where the granular flow interacts 
 with obstacles.
+%
+
 
 The two main modelling techniques that are commonly employed to describe 
 granular flow are the continuum approach and the discrete element approach. The 
@@ -1044,7 +1049,7 @@ unique admissible angle~\citep{Lemiale2011}.~\citet{Daerr1999} observed active
 Coulomb-type yielding in transient surface flows for granular materials with 
 a packing density of 0.62 to 0.65. 
 
-%\clearpage
+\clearpage
 
 \subsubsubsection{Numerical findings}
 
