@@ -364,7 +364,7 @@ supported!}
 
 % Line numbering (can be switched off)
 \ifPHD@lineno
-\RequirePackage[switch,pagewise,mathlines]{lineno}
+\RequirePackage[switch,mathlines]{lineno}
 \renewcommand{\frontmatter}{\nolinenumbers}
 \renewcommand{\mainmatter}{\linenumbers}
 \renewcommand{\backmatter}{\linenumbers}
