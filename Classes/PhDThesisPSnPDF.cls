@@ -652,10 +652,10 @@ supported!}
 	% No Margin staggering on Odd and Even side
         \ifsetDVI
 	\RequirePackage[dvips,paper=\PHD@papersize,hmarginratio=1:1,
-          vmarginratio=1:1,scale=0.75]{geometry}
+          vmarginratio=1:1,scale=0.75,bindingoffset=5mm]{geometry}
         \else
 	\RequirePackage[pdftex,paper=\PHD@papersize,hmarginratio=1:1,
-          vmarginratio=1:1,scale=0.75]{geometry}
+          vmarginratio=1:1,scale=0.75,bindingoffset=5mm]{geometry}
         \fi
     \fi
 
