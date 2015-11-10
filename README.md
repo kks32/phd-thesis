@@ -23,6 +23,7 @@ chains, which are micro-structural effects. Discrete element methods (DEM) are c
 simulating these micro-structural effects, however they are computationally expensive. In the
 present study, a multi-scale approach is adopted, using both DEM and continuum techniques,
 to better understand the rheology of granular flows and the limitations of continuum models.
+
 The collapse of a granular column on a horizontal surface is a simple case of granular
 flow; however, a proper model that describes the flow dynamics is still lacking. In the present
 study, the generalised interpolation material point method (GIMPM), a hybrid Eulerian –
@@ -34,6 +35,7 @@ The lack of collisional dissipation in the Mohr-Coloumb model results in longer 
 distances for granular flows in dilute regimes (where the mean pressure is low). However, the
 model is able to capture the rheology of dense granular flows, such as the run-out evolution
 of slopes subjected to lateral excitation, where the inertial number I < 0.1.
+
 The initiation and propagation of submarine flows depend mainly on the slope, density,
 and quantity of the material destabilised. Certain macroscopic models are able to capture
 simple mechanical behaviours, however the complex physical mechanisms that occur at the
