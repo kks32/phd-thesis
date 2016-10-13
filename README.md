@@ -5,6 +5,11 @@ Multiscale Multiphase Modelling of Granular Flows
 [![Build Status](https://api.travis-ci.org/kks32/phd-thesis.svg)](https://travis-ci.org/kks32/phd-thesis)
 [![License CC 4.0](https://img.shields.io/badge/license-CC--4.0-brightgreen.svg)](license.md)
 
+
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.160339.svg)](https://doi.org/10.5281/zenodo.160339)
+
+
+
 ## Author
 *   Krishna Kumar
 
